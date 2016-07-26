@@ -1,6 +1,6 @@
 ﻿Module App
     Public Sub Main()
         Application.EnableVisualStyles()
-        Application.Run(New RadForm1())
+        Application.Run(New Login())
     End Sub
 End Module
