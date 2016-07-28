@@ -133,7 +133,7 @@ Public Class Main
                 End While
 
                 If count = 1 Then
-                    RadMessageBox.Show(Me, "The time " & Format(CDate(rec_dtp_starttime.Text), "hh:mm") & " and " & "the equipment " & rec_cb_equipment.Text & " is already in used.", "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
+                    RadMessageBox.Show(Me, "The time " & Format(CDate(rec_dtp_starttime.Text), "HH:mm") & " and " & "the equipment " & rec_cb_equipment.Text & " is already in used.", "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
 
                 Else
                     MysqlConn.Close()
@@ -141,8 +141,8 @@ Public Class Main
 
                     addYN = RadMessageBox.Show(Me, "Are you sure you want to save this reservation?", "TLTD Scheduling Management", MessageBoxButtons.YesNo, RadMessageIcon.Question)
                     If addYN = MsgBoxResult.Yes Then
-                        query = "INSERT INTO reservation (startdate,enddate,starttime,endtime,borrower,location,equipment) VALUES ('" & Format(CDate(rec_dtp_startdate.Value), "yyyy-MM-dd") & "','" & Format(CDate(rec_dtp_enddate.Value), "yyyy-MM-dd") & "','" & Format(CDate(rec_dtp_starttime.Text), "hh:mm") & "',
-                        '" & Format(CDate(rec_dtp_endtime.Text), "hh:mm") & "', '" & rec_cb_borrower.Text & "','" & rec_cb_location.Text & "','" & rec_cb_equipment.Text & "')  "
+                        query = "INSERT INTO reservation (startdate,enddate,starttime,endtime,borrower,location,equipment) VALUES ('" & Format(CDate(rec_dtp_startdate.Value), "yyyy-MM-dd") & "','" & Format(CDate(rec_dtp_enddate.Value), "yyyy-MM-dd") & "','" & Format(CDate(rec_dtp_starttime.Text), "HH:mm") & "',
+                        '" & Format(CDate(rec_dtp_endtime.Text), "HH:mm") & "', '" & rec_cb_borrower.Text & "','" & rec_cb_location.Text & "','" & rec_cb_equipment.Text & "')  "
                         COMMAND = New MySqlCommand(query, MysqlConn)
                         READER = COMMAND.ExecuteReader
 
@@ -186,10 +186,19 @@ Public Class Main
             query = "select DATE_FORMAT(startdate,'%M %d %Y') as 'Start Date', DATE_FORMAT(enddate,'%M %d, %Y') as 
             'End Date', TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time', borrower as 
             'Borrower',location as 'Location', equipment as 'Equipment' from reservation
-            Where startdate between '" & Format(CDate(lu_startdate.Value), "yyyy-MM-dd") & "' and '" & Format(CDate(lu_startdate.Value), "yyyy-MM-dd") & "' 
-            Or enddate between '" & Format(CDate(lu_enddate.Value), "yyyy-MM-dd") & "' and '" & Format(CDate(lu_enddate.Value), "yyyy-MM-dd") & "'
-            and starttime between '" & Format(CDate(lu_starttime.Text), "hh:mm") & "' and '" & Format(CDate(lu_starttime.Text), "hh:mm") & "' or endtime between '" & Format(CDate(lu_endtime.Text), "hh:mm") & "'
-            and '" & Format(CDate(lu_endtime.Text), "hh:mm") & "'"
+            where (((startdate between '" & Format(CDate(lu_startdate.Value), "yyyy-MM-dd") & "' and '" & Format(CDate(lu_enddate.Value), "yyyy-MM-dd") & "') and 
+            (starttime between '" & Format(CDate(lu_starttime.Text), "HH:mm") & "' and '" & Format(CDate(lu_starttime.Text), "HH:mm") & "')) or
+            ((enddate between '" & Format(CDate(lu_startdate.Value), "yyyy-MM-dd") & "' and '" & Format(CDate(lu_enddate.Value), "yyyy-MM-dd") & "') and
+            (endtime between '" & Format(CDate(lu_endtime.Text), "HH:mm") & "' and '" & Format(CDate(lu_endtime.Text), "HH:mm") & "')))"
+
+
+
+
+
+            'Where startdate between '" & Format(CDate(lu_startdate.Value), "yyyy-MM-dd") & "' and '" & Format(CDate(lu_startdate.Value), "yyyy-MM-dd") & "' 
+            'Or enddate between '" & Format(CDate(lu_enddate.Value), "yyyy-MM-dd") & "' and '" & Format(CDate(lu_enddate.Value), "yyyy-MM-dd") & "'
+            'and starttime between '" & Format(CDate(lu_starttime.Text), "hh:mm") & "' and '" & Format(CDate(lu_starttime.Text), "hh:mm") & "' or endtime between '" & Format(CDate(lu_endtime.Text), "hh:mm") & "'
+            'and '" & Format(CDate(lu_endtime.Text), "hh:mm") & "'"
 
 
 
