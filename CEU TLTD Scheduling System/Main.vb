@@ -23,7 +23,7 @@ Public Class Main
         rgv_showavailableitems.Hide()
         load_main_table()
         load_rec_table()
-        test_checkedbox()
+
     End Sub
     Private Sub btn_showavailequip_Click(sender As Object, e As EventArgs)
         rgv_recordeddata.Hide()
@@ -117,14 +117,14 @@ Public Class Main
         If MysqlConn.State = ConnectionState.Open Then
             MysqlConn.Close()
         End If
-        If (rec_dtp_startdate.Text = "") Or (rec_dtp_enddate.Text = "") Or (rec_dtp_starttime.Text = "") Or (rec_dtp_endtime.Text = "") Or (rec_cb_borrower.Text = "") Or (rec_cb_location.Text = "") Or (rec_cb_equipment.Text = "") Then
+        If (rec_dtp_startdate.Text = "") Or (rec_dtp_enddate.Text = "") Or (rec_dtp_starttime.Text = "") Or (rec_dtp_endtime.Text = "") Or (rec_cb_borrower.Text = "") Or (rec_cb_location.Text = "") Or (rec_cob_equipment.Text = "") Then
             RadMessageBox.Show(Me, "Please complete the form", "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
         Else
             Try
                 MysqlConn.Open()
 
 
-                query = "SELECT * from reservation where (equipment='" & rec_cb_equipment.Text & "') and (('" & Format(CDate(rec_dtp_startdate.Value), "yyyy-MM-dd") & " " & Format(CDate(rec_dtp_starttime.Text), "hh:mm") & "' BETWEEN CONCAT(startdate,' ',starttime) AND CONCAT(enddate,' ',endtime)) OR
+                query = "SELECT * from reservation where (equipment='" & rec_cob_equipment.Text & "') and (('" & Format(CDate(rec_dtp_startdate.Value), "yyyy-MM-dd") & " " & Format(CDate(rec_dtp_starttime.Text), "hh:mm") & "' BETWEEN CONCAT(startdate,' ',starttime) AND CONCAT(enddate,' ',endtime)) OR
             ('" & Format(CDate(rec_dtp_enddate.Value), "yyyy-MM-dd") & " " & Format(CDate(rec_dtp_endtime.Text), "hh:mm") & "' BETWEEN CONCAT (enddate,' ',starttime) AND CONCAT(enddate,' ',endtime)))"
                 COMMAND = New MySqlCommand(query, MysqlConn)
                 READER = COMMAND.ExecuteReader
@@ -137,7 +137,7 @@ Public Class Main
                 End While
 
                 If count = 1 Then
-                    RadMessageBox.Show(Me, "The time " & Format(CDate(rec_dtp_starttime.Text), "HH:mm") & " and " & "the equipment " & rec_cb_equipment.Text & " is already in used.", "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
+                    RadMessageBox.Show(Me, "The time " & Format(CDate(rec_dtp_starttime.Text), "HH:mm") & " and " & "the equipment " & rec_cob_equipment.Text & " is already in used.", "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
 
                 Else
                     MysqlConn.Close()
@@ -145,8 +145,8 @@ Public Class Main
 
                     addYN = RadMessageBox.Show(Me, "Are you sure you want to save this reservation?", "TLTD Scheduling Management", MessageBoxButtons.YesNo, RadMessageIcon.Question)
                     If addYN = MsgBoxResult.Yes Then
-                        query = "INSERT INTO reservation (startdate,enddate,starttime,endtime,borrower,location,equipment) VALUES ('" & Format(CDate(rec_dtp_startdate.Value), "yyyy-MM-dd") & "','" & Format(CDate(rec_dtp_enddate.Value), "yyyy-MM-dd") & "','" & Format(CDate(rec_dtp_starttime.Text), "HH:mm") & "',
-                        '" & Format(CDate(rec_dtp_endtime.Text), "HH:mm") & "', '" & rec_cb_borrower.Text & "','" & rec_cb_location.Text & "','" & rec_cb_equipment.Text & "')  "
+                        query = "INSERT INTO reservation (startdate,enddate,starttime,endtime,borrower,location,equipment,reservedby,status) VALUES ('" & Format(CDate(rec_dtp_startdate.Value), "yyyy-MM-dd") & "','" & Format(CDate(rec_dtp_enddate.Value), "yyyy-MM-dd") & "','" & Format(CDate(rec_dtp_starttime.Text), "HH:mm") & "',
+                        '" & Format(CDate(rec_dtp_endtime.Text), "HH:mm") & "', '" & rec_cb_borrower.Text & "','" & rec_cb_location.Text & "','" & rec_cob_equipment.Text & "','" & rec_cb_reserved.Text & "','" & rec_cb_status.Text & "')  "
                         COMMAND = New MySqlCommand(query, MysqlConn)
                         READER = COMMAND.ExecuteReader
 
@@ -295,7 +295,7 @@ Public Class Main
 
 
 
-    End Sub
+
 
     'Private Sub Button1_Click(sender As Object, e As EventArgs)
 
