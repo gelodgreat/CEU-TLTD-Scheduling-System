@@ -15,7 +15,25 @@ Public Class Main
     Dim updateYN As DialogResult
     Dim deleteYN As DialogResult
     Dim doneYN As DialogResult
+    Public equipment As String
+    Dim shit As String
 
+    Private Sub Main_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        rgv_recordeddata.Show()
+        rgv_showavailableitems.Hide()
+        load_main_table()
+        load_rec_table()
+        test_checkedbox()
+    End Sub
+    Private Sub btn_showavailequip_Click(sender As Object, e As EventArgs)
+        rgv_recordeddata.Hide()
+        rgv_showavailableitems.Show()
+    End Sub
+
+    Private Sub btn_showalldata_Click(sender As Object, e As EventArgs)
+        rgv_recordeddata.Show()
+        rgv_showavailableitems.Hide()
+    End Sub
 
     Public Sub load_rec_table()
         MysqlConn = New MySqlConnection
@@ -86,21 +104,7 @@ Public Class Main
     End Sub
 
 
-    Private Sub Main_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        rgv_recordeddata.Show()
-        rgv_showavailableitems.Hide()
-        load_main_table()
-        load_rec_table()
-    End Sub
-    Private Sub btn_showavailequip_Click(sender As Object, e As EventArgs) Handles btn_showavailequip.Click
-        rgv_recordeddata.Hide()
-        rgv_showavailableitems.Show()
-    End Sub
 
-    Private Sub btn_showalldata_Click(sender As Object, e As EventArgs) Handles btn_showalldata.Click
-        rgv_recordeddata.Show()
-        rgv_showavailableitems.Hide()
-    End Sub
 
 
 
@@ -286,4 +290,29 @@ Public Class Main
         DV.RowFilter = String.Format("`Equipment` Like'%{0}%'", lu_byequipment.Text)
         rgv_recordeddatamain.DataSource = DV
     End Sub
+
+
+
+
+
+    End Sub
+
+    'Private Sub Button1_Click(sender As Object, e As EventArgs)
+
+    '    equipment = ""
+    '    Dim a
+
+    '    If RadCheckBox1.Checked = True Then
+    '        equipment = equipment + ", LAPTOP"
+    '    End If
+
+    '    If RadCheckBox2.Checked = True Then
+    '        equipment = equipment + ", LCD"
+    '    End If
+
+    '    Label1.Text = equipment
+
+    'End Sub
+
+
 End Class
