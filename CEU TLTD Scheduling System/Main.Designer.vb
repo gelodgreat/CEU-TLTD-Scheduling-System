@@ -341,7 +341,7 @@ Partial Class Main
         Me.RadLabel11 = New Telerik.WinControls.UI.RadLabel()
         Me.RadLabel10 = New Telerik.WinControls.UI.RadLabel()
         Me.RadGroupBox1 = New Telerik.WinControls.UI.RadGroupBox()
-        Me.rgv_recordeddatamain = New Telerik.WinControls.UI.RadGridView()
+        Me.main_rgv_recordeddatamain = New Telerik.WinControls.UI.RadGridView()
         Me.rpvp_account = New Telerik.WinControls.UI.RadPageViewPage()
         Me.RadGroupBox19 = New Telerik.WinControls.UI.RadGroupBox()
         Me.acc_prof_btn_clear = New Telerik.WinControls.UI.RadButton()
@@ -400,7 +400,7 @@ Partial Class Main
         Me.eq_equipmentid = New Telerik.WinControls.UI.RadTextBox()
         Me.eq_equipmentlocation = New Telerik.WinControls.UI.RadDropDownList()
         Me.RadGroupBox14 = New Telerik.WinControls.UI.RadGroupBox()
-        Me.RadGridView2 = New Telerik.WinControls.UI.RadGridView()
+        Me.eq_rgv_showregequipment = New Telerik.WinControls.UI.RadGridView()
         Me.rpvp2_reservation = New Telerik.WinControls.UI.RadPageViewPage()
         Me.RadGroupBox6 = New Telerik.WinControls.UI.RadGroupBox()
         Me.rec_btn_clear = New Telerik.WinControls.UI.RadButton()
@@ -439,8 +439,8 @@ Partial Class Main
         Me.RadGridView4 = New Telerik.WinControls.UI.RadGridView()
         Me.RadListControl1 = New Telerik.WinControls.UI.RadListControl()
         Me.RadGroupBox3 = New Telerik.WinControls.UI.RadGroupBox()
-        Me.rgv_recordeddata = New Telerik.WinControls.UI.RadGridView()
-        Me.rgv_showavailableitems = New Telerik.WinControls.UI.RadGridView()
+        Me.reservation_rgv_recordeddata = New Telerik.WinControls.UI.RadGridView()
+        Me.reservations_rgv_showavailableitems = New Telerik.WinControls.UI.RadGridView()
         Me.rpvp_releasing = New Telerik.WinControls.UI.RadPageViewPage()
         Me.RadGroupBox12 = New Telerik.WinControls.UI.RadGroupBox()
         Me.RadButton4 = New Telerik.WinControls.UI.RadButton()
@@ -506,8 +506,8 @@ Partial Class Main
         CType(Me.RadLabel10, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RadGroupBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.RadGroupBox1.SuspendLayout()
-        CType(Me.rgv_recordeddatamain, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.rgv_recordeddatamain.MasterTemplate, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.main_rgv_recordeddatamain, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.main_rgv_recordeddatamain.MasterTemplate, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.rpvp_account.SuspendLayout()
         CType(Me.RadGroupBox19, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.RadGroupBox19.SuspendLayout()
@@ -572,8 +572,8 @@ Partial Class Main
         CType(Me.eq_equipmentlocation, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RadGroupBox14, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.RadGroupBox14.SuspendLayout()
-        CType(Me.RadGridView2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RadGridView2.MasterTemplate, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.eq_rgv_showregequipment, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.eq_rgv_showregequipment.MasterTemplate, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.rpvp2_reservation.SuspendLayout()
         CType(Me.RadGroupBox6, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.RadGroupBox6.SuspendLayout()
@@ -618,11 +618,11 @@ Partial Class Main
         CType(Me.RadListControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RadGroupBox3, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.RadGroupBox3.SuspendLayout()
-        CType(Me.rgv_recordeddata, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.rgv_recordeddata.MasterTemplate, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.rgv_recordeddata.SuspendLayout()
-        CType(Me.rgv_showavailableitems, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.rgv_showavailableitems.MasterTemplate, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.reservation_rgv_recordeddata, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.reservation_rgv_recordeddata.MasterTemplate, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.reservation_rgv_recordeddata.SuspendLayout()
+        CType(Me.reservations_rgv_showavailableitems, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.reservations_rgv_showavailableitems.MasterTemplate, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.rpvp_releasing.SuspendLayout()
         CType(Me.RadGroupBox12, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.RadGroupBox12.SuspendLayout()
@@ -684,8 +684,8 @@ Partial Class Main
         Me.rpv1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.rpv1.Location = New System.Drawing.Point(0, 0)
         Me.rpv1.Name = "rpv1"
-        Me.rpv1.SelectedPage = Me.rpvp_releasing
-        Me.rpv1.Size = New System.Drawing.Size(1388, 583)
+        Me.rpv1.SelectedPage = Me.rpvp_equipment
+        Me.rpv1.Size = New System.Drawing.Size(1358, 583)
         Me.rpv1.TabIndex = 0
         Me.rpv1.Text = "Home"
         Me.rpv1.ThemeName = "VisualStudio2012Dark"
@@ -701,7 +701,7 @@ Partial Class Main
         Me.rpvp1_main.ItemSize = New System.Drawing.SizeF(37.0!, 24.0!)
         Me.rpvp1_main.Location = New System.Drawing.Point(5, 30)
         Me.rpvp1_main.Name = "rpvp1_main"
-        Me.rpvp1_main.Size = New System.Drawing.Size(1294, 529)
+        Me.rpvp1_main.Size = New System.Drawing.Size(1348, 548)
         Me.rpvp1_main.Text = "Main"
         '
         'RadGroupBox2
@@ -1084,36 +1084,36 @@ Partial Class Main
         'RadGroupBox1
         '
         Me.RadGroupBox1.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping
-        Me.RadGroupBox1.Controls.Add(Me.rgv_recordeddatamain)
+        Me.RadGroupBox1.Controls.Add(Me.main_rgv_recordeddatamain)
         Me.RadGroupBox1.HeaderText = "RadGroupBox1"
         Me.RadGroupBox1.Location = New System.Drawing.Point(262, 3)
         Me.RadGroupBox1.Name = "RadGroupBox1"
-        Me.RadGroupBox1.Size = New System.Drawing.Size(1023, 501)
+        Me.RadGroupBox1.Size = New System.Drawing.Size(1079, 501)
         Me.RadGroupBox1.TabIndex = 0
         Me.RadGroupBox1.Text = "RadGroupBox1"
         Me.RadGroupBox1.ThemeName = "VisualStudio2012Dark"
         '
-        'rgv_recordeddatamain
+        'main_rgv_recordeddatamain
         '
-        Me.rgv_recordeddatamain.AutoSizeRows = True
-        Me.rgv_recordeddatamain.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.rgv_recordeddatamain.Location = New System.Drawing.Point(2, 18)
+        Me.main_rgv_recordeddatamain.AutoSizeRows = True
+        Me.main_rgv_recordeddatamain.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.main_rgv_recordeddatamain.Location = New System.Drawing.Point(2, 18)
         '
         '
         '
-        Me.rgv_recordeddatamain.MasterTemplate.AllowAddNewRow = False
-        Me.rgv_recordeddatamain.MasterTemplate.AllowDeleteRow = False
-        Me.rgv_recordeddatamain.MasterTemplate.AllowEditRow = False
-        Me.rgv_recordeddatamain.MasterTemplate.AutoSizeColumnsMode = Telerik.WinControls.UI.GridViewAutoSizeColumnsMode.Fill
-        Me.rgv_recordeddatamain.MasterTemplate.EnableGrouping = False
-        Me.rgv_recordeddatamain.MasterTemplate.ShowRowHeaderColumn = False
-        Me.rgv_recordeddatamain.MasterTemplate.ViewDefinition = TableViewDefinition1
-        Me.rgv_recordeddatamain.Name = "rgv_recordeddatamain"
-        Me.rgv_recordeddatamain.ReadOnly = True
-        Me.rgv_recordeddatamain.Size = New System.Drawing.Size(1019, 481)
-        Me.rgv_recordeddatamain.TabIndex = 0
-        Me.rgv_recordeddatamain.Text = "RadGridView1"
-        Me.rgv_recordeddatamain.ThemeName = "VisualStudio2012Dark"
+        Me.main_rgv_recordeddatamain.MasterTemplate.AllowAddNewRow = False
+        Me.main_rgv_recordeddatamain.MasterTemplate.AllowDeleteRow = False
+        Me.main_rgv_recordeddatamain.MasterTemplate.AllowEditRow = False
+        Me.main_rgv_recordeddatamain.MasterTemplate.AutoSizeColumnsMode = Telerik.WinControls.UI.GridViewAutoSizeColumnsMode.Fill
+        Me.main_rgv_recordeddatamain.MasterTemplate.EnableGrouping = False
+        Me.main_rgv_recordeddatamain.MasterTemplate.ShowRowHeaderColumn = False
+        Me.main_rgv_recordeddatamain.MasterTemplate.ViewDefinition = TableViewDefinition1
+        Me.main_rgv_recordeddatamain.Name = "main_rgv_recordeddatamain"
+        Me.main_rgv_recordeddatamain.ReadOnly = True
+        Me.main_rgv_recordeddatamain.Size = New System.Drawing.Size(1075, 481)
+        Me.main_rgv_recordeddatamain.TabIndex = 0
+        Me.main_rgv_recordeddatamain.Text = "RadGridView1"
+        Me.main_rgv_recordeddatamain.ThemeName = "VisualStudio2012Dark"
         '
         'rpvp_account
         '
@@ -1123,7 +1123,7 @@ Partial Class Main
         Me.rpvp_account.ItemSize = New System.Drawing.SizeF(123.0!, 24.0!)
         Me.rpvp_account.Location = New System.Drawing.Point(5, 30)
         Me.rpvp_account.Name = "rpvp_account"
-        Me.rpvp_account.Size = New System.Drawing.Size(1378, 548)
+        Me.rpvp_account.Size = New System.Drawing.Size(1348, 548)
         Me.rpvp_account.Text = "Account Management"
         '
         'RadGroupBox19
@@ -1571,7 +1571,7 @@ Partial Class Main
         Me.rpvp_equipment.ItemSize = New System.Drawing.SizeF(136.0!, 24.0!)
         Me.rpvp_equipment.Location = New System.Drawing.Point(5, 30)
         Me.rpvp_equipment.Name = "rpvp_equipment"
-        Me.rpvp_equipment.Size = New System.Drawing.Size(1378, 548)
+        Me.rpvp_equipment.Size = New System.Drawing.Size(1348, 548)
         Me.rpvp_equipment.Text = "Equipment Management"
         '
         'RadGroupBox15
@@ -1590,7 +1590,7 @@ Partial Class Main
         Me.RadGroupBox15.Controls.Add(Me.eq_equipmentid)
         Me.RadGroupBox15.Controls.Add(Me.eq_equipmentlocation)
         Me.RadGroupBox15.HeaderText = "Equipment Details"
-        Me.RadGroupBox15.Location = New System.Drawing.Point(400, 285)
+        Me.RadGroupBox15.Location = New System.Drawing.Point(400, 283)
         Me.RadGroupBox15.Name = "RadGroupBox15"
         Me.RadGroupBox15.Size = New System.Drawing.Size(488, 233)
         Me.RadGroupBox15.TabIndex = 1
@@ -1714,28 +1714,35 @@ Partial Class Main
         'RadGroupBox14
         '
         Me.RadGroupBox14.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping
-        Me.RadGroupBox14.Controls.Add(Me.RadGridView2)
+        Me.RadGroupBox14.Controls.Add(Me.eq_rgv_showregequipment)
         Me.RadGroupBox14.HeaderText = "RadGroupBox14"
-        Me.RadGroupBox14.Location = New System.Drawing.Point(3, 3)
+        Me.RadGroupBox14.Location = New System.Drawing.Point(7, 3)
         Me.RadGroupBox14.Name = "RadGroupBox14"
-        Me.RadGroupBox14.Size = New System.Drawing.Size(1288, 276)
+        Me.RadGroupBox14.Size = New System.Drawing.Size(1334, 276)
         Me.RadGroupBox14.TabIndex = 0
         Me.RadGroupBox14.Text = "RadGroupBox14"
         Me.RadGroupBox14.ThemeName = "VisualStudio2012Dark"
         '
-        'RadGridView2
+        'eq_rgv_showregequipment
         '
-        Me.RadGridView2.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.RadGridView2.Location = New System.Drawing.Point(2, 18)
+        Me.eq_rgv_showregequipment.AutoSizeRows = True
+        Me.eq_rgv_showregequipment.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.eq_rgv_showregequipment.Location = New System.Drawing.Point(2, 18)
         '
         '
         '
-        Me.RadGridView2.MasterTemplate.ViewDefinition = TableViewDefinition3
-        Me.RadGridView2.Name = "RadGridView2"
-        Me.RadGridView2.Size = New System.Drawing.Size(1284, 256)
-        Me.RadGridView2.TabIndex = 0
-        Me.RadGridView2.Text = "RadGridView2"
-        Me.RadGridView2.ThemeName = "VisualStudio2012Dark"
+        Me.eq_rgv_showregequipment.MasterTemplate.AllowAddNewRow = False
+        Me.eq_rgv_showregequipment.MasterTemplate.AllowDeleteRow = False
+        Me.eq_rgv_showregequipment.MasterTemplate.AutoSizeColumnsMode = Telerik.WinControls.UI.GridViewAutoSizeColumnsMode.Fill
+        Me.eq_rgv_showregequipment.MasterTemplate.EnableGrouping = False
+        Me.eq_rgv_showregequipment.MasterTemplate.ShowRowHeaderColumn = False
+        Me.eq_rgv_showregequipment.MasterTemplate.ViewDefinition = TableViewDefinition3
+        Me.eq_rgv_showregequipment.Name = "eq_rgv_showregequipment"
+        Me.eq_rgv_showregequipment.ReadOnly = True
+        Me.eq_rgv_showregequipment.Size = New System.Drawing.Size(1330, 256)
+        Me.eq_rgv_showregequipment.TabIndex = 0
+        Me.eq_rgv_showregequipment.Text = "Equipments"
+        Me.eq_rgv_showregequipment.ThemeName = "VisualStudio2012Dark"
         '
         'rpvp2_reservation
         '
@@ -1746,7 +1753,7 @@ Partial Class Main
         Me.rpvp2_reservation.ItemSize = New System.Drawing.SizeF(140.0!, 24.0!)
         Me.rpvp2_reservation.Location = New System.Drawing.Point(5, 30)
         Me.rpvp2_reservation.Name = "rpvp2_reservation"
-        Me.rpvp2_reservation.Size = New System.Drawing.Size(1378, 548)
+        Me.rpvp2_reservation.Size = New System.Drawing.Size(1348, 548)
         Me.rpvp2_reservation.Text = "Reservation Management"
         '
         'RadGroupBox6
@@ -2344,59 +2351,59 @@ Partial Class Main
         'RadGroupBox3
         '
         Me.RadGroupBox3.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping
-        Me.RadGroupBox3.Controls.Add(Me.rgv_recordeddata)
+        Me.RadGroupBox3.Controls.Add(Me.reservation_rgv_recordeddata)
         Me.RadGroupBox3.HeaderText = "RadGroupBox3"
         Me.RadGroupBox3.Location = New System.Drawing.Point(7, 3)
         Me.RadGroupBox3.Name = "RadGroupBox3"
-        Me.RadGroupBox3.Size = New System.Drawing.Size(1364, 282)
+        Me.RadGroupBox3.Size = New System.Drawing.Size(1338, 282)
         Me.RadGroupBox3.TabIndex = 0
         Me.RadGroupBox3.Text = "RadGroupBox3"
         Me.RadGroupBox3.ThemeName = "VisualStudio2012Dark"
         '
-        'rgv_recordeddata
+        'reservation_rgv_recordeddata
         '
-        Me.rgv_recordeddata.AutoSizeRows = True
-        Me.rgv_recordeddata.Controls.Add(Me.rgv_showavailableitems)
-        Me.rgv_recordeddata.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.rgv_recordeddata.Location = New System.Drawing.Point(2, 18)
-        '
-        '
-        '
-        Me.rgv_recordeddata.MasterTemplate.AllowAddNewRow = False
-        Me.rgv_recordeddata.MasterTemplate.AllowDeleteRow = False
-        Me.rgv_recordeddata.MasterTemplate.AllowEditRow = False
-        Me.rgv_recordeddata.MasterTemplate.AutoSizeColumnsMode = Telerik.WinControls.UI.GridViewAutoSizeColumnsMode.Fill
-        Me.rgv_recordeddata.MasterTemplate.EnableGrouping = False
-        Me.rgv_recordeddata.MasterTemplate.ShowRowHeaderColumn = False
-        Me.rgv_recordeddata.MasterTemplate.ViewDefinition = TableViewDefinition6
-        Me.rgv_recordeddata.Name = "rgv_recordeddata"
-        Me.rgv_recordeddata.ReadOnly = True
-        Me.rgv_recordeddata.Size = New System.Drawing.Size(1360, 262)
-        Me.rgv_recordeddata.TabIndex = 3
-        Me.rgv_recordeddata.Text = "RadGridView2"
-        Me.rgv_recordeddata.ThemeName = "VisualStudio2012Dark"
-        '
-        'rgv_showavailableitems
-        '
-        Me.rgv_showavailableitems.AutoSizeRows = True
-        Me.rgv_showavailableitems.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.rgv_showavailableitems.Location = New System.Drawing.Point(0, 0)
+        Me.reservation_rgv_recordeddata.AutoSizeRows = True
+        Me.reservation_rgv_recordeddata.Controls.Add(Me.reservations_rgv_showavailableitems)
+        Me.reservation_rgv_recordeddata.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.reservation_rgv_recordeddata.Location = New System.Drawing.Point(2, 18)
         '
         '
         '
-        Me.rgv_showavailableitems.MasterTemplate.AllowAddNewRow = False
-        Me.rgv_showavailableitems.MasterTemplate.AllowDeleteRow = False
-        Me.rgv_showavailableitems.MasterTemplate.AllowEditRow = False
-        Me.rgv_showavailableitems.MasterTemplate.AutoSizeColumnsMode = Telerik.WinControls.UI.GridViewAutoSizeColumnsMode.Fill
-        Me.rgv_showavailableitems.MasterTemplate.EnableGrouping = False
-        Me.rgv_showavailableitems.MasterTemplate.ShowRowHeaderColumn = False
-        Me.rgv_showavailableitems.MasterTemplate.ViewDefinition = TableViewDefinition5
-        Me.rgv_showavailableitems.Name = "rgv_showavailableitems"
-        Me.rgv_showavailableitems.ReadOnly = True
-        Me.rgv_showavailableitems.Size = New System.Drawing.Size(1360, 262)
-        Me.rgv_showavailableitems.TabIndex = 1
-        Me.rgv_showavailableitems.Text = "RadGridView2"
-        Me.rgv_showavailableitems.ThemeName = "VisualStudio2012Dark"
+        Me.reservation_rgv_recordeddata.MasterTemplate.AllowAddNewRow = False
+        Me.reservation_rgv_recordeddata.MasterTemplate.AllowDeleteRow = False
+        Me.reservation_rgv_recordeddata.MasterTemplate.AllowEditRow = False
+        Me.reservation_rgv_recordeddata.MasterTemplate.AutoSizeColumnsMode = Telerik.WinControls.UI.GridViewAutoSizeColumnsMode.Fill
+        Me.reservation_rgv_recordeddata.MasterTemplate.EnableGrouping = False
+        Me.reservation_rgv_recordeddata.MasterTemplate.ShowRowHeaderColumn = False
+        Me.reservation_rgv_recordeddata.MasterTemplate.ViewDefinition = TableViewDefinition6
+        Me.reservation_rgv_recordeddata.Name = "reservation_rgv_recordeddata"
+        Me.reservation_rgv_recordeddata.ReadOnly = True
+        Me.reservation_rgv_recordeddata.Size = New System.Drawing.Size(1334, 262)
+        Me.reservation_rgv_recordeddata.TabIndex = 3
+        Me.reservation_rgv_recordeddata.Text = "RadGridView2"
+        Me.reservation_rgv_recordeddata.ThemeName = "VisualStudio2012Dark"
+        '
+        'reservations_rgv_showavailableitems
+        '
+        Me.reservations_rgv_showavailableitems.AutoSizeRows = True
+        Me.reservations_rgv_showavailableitems.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.reservations_rgv_showavailableitems.Location = New System.Drawing.Point(0, 0)
+        '
+        '
+        '
+        Me.reservations_rgv_showavailableitems.MasterTemplate.AllowAddNewRow = False
+        Me.reservations_rgv_showavailableitems.MasterTemplate.AllowDeleteRow = False
+        Me.reservations_rgv_showavailableitems.MasterTemplate.AllowEditRow = False
+        Me.reservations_rgv_showavailableitems.MasterTemplate.AutoSizeColumnsMode = Telerik.WinControls.UI.GridViewAutoSizeColumnsMode.Fill
+        Me.reservations_rgv_showavailableitems.MasterTemplate.EnableGrouping = False
+        Me.reservations_rgv_showavailableitems.MasterTemplate.ShowRowHeaderColumn = False
+        Me.reservations_rgv_showavailableitems.MasterTemplate.ViewDefinition = TableViewDefinition5
+        Me.reservations_rgv_showavailableitems.Name = "reservations_rgv_showavailableitems"
+        Me.reservations_rgv_showavailableitems.ReadOnly = True
+        Me.reservations_rgv_showavailableitems.Size = New System.Drawing.Size(1334, 262)
+        Me.reservations_rgv_showavailableitems.TabIndex = 1
+        Me.reservations_rgv_showavailableitems.Text = "RadGridView2"
+        Me.reservations_rgv_showavailableitems.ThemeName = "VisualStudio2012Dark"
         '
         'rpvp_releasing
         '
@@ -2407,7 +2414,7 @@ Partial Class Main
         Me.rpvp_releasing.ItemSize = New System.Drawing.SizeF(130.0!, 24.0!)
         Me.rpvp_releasing.Location = New System.Drawing.Point(5, 30)
         Me.rpvp_releasing.Name = "rpvp_releasing"
-        Me.rpvp_releasing.Size = New System.Drawing.Size(1378, 548)
+        Me.rpvp_releasing.Size = New System.Drawing.Size(1348, 548)
         Me.rpvp_releasing.Text = "Releasing Management"
         '
         'RadGroupBox12
@@ -3035,14 +3042,14 @@ Partial Class Main
         Me.rpvp_returning.ItemSize = New System.Drawing.SizeF(131.0!, 24.0!)
         Me.rpvp_returning.Location = New System.Drawing.Point(5, 30)
         Me.rpvp_returning.Name = "rpvp_returning"
-        Me.rpvp_returning.Size = New System.Drawing.Size(1294, 529)
+        Me.rpvp_returning.Size = New System.Drawing.Size(1348, 548)
         Me.rpvp_returning.Text = "Returning Management"
         '
         'Main
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1388, 583)
+        Me.ClientSize = New System.Drawing.Size(1358, 583)
         Me.Controls.Add(Me.rpv1)
         Me.Name = "Main"
         '
@@ -3077,8 +3084,8 @@ Partial Class Main
         CType(Me.RadLabel10, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RadGroupBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.RadGroupBox1.ResumeLayout(False)
-        CType(Me.rgv_recordeddatamain.MasterTemplate, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.rgv_recordeddatamain, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.main_rgv_recordeddatamain.MasterTemplate, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.main_rgv_recordeddatamain, System.ComponentModel.ISupportInitialize).EndInit()
         Me.rpvp_account.ResumeLayout(False)
         CType(Me.RadGroupBox19, System.ComponentModel.ISupportInitialize).EndInit()
         Me.RadGroupBox19.ResumeLayout(False)
@@ -3146,8 +3153,8 @@ Partial Class Main
         CType(Me.eq_equipmentlocation, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RadGroupBox14, System.ComponentModel.ISupportInitialize).EndInit()
         Me.RadGroupBox14.ResumeLayout(False)
-        CType(Me.RadGridView2.MasterTemplate, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RadGridView2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.eq_rgv_showregequipment.MasterTemplate, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.eq_rgv_showregequipment, System.ComponentModel.ISupportInitialize).EndInit()
         Me.rpvp2_reservation.ResumeLayout(False)
         CType(Me.RadGroupBox6, System.ComponentModel.ISupportInitialize).EndInit()
         Me.RadGroupBox6.ResumeLayout(False)
@@ -3194,12 +3201,12 @@ Partial Class Main
         CType(Me.RadListControl1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RadGroupBox3, System.ComponentModel.ISupportInitialize).EndInit()
         Me.RadGroupBox3.ResumeLayout(False)
-        CType(Me.rgv_recordeddata.MasterTemplate, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.rgv_recordeddata, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.rgv_recordeddata.ResumeLayout(False)
-        Me.rgv_recordeddata.PerformLayout()
-        CType(Me.rgv_showavailableitems.MasterTemplate, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.rgv_showavailableitems, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.reservation_rgv_recordeddata.MasterTemplate, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.reservation_rgv_recordeddata, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.reservation_rgv_recordeddata.ResumeLayout(False)
+        Me.reservation_rgv_recordeddata.PerformLayout()
+        CType(Me.reservations_rgv_showavailableitems.MasterTemplate, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.reservations_rgv_showavailableitems, System.ComponentModel.ISupportInitialize).EndInit()
         Me.rpvp_releasing.ResumeLayout(False)
         CType(Me.RadGroupBox12, System.ComponentModel.ISupportInitialize).EndInit()
         Me.RadGroupBox12.ResumeLayout(False)
@@ -3259,12 +3266,12 @@ Partial Class Main
     Friend WithEvents rpvp_account As Telerik.WinControls.UI.RadPageViewPage
     Friend WithEvents RadGroupBox2 As Telerik.WinControls.UI.RadGroupBox
     Friend WithEvents RadGroupBox1 As Telerik.WinControls.UI.RadGroupBox
-    Friend WithEvents rgv_recordeddatamain As Telerik.WinControls.UI.RadGridView
+    Friend WithEvents main_rgv_recordeddatamain As Telerik.WinControls.UI.RadGridView
     Friend WithEvents VisualStudio2012DarkTheme1 As Telerik.WinControls.Themes.VisualStudio2012DarkTheme
     Friend WithEvents RadGroupBox4 As Telerik.WinControls.UI.RadGroupBox
     Friend WithEvents RadGroupBox5 As Telerik.WinControls.UI.RadGroupBox
     Friend WithEvents RadGroupBox3 As Telerik.WinControls.UI.RadGroupBox
-    Friend WithEvents rgv_recordeddata As Telerik.WinControls.UI.RadGridView
+    Friend WithEvents reservation_rgv_recordeddata As Telerik.WinControls.UI.RadGridView
     Friend WithEvents RadLabel2 As Telerik.WinControls.UI.RadLabel
     Friend WithEvents RadLabel1 As Telerik.WinControls.UI.RadLabel
     Friend WithEvents rec_dtp_enddate As Telerik.WinControls.UI.RadDateTimePicker
@@ -3277,7 +3284,7 @@ Partial Class Main
     Friend WithEvents rec_cb_location As Telerik.WinControls.UI.RadDropDownList
     Friend WithEvents RadLabel5 As Telerik.WinControls.UI.RadLabel
     Friend WithEvents rec_cb_borrower As Telerik.WinControls.UI.RadDropDownList
-    Friend WithEvents rgv_showavailableitems As Telerik.WinControls.UI.RadGridView
+    Friend WithEvents reservations_rgv_showavailableitems As Telerik.WinControls.UI.RadGridView
     Friend WithEvents RadGroupBox6 As Telerik.WinControls.UI.RadGroupBox
     Friend WithEvents rec_btn_clear As Telerik.WinControls.UI.RadButton
     Friend WithEvents rec_btn_delete As Telerik.WinControls.UI.RadButton
@@ -3341,7 +3348,7 @@ Partial Class Main
     Friend WithEvents eq_equipmentid As Telerik.WinControls.UI.RadTextBox
     Friend WithEvents eq_equipmentlocation As Telerik.WinControls.UI.RadDropDownList
     Friend WithEvents RadGroupBox14 As Telerik.WinControls.UI.RadGroupBox
-    Friend WithEvents RadGridView2 As Telerik.WinControls.UI.RadGridView
+    Friend WithEvents eq_rgv_showregequipment As Telerik.WinControls.UI.RadGridView
     Friend WithEvents RadGroupBox16 As Telerik.WinControls.UI.RadGroupBox
     Friend WithEvents RadGridView3 As Telerik.WinControls.UI.RadGridView
     Friend WithEvents rec_del_eq As Telerik.WinControls.UI.RadButton
