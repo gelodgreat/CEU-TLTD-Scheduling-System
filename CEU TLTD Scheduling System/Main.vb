@@ -27,7 +27,8 @@ Public Class Main
         load_main_table()
         load_rec_table()
         load_eq_table()
-
+        load_main_acc()
+        load_main_prof()
         acc_staff_btn_update.Hide()
         acc_staff_btn_delete.Hide()
 
@@ -180,7 +181,7 @@ Public Class Main
         Try
             MysqlConn.Open()
             Dim query As String
-            query = "Select staff_id as 'Staff ID' , staff_fname as 'First Name' , staff_mname as 'Middle Name' , staff_surname as 'Surname' , staff_college as 'College/School'  from prof_reg"
+            query = "Select prof_id as 'Professor ID' , prof_fname as 'First Name' , prof_mname as 'Middle Name' , prof_surname as 'Surname' , prof_college as 'College/School'  from prof_reg"
             comm = New MySqlCommand(query, MysqlConn)
             sda.SelectCommand = comm
             sda.Fill(dbdataset)
