@@ -31,8 +31,8 @@ Public Class Main
         load_main_prof()
         acc_staff_btn_update.Hide()
         acc_staff_btn_delete.Hide()
-
-
+        acc_prof_btn_delete.Hide()
+        acc_prof_btn_update.Hide()
 
     End Sub
     Private Sub btn_showavailequip_Click(sender As Object, e As EventArgs)
@@ -147,7 +147,7 @@ Public Class Main
         Try
             MysqlConn.Open()
             Dim query As String
-            query = "Select staff_id as 'Staff ID' , staff_fname as 'First Name' , staff_mname as 'Middle Name' , staff_surname as 'Surname' , staff_college as 'College/School'  from staff_reg"
+            query = "Select staff_id as 'Staff ID' , staff_fname as 'First Name' , staff_mname as 'Middle Name' , staff_surname as 'Surname' , staff_college as 'Department' , staff_username as 'Username' , staff_type as 'User Type' from staff_reg"
             comm = New MySqlCommand(query, MysqlConn)
             sda.SelectCommand = comm
             sda.Fill(dbdataset)
@@ -181,7 +181,7 @@ Public Class Main
         Try
             MysqlConn.Open()
             Dim query As String
-            query = "Select prof_id as 'Professor ID' , prof_fname as 'First Name' , prof_mname as 'Middle Name' , prof_surname as 'Surname' , prof_college as 'College/School'  from prof_reg"
+            query = "Select prof_id as 'Professor ID' , prof_fname as 'First Name' , prof_mname as 'Middle Name' , prof_surname as 'Surname' , prof_college as 'College/School' , prof_type as 'User Type'  from prof_reg"
             comm = New MySqlCommand(query, MysqlConn)
             sda.SelectCommand = comm
             sda.Fill(dbdataset)
@@ -213,40 +213,323 @@ Public Class Main
         MysqlConn = New MySqlConnection
         MysqlConn.ConnectionString = connstring
         Dim READER As MySqlDataReader
+        If (acc_sf_id.Text = "") Or (acc_sf_fname.Text = "") Or (acc_sf_mname.Text = " ") Or (acc_sf_lname.Text = " ") Or (acc_sf_department.Text = "") Or (acc_sf_usertype.Text = " ") Or (acc_sf_username.Text = " ") Then
+            RadMessageBox.Show(Me, "Please complete the fields to Save!", "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
+        Else
+            Try
+                MysqlConn.Open()
+                Dim Query As String
+                Query = "insert into ceutltdscheduler.staff_reg (staff_id,staff_fname,staff_mname,staff_surname,staff_college,staff_type,staff_username,staff_password) values ('" & acc_sf_id.Text & "' , '" & acc_sf_fname.Text & "', '" & acc_sf_mname.Text & "', '" & acc_sf_lname.Text & "' , '" & acc_sf_department.Text & "' , '" & acc_sf_usertype.Text & "' , '" & acc_sf_username.Text & "' , sha2('" & acc_sf_password.Text & "', 512))"
+                comm = New MySqlCommand(Query, MysqlConn)
 
-        Try
-            MysqlConn.Open()
-            Dim Query As String
-            Query = "insert into ceutltdscheduler.staff_reg (staff_id,staff_fname,staff_mname,staff_surname,staff_college,staff_type,staff_username,staff_password) values ('" & acc_sf_id.Text & "' , '" & acc_sf_fname.Text & "', '" & acc_sf_mname.Text & "', '" & acc_sf_lname.Text & "' , '" & acc_sf_department.Text & "' , '" & acc_sf_usertype.Text & "' , '" & acc_sf_username.Text & "' , sha2('" & acc_sf_password.Text & "', 512))"
-            comm = New MySqlCommand(Query, MysqlConn)
+                svYN = RadMessageBox.Show(Me, "Are you sure you want To save this information? ", "TLTD Scheduling Management", MessageBoxButtons.YesNo, RadMessageIcon.Question)
+                If svYN = MsgBoxResult.Yes Then
+                    If (acc_sf_password.Text = acc_sf_retypepassword.Text) Then
+                        READER = comm.ExecuteReader
+                        RadMessageBox.Show("Register Complete!")
+                        acc_sf_id.Text = " "
+                        acc_sf_fname.Text = " "
+                        acc_sf_mname.Text = " "
+                        acc_sf_lname.Text = " "
+                        acc_sf_department.Text = " "
+                        acc_sf_usertype.Text = " "
+                        acc_sf_username.Text = " "
+                        acc_sf_password.Text = ""
+                        acc_sf_retypepassword.Text = ""
 
-            svYN = RadMessageBox.Show(Me, "Are you sure you want To save this information? ", "Exit", MessageBoxButtons.YesNo, RadMessageIcon.Question)
-            If svYN = MsgBoxResult.Yes Then
-                If (acc_sf_password.Text = acc_sf_retypepassword.Text) Then
+                    Else
+                        RadMessageBox.Show("Password did Not match!")
+
+
+                    End If
+                End If
+                MysqlConn.Close()
+            Catch ex As MySqlException
+                MessageBox.Show(ex.Message)
+            Finally
+                MysqlConn.Dispose()
+                load_main_acc()
+            End Try
+        End If
+    End Sub
+
+
+    'Programmed by BRENZ 4th point Cell Double Click
+
+    Private Sub acc_staff_list_CellDoubleClick(sender As Object, e As GridViewCellEventArgs) Handles acc_staff_list.CellDoubleClick
+        updateYN = RadMessageBox.Show(Me, "Do you want to select this information?", "TLTD Scheduling Management", MessageBoxButtons.YesNo, RadMessageIcon.Question)
+        If updateYN = MsgBoxResult.Yes Then
+
+            If e.RowIndex >= 0 Then
+                Dim row As Telerik.WinControls.UI.GridViewRowInfo
+
+                row = Me.acc_staff_list.Rows(e.RowIndex)
+
+                acc_sf_id.Text = row.Cells("Staff ID").Value.ToString
+                acc_sf_fname.Text = row.Cells("First Name").Value.ToString
+                acc_sf_mname.Text = row.Cells("Middle Name").Value.ToString
+                acc_sf_lname.Text = row.Cells("Surname").Value.ToString
+                acc_sf_department.Text = row.Cells("Department").Value.ToString
+                acc_sf_usertype.Text = row.Cells("User Type").Value.ToString
+                acc_sf_username.Text = row.Cells("Username").Value.ToString
+
+                acc_sf_id.Enabled = False
+                acc_sf_password.Enabled = False
+                acc_sf_retypepassword.Enabled = False
+                acc_staff_btn_update.Show()
+                acc_staff_btn_delete.Show()
+                acc_staff_btn_save.Hide()
+                load_main_acc()
+
+            End If
+
+        End If
+
+
+    End Sub
+
+    'Programmed by BRENZ 5th Point Update Button!
+    Private Sub acc_staff_btn_update_Click(sender As Object, e As EventArgs) Handles acc_staff_btn_update.Click
+
+        If MysqlConn.State = ConnectionState.Open Then
+            MysqlConn.Close()
+        End If
+
+        updateYN = RadMessageBox.Show(Me, "Do you want to update the selected Information?", "TLTD Scheduling Management", MessageBoxButtons.YesNo, RadMessageIcon.Question)
+        If updateYN = MsgBoxResult.Yes Then
+            If (acc_sf_id.Text = "") Or (acc_sf_fname.Text = "") Or (acc_sf_mname.Text = " ") Or (acc_sf_lname.Text = " ") Or (acc_sf_department.Text = "") Or (acc_sf_usertype.Text = " ") Or (acc_sf_username.Text = " ") Then
+                RadMessageBox.Show(Me, "Please complete the fields to update!", "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
+            Else
+                Try
+                    MysqlConn.Open()
+                    query = "UPDATE staff_reg set staff_id = '" & acc_sf_id.Text & "' , staff_fname = '" & acc_sf_fname.Text & "' , staff_mname = '" & acc_sf_mname.Text & "' , staff_surname = '" & acc_sf_lname.Text & "' , staff_college = '" & acc_sf_department.Text & "' , staff_type = '" & acc_sf_usertype.Text & "' , staff_username = '" & acc_sf_username.Text & "' where staff_id = '" & acc_sf_id.Text & "' "
+                    comm = New MySqlCommand(query, MysqlConn)
+                    reader = comm.ExecuteReader
+
+                    RadMessageBox.Show(Me, "Update Success!", "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Info)
+                    MysqlConn.Close()
+
+
+                Catch ex As Exception
+                    RadMessageBox.Show(Me, ex.Message, "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
+                Finally
+                    MysqlConn.Dispose()
+                End Try
+            End If
+        End If
+        load_main_acc()
+
+    End Sub
+
+    'Programmed by BRENZ 6th Point Delete Button!
+    Private Sub acc_staff_btn_delete_Click(sender As Object, e As EventArgs) Handles acc_staff_btn_delete.Click
+        If MysqlConn.State = ConnectionState.Open Then
+            MysqlConn.Close()
+        End If
+
+        deleteYN = RadMessageBox.Show(Me, "Are you sure you want To Delete this information? ", "TLTD Scheduling Management", MessageBoxButtons.YesNo, RadMessageIcon.Question)
+        If deleteYN = MsgBoxResult.Yes Then
+            Try
+                MysqlConn.Open()
+                Dim Query As String
+                Query = "delete from staff_reg where staff_id = '" & acc_sf_id.Text & "'"
+                comm = New MySqlCommand(Query, MysqlConn)
+                reader = comm.ExecuteReader
+
+                RadMessageBox.Show(Me, "Delete Complete!", "Delete")
+                MysqlConn.Close()
+            Catch ex As MySqlException
+                MessageBox.Show(ex.Message)
+            Finally
+                MysqlConn.Dispose()
+                load_main_acc()
+                acc_sf_id.Text = " "
+                acc_sf_fname.Text = " "
+                acc_sf_mname.Text = " "
+                acc_sf_lname.Text = " "
+                acc_sf_department.Text = " "
+                acc_sf_usertype.Text = " "
+                acc_sf_username.Text = " "
+
+            End Try
+        End If
+
+    End Sub
+
+    'Programmed by Brenz 7th point Clear Button!
+    Private Sub acc_staff_btn_clear_Click(sender As Object, e As EventArgs) Handles acc_staff_btn_clear.Click
+        doneYN = RadMessageBox.Show(Me, "Are you sure you want to clear the fields?", "TLTD Scheduling Management", MessageBoxButtons.YesNo, RadMessageIcon.Question)
+        If doneYN = MsgBoxResult.Yes Then
+            acc_sf_id.Text = " "
+            acc_sf_fname.Text = " "
+            acc_sf_mname.Text = " "
+            acc_sf_lname.Text = " "
+            acc_sf_department.Text = " "
+            acc_sf_usertype.Text = " "
+            acc_sf_username.Text = " "
+            acc_sf_password.Text = ""
+            acc_sf_retypepassword.Text = ""
+            acc_sf_password.Enabled = True
+            acc_sf_retypepassword.Enabled = True
+            acc_staff_btn_save.Show()
+            acc_staff_btn_update.Hide()
+            acc_staff_btn_delete.Hide()
+        End If
+
+    End Sub
+
+    'Programmed by Brenz 8th point prof Save Button!
+    Private Sub acc_prof_btn_save_Click(sender As Object, e As EventArgs) Handles acc_prof_btn_save.Click
+        MysqlConn = New MySqlConnection
+        MysqlConn.ConnectionString = connstring
+        Dim READER As MySqlDataReader
+        If (acc_pf_id.Text = "") Or (acc_pf_fname.Text = "") Or (acc_pf_mname.Text = " ") Or (acc_pf_lname.Text = " ") Or (acc_pf_college.Text = " ") Or (acc_pf_usertype.Text = " ") Then
+            RadMessageBox.Show(Me, "Please complete the fields to Save!", "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
+        Else
+            Try
+                MysqlConn.Open()
+                Dim Query As String
+                Query = "insert into ceutltdscheduler.prof_reg (prof_id,prof_fname,prof_mname,prof_surname,prof_college,prof_type) values ('" & acc_pf_id.Text & "' , '" & acc_pf_fname.Text & "' , '" & acc_pf_mname.Text & "' , '" & acc_pf_lname.Text & "' , '" & acc_pf_college.Text & "' , '" & acc_pf_usertype.Text & "')"
+                comm = New MySqlCommand(Query, MysqlConn)
+
+                svYN = RadMessageBox.Show(Me, "Are you sure you want To save this information? ", "TLTD Schuling Management", MessageBoxButtons.YesNo, RadMessageIcon.Question)
+                If svYN = MsgBoxResult.Yes Then
+
                     READER = comm.ExecuteReader
                     RadMessageBox.Show("Register Complete!")
 
-                Else
-                    RadMessageBox.Show("Password did Not match!")
-
-
                 End If
-            End If
+                MysqlConn.Close()
+            Catch ex As MySqlException
+                MessageBox.Show(ex.Message)
+            Finally
+                MysqlConn.Dispose()
+                load_main_prof()
+                acc_pf_id.Text = " "
+                acc_pf_fname.Text = " "
+                acc_pf_mname.Text = " "
+                acc_pf_lname.Text = " "
+                acc_pf_college.Text = " "
+                acc_pf_usertype.Text = " "
 
-            MysqlConn.Close()
-        Catch ex As MySqlException
-            MessageBox.Show(ex.Message)
-        Finally
-            MysqlConn.Dispose()
-            load_main_acc()
-
-        End Try
-
+            End Try
+        End If
     End Sub
 
 
 
+    'Programmed by Brenz 9th point Cell Double Click Prof List!
+    Private Sub acc_prof_list_CellDoubleClick(sender As Object, e As GridViewCellEventArgs) Handles acc_prof_list.CellDoubleClick
+        updateYN = RadMessageBox.Show(Me, "Do you want to select this information?", "TLTD Scheduling Management", MessageBoxButtons.YesNo, RadMessageIcon.Question)
+        If updateYN = MsgBoxResult.Yes Then
 
+            If e.RowIndex >= 0 Then
+                Dim row As Telerik.WinControls.UI.GridViewRowInfo
+
+                row = Me.acc_prof_list.Rows(e.RowIndex)
+
+                acc_pf_id.Text = row.Cells("Professor ID").Value.ToString
+                acc_pf_fname.Text = row.Cells("First Name").Value.ToString
+                acc_pf_mname.Text = row.Cells("Middle Name").Value.ToString
+                acc_pf_lname.Text = row.Cells("Surname").Value.ToString
+                acc_pf_college.Text = row.Cells("College/School").Value.ToString
+                acc_pf_usertype.Text = row.Cells("User Type").Value.ToString
+
+                acc_pf_id.Enabled = False
+                acc_prof_btn_update.Show()
+                acc_prof_btn_delete.Show()
+                acc_prof_btn_save.Hide()
+                load_main_prof()
+
+            End If
+
+        End If
+
+    End Sub
+
+    'Programmed by Brenz 10th Point Prof Update Button
+    Private Sub acc_prof_btn_update_Click(sender As Object, e As EventArgs) Handles acc_prof_btn_update.Click
+        If MysqlConn.State = ConnectionState.Open Then
+            MysqlConn.Close()
+        End If
+
+        updateYN = RadMessageBox.Show(Me, "Do you want to update the selected Information?", "TLTD Scheduling Management", MessageBoxButtons.YesNo, RadMessageIcon.Question)
+        If updateYN = MsgBoxResult.Yes Then
+            If (acc_pf_id.Text = "") Or (acc_pf_fname.Text = "") Or (acc_pf_mname.Text = " ") Or (acc_pf_lname.Text = " ") Or (acc_pf_college.Text = " ") Or (acc_pf_usertype.Text = " ") Then
+                RadMessageBox.Show(Me, "Please complete the fields to update!", "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
+            Else
+                Try
+                    MysqlConn.Open()
+                    query = "UPDATE prof_reg set prof_id = '" & acc_pf_id.Text & "' , prof_fname = '" & acc_pf_fname.Text & "' , prof_mname = '" & acc_pf_mname.Text & "' , prof_surname = '" & acc_pf_lname.Text & "' , prof_college = '" & acc_pf_college.Text & "' , prof_type = '" & acc_pf_usertype.Text & "' where prof_id = '" & acc_pf_id.Text & "' "
+                    comm = New MySqlCommand(query, MysqlConn)
+                    reader = comm.ExecuteReader
+
+                    RadMessageBox.Show(Me, "Update Success!", "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Info)
+                    MysqlConn.Close()
+
+
+                Catch ex As Exception
+                    RadMessageBox.Show(Me, ex.Message, "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
+                Finally
+                    MysqlConn.Dispose()
+                End Try
+            End If
+        End If
+        load_main_prof()
+    End Sub
+
+    'Programmed by Brenz 11th point prof Delete Button!
+    Private Sub acc_prof_btn_delete_Click(sender As Object, e As EventArgs) Handles acc_prof_btn_delete.Click
+        If MysqlConn.State = ConnectionState.Open Then
+            MysqlConn.Close()
+        End If
+
+        deleteYN = RadMessageBox.Show(Me, "Are you sure you want To Delete this information? ", "TLTD Scheduling Management", MessageBoxButtons.YesNo, RadMessageIcon.Question)
+        If deleteYN = MsgBoxResult.Yes Then
+            Try
+                MysqlConn.Open()
+                Dim Query As String
+                Query = "delete from prof_reg where prof_id = '" & acc_pf_id.Text & "'"
+                comm = New MySqlCommand(Query, MysqlConn)
+                reader = comm.ExecuteReader
+
+                RadMessageBox.Show(Me, "Delete Complete!", "Delete")
+                MysqlConn.Close()
+            Catch ex As MySqlException
+                MessageBox.Show(ex.Message)
+            Finally
+                MysqlConn.Dispose()
+                load_main_prof()
+                acc_pf_id.Text = " "
+                acc_pf_fname.Text = " "
+                acc_pf_mname.Text = " "
+                acc_pf_lname.Text = " "
+                acc_pf_college.Text = " "
+                acc_pf_usertype.Text = " "
+
+            End Try
+        End If
+
+
+
+    End Sub
+
+    'Programmed by Brenz 12th Point Clear Button
+    Private Sub acc_prof_btn_clear_Click(sender As Object, e As EventArgs) Handles acc_prof_btn_clear.Click
+        doneYN = RadMessageBox.Show(Me, "Are you sure you want to clear the fields?", "TLTD Scheduling Management", MessageBoxButtons.YesNo, RadMessageIcon.Question)
+        If doneYN = MsgBoxResult.Yes Then
+            acc_pf_id.Text = " "
+            acc_pf_fname.Text = " "
+            acc_pf_mname.Text = " "
+            acc_pf_lname.Text = " "
+            acc_pf_college.Text = " "
+            acc_pf_usertype.Text = " "
+
+            acc_prof_btn_delete.Hide()
+            acc_prof_btn_update.Hide()
+            acc_prof_btn_save.Show()
+        End If
+    End Sub
 
     Private Sub rec_btn_save_Click(sender As Object, e As EventArgs) Handles rec_btn_save.Click
         MysqlConn = New MySqlConnection
@@ -264,7 +547,7 @@ Public Class Main
                 MysqlConn.Open()
 
 
-                query = "SELECT * from reservation where (equipment='" & rec_cob_equipment.Text & "') and (('" & Format(CDate(rec_dtp_startdate.Value), "yyyy-MM-dd") & " " & Format(CDate(rec_dtp_starttime.Text), "hh:mm") & "' BETWEEN CONCAT(startdate,' ',starttime) AND CONCAT(enddate,' ',endtime)) OR
+                query = "Select * from reservation where (equipment='" & rec_cob_equipment.Text & "') and (('" & Format(CDate(rec_dtp_startdate.Value), "yyyy-MM-dd") & " " & Format(CDate(rec_dtp_starttime.Text), "hh:mm") & "' BETWEEN CONCAT(startdate,' ',starttime) AND CONCAT(enddate,' ',endtime)) OR
             ('" & Format(CDate(rec_dtp_enddate.Value), "yyyy-MM-dd") & " " & Format(CDate(rec_dtp_endtime.Text), "hh:mm") & "' BETWEEN CONCAT (enddate,' ',starttime) AND CONCAT(enddate,' ',endtime)))"
                 comm = New MySqlCommand(query, MysqlConn)
                 READER = comm.ExecuteReader
@@ -547,6 +830,5 @@ Public Class Main
         End If
 
     End Sub
-
 
 End Class
