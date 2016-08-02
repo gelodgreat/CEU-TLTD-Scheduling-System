@@ -53,11 +53,13 @@ DROP TABLE IF EXISTS `equipments`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `equipments` (
-  `equipmentid` int(10) NOT NULL,
+  `equipmentno` int(20) NOT NULL,
   `equipment` varchar(100) DEFAULT NULL,
-  `quantity` int(4) DEFAULT NULL,
+  `equipmentsn` varchar(50) NOT NULL,
   `equipmentlocation` varchar(100) DEFAULT NULL,
-  PRIMARY KEY (`equipmentid`)
+  `equipmentowner` varchar(45) DEFAULT NULL,
+  `equipmentstatus` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`equipmentno`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -67,7 +69,35 @@ CREATE TABLE `equipments` (
 
 LOCK TABLES `equipments` WRITE;
 /*!40000 ALTER TABLE `equipments` DISABLE KEYS */;
+INSERT INTO `equipments` VALUES (1,'Laptop','89PO1','TLTD','Angelo','OK');
 /*!40000 ALTER TABLE `equipments` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `prof_reg`
+--
+
+DROP TABLE IF EXISTS `prof_reg`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `prof_reg` (
+  `prof_id` int(11) NOT NULL,
+  `prof_fname` varchar(45) DEFAULT NULL,
+  `prof_mname` varchar(45) DEFAULT NULL,
+  `prof_surname` varchar(45) DEFAULT NULL,
+  `prof_college` varchar(45) DEFAULT NULL,
+  `prof_type` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`prof_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `prof_reg`
+--
+
+LOCK TABLES `prof_reg` WRITE;
+/*!40000 ALTER TABLE `prof_reg` DISABLE KEYS */;
+/*!40000 ALTER TABLE `prof_reg` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -128,6 +158,36 @@ LOCK TABLES `reservation` WRITE;
 INSERT INTO `reservation` VALUES ('2016-07-25','2016-07-25','01:00:00','02:00:00','Mam Mijares','TLTD','Laptop ','Angelo','OK');
 /*!40000 ALTER TABLE `reservation` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Table structure for table `staff_reg`
+--
+
+DROP TABLE IF EXISTS `staff_reg`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `staff_reg` (
+  `staff_id` int(11) NOT NULL,
+  `staff_fname` varchar(45) NOT NULL,
+  `staff_mname` varchar(45) NOT NULL,
+  `staff_surname` varchar(45) NOT NULL,
+  `staff_college` varchar(45) NOT NULL,
+  `staff_type` varchar(45) NOT NULL,
+  `staff_username` varchar(45) NOT NULL,
+  `staff_password` varchar(512) NOT NULL,
+  PRIMARY KEY (`staff_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `staff_reg`
+--
+
+LOCK TABLES `staff_reg` WRITE;
+/*!40000 ALTER TABLE `staff_reg` DISABLE KEYS */;
+INSERT INTO `staff_reg` VALUES (1105234,'Brenz','Villanueva','Buenaventura','Science and Technology','Staff','developer','7fcf4ba391c48784edde599889d6e3f1e47a27db36ecc050cc92f259bfac38afad2c68a1ae804d77075e8fb722503f3eca2b2c1006ee6f6c7b7628cb45fffd1d'),(1105345,'Red','Blue','Violet','Science and Technology','Staff','red123','b4369e53d1c8bcde9cda3e54e6aca65607c3e43bb0f61630c598b5dbc49d49ff37597958d3032a5e2022f4b36e03160450ff046399443f900a9e7e482cd8a0e0'),(1302321,'Christian','Reyes','Umali','TLTD','Staff','admin','c7ad44cbad762a5da0a452f9e854fdc1e0e7a52a38015f23f3eab1d80b931dd472634dfac71cd34ebc35d16ab7fb8a90c81f975113d6c7538dc69dd8de9077ec');
+/*!40000 ALTER TABLE `staff_reg` ENABLE KEYS */;
+UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -138,4 +198,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-07-29 16:40:20
+-- Dump completed on 2016-08-02 16:59:05
