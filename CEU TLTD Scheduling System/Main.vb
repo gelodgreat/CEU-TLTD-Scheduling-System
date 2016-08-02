@@ -27,7 +27,8 @@ Public Class Main
         load_main_table()
         load_rec_table()
         load_eq_table()
-
+        load_main_acc()
+        load_main_prof()
         acc_staff_btn_update.Hide()
         acc_staff_btn_delete.Hide()
 
@@ -147,12 +148,12 @@ Public Class Main
             MysqlConn.Open()
             Dim query As String
             query = "Select staff_id as 'Staff ID' , staff_fname as 'First Name' , staff_mname as 'Middle Name' , staff_surname as 'Surname' , staff_college as 'College/School'  from staff_reg"
-            COMMAND = New MySqlCommand(query, MysqlConn)
-            sda.SelectCommand = COMMAND
+            comm = New MySqlCommand(query, MysqlConn)
+            sda.SelectCommand = comm
             sda.Fill(dbdataset)
             bsource.DataSource = dbdataset
-            acc_data_list.DataSource = bsource
-            acc_data_list.ReadOnly = True
+            acc_staff_list.DataSource = bsource
+            acc_staff_list.ReadOnly = True
             sda.Update(dbdataset)
             MysqlConn.Close()
 
@@ -180,9 +181,9 @@ Public Class Main
         Try
             MysqlConn.Open()
             Dim query As String
-            query = "Select staff_id as 'Staff ID' , staff_fname as 'First Name' , staff_mname as 'Middle Name' , staff_surname as 'Surname' , staff_college as 'College/School'  from prof_reg"
-            COMMAND = New MySqlCommand(query, MysqlConn)
-            sda.SelectCommand = COMMAND
+            query = "Select prof_id as 'Professor ID' , prof_fname as 'First Name' , prof_mname as 'Middle Name' , prof_surname as 'Surname' , prof_college as 'College/School'  from prof_reg"
+            comm = New MySqlCommand(query, MysqlConn)
+            sda.SelectCommand = comm
             sda.Fill(dbdataset)
             bsource.DataSource = dbdataset
             acc_prof_list.DataSource = bsource
@@ -217,12 +218,12 @@ Public Class Main
             MysqlConn.Open()
             Dim Query As String
             Query = "insert into ceutltdscheduler.staff_reg (staff_id,staff_fname,staff_mname,staff_surname,staff_college,staff_type,staff_username,staff_password) values ('" & acc_sf_id.Text & "' , '" & acc_sf_fname.Text & "', '" & acc_sf_mname.Text & "', '" & acc_sf_lname.Text & "' , '" & acc_sf_department.Text & "' , '" & acc_sf_usertype.Text & "' , '" & acc_sf_username.Text & "' , sha2('" & acc_sf_password.Text & "', 512))"
-            COMMAND = New MySqlCommand(Query, MysqlConn)
+            comm = New MySqlCommand(Query, MysqlConn)
 
             svYN = RadMessageBox.Show(Me, "Are you sure you want To save this information? ", "Exit", MessageBoxButtons.YesNo, RadMessageIcon.Question)
             If svYN = MsgBoxResult.Yes Then
                 If (acc_sf_password.Text = acc_sf_retypepassword.Text) Then
-                    READER = COMMAND.ExecuteReader
+                    READER = comm.ExecuteReader
                     RadMessageBox.Show("Register Complete!")
 
                 Else
@@ -546,4 +547,6 @@ Public Class Main
         End If
 
     End Sub
+
+
 End Class
