@@ -28,6 +28,11 @@ Public Class Main
         load_rec_table()
         load_eq_table()
 
+        acc_staff_btn_update.Hide()
+        acc_staff_btn_delete.Hide()
+
+
+
     End Sub
     Private Sub btn_showavailequip_Click(sender As Object, e As EventArgs)
         reservation_rgv_recordeddata.Hide()
@@ -120,6 +125,123 @@ Public Class Main
         End Try
     End Sub
 
+
+
+
+
+    'Programmed by BRENZ STARTING POINT
+
+    Public Sub load_main_acc()
+        MysqlConn = New MySqlConnection
+        MysqlConn.ConnectionString = connstring
+
+        Dim sda As New MySqlDataAdapter
+        Dim dbdataset As New DataTable
+        Dim bsource As New BindingSource
+
+        If MysqlConn.State = ConnectionState.Open Then
+            MysqlConn.Close()
+        End If
+
+        Try
+            MysqlConn.Open()
+            Dim query As String
+            query = "Select staff_id as 'Staff ID' , staff_fname as 'First Name' , staff_mname as 'Middle Name' , staff_surname as 'Surname' , staff_college as 'College/School'  from staff_reg"
+            COMMAND = New MySqlCommand(query, MysqlConn)
+            sda.SelectCommand = COMMAND
+            sda.Fill(dbdataset)
+            bsource.DataSource = dbdataset
+            acc_data_list.DataSource = bsource
+            acc_data_list.ReadOnly = True
+            sda.Update(dbdataset)
+            MysqlConn.Close()
+
+        Catch ex As Exception
+            RadMessageBox.Show(Me, ex.Message, "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
+        Finally
+            MysqlConn.Dispose()
+
+        End Try
+    End Sub
+
+    'Programmed by BRENZ SECOND POINT
+    Public Sub load_main_prof()
+        MysqlConn = New MySqlConnection
+        MysqlConn.ConnectionString = connstring
+
+        Dim sda As New MySqlDataAdapter
+        Dim dbdataset As New DataTable
+        Dim bsource As New BindingSource
+
+        If MysqlConn.State = ConnectionState.Open Then
+            MysqlConn.Close()
+        End If
+
+        Try
+            MysqlConn.Open()
+            Dim query As String
+            query = "Select staff_id as 'Staff ID' , staff_fname as 'First Name' , staff_mname as 'Middle Name' , staff_surname as 'Surname' , staff_college as 'College/School'  from prof_reg"
+            COMMAND = New MySqlCommand(query, MysqlConn)
+            sda.SelectCommand = COMMAND
+            sda.Fill(dbdataset)
+            bsource.DataSource = dbdataset
+            acc_prof_list.DataSource = bsource
+            acc_prof_list.ReadOnly = True
+            sda.Update(dbdataset)
+            MysqlConn.Close()
+
+        Catch ex As Exception
+            RadMessageBox.Show(Me, ex.Message, "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
+        Finally
+            MysqlConn.Dispose()
+
+        End Try
+
+
+
+
+    End Sub
+
+
+
+
+
+    'Programmed by BRENZ THIRD POINT SAVE BUTTON
+
+    Private Sub acc_staff_btn_save_Click(sender As Object, e As EventArgs) Handles acc_staff_btn_save.Click
+        MysqlConn = New MySqlConnection
+        MysqlConn.ConnectionString = connstring
+        Dim READER As MySqlDataReader
+
+        Try
+            MysqlConn.Open()
+            Dim Query As String
+            Query = "insert into ceutltdscheduler.staff_reg (staff_id,staff_fname,staff_mname,staff_surname,staff_college,staff_type,staff_username,staff_password) values ('" & acc_sf_id.Text & "' , '" & acc_sf_fname.Text & "', '" & acc_sf_mname.Text & "', '" & acc_sf_lname.Text & "' , '" & acc_sf_department.Text & "' , '" & acc_sf_usertype.Text & "' , '" & acc_sf_username.Text & "' , sha2('" & acc_sf_password.Text & "', 512))"
+            COMMAND = New MySqlCommand(Query, MysqlConn)
+
+            svYN = RadMessageBox.Show(Me, "Are you sure you want To save this information? ", "Exit", MessageBoxButtons.YesNo, RadMessageIcon.Question)
+            If svYN = MsgBoxResult.Yes Then
+                If (acc_sf_password.Text = acc_sf_retypepassword.Text) Then
+                    READER = COMMAND.ExecuteReader
+                    RadMessageBox.Show("Register Complete!")
+
+                Else
+                    RadMessageBox.Show("Password did Not match!")
+
+
+                End If
+            End If
+
+            MysqlConn.Close()
+        Catch ex As MySqlException
+            MessageBox.Show(ex.Message)
+        Finally
+            MysqlConn.Dispose()
+            load_main_acc()
+
+        End Try
+
+    End Sub
 
 
 
@@ -254,7 +376,6 @@ Public Class Main
         DV.RowFilter = String.Format("`Location` Like'%{0}%'", lu_bylocation.Text)
         main_rgv_recordeddatamain.DataSource = DV
     End Sub
-
     Private Sub lu_byequipment_TextChanged(sender As Object, e As EventArgs) Handles lu_byequipment.TextChanged
         MysqlConn = New MySqlConnection
         MysqlConn.ConnectionString = connstring
