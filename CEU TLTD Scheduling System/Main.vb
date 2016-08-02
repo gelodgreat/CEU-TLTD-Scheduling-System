@@ -20,6 +20,13 @@ Public Class Main
     Public equipment As String
     Dim query As String
 
+    Public Sub startup_disabled_buttons()
+        acc_staff_btn_update.Hide()
+        acc_staff_btn_delete.Hide()
+        eq_btn_update.Hide()
+        eq_btn_delete.Hide()
+    End Sub
+
 
     Private Sub Main_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         reservation_rgv_recordeddata.Show()
@@ -29,8 +36,7 @@ Public Class Main
         load_eq_table()
         load_main_acc()
         load_main_prof()
-        acc_staff_btn_update.Hide()
-        acc_staff_btn_delete.Hide()
+        startup_disabled_buttons()
 
 
 
@@ -426,7 +432,7 @@ Public Class Main
         Try
             MysqlConn.Open()
 
-            query = "SELECT equipmentid as 'Equipment ID', equipment as 'Equipment', quantity as 'Quantity', equipmentlocation as 'Equipment Location' from equipments"
+            query = "SELECT equipmentno as 'Equipment Number', equipment as 'Equipment', equipmentsn as 'Serial Number', equipmentlocation as 'Equipment Location',equipmentowner as 'Owner',equipmentstatus as 'Status' from equipments"
 
             comm = New MySqlCommand(query, MysqlConn)
             sda.SelectCommand = comm
@@ -461,13 +467,13 @@ Public Class Main
         If MysqlConn.State = ConnectionState.Open Then
             MysqlConn.Close()
         End If
-        If (eq_equipment.Text = "") Or (eq_equipmentid.Text = "") Or (eq_equipmentlocation.Text = "") Or (eq_quantity.Text = "") Then
-            RadMessageBox.Show(Me, "Please fill all fields", "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
+        If (eq_equipmentno.Text = "") Or (eq_sn.Text = "") Or (eq_equipment.Text = "") Or (eq_equipmentlocation.Text = "") Or (eq_owner.Text = "") Or (eq_status.Text = "") Then
+            RadMessageBox.Show(Me, "Please complete the fields to update!", "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
 
         Else
             Try
                 MysqlConn.Open()
-                query = "SELECT * from equipments where (equipment='" & eq_equipmentid.Text & "')"
+                query = "SELECT * from equipments where (equipmentsn='" & eq_sn.Text & "')"
                 comm = New MySqlCommand(query, MysqlConn)
                 reader = comm.ExecuteReader
 
@@ -478,14 +484,14 @@ Public Class Main
                 End While
 
                 If count = 1 Then
-                    RadMessageBox.Show(Me, "Equipment #" & eq_equipmentid.Text & " and the equipment " & eq_equipment.Text & " is already registered")
+                    RadMessageBox.Show(Me, "Equipment #" & eq_equipmentno.Text & " and the equipment " & eq_equipment.Text & " is already registered")
                 Else
                     MysqlConn.Close()
                     MysqlConn.Open()
 
                     addYN = RadMessageBox.Show(Me, "Are you sure you want to save this equipment?", "TLTD Scheduling Management", MessageBoxButtons.YesNo, RadMessageIcon.Question)
                     If addYN = MsgBoxResult.Yes Then
-                        query = "INSERT INTO `equipments` VALUES ('" & eq_equipmentid.Text & "','" & eq_equipment.Text & "','" & eq_quantity.Text & "','" & eq_equipmentlocation.Text & "')"
+                        query = "INSERT INTO `equipments` VALUES ('" & eq_equipmentno.Text & "','" & eq_equipment.Text & "','" & eq_sn.Text & "','" & eq_equipmentlocation.Text & "','" & eq_owner.Text & "','" & eq_status.Text & "')"
                         comm = New MySqlCommand(query, MysqlConn)
                         reader = comm.ExecuteReader
                         RadMessageBox.Show(Me, "Equipment Registered!", "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Info)
@@ -513,12 +519,12 @@ Public Class Main
 
         updateYN = RadMessageBox.Show(Me, "Do you want to update the selected equipment?", "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Question)
         If updateYN = MsgBoxResult.Yes Then
-            If (eq_equipment.Text = "") Or (eq_quantity.Text = "") Or (eq_equipmentlocation.Text) Then
+            If (eq_equipmentno.Text = "") Or (eq_sn.Text = "") Or (eq_equipment.Text = "") Or (eq_equipmentlocation.Text = "") Or (eq_owner.Text = "") Or (eq_status.Text = "") Then
                 RadMessageBox.Show(Me, "Please complete the fields to update!", "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
             Else
                 Try
                     MysqlConn.Open()
-                    query = "UPDATE equipment set equipment='" & eq_equipment.Text & "',quantity='" & eq_quantity.Text & "',equipmentlocation='" & eq_equipmentlocation.Text & "'where equipmentid='" & eq_equipmentid.Text & "'"
+                    query = "UPDATE equipments SET equipmentno='" & eq_equipmentno.Text & "',equipmentsn='" & eq_sn.Text & "',equipment='" & eq_equipment.Text & "', equipmentlocation='" & eq_equipmentlocation.Text & "',equipmentowner='" & eq_owner.Text & "',equipmentstatus='" & eq_status.Text & "' where (equipmentsn='" & eq_sn.Text & "') and (equipmentno='" & eq_equipmentno.Text & "')"
                     comm = New MySqlCommand(query, MysqlConn)
                     reader = comm.ExecuteReader
 
@@ -541,12 +547,62 @@ Public Class Main
             MysqlConn.Close()
         End If
 
-        deleteYN = RadMessageBox.Show(Me, "Are you sure you want to delete?", "TLTD Scheduling Management")
+        deleteYN = RadMessageBox.Show(Me, "Are you sure you want to delete?", "TLTD Scheduling Management", MessageBoxButtons.YesNo, RadMessageIcon.Question)
         If deleteYN = MsgBoxResult.Yes Then
+            Try
+                MysqlConn.Open()
+                query = "DELETE FROM equipments where equipmentid='" & eq_equipmentno.Text & "' and equipmentsn='" & eq_sn.Text & "' "
+                comm = New MySqlCommand(query, MysqlConn)
+                reader = comm.ExecuteReader
 
+                eq_equipment.Text = ""
+                eq_equipmentno.Text = ""
+                eq_equipmentlocation.Text = ""
+                eq_sn.Text = ""
+                eq_status.Text = ""
+                eq_owner.Text = ""
+
+                RadMessageBox.Show(Me, "Successfully Deleted!", "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Info)
+                MysqlConn.Close()
+            Catch ex As Exception
+                RadMessageBox.Show(Me, ex.Message, "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
+            Finally
+                MysqlConn.Dispose()
+            End Try
         End If
-
+        load_eq_table()
     End Sub
 
+    Private Sub eq_rgv_showregequipment_CellDoubleClick(sender As Object, e As GridViewCellEventArgs) Handles eq_rgv_showregequipment.CellDoubleClick
+        If e.RowIndex >= 0 Then
+            Dim row As Telerik.WinControls.UI.GridViewRowInfo
 
+            row = Me.eq_rgv_showregequipment.Rows(e.RowIndex)
+
+            eq_equipmentno.Text = row.Cells("Equipment Number").Value.ToString
+            eq_equipment.Text = row.Cells("Equipment").Value.ToString
+            eq_equipmentlocation.Text = row.Cells("Equipment Location").Value.ToString
+            eq_sn.Text = row.Cells("Serial Number").Value.ToString
+            eq_status.Text = row.Cells("Status").Value.ToString
+            eq_owner.Text = row.Cells("Owner").Value.ToString
+
+            eq_btn_update.Show()
+            eq_btn_delete.Show()
+            eq_btn_save.Hide()
+        End If
+    End Sub
+
+    Private Sub eq_btn_clear_Click(sender As Object, e As EventArgs) Handles eq_btn_clear.Click
+        eq_equipmentno.Text = ""
+        eq_equipment.Text = ""
+        eq_equipmentlocation.Text = ""
+        eq_sn.Text = ""
+        eq_status.Text = ""
+        eq_owner.Text = ""
+
+
+        eq_btn_update.Hide()
+        eq_btn_delete.Hide()
+        eq_btn_save.Show()
+    End Sub
 End Class
