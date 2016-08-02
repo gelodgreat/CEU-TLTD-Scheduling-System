@@ -1167,7 +1167,7 @@ Partial Class Main
         Me.RadGroupBox16.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping
         Me.RadGroupBox16.Controls.Add(Me.acc_data_list)
         Me.RadGroupBox16.HeaderText = "RadGroupBox16"
-        Me.RadGroupBox16.Location = New System.Drawing.Point(-9, -16)
+        Me.RadGroupBox16.Location = New System.Drawing.Point(-9, -36)
         Me.RadGroupBox16.Name = "RadGroupBox16"
         Me.RadGroupBox16.Size = New System.Drawing.Size(1368, 283)
         Me.RadGroupBox16.TabIndex = 1
@@ -1176,11 +1176,15 @@ Partial Class Main
         '
         'acc_data_list
         '
-        Me.acc_data_list.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.acc_data_list.Location = New System.Drawing.Point(2, 18)
+        Me.acc_data_list.Location = New System.Drawing.Point(9, 33)
         '
         '
         '
+        Me.acc_data_list.MasterTemplate.AllowColumnResize = False
+        Me.acc_data_list.MasterTemplate.AllowDragToGroup = False
+        Me.acc_data_list.MasterTemplate.AllowRowResize = False
+        Me.acc_data_list.MasterTemplate.AutoSizeColumnsMode = Telerik.WinControls.UI.GridViewAutoSizeColumnsMode.Fill
+        Me.acc_data_list.MasterTemplate.ShowRowHeaderColumn = False
         Me.acc_data_list.MasterTemplate.ViewDefinition = TableViewDefinition2
         Me.acc_data_list.Name = "acc_data_list"
         Me.acc_data_list.Size = New System.Drawing.Size(1364, 263)
@@ -1211,11 +1215,16 @@ Partial Class Main
         '
         'acc_prof_list
         '
-        Me.acc_prof_list.Dock = System.Windows.Forms.DockStyle.Fill
         Me.acc_prof_list.Location = New System.Drawing.Point(2, 18)
         '
         '
         '
+        Me.acc_prof_list.MasterTemplate.AllowColumnResize = False
+        Me.acc_prof_list.MasterTemplate.AllowDragToGroup = False
+        Me.acc_prof_list.MasterTemplate.AllowRowHeaderContextMenu = False
+        Me.acc_prof_list.MasterTemplate.AllowRowResize = False
+        Me.acc_prof_list.MasterTemplate.AutoSizeColumnsMode = Telerik.WinControls.UI.GridViewAutoSizeColumnsMode.Fill
+        Me.acc_prof_list.MasterTemplate.ShowRowHeaderColumn = False
         Me.acc_prof_list.MasterTemplate.ViewDefinition = TableViewDefinition3
         Me.acc_prof_list.Name = "acc_prof_list"
         Me.acc_prof_list.Size = New System.Drawing.Size(1364, 263)
