@@ -1012,5 +1012,7 @@ Public Class Main
         End If
     End Sub
 
+    Private Sub rpvp_releasing_Paint(sender As Object, e As PaintEventArgs) Handles rpvp_releasing.Paint
 
+    End Sub
 End Class
