@@ -1028,8 +1028,7 @@ Public Class Main
     End Sub
 
     'Equipment Management Codes Umali C10 = COUNTER
-
-    Private Sub eq_counter_type_SelectedIndexChanged(sender As Object, e As UI.Data.PositionChangedEventArgs) Handles eq_counter_type.SelectedIndexChanged
+    Private Sub eq_counter_type_SelectedIndexChanged_1(sender As Object, e As UI.Data.PositionChangedEventArgs) Handles eq_counter_type.SelectedIndexChanged
         counter_of_total_eq()
     End Sub
 
@@ -1065,4 +1064,6 @@ Public Class Main
 
         End Try
     End Sub
+
+
 End Class
