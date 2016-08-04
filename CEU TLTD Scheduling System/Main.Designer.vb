@@ -121,6 +121,15 @@ Partial Class Main
         Dim TableViewDefinition3 As Telerik.WinControls.UI.TableViewDefinition = New Telerik.WinControls.UI.TableViewDefinition()
         Dim RadListDataItem95 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
         Dim RadListDataItem96 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem97 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem98 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem99 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem100 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem101 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem102 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem103 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem104 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem105 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
         Dim RadListDataItem106 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
         Dim RadListDataItem107 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
         Dim RadListDataItem108 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
@@ -343,15 +352,6 @@ Partial Class Main
         Dim RadListDataItem320 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
         Dim RadListDataItem321 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
         Dim TableViewDefinition9 As Telerik.WinControls.UI.TableViewDefinition = New Telerik.WinControls.UI.TableViewDefinition()
-        Dim RadListDataItem97 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem98 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem99 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem100 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem101 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem102 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem103 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem104 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem105 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
         Me.rpv1 = New Telerik.WinControls.UI.RadPageView()
         Me.rpvp1_main = New Telerik.WinControls.UI.RadPageViewPage()
         Me.RadGroupBox2 = New Telerik.WinControls.UI.RadGroupBox()
@@ -418,6 +418,7 @@ Partial Class Main
         Me.RadLabel27 = New Telerik.WinControls.UI.RadLabel()
         Me.rpvp_equipment = New Telerik.WinControls.UI.RadPageViewPage()
         Me.RadGroupBox22 = New Telerik.WinControls.UI.RadGroupBox()
+        Me.eq_counter_type = New Telerik.WinControls.UI.RadDropDownList()
         Me.eq_total_units = New Telerik.WinControls.UI.RadLabel()
         Me.RadLabel43 = New Telerik.WinControls.UI.RadLabel()
         Me.RadLabel57 = New Telerik.WinControls.UI.RadLabel()
@@ -526,7 +527,6 @@ Partial Class Main
         Me.RadGroupBox16 = New Telerik.WinControls.UI.RadGroupBox()
         Me.RadGroupBox13 = New Telerik.WinControls.UI.RadGroupBox()
         Me.VisualStudio2012DarkTheme1 = New Telerik.WinControls.Themes.VisualStudio2012DarkTheme()
-        Me.eq_counter_type = New Telerik.WinControls.UI.RadDropDownList()
         CType(Me.rpv1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.rpv1.SuspendLayout()
         Me.rpvp1_main.SuspendLayout()
@@ -605,6 +605,7 @@ Partial Class Main
         Me.rpvp_equipment.SuspendLayout()
         CType(Me.RadGroupBox22, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.RadGroupBox22.SuspendLayout()
+        CType(Me.eq_counter_type, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.eq_total_units, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RadLabel43, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RadLabel57, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -731,7 +732,6 @@ Partial Class Main
         CType(Me.RadGridView1.MasterTemplate, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RadGroupBox16, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RadGroupBox13, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.eq_counter_type, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -1205,6 +1205,7 @@ Partial Class Main
         'RadPageViewPage1
         '
         Me.RadPageViewPage1.Controls.Add(Me.acc_staff_list)
+        Me.RadPageViewPage1.ItemSize = New System.Drawing.SizeF(78.0!, 24.0!)
         Me.RadPageViewPage1.Location = New System.Drawing.Point(5, 30)
         Me.RadPageViewPage1.Name = "RadPageViewPage1"
         Me.RadPageViewPage1.Size = New System.Drawing.Size(1328, 248)
@@ -1233,6 +1234,7 @@ Partial Class Main
         'RadPageViewPage2
         '
         Me.RadPageViewPage2.Controls.Add(Me.acc_prof_list)
+        Me.RadPageViewPage2.ItemSize = New System.Drawing.SizeF(102.0!, 24.0!)
         Me.RadPageViewPage2.Location = New System.Drawing.Point(5, 30)
         Me.RadPageViewPage2.Name = "RadPageViewPage2"
         Me.RadPageViewPage2.Size = New System.Drawing.Size(1328, 248)
@@ -1714,6 +1716,32 @@ Partial Class Main
         Me.RadGroupBox22.TabIndex = 3
         Me.RadGroupBox22.Text = "Equipment Compute"
         Me.RadGroupBox22.ThemeName = "VisualStudio2012Dark"
+        '
+        'eq_counter_type
+        '
+        RadListDataItem97.Text = "Laptop"
+        RadListDataItem98.Text = "DLP/LCD"
+        RadListDataItem99.Text = "Microphone"
+        RadListDataItem100.Text = "Karaoke"
+        RadListDataItem101.Text = "Overhead Projector"
+        RadListDataItem102.Text = "VHS Player"
+        RadListDataItem103.Text = "Tape Deck"
+        RadListDataItem104.Text = "Speaker"
+        RadListDataItem105.Text = "PC Speakers"
+        Me.eq_counter_type.Items.Add(RadListDataItem97)
+        Me.eq_counter_type.Items.Add(RadListDataItem98)
+        Me.eq_counter_type.Items.Add(RadListDataItem99)
+        Me.eq_counter_type.Items.Add(RadListDataItem100)
+        Me.eq_counter_type.Items.Add(RadListDataItem101)
+        Me.eq_counter_type.Items.Add(RadListDataItem102)
+        Me.eq_counter_type.Items.Add(RadListDataItem103)
+        Me.eq_counter_type.Items.Add(RadListDataItem104)
+        Me.eq_counter_type.Items.Add(RadListDataItem105)
+        Me.eq_counter_type.Location = New System.Drawing.Point(28, 76)
+        Me.eq_counter_type.Name = "eq_counter_type"
+        Me.eq_counter_type.Size = New System.Drawing.Size(213, 24)
+        Me.eq_counter_type.TabIndex = 29
+        Me.eq_counter_type.ThemeName = "VisualStudio2012Dark"
         '
         'eq_total_units
         '
@@ -3331,32 +3359,6 @@ Partial Class Main
         Me.RadGroupBox13.Size = New System.Drawing.Size(200, 100)
         Me.RadGroupBox13.TabIndex = 0
         '
-        'eq_counter_type
-        '
-        RadListDataItem97.Text = "Laptop"
-        RadListDataItem98.Text = "DLP/LCD"
-        RadListDataItem99.Text = "Microphone"
-        RadListDataItem100.Text = "Karaoke"
-        RadListDataItem101.Text = "Overhead Projector"
-        RadListDataItem102.Text = "VHS Player"
-        RadListDataItem103.Text = "Tape Deck"
-        RadListDataItem104.Text = "Speaker"
-        RadListDataItem105.Text = "PC Speakers"
-        Me.eq_counter_type.Items.Add(RadListDataItem97)
-        Me.eq_counter_type.Items.Add(RadListDataItem98)
-        Me.eq_counter_type.Items.Add(RadListDataItem99)
-        Me.eq_counter_type.Items.Add(RadListDataItem100)
-        Me.eq_counter_type.Items.Add(RadListDataItem101)
-        Me.eq_counter_type.Items.Add(RadListDataItem102)
-        Me.eq_counter_type.Items.Add(RadListDataItem103)
-        Me.eq_counter_type.Items.Add(RadListDataItem104)
-        Me.eq_counter_type.Items.Add(RadListDataItem105)
-        Me.eq_counter_type.Location = New System.Drawing.Point(28, 76)
-        Me.eq_counter_type.Name = "eq_counter_type"
-        Me.eq_counter_type.Size = New System.Drawing.Size(213, 24)
-        Me.eq_counter_type.TabIndex = 29
-        Me.eq_counter_type.ThemeName = "VisualStudio2012Dark"
-        '
         'Main
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -3453,6 +3455,7 @@ Partial Class Main
         CType(Me.RadGroupBox22, System.ComponentModel.ISupportInitialize).EndInit()
         Me.RadGroupBox22.ResumeLayout(False)
         Me.RadGroupBox22.PerformLayout()
+        CType(Me.eq_counter_type, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.eq_total_units, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RadLabel43, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RadLabel57, System.ComponentModel.ISupportInitialize).EndInit()
@@ -3585,7 +3588,6 @@ Partial Class Main
         CType(Me.RadGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RadGroupBox16, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RadGroupBox13, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.eq_counter_type, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
