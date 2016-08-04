@@ -534,6 +534,11 @@ Public Class Main
         End If
     End Sub
 
+
+
+
+
+
     Private Sub rec_btn_save_Click(sender As Object, e As EventArgs) Handles rec_btn_save.Click
         MysqlConn = New MySqlConnection
         MysqlConn.ConnectionString = connstring
