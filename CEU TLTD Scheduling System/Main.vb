@@ -20,18 +20,6 @@ Public Class Main
     Public equipment As String
     Dim query As String
 
-    Public Sub startup_disabled_buttons()
-        eq_btn_update.Hide()
-        eq_btn_delete.Hide()
-        acc_staff_btn_update.Hide()
-        acc_staff_btn_delete.Hide()
-        acc_prof_btn_delete.Hide()
-        acc_prof_btn_update.Hide()
-
-
-    End Sub
-
-
     Private Sub Main_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         reservation_rgv_recordeddata.Show()
         reservations_rgv_showavailableitems.Hide()
@@ -41,8 +29,17 @@ Public Class Main
         load_main_acc()
         load_main_prof()
         startup_disabled_buttons()
-
+        rec_load_equipments()
     End Sub
+    Public Sub startup_disabled_buttons()
+        eq_btn_update.Hide()
+        eq_btn_delete.Hide()
+        acc_staff_btn_update.Hide()
+        acc_staff_btn_delete.Hide()
+        acc_prof_btn_delete.Hide()
+        acc_prof_btn_update.Hide()
+    End Sub
+
     Private Sub btn_showavailequip_Click(sender As Object, e As EventArgs)
         reservation_rgv_recordeddata.Hide()
         reservations_rgv_showavailableitems.Show()
@@ -1164,6 +1161,33 @@ Public Class Main
                 eq_status.Items.Add(reader.GetString("equipmentstatus"))
             End While
 
+        Catch ex As Exception
+            RadMessageBox.Show(Me, ex.Message, "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
+        Finally
+            MysqlConn.Dispose()
+
+        End Try
+    End Sub
+
+    Public Sub rec_load_equipments()
+        If MysqlConn.State = ConnectionState.Open Then
+            MysqlConn.Close()
+        End If
+        MysqlConn.ConnectionString = connstring
+        Try
+            MysqlConn.Open()
+            query = "SELECT * from equipments"
+            comm = New MySqlCommand(query, MysqlConn)
+            reader = comm.ExecuteReader
+
+            Dim count As Integer
+            count = 0
+            rec_equipments.Items.Clear()
+            While reader.Read
+
+                rec_equipments.Items.Add(reader.GetString("equipment"))
+
+            End While
         Catch ex As Exception
             RadMessageBox.Show(Me, ex.Message, "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
         Finally

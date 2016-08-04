@@ -578,7 +578,7 @@ Partial Class Main
         Me.rec_btn_add_eq = New Telerik.WinControls.UI.RadButton()
         Me.RadGroupBox17 = New Telerik.WinControls.UI.RadGroupBox()
         Me.RadGridView4 = New Telerik.WinControls.UI.RadGridView()
-        Me.RadListControl1 = New Telerik.WinControls.UI.RadListControl()
+        Me.rec_equipments = New Telerik.WinControls.UI.RadListControl()
         Me.RadGroupBox3 = New Telerik.WinControls.UI.RadGroupBox()
         Me.reservation_rgv_recordeddata = New Telerik.WinControls.UI.RadGridView()
         Me.reservations_rgv_showavailableitems = New Telerik.WinControls.UI.RadGridView()
@@ -813,7 +813,7 @@ Partial Class Main
         Me.RadGroupBox17.SuspendLayout()
         CType(Me.RadGridView4, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RadGridView4.MasterTemplate, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RadListControl1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.rec_equipments, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RadGroupBox3, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.RadGroupBox3.SuspendLayout()
         CType(Me.reservation_rgv_recordeddata, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -2816,7 +2816,7 @@ Partial Class Main
         Me.RadGroupBox5.Controls.Add(Me.rec_del_eq)
         Me.RadGroupBox5.Controls.Add(Me.rec_btn_add_eq)
         Me.RadGroupBox5.Controls.Add(Me.RadGroupBox17)
-        Me.RadGroupBox5.Controls.Add(Me.RadListControl1)
+        Me.RadGroupBox5.Controls.Add(Me.rec_equipments)
         Me.RadGroupBox5.HeaderText = "Equipments"
         Me.RadGroupBox5.Location = New System.Drawing.Point(677, 306)
         Me.RadGroupBox5.Name = "RadGroupBox5"
@@ -2904,20 +2904,20 @@ Partial Class Main
         Me.RadGridView4.Text = "RadGridView4"
         Me.RadGridView4.ThemeName = "VisualStudio2012Dark"
         '
-        'RadListControl1
+        'rec_equipments
         '
         RadListDataItem216.Text = "ListItem 1"
         RadListDataItem217.Text = "ListItem 2"
         RadListDataItem218.Text = "ListItem 3"
-        Me.RadListControl1.Items.Add(RadListDataItem216)
-        Me.RadListControl1.Items.Add(RadListDataItem217)
-        Me.RadListControl1.Items.Add(RadListDataItem218)
-        Me.RadListControl1.Location = New System.Drawing.Point(16, 23)
-        Me.RadListControl1.Name = "RadListControl1"
-        Me.RadListControl1.Size = New System.Drawing.Size(237, 171)
-        Me.RadListControl1.TabIndex = 0
-        Me.RadListControl1.Text = "RadListControl1"
-        Me.RadListControl1.ThemeName = "VisualStudio2012Dark"
+        Me.rec_equipments.Items.Add(RadListDataItem216)
+        Me.rec_equipments.Items.Add(RadListDataItem217)
+        Me.rec_equipments.Items.Add(RadListDataItem218)
+        Me.rec_equipments.Location = New System.Drawing.Point(16, 23)
+        Me.rec_equipments.Name = "rec_equipments"
+        Me.rec_equipments.Size = New System.Drawing.Size(237, 171)
+        Me.rec_equipments.TabIndex = 0
+        Me.rec_equipments.Text = "RadListControl1"
+        Me.rec_equipments.ThemeName = "VisualStudio2012Dark"
         '
         'RadGroupBox3
         '
@@ -4291,7 +4291,7 @@ Partial Class Main
         Me.RadGroupBox17.ResumeLayout(False)
         CType(Me.RadGridView4.MasterTemplate, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RadGridView4, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RadListControl1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.rec_equipments, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RadGroupBox3, System.ComponentModel.ISupportInitialize).EndInit()
         Me.RadGroupBox3.ResumeLayout(False)
         CType(Me.reservation_rgv_recordeddata.MasterTemplate, System.ComponentModel.ISupportInitialize).EndInit()
@@ -4456,7 +4456,7 @@ Partial Class Main
     Friend WithEvents RadCheckedListBox1 As Telerik.WinControls.UI.RadCheckedListBox
     Friend WithEvents RadLabel21 As Telerik.WinControls.UI.RadLabel
     Friend WithEvents RadGroupBox12 As Telerik.WinControls.UI.RadGroupBox
-    Friend WithEvents RadListControl1 As Telerik.WinControls.UI.RadListControl
+    Friend WithEvents rec_equipments As Telerik.WinControls.UI.RadListControl
     Friend WithEvents rpvp_equipment As Telerik.WinControls.UI.RadPageViewPage
     Friend WithEvents RadGroupBox15 As Telerik.WinControls.UI.RadGroupBox
     Friend WithEvents RadLabel25 As Telerik.WinControls.UI.RadLabel
