@@ -1022,13 +1022,13 @@ Public Class Main
         End If
     End Sub
 
+    'Equipment Management Codes Umali C10 = COUNTER
+
     Private Sub eq_counter_type_SelectedIndexChanged(sender As Object, e As UI.Data.PositionChangedEventArgs) Handles eq_counter_type.SelectedIndexChanged
         counter_of_total_eq()
-
-
-
     End Sub
 
+    'Equipment Management Codes Umali C11 = COUNTER CODE
     Public Sub counter_of_total_eq()
         If MysqlConn.State = ConnectionState.Open Then
             MysqlConn.Close()
