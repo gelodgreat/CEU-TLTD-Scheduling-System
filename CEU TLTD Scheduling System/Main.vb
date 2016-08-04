@@ -40,7 +40,7 @@ Public Class Main
         acc_staff_btn_delete.Hide()
         acc_prof_btn_delete.Hide()
         acc_prof_btn_update.Hide()
-
+        startup_disabled_buttons()
     End Sub
     Private Sub btn_showavailequip_Click(sender As Object, e As EventArgs)
         reservation_rgv_recordeddata.Hide()
@@ -699,7 +699,7 @@ Public Class Main
         main_rgv_recordeddatamain.DataSource = DV
     End Sub
 
-    'Equipment Management Codes Umali C1
+    'Equipment Management Codes Umali C1 EQ_LOAD_EQ_TABLE
 
     Public Sub load_eq_table()
         MysqlConn = New MySqlConnection
@@ -716,7 +716,7 @@ Public Class Main
         Try
             MysqlConn.Open()
 
-            query = "SELECT equipmentno as 'Equipment Number', equipment as 'Equipment', equipmentsn as 'Serial Number',equipmenttype as 'Equipment Type', equipmentlocation as 'Equipment Location',equipmentowner as 'Owner',equipmentstatus as 'Status' from equipments ORDER BY equipmentno DESC"
+            query = "SELECT equipmentno as 'Equipment Number', equipment as 'Equipment', equipmentsn as 'Serial Number',equipmenttype as 'Equipment Type', equipmentlocation as 'Equipment Location',equipmentowner as 'Owner',equipmentstatus as 'Status' from equipments ORDER BY equipment ASC"
 
             comm = New MySqlCommand(query, MysqlConn)
             sda.SelectCommand = comm
@@ -740,7 +740,7 @@ Public Class Main
 
     End Sub
 
-    'Equipment Management Codes Umali C2
+    'Equipment Management Codes Umali C2 EQ_BTN_SAVE
 
     Private Sub eq_btn_save_Click(sender As Object, e As EventArgs) Handles eq_btn_save.Click
         MysqlConn = New MySqlConnection
@@ -757,7 +757,14 @@ Public Class Main
         Else
             Try
                 MysqlConn.Open()
-                query = "SELECT * from equipments where (equipmentsn='" & eq_sn.Text & "')"
+                query = "SELECT * from equipments where (equipmentsn='" & eq_sn.Text & "')
+
+
+
+
+
+
+"
                 comm = New MySqlCommand(query, MysqlConn)
                 reader = comm.ExecuteReader
 
@@ -776,6 +783,7 @@ Public Class Main
                     addYN = RadMessageBox.Show(Me, "Are you sure you want to save this equipment?", "TLTD Scheduling Management", MessageBoxButtons.YesNo, RadMessageIcon.Question)
                     If addYN = MsgBoxResult.Yes Then
                         query = "INSERT INTO `equipments` VALUES ('" & eq_equipmentno.Text & "','" & eq_equipment.Text & "','" & eq_sn.Text & "','" & eq_equipmentlocation.Text & "','" & eq_owner.Text & "','" & eq_status.Text & "','" & eq_type.Text & "')"
+
                         comm = New MySqlCommand(query, MysqlConn)
                         reader = comm.ExecuteReader
                         RadMessageBox.Show(Me, "Equipment Registered!", "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Info)
@@ -790,25 +798,25 @@ Public Class Main
             End Try
         End If
         load_eq_table()
-
+        counter_of_total_eq()
     End Sub
 
 
-    'Equipment Management Codes Umali C3
+    'Equipment Management Codes Umali C3 EQ_BTN_UPDATE
 
     Private Sub eq_btn_update_Click(sender As Object, e As EventArgs) Handles eq_btn_update.Click
         If MysqlConn.State = ConnectionState.Open Then
             MysqlConn.Close()
         End If
 
-        updateYN = RadMessageBox.Show(Me, "Do you want to update the selected equipment?", "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Question)
+        updateYN = RadMessageBox.Show(Me, "Do you want To update the selected equipment?", "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Question)
         If updateYN = MsgBoxResult.Yes Then
             If (eq_equipmentno.Text = "") Or (eq_sn.Text = "") Or (eq_equipment.Text = "") Or (eq_equipmentlocation.Text = "") Or (eq_owner.Text = "") Or (eq_status.Text = "") Then
-                RadMessageBox.Show(Me, "Please complete the fields to update!", "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
+                RadMessageBox.Show(Me, "Please complete the fields To update!", "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
             Else
                 Try
                     MysqlConn.Open()
-                    query = "UPDATE equipments SET equipmentno='" & eq_equipmentno.Text & "',equipmentsn='" & eq_sn.Text & "',equipment='" & eq_equipment.Text & "', equipmentlocation='" & eq_equipmentlocation.Text & "',equipmentowner='" & eq_owner.Text & "',equipmentstatus='" & eq_status.Text & "',equipmentype='" & eq_type.Text & "' where (equipmentsn='" & eq_sn.Text & "') and (equipmentno='" & eq_equipmentno.Text & "')"
+                    query = "UPDATE equipments Set equipmentno='" & eq_equipmentno.Text & "',equipmentsn='" & eq_sn.Text & "',equipment='" & eq_equipment.Text & "', equipmentlocation='" & eq_equipmentlocation.Text & "',equipmentowner='" & eq_owner.Text & "',equipmentstatus='" & eq_status.Text & "',equipmentype='" & eq_type.Text & "' where (equipmentsn='" & eq_sn.Text & "') and (equipmentno='" & eq_equipmentno.Text & "')"
                     comm = New MySqlCommand(query, MysqlConn)
                     reader = comm.ExecuteReader
 
@@ -824,9 +832,10 @@ Public Class Main
             End If
         End If
         load_eq_table()
+        counter_of_total_eq()
     End Sub
 
-    'Equipment Management Codes Umali C4
+    'Equipment Management Codes Umali C4 EQ_BTN_DELETE
 
     Private Sub eq_btn_delete_Click(sender As Object, e As EventArgs) Handles eq_btn_delete.Click
         If MysqlConn.State = ConnectionState.Open Then
@@ -857,9 +866,10 @@ Public Class Main
             End Try
         End If
         load_eq_table()
+        counter_of_total_eq()
     End Sub
 
-    'Equipment Management Codes Umali C5
+    'Equipment Management Codes Umali C5 EQ_CELLDOUBLECLICK
 
     Private Sub eq_rgv_showregequipment_CellDoubleClick(sender As Object, e As GridViewCellEventArgs) Handles eq_rgv_showregequipment.CellDoubleClick
         If e.RowIndex >= 0 Then
@@ -881,7 +891,7 @@ Public Class Main
         End If
     End Sub
 
-    'Equipment Management Codes Umali C6
+    'Equipment Management Codes Umali C6 = EQ_BTN_CLEAR
 
     Private Sub eq_btn_clear_Click(sender As Object, e As EventArgs) Handles eq_btn_clear.Click
         eq_equipmentno.Text = ""
@@ -935,7 +945,7 @@ Public Class Main
         eq_rgv_showregequipment.DataSource = DV
     End Sub
 
-    'Equipment Management Codes Umali C7 = SEARCH BY EQ_TYPE
+    'Equipment Management Codes Umali C8 = SEARCH BY EQ_TYPE
     Private Sub eq_filter_eqtype_TextChanged(sender As Object, e As EventArgs) Handles eq_filter_eqtype.TextChanged
         If MysqlConn.State = ConnectionState.Open Then
             MysqlConn.Close()
@@ -971,7 +981,7 @@ Public Class Main
         eq_rgv_showregequipment.DataSource = DV
     End Sub
 
-    'Equipment Management Codes Umali C7 = SEARCH BY EQ_STATUS
+    'Equipment Management Codes Umali C9 = SEARCH BY EQ_STATUS
     Private Sub eq_filter_eqstatus_TextChanged(sender As Object, e As EventArgs) Handles eq_filter_eqstatus.TextChanged
         If MysqlConn.State = ConnectionState.Open Then
             MysqlConn.Close()
@@ -1012,7 +1022,42 @@ Public Class Main
         End If
     End Sub
 
-    Private Sub rpvp_releasing_Paint(sender As Object, e As PaintEventArgs) Handles rpvp_releasing.Paint
+    Private Sub eq_counter_type_SelectedIndexChanged(sender As Object, e As UI.Data.PositionChangedEventArgs) Handles eq_counter_type.SelectedIndexChanged
+        counter_of_total_eq()
 
+
+
+    End Sub
+
+    Public Sub counter_of_total_eq()
+        If MysqlConn.State = ConnectionState.Open Then
+            MysqlConn.Close()
+        End If
+        MysqlConn.ConnectionString = connstring
+        Try
+            MysqlConn.Open()
+
+            Dim holder As String
+
+            query = "SELECT count(equipmenttype) as 'total' FROM equipments WHERE equipmenttype='" & eq_counter_type.Text & "'"
+            comm = New MySqlCommand(query, MysqlConn)
+            reader = comm.ExecuteReader
+            While reader.Read
+                holder = reader.GetString("total")
+            End While
+
+
+            eq_total_units.Text = holder
+
+
+
+            MysqlConn.Close()
+
+        Catch ex As Exception
+            RadMessageBox.Show(Me, ex.Message, "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
+        Finally
+            MysqlConn.Dispose()
+
+        End Try
     End Sub
 End Class
