@@ -31,10 +31,12 @@ Public Class Main
         load_main_prof()
         startup_disabled_buttons()
         'rec_load_equipments_from_list()
-        load_eq_addeq()
+
         load_released_list()
         load_released_list2()
         load_returned_list()
+        rec_load_choices_eqtype()
+
     End Sub
     Public Sub startup_disabled_buttons()
         eq_btn_update.Hide()
@@ -216,14 +218,7 @@ Public Class Main
 
         End Try
 
-
-
-
     End Sub
-
-
-
-
 
     'Programmed by BRENZ THIRD POINT SAVE BUTTON
 
@@ -300,8 +295,6 @@ Public Class Main
             End If
 
         End If
-
-
     End Sub
 
     'Programmed by BRENZ 5th Point Update Button!
@@ -625,7 +618,7 @@ Public Class Main
         Try
             MysqlConn.Open()
             Dim query As String
-            query = "Select ret_idnum as 'ID Number ' , ret_borrower as ' Borrower ' , ret_type as ' Type ' , ret_startdate as ' Start Date ' , ret_enddate as ' End Date ' , ret_starttime as ' Start Time ' , ret_endtime as ' End Time ' , ret_location as ' Location ' , ret_status as ' Status ' , ret_releasedby as ' Released By' , ret_returnedto as ' Returned to '  from released_info"
+            query = "Select ret_idnum as 'ID Number ' , ret_borrower as ' Borrower ' , ret_type as ' Type ' , ret_startdate as ' Start Date ' , ret_enddate as ' End Date ' , ret_starttime as ' Start Time ' , ret_endtime as ' End Time ' , ret_location as ' Location ' , ret_status as ' Status ' , ret_releasedby as ' Released By' , ret_returnedto as ' Returned to '  from returned_info"
             comm = New MySqlCommand(query, MysqlConn)
             sda.SelectCommand = comm
             sda.Fill(dbdataset)
@@ -726,14 +719,14 @@ Public Class Main
         If MysqlConn.State = ConnectionState.Open Then
             MysqlConn.Close()
         End If
-        If (rec_dtp_startdate.Text = "") Or (rec_dtp_enddate.Text = "") Or (rec_dtp_starttime.Text = "") Or (rec_dtp_endtime.Text = "") Or (rec_cb_borrower.Text = "") Or (rec_cb_location.Text = "") Or (rec_cob_equipment.Text = "") Then
+        If (rec_dtp_startdate.Text = "") Or (rec_dtp_enddate.Text = "") Or (rec_dtp_starttime.Text = "") Or (rec_dtp_endtime.Text = "") Or (rec_cb_borrower.Text = "") Or (rec_cb_location.Text = "") Or (rec_eq_type_choose.Text = "") Then
             RadMessageBox.Show(Me, "Please complete the form", "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
         Else
             Try
                 MysqlConn.Open()
 
 
-                query = "Select * from reservation where (equipment='" & rec_cob_equipment.Text & "') and (('" & Format(CDate(rec_dtp_startdate.Value), "yyyy-MM-dd") & " " & Format(CDate(rec_dtp_starttime.Text), "hh:mm") & "' BETWEEN CONCAT(startdate,' ',starttime) AND CONCAT(enddate,' ',endtime)) OR
+                query = "Select * from reservation where (equipment='" & rec_eq_type_choose.Text & "') and (('" & Format(CDate(rec_dtp_startdate.Value), "yyyy-MM-dd") & " " & Format(CDate(rec_dtp_starttime.Text), "hh:mm") & "' BETWEEN CONCAT(startdate,' ',starttime) AND CONCAT(enddate,' ',endtime)) OR
             ('" & Format(CDate(rec_dtp_enddate.Value), "yyyy-MM-dd") & " " & Format(CDate(rec_dtp_endtime.Text), "hh:mm") & "' BETWEEN CONCAT (enddate,' ',starttime) AND CONCAT(enddate,' ',endtime)))"
                 comm = New MySqlCommand(query, MysqlConn)
                 READER = comm.ExecuteReader
@@ -746,7 +739,7 @@ Public Class Main
                 End While
 
                 If count = 1 Then
-                    RadMessageBox.Show(Me, "The time " & Format(CDate(rec_dtp_starttime.Text), "HH:mm") & " and " & "the equipment " & rec_cob_equipment.Text & " is already in used.", "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
+                    RadMessageBox.Show(Me, "The time " & Format(CDate(rec_dtp_starttime.Text), "HH:mm") & " and " & "the equipment " & rec_eq_type_choose.Text & " is already in used.", "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
 
                 Else
                     MysqlConn.Close()
@@ -755,7 +748,7 @@ Public Class Main
                     addYN = RadMessageBox.Show(Me, "Are you sure you want to save this reservation?", "TLTD Scheduling Management", MessageBoxButtons.YesNo, RadMessageIcon.Question)
                     If addYN = MsgBoxResult.Yes Then
                         query = "INSERT INTO reservation (startdate,enddate,starttime,endtime,borrower,location,equipment,reservedby,status) VALUES ('" & Format(CDate(rec_dtp_startdate.Value), "yyyy-MM-dd") & "','" & Format(CDate(rec_dtp_enddate.Value), "yyyy-MM-dd") & "','" & Format(CDate(rec_dtp_starttime.Text), "HH:mm") & "',
-                        '" & Format(CDate(rec_dtp_endtime.Text), "HH:mm") & "', '" & rec_cb_borrower.Text & "','" & rec_cb_location.Text & "','" & rec_cob_equipment.Text & "','" & rec_cb_reserved.Text & "','" & rec_cb_status.Text & "')  "
+                        '" & Format(CDate(rec_dtp_endtime.Text), "HH:mm") & "', '" & rec_cb_borrower.Text & "','" & rec_cb_location.Text & "','" & rec_eq_type_choose.Text & "','" & rec_cb_reserved.Text & "','" & rec_cb_status.Text & "')  "
                         comm = New MySqlCommand(query, MysqlConn)
                         READER = comm.ExecuteReader
 
@@ -1234,6 +1227,63 @@ Public Class Main
     End Sub
 
 
+    ' Reservation Management Code Umali C12 = LOADING DATA TO rec_eq_type_choose
+    Public Sub rec_load_choices_eqtype()
+        If MysqlConn.State = ConnectionState.Open Then
+            MysqlConn.Close()
+        End If
+        MysqlConn.ConnectionString = connstring
+        Try
+            MysqlConn.Open()
+            query = "SELECT DISTINCT(equipmenttype) from equipments ORDER BY equipmenttype ASC"
+            comm = New MySqlCommand(query, MysqlConn)
+            reader = comm.ExecuteReader
+
+            Dim count As Integer
+            count = 0
+            rec_eq_type_choose.Items.Clear()
+            While reader.Read
+
+                rec_eq_type_choose.Items.Add(reader.GetString("equipmenttype"))
+
+            End While
+        Catch ex As Exception
+            RadMessageBox.Show(Me, ex.Message, "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
+        Finally
+            MysqlConn.Dispose()
+
+        End Try
+    End Sub
+
+    'Reservation Management Code Umali C12 = FILTERING OF DATA ACCORDING TO REC_EQTYOE_CHOOSE
+    Private Sub rec_eq_type_choose_SelectedIndexChanged(sender As Object, e As UI.Data.PositionChangedEventArgs) Handles rec_eq_type_choose.SelectedIndexChanged
+        If MysqlConn.State = ConnectionState.Open Then
+            MysqlConn.Close()
+        End If
+        MysqlConn.ConnectionString = connstring
+        Try
+            MysqlConn.Open()
+            query = "SELECT equipment from equipments where ='" & rec_eq_type_choose.Text & "'"
+            comm = New MySqlCommand(query, MysqlConn)
+            reader = comm.ExecuteReader
+
+            Dim count As Integer
+            count = 0
+            rec_eq_choose_eq.Items.Clear()
+            While reader.Read
+
+                rec_eq_choose_eq.Items.Add(reader.GetString("equipment"))
+
+            End While
+        Catch ex As Exception
+            RadMessageBox.Show(Me, ex.Message, "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
+        Finally
+            MysqlConn.Dispose()
+
+        End Try
+    End Sub
+
+    'TEST CODES
 
     Private Sub eq_type_SelectedIndexChanged(sender As Object, e As UI.Data.PositionChangedEventArgs) Handles eq_type.SelectedIndexChanged
         If MysqlConn.State = ConnectionState.Open Then
@@ -1345,68 +1395,11 @@ Public Class Main
 
 
 
-    Public Sub load_eq_addeq()
-        MysqlConn = New MySqlConnection
-        MysqlConn.ConnectionString = connstring
-
-        Dim sda As New MySqlDataAdapter
-        Dim dbdataset As New DataTable
-        Dim bsource As New BindingSource
-
-        If MysqlConn.State = ConnectionState.Open Then
-            MysqlConn.Close()
-        End If
-
-        Try
-            MysqlConn.Open()
-
-            query = "Select equipment as 'Equipments', equipmentsn as 'Serial Number' from equipments"
-
-            comm = New MySqlCommand(query, MysqlConn)
-            sda.SelectCommand = comm
-            sda.Fill(dbdataset)
-            bsource.DataSource = dbdataset
-            eq_rgv_addeq.DataSource = bsource
-            eq_rgv_addeq.ReadOnly = True
-            sda.Update(dbdataset)
-            MysqlConn.Close()
-
-        Catch ex As Exception
-            RadMessageBox.Show(Me, ex.Message, "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
-        Finally
-            MysqlConn.Dispose()
-
-        End Try
-    End Sub
-
-
-
-
-    Private Sub rec_btn_add_eq_Click(sender As Object, e As EventArgs) Handles rec_btn_add_eq.Click
-
-
-
-        Dim lvt As Telerik.WinControls.UI.RadListControl
-        If eq_rgv_addeq.SelectedRows.Count >= 0 Then
-
-            For Each row As Telerik.WinControls.UI.GridViewRowInfo In eq_rgv_addeq.SelectedRows
-
-                lvt = New RadListControl()
-                lvt.Items.Add(row.Cells(0).Value.ToString())
-                lvt.Items.Add(row.Cells(1).Value.ToString())
-
-                rec_equipments.Items.Add(row.Cells(0).Value.ToString())
-            Next
-
-        Else
-            RadMessageBox.Show(Me, "Select Equipments!", "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
-        End If
 
 
 
 
 
-    End Sub
 
     'Public Sub rec_load_equipments_from_list()
     '    If MysqlConn.State = ConnectionState.Open Then
