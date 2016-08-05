@@ -577,7 +577,7 @@ Partial Class Main
         Me.rec_del_eq = New Telerik.WinControls.UI.RadButton()
         Me.rec_btn_add_eq = New Telerik.WinControls.UI.RadButton()
         Me.RadGroupBox17 = New Telerik.WinControls.UI.RadGroupBox()
-        Me.RadGridView4 = New Telerik.WinControls.UI.RadGridView()
+        Me.eq_rgv_addeq = New Telerik.WinControls.UI.RadGridView()
         Me.rec_equipments = New Telerik.WinControls.UI.RadListControl()
         Me.RadGroupBox3 = New Telerik.WinControls.UI.RadGroupBox()
         Me.reservation_rgv_recordeddata = New Telerik.WinControls.UI.RadGridView()
@@ -811,8 +811,8 @@ Partial Class Main
         CType(Me.rec_btn_add_eq, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RadGroupBox17, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.RadGroupBox17.SuspendLayout()
-        CType(Me.RadGridView4, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RadGridView4.MasterTemplate, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.eq_rgv_addeq, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.eq_rgv_addeq.MasterTemplate, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.rec_equipments, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RadGroupBox3, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.RadGroupBox3.SuspendLayout()
@@ -2397,7 +2397,7 @@ Partial Class Main
         '
         'RadLabel68
         '
-        Me.RadLabel68.Location = New System.Drawing.Point(394, 23)
+        Me.RadLabel68.Location = New System.Drawing.Point(392, 58)
         Me.RadLabel68.Name = "RadLabel68"
         Me.RadLabel68.Size = New System.Drawing.Size(84, 18)
         Me.RadLabel68.TabIndex = 26
@@ -2406,7 +2406,7 @@ Partial Class Main
         '
         'RadDropDownList4
         '
-        Me.RadDropDownList4.Location = New System.Drawing.Point(480, 19)
+        Me.RadDropDownList4.Location = New System.Drawing.Point(482, 52)
         Me.RadDropDownList4.Name = "RadDropDownList4"
         Me.RadDropDownList4.Size = New System.Drawing.Size(174, 24)
         Me.RadDropDownList4.TabIndex = 27
@@ -2476,7 +2476,7 @@ Partial Class Main
         '
         'RadLabel14
         '
-        Me.RadLabel14.Location = New System.Drawing.Point(435, 103)
+        Me.RadLabel14.Location = New System.Drawing.Point(437, 115)
         Me.RadLabel14.Name = "RadLabel14"
         Me.RadLabel14.Size = New System.Drawing.Size(39, 18)
         Me.RadLabel14.TabIndex = 17
@@ -2489,7 +2489,7 @@ Partial Class Main
         RadListDataItem121.Text = "Not Released"
         Me.rec_cb_status.Items.Add(RadListDataItem120)
         Me.rec_cb_status.Items.Add(RadListDataItem121)
-        Me.rec_cb_status.Location = New System.Drawing.Point(479, 97)
+        Me.rec_cb_status.Location = New System.Drawing.Point(482, 112)
         Me.rec_cb_status.Name = "rec_cb_status"
         Me.rec_cb_status.Size = New System.Drawing.Size(175, 24)
         Me.rec_cb_status.TabIndex = 16
@@ -2710,7 +2710,7 @@ Partial Class Main
         '
         'rec_cb_location
         '
-        Me.rec_cb_location.Location = New System.Drawing.Point(479, 49)
+        Me.rec_cb_location.Location = New System.Drawing.Point(482, 82)
         Me.rec_cb_location.Name = "rec_cb_location"
         Me.rec_cb_location.Size = New System.Drawing.Size(175, 24)
         Me.rec_cb_location.TabIndex = 10
@@ -2718,7 +2718,7 @@ Partial Class Main
         '
         'RadLabel5
         '
-        Me.RadLabel5.Location = New System.Drawing.Point(417, 54)
+        Me.RadLabel5.Location = New System.Drawing.Point(420, 88)
         Me.RadLabel5.Name = "RadLabel5"
         Me.RadLabel5.Size = New System.Drawing.Size(56, 18)
         Me.RadLabel5.TabIndex = 9
@@ -2881,7 +2881,7 @@ Partial Class Main
         'RadGroupBox17
         '
         Me.RadGroupBox17.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping
-        Me.RadGroupBox17.Controls.Add(Me.RadGridView4)
+        Me.RadGroupBox17.Controls.Add(Me.eq_rgv_addeq)
         Me.RadGroupBox17.HeaderText = "RadGroupBox17"
         Me.RadGroupBox17.Location = New System.Drawing.Point(347, 25)
         Me.RadGroupBox17.Name = "RadGroupBox17"
@@ -2890,19 +2890,26 @@ Partial Class Main
         Me.RadGroupBox17.Text = "RadGroupBox17"
         Me.RadGroupBox17.ThemeName = "VisualStudio2012Dark"
         '
-        'RadGridView4
+        'eq_rgv_addeq
         '
-        Me.RadGridView4.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.RadGridView4.Location = New System.Drawing.Point(2, 18)
+        Me.eq_rgv_addeq.AutoSizeRows = True
+        Me.eq_rgv_addeq.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.eq_rgv_addeq.Location = New System.Drawing.Point(2, 18)
         '
         '
         '
-        Me.RadGridView4.MasterTemplate.ViewDefinition = TableViewDefinition5
-        Me.RadGridView4.Name = "RadGridView4"
-        Me.RadGridView4.Size = New System.Drawing.Size(312, 153)
-        Me.RadGridView4.TabIndex = 0
-        Me.RadGridView4.Text = "RadGridView4"
-        Me.RadGridView4.ThemeName = "VisualStudio2012Dark"
+        Me.eq_rgv_addeq.MasterTemplate.AllowAddNewRow = False
+        Me.eq_rgv_addeq.MasterTemplate.AllowDeleteRow = False
+        Me.eq_rgv_addeq.MasterTemplate.AllowEditRow = False
+        Me.eq_rgv_addeq.MasterTemplate.AutoSizeColumnsMode = Telerik.WinControls.UI.GridViewAutoSizeColumnsMode.Fill
+        Me.eq_rgv_addeq.MasterTemplate.EnableGrouping = False
+        Me.eq_rgv_addeq.MasterTemplate.ShowRowHeaderColumn = False
+        Me.eq_rgv_addeq.MasterTemplate.ViewDefinition = TableViewDefinition5
+        Me.eq_rgv_addeq.Name = "eq_rgv_addeq"
+        Me.eq_rgv_addeq.ReadOnly = True
+        Me.eq_rgv_addeq.Size = New System.Drawing.Size(312, 153)
+        Me.eq_rgv_addeq.TabIndex = 0
+        Me.eq_rgv_addeq.ThemeName = "VisualStudio2012Dark"
         '
         'rec_equipments
         '
@@ -4289,8 +4296,8 @@ Partial Class Main
         CType(Me.rec_btn_add_eq, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RadGroupBox17, System.ComponentModel.ISupportInitialize).EndInit()
         Me.RadGroupBox17.ResumeLayout(False)
-        CType(Me.RadGridView4.MasterTemplate, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RadGridView4, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.eq_rgv_addeq.MasterTemplate, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.eq_rgv_addeq, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.rec_equipments, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RadGroupBox3, System.ComponentModel.ISupportInitialize).EndInit()
         Me.RadGroupBox3.ResumeLayout(False)
@@ -4476,7 +4483,7 @@ Partial Class Main
     Friend WithEvents rec_del_eq As Telerik.WinControls.UI.RadButton
     Friend WithEvents rec_btn_add_eq As Telerik.WinControls.UI.RadButton
     Friend WithEvents RadGroupBox17 As Telerik.WinControls.UI.RadGroupBox
-    Friend WithEvents RadGridView4 As Telerik.WinControls.UI.RadGridView
+    Friend WithEvents eq_rgv_addeq As Telerik.WinControls.UI.RadGridView
     Friend WithEvents rec_btn_showalldata As Telerik.WinControls.UI.RadButton
     Friend WithEvents rec_btn_showavailequip As Telerik.WinControls.UI.RadButton
     Friend WithEvents RadGroupBox20 As Telerik.WinControls.UI.RadGroupBox

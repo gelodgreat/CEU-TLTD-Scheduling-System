@@ -18,6 +18,7 @@ Public Class Main
     Dim doneYN As DialogResult
 
     Public equipment As String
+    Public rowcount As Integer = 1
     Dim query As String
 
     Private Sub Main_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -29,7 +30,8 @@ Public Class Main
         load_main_acc()
         load_main_prof()
         startup_disabled_buttons()
-        rec_load_equipments()
+        'rec_load_equipments_from_list()
+        load_eq_addeq()
     End Sub
     Public Sub startup_disabled_buttons()
         eq_btn_update.Hide()
@@ -760,14 +762,8 @@ Public Class Main
         Else
             Try
                 MysqlConn.Open()
-                query = "SELECT * from equipments where (equipmentsn='" & eq_sn.Text & "')
+                query = "SELECT * from equipments where (equipmentsn='" & eq_sn.Text & "')"
 
-
-
-
-
-
-"
                 comm = New MySqlCommand(query, MysqlConn)
                 reader = comm.ExecuteReader
 
@@ -778,12 +774,12 @@ Public Class Main
                 End While
 
                 If count = 1 Then
-                    RadMessageBox.Show(Me, "Equipment #" & eq_equipmentno.Text & " and the equipment " & eq_equipment.Text & " is already registered")
+                    RadMessageBox.Show(Me, "Equipment #" & eq_equipmentno.Text & " And the equipment " & eq_equipment.Text & " Is already registered")
                 Else
                     MysqlConn.Close()
                     MysqlConn.Open()
 
-                    addYN = RadMessageBox.Show(Me, "Are you sure you want to save this equipment?", "TLTD Scheduling Management", MessageBoxButtons.YesNo, RadMessageIcon.Question)
+                    addYN = RadMessageBox.Show(Me, "Are you sure you want To save this equipment?", "TLTD Scheduling Management", MessageBoxButtons.YesNo, RadMessageIcon.Question)
                     If addYN = MsgBoxResult.Yes Then
                         query = "INSERT INTO `equipments` VALUES ('" & eq_equipmentno.Text & "','" & eq_equipment.Text & "','" & eq_sn.Text & "','" & eq_equipmentlocation.Text & "','" & eq_owner.Text & "','" & eq_status.Text & "','" & eq_type.Text & "')"
 
@@ -1169,25 +1165,34 @@ Public Class Main
         End Try
     End Sub
 
-    Public Sub rec_load_equipments()
+
+
+    Public Sub load_eq_addeq()
+        MysqlConn = New MySqlConnection
+        MysqlConn.ConnectionString = connstring
+
+        Dim sda As New MySqlDataAdapter
+        Dim dbdataset As New DataTable
+        Dim bsource As New BindingSource
+
         If MysqlConn.State = ConnectionState.Open Then
             MysqlConn.Close()
         End If
-        MysqlConn.ConnectionString = connstring
+
         Try
             MysqlConn.Open()
-            query = "SELECT * from equipments"
+
+            query = "Select equipment as 'Equipments', equipmentsn as 'Serial Number' from equipments"
+
             comm = New MySqlCommand(query, MysqlConn)
-            reader = comm.ExecuteReader
+            sda.SelectCommand = comm
+            sda.Fill(dbdataset)
+            bsource.DataSource = dbdataset
+            eq_rgv_addeq.DataSource = bsource
+            eq_rgv_addeq.ReadOnly = True
+            sda.Update(dbdataset)
+            MysqlConn.Close()
 
-            Dim count As Integer
-            count = 0
-            rec_equipments.Items.Clear()
-            While reader.Read
-
-                rec_equipments.Items.Add(reader.GetString("equipment"))
-
-            End While
         Catch ex As Exception
             RadMessageBox.Show(Me, ex.Message, "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
         Finally
@@ -1195,4 +1200,60 @@ Public Class Main
 
         End Try
     End Sub
+
+
+
+
+    Private Sub rec_btn_add_eq_Click(sender As Object, e As EventArgs) Handles rec_btn_add_eq.Click
+
+
+
+        Dim lvt As Telerik.WinControls.UI.RadListControl
+        If eq_rgv_addeq.SelectedRows.Count >= 0 Then
+
+            For Each row As Telerik.WinControls.UI.GridViewRowInfo In eq_rgv_addeq.SelectedRows
+
+                lvt = New RadListControl()
+                lvt.Items.Add(row.Cells(0).Value.ToString())
+                lvt.Items.Add(row.Cells(1).Value.ToString())
+
+                rec_equipments.Items.Add(row.Cells(0).Value.ToString())
+            Next
+
+        Else
+            RadMessageBox.Show(Me, "Select Equipments!", "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
+        End If
+
+
+
+
+
+    End Sub
+
+    'Public Sub rec_load_equipments_from_list()
+    '    If MysqlConn.State = ConnectionState.Open Then
+    '        MysqlConn.Close()
+    '    End If
+    '    MysqlConn.ConnectionString = connstring
+    '    Try
+    '        MysqlConn.Open()
+    '        query = "SELECT * from equipments"
+    '        comm = New MySqlCommand(query, MysqlConn)
+    '        reader = comm.ExecuteReader
+
+    '        Dim count As Integer
+    '        count = 0
+    '        rec_equipments.Items.Clear()
+    '        While reader.Read
+
+    '            rec_equipments.Items.Add(reader.GetString("equipment"))
+
+    '        End While
+    '    Catch ex As Exception
+    '        RadMessageBox.Show(Me, ex.Message, "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
+    '    Finally
+    '        MysqlConn.Dispose()
+
+    '    End Try
+    'End Sub
 End Class
