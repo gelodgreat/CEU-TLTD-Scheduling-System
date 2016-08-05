@@ -29,7 +29,11 @@ Public Class Main
         load_main_acc()
         load_main_prof()
         startup_disabled_buttons()
+        startup_disabled_textbox()
         rec_load_equipments()
+        load_released_list()
+        load_released_list2()
+        load_returned_list()
     End Sub
     Public Sub startup_disabled_buttons()
         eq_btn_update.Hide()
@@ -38,6 +42,14 @@ Public Class Main
         acc_staff_btn_delete.Hide()
         acc_prof_btn_delete.Hide()
         acc_prof_btn_update.Hide()
+    End Sub
+    Public Sub startup_disabled_textbox()
+        rel_tb_status.Enabled = False
+        rel_tb_id.Enabled = False
+        rel_tb_borrower.Enabled = False
+        rel_tb_type.Enabled = False
+        rel_tb_college.Enabled = False
+
     End Sub
 
     Private Sub btn_showavailequip_Click(sender As Object, e As EventArgs)
@@ -532,6 +544,173 @@ Public Class Main
         End If
     End Sub
 
+    'Programmed by BRENZ 13th POINT Load form grid RELEASED at Releasing Management!
+    Public Sub load_released_list()
+        MysqlConn = New MySqlConnection
+        MysqlConn.ConnectionString = connstring
+
+        Dim sda As New MySqlDataAdapter
+        Dim dbdataset As New DataTable
+        Dim bsource As New BindingSource
+
+        If MysqlConn.State = ConnectionState.Open Then
+            MysqlConn.Close()
+        End If
+
+        Try
+            MysqlConn.Open()
+            Dim query As String
+            query = "Select rel_idnum as 'ID Number ' , rel_borrower as ' Borrower ' , rel_type as ' Type ' , rel_startdate as ' Start Date ' , rel_enddate as ' End Date ' , rel_starttime as ' Start Time ' , rel_endtime as ' End Time ' , rel_location as ' Location ' , rel_status as ' Status ' , rel_releasedby as ' Released By'  from released_info"
+            comm = New MySqlCommand(query, MysqlConn)
+            sda.SelectCommand = comm
+            sda.Fill(dbdataset)
+            bsource.DataSource = dbdataset
+            released_grid_list.DataSource = bsource
+            released_grid_list.ReadOnly = True
+            sda.Update(dbdataset)
+            MysqlConn.Close()
+        Catch ex As Exception
+            RadMessageBox.Show(Me, ex.Message, "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
+        Finally
+            MysqlConn.Dispose()
+        End Try
+    End Sub
+
+    'Programmed by BRENZ 14th POINT Load form grid RELEASED at returning Management!
+    Public Sub load_released_list2()
+        MysqlConn = New MySqlConnection
+        MysqlConn.ConnectionString = connstring
+
+        Dim sda As New MySqlDataAdapter
+        Dim dbdataset As New DataTable
+        Dim bsource As New BindingSource
+
+        If MysqlConn.State = ConnectionState.Open Then
+            MysqlConn.Close()
+        End If
+
+        Try
+            MysqlConn.Open()
+            Dim query As String
+            query = "Select rel_idnum as 'ID Number ' , rel_borrower as ' Borrower ' , rel_type as ' Type ' , rel_startdate as ' Start Date ' , rel_enddate as ' End Date ' , rel_starttime as ' Start Time ' , rel_endtime as ' End Time ' , rel_location as ' Location ' , rel_status as ' Status ' , rel_releasedby as ' Released By'  from released_info"
+            comm = New MySqlCommand(query, MysqlConn)
+            sda.SelectCommand = comm
+            sda.Fill(dbdataset)
+            bsource.DataSource = dbdataset
+            released_grid_list2.DataSource = bsource
+            released_grid_list2.ReadOnly = True
+            sda.Update(dbdataset)
+            MysqlConn.Close()
+        Catch ex As Exception
+            RadMessageBox.Show(Me, ex.Message, "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
+        Finally
+            MysqlConn.Dispose()
+        End Try
+    End Sub
+
+    'Programmed by BRENZ 15th POINT Load form grid RETURNED at returning Management!
+    Public Sub load_returned_list()
+        MysqlConn = New MySqlConnection
+        MysqlConn.ConnectionString = connstring
+
+        Dim sda As New MySqlDataAdapter
+        Dim dbdataset As New DataTable
+        Dim bsource As New BindingSource
+
+        If MysqlConn.State = ConnectionState.Open Then
+            MysqlConn.Close()
+        End If
+
+        Try
+            MysqlConn.Open()
+            Dim query As String
+            query = "Select ret_idnum as 'ID Number ' , ret_borrower as ' Borrower ' , ret_type as ' Type ' , ret_startdate as ' Start Date ' , ret_enddate as ' End Date ' , ret_starttime as ' Start Time ' , ret_endtime as ' End Time ' , ret_location as ' Location ' , ret_status as ' Status ' , ret_releasedby as ' Released By' , ret_returnedto as ' Returned to '  from released_info"
+            comm = New MySqlCommand(query, MysqlConn)
+            sda.SelectCommand = comm
+            sda.Fill(dbdataset)
+            bsource.DataSource = dbdataset
+            returned_grid_list.DataSource = bsource
+            returned_grid_list.ReadOnly = True
+            sda.Update(dbdataset)
+            MysqlConn.Close()
+        Catch ex As Exception
+            RadMessageBox.Show(Me, ex.Message, "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
+        Finally
+            MysqlConn.Dispose()
+        End Try
+    End Sub
+
+    'Programmed by BRENZ 16th point RELEASE BTN at Releasing Management!
+    Private Sub released_btn_release_Click(sender As Object, e As EventArgs) Handles released_btn_release.Click
+
+        MysqlConn = New MySqlConnection
+        MysqlConn.ConnectionString = connstring
+        Dim READER As MySqlDataReader
+        If (rel_tb_id.Text = "") Or (rel_tb_borrower.Text = "") Or (rel_tb_type.Text = " ") Or (rel_tb_startdate.Text = " ") Or (rel_tb_enddate.Text = " ") Or (rel_tb_starttime.Text = " ") Or (rel_tb_endtime.Text = " ") Or (rel_tb_college.Text = " ") Or (rel_tb_location.Text = " ") Or (rel_tb_releasedby.Text = " ") Then
+            RadMessageBox.Show(Me, "Please complete the fields to Save!", "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
+        Else
+            Try
+                MysqlConn.Open()
+                Dim Query As String
+                Query = "insert into ceutltdscheduler.released_info (rel_idnum,rel_borrower,rel_type,rel_type,rel_startdate,rel_enddate,rel_starttime,rel_endtime,rel_college,rel_location,rel_status,rel_releasedby) values ('" & rel_tb_id.Text & "' , '" & rel_tb_borrower.Text & "' , '" & rel_tb_type.Text & "' , '" & rel_tb_startdate.Text & "' , '" & rel_tb_enddate.Text & "' , '" & rel_tb_starttime.Text & "' , '" & rel_tb_endtime.Text & "' , '" & rel_tb_college.Text & "' , '" & rel_tb_location.Text & "' , '" & rel_tb_status.Text & "' , '" & rel_tb_releasedby.Text & "')"
+                comm = New MySqlCommand(Query, MysqlConn)
+
+                svYN = RadMessageBox.Show(Me, "Are you sure you want to Release this Equipment/s? ", "TLTD Schuling Management", MessageBoxButtons.YesNo, RadMessageIcon.Question)
+                If svYN = MsgBoxResult.Yes Then
+                    rel_tb_status.Text = "Released"
+                    rel_tb_status.BackColor = Color.Red
+                    READER = comm.ExecuteReader
+                    RadMessageBox.Show("Released!")
+
+                End If
+                MysqlConn.Close()
+            Catch ex As MySqlException
+                MessageBox.Show(ex.Message)
+            Finally
+                MysqlConn.Dispose()
+                load_released_list()
+                load_released_list2()
+
+            End Try
+        End If
+
+    End Sub
+
+
+    'Programmed by BRENZ 17th Point UPDATE BTN at Releasing Management
+    Private Sub released_btn_update_Click(sender As Object, e As EventArgs) Handles released_btn_update.Click
+        If MysqlConn.State = ConnectionState.Open Then
+            MysqlConn.Close()
+        End If
+
+        updateYN = RadMessageBox.Show(Me, "Do you want to Update the Date/Time/Location of the Reserved Equipment?", "TLTD Scheduling Management", MessageBoxButtons.YesNo, RadMessageIcon.Question)
+        If updateYN = MsgBoxResult.Yes Then
+            If (rel_tb_startdate.Text = "") Or (rel_tb_enddate.Text = " ") Or (rel_tb_starttime.Text = " ") Or (rel_tb_endtime.Text = " ") Or (rel_tb_location.Text = " ") Then
+                RadMessageBox.Show(Me, "Please complete the fields to update!", "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
+            Else
+                Try
+                    MysqlConn.Open()
+                    query = "UPDATE released_info set rel_startdate = '" & rel_tb_starttime.Text & "' , rel_enddate = '" & rel_tb_enddate.Text & "' , rel_starttime = '" & rel_tb_starttime.Text & "' , rel_endtime = '" & rel_tb_endtime.Text & "' , rel_location = '" & rel_tb_location.Text & "' where rel_startdate = '" & rel_tb_startdate.Text & "' "
+                    comm = New MySqlCommand(query, MysqlConn)
+                    reader = comm.ExecuteReader
+
+                    RadMessageBox.Show(Me, "Update Success!", "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Info)
+                    MysqlConn.Close()
+
+
+                Catch ex As Exception
+                    RadMessageBox.Show(Me, ex.Message, "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
+                Finally
+                    MysqlConn.Dispose()
+                    load_released_list()
+                    load_released_list2()
+                End Try
+            End If
+        End If
+
+
+
+    End Sub
 
 
 
@@ -1195,4 +1374,6 @@ Public Class Main
 
         End Try
     End Sub
+
+
 End Class
