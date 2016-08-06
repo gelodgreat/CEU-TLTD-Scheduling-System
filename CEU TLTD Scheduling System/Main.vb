@@ -18,7 +18,7 @@ Public Class Main
     Dim doneYN As DialogResult
 
     Public equipment As String
-    Public rowcount As Integer = 1
+    Public rowcounter As Integer = 0
     Dim query As String
 
     Private Sub Main_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -30,12 +30,11 @@ Public Class Main
         load_main_acc()
         load_main_prof()
         startup_disabled_buttons()
-        'rec_load_equipments_from_list()
-
         load_released_list()
         load_released_list2()
         load_returned_list()
         rec_load_choices_eqtype()
+
 
     End Sub
     Public Sub startup_disabled_buttons()
@@ -1263,7 +1262,7 @@ Public Class Main
         MysqlConn.ConnectionString = connstring
         Try
             MysqlConn.Open()
-            query = "SELECT equipment from equipments where ='" & rec_eq_type_choose.Text & "'"
+            query = "SELECT equipment from equipments where equipmenttype='" & rec_eq_type_choose.Text & "'"
             comm = New MySqlCommand(query, MysqlConn)
             reader = comm.ExecuteReader
 
@@ -1395,36 +1394,94 @@ Public Class Main
 
 
 
+    Private Sub rec_btn_add_eq_Click(sender As Object, e As EventArgs) Handles rec_btn_add_eq.Click
+
+        If MysqlConn.State = ConnectionState.Open Then
+            MysqlConn.Close()
+        End If
+        MysqlConn.ConnectionString = connstring
+
+        If rec_eq_choose_eq.Text = "" Then
+            RadMessageBox.Show(Me, "Choose Equipment!", "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
+        ElseIf rec_eq_type_choose.Text = "" Then
+            RadMessageBox.Show(Me, "Choose the Type of Equipment!", "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
+        Else
+            Try
+                MysqlConn.Open()
+                query = "SELECT equipmentsn as 'Serial Number' from equipments where equipmenttype='" & rec_eq_type_choose.Text & "' and equipment='" & rec_eq_choose_eq.Text & "' "
+                comm = New MySqlCommand(query, MysqlConn)
+                reader = comm.ExecuteReader
+
+                Dim count As Integer
+                count = 0
+                Dim temp As String
+
+                While reader.Read
+                    temp = reader.GetString("Serial Number")
+                End While
+
+                eq_rgv_addeq.Rows.Add(rec_eq_choose_eq.Text, temp)
+
+                rowcounter += 1
+
+
+            Catch ex As Exception
+                RadMessageBox.Show(Me, ex.Message, "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
+            Finally
+                MysqlConn.Dispose()
+            End Try
+
+
+
+        End If
+
+
+
+        'If MysqlConn.State = ConnectionState.Open Then
+        '    MysqlConn.Close()
+        'End If
+        'Dim count As Integer
+
+        'MysqlConn.ConnectionString = connstring
+
+        'Dim sda As New MySqlDataAdapter
+        'Dim dbdataset As New DataTable
+        'Dim bsource As New BindingSource
+        'count = 0
+
+        'Try
+        '    MysqlConn.Open()
+        '    query = "SELECT equipment as 'Equipments' from equipments where equipmenttype='" & rec_eq_type_choose.Text & "' and equipment ='" & rec_eq_choose_eq.Text & "'"
+        '    comm = New MySqlCommand(query, MysqlConn)
+        '    sda.SelectCommand = comm
+        '    sda.Fill(dbdataset)
+        '    bsource.DataSource = dbdataset
+        '    eq_rgv_addeq.DataSource = bsource
+        '    eq_rgv_addeq.ReadOnly = True
+        '    sda.Update(dbdataset)
+
+
+
+        '    'eq_rgv_addeq.Rows.Clear()
+
+        '    With eq_rgv_addeq
+        '        Dim rowinfo As New GridViewDataRowInfo(Me.eq_rgv_addeq.MasterView)
+        '        rowinfo.Cells(0).Value = rec_eq_choose_eq.Text
+
+        '    End With
+        '    MysqlConn.Close()
+        'Catch ex As Exception
+        '    RadMessageBox.Show(Me, ex.Message, "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
+        'Finally
+        '    MysqlConn.Dispose()
+
+        'End Try
+        'count += 1
+
+    End Sub
 
 
 
 
 
-
-    'Public Sub rec_load_equipments_from_list()
-    '    If MysqlConn.State = ConnectionState.Open Then
-    '        MysqlConn.Close()
-    '    End If
-    '    MysqlConn.ConnectionString = connstring
-    '    Try
-    '        MysqlConn.Open()
-    '        query = "SELECT * from equipments"
-    '        comm = New MySqlCommand(query, MysqlConn)
-    '        reader = comm.ExecuteReader
-
-    '        Dim count As Integer
-    '        count = 0
-    '        rec_equipments.Items.Clear()
-    '        While reader.Read
-
-    '            rec_equipments.Items.Add(reader.GetString("equipment"))
-
-    '        End While
-    '    Catch ex As Exception
-    '        RadMessageBox.Show(Me, ex.Message, "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
-    '    Finally
-    '        MysqlConn.Dispose()
-
-    '    End Try
-    'End Sub
 End Class
