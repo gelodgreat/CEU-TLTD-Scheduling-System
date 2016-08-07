@@ -1279,7 +1279,7 @@ Public Class Main
         rowcounter = 0
         Try
             MysqlConn.Open()
-            query = "SELECT * from reservation_equipment where equipment='" & eq_rgv_addeq.Rows(rowcounter).Cells(0).Value & "' and equipmentsn='" & eq_rgv_addeq.Rows(rowcounter).Cells(1).Value & "' "
+            query = "SELECT equipment,equipmentsn from reservation_equipment where equipment='" & eq_rgv_addeq.Rows(rowcounter).Cells(0).Value & "' and equipmentsn='" & eq_rgv_addeq.Rows(rowcounter).Cells(1).Value & "' "
             comm = New MySqlCommand(query, MysqlConn)
             reader = comm.ExecuteReader
 
