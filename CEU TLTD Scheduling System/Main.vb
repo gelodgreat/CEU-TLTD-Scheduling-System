@@ -624,7 +624,7 @@ Public Class Main
         Try
             MysqlConn.Open()
             Dim query As String
-            query = "Select ret_idnum as 'ID Number ' , ret_borrower as ' Borrower ' , ret_type as ' Type ' , ret_startdate as ' Start Date ' , ret_enddate as ' End Date ' , ret_starttime as ' Start Time ' , ret_endtime as ' End Time ' , ret_location as ' Location ' , ret_status as ' Status ' , ret_releasedby as ' Released By' , ret_returnedto as ' Returned to '  from released_info"
+            query = "Select ret_idnum as ' ID Number ' , ret_borrower as ' Borrower ' , ret_type as ' Type ' , ret_startdate as ' Start Date ' , ret_enddate as ' End Date ' , ret_starttime as ' Start Time ' , ret_endtime as ' End Time ' , ret_location as ' Location ' , ret_status as ' Status ' , ret_releasedby as ' Released By' , ret_returnedto as ' Returned to '  from returned_info"
             comm = New MySqlCommand(query, MysqlConn)
             sda.SelectCommand = comm
             sda.Fill(dbdataset)
