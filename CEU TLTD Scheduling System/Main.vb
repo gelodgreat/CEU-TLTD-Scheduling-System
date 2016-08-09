@@ -92,7 +92,7 @@ Public Class Main
         Try
             MysqlConn.Open()
 
-            query = "Select DATE_FORMAT(startdate,'%M %d %Y') as 'Start Date', DATE_FORMAT(enddate,'%M %d, %Y') as 'End Date', TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time', borrower as 'Borrower',location as 'Location', equipment as 'Equipment' from reservation"
+            query = "Select DATE_FORMAT(startdate,'%M %d %Y') as 'Start Date', DATE_FORMAT(enddate,'%M %d, %Y') as 'End Date', TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time', borrower as 'Borrower',location as 'Location' from reservation"
 
             comm = New MySqlCommand(query, MysqlConn)
             sda.SelectCommand = comm
@@ -126,7 +126,7 @@ Public Class Main
         Try
             MysqlConn.Open()
 
-            query = "Select DATE_FORMAT(startdate,'%M %d %Y') as 'Start Date', DATE_FORMAT(enddate,'%M %d, %Y') as 'End Date', TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time', borrower as 'Borrower',location as 'Location', equipment as 'Equipment' from reservation"
+            query = "Select DATE_FORMAT(startdate,'%M %d %Y') as 'Start Date', DATE_FORMAT(enddate,'%M %d, %Y') as 'End Date', TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time', borrower as 'Borrower',location as 'Location' from reservation"
 
             comm = New MySqlCommand(query, MysqlConn)
             sda.SelectCommand = comm
@@ -1238,19 +1238,20 @@ Public Class Main
         Else
             Try
                 MysqlConn.Open()
-                query = "SELECT equipmentsn as 'Serial Number' from equipments where equipmenttype='" & rec_eq_type_choose.Text & "' and equipment='" & rec_eq_choose_eq.Text & "' "
+                query = "SELECT equipmentsn as 'Serial Number', equipmentno as '#' from equipments where equipmenttype='" & rec_eq_type_choose.Text & "' and equipment='" & rec_eq_choose_eq.Text & "'"
                 comm = New MySqlCommand(query, MysqlConn)
                 reader = comm.ExecuteReader
 
                 Dim count As Integer
                 count = 0
-                Dim temp As String
-
+                Dim tempsn As String
+                Dim tempno As String
                 While reader.Read
-                    temp = reader.GetString("Serial Number")
+                    tempsn = reader.GetString("Serial Number")
+                    tempno = reader.GetString("#")
                 End While
 
-                eq_rgv_addeq.Rows.Add(rec_eq_choose_eq.Text, temp)
+                eq_rgv_addeq.Rows.Add(tempno, rec_eq_choose_eq.Text, tempsn)
 
                 rowcounter += 1
 
@@ -1278,12 +1279,9 @@ Public Class Main
         MysqlConn.ConnectionString = connstring
         rowcounter = 0
 
-        Dim i As Integer = eq_rgv_addeq.SelectedRows(0).Index
-        eq_rgv_addeq.Rows(eq_rgv_addeq.SelectedRows(0).Index).Cells(0).Value.ToString()
-
         Try
             MysqlConn.Open()
-            query = "SELECT equipment,equipmentsn from reservation_equipment where equipment='" & eq_rgv_addeq.Rows(eq_rgv_addeq.SelectedRows(0).Index).Cells(0).Value.ToString() & "' and equipmentsn='" & eq_rgv_addeq.Rows(eq_rgv_addeq.SelectedRows(0).Index).Cells(1).Value.ToString() & "' "
+            query = "SELECT equipmentno,equipment,equipmentsn from reservation_equipment where equipmentno='" & eq_rgv_addeq.Rows(eq_rgv_addeq.SelectedRows(0).Index).Cells(0).Value.ToString() & "' and equipment='" & eq_rgv_addeq.Rows(eq_rgv_addeq.SelectedRows(0).Index).Cells(1).Value.ToString() & "' and equipmentsn='" & eq_rgv_addeq.Rows(eq_rgv_addeq.SelectedRows(0).Index).Cells(2).Value.ToString() & "'"
             comm = New MySqlCommand(query, MysqlConn)
             reader = comm.ExecuteReader
 
@@ -1321,6 +1319,7 @@ Public Class Main
         Dim READER As MySqlDataReader
 
         Dim rownumber As Integer = eq_rgv_addeq.Rows.Count
+        Dim conflictequipmentno As String = ""
         Dim conflictequipment As String = ""
         Dim conflictequipmentsn As String = ""
 
@@ -1329,10 +1328,13 @@ Public Class Main
 
         If rownumber > 0 Then
             While counter <> rownumber
-                Dim equipmentrgv As String = eq_rgv_addeq.Rows(counter).Cells(0).Value
-                Dim equipmentsnrgv As String = eq_rgv_addeq.Rows(counter).Cells(1).Value
+                Dim equipmentnorgv As String = eq_rgv_addeq.Rows(counter).Cells(0).Value
+                Dim equipmentrgv As String = eq_rgv_addeq.Rows(counter).Cells(1).Value
+                Dim equipmentsnrgv As String = eq_rgv_addeq.Rows(counter).Cells(2).Value
 
                 Try
+                    MysqlConn.Close()
+
                     query = "Select * from reservation where borrower='" & rec_cb_borrower.Text & "' and (('" & Format(CDate(rec_dtp_startdate.Value), "yyyy-MM-dd") & " " & Format(CDate(rec_dtp_starttime.Text), "hh:mm") & "' BETWEEN CONCAT(startdate,' ',starttime) AND CONCAT(enddate,' ',endtime)) OR
             ('" & Format(CDate(rec_dtp_enddate.Value), "yyyy-MM-dd") & " " & Format(CDate(rec_dtp_endtime.Text), "hh:mm") & "' BETWEEN CONCAT (enddate,' ',starttime) AND CONCAT(enddate,' ',endtime))); SELECT equipment,equipmentsn from reservation_equipment where equipment='" & eq_rgv_addeq.Rows(eq_rgv_addeq.SelectedRows(0).Index).Cells(0).Value.ToString() & "'and equipmentsn='" & eq_rgv_addeq.Rows(eq_rgv_addeq.SelectedRows(0).Index).Cells(1).Value.ToString() & "'"
                     comm = New MySqlCommand(query, MysqlConn)
@@ -1344,7 +1346,7 @@ Public Class Main
                         count = count + 1
                         conflictequipment = READER.GetString("equipment")
                         conflictequipmentsn = READER.GetString("equipmentsn")
-
+                        conflictequipmentno = READER.GetString("equipmentno")
                     End While
 
                     If count > 0 Then
@@ -1353,11 +1355,21 @@ Public Class Main
                         MysqlConn.Close()
                         MysqlConn.Open()
 
-                        query = "INSERT INTO `reservation` VALUES (  '" & Format(CDate(rec_dtp_startdate.Value), "yyyy-MM-dd") & "', '" & Format(CDate(rec_dtp_enddate.Value), "yyyy-MM-dd") & "','" & Format(CDate(rec_dtp_starttime.Text), "HH:mm") & "','" & Format(CDate(rec_dtp_endtime.Text), "HH:mm") & "','" & rec_cb_borrower.Text & "','" & rec_cb_location.Text & "','" & rec_cb_reserved.Text & "'); INSERT INTO `reservation_equipment` "
-                        '8.8.16 TO BE CONTINUED
+                        query = "INSERT INTO `reservation` VALUES (  '" & Format(CDate(rec_dtp_startdate.Value), "yyyy-MM-dd") & "', '" & Format(CDate(rec_dtp_enddate.Value), "yyyy-MM-dd") & "','" & Format(CDate(rec_dtp_starttime.Text), "HH:mm") & "','" & Format(CDate(rec_dtp_endtime.Text), "HH:mm") & "','" & rec_cb_borrower.Text & "','" & rec_cb_location.Text & "','" & rec_cb_reserved.Text & "') "
+                        comm = New MySqlCommand(query, MysqlConn)
+                        READER = comm.ExecuteReader
+                        MysqlConn.Close()
+
+                        MysqlConn.Open()
+                        query = "INSERT INTO `reservation_equipment` VALUES ('" & equipmentsnrgv & "','" & equipmentnorgv & "','" & equipmentrgv & "','" & rec_eq_type_choose.Text & "'"
+                        comm = New MySqlCommand(query, MysqlConn)
+                        READER = comm.ExecuteReader
+                        MysqlConn.Close()
                     End If
                 Catch ex As Exception
-
+                    RadMessageBox.Show(Me, ex.Message, "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
+                Finally
+                    MysqlConn.Dispose()
                 End Try
 
 
