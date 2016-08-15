@@ -17,7 +17,7 @@ Public Class Main
     Dim deleteYN As DialogResult
     Dim doneYN As DialogResult
 
-    Public counter As Integer
+
     Public equipment As String
     Public rowcounter As Integer = 0
     Dim query As String
@@ -1319,14 +1319,18 @@ Public Class Main
 
 
     'Reservation Management Code Umali R6 = Inserting Data to database
-    'THIS NEED FIXING BECAUSE OF MANY CHANGES OCCURED IN ITS INTERFACE
+    'THIS NEED FIXING BECAUSE OF MANY CHANGES OCCURED IN ITS INTERFACE 
+    'FIXED SINGLE SAVED IN EQUIPMENTS 8.15
+    'GOING TO DO
+    'FIXED SOME LOGIC LIKE RECORD WILL NOT SAVE IF EQUIPMENT IS EMPTY
+    '
 
     Private Sub rec_btn_save_Click(sender As Object, e As EventArgs) Handles rec_btn_save.Click
         MysqlConn = New MySqlConnection
         MysqlConn.ConnectionString = connstring
         Dim READER As MySqlDataReader
 
-        Dim rownumber As Integer = eq_rgv_addeq.Rows.Count
+
         Dim conflictequipmentno As String = ""
         Dim conflictequipment As String = ""
         Dim conflictequipmentsn As String = ""
@@ -1363,7 +1367,8 @@ Public Class Main
             RadMessageBox.Show(Me, ex.Message, "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
         End Try
 
-
+        Dim counter As Integer
+        Dim rownumber As Integer = eq_rgv_addeq.Rows.Count
         counter = 0
 
         If rownumber > 0 Then
@@ -1374,20 +1379,25 @@ Public Class Main
                 Dim equipmentsnrgv As String = eq_rgv_addeq.Rows(counter).Cells(2).Value
 
                 Try
+
                     MysqlConn.Close()
                     MysqlConn.Open()
 
                     query = "SELECT equipment,equipmentsn from reservation_equipment where equipment='" & eq_rgv_addeq.Rows(eq_rgv_addeq.SelectedRows(0).Index).Cells(0).Value.ToString() & "'and equipmentsn='" & eq_rgv_addeq.Rows(eq_rgv_addeq.SelectedRows(0).Index).Cells(1).Value.ToString() & "'"
                     comm = New MySqlCommand(query, MysqlConn)
                     READER = comm.ExecuteReader
-
+                    Dim count As Integer
+                    count = 0
                     While READER.Read
+
+                        count = count + 1
                         equipmentnorgv = READER.GetString("equipmentno")
                         equipmentrgv = READER.GetString("equipment")
                         equipmentsnrgv = READER.GetString("equipmentsn")
+
                     End While
 
-                    Dim count As Integer
+
                     If count > 0 Then
                         RadMessageBox.Show(Me, "The equipment " & equipmentrgv & " with serial number of " & equipmentsnrgv & " is already taken", "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
                     Else
@@ -1396,18 +1406,22 @@ Public Class Main
                         query = "INSERT INTO `reservation_equipment` VALUES ('" & equipmentsnrgv & "','" & equipmentnorgv & "','" & equipmentrgv & "','" & rec_eq_type_choose.Text & "')"
                         comm = New MySqlCommand(query, MysqlConn)
                         READER = comm.ExecuteReader
+                        MysqlConn.Close()
+
+
                     End If
 
 
-                    MysqlConn.Close()
+
                 Catch ex As Exception
                     RadMessageBox.Show(Me, ex.Message, "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
                 Finally
                     MysqlConn.Dispose()
                 End Try
+                counter = counter + 1
 
-                counter += 1
             End While
+            RadMessageBox.Show(Me, "Succesfully Reserved!", "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Info)
         End If
 
 
