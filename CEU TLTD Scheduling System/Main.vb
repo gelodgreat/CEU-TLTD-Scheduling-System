@@ -1258,15 +1258,19 @@ Public Class Main
 
     Private Sub rec_btn_add_eq_Click(sender As Object, e As EventArgs) Handles rec_btn_add_eq.Click
 
+
+
         If MysqlConn.State = ConnectionState.Open Then
             MysqlConn.Close()
         End If
         MysqlConn.ConnectionString = connstring
 
         If rec_eq_choosesn.Text = "" Then
-            RadMessageBox.Show(Me, "Choose Equipment!", "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
+            RadMessageBox.Show(Me, "Choose Serial Number!", "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
         ElseIf rec_eq_type_choose.Text = "" Then
             RadMessageBox.Show(Me, "Choose the Type of Equipment!", "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
+        ElseIf rec_eq_chooseeq.Text = "" Then
+            RadMessageBox.Show(Me, "Choose the Equipment!", "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
         Else
             Try
                 MysqlConn.Open()
