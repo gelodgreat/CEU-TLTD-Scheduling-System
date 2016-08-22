@@ -1565,6 +1565,7 @@ Public Class Main
     End Sub
 
     Private Sub rec_btn_go_to_changeequipment_Click(sender As Object, e As EventArgs) Handles rec_btn_go_to_changeequipment.Click
+        ChangeEquipmentReservation.ShowDialog()
 
     End Sub
 
