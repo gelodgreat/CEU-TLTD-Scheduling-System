@@ -1205,7 +1205,7 @@ Public Class Main
         MysqlConn.ConnectionString = connstring
         Try
             MysqlConn.Open()
-            query = "SELECT equipmentsn from equipments where equipmenttype='" & rec_eq_type_choose.Text & "'"
+            query = "SELECT equipmentsn from equipments where equipmenttype='" & rec_eq_type_choose.Text & "' and isTaken='false'"
             comm = New MySqlCommand(query, MysqlConn)
             reader = comm.ExecuteReader
 
@@ -1287,7 +1287,7 @@ Public Class Main
                     tempno = reader.GetString("#")
                 End While
 
-                eq_rgv_addeq.Rows.Add(tempno, rec_eq_choosesn.Text, tempsn)
+                eq_rgv_addeq.Rows.Add(tempno, rec_eq_chooseeq.Text, tempsn)
 
                 rowcounter += 1
 
@@ -1446,7 +1446,7 @@ Public Class Main
 
                             MysqlConn.Close()
                             MysqlConn.Open()
-                            query = "INSERT INTO `reservation_equipment` VALUES ('" & equipmentsnrgv & "','" & equipmentnorgv & "','" & equipmentrgv & "','" & rec_eq_type_choose.Text & "');Update equipment set isTaken='true' where equipmentsn='" & equipmentsnrgv & "'"
+                            query = "INSERT INTO `reservation_equipment` VALUES ('" & equipmentsnrgv & "','" & equipmentnorgv & "','" & equipmentrgv & "','" & rec_eq_type_choose.Text & "');Update equipments set isTaken='true' where equipmentsn='" & equipmentsnrgv & "'"
                             comm = New MySqlCommand(query, MysqlConn)
                             READER = comm.ExecuteReader
                             MysqlConn.Close()
@@ -1478,6 +1478,101 @@ Public Class Main
         load_main_table()
         load_rec_table()
     End Sub
+
+    'Showing All Data to Reservation Grid View
+
+    Private Sub rec_btn_showalldata_Click(sender As Object, e As EventArgs) Handles rec_btn_showalldata.Click
+        load_rec_table()
+    End Sub
+
+    'SHowing all available equipments to Reservation Grid View
+
+    Private Sub rec_btn_showavailequip_Click(sender As Object, e As EventArgs) Handles rec_btn_showavailequip.Click
+        MysqlConn = New MySqlConnection
+        MysqlConn.ConnectionString = connstring
+
+        Dim sda As New MySqlDataAdapter
+        Dim dbdataset As New DataTable
+        Dim bsource As New BindingSource
+
+        If MysqlConn.State = ConnectionState.Open Then
+            MysqlConn.Close()
+        End If
+
+        Try
+            MysqlConn.Open()
+
+            query = "Select equipmenttype as 'Equipment Type',equipmentno as 'Equipment No.',equipment as 'Equipment', equipmentsn as 'Equipment SN.' from equipments where istaken='false' ORDER BY equipmenttype ASC"
+
+            comm = New MySqlCommand(query, MysqlConn)
+            sda.SelectCommand = comm
+            sda.Fill(dbdataset)
+            bsource.DataSource = dbdataset
+            reservation_rgv_recordeddata.DataSource = bsource
+            reservation_rgv_recordeddata.ReadOnly = True
+            sda.Update(dbdataset)
+            MysqlConn.Close()
+
+        Catch ex As Exception
+            RadMessageBox.Show(Me, ex.Message, "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
+        Finally
+            MysqlConn.Dispose()
+
+        End Try
+    End Sub
+
+    'Showing all Taken equipments to Reservation Grid View
+
+    Private Sub rec_btn_showalltakeneq_Click(sender As Object, e As EventArgs) Handles rec_btn_showalltakeneq.Click
+        MysqlConn = New MySqlConnection
+        MysqlConn.ConnectionString = connstring
+
+        Dim sda As New MySqlDataAdapter
+        Dim dbdataset As New DataTable
+        Dim bsource As New BindingSource
+
+        If MysqlConn.State = ConnectionState.Open Then
+            MysqlConn.Close()
+        End If
+
+        Try
+            MysqlConn.Open()
+
+            query = "Select equipmenttype as 'Equipment Type',equipmentno as 'Equipment No.',equipment as 'Equipment', equipmentsn as 'Equipment SN.' from equipments where istaken='true' ORDER BY equipmenttype ASC"
+
+            comm = New MySqlCommand(query, MysqlConn)
+            sda.SelectCommand = comm
+            sda.Fill(dbdataset)
+            bsource.DataSource = dbdataset
+            reservation_rgv_recordeddata.DataSource = bsource
+            reservation_rgv_recordeddata.ReadOnly = True
+            sda.Update(dbdataset)
+            MysqlConn.Close()
+
+        Catch ex As Exception
+            RadMessageBox.Show(Me, ex.Message, "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
+        Finally
+            MysqlConn.Dispose()
+
+        End Try
+    End Sub
+
+    Private Sub rec_btn_eqclear_Click(sender As Object, e As EventArgs) Handles rec_btn_eqclear.Click
+        rec_eq_type_choose.Text = ""
+        rec_eq_choosesn.Text = ""
+        rec_eq_chooseeq.Text = ""
+
+    End Sub
+
+    Private Sub rec_btn_go_to_changeequipment_Click(sender As Object, e As EventArgs) Handles rec_btn_go_to_changeequipment.Click
+
+    End Sub
+
+
+
+
+
+
 
 
 
