@@ -1335,19 +1335,19 @@ Public Class Main
         Dim conflictequipmentsn As String = ""
 
         Try
-                MysqlConn.Close()
-                MysqlConn.Open()
+            MysqlConn.Close()
+            MysqlConn.Open()
 
-                query = "Select * from reservation where borrower='" & rec_cb_borrower.Text & "' and (('" & Format(CDate(rec_dtp_startdate.Value), "yyyy-MM-dd") & " " & Format(CDate(rec_dtp_starttime.Text), "hh:mm") & "' BETWEEN CONCAT(startdate,' ',starttime) AND CONCAT(enddate,' ',endtime)) OR
+            query = "Select * from reservation where borrower='" & rec_cb_borrower.Text & "' and (('" & Format(CDate(rec_dtp_startdate.Value), "yyyy-MM-dd") & " " & Format(CDate(rec_dtp_starttime.Text), "hh:mm") & "' BETWEEN CONCAT(startdate,' ',starttime) AND CONCAT(enddate,' ',endtime)) OR
             ('" & Format(CDate(rec_dtp_enddate.Value), "yyyy-MM-dd") & " " & Format(CDate(rec_dtp_endtime.Text), "hh:mm") & "' BETWEEN CONCAT (enddate,' ',starttime) AND CONCAT(enddate,' ',endtime)))"
-                comm = New MySqlCommand(query, MysqlConn)
-                READER = comm.ExecuteReader
+            comm = New MySqlCommand(query, MysqlConn)
+            READER = comm.ExecuteReader
 
-                Dim count As Integer
-                count = 0
-                While READER.Read
-                    count = count + 1
-                End While
+            Dim count As Integer
+            count = 0
+            While READER.Read
+                count = count + 1
+            End While
 
             If count = 1 Then
                 RadMessageBox.Show(Me, "The time " & Format(CDate(rec_dtp_starttime.Text), "HH:mm") & " is already in used.", "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -1358,24 +1358,24 @@ Public Class Main
                 '    RadMessageBox.Show(Me, "Please complete the fields", "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
                 'Else
                 MysqlConn.Close()
-                    MysqlConn.Open()
+                MysqlConn.Open()
 
-                    query = "INSERT INTO `reservation` VALUES ('" & Format(CDate(rec_dtp_startdate.Value), "yyyy-MM-dd") & "', '" & Format(CDate(rec_dtp_enddate.Value), "yyyy-MM-dd") & "','" & Format(CDate(rec_dtp_starttime.Text), "HH:mm") & "','" & Format(CDate(rec_dtp_endtime.Text), "HH:mm") & "','" & rec_cb_borrower.Text & "','" & rec_cb_location.Text & "','" & rec_cb_reserved.Text & "','" & rec_cb_status.Text & "') "
-                    comm = New MySqlCommand(query, MysqlConn)
-                    READER = comm.ExecuteReader
-                    MysqlConn.Close()
+                query = "INSERT INTO `reservation` VALUES ('" & Format(CDate(rec_dtp_startdate.Value), "yyyy-MM-dd") & "', '" & Format(CDate(rec_dtp_enddate.Value), "yyyy-MM-dd") & "','" & Format(CDate(rec_dtp_starttime.Text), "HH:mm") & "','" & Format(CDate(rec_dtp_endtime.Text), "HH:mm") & "','" & rec_cb_borrower.Text & "','" & rec_cb_location.Text & "','" & rec_cb_reserved.Text & "','" & rec_cb_status.Text & "') "
+                comm = New MySqlCommand(query, MysqlConn)
+                READER = comm.ExecuteReader
+                MysqlConn.Close()
 
-                End If
+            End If
             'End If
 
         Catch ex As Exception
-                RadMessageBox.Show(Me, ex.Message, "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
-            End Try
+            RadMessageBox.Show(Me, ex.Message, "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
+        End Try
 
-            Dim counter As Integer
-            Dim rownumber As Integer = eq_rgv_addeq.Rows.Count
-            counter = 0
-            Dim errorcount As Boolean = False
+        Dim counter As Integer
+        Dim rownumber As Integer = eq_rgv_addeq.Rows.Count
+        counter = 0
+        Dim errorcount As Boolean = False
         If rownumber > 0 Then
             While counter <> rownumber
 
@@ -1435,10 +1435,10 @@ Public Class Main
         End If
 
         If errorcount = True Then
-                RadMessageBox.Show(Me, "Succesfully Reserved!", "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Info)
-            Else
-                RadMessageBox.Show(Me, "Some items are not succesfully reserved", "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
-            End If
+            RadMessageBox.Show(Me, "Succesfully Reserved!", "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Info)
+        Else
+            RadMessageBox.Show(Me, "Some items are not succesfully reserved", "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
+        End If
 
         load_main_table()
         load_rec_table()
