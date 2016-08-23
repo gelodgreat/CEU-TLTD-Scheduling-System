@@ -566,13 +566,17 @@ Partial Class Main
         Me.rec_dtp_enddate = New Telerik.WinControls.UI.RadDateTimePicker()
         Me.rec_dtp_startdate = New Telerik.WinControls.UI.RadDateTimePicker()
         Me.RadGroupBox5 = New Telerik.WinControls.UI.RadGroupBox()
+        Me.rec_btn_go_to_changeequipment = New Telerik.WinControls.UI.RadButton()
+        Me.rec_eq_chooseeq = New Telerik.WinControls.UI.RadDropDownList()
+        Me.rec_btn_showalltakeneq = New Telerik.WinControls.UI.RadButton()
+        Me.rec_eq_type_choose = New Telerik.WinControls.UI.RadDropDownList()
+        Me.RadLabel71 = New Telerik.WinControls.UI.RadLabel()
         Me.rec_btn_check_availability = New Telerik.WinControls.UI.RadButton()
         Me.rec_btn_add_eq = New Telerik.WinControls.UI.RadButton()
         Me.rec_btn_eqclear = New Telerik.WinControls.UI.RadButton()
         Me.RadLabel70 = New Telerik.WinControls.UI.RadLabel()
-        Me.rec_eq_choose_eq = New Telerik.WinControls.UI.RadDropDownList()
+        Me.rec_eq_choosesn = New Telerik.WinControls.UI.RadDropDownList()
         Me.RadLabel50 = New Telerik.WinControls.UI.RadLabel()
-        Me.rec_eq_type_choose = New Telerik.WinControls.UI.RadDropDownList()
         Me.rec_btn_showalldata = New Telerik.WinControls.UI.RadButton()
         Me.rec_btn_showavailequip = New Telerik.WinControls.UI.RadButton()
         Me.rec_del_eq = New Telerik.WinControls.UI.RadButton()
@@ -811,13 +815,17 @@ Partial Class Main
         CType(Me.rec_dtp_startdate, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RadGroupBox5, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.RadGroupBox5.SuspendLayout()
+        CType(Me.rec_btn_go_to_changeequipment, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.rec_eq_chooseeq, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.rec_btn_showalltakeneq, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.rec_eq_type_choose, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RadLabel71, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.rec_btn_check_availability, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.rec_btn_add_eq, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.rec_btn_eqclear, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RadLabel70, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.rec_eq_choose_eq, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.rec_eq_choosesn, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RadLabel50, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.rec_eq_type_choose, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.rec_btn_showalldata, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.rec_btn_showavailequip, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.rec_del_eq, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -2827,13 +2835,17 @@ Partial Class Main
         'RadGroupBox5
         '
         Me.RadGroupBox5.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping
+        Me.RadGroupBox5.Controls.Add(Me.rec_btn_go_to_changeequipment)
+        Me.RadGroupBox5.Controls.Add(Me.rec_eq_chooseeq)
+        Me.RadGroupBox5.Controls.Add(Me.rec_btn_showalltakeneq)
+        Me.RadGroupBox5.Controls.Add(Me.rec_eq_type_choose)
+        Me.RadGroupBox5.Controls.Add(Me.RadLabel71)
         Me.RadGroupBox5.Controls.Add(Me.rec_btn_check_availability)
         Me.RadGroupBox5.Controls.Add(Me.rec_btn_add_eq)
         Me.RadGroupBox5.Controls.Add(Me.rec_btn_eqclear)
         Me.RadGroupBox5.Controls.Add(Me.RadLabel70)
-        Me.RadGroupBox5.Controls.Add(Me.rec_eq_choose_eq)
+        Me.RadGroupBox5.Controls.Add(Me.rec_eq_choosesn)
         Me.RadGroupBox5.Controls.Add(Me.RadLabel50)
-        Me.RadGroupBox5.Controls.Add(Me.rec_eq_type_choose)
         Me.RadGroupBox5.Controls.Add(Me.rec_btn_showalldata)
         Me.RadGroupBox5.Controls.Add(Me.rec_btn_showavailequip)
         Me.RadGroupBox5.Controls.Add(Me.rec_del_eq)
@@ -2845,6 +2857,51 @@ Partial Class Main
         Me.RadGroupBox5.TabIndex = 2
         Me.RadGroupBox5.Text = "Equipments"
         Me.RadGroupBox5.ThemeName = "VisualStudio2012Dark"
+        '
+        'rec_btn_go_to_changeequipment
+        '
+        Me.rec_btn_go_to_changeequipment.Location = New System.Drawing.Point(14, 200)
+        Me.rec_btn_go_to_changeequipment.Name = "rec_btn_go_to_changeequipment"
+        Me.rec_btn_go_to_changeequipment.Size = New System.Drawing.Size(104, 29)
+        Me.rec_btn_go_to_changeequipment.TabIndex = 34
+        Me.rec_btn_go_to_changeequipment.Text = "Change Equipment"
+        Me.rec_btn_go_to_changeequipment.ThemeName = "VisualStudio2012Dark"
+        '
+        'rec_eq_chooseeq
+        '
+        Me.rec_eq_chooseeq.DropDownStyle = Telerik.WinControls.RadDropDownStyle.DropDownList
+        Me.rec_eq_chooseeq.Location = New System.Drawing.Point(5, 153)
+        Me.rec_eq_chooseeq.Name = "rec_eq_chooseeq"
+        Me.rec_eq_chooseeq.Size = New System.Drawing.Size(217, 24)
+        Me.rec_eq_chooseeq.TabIndex = 31
+        Me.rec_eq_chooseeq.ThemeName = "VisualStudio2012Dark"
+        '
+        'rec_btn_showalltakeneq
+        '
+        Me.rec_btn_showalltakeneq.Location = New System.Drawing.Point(513, 200)
+        Me.rec_btn_showalltakeneq.Name = "rec_btn_showalltakeneq"
+        Me.rec_btn_showalltakeneq.Size = New System.Drawing.Size(149, 29)
+        Me.rec_btn_showalltakeneq.TabIndex = 33
+        Me.rec_btn_showalltakeneq.Text = "Show All Taken Equipments"
+        Me.rec_btn_showalltakeneq.ThemeName = "VisualStudio2012Dark"
+        '
+        'rec_eq_type_choose
+        '
+        Me.rec_eq_type_choose.DropDownStyle = Telerik.WinControls.RadDropDownStyle.DropDownList
+        Me.rec_eq_type_choose.Location = New System.Drawing.Point(5, 45)
+        Me.rec_eq_type_choose.Name = "rec_eq_type_choose"
+        Me.rec_eq_type_choose.Size = New System.Drawing.Size(217, 24)
+        Me.rec_eq_type_choose.TabIndex = 25
+        Me.rec_eq_type_choose.ThemeName = "VisualStudio2012Dark"
+        '
+        'RadLabel71
+        '
+        Me.RadLabel71.Location = New System.Drawing.Point(5, 129)
+        Me.RadLabel71.Name = "RadLabel71"
+        Me.RadLabel71.Size = New System.Drawing.Size(63, 18)
+        Me.RadLabel71.TabIndex = 32
+        Me.RadLabel71.Text = "Equipment:"
+        Me.RadLabel71.ThemeName = "VisualStudio2012Dark"
         '
         'rec_btn_check_availability
         '
@@ -2866,29 +2923,30 @@ Partial Class Main
         '
         'rec_btn_eqclear
         '
-        Me.rec_btn_eqclear.Location = New System.Drawing.Point(13, 199)
+        Me.rec_btn_eqclear.Location = New System.Drawing.Point(232, 136)
         Me.rec_btn_eqclear.Name = "rec_btn_eqclear"
-        Me.rec_btn_eqclear.Size = New System.Drawing.Size(82, 30)
+        Me.rec_btn_eqclear.Size = New System.Drawing.Size(77, 24)
         Me.rec_btn_eqclear.TabIndex = 27
         Me.rec_btn_eqclear.Text = "Clear"
         Me.rec_btn_eqclear.ThemeName = "VisualStudio2012Dark"
         '
         'RadLabel70
         '
-        Me.RadLabel70.Location = New System.Drawing.Point(5, 84)
+        Me.RadLabel70.Location = New System.Drawing.Point(5, 75)
         Me.RadLabel70.Name = "RadLabel70"
-        Me.RadLabel70.Size = New System.Drawing.Size(96, 18)
+        Me.RadLabel70.Size = New System.Drawing.Size(93, 18)
         Me.RadLabel70.TabIndex = 29
-        Me.RadLabel70.Text = "Equipment Name:"
+        Me.RadLabel70.Text = "Equipment Serial:"
         Me.RadLabel70.ThemeName = "VisualStudio2012Dark"
         '
-        'rec_eq_choose_eq
+        'rec_eq_choosesn
         '
-        Me.rec_eq_choose_eq.Location = New System.Drawing.Point(5, 108)
-        Me.rec_eq_choose_eq.Name = "rec_eq_choose_eq"
-        Me.rec_eq_choose_eq.Size = New System.Drawing.Size(217, 24)
-        Me.rec_eq_choose_eq.TabIndex = 28
-        Me.rec_eq_choose_eq.ThemeName = "VisualStudio2012Dark"
+        Me.rec_eq_choosesn.DropDownStyle = Telerik.WinControls.RadDropDownStyle.DropDownList
+        Me.rec_eq_choosesn.Location = New System.Drawing.Point(5, 99)
+        Me.rec_eq_choosesn.Name = "rec_eq_choosesn"
+        Me.rec_eq_choosesn.Size = New System.Drawing.Size(217, 24)
+        Me.rec_eq_choosesn.TabIndex = 28
+        Me.rec_eq_choosesn.ThemeName = "VisualStudio2012Dark"
         '
         'RadLabel50
         '
@@ -2899,17 +2957,9 @@ Partial Class Main
         Me.RadLabel50.Text = "Equipment Type:"
         Me.RadLabel50.ThemeName = "VisualStudio2012Dark"
         '
-        'rec_eq_type_choose
-        '
-        Me.rec_eq_type_choose.Location = New System.Drawing.Point(5, 45)
-        Me.rec_eq_type_choose.Name = "rec_eq_type_choose"
-        Me.rec_eq_type_choose.Size = New System.Drawing.Size(217, 24)
-        Me.rec_eq_type_choose.TabIndex = 25
-        Me.rec_eq_type_choose.ThemeName = "VisualStudio2012Dark"
-        '
         'rec_btn_showalldata
         '
-        Me.rec_btn_showalldata.Location = New System.Drawing.Point(315, 202)
+        Me.rec_btn_showalldata.Location = New System.Drawing.Point(203, 200)
         Me.rec_btn_showalldata.Name = "rec_btn_showalldata"
         Me.rec_btn_showalldata.Size = New System.Drawing.Size(149, 29)
         Me.rec_btn_showalldata.TabIndex = 24
@@ -2918,7 +2968,7 @@ Partial Class Main
         '
         'rec_btn_showavailequip
         '
-        Me.rec_btn_showavailequip.Location = New System.Drawing.Point(499, 202)
+        Me.rec_btn_showavailequip.Location = New System.Drawing.Point(358, 200)
         Me.rec_btn_showavailequip.Name = "rec_btn_showavailequip"
         Me.rec_btn_showavailequip.Size = New System.Drawing.Size(149, 29)
         Me.rec_btn_showavailequip.TabIndex = 23
@@ -2941,7 +2991,7 @@ Partial Class Main
         Me.RadGroupBox17.HeaderText = "Added Equipments"
         Me.RadGroupBox17.Location = New System.Drawing.Point(315, 21)
         Me.RadGroupBox17.Name = "RadGroupBox17"
-        Me.RadGroupBox17.Size = New System.Drawing.Size(348, 175)
+        Me.RadGroupBox17.Size = New System.Drawing.Size(348, 173)
         Me.RadGroupBox17.TabIndex = 1
         Me.RadGroupBox17.Text = "Added Equipments"
         Me.RadGroupBox17.ThemeName = "VisualStudio2012Dark"
@@ -2974,7 +3024,7 @@ Partial Class Main
         Me.eq_rgv_addeq.MasterTemplate.ViewDefinition = TableViewDefinition5
         Me.eq_rgv_addeq.Name = "eq_rgv_addeq"
         Me.eq_rgv_addeq.ReadOnly = True
-        Me.eq_rgv_addeq.Size = New System.Drawing.Size(344, 155)
+        Me.eq_rgv_addeq.Size = New System.Drawing.Size(344, 153)
         Me.eq_rgv_addeq.StandardTab = True
         Me.eq_rgv_addeq.TabIndex = 0
         Me.eq_rgv_addeq.Text = "RadGridView1"
@@ -2987,7 +3037,7 @@ Partial Class Main
         Me.RadGroupBox3.HeaderText = "List of Reservation"
         Me.RadGroupBox3.Location = New System.Drawing.Point(0, -3)
         Me.RadGroupBox3.Name = "RadGroupBox3"
-        Me.RadGroupBox3.Size = New System.Drawing.Size(1368, 305)
+        Me.RadGroupBox3.Size = New System.Drawing.Size(1345, 305)
         Me.RadGroupBox3.TabIndex = 0
         Me.RadGroupBox3.Text = "List of Reservation"
         Me.RadGroupBox3.ThemeName = "VisualStudio2012Dark"
@@ -3010,7 +3060,7 @@ Partial Class Main
         Me.reservation_rgv_recordeddata.MasterTemplate.ViewDefinition = TableViewDefinition7
         Me.reservation_rgv_recordeddata.Name = "reservation_rgv_recordeddata"
         Me.reservation_rgv_recordeddata.ReadOnly = True
-        Me.reservation_rgv_recordeddata.Size = New System.Drawing.Size(1364, 285)
+        Me.reservation_rgv_recordeddata.Size = New System.Drawing.Size(1341, 285)
         Me.reservation_rgv_recordeddata.TabIndex = 3
         Me.reservation_rgv_recordeddata.Text = "RadGridView2"
         Me.reservation_rgv_recordeddata.ThemeName = "VisualStudio2012Dark"
@@ -3032,7 +3082,7 @@ Partial Class Main
         Me.reservations_rgv_showavailableitems.MasterTemplate.ViewDefinition = TableViewDefinition6
         Me.reservations_rgv_showavailableitems.Name = "reservations_rgv_showavailableitems"
         Me.reservations_rgv_showavailableitems.ReadOnly = True
-        Me.reservations_rgv_showavailableitems.Size = New System.Drawing.Size(1364, 285)
+        Me.reservations_rgv_showavailableitems.Size = New System.Drawing.Size(1341, 285)
         Me.reservations_rgv_showavailableitems.TabIndex = 1
         Me.reservations_rgv_showavailableitems.Text = "RadGridView2"
         Me.reservations_rgv_showavailableitems.ThemeName = "VisualStudio2012Dark"
@@ -4447,13 +4497,17 @@ Partial Class Main
         CType(Me.RadGroupBox5, System.ComponentModel.ISupportInitialize).EndInit()
         Me.RadGroupBox5.ResumeLayout(False)
         Me.RadGroupBox5.PerformLayout()
+        CType(Me.rec_btn_go_to_changeequipment, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.rec_eq_chooseeq, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.rec_btn_showalltakeneq, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.rec_eq_type_choose, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RadLabel71, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.rec_btn_check_availability, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.rec_btn_add_eq, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.rec_btn_eqclear, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RadLabel70, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.rec_eq_choose_eq, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.rec_eq_choosesn, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RadLabel50, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.rec_eq_type_choose, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.rec_btn_showalldata, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.rec_btn_showavailequip, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.rec_del_eq, System.ComponentModel.ISupportInitialize).EndInit()
@@ -4787,7 +4841,7 @@ Partial Class Main
     Friend WithEvents returned_grid_list As Telerik.WinControls.UI.RadGridView
     Friend WithEvents rec_btn_eqclear As Telerik.WinControls.UI.RadButton
     Friend WithEvents RadLabel70 As Telerik.WinControls.UI.RadLabel
-    Friend WithEvents rec_eq_choose_eq As Telerik.WinControls.UI.RadDropDownList
+    Friend WithEvents rec_eq_choosesn As Telerik.WinControls.UI.RadDropDownList
     Friend WithEvents eq_rgv_addeq As Telerik.WinControls.UI.RadGridView
     Friend WithEvents CeutltdschedulerDataSetBindingSource As BindingSource
     Friend WithEvents rec_btn_check_availability As Telerik.WinControls.UI.RadButton
@@ -4795,5 +4849,9 @@ Partial Class Main
     Friend WithEvents eq_equipment As Telerik.WinControls.UI.RadTextBox
     Friend WithEvents eq_owner As Telerik.WinControls.UI.RadTextBox
     Friend WithEvents eq_equipmentlocation As Telerik.WinControls.UI.RadTextBox
+    Friend WithEvents RadLabel71 As Telerik.WinControls.UI.RadLabel
+    Friend WithEvents rec_eq_chooseeq As Telerik.WinControls.UI.RadDropDownList
+    Friend WithEvents rec_btn_showalltakeneq As Telerik.WinControls.UI.RadButton
+    Friend WithEvents rec_btn_go_to_changeequipment As Telerik.WinControls.UI.RadButton
 End Class
 

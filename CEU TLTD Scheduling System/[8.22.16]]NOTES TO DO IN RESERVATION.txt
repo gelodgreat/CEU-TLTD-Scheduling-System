@@ -1,0 +1,1 @@
+add new interface for reservation where you can update,delete a certain record of the equipment
