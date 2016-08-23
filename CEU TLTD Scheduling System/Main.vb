@@ -707,10 +707,48 @@ Public Class Main
 
     End Sub
 
+    'Programmed by BRENZ 18th Point Cancel BTN at Returning Management
+    Private Sub return_btn_cancel_Click(sender As Object, e As EventArgs) Handles return_btn_cancel.Click
+        cancelYN = RadMessageBox.Show(Me, "Do you want to cancel returning? ", "TLTD Scheduling management", MessageBoxButtons.YesNo, RadMessageIcon.Question)
+        If cancelYN = MsgBoxResult.Yes Then
+            ret_tb_id.Text = ""
+            ret_tb_borrower.Text = ""
+            ret_tb_type.Text = ""
+            ret_tb_sdate.Text = "01/01/99"
+            ret_tb_edate.Text = "01/01/99"
+            ret_tb_stime.Text = ""
+            ret_tb_etime.Text = ""
+            ret_tb_college.Text = ""
+            ret_tb_location.Text = ""
+            ret_tb_status.Text = ""
+            ret_tb_released.Text = ""
+            ret_tb_returned.Text = ""
+        End If
+    End Sub
+
+
+    'Programmed by BRENZ 19th Point Cancel BTN at Releasing Management
+    Private Sub released_btn_cancel_Click(sender As Object, e As EventArgs) Handles released_btn_cancel.Click
+        cancelYN = RadMessageBox.Show(Me, "Do you want to cancel returning? ", "TLTD Scheduling management", MessageBoxButtons.YesNo, RadMessageIcon.Question)
+        If cancelYN = MsgBoxResult.Yes Then
+            rel_tb_id.Text = ""
+            rel_tb_borrower.Text = ""
+            rel_tb_type.Text = ""
+            rel_tb_startdate.Text = "01/01/99"
+            rel_tb_enddate.Text = "01/01/99"
+            rel_tb_starttime.Text = ""
+            rel_tb_enddate.Text = ""
+            rel_tb_college.Text = ""
+            rel_tb_location.Text = ""
+            rel_tb_status.Text = ""
+            rel_tb_releasedby.Text = ""
+
+        End If
 
 
 
 
+    End Sub
 
 
 
@@ -1568,6 +1606,8 @@ Public Class Main
         ChangeEquipmentReservation.ShowDialog()
 
     End Sub
+
+
 
 
 
