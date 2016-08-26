@@ -17,6 +17,8 @@ Public Class Main
     Dim deleteYN As DialogResult
     Dim doneYN As DialogResult
 
+    Public identifier_reservationno As String
+    Public random As System.Random = New System.Random
 
     Public equipment As String
     Public rowcounter As Integer = 0
@@ -36,7 +38,7 @@ Public Class Main
         load_released_list2()
         load_returned_list()
         rec_load_choices_eqtype()
-
+        auto_generate_reservationno()
 
     End Sub
     Public Sub startup_disabled_buttons()
@@ -1405,7 +1407,7 @@ Public Class Main
         Dim conflictequipmentno As String = ""
         Dim conflictequipment As String = ""
         Dim conflictequipmentsn As String = ""
-        If (rec_cb_idnum.Text = "") Or (rec_cb_borrower.Text = "") Or (rec_cb_borrowertype.Text = "") Or (rec_dtp_startdate.Text = "") Or (rec_dtp_enddate.Text = "") Or (rec_dtp_starttime.Text = "") Or (rec_dtp_endtime.Text = "") Or (rec_cb_college_school.Text = "") Or (rec_cb_location.Text = "") Or (rec_cb_status.Text = "") Or (rec_cb_reserved.Text = "") Or (rec_eq_choosesn.Text = "") Or (rec_eq_type_choose.Text = "") Or (eq_rgv_addeq.Rows.Count < 0) Then
+        If (rec_cb_reserveno.Text = "") Or (rec_cb_idnum.Text = "") Or (rec_cb_borrower.Text = "") Or (rec_cb_borrowertype.Text = "") Or (rec_dtp_startdate.Text = "") Or (rec_dtp_enddate.Text = "") Or (rec_dtp_starttime.Text = "") Or (rec_dtp_endtime.Text = "") Or (rec_cb_college_school.Text = "") Or (rec_cb_location.Text = "") Or (rec_cb_status.Text = "") Or (rec_cb_reserved.Text = "") Or (rec_eq_choosesn.Text = "") Or (rec_eq_type_choose.Text = "") Or (eq_rgv_addeq.Rows.Count < 0) Then
 
             RadMessageBox.Show(Me, "Please complete the fields", "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
         Else
@@ -1433,7 +1435,7 @@ Public Class Main
                     MysqlConn.Close()
                     MysqlConn.Open()
 
-                    query = "INSERT INTO `reservation` VALUES ('" & Format(CDate(rec_dtp_startdate.Value), "yyyy-MM-dd") & "', '" & Format(CDate(rec_dtp_enddate.Value), "yyyy-MM-dd") & "','" & Format(CDate(rec_dtp_starttime.Text), "HH:mm") & "','" & Format(CDate(rec_dtp_endtime.Text), "HH:mm") & "','" & rec_cb_borrower.Text & "','" & rec_cb_location.Text & "','" & rec_cb_reserved.Text & "','" & rec_cb_status.Text & "') "
+                    query = "INSERT INTO `reservation` VALUES ('" & rec_cb_reserveno.Text & "','" & Format(CDate(rec_dtp_startdate.Value), "yyyy-MM-dd") & "', '" & Format(CDate(rec_dtp_enddate.Value), "yyyy-MM-dd") & "','" & Format(CDate(rec_dtp_starttime.Text), "HH:mm") & "','" & Format(CDate(rec_dtp_endtime.Text), "HH:mm") & "','" & rec_cb_borrower.Text & "','" & rec_cb_location.Text & "','" & rec_cb_reserved.Text & "','" & rec_cb_status.Text & "') "
                     comm = New MySqlCommand(query, MysqlConn)
                     READER = comm.ExecuteReader
                     MysqlConn.Close()
@@ -1461,7 +1463,7 @@ Public Class Main
                         MysqlConn.Close()
                         MysqlConn.Open()
 
-                        query = "SELECT * from reservation_equipment where equipment='" & equipmentrgv & "'and equipmentsn='" & equipmentsnrgv & "' and equipmentno='" & equipmentnorgv & "'"
+                        query = "SELECT * from reservation_equipment where reservationno='" & rec_cb_reserveno.Text & "' and equipment='" & equipmentrgv & "'and equipmentsn='" & equipmentsnrgv & "' and equipmentno='" & equipmentnorgv & "'"
                         comm = New MySqlCommand(query, MysqlConn)
                         READER = comm.ExecuteReader
                         Dim count As Integer
@@ -1484,7 +1486,7 @@ Public Class Main
 
                             MysqlConn.Close()
                             MysqlConn.Open()
-                            query = "INSERT INTO `reservation_equipment` VALUES ('" & equipmentsnrgv & "','" & equipmentnorgv & "','" & equipmentrgv & "','" & rec_eq_type_choose.Text & "');Update equipments set isTaken='true' where equipmentsn='" & equipmentsnrgv & "'"
+                            query = "INSERT INTO `reservation_equipment` VALUES ('" & rec_cb_reserveno.Text & "','" & equipmentsnrgv & "','" & equipmentnorgv & "','" & equipmentrgv & "','" & rec_eq_type_choose.Text & "');Update equipments set isTaken='true' where equipmentsn='" & equipmentsnrgv & "'"
                             comm = New MySqlCommand(query, MysqlConn)
                             READER = comm.ExecuteReader
                             MysqlConn.Close()
@@ -1509,8 +1511,10 @@ Public Class Main
 
             If errorcount = False Then
                 RadMessageBox.Show(Me, "Succesfully Equipment Reserved!", "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Info)
+                auto_generate_reservationno()
             Else
-                RadMessageBox.Show(Me, "Some equipment are not succesfully reserved", "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
+                RadMessageBox.Show(Me, "Some equipments are not succesfully reserved", "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
+                auto_generate_reservationno()
             End If
         End If
         load_main_table()
@@ -1595,6 +1599,8 @@ Public Class Main
         End Try
     End Sub
 
+    'Clearing of the Equipment Choice
+
     Private Sub rec_btn_eqclear_Click(sender As Object, e As EventArgs) Handles rec_btn_eqclear.Click
         rec_eq_type_choose.Text = ""
         rec_eq_choosesn.Text = ""
@@ -1602,11 +1608,52 @@ Public Class Main
 
     End Sub
 
+    'Opening of the Change Equipment Form
     Private Sub rec_btn_go_to_changeequipment_Click(sender As Object, e As EventArgs) Handles rec_btn_go_to_changeequipment.Click
         ChangeEquipmentReservation.ShowDialog()
 
     End Sub
 
+    Private Sub rec_btn_update_Click(sender As Object, e As EventArgs) Handles rec_btn_update.Click
+        If MysqlConn.State = ConnectionState.Open Then
+            MysqlConn.Close()
+        End If
+
+        If (rec_cb_idnum.Text = "") Or (rec_cb_borrower.Text = "") Or (rec_cb_borrowertype.Text = "") Or (rec_dtp_startdate.Text = "") Or (rec_dtp_enddate.Text = "") Or (rec_dtp_starttime.Text = "") Or (rec_dtp_endtime.Text = "") Or (rec_cb_college_school.Text = "") Or (rec_cb_location.Text = "") Or (rec_cb_status.Text = "") Or (rec_cb_reserved.Text = "") Or (rec_eq_choosesn.Text = "") Or (rec_eq_type_choose.Text = "") Or (eq_rgv_addeq.Rows.Count < 0) Then
+
+            RadMessageBox.Show(Me, "Please complete the fields", "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
+        Else
+            updateYN = RadMessageBox.Show(Me, "Do you want To update the selected equipment?", "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Question)
+            If updateYN = MsgBoxResult.Yes Then
+
+                Try
+                    MysqlConn.Open()
+                    query = "UPDATE reservation SET startdate='" & Format(CDate(rec_dtp_startdate.Value), "yyyy-MM-dd") & "',enddate='" & Format(CDate(rec_dtp_enddate.Value), "yyyy-MM-dd") & "',starttime='" & Format(CDate(rec_dtp_starttime.Text), "HH:mm") & "' , endtime='" & Format(CDate(rec_dtp_endtime.Text), "HH:mm") & "',location='" & rec_cb_location.Text & "' where (equipmentsn='" & eq_sn.Text & "') and (equipmentno='" & eq_equipmentno.Text & "')"
+                    comm = New MySqlCommand(query, MysqlConn)
+                    reader = comm.ExecuteReader
+
+                    RadMessageBox.Show(Me, "Update Success!", "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Info)
+                    MysqlConn.Close()
+
+
+                Catch ex As Exception
+                    RadMessageBox.Show(Me, ex.Message, "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
+                Finally
+                    MysqlConn.Dispose()
+                End Try
+            Else
+
+            End If
+        End If
+
+    End Sub
+
+
+    Public Sub auto_generate_reservationno()
+        identifier_reservationno = Now.ToString("mmddyyy")
+        identifier_reservationno = identifier_reservationno + random.Next(1, 100000000).ToString
+        rec_cb_reserveno.Text = identifier_reservationno
+    End Sub
 
 
 
