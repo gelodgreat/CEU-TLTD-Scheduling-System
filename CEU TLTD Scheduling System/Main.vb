@@ -724,31 +724,44 @@ Public Class Main
         Dim SDA As New MySqlDataAdapter
         Dim dbdataset As New DataTable
         Dim bsource As New BindingSource
-        Try
-            MysqlConn.Open()
 
-            query = "select DATE_FORMAT(startdate,'%M %d %Y') as 'Start Date', DATE_FORMAT(enddate,'%M %d, %Y') as 
+        If (lu_startdate.Text = "") Or (lu_enddate.Text = "") Or (lu_starttime.Text = "") Or (lu_endtime.Text) Then
+            RadMessageBox.Show(Me, "Please fill all fields to search.", "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
+        Else
+
+            Try
+                MysqlConn.Open()
+
+                query = "select DATE_FORMAT(startdate,'%M %d %Y') as 'Start Date', DATE_FORMAT(enddate,'%M %d, %Y') as 
             'End Date', TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time', borrower as 
-            'Borrower',location as 'Location', equipment as 'Equipment' from reservation
-            where (((startdate between '" & Format(CDate(lu_startdate.Value), "yyyy-MM-dd") & "' and '" & Format(CDate(lu_enddate.Value), "yyyy-MM-dd") & "') and 
-            (starttime between '" & Format(CDate(lu_starttime.Text), "HH:mm") & "' and '" & Format(CDate(lu_starttime.Text), "HH:mm") & "')) or
-            ((enddate between '" & Format(CDate(lu_startdate.Value), "yyyy-MM-dd") & "' and '" & Format(CDate(lu_enddate.Value), "yyyy-MM-dd") & "') and
-            (endtime between '" & Format(CDate(lu_endtime.Text), "HH:mm") & "' and '" & Format(CDate(lu_endtime.Text), "HH:mm") & "')))"
+            'Borrower',location as 'Location' from reservation
+            where (((startdate between @startdate and @enddate and 
+            (starttime between @starttime and @endtime)) or
+            ((enddate between @startdate and @enddate) and
+            (endtime between @endtime and @endtime))))"
 
-            comm = New MySqlCommand(query, MysqlConn)
-            SDA.SelectCommand = comm
-            SDA.Fill(dbdataset)
-            bsource.DataSource = dbdataset
-            main_rgv_recordeddatamain.DataSource = bsource
-            SDA.Update(dbdataset)
+                comm = New MySqlCommand(query, MysqlConn)
+                comm.Parameters.AddWithValue("startdate", Format(CDate(lu_startdate.Value), "yyyy-MM-dd"))
+                comm.Parameters.AddWithValue("enddate", Format(CDate(lu_enddate.Value), "yyyy-MM-dd"))
+                comm.Parameters.AddWithValue("starttime", Format(CDate(lu_starttime.Text), "HH:mm"))
+                comm.Parameters.AddWithValue("endtime", Format(CDate(lu_starttime.Text), "HH:mm"))
 
-            MysqlConn.Close()
 
-        Catch ex As MySqlException
-            RadMessageBox.Show(Me, ex.Message, "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
-        Finally
-            MysqlConn.Dispose()
-        End Try
+                SDA.SelectCommand = comm
+                SDA.Fill(dbdataset)
+                bsource.DataSource = dbdataset
+                main_rgv_recordeddatamain.DataSource = bsource
+                SDA.Update(dbdataset)
+
+                MysqlConn.Close()
+
+            Catch ex As MySqlException
+                RadMessageBox.Show(Me, ex.Message, "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
+            Finally
+                MysqlConn.Dispose()
+            End Try
+
+        End If
     End Sub
 
     'Main Window Search Functions Umali C2
@@ -876,9 +889,9 @@ Public Class Main
         Else
             Try
                 MysqlConn.Open()
-                query = "SELECT * from equipments where (equipmentsn='" & eq_sn.Text & "')"
-
+                query = "SELECT * from equipments where (equipmentsn=@eq_sn)"
                 comm = New MySqlCommand(query, MysqlConn)
+                comm.Parameters.AddWithValue("eq_sn", eq_sn.Text)
                 reader = comm.ExecuteReader
 
                 Dim count As Integer
@@ -895,9 +908,18 @@ Public Class Main
 
                     addYN = RadMessageBox.Show(Me, "Are you sure you want To save this equipment?", "TLTD Scheduling Management", MessageBoxButtons.YesNo, RadMessageIcon.Question)
                     If addYN = MsgBoxResult.Yes Then
-                        query = "INSERT INTO `equipments` VALUES ('" & eq_equipmentno.Text & "','" & eq_equipment.Text & "','" & eq_sn.Text & "','" & eq_equipmentlocation.Text & "','" & eq_owner.Text & "','" & eq_status.Text & "','" & eq_type.Text & "','false')"
-
+                        query = "INSERT INTO `equipments` VALUES (@eq_eqno, @eq_eqeq, @eq_eqsn, @eq_eqlocation, @eq_eqowner, @eq_eqstatus, @eq_eqtype, 'false')"
                         comm = New MySqlCommand(query, MysqlConn)
+
+                        comm.Parameters.AddWithValue("eq_eqno", eq_equipmentno.Text)
+                        comm.Parameters.AddWithValue("eq_eqeq", eq_equipment.Text)
+                        comm.Parameters.AddWithValue("eq_eqsn", eq_sn.Text)
+                        comm.Parameters.AddWithValue("eq_eqlocation", eq_equipmentlocation.Text)
+                        comm.Parameters.AddWithValue("eq_eqowner", eq_owner.Text)
+                        comm.Parameters.AddWithValue("eq_eqstatus", eq_status.Text)
+                        comm.Parameters.AddWithValue("eq_eqtype", eq_type.Text)
+
+
                         reader = comm.ExecuteReader
                         RadMessageBox.Show(Me, "Equipment Registered!", "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Info)
                         MysqlConn.Close()
@@ -929,8 +951,18 @@ Public Class Main
             Else
                 Try
                     MysqlConn.Open()
-                    query = "UPDATE equipments Set equipmentno='" & eq_equipmentno.Text & "',equipmentsn='" & eq_sn.Text & "',equipment='" & eq_equipment.Text & "', equipmentlocation='" & eq_equipmentlocation.Text & "',equipmentowner='" & eq_owner.Text & "',equipmentstatus='" & eq_status.Text & "',equipmentype='" & eq_type.Text & "' where (equipmentsn='" & eq_sn.Text & "') and (equipmentno='" & eq_equipmentno.Text & "')"
+                    query = "UPDATE equipments SET equipmentno=@eq_eqno, equipmentsn=@eq_eqsn, equipment=@eq_eqeq, equipmentlocation=@eq_eqlocation, equipmentowner=@eq_eqowner, equipmentstatus=@eq_eqstatus, equipmentype=@eq_eqtype WHERE (equipmentsn=@eq_eqsn) AND (equipmentno=@eq_eqno)"
                     comm = New MySqlCommand(query, MysqlConn)
+
+                    comm.Parameters.AddWithValue("eq_eqno", eq_equipmentno.Text)
+                    comm.Parameters.AddWithValue("eq_eqeq", eq_equipment.Text)
+                    comm.Parameters.AddWithValue("eq_eqsn", eq_sn.Text)
+                    comm.Parameters.AddWithValue("eq_eqlocation", eq_equipmentlocation.Text)
+                    comm.Parameters.AddWithValue("eq_eqowner", eq_owner.Text)
+                    comm.Parameters.AddWithValue("eq_eqstatus", eq_status.Text)
+                    comm.Parameters.AddWithValue("eq_eqtype", eq_type.Text)
+
+
                     reader = comm.ExecuteReader
 
                     RadMessageBox.Show(Me, "Update Success!", "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Info)
@@ -959,8 +991,11 @@ Public Class Main
         If deleteYN = MsgBoxResult.Yes Then
             Try
                 MysqlConn.Open()
-                query = "DELETE FROM equipments where equipmentno='" & eq_equipmentno.Text & "' and equipmentsn='" & eq_sn.Text & "' "
+                query = "DELETE FROM equipments WHERE equipmentno=@eq_eqno AND equipmentsn=@eq_eqsn "
                 comm = New MySqlCommand(query, MysqlConn)
+                comm.Parameters.AddWithValue("eq_eqno", eq_equipmentno.Text)
+                comm.Parameters.AddWithValue("eq_eqsn", eq_sn.Text)
+
                 reader = comm.ExecuteReader
 
                 eq_equipment.Text = ""
@@ -1036,7 +1071,7 @@ Public Class Main
         Try
             MysqlConn.Open()
 
-            query = "SELECT equipmentno as 'Equipment Number', equipment as 'Equipment', equipmentsn as 'Serial Number',equipmenttype as 'Equipment Type', equipmentlocation as 'Equipment Location',equipmentowner as 'Owner',equipmentstatus as 'Status' from equipments ORDER BY equipmentno DESC"
+            query = "SELECT equipmentno AS 'Equipment Number', equipment AS 'Equipment', equipmentsn AS 'Serial Number',equipmenttype AS 'Equipment Type', equipmentlocation AS 'Equipment Location',equipmentowner AS 'Owner',equipmentstatus AS 'Status' FROM equipments ORDER BY equipmentno DESC"
 
             comm = New MySqlCommand(query, MysqlConn)
             SDA.SelectCommand = comm
@@ -1072,7 +1107,7 @@ Public Class Main
         Try
             MysqlConn.Open()
 
-            query = "SELECT equipmentno as 'Equipment Number', equipment as 'Equipment', equipmentsn as 'Serial Number',equipmenttype as 'Equipment Type', equipmentlocation as 'Equipment Location',equipmentowner as 'Owner',equipmentstatus as 'Status' from equipments ORDER BY equipmentno DESC"
+            query = "SELECT equipmentno AS 'Equipment Number', equipment AS 'Equipment', equipmentsn AS 'Serial Number',equipmenttype AS 'Equipment Type', equipmentlocation AS 'Equipment Location',equipmentowner AS 'Owner',equipmentstatus AS 'Status' FROM equipments ORDER BY equipmentno DESC"
 
             comm = New MySqlCommand(query, MysqlConn)
             SDA.SelectCommand = comm
@@ -1112,7 +1147,7 @@ Public Class Main
             Try
                 MysqlConn.Open()
 
-                query = "SELECT equipmentno as 'Equipment Number', equipment as 'Equipment', equipmentsn as 'Serial Number',equipmenttype as 'Equipment Type', equipmentlocation as 'Equipment Location',equipmentowner as 'Owner',equipmentstatus as 'Status' from equipments ORDER BY equipmentno DESC"
+                query = "SELECT equipmentno AS 'Equipment Number', equipment AS 'Equipment', equipmentsn AS 'Serial Number',equipmenttype AS 'Equipment Type', equipmentlocation AS 'Equipment Location',equipmentowner AS 'Owner',equipmentstatus AS 'Status' FROM equipments ORDER BY equipmentno DESC"
 
                 comm = New MySqlCommand(query, MysqlConn)
                 SDA.SelectCommand = comm
@@ -1151,8 +1186,10 @@ Public Class Main
 
             Dim holder As String
 
-            query = "SELECT count(equipmenttype) as 'total' FROM equipments WHERE equipmenttype='" & eq_counter_type.Text & "'"
+            query = "SELECT COUNT(equipmenttype) AS 'total' FROM equipments WHERE equipmenttype=@eq_countertype"
             comm = New MySqlCommand(query, MysqlConn)
+            comm.Parameters.AddWithValue("eq_countertype", eq_counter_type.Text)
+
             reader = comm.ExecuteReader
             While reader.Read
                 holder = reader.GetString("total")
@@ -1178,7 +1215,7 @@ Public Class Main
         MysqlConn.ConnectionString = connstring
         Try
             MysqlConn.Open()
-            query = "SELECT DISTINCT(equipmenttype) from equipments ORDER BY equipmenttype ASC"
+            query = "SELECT DISTINCT(equipmenttype) FROM equipments ORDER BY equipmenttype ASC"
             comm = New MySqlCommand(query, MysqlConn)
             reader = comm.ExecuteReader
 
@@ -1207,8 +1244,9 @@ Public Class Main
         MysqlConn.ConnectionString = connstring
         Try
             MysqlConn.Open()
-            query = "SELECT equipmentsn from equipments where equipmenttype='" & rec_eq_type_choose.Text & "' and isTaken='false'"
+            query = "SELECT equipmentsn FROM equipments WHERE equipmenttype=@rec_eq_type_choose AND isTaken='false'"
             comm = New MySqlCommand(query, MysqlConn)
+            comm.Parameters.AddWithValue("rec_eq_type_choose", rec_eq_type_choose.Text)
             reader = comm.ExecuteReader
 
             rec_eq_choosesn.Items.Clear()
@@ -1233,8 +1271,12 @@ Public Class Main
         MysqlConn.ConnectionString = connstring
         Try
             MysqlConn.Open()
-            query = "SELECT equipment from equipments where equipmenttype='" & rec_eq_type_choose.Text & "' and equipmentsn='" & rec_eq_choosesn.Text & "'"
+            query = "SELECT equipment from equipments where equipmenttype=@rec_eq_type_choose and equipmentsn=@rec_eq_choosesn"
             comm = New MySqlCommand(query, MysqlConn)
+            comm.Parameters.AddWithValue("rec_eq_type_choose", rec_eq_type_choose.Text)
+            comm.Parameters.AddWithValue("rec_eq_choosesn", rec_eq_choosesn.Text)
+
+
             reader = comm.ExecuteReader
 
             rec_eq_chooseeq.Items.Clear()
@@ -1276,8 +1318,12 @@ Public Class Main
         Else
             Try
                 MysqlConn.Open()
-                query = "SELECT equipmentsn as 'Serial Number', equipmentno as '#' from equipments where equipmenttype='" & rec_eq_type_choose.Text & "' and equipment='" & rec_eq_chooseeq.Text & "' and equipmentsn='" & rec_eq_choosesn.Text & "'"
+                query = "SELECT equipmentsn as 'Serial Number', equipmentno as '#' from equipments where equipmenttype=@rec_eq_type_choose and equipment=@rec_chooseeq and equipmentsn=@rec_eq_choosesn"
                 comm = New MySqlCommand(query, MysqlConn)
+                comm.Parameters.AddWithValue("rec_eq_type_choose", rec_eq_type_choose.Text)
+                comm.Parameters.AddWithValue("rec_eq_choosesn", rec_eq_choosesn.Text)
+                comm.Parameters.AddWithValue("rec_chooseeq", rec_eq_chooseeq.Text)
+
                 reader = comm.ExecuteReader
 
                 Dim count As Integer
@@ -1325,8 +1371,13 @@ Public Class Main
 
         Try
             MysqlConn.Open()
-            query = "SELECT equipmentno,equipment,equipmentsn from reservation_equipment where equipmentno='" & eq_rgv_addeq.Rows(eq_rgv_addeq.SelectedRows(0).Index).Cells(0).Value.ToString() & "' and equipment='" & eq_rgv_addeq.Rows(eq_rgv_addeq.SelectedRows(0).Index).Cells(1).Value.ToString() & "' and equipmentsn='" & eq_rgv_addeq.Rows(eq_rgv_addeq.SelectedRows(0).Index).Cells(2).Value.ToString() & "'"
+            query = "SELECT equipmentno,equipment,equipmentsn from reservation_equipment where equipmentno=@rows_eqno and equipment=@rows_eq and equipmentsn=@rows_eqsn"
             comm = New MySqlCommand(query, MysqlConn)
+            comm.Parameters.AddWithValue("rows_eqno", eq_rgv_addeq.Rows(eq_rgv_addeq.SelectedRows(0).Index).Cells(0).Value.ToString())
+            comm.Parameters.AddWithValue("rows_eq", eq_rgv_addeq.Rows(eq_rgv_addeq.SelectedRows(0).Index).Cells(1).Value.ToString())
+            comm.Parameters.AddWithValue("rows_eqsn", eq_rgv_addeq.Rows(eq_rgv_addeq.SelectedRows(0).Index).Cells(2).Value.ToString())
+
+
             reader = comm.ExecuteReader
 
             Dim count As Integer
@@ -1381,6 +1432,8 @@ Public Class Main
                 query = "Select * from reservation where borrower='" & rec_cb_borrower.Text & "' and (('" & Format(CDate(rec_dtp_startdate.Value), "yyyy-MM-dd") & " " & Format(CDate(rec_dtp_starttime.Text), "hh:mm") & "' BETWEEN CONCAT(startdate,' ',starttime) AND CONCAT(enddate,' ',endtime)) OR
             ('" & Format(CDate(rec_dtp_enddate.Value), "yyyy-MM-dd") & " " & Format(CDate(rec_dtp_endtime.Text), "hh:mm") & "' BETWEEN CONCAT (enddate,' ',starttime) AND CONCAT(enddate,' ',endtime)))"
                 comm = New MySqlCommand(query, MysqlConn)
+
+
                 READER = comm.ExecuteReader
 
                 Dim count As Integer
@@ -1397,8 +1450,18 @@ Public Class Main
                     MysqlConn.Close()
                     MysqlConn.Open()
 
-                    query = "INSERT INTO `reservation` VALUES ('" & rec_cb_reserveno.Text & "','" & Format(CDate(rec_dtp_startdate.Value), "yyyy-MM-dd") & "', '" & Format(CDate(rec_dtp_enddate.Value), "yyyy-MM-dd") & "','" & Format(CDate(rec_dtp_starttime.Text), "HH:mm") & "','" & Format(CDate(rec_dtp_endtime.Text), "HH:mm") & "','" & rec_cb_borrower.Text & "','" & rec_cb_location.Text & "','" & rec_cb_reserved.Text & "','" & rec_cb_status.Text & "') "
+                    query = "INSERT INTO `reservation` VALUES (@rec_reserveno, @rec_dtpstartdate, @rec_dtpenddate, @rec_dtpstarttime, @rec_dtpendtime, @rec_cbborrower, @rec_cblocation ,@rec_cb_reserved,@rec_cb_status) "
                     comm = New MySqlCommand(query, MysqlConn)
+                    comm.Parameters.AddWithValue("rec_reserveno", rec_cb_reserveno.Text)
+                    comm.Parameters.AddWithValue("rec_dtpstartdate", Format(CDate(rec_dtp_startdate.Value), "yyyy-MM-dd"))
+                    comm.Parameters.AddWithValue("rec_dtpenddate", Format(CDate(rec_dtp_enddate.Value), "yyyy-MM-dd"))
+                    comm.Parameters.AddWithValue("rec_dtpstarttime", Format(CDate(rec_dtp_starttime.Text), "HH:mm"))
+                    comm.Parameters.AddWithValue("rec_dtpendtime", Format(CDate(rec_dtp_endtime.Text), "HH:mm"))
+                    comm.Parameters.AddWithValue("rec_cbborrower", rec_cb_borrower.Text)
+                    comm.Parameters.AddWithValue("rec_cblocation", rec_cb_location.Text)
+                    comm.Parameters.AddWithValue("rec_cb_reserved", rec_cb_reserved.Text)
+                    comm.Parameters.AddWithValue("rec_cb_status", rec_cb_status.Text)
+
                     READER = comm.ExecuteReader
                     MysqlConn.Close()
 
@@ -1425,8 +1488,14 @@ Public Class Main
                         MysqlConn.Close()
                         MysqlConn.Open()
 
-                        query = "SELECT * from reservation_equipment where reservationno='" & rec_cb_reserveno.Text & "' and equipment='" & equipmentrgv & "'and equipmentsn='" & equipmentsnrgv & "' and equipmentno='" & equipmentnorgv & "'"
+                        query = "SELECT * from reservation_equipment where reservationno=@RE_reservationno and equipment=@RE_equipment and equipmentsn=@RE_equipmentsn and equipmentno=@RE_equipmentno"
                         comm = New MySqlCommand(query, MysqlConn)
+                        comm.Parameters.AddWithValue("RE_reservationno", rec_cb_reserveno.Text)
+                        comm.Parameters.AddWithValue("RE_equipment", equipmentrgv)
+                        comm.Parameters.AddWithValue("RE_equipmentsn", equipmentsnrgv)
+                        comm.Parameters.AddWithValue("RE_equipmentno", equipmentnorgv)
+
+
                         READER = comm.ExecuteReader
                         Dim count As Integer
                         count = 0
@@ -1448,15 +1517,20 @@ Public Class Main
 
                             MysqlConn.Close()
                             MysqlConn.Open()
-                            query = "INSERT INTO `reservation_equipment` VALUES ('" & rec_cb_reserveno.Text & "','" & equipmentsnrgv & "','" & equipmentnorgv & "','" & equipmentrgv & "','" & rec_eq_type_choose.Text & "');Update equipments set isTaken='true' where equipmentsn='" & equipmentsnrgv & "'"
+                            query = "INSERT INTO `reservation_equipment` VALUES (@RE_rec_reserveno, @RE_rec_equipmentsnrgv, @RE_rec_equipmentnorgv, @RE_rec_equipmentrgv, @RE_rec_eqtypechoose, @RE_rec_cbborrower);UPDATE equipments SET isTaken='true' WHERE equipmentsn=@RE_rec_equipmentsnrgv"
+                            comm.Parameters.AddWithValue("RE_rec_reserveno", rec_cb_reserveno.Text)
+                            comm.Parameters.AddWithValue("RE_rec_equipmentsnrgv", equipmentsnrgv)
+                            comm.Parameters.AddWithValue("RE_rec_equipmentnorgv", equipmentnorgv)
+                            comm.Parameters.AddWithValue("RE_rec_equipmentrgv", equipmentrgv)
+                            comm.Parameters.AddWithValue("RE_rec_eqtypechoose", rec_eq_type_choose.Text)
+                            comm.Parameters.AddWithValue("RE_rec_cbborrower", rec_cb_borrower.Text)
+
                             comm = New MySqlCommand(query, MysqlConn)
                             READER = comm.ExecuteReader
                             MysqlConn.Close()
 
 
                         End If
-
-
 
                     Catch ex As Exception
                         RadMessageBox.Show(Me, ex.Message, "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -1591,8 +1665,20 @@ Public Class Main
 
                 Try
                     MysqlConn.Open()
-                    query = "UPDATE reservation SET startdate='" & Format(CDate(rec_dtp_startdate.Value), "yyyy-MM-dd") & "',enddate='" & Format(CDate(rec_dtp_enddate.Value), "yyyy-MM-dd") & "',starttime='" & Format(CDate(rec_dtp_starttime.Text), "HH:mm") & "' , endtime='" & Format(CDate(rec_dtp_endtime.Text), "HH:mm") & "',location='" & rec_cb_location.Text & "' where (reservationno='" & rec_cb_reserveno.Text & "') and (borrower='" & rec_cb_borrower.Text & "')"
+                    query = "UPDATE reservation SET startdate=@R_rec_dtp_startdate, enddate=@R_rec_dtp_enddate, starttime=@R_rec_dtp_starttime, 
+                    endtime=@R_rec_dtp_endtime, location=@R_rec_cb_location 
+                    where (reservationno=@R_reservationno) and (borrower=@R_rec_cb_borrower)"
+
                     comm = New MySqlCommand(query, MysqlConn)
+
+                    comm.Parameters.AddWithValue("R_rec_dtp_startdate", Format(CDate(rec_dtp_startdate.Value), "yyyy-MM-dd"))
+                    comm.Parameters.AddWithValue("R_rec_dtp_enddate", Format(CDate(rec_dtp_enddate.Value), "yyyy-MM-dd"))
+                    comm.Parameters.AddWithValue("R_rec_dtp_starttime", Format(CDate(rec_dtp_starttime.Text), "HH:mm"))
+                    comm.Parameters.AddWithValue("R_rec_dtp_endtime", Format(CDate(rec_dtp_endtime.Text), "HH:mm"))
+                    comm.Parameters.AddWithValue("R_rec_cb_location", rec_cb_location.Text)
+                    comm.Parameters.AddWithValue("R_reservationno", rec_cb_reserveno.Text)
+                    comm.Parameters.AddWithValue("R_rec_cb_borrower", rec_cb_borrower.Text)
+
                     reader = comm.ExecuteReader
 
                     RadMessageBox.Show(Me, "Update Success!", "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Info)
@@ -1632,8 +1718,11 @@ Public Class Main
         If deleteYN = MsgBoxResult.Yes Then
             Try
                 MysqlConn.Open()
-                query = "DELETE FROM reservation where (reservationno='" & rec_cb_reserveno.Text & "') and (borrower='" & rec_cb_borrower.Text & "'); UPDATE equipments SET IsTaken='false' where equipmentsn "
+                query = "DELETE FROM reservation WHERE (reservationno=@R_rec_cb_reserveno) AND (borrower=@R_rec_cb_borrower); DELETE FROM reservation_equipment WHERE (reservationno=@R_rec_cb_reserveno) and (borrower=@R_rec_cb_borrower); UPDATE equipments SET isTaken='false' WHERE equipmentsn IN (SELECT equipmentsn FROM reservation_equipment WHERE reservationno=@R_rec_cb_reserveno)"
                 comm = New MySqlCommand(query, MysqlConn)
+                comm.Parameters.AddWithValue("R_rec_cb_reserveno", rec_cb_reserveno.Text)
+                comm.Parameters.AddWithValue("R_rec_cb_borrower", rec_cb_borrower.Text)
+
                 reader = comm.ExecuteReader
 
 
@@ -1665,7 +1754,7 @@ Public Class Main
 
     '    Try
     '        MysqlConn.Open()
-    '        query = "SELECT equipment,equipmentsn from reservation_equipment where equipment='" & eq_rgv_addeq.Rows(e.RowIndex).Cells(0).Value & "' and equipmentsn='" & eq_rgv_addeq.Rows(e.RowIndex).Cells(1).Value & "' "
+    '        query = "Select equipment,equipmentsn from reservation_equipment where equipment='" & eq_rgv_addeq.Rows(e.RowIndex).Cells(0).Value & "' and equipmentsn='" & eq_rgv_addeq.Rows(e.RowIndex).Cells(1).Value & "' "
     '        comm = New MySqlCommand(query, MysqlConn)
     '        reader = comm.ExecuteReader
 
