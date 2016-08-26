@@ -1420,7 +1420,7 @@ Public Class Main
             ('" & Format(CDate(rec_dtp_enddate.Value), "yyyy-MM-dd") & " " & Format(CDate(rec_dtp_endtime.Text), "hh:mm") & "' BETWEEN CONCAT (enddate,' ',starttime) AND CONCAT(enddate,' ',endtime)))"
                 comm = New MySqlCommand(query, MysqlConn)
                 READER = comm.ExecuteReader
-
+                'Julieta Z. Dungca
                 Dim count As Integer
                 count = 0
                 While READER.Read
@@ -1684,8 +1684,6 @@ Public Class Main
             End Try
         End If
     End Sub
-
-
 
 
 
