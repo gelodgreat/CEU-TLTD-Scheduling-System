@@ -1485,9 +1485,10 @@ Public Class Main
                     MysqlConn.Close()
                     MysqlConn.Open()
 
-                    query = "INSERT INTO `reservation` VALUES (@rec_reserveno, @rec_dtpstartdate, @rec_dtpenddate, @rec_dtpstarttime, @rec_dtpendtime, @rec_cbborrower, @rec_cblocation ,@rec_cb_reserved,@rec_cb_status) "
+                    query = "INSERT INTO `reservation` VALUES (@rec_reserveno, @rec_idno, @rec_dtpstartdate, @rec_dtpenddate, @rec_dtpstarttime, @rec_dtpendtime, @rec_cbborrower, @rec_cblocation ,@rec_cb_reserved,@rec_cb_status) "
                     comm = New MySqlCommand(query, MysqlConn)
                     comm.Parameters.AddWithValue("rec_reserveno", rec_cb_reserveno.Text)
+                    comm.Parameters.AddWithValue("rec_idno", rec_cb_idnum.Text)
                     comm.Parameters.AddWithValue("rec_dtpstartdate", Format(CDate(rec_dtp_startdate.Value), "yyyy-MM-dd"))
                     comm.Parameters.AddWithValue("rec_dtpenddate", Format(CDate(rec_dtp_enddate.Value), "yyyy-MM-dd"))
                     comm.Parameters.AddWithValue("rec_dtpstarttime", Format(CDate(rec_dtp_starttime.Text), "HH:mm"))
@@ -1773,6 +1774,8 @@ Public Class Main
 
 
 
+    'PENDING CHANGES
+    'WILL I CHANGE BORROWER TO BORROWER ID#?
 
 
 
