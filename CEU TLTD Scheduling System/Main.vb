@@ -53,7 +53,6 @@ Public Class Main
         rel_tb_status.Enabled = False
         rel_tb_id.Enabled = False
         rel_tb_borrower.Enabled = False
-        rel_tb_type.Enabled = False
         rel_tb_college.Enabled = False
 
     End Sub
@@ -643,13 +642,13 @@ Public Class Main
         MysqlConn = New MySqlConnection
         MysqlConn.ConnectionString = connstring
         Dim READER As MySqlDataReader
-        If (rel_tb_id.Text = "") Or (rel_tb_borrower.Text = "") Or (rel_tb_type.Text = " ") Or (rel_tb_startdate.Text = " ") Or (rel_tb_enddate.Text = " ") Or (rel_tb_starttime.Text = " ") Or (rel_tb_endtime.Text = " ") Or (rel_tb_college.Text = " ") Or (rel_tb_location.Text = " ") Or (rel_tb_releasedby.Text = " ") Then
+        If (rel_tb_id.Text = "") Or (rel_tb_borrower.Text = "") Or (rel_tb_startdate.Text = " ") Or (rel_tb_enddate.Text = " ") Or (rel_tb_starttime.Text = " ") Or (rel_tb_endtime.Text = " ") Or (rel_tb_college.Text = " ") Or (rel_tb_location.Text = " ") Or (rel_tb_releasedby.Text = " ") Then
             RadMessageBox.Show(Me, "Please complete the fields to Save!", "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
         Else
             Try
                 MysqlConn.Open()
                 Dim Query As String
-                Query = "insert into ceutltdscheduler.released_info (rel_idnum,rel_borrower,rel_type,rel_type,rel_startdate,rel_enddate,rel_starttime,rel_endtime,rel_college,rel_location,rel_status,rel_releasedby) values ('" & rel_tb_id.Text & "' , '" & rel_tb_borrower.Text & "' , '" & rel_tb_type.Text & "' , '" & rel_tb_startdate.Text & "' , '" & rel_tb_enddate.Text & "' , '" & rel_tb_starttime.Text & "' , '" & rel_tb_endtime.Text & "' , '" & rel_tb_college.Text & "' , '" & rel_tb_location.Text & "' , '" & rel_tb_status.Text & "' , '" & rel_tb_releasedby.Text & "')"
+                Query = "insert into ceutltdscheduler.released_info (rel_idnum,rel_borrower,rel_type,rel_type,rel_startdate,rel_enddate,rel_starttime,rel_endtime,rel_college,rel_location,rel_status,rel_releasedby) values ('" & rel_tb_id.Text & "' , '" & rel_tb_borrower.Text & "' , '" & rel_tb_startdate.Text & "' , '" & rel_tb_enddate.Text & "' , '" & rel_tb_starttime.Text & "' , '" & rel_tb_endtime.Text & "' , '" & rel_tb_college.Text & "' , '" & rel_tb_location.Text & "' , '" & rel_tb_status.Text & "' , '" & rel_tb_releasedby.Text & "')"
                 comm = New MySqlCommand(Query, MysqlConn)
 
                 svYN = RadMessageBox.Show(Me, "Are you sure you want to Release this Equipment/s? ", "TLTD Schuling Management", MessageBoxButtons.YesNo, RadMessageIcon.Question)
@@ -715,7 +714,6 @@ Public Class Main
         If cancelYN = MsgBoxResult.Yes Then
             ret_tb_id.Text = ""
             ret_tb_borrower.Text = ""
-            ret_tb_type.Text = ""
             ret_tb_sdate.Text = "01/01/99"
             ret_tb_edate.Text = "01/01/99"
             ret_tb_stime.Text = ""
@@ -735,7 +733,6 @@ Public Class Main
         If cancelYN = MsgBoxResult.Yes Then
             rel_tb_id.Text = ""
             rel_tb_borrower.Text = ""
-            rel_tb_type.Text = ""
             rel_tb_startdate.Text = "01/01/99"
             rel_tb_enddate.Text = "01/01/99"
             rel_tb_starttime.Text = ""
@@ -1458,7 +1455,7 @@ Public Class Main
         Dim conflictequipmentno As String = ""
         Dim conflictequipment As String = ""
         Dim conflictequipmentsn As String = ""
-        If (rec_cb_reserveno.Text = "") Or (rec_cb_idnum.Text = "") Or (rec_cb_borrower.Text = "") Or (rec_cb_borrowertype.Text = "") Or (rec_dtp_startdate.Text = "") Or (rec_dtp_enddate.Text = "") Or (rec_dtp_starttime.Text = "") Or (rec_dtp_endtime.Text = "") Or (rec_cb_college_school.Text = "") Or (rec_cb_location.Text = "") Or (rec_cb_status.Text = "") Or (rec_cb_reserved.Text = "") Or (rec_eq_choosesn.Text = "") Or (rec_eq_type_choose.Text = "") Or (eq_rgv_addeq.Rows.Count < 0) Then
+        If (rec_cb_reserveno.Text = "") Or (rec_cb_idnum.Text = "") Or (rec_cb_borrower.Text = "") Or (rec_dtp_startdate.Text = "") Or (rec_dtp_enddate.Text = "") Or (rec_dtp_starttime.Text = "") Or (rec_dtp_endtime.Text = "") Or (rec_cb_college_school.Text = "") Or (rec_cb_location.Text = "") Or (rec_cb_status.Text = "") Or (rec_cb_reserved.Text = "") Or (rec_eq_choosesn.Text = "") Or (rec_eq_type_choose.Text = "") Or (eq_rgv_addeq.Rows.Count < 0) Then
 
             RadMessageBox.Show(Me, "Please complete the fields", "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
         Else
@@ -1694,7 +1691,7 @@ Public Class Main
             MysqlConn.Close()
         End If
 
-        If (rec_cb_idnum.Text = "") Or (rec_cb_borrower.Text = "") Or (rec_cb_borrowertype.Text = "") Or (rec_dtp_startdate.Text = "") Or (rec_dtp_enddate.Text = "") Or (rec_dtp_starttime.Text = "") Or (rec_dtp_endtime.Text = "") Or (rec_cb_college_school.Text = "") Or (rec_cb_location.Text = "") Or (rec_cb_status.Text = "") Or (rec_cb_reserved.Text = "") Or (rec_eq_choosesn.Text = "") Or (rec_eq_type_choose.Text = "") Or (eq_rgv_addeq.Rows.Count < 0) Then
+        If (rec_cb_idnum.Text = "") Or (rec_cb_borrower.Text = "") Or (rec_dtp_startdate.Text = "") Or (rec_dtp_enddate.Text = "") Or (rec_dtp_starttime.Text = "") Or (rec_dtp_endtime.Text = "") Or (rec_cb_college_school.Text = "") Or (rec_cb_location.Text = "") Or (rec_cb_status.Text = "") Or (rec_cb_reserved.Text = "") Or (rec_eq_choosesn.Text = "") Or (rec_eq_type_choose.Text = "") Or (eq_rgv_addeq.Rows.Count < 0) Then
 
             RadMessageBox.Show(Me, "Please complete the fields", "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
         Else
