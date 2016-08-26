@@ -724,7 +724,7 @@ Public Class Main
             ret_tb_location.Text = ""
             ret_tb_status.Text = ""
             ret_tb_released.Text = ""
-            ret_tb_returned.Text = ""
+            rel_tb_returned.Text = ""
         End If
     End Sub
 
