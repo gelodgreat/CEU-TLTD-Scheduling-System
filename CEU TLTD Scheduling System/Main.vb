@@ -1614,6 +1614,7 @@ Public Class Main
 
     End Sub
 
+    'Update Code for Button update on Reservation
     Private Sub rec_btn_update_Click(sender As Object, e As EventArgs) Handles rec_btn_update.Click
         If MysqlConn.State = ConnectionState.Open Then
             MysqlConn.Close()
@@ -1628,7 +1629,7 @@ Public Class Main
 
                 Try
                     MysqlConn.Open()
-                    query = "UPDATE reservation SET startdate='" & Format(CDate(rec_dtp_startdate.Value), "yyyy-MM-dd") & "',enddate='" & Format(CDate(rec_dtp_enddate.Value), "yyyy-MM-dd") & "',starttime='" & Format(CDate(rec_dtp_starttime.Text), "HH:mm") & "' , endtime='" & Format(CDate(rec_dtp_endtime.Text), "HH:mm") & "',location='" & rec_cb_location.Text & "' where (equipmentsn='" & eq_sn.Text & "') and (equipmentno='" & eq_equipmentno.Text & "')"
+                    query = "UPDATE reservation SET startdate='" & Format(CDate(rec_dtp_startdate.Value), "yyyy-MM-dd") & "',enddate='" & Format(CDate(rec_dtp_enddate.Value), "yyyy-MM-dd") & "',starttime='" & Format(CDate(rec_dtp_starttime.Text), "HH:mm") & "' , endtime='" & Format(CDate(rec_dtp_endtime.Text), "HH:mm") & "',location='" & rec_cb_location.Text & "' where (reservationno='" & rec_cb_reserveno.Text & "') and (borrower='" & rec_cb_borrower.Text & "')"
                     comm = New MySqlCommand(query, MysqlConn)
                     reader = comm.ExecuteReader
 
@@ -1648,11 +1649,40 @@ Public Class Main
 
     End Sub
 
+    'AutoGenerating of Reservation#
 
     Public Sub auto_generate_reservationno()
         identifier_reservationno = Now.ToString("mmddyyy")
         identifier_reservationno = identifier_reservationno + random.Next(1, 100000000).ToString
         rec_cb_reserveno.Text = identifier_reservationno
+    End Sub
+
+
+    'DELETING OF RECORD IN RESERVATION RECORD
+    'NEED TO FIX QUERY
+    'MANY ERRORS FOUND
+    Private Sub rec_btn_delete_Click(sender As Object, e As EventArgs) Handles rec_btn_delete.Click
+        If MysqlConn.State = ConnectionState.Open Then
+            MysqlConn.Close()
+        End If
+
+        deleteYN = RadMessageBox.Show(Me, "Are you sure you want to delete?", "TLTD Scheduling Management", MessageBoxButtons.YesNo, RadMessageIcon.Question)
+        If deleteYN = MsgBoxResult.Yes Then
+            Try
+                MysqlConn.Open()
+                query = "DELETE FROM reservation where (reservationno='" & rec_cb_reserveno.Text & "') and (borrower='" & rec_cb_borrower.Text & "'); UPDATE equipments SET IsTaken='false' where equipmentsn "
+                comm = New MySqlCommand(query, MysqlConn)
+                reader = comm.ExecuteReader
+
+
+                RadMessageBox.Show(Me, "Successfully Deleted!", "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Info)
+                MysqlConn.Close()
+            Catch ex As Exception
+                RadMessageBox.Show(Me, ex.Message, "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
+            Finally
+                MysqlConn.Dispose()
+            End Try
+        End If
     End Sub
 
 
