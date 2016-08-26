@@ -10,4 +10,5 @@ Module GlobalVariableModule
     Public username As String
     Public studno As String
     Public lc As Login
+
 End Module
