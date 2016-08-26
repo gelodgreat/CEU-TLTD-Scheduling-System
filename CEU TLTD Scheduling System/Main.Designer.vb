@@ -951,7 +951,7 @@ Partial Class Main
         Me.rpv1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.rpv1.Location = New System.Drawing.Point(0, 0)
         Me.rpv1.Name = "rpv1"
-        Me.rpv1.SelectedPage = Me.rpvp2_reservation
+        Me.rpv1.SelectedPage = Me.rpvp_releasing
         Me.rpv1.Size = New System.Drawing.Size(1358, 583)
         Me.rpv1.TabIndex = 0
         Me.rpv1.Text = "Home"
@@ -3144,6 +3144,7 @@ Partial Class Main
         'res_list_info
         '
         Me.res_list_info.Controls.Add(Me.reserved_grid_list)
+        Me.res_list_info.ItemSize = New System.Drawing.SizeF(153.0!, 24.0!)
         Me.res_list_info.Location = New System.Drawing.Point(5, 30)
         Me.res_list_info.Name = "res_list_info"
         Me.res_list_info.Size = New System.Drawing.Size(1358, 270)
@@ -3172,6 +3173,7 @@ Partial Class Main
         'rel_list_info
         '
         Me.rel_list_info.Controls.Add(Me.released_grid_list)
+        Me.rel_list_info.ItemSize = New System.Drawing.SizeF(152.0!, 24.0!)
         Me.rel_list_info.Location = New System.Drawing.Point(5, 30)
         Me.rel_list_info.Name = "rel_list_info"
         Me.rel_list_info.Size = New System.Drawing.Size(1358, 270)
