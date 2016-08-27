@@ -1550,7 +1550,7 @@ Public Class Main
 
                             MysqlConn.Close()
                             MysqlConn.Open()
-                            query = "INSERT INTO `reservation_equipment` VALUES ('" & rec_cb_reserveno.Text & "', '" & rec_cb_idnum.Text & "', '" & equipmentsnrgv & "', '" & equipmentnorgv & "', '" & equipmentrgv & "');UPDATE equipments SET isTaken='true' WHERE equipmentsn='" & equipmentrgv & "'"
+                            query = "INSERT INTO `reservation_equipment` VALUES ('" & rec_cb_reserveno.Text & "', '" & rec_cb_idnum.Text & "', '" & equipmentsnrgv & "', '" & equipmentnorgv & "', '" & equipmentrgv & "');UPDATE equipments SET isTaken='true' WHERE equipmentsn='" & equipmentsnrgv & "'"
 
 
                             'comm.Parameters.AddWithValue("RE_rec_reserveno", rec_cb_reserveno.Text)

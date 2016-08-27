@@ -1,0 +1,33 @@
+change serial to number
+add time to change equipment tab
+change equipment time 
+add activity reservation/classroom reservation
+use check 
+add function on text changed on start date
+change functions in main delete end date
+delete starttime endtime
+sort by hour
+datagrid show only for the day
+
+reservation
+main priority activities over classroom reservation
+
+main datagrid
+first column borrower
+
+add equipment on main grid
+remove date,location, 
+
+needed borrower, equipment,starttime,endtime 
+add name filter on main form (like)
+ change account to fullname
+
+
+remove middle name
+if activities 
+show input box (event name)
+
+releasing
+change id number to pass number 1-50 (drop down)
+remarks(kung may kulang)
+
