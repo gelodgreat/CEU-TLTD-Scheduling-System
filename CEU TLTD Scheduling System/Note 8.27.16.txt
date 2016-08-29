@@ -1,9 +1,13 @@
-change serial to number
+change serial to number - done
+
 add time to change equipment tab
 change equipment time 
+
 add activity reservation/classroom reservation
 use check 
+
 add function on text changed on start date
+
 change functions in main delete end date
 delete starttime endtime
 sort by hour
