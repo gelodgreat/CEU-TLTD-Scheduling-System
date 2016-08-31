@@ -1330,14 +1330,9 @@ Public Class Main
 
 
 
-
-
-
     'Reservation Management Code Umali R3 = Adding Data from combobox to eq_rgv_addeq RadDataGrid
 
     Private Sub rec_btn_add_eq_Click(sender As Object, e As EventArgs) Handles rec_btn_add_eq.Click
-
-
 
         If MysqlConn.State = ConnectionState.Open Then
             MysqlConn.Close()
@@ -1485,9 +1480,10 @@ Public Class Main
                     MysqlConn.Close()
                     MysqlConn.Open()
 
-                    query = "INSERT INTO `reservation` VALUES (@rec_reserveno, @rec_dtpstartdate, @rec_dtpenddate, @rec_dtpstarttime, @rec_dtpendtime, @rec_cbborrower, @rec_cblocation ,@rec_cb_reserved,@rec_cb_status) "
+                    query = "INSERT INTO `reservation` VALUES (@rec_reserveno, @rec_idno, @rec_dtpstartdate, @rec_dtpenddate, @rec_dtpstarttime, @rec_dtpendtime, @rec_cbborrower, @rec_cblocation ,@rec_cb_reserved,@rec_cb_status) "
                     comm = New MySqlCommand(query, MysqlConn)
                     comm.Parameters.AddWithValue("rec_reserveno", rec_cb_reserveno.Text)
+                    comm.Parameters.AddWithValue("rec_idno", rec_cb_idnum.Text)
                     comm.Parameters.AddWithValue("rec_dtpstartdate", Format(CDate(rec_dtp_startdate.Value), "yyyy-MM-dd"))
                     comm.Parameters.AddWithValue("rec_dtpenddate", Format(CDate(rec_dtp_enddate.Value), "yyyy-MM-dd"))
                     comm.Parameters.AddWithValue("rec_dtpstarttime", Format(CDate(rec_dtp_starttime.Text), "HH:mm"))
@@ -1772,7 +1768,45 @@ Public Class Main
     End Sub
 
 
+    Private Sub rec_cb_idnum_TextChanged(sender As Object, e As EventArgs) Handles rec_cb_idnum.TextChanged
+        If MysqlConn.State = ConnectionState.Open Then
+            MysqlConn.Close()
+        End If
+        MysqlConn.ConnectionString = connstring
+        Try
+            MysqlConn.Open()
+            query = "SELECT username FROM accounts WHERE id=@rec_idno"
+            comm = New MySqlCommand(query, MysqlConn)
+            comm.Parameters.AddWithValue("rec_idno", rec_cb_idnum.Text)
+            reader = comm.ExecuteReader
 
+            rec_cb_borrower.Items.Clear()
+            While reader.Read
+                rec_cb_borrower.Items.Add(reader.GetString("username"))
+            End While
+
+            MysqlConn.Close()
+        Catch ex As Exception
+            RadMessageBox.Show(Me, ex.Message, "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
+        Finally
+            MysqlConn.Dispose()
+        End Try
+    End Sub
+
+
+
+    Private Sub rec_btn_clear_Click(sender As Object, e As EventArgs) Handles rec_btn_clear.Click
+
+    End Sub
+
+
+
+
+
+
+
+    'PENDING CHANGES
+    'WILL I CHANGE BORROWER TO BORROWER ID#?
 
 
 
