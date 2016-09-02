@@ -39,6 +39,7 @@ Public Class Main
         load_returned_list()
         rec_load_choices_eqtype()
         auto_generate_reservationno()
+        reserved_load_table()
         lu_date.Value = Date.Now
         rec_dtp_date.Value = Date.Now
     End Sub
@@ -54,7 +55,9 @@ Public Class Main
         rel_tb_status.Enabled = False
         rel_tb_id.Enabled = False
         rel_tb_borrower.Enabled = False
-        rel_tb_college.Enabled = False
+        rel_tb_reservationnum.Enabled = False
+        ret_tb_reservationnum.Enabled = False
+
 
     End Sub
 
@@ -96,7 +99,7 @@ Public Class Main
         Try
             MysqlConn.Open()
 
-            query = "Select borrower as 'Borrower',equipmentno as 'Equipment No', equipment as 'Equipment', DATE_FORMAT(date,'%M %d %Y') as 'Date',TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time' from reservation where date ='" & Format(CDate(rec_dtp_date.Value), "yyyy-MM-dd") & "' ORDER by date ASC"
+            query = "Select reservationno as 'Reservation Number' ,borrower as 'Borrower', equipmentno as 'Equipment No', equipment as 'Equipment', DATE_FORMAT(date,'%M %d %Y') as 'Date',TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time' from reservation where date ='" & Format(CDate(rec_dtp_date.Value), "yyyy-MM-dd") & "' ORDER by date ASC"
 
             comm = New MySqlCommand(query, MysqlConn)
             sda.SelectCommand = comm
@@ -557,7 +560,7 @@ Public Class Main
         Try
             MysqlConn.Open()
             Dim query As String
-            query = "Select rel_idnum as 'ID Number ' , rel_borrower as ' Borrower ' , rel_type as ' Type ' , rel_startdate as ' Start Date ' , rel_enddate as ' End Date ' , rel_starttime as ' Start Time ' , rel_endtime as ' End Time ' , rel_location as ' Location ' , rel_status as ' Status ' , rel_releasedby as ' Released By'  from released_info"
+            query = "Select rel_reservation_no as 'Reservation Number', rel_id_passnum as 'Pass Number ' , rel_borrower as ' Borrower ' , rel_equipment_no as 'Equipment Number', rel_equipment as 'Equipment', rel_assign_date as ' Date ' , rel_starttime as ' Start Time ' , rel_endtime as ' End Time '  , rel_status as ' Status ' , rel_releasedby as ' Released By'  from released_info"
             comm = New MySqlCommand(query, MysqlConn)
             sda.SelectCommand = comm
             sda.Fill(dbdataset)
@@ -589,7 +592,7 @@ Public Class Main
         Try
             MysqlConn.Open()
             Dim query As String
-            query = "Select rel_idnum as 'ID Number ' , rel_borrower as ' Borrower ' , rel_type as ' Type ' , rel_startdate as ' Start Date ' , rel_enddate as ' End Date ' , rel_starttime as ' Start Time ' , rel_endtime as ' End Time ' , rel_location as ' Location ' , rel_status as ' Status ' , rel_releasedby as ' Released By'  from released_info"
+            query = "Select rel_id_passnum as 'Pass Number ' , rel_borrower as ' Borrower ' , rel_assign_date as ' Start Date ' ,  rel_starttime as ' Start Time ' , rel_endtime as ' End Time ' , rel_location as ' Location ' , rel_status as ' Status ' , rel_releasedby as ' Released By'  from released_info"
             comm = New MySqlCommand(query, MysqlConn)
             sda.SelectCommand = comm
             sda.Fill(dbdataset)
@@ -621,7 +624,7 @@ Public Class Main
         Try
             MysqlConn.Open()
             Dim query As String
-            query = "Select ret_idnum as 'ID Number ' , ret_borrower as ' Borrower ' , ret_type as ' Type ' , ret_startdate as ' Start Date ' , ret_enddate as ' End Date ' , ret_starttime as ' Start Time ' , ret_endtime as ' End Time ' , ret_location as ' Location ' , ret_status as ' Status ' , ret_releasedby as ' Released By' , ret_returnedto as ' Returned to '  from returned_info"
+            query = "Select ret_reservation_no as 'Reservation Number', ret_id_passnum as 'Pass Number ' , ret_borrower as ' Borrower ' , ret_equipment_no as 'Equipment Number', ret_equipment as 'Equipment', ret_assign_date as ' Date ' , ret_starttime as ' Start Time ' , ret_endtime as ' End Time '  , ret_status as ' Status ' , ret_releasedby as ' Released By' , ret_returnedto as ' Returned To '  from returned_info"
             comm = New MySqlCommand(query, MysqlConn)
             sda.SelectCommand = comm
             sda.Fill(dbdataset)
@@ -643,13 +646,13 @@ Public Class Main
         MysqlConn = New MySqlConnection
         MysqlConn.ConnectionString = connstring
         Dim READER As MySqlDataReader
-        If (rel_tb_id.Text = "") Or (rel_tb_borrower.Text = "") Or (rel_tb_startdate.Text = " ") Or (rel_tb_enddate.Text = " ") Or (rel_tb_starttime.Text = " ") Or (rel_tb_endtime.Text = " ") Or (rel_tb_college.Text = " ") Or (rel_tb_location.Text = " ") Or (rel_tb_releasedby.Text = " ") Then
+        If (rel_tb_id.Text = "") Or (rel_tb_borrower.Text = "") Or (rel_tb_startdate.Text = " ") Or (rel_tb_starttime.Text = " ") Or (rel_tb_endtime.Text = " ") Or (rel_tb_releasedby.Text = " ") Then
             RadMessageBox.Show(Me, "Please complete the fields to Save!", "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
         Else
             Try
                 MysqlConn.Open()
                 Dim Query As String
-                Query = "insert into ceutltdscheduler.released_info (rel_idnum,rel_borrower,rel_type,rel_type,rel_startdate,rel_enddate,rel_starttime,rel_endtime,rel_college,rel_location,rel_status,rel_releasedby) values ('" & rel_tb_id.Text & "' , '" & rel_tb_borrower.Text & "' , '" & rel_tb_startdate.Text & "' , '" & rel_tb_enddate.Text & "' , '" & rel_tb_starttime.Text & "' , '" & rel_tb_endtime.Text & "' , '" & rel_tb_college.Text & "' , '" & rel_tb_location.Text & "' , '" & rel_tb_status.Text & "' , '" & rel_tb_releasedby.Text & "')"
+                Query = "insert into ceutltdscheduler.released_info (rel_id_passnum,rel_borrower,rel_assign_date,rel_starttime,rel_endtime,rel_college,rel_location,rel_status,rel_releasedby) values ('" & rel_tb_id.Text & "' , '" & rel_tb_borrower.Text & "' , '" & rel_tb_startdate.Text & "'  , '" & rel_tb_starttime.Text & "' , '" & rel_tb_endtime.Text & "'  , '" & rel_tb_status.Text & "' , '" & rel_tb_releasedby.Text & "')"
                 comm = New MySqlCommand(Query, MysqlConn)
 
                 svYN = RadMessageBox.Show(Me, "Are you sure you want to Release this Equipment/s? ", "TLTD Schuling Management", MessageBoxButtons.YesNo, RadMessageIcon.Question)
@@ -682,12 +685,12 @@ Public Class Main
 
         updateYN = RadMessageBox.Show(Me, "Do you want to Update the Date/Time/Location of the Reserved Equipment?", "TLTD Scheduling Management", MessageBoxButtons.YesNo, RadMessageIcon.Question)
         If updateYN = MsgBoxResult.Yes Then
-            If (rel_tb_startdate.Text = "") Or (rel_tb_enddate.Text = " ") Or (rel_tb_starttime.Text = " ") Or (rel_tb_endtime.Text = " ") Or (rel_tb_location.Text = " ") Then
+            If (rel_tb_startdate.Text = "") Or (rel_tb_starttime.Text = " ") Or (rel_tb_endtime.Text = " ") Then
                 RadMessageBox.Show(Me, "Please complete the fields to update!", "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
             Else
                 Try
                     MysqlConn.Open()
-                    query = "UPDATE released_info set rel_startdate = '" & rel_tb_starttime.Text & "' , rel_enddate = '" & rel_tb_enddate.Text & "' , rel_starttime = '" & rel_tb_starttime.Text & "' , rel_endtime = '" & rel_tb_endtime.Text & "' , rel_location = '" & rel_tb_location.Text & "' where rel_startdate = '" & rel_tb_startdate.Text & "' "
+                    query = "UPDATE released_info set rel_assign_date = '" & rel_tb_starttime.Text & "'  , rel_starttime = '" & rel_tb_starttime.Text & "' , rel_endtime = '" & rel_tb_endtime.Text & "'  where rel_assign_date = '" & rel_tb_startdate.Text & "' "
                     comm = New MySqlCommand(query, MysqlConn)
                     reader = comm.ExecuteReader
 
@@ -716,11 +719,8 @@ Public Class Main
             ret_tb_id.Text = ""
             ret_tb_borrower.Text = ""
             ret_tb_sdate.Text = "01/01/99"
-            ret_tb_edate.Text = "01/01/99"
             ret_tb_stime.Text = ""
             ret_tb_etime.Text = ""
-            ret_tb_college.Text = ""
-            ret_tb_location.Text = ""
             ret_tb_status.Text = ""
             ret_tb_released.Text = ""
             rel_tb_returned.Text = ""
@@ -735,11 +735,7 @@ Public Class Main
             rel_tb_id.Text = ""
             rel_tb_borrower.Text = ""
             rel_tb_startdate.Text = "01/01/99"
-            rel_tb_enddate.Text = "01/01/99"
             rel_tb_starttime.Text = ""
-            rel_tb_enddate.Text = ""
-            rel_tb_college.Text = ""
-            rel_tb_location.Text = ""
             rel_tb_status.Text = ""
             rel_tb_releasedby.Text = ""
 
@@ -750,6 +746,39 @@ Public Class Main
 
     End Sub
 
+    'Programmed by BRENZ 20th Point reserved records at releasing management
+
+    Public Sub reserved_load_table()
+        MysqlConn = New MySqlConnection
+        MysqlConn.ConnectionString = connstring
+
+        Dim sda As New MySqlDataAdapter
+        Dim dbdataset As New DataTable
+        Dim bsource As New BindingSource
+
+        If MysqlConn.State = ConnectionState.Open Then
+            MysqlConn.Close()
+        End If
+
+        Try
+            MysqlConn.Open()
+            Dim query As String
+            query = "Select reservationno as 'Reservation Number' , borrower as 'Borrower', equipmentno as 'Equipment No', equipment as 'Equipment', DATE_FORMAT(date,'%M %d %Y') as 'Date',TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time' , res_status as 'Status' from reservation  ORDER by date ASC"
+            comm = New MySqlCommand(query, MysqlConn)
+            sda.SelectCommand = comm
+            sda.Fill(dbdataset)
+            bsource.DataSource = dbdataset
+            reserved_grid_list.DataSource = bsource
+            reserved_grid_list.ReadOnly = True
+            sda.Update(dbdataset)
+            MysqlConn.Close()
+        Catch ex As Exception
+            RadMessageBox.Show(Me, ex.Message, "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
+        Finally
+            MysqlConn.Dispose()
+        End Try
+
+    End Sub
 
 
     'Main Window Search Functions Umali C1
@@ -1773,6 +1802,12 @@ Public Class Main
     Private Sub lu_date_ValueChanged(sender As Object, e As EventArgs) Handles lu_date.ValueChanged
         load_main_table()
     End Sub
+
+    Private Sub rpv1_SelectedPageChanged(sender As Object, e As EventArgs) Handles rpv1.SelectedPageChanged
+
+    End Sub
+
+
 
 
 
