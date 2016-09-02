@@ -592,7 +592,6 @@ Partial Class Main
         Me.rel_list_info = New Telerik.WinControls.UI.RadPageViewPage()
         Me.released_grid_list = New Telerik.WinControls.UI.RadGridView()
         Me.RadGroupBox12 = New Telerik.WinControls.UI.RadGroupBox()
-        Me.released_btn_update = New Telerik.WinControls.UI.RadButton()
         Me.released_btn_release = New Telerik.WinControls.UI.RadButton()
         Me.released_btn_cancel = New Telerik.WinControls.UI.RadButton()
         Me.RadGroupBox11 = New Telerik.WinControls.UI.RadGroupBox()
@@ -658,6 +657,7 @@ Partial Class Main
         Me.RadGroupBox13 = New Telerik.WinControls.UI.RadGroupBox()
         Me.VisualStudio2012DarkTheme1 = New Telerik.WinControls.Themes.VisualStudio2012DarkTheme()
         Me.CeutltdschedulerDataSetBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.ret_tb_remarks = New Telerik.WinControls.UI.RadButton()
         CType(Me.rpv1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.rpv1.SuspendLayout()
         Me.rpvp1_main.SuspendLayout()
@@ -847,7 +847,6 @@ Partial Class Main
         CType(Me.released_grid_list.MasterTemplate, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RadGroupBox12, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.RadGroupBox12.SuspendLayout()
-        CType(Me.released_btn_update, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.released_btn_release, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.released_btn_cancel, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RadGroupBox11, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -924,6 +923,7 @@ Partial Class Main
         CType(Me.RadGroupBox16, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RadGroupBox13, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.CeutltdschedulerDataSetBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ret_tb_remarks, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -939,7 +939,7 @@ Partial Class Main
         Me.rpv1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.rpv1.Location = New System.Drawing.Point(0, 0)
         Me.rpv1.Name = "rpv1"
-        Me.rpv1.SelectedPage = Me.rpvp_releasing
+        Me.rpv1.SelectedPage = Me.rpvp_returning
         Me.rpv1.Size = New System.Drawing.Size(1358, 583)
         Me.rpv1.TabIndex = 0
         Me.rpv1.Text = "Home"
@@ -3174,7 +3174,6 @@ Partial Class Main
         'RadGroupBox12
         '
         Me.RadGroupBox12.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping
-        Me.RadGroupBox12.Controls.Add(Me.released_btn_update)
         Me.RadGroupBox12.Controls.Add(Me.released_btn_release)
         Me.RadGroupBox12.Controls.Add(Me.released_btn_cancel)
         Me.RadGroupBox12.HeaderText = "Controls"
@@ -3184,15 +3183,6 @@ Partial Class Main
         Me.RadGroupBox12.TabIndex = 3
         Me.RadGroupBox12.Text = "Controls"
         Me.RadGroupBox12.ThemeName = "VisualStudio2012Dark"
-        '
-        'released_btn_update
-        '
-        Me.released_btn_update.Location = New System.Drawing.Point(551, 26)
-        Me.released_btn_update.Name = "released_btn_update"
-        Me.released_btn_update.Size = New System.Drawing.Size(110, 25)
-        Me.released_btn_update.TabIndex = 24
-        Me.released_btn_update.Text = "Update"
-        Me.released_btn_update.ThemeName = "VisualStudio2012Dark"
         '
         'released_btn_release
         '
@@ -3205,7 +3195,7 @@ Partial Class Main
         '
         'released_btn_cancel
         '
-        Me.released_btn_cancel.Location = New System.Drawing.Point(426, 26)
+        Me.released_btn_cancel.Location = New System.Drawing.Point(558, 26)
         Me.released_btn_cancel.Name = "released_btn_cancel"
         Me.released_btn_cancel.Size = New System.Drawing.Size(110, 25)
         Me.released_btn_cancel.TabIndex = 21
@@ -3680,7 +3670,7 @@ Partial Class Main
         Me.RadPageView3.Controls.Add(Me.ret_list_info)
         Me.RadPageView3.Location = New System.Drawing.Point(0, -3)
         Me.RadPageView3.Name = "RadPageView3"
-        Me.RadPageView3.SelectedPage = Me.ret_list_info
+        Me.RadPageView3.SelectedPage = Me.rel_list_info2
         Me.RadPageView3.Size = New System.Drawing.Size(1368, 305)
         Me.RadPageView3.TabIndex = 6
         Me.RadPageView3.Text = "RadPageView3"
@@ -3690,6 +3680,7 @@ Partial Class Main
         'rel_list_info2
         '
         Me.rel_list_info2.Controls.Add(Me.released_grid_list2)
+        Me.rel_list_info2.ItemSize = New System.Drawing.SizeF(152.0!, 24.0!)
         Me.rel_list_info2.Location = New System.Drawing.Point(5, 30)
         Me.rel_list_info2.Name = "rel_list_info2"
         Me.rel_list_info2.Size = New System.Drawing.Size(1358, 270)
@@ -3718,6 +3709,7 @@ Partial Class Main
         'ret_list_info
         '
         Me.ret_list_info.Controls.Add(Me.returned_grid_list)
+        Me.ret_list_info.ItemSize = New System.Drawing.SizeF(153.0!, 24.0!)
         Me.ret_list_info.Location = New System.Drawing.Point(5, 30)
         Me.ret_list_info.Name = "ret_list_info"
         Me.ret_list_info.Size = New System.Drawing.Size(1358, 270)
@@ -3786,6 +3778,7 @@ Partial Class Main
         'RadGroupBox25
         '
         Me.RadGroupBox25.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping
+        Me.RadGroupBox25.Controls.Add(Me.ret_tb_remarks)
         Me.RadGroupBox25.Controls.Add(Me.return_btn_returned)
         Me.RadGroupBox25.Controls.Add(Me.return_btn_cancel)
         Me.RadGroupBox25.HeaderText = "Controls"
@@ -4265,6 +4258,15 @@ Partial Class Main
         Me.RadGroupBox13.Size = New System.Drawing.Size(200, 100)
         Me.RadGroupBox13.TabIndex = 0
         '
+        'ret_tb_remarks
+        '
+        Me.ret_tb_remarks.Location = New System.Drawing.Point(431, 26)
+        Me.ret_tb_remarks.Name = "ret_tb_remarks"
+        Me.ret_tb_remarks.Size = New System.Drawing.Size(110, 25)
+        Me.ret_tb_remarks.TabIndex = 24
+        Me.ret_tb_remarks.Text = "Remarks"
+        Me.ret_tb_remarks.ThemeName = "VisualStudio2012Dark"
+        '
         'Main
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -4477,7 +4479,6 @@ Partial Class Main
         CType(Me.released_grid_list, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RadGroupBox12, System.ComponentModel.ISupportInitialize).EndInit()
         Me.RadGroupBox12.ResumeLayout(False)
-        CType(Me.released_btn_update, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.released_btn_release, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.released_btn_cancel, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RadGroupBox11, System.ComponentModel.ISupportInitialize).EndInit()
@@ -4556,6 +4557,7 @@ Partial Class Main
         CType(Me.RadGroupBox16, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RadGroupBox13, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.CeutltdschedulerDataSetBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ret_tb_remarks, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
@@ -4718,7 +4720,6 @@ Partial Class Main
     Friend WithEvents eq_filter_eqtype As Telerik.WinControls.UI.RadDropDownList
     Friend WithEvents RadLabel54 As Telerik.WinControls.UI.RadLabel
     Friend WithEvents eq_filter_eqno As Telerik.WinControls.UI.RadTextBox
-    Friend WithEvents released_btn_update As Telerik.WinControls.UI.RadButton
     Friend WithEvents released_btn_release As Telerik.WinControls.UI.RadButton
     Friend WithEvents rec_cb_idnum As Telerik.WinControls.UI.RadTextBox
     Friend WithEvents RadLabel26 As Telerik.WinControls.UI.RadLabel
@@ -4788,5 +4789,6 @@ Partial Class Main
     Friend WithEvents RadLabel42 As Telerik.WinControls.UI.RadLabel
     Friend WithEvents rel_tb_id As Telerik.WinControls.UI.RadDropDownList
     Friend WithEvents ret_tb_id As Telerik.WinControls.UI.RadDropDownList
+    Friend WithEvents ret_tb_remarks As Telerik.WinControls.UI.RadButton
 End Class
 

@@ -674,7 +674,7 @@ Public Class Main
 
 
     'Programmed by BRENZ 17th Point UPDATE BTN at Releasing Management
-    Private Sub released_btn_update_Click(sender As Object, e As EventArgs) Handles released_btn_update.Click
+    Private Sub released_btn_update_Click(sender As Object, e As EventArgs)
         If MysqlConn.State = ConnectionState.Open Then
             MysqlConn.Close()
         End If
@@ -1797,6 +1797,7 @@ Public Class Main
             MysqlConn.Dispose()
         End Try
     End Sub
+
 
 
 
