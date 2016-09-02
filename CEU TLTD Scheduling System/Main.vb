@@ -643,13 +643,13 @@ Public Class Main
         MysqlConn = New MySqlConnection
         MysqlConn.ConnectionString = connstring
         Dim READER As MySqlDataReader
-        If (rel_tb_id.Text = "") Or (rel_tb_borrower.Text = "") Or (rel_tb_startdate.Text = " ") Or (rel_tb_starttime.Text = " ") Or (rel_tb_endtime.Text = " ") Or (rel_tb_college.Text = " ") Or (rel_tb_location.Text = " ") Or (rel_tb_releasedby.Text = " ") Then
+        If (rel_tb_id.Text = "") Or (rel_tb_borrower.Text = "") Or (rel_tb_startdate.Text = " ") Or (rel_tb_enddate.Text = " ") Or (rel_tb_starttime.Text = " ") Or (rel_tb_endtime.Text = " ") Or (rel_tb_college.Text = " ") Or (rel_tb_location.Text = " ") Or (rel_tb_releasedby.Text = " ") Then
             RadMessageBox.Show(Me, "Please complete the fields to Save!", "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
         Else
             Try
                 MysqlConn.Open()
                 Dim Query As String
-                Query = "insert into ceutltdscheduler.released_info (rel_idnum,rel_borrower,rel_type,rel_type,rel_startdate,rel_enddate,rel_starttime,rel_endtime,rel_college,rel_location,rel_status,rel_releasedby) values ('" & rel_tb_id.Text & "' , '" & rel_tb_borrower.Text & "' , '" & rel_tb_startdate.Text & "'  , '" & rel_tb_starttime.Text & "' , '" & rel_tb_endtime.Text & "' , '" & rel_tb_college.Text & "' , '" & rel_tb_location.Text & "' , '" & rel_tb_status.Text & "' , '" & rel_tb_releasedby.Text & "')"
+                Query = "insert into ceutltdscheduler.released_info (rel_idnum,rel_borrower,rel_type,rel_type,rel_startdate,rel_enddate,rel_starttime,rel_endtime,rel_college,rel_location,rel_status,rel_releasedby) values ('" & rel_tb_id.Text & "' , '" & rel_tb_borrower.Text & "' , '" & rel_tb_startdate.Text & "' , '" & rel_tb_enddate.Text & "' , '" & rel_tb_starttime.Text & "' , '" & rel_tb_endtime.Text & "' , '" & rel_tb_college.Text & "' , '" & rel_tb_location.Text & "' , '" & rel_tb_status.Text & "' , '" & rel_tb_releasedby.Text & "')"
                 comm = New MySqlCommand(Query, MysqlConn)
 
                 svYN = RadMessageBox.Show(Me, "Are you sure you want to Release this Equipment/s? ", "TLTD Schuling Management", MessageBoxButtons.YesNo, RadMessageIcon.Question)
@@ -675,19 +675,19 @@ Public Class Main
 
 
     'Programmed by BRENZ 17th Point UPDATE BTN at Releasing Management
-    Private Sub released_btn_update_Click(sender As Object, e As EventArgs)
+    Private Sub released_btn_update_Click(sender As Object, e As EventArgs) Handles released_btn_update.Click
         If MysqlConn.State = ConnectionState.Open Then
             MysqlConn.Close()
         End If
 
         updateYN = RadMessageBox.Show(Me, "Do you want to Update the Date/Time/Location of the Reserved Equipment?", "TLTD Scheduling Management", MessageBoxButtons.YesNo, RadMessageIcon.Question)
         If updateYN = MsgBoxResult.Yes Then
-            If (rel_tb_startdate.Text = "") Or (rel_tb_starttime.Text = " ") Or (rel_tb_endtime.Text = " ") Or (rel_tb_location.Text = " ") Then
+            If (rel_tb_startdate.Text = "") Or (rel_tb_enddate.Text = " ") Or (rel_tb_starttime.Text = " ") Or (rel_tb_endtime.Text = " ") Or (rel_tb_location.Text = " ") Then
                 RadMessageBox.Show(Me, "Please complete the fields to update!", "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
             Else
                 Try
                     MysqlConn.Open()
-                    query = "UPDATE released_info set rel_startdate = '" & rel_tb_starttime.Text & "'  , rel_starttime = '" & rel_tb_starttime.Text & "' , rel_endtime = '" & rel_tb_endtime.Text & "' , rel_location = '" & rel_tb_location.Text & "' where rel_startdate = '" & rel_tb_startdate.Text & "' "
+                    query = "UPDATE released_info set rel_startdate = '" & rel_tb_starttime.Text & "' , rel_enddate = '" & rel_tb_enddate.Text & "' , rel_starttime = '" & rel_tb_starttime.Text & "' , rel_endtime = '" & rel_tb_endtime.Text & "' , rel_location = '" & rel_tb_location.Text & "' where rel_startdate = '" & rel_tb_startdate.Text & "' "
                     comm = New MySqlCommand(query, MysqlConn)
                     reader = comm.ExecuteReader
 
@@ -716,6 +716,7 @@ Public Class Main
             ret_tb_id.Text = ""
             ret_tb_borrower.Text = ""
             ret_tb_sdate.Text = "01/01/99"
+            ret_tb_edate.Text = "01/01/99"
             ret_tb_stime.Text = ""
             ret_tb_etime.Text = ""
             ret_tb_college.Text = ""
@@ -734,7 +735,9 @@ Public Class Main
             rel_tb_id.Text = ""
             rel_tb_borrower.Text = ""
             rel_tb_startdate.Text = "01/01/99"
+            rel_tb_enddate.Text = "01/01/99"
             rel_tb_starttime.Text = ""
+            rel_tb_enddate.Text = ""
             rel_tb_college.Text = ""
             rel_tb_location.Text = ""
             rel_tb_status.Text = ""
