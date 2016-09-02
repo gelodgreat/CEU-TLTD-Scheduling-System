@@ -1,6 +1,6 @@
 change serial to number - done
 
-add time to change equipment tab
+add time to change equipment tab - done
 change equipment time 
 
 add activity reservation/classroom reservation
