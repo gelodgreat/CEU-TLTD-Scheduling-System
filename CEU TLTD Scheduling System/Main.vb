@@ -1763,7 +1763,7 @@ Public Class Main
 
 
     Private Sub rec_btn_clear_Click(sender As Object, e As EventArgs) Handles rec_btn_clear.Click
-        rec
+
     End Sub
 
     Private Sub rec_dtp_date_ValueChanged(sender As Object, e As EventArgs) Handles rec_dtp_date.ValueChanged
