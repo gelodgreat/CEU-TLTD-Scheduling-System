@@ -40,6 +40,9 @@ Public Class Main
         rec_load_choices_eqtype()
         auto_generate_reservationno()
         reserved_load_table()
+        startup_disabled_textbox()
+        show_hide_txt_lbl()
+        color_coding()
         lu_date.Value = Date.Now
         rec_dtp_date.Value = Date.Now
     End Sub
@@ -52,11 +55,34 @@ Public Class Main
         acc_prof_btn_update.Hide()
     End Sub
     Public Sub startup_disabled_textbox()
-        rel_tb_status.Enabled = False
-        rel_tb_id.Enabled = False
+        'rel_tb_status.Enabled = False
+        'rel_tb_id.Enabled = False
         rel_tb_borrower.Enabled = False
         rel_tb_reservationnum.Enabled = False
         ret_tb_reservationnum.Enabled = False
+        rel_tb_startdate.Enabled = False
+        rel_tb_starttime.Enabled = False
+        rel_tb_endtime.Enabled = False
+        rel_tb_equipmentnum.Enabled = False
+        rel_tb_equipment.Enabled = False
+    End Sub
+    Public Sub color_coding()
+        If (rel_tb_status.Text = "Reserved") Then
+            rel_tb_status.BackColor = Color.Blue
+        ElseIf (rel_tb_status.Text = "Released") Then
+            rel_tb_status.BackColor = Color.Red
+        ElseIf (rel_tb_status.Text = "Returned") Then
+            rel_tb_status.BackColor = Color.Green
+        ElseIf (rel_tb_status.Text = "") Then
+            rel_tb_status.BackColor = Color.Gray
+        End If
+
+    End Sub
+    Public Sub show_hide_txt_lbl()
+        lbl_equipment.Hide()
+        lbl_equipmentnum.Hide()
+        rel_tb_equipmentnum.Hide()
+        rel_tb_equipment.Hide()
 
 
     End Sub
@@ -560,7 +586,7 @@ Public Class Main
         Try
             MysqlConn.Open()
             Dim query As String
-            query = "Select rel_reservation_no as 'Reservation Number', rel_id_passnum as 'Pass Number ' , rel_borrower as ' Borrower ' , rel_equipment_no as 'Equipment Number', rel_equipment as 'Equipment', rel_assign_date as ' Date ' , rel_starttime as ' Start Time ' , rel_endtime as ' End Time '  , rel_status as ' Status ' , rel_releasedby as ' Released By'  from released_info"
+            query = "Select rel_reservation_no as 'Reservation Number', rel_id_passnum as 'Pass Number ' , rel_borrower as ' Borrower ' , rel_equipment_no as 'Equipment Number', rel_equipment as 'Equipment',DATE_FORMAT(rel_assign_date,'%M %d %Y') as 'Date',TIME_FORMAT(rel_starttime, '%H:%i') as 'Start Time', TIME_FORMAT(rel_endtime, '%H:%i') as 'End Time'  , rel_status as ' Status ' , rel_releasedby as ' Released By'  from released_info"
             comm = New MySqlCommand(query, MysqlConn)
             sda.SelectCommand = comm
             sda.Fill(dbdataset)
@@ -592,7 +618,7 @@ Public Class Main
         Try
             MysqlConn.Open()
             Dim query As String
-            query = "Select rel_id_passnum as 'Pass Number ' , rel_borrower as ' Borrower ' , rel_assign_date as ' Start Date ' ,  rel_starttime as ' Start Time ' , rel_endtime as ' End Time ' , rel_location as ' Location ' , rel_status as ' Status ' , rel_releasedby as ' Released By'  from released_info"
+            query = "Select rel_id_passnum as 'Pass Number ' , rel_borrower as ' Borrower ' , rel_equipment_no as ' Equipment No ' , rel_equipment as ' Equipment ' , DATE_FORMAT(rel_assign_date,'%M %d %Y') as 'Date',TIME_FORMAT(rel_starttime, '%H:%i') as 'Start Time', TIME_FORMAT(rel_endtime, '%H:%i') as 'End Time' , rel_status as ' Status ' , rel_releasedby as ' Released By'  from released_info"
             comm = New MySqlCommand(query, MysqlConn)
             sda.SelectCommand = comm
             sda.Fill(dbdataset)
@@ -624,7 +650,7 @@ Public Class Main
         Try
             MysqlConn.Open()
             Dim query As String
-            query = "Select ret_reservation_no as 'Reservation Number', ret_id_passnum as 'Pass Number ' , ret_borrower as ' Borrower ' , ret_equipment_no as 'Equipment Number', ret_equipment as 'Equipment', ret_assign_date as ' Date ' , ret_starttime as ' Start Time ' , ret_endtime as ' End Time '  , ret_status as ' Status ' , ret_releasedby as ' Released By' , ret_returnedto as ' Returned To '  from returned_info"
+            query = "Select  ret_id_passnum as 'Pass Number ' , ret_borrower as ' Borrower ' , ret_equipment_no as 'Equipment Number', ret_equipment as 'Equipment', DATE_FORMAT(ret_assign_date,'%M %d %Y') as 'Date',TIME_FORMAT(ret_starttime, '%H:%i') as 'Start Time', TIME_FORMAT(ret_endtime, '%H:%i') as 'End Time' , ret_status as ' Status ' , ret_releasedby as ' Released By' , ret_returnedto as ' Returned To '  from returned_info"
             comm = New MySqlCommand(query, MysqlConn)
             sda.SelectCommand = comm
             sda.Fill(dbdataset)
@@ -646,19 +672,19 @@ Public Class Main
         MysqlConn = New MySqlConnection
         MysqlConn.ConnectionString = connstring
         Dim READER As MySqlDataReader
-        If (rel_tb_id.Text = "") Or (rel_tb_borrower.Text = "") Or (rel_tb_startdate.Text = " ") Or (rel_tb_starttime.Text = " ") Or (rel_tb_endtime.Text = " ") Or (rel_tb_releasedby.Text = " ") Then
+        If (rel_tb_id.Text = "") Or (rel_tb_reservationnum.Text = "") Or (rel_tb_borrower.Text = "") Or (rel_tb_equipmentnum.Text = "") Or (rel_tb_equipment.Text = "") Or (rel_tb_startdate.Text = " ") Or (rel_tb_starttime.Text = " ") Or (rel_tb_endtime.Text = " ") Or (rel_tb_releasedby.Text = " ") Then
             RadMessageBox.Show(Me, "Please complete the fields to Save!", "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
         Else
             Try
                 MysqlConn.Open()
                 Dim Query As String
-                Query = "insert into ceutltdscheduler.released_info (rel_id_passnum,rel_borrower,rel_assign_date,rel_starttime,rel_endtime,rel_college,rel_location,rel_status,rel_releasedby) values ('" & rel_tb_id.Text & "' , '" & rel_tb_borrower.Text & "' , '" & rel_tb_startdate.Text & "'  , '" & rel_tb_starttime.Text & "' , '" & rel_tb_endtime.Text & "'  , '" & rel_tb_status.Text & "' , '" & rel_tb_releasedby.Text & "')"
+                ' Dim Query2 As String
+                Query = "insert into `released_info`  values ('" & rel_tb_id.Text & "' ,'" & rel_tb_reservationnum.Text & " ',  '" & rel_tb_borrower.Text & "' , '" & rel_tb_reservationnum.Text & "', '" & rel_tb_equipment.Text & "', '" & Format(CDate(rel_tb_startdate.Value), "yyyy-MM-dd") & "','" & Format(CDate(rel_tb_starttime.Text), "HH:mm") & "', '" & Format(CDate(rel_tb_endtime.Text), "HH:mm") & "', '" & rel_tb_status.Text & "' , '" & rel_tb_releasedby.Text & "'); delete from reservation where  reservationno = '" & rel_tb_reservationnum.Text & "'"
+                'Query = "delete from reservation where  reservationno = '" & rel_tb_reservationnum.Text & "'"
                 comm = New MySqlCommand(Query, MysqlConn)
 
                 svYN = RadMessageBox.Show(Me, "Are you sure you want to Release this Equipment/s? ", "TLTD Schuling Management", MessageBoxButtons.YesNo, RadMessageIcon.Question)
                 If svYN = MsgBoxResult.Yes Then
-                    rel_tb_status.Text = "Released"
-                    rel_tb_status.BackColor = Color.Red
                     READER = comm.ExecuteReader
                     RadMessageBox.Show("Released!")
 
@@ -670,7 +696,9 @@ Public Class Main
                 MysqlConn.Dispose()
                 load_released_list()
                 load_released_list2()
-
+                reserved_load_table()
+                load_rec_table()
+                color_coding()
             End Try
         End If
 
@@ -678,7 +706,7 @@ Public Class Main
 
 
     'Programmed by BRENZ 17th Point UPDATE BTN at Releasing Management
-    Private Sub released_btn_update_Click(sender As Object, e As EventArgs) Handles released_btn_update.Click
+    Private Sub released_btn_update_Click(sender As Object, e As EventArgs)
         If MysqlConn.State = ConnectionState.Open Then
             MysqlConn.Close()
         End If
@@ -738,6 +766,15 @@ Public Class Main
             rel_tb_starttime.Text = ""
             rel_tb_status.Text = ""
             rel_tb_releasedby.Text = ""
+            rel_tb_equipment.Text = ""
+            rel_tb_equipmentnum.Text = ""
+            lbl_equipment.Hide()
+            lbl_equipmentnum.Hide()
+            rel_tb_equipment.Hide()
+            rel_tb_equipmentnum.Hide()
+            color_coding()
+
+
 
         End If
 
@@ -780,6 +817,36 @@ Public Class Main
 
     End Sub
 
+    'Programmed by BRENZ 21st Point reserved_grid_list cell double click at releasing management
+    Private Sub reserved_grid_list_CellDoubleClick(sender As Object, e As GridViewCellEventArgs) Handles reserved_grid_list.CellDoubleClick
+        updateYN = RadMessageBox.Show(Me, "Do you want to select this information?", "TLTD Scheduling Management", MessageBoxButtons.YesNo, RadMessageIcon.Question)
+        If updateYN = MsgBoxResult.Yes Then
+
+            If e.RowIndex >= 0 Then
+                Dim row As Telerik.WinControls.UI.GridViewRowInfo
+
+                row = Me.reserved_grid_list.Rows(e.RowIndex)
+
+                rel_tb_reservationnum.Text = row.Cells("Reservation Number").Value.ToString
+                rel_tb_borrower.Text = row.Cells("Borrower").Value.ToString
+                rel_tb_startdate.Text = row.Cells("Date").Value.ToString
+                rel_tb_starttime.Text = row.Cells("Start Time").Value.ToString
+                rel_tb_endtime.Text = row.Cells("End Time").Value.ToString
+                rel_tb_status.Text = row.Cells("Status").Value.ToString
+                rel_tb_equipmentnum.Text = row.Cells("Equipment No").Value.ToString
+                rel_tb_equipment.Text = row.Cells("Equipment").Value.ToString
+
+
+                lbl_equipment.Show()
+                lbl_equipmentnum.Show()
+                rel_tb_equipment.Show()
+                rel_tb_equipmentnum.Show()
+                reserved_load_table()
+                color_coding()
+            End If
+
+        End If
+    End Sub
 
     'Main Window Search Functions Umali C1
 
@@ -1628,6 +1695,7 @@ Public Class Main
         End If
         load_main_table()
         load_rec_table()
+        reserved_load_table()
         auto_generate_reservationno()
     End Sub
 
@@ -1803,9 +1871,6 @@ Public Class Main
         load_main_table()
     End Sub
 
-    Private Sub rpv1_SelectedPageChanged(sender As Object, e As EventArgs) Handles rpv1.SelectedPageChanged
-
-    End Sub
 
 
 
