@@ -1830,9 +1830,34 @@ Public Class Main
 
             rec_cb_reserveno.Text = row.Cells("Reservation Number").Value.ToString
             rec_cb_idnum.Text = row.Cells("ID").Value.ToString.ToString
-
-
         End If
+
+        If MysqlConn.State = ConnectionState.Open Then
+            MysqlConn.Close()
+        End If
+
+        deleteYN = RadMessageBox.Show(Me, "Are you sure you want to delete?", "TLTD Scheduling Management", MessageBoxButtons.YesNo, RadMessageIcon.Question)
+        If deleteYN = MsgBoxResult.Yes Then
+            Try
+                MysqlConn.Open()
+                query = "DELETE FROM reservation WHERE (reservationno=@R_rec_cb_reserveno) AND (id=@R_rec_cb_idnum)"
+                comm = New MySqlCommand(query, MysqlConn)
+                comm.Parameters.AddWithValue("R_rec_cb_reserveno", rec_cb_reserveno.Text)
+                comm.Parameters.AddWithValue("R_rec_cb_idnum", rec_cb_idnum.Text)
+
+                reader = comm.ExecuteReader
+
+
+                RadMessageBox.Show(Me, "Successfully Deleted!", "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Info)
+                MysqlConn.Close()
+            Catch ex As Exception
+                RadMessageBox.Show(Me, ex.Message, "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
+            Finally
+                MysqlConn.Dispose()
+            End Try
+        End If
+        load_rec_table()
+        load_main_table()
     End Sub
 
     'Search by Name in Main Tab
@@ -1865,6 +1890,13 @@ Public Class Main
         DV.RowFilter = String.Format("`Borrower` Like'%{0}%'", lu_byname.Text)
         main_rgv_recordeddatamain.DataSource = DV
     End Sub
+
+    'Auto Generating of Reservation Number
+    Private Sub btn_resetreservationno_Click(sender As Object, e As EventArgs) Handles btn_resetreservationno.Click
+        auto_generate_reservationno()
+    End Sub
+
+
 
 
 

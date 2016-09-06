@@ -352,6 +352,8 @@ Partial Class Main
         Me.RadLabel12 = New Telerik.WinControls.UI.RadLabel()
         Me.lu_bylocation = New Telerik.WinControls.UI.RadTextBox()
         Me.RadGroupBox7 = New Telerik.WinControls.UI.RadGroupBox()
+        Me.RadLabel8 = New Telerik.WinControls.UI.RadLabel()
+        Me.lu_byname = New Telerik.WinControls.UI.RadTextBox()
         Me.btn_searchbydate = New Telerik.WinControls.UI.RadButton()
         Me.lu_date = New Telerik.WinControls.UI.RadDateTimePicker()
         Me.RadLabel11 = New Telerik.WinControls.UI.RadLabel()
@@ -440,6 +442,7 @@ Partial Class Main
         Me.eq_rgv_showregequipment = New Telerik.WinControls.UI.RadGridView()
         Me.rpvp2_reservation = New Telerik.WinControls.UI.RadPageViewPage()
         Me.RadGroupBox6 = New Telerik.WinControls.UI.RadGroupBox()
+        Me.btn_resetreservationno = New Telerik.WinControls.UI.RadButton()
         Me.rec_btn_clear = New Telerik.WinControls.UI.RadButton()
         Me.rec_btn_delete = New Telerik.WinControls.UI.RadButton()
         Me.rec_btn_save = New Telerik.WinControls.UI.RadButton()
@@ -550,8 +553,6 @@ Partial Class Main
         Me.RadGroupBox13 = New Telerik.WinControls.UI.RadGroupBox()
         Me.VisualStudio2012DarkTheme1 = New Telerik.WinControls.Themes.VisualStudio2012DarkTheme()
         Me.CeutltdschedulerDataSetBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.RadLabel8 = New Telerik.WinControls.UI.RadLabel()
-        Me.lu_byname = New Telerik.WinControls.UI.RadTextBox()
         CType(Me.rpv1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.rpv1.SuspendLayout()
         Me.rpvp1_main.SuspendLayout()
@@ -565,6 +566,8 @@ Partial Class Main
         CType(Me.lu_bylocation, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RadGroupBox7, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.RadGroupBox7.SuspendLayout()
+        CType(Me.RadLabel8, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.lu_byname, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.btn_searchbydate, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.lu_date, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RadLabel11, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -669,6 +672,7 @@ Partial Class Main
         Me.rpvp2_reservation.SuspendLayout()
         CType(Me.RadGroupBox6, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.RadGroupBox6.SuspendLayout()
+        CType(Me.btn_resetreservationno, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.rec_btn_clear, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.rec_btn_delete, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.rec_btn_save, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -798,8 +802,6 @@ Partial Class Main
         CType(Me.RadGroupBox16, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RadGroupBox13, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.CeutltdschedulerDataSetBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RadLabel8, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.lu_byname, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -815,7 +817,7 @@ Partial Class Main
         Me.rpv1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.rpv1.Location = New System.Drawing.Point(0, 0)
         Me.rpv1.Name = "rpv1"
-        Me.rpv1.SelectedPage = Me.rpvp1_main
+        Me.rpv1.SelectedPage = Me.rpvp2_reservation
         Me.rpv1.Size = New System.Drawing.Size(1358, 583)
         Me.rpv1.TabIndex = 0
         Me.rpv1.Text = "Home"
@@ -924,6 +926,28 @@ Partial Class Main
         Me.RadGroupBox7.TabIndex = 1
         Me.RadGroupBox7.Text = "Search by Date:"
         Me.RadGroupBox7.ThemeName = "VisualStudio2012Dark"
+        '
+        'RadLabel8
+        '
+        Me.RadLabel8.Location = New System.Drawing.Point(16, 88)
+        Me.RadLabel8.Name = "RadLabel8"
+        Me.RadLabel8.Size = New System.Drawing.Size(90, 18)
+        Me.RadLabel8.TabIndex = 26
+        Me.RadLabel8.Text = "Search by Name:"
+        Me.RadLabel8.ThemeName = "VisualStudio2012Dark"
+        '
+        'lu_byname
+        '
+        Me.lu_byname.Location = New System.Drawing.Point(17, 112)
+        Me.lu_byname.MinimumSize = New System.Drawing.Size(0, 24)
+        Me.lu_byname.Name = "lu_byname"
+        '
+        '
+        '
+        Me.lu_byname.RootElement.MinSize = New System.Drawing.Size(0, 24)
+        Me.lu_byname.Size = New System.Drawing.Size(221, 24)
+        Me.lu_byname.TabIndex = 25
+        Me.lu_byname.ThemeName = "VisualStudio2012Dark"
         '
         'btn_searchbydate
         '
@@ -1981,6 +2005,7 @@ Partial Class Main
         '
         Me.RadGroupBox6.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping
         Me.RadGroupBox6.Anchor = System.Windows.Forms.AnchorStyles.Bottom
+        Me.RadGroupBox6.Controls.Add(Me.btn_resetreservationno)
         Me.RadGroupBox6.Controls.Add(Me.rec_btn_clear)
         Me.RadGroupBox6.Controls.Add(Me.rec_btn_delete)
         Me.RadGroupBox6.Controls.Add(Me.rec_btn_save)
@@ -1992,13 +2017,23 @@ Partial Class Main
         Me.RadGroupBox6.Text = "Controls"
         Me.RadGroupBox6.ThemeName = "VisualStudio2012Dark"
         '
+        'btn_resetreservationno
+        '
+        Me.btn_resetreservationno.Anchor = System.Windows.Forms.AnchorStyles.Bottom
+        Me.btn_resetreservationno.Location = New System.Drawing.Point(156, 21)
+        Me.btn_resetreservationno.Name = "btn_resetreservationno"
+        Me.btn_resetreservationno.Size = New System.Drawing.Size(138, 30)
+        Me.btn_resetreservationno.TabIndex = 20
+        Me.btn_resetreservationno.Text = "New Reservation Number"
+        Me.btn_resetreservationno.ThemeName = "VisualStudio2012Dark"
+        '
         'rec_btn_clear
         '
         Me.rec_btn_clear.Anchor = System.Windows.Forms.AnchorStyles.Bottom
         Me.rec_btn_clear.Location = New System.Drawing.Point(50, 21)
         Me.rec_btn_clear.Name = "rec_btn_clear"
         Me.rec_btn_clear.Size = New System.Drawing.Size(100, 30)
-        Me.rec_btn_clear.TabIndex = 3
+        Me.rec_btn_clear.TabIndex = 21
         Me.rec_btn_clear.Text = "Clear"
         Me.rec_btn_clear.ThemeName = "VisualStudio2012Dark"
         '
@@ -2008,7 +2043,7 @@ Partial Class Main
         Me.rec_btn_delete.Location = New System.Drawing.Point(459, 22)
         Me.rec_btn_delete.Name = "rec_btn_delete"
         Me.rec_btn_delete.Size = New System.Drawing.Size(100, 30)
-        Me.rec_btn_delete.TabIndex = 2
+        Me.rec_btn_delete.TabIndex = 19
         Me.rec_btn_delete.Text = "Delete"
         Me.rec_btn_delete.ThemeName = "VisualStudio2012Dark"
         '
@@ -2018,7 +2053,7 @@ Partial Class Main
         Me.rec_btn_save.Location = New System.Drawing.Point(565, 21)
         Me.rec_btn_save.Name = "rec_btn_save"
         Me.rec_btn_save.Size = New System.Drawing.Size(100, 30)
-        Me.rec_btn_save.TabIndex = 0
+        Me.rec_btn_save.TabIndex = 18
         Me.rec_btn_save.Text = "Save"
         Me.rec_btn_save.ThemeName = "VisualStudio2012Dark"
         '
@@ -2077,7 +2112,7 @@ Partial Class Main
         Me.rec_cb_acttype.Location = New System.Drawing.Point(5, 133)
         Me.rec_cb_acttype.Name = "rec_cb_acttype"
         Me.rec_cb_acttype.Size = New System.Drawing.Size(224, 24)
-        Me.rec_cb_acttype.TabIndex = 30
+        Me.rec_cb_acttype.TabIndex = 3
         Me.rec_cb_acttype.ThemeName = "VisualStudio2012Dark"
         '
         'rec_cb_reserveno
@@ -2094,7 +2129,7 @@ Partial Class Main
         '
         Me.rec_cb_reserveno.RootElement.MinSize = New System.Drawing.Size(0, 24)
         Me.rec_cb_reserveno.Size = New System.Drawing.Size(166, 24)
-        Me.rec_cb_reserveno.TabIndex = 28
+        Me.rec_cb_reserveno.TabIndex = 0
         Me.rec_cb_reserveno.ThemeName = "VisualStudio2012Dark"
         '
         'RadLabel72
@@ -2123,7 +2158,7 @@ Partial Class Main
         Me.rec_cb_college_school.Location = New System.Drawing.Point(490, 19)
         Me.rec_cb_college_school.Name = "rec_cb_college_school"
         Me.rec_cb_college_school.Size = New System.Drawing.Size(175, 24)
-        Me.rec_cb_college_school.TabIndex = 27
+        Me.rec_cb_college_school.TabIndex = 7
         Me.rec_cb_college_school.ThemeName = "VisualStudio2012Dark"
         '
         'rec_cb_reserved
@@ -2136,7 +2171,7 @@ Partial Class Main
         Me.rec_cb_reserved.Location = New System.Drawing.Point(490, 142)
         Me.rec_cb_reserved.Name = "rec_cb_reserved"
         Me.rec_cb_reserved.Size = New System.Drawing.Size(175, 24)
-        Me.rec_cb_reserved.TabIndex = 23
+        Me.rec_cb_reserved.TabIndex = 10
         Me.rec_cb_reserved.ThemeName = "VisualStudio2012Dark"
         '
         'rec_cb_idnum
@@ -2150,7 +2185,7 @@ Partial Class Main
         '
         Me.rec_cb_idnum.RootElement.MinSize = New System.Drawing.Size(0, 24)
         Me.rec_cb_idnum.Size = New System.Drawing.Size(192, 24)
-        Me.rec_cb_idnum.TabIndex = 4
+        Me.rec_cb_idnum.TabIndex = 1
         Me.rec_cb_idnum.ThemeName = "VisualStudio2012Dark"
         '
         'RadLabel26
@@ -2193,7 +2228,7 @@ Partial Class Main
         Me.rec_cb_status.Location = New System.Drawing.Point(490, 112)
         Me.rec_cb_status.Name = "rec_cb_status"
         Me.rec_cb_status.Size = New System.Drawing.Size(175, 24)
-        Me.rec_cb_status.TabIndex = 16
+        Me.rec_cb_status.TabIndex = 9
         Me.rec_cb_status.ThemeName = "VisualStudio2012Dark"
         '
         'rec_dtp_endtime
@@ -2297,7 +2332,7 @@ Partial Class Main
         Me.rec_dtp_endtime.Location = New System.Drawing.Point(296, 141)
         Me.rec_dtp_endtime.Name = "rec_dtp_endtime"
         Me.rec_dtp_endtime.Size = New System.Drawing.Size(102, 24)
-        Me.rec_dtp_endtime.TabIndex = 15
+        Me.rec_dtp_endtime.TabIndex = 6
         Me.rec_dtp_endtime.ThemeName = "VisualStudio2012Dark"
         '
         'rec_dtp_starttime
@@ -2401,7 +2436,7 @@ Partial Class Main
         Me.rec_dtp_starttime.Location = New System.Drawing.Point(296, 111)
         Me.rec_dtp_starttime.Name = "rec_dtp_starttime"
         Me.rec_dtp_starttime.Size = New System.Drawing.Size(102, 24)
-        Me.rec_dtp_starttime.TabIndex = 14
+        Me.rec_dtp_starttime.TabIndex = 5
         Me.rec_dtp_starttime.ThemeName = "VisualStudio2012Dark"
         '
         'RadLabel6
@@ -2420,7 +2455,7 @@ Partial Class Main
         Me.rec_cb_location.Location = New System.Drawing.Point(489, 49)
         Me.rec_cb_location.Name = "rec_cb_location"
         Me.rec_cb_location.Size = New System.Drawing.Size(176, 24)
-        Me.rec_cb_location.TabIndex = 10
+        Me.rec_cb_location.TabIndex = 8
         Me.rec_cb_location.ThemeName = "VisualStudio2012Dark"
         '
         'RadLabel5
@@ -2440,7 +2475,7 @@ Partial Class Main
         Me.rec_cb_borrower.Location = New System.Drawing.Point(60, 79)
         Me.rec_cb_borrower.Name = "rec_cb_borrower"
         Me.rec_cb_borrower.Size = New System.Drawing.Size(192, 24)
-        Me.rec_cb_borrower.TabIndex = 8
+        Me.rec_cb_borrower.TabIndex = 2
         Me.rec_cb_borrower.ThemeName = "VisualStudio2012Dark"
         '
         'RadLabel4
@@ -2486,7 +2521,7 @@ Partial Class Main
         '
         Me.rec_dtp_date.RootElement.MinSize = New System.Drawing.Size(0, 24)
         Me.rec_dtp_date.Size = New System.Drawing.Size(105, 24)
-        Me.rec_dtp_date.TabIndex = 0
+        Me.rec_dtp_date.TabIndex = 4
         Me.rec_dtp_date.TabStop = False
         Me.rec_dtp_date.Text = "07/25/2016"
         Me.rec_dtp_date.ThemeName = "VisualStudio2012Dark"
@@ -2496,9 +2531,9 @@ Partial Class Main
         '
         Me.RadGroupBox5.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping
         Me.RadGroupBox5.Anchor = System.Windows.Forms.AnchorStyles.Bottom
+        Me.RadGroupBox5.Controls.Add(Me.rec_eq_chooseeq)
         Me.RadGroupBox5.Controls.Add(Me.rec_eq_chooseno)
         Me.RadGroupBox5.Controls.Add(Me.rec_eq_type_choose)
-        Me.RadGroupBox5.Controls.Add(Me.rec_eq_chooseeq)
         Me.RadGroupBox5.Controls.Add(Me.rec_btn_showalltakeneq)
         Me.RadGroupBox5.Controls.Add(Me.RadLabel71)
         Me.RadGroupBox5.Controls.Add(Me.rec_btn_check_availability)
@@ -2525,7 +2560,7 @@ Partial Class Main
         Me.rec_eq_chooseno.Location = New System.Drawing.Point(5, 99)
         Me.rec_eq_chooseno.Name = "rec_eq_chooseno"
         Me.rec_eq_chooseno.Size = New System.Drawing.Size(217, 24)
-        Me.rec_eq_chooseno.TabIndex = 28
+        Me.rec_eq_chooseno.TabIndex = 12
         Me.rec_eq_chooseno.ThemeName = "VisualStudio2012Dark"
         '
         'rec_eq_type_choose
@@ -2535,7 +2570,7 @@ Partial Class Main
         Me.rec_eq_type_choose.Location = New System.Drawing.Point(5, 45)
         Me.rec_eq_type_choose.Name = "rec_eq_type_choose"
         Me.rec_eq_type_choose.Size = New System.Drawing.Size(217, 24)
-        Me.rec_eq_type_choose.TabIndex = 25
+        Me.rec_eq_type_choose.TabIndex = 11
         Me.rec_eq_type_choose.ThemeName = "VisualStudio2012Dark"
         '
         'rec_eq_chooseeq
@@ -2545,7 +2580,7 @@ Partial Class Main
         Me.rec_eq_chooseeq.Location = New System.Drawing.Point(5, 153)
         Me.rec_eq_chooseeq.Name = "rec_eq_chooseeq"
         Me.rec_eq_chooseeq.Size = New System.Drawing.Size(217, 24)
-        Me.rec_eq_chooseeq.TabIndex = 31
+        Me.rec_eq_chooseeq.TabIndex = 13
         Me.rec_eq_chooseeq.ThemeName = "VisualStudio2012Dark"
         '
         'rec_btn_showalltakeneq
@@ -2554,7 +2589,7 @@ Partial Class Main
         Me.rec_btn_showalltakeneq.Location = New System.Drawing.Point(513, 200)
         Me.rec_btn_showalltakeneq.Name = "rec_btn_showalltakeneq"
         Me.rec_btn_showalltakeneq.Size = New System.Drawing.Size(149, 29)
-        Me.rec_btn_showalltakeneq.TabIndex = 33
+        Me.rec_btn_showalltakeneq.TabIndex = 22
         Me.rec_btn_showalltakeneq.Text = "Show All Taken Equipments"
         Me.rec_btn_showalltakeneq.ThemeName = "VisualStudio2012Dark"
         '
@@ -2574,7 +2609,7 @@ Partial Class Main
         Me.rec_btn_check_availability.Location = New System.Drawing.Point(232, 106)
         Me.rec_btn_check_availability.Name = "rec_btn_check_availability"
         Me.rec_btn_check_availability.Size = New System.Drawing.Size(77, 24)
-        Me.rec_btn_check_availability.TabIndex = 30
+        Me.rec_btn_check_availability.TabIndex = 16
         Me.rec_btn_check_availability.Text = "Check"
         Me.rec_btn_check_availability.ThemeName = "VisualStudio2012Dark"
         '
@@ -2584,7 +2619,7 @@ Partial Class Main
         Me.rec_btn_add_eq.Location = New System.Drawing.Point(232, 76)
         Me.rec_btn_add_eq.Name = "rec_btn_add_eq"
         Me.rec_btn_add_eq.Size = New System.Drawing.Size(77, 24)
-        Me.rec_btn_add_eq.TabIndex = 2
+        Me.rec_btn_add_eq.TabIndex = 15
         Me.rec_btn_add_eq.Text = ">>"
         Me.rec_btn_add_eq.ThemeName = "VisualStudio2012Dark"
         '
@@ -2594,7 +2629,7 @@ Partial Class Main
         Me.rec_btn_eqclear.Location = New System.Drawing.Point(232, 136)
         Me.rec_btn_eqclear.Name = "rec_btn_eqclear"
         Me.rec_btn_eqclear.Size = New System.Drawing.Size(77, 24)
-        Me.rec_btn_eqclear.TabIndex = 27
+        Me.rec_btn_eqclear.TabIndex = 17
         Me.rec_btn_eqclear.Text = "Clear"
         Me.rec_btn_eqclear.ThemeName = "VisualStudio2012Dark"
         '
@@ -2644,7 +2679,7 @@ Partial Class Main
         Me.rec_del_eq.Location = New System.Drawing.Point(232, 46)
         Me.rec_del_eq.Name = "rec_del_eq"
         Me.rec_del_eq.Size = New System.Drawing.Size(77, 24)
-        Me.rec_del_eq.TabIndex = 3
+        Me.rec_del_eq.TabIndex = 14
         Me.rec_del_eq.Text = "<<"
         Me.rec_del_eq.ThemeName = "VisualStudio2012Dark"
         '
@@ -3865,28 +3900,6 @@ Partial Class Main
         Me.RadGroupBox13.Size = New System.Drawing.Size(200, 100)
         Me.RadGroupBox13.TabIndex = 0
         '
-        'RadLabel8
-        '
-        Me.RadLabel8.Location = New System.Drawing.Point(16, 88)
-        Me.RadLabel8.Name = "RadLabel8"
-        Me.RadLabel8.Size = New System.Drawing.Size(90, 18)
-        Me.RadLabel8.TabIndex = 26
-        Me.RadLabel8.Text = "Search by Name:"
-        Me.RadLabel8.ThemeName = "VisualStudio2012Dark"
-        '
-        'lu_byname
-        '
-        Me.lu_byname.Location = New System.Drawing.Point(17, 112)
-        Me.lu_byname.MinimumSize = New System.Drawing.Size(0, 24)
-        Me.lu_byname.Name = "lu_byname"
-        '
-        '
-        '
-        Me.lu_byname.RootElement.MinSize = New System.Drawing.Size(0, 24)
-        Me.lu_byname.Size = New System.Drawing.Size(221, 24)
-        Me.lu_byname.TabIndex = 25
-        Me.lu_byname.ThemeName = "VisualStudio2012Dark"
-        '
         'Main
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -3916,6 +3929,8 @@ Partial Class Main
         CType(Me.RadGroupBox7, System.ComponentModel.ISupportInitialize).EndInit()
         Me.RadGroupBox7.ResumeLayout(False)
         Me.RadGroupBox7.PerformLayout()
+        CType(Me.RadLabel8, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.lu_byname, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.btn_searchbydate, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.lu_date, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RadLabel11, System.ComponentModel.ISupportInitialize).EndInit()
@@ -4025,6 +4040,7 @@ Partial Class Main
         Me.rpvp2_reservation.ResumeLayout(False)
         CType(Me.RadGroupBox6, System.ComponentModel.ISupportInitialize).EndInit()
         Me.RadGroupBox6.ResumeLayout(False)
+        CType(Me.btn_resetreservationno, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.rec_btn_clear, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.rec_btn_delete, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.rec_btn_save, System.ComponentModel.ISupportInitialize).EndInit()
@@ -4158,8 +4174,6 @@ Partial Class Main
         CType(Me.RadGroupBox16, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RadGroupBox13, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.CeutltdschedulerDataSetBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RadLabel8, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.lu_byname, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
@@ -4378,5 +4392,6 @@ Partial Class Main
     Friend WithEvents rec_cb_acttype As Telerik.WinControls.UI.RadDropDownList
     Friend WithEvents RadLabel8 As Telerik.WinControls.UI.RadLabel
     Friend WithEvents lu_byname As Telerik.WinControls.UI.RadTextBox
+    Friend WithEvents btn_resetreservationno As Telerik.WinControls.UI.RadButton
 End Class
 
