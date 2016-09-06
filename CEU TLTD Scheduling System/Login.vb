@@ -9,13 +9,10 @@ Public Class Login
     Private Sub Login_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         timerandstatus()
         ThemeResolutionService.ApplicationThemeName = "TelerikMetroBlue"
-
     End Sub
 
 
     'Login Button Codes
-
-
     Private Sub btn_login_Click(sender As Object, e As EventArgs) Handles btn_login.Click
         Main.Show()
         Me.Hide()
