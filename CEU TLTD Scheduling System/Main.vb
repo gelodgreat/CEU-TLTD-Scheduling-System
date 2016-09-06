@@ -36,7 +36,6 @@ Public Class Main
         startup_disabled_buttons()
         load_released_list()
         load_released_list2()
-        load_returned_list()
         rec_load_choices_eqtype()
         auto_generate_reservationno()
         reserved_load_table()
@@ -636,39 +635,7 @@ Public Class Main
         End Try
     End Sub
 
-    'Programmed by BRENZ 15th POINT Load form grid RETURNED at returning Management!
-    Public Sub load_returned_list()
-        MysqlConn = New MySqlConnection
-        MysqlConn.ConnectionString = connstring
-
-        Dim sda As New MySqlDataAdapter
-        Dim dbdataset As New DataTable
-        Dim bsource As New BindingSource
-
-        If MysqlConn.State = ConnectionState.Open Then
-            MysqlConn.Close()
-        End If
-
-        Try
-            MysqlConn.Open()
-            Dim query As String
-            query = "Select  ret_id_passnum as 'Pass Number ' , ret_borrower as ' Borrower ' , ret_equipment_no as 'Equipment Number', ret_equipment as 'Equipment', DATE_FORMAT(ret_assign_date,'%M %d %Y') as 'Date',TIME_FORMAT(ret_starttime, '%H:%i') as 'Start Time', TIME_FORMAT(ret_endtime, '%H:%i') as 'End Time' , ret_status as ' Status ' , ret_releasedby as ' Released By' , ret_returnedto as ' Returned To '  from returned_info"
-            comm = New MySqlCommand(query, MysqlConn)
-            sda.SelectCommand = comm
-            sda.Fill(dbdataset)
-            bsource.DataSource = dbdataset
-            returned_grid_list.DataSource = bsource
-            returned_grid_list.ReadOnly = True
-            sda.Update(dbdataset)
-            MysqlConn.Close()
-        Catch ex As Exception
-            RadMessageBox.Show(Me, ex.Message, "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
-        Finally
-            MysqlConn.Dispose()
-        End Try
-    End Sub
-
-    'Programmed by BRENZ 16th point RELEASE BTN at Releasing Management!
+    'Programmed by BRENZ 15th point RELEASE BTN at Releasing Management!
     Private Sub released_btn_release_Click(sender As Object, e As EventArgs) Handles released_btn_release.Click
 
         MysqlConn = New MySqlConnection
@@ -707,7 +674,7 @@ Public Class Main
     End Sub
 
 
-    'Programmed by BRENZ 17th Point UPDATE BTN at Releasing Management
+    'Programmed by BRENZ 16th Point UPDATE BTN at Releasing Management
     Private Sub released_btn_update_Click(sender As Object, e As EventArgs)
         If MysqlConn.State = ConnectionState.Open Then
             MysqlConn.Close()
@@ -742,7 +709,7 @@ Public Class Main
 
     End Sub
 
-    'Programmed by BRENZ 18th Point Cancel BTN at Returning Management
+    'Programmed by BRENZ 17th Point Cancel BTN at Returning Management
     Private Sub return_btn_cancel_Click(sender As Object, e As EventArgs) Handles return_btn_cancel.Click
         cancelYN = RadMessageBox.Show(Me, "Do you want to cancel returning? ", "TLTD Scheduling management", MessageBoxButtons.YesNo, RadMessageIcon.Question)
         If cancelYN = MsgBoxResult.Yes Then
@@ -758,7 +725,7 @@ Public Class Main
     End Sub
 
 
-    'Programmed by BRENZ 19th Point Cancel BTN at Releasing Management
+    'Programmed by BRENZ 18th Point Cancel BTN at Releasing Management
     Private Sub released_btn_cancel_Click(sender As Object, e As EventArgs) Handles released_btn_cancel.Click
         cancelYN = RadMessageBox.Show(Me, "Do you want to cancel returning? ", "TLTD Scheduling management", MessageBoxButtons.YesNo, RadMessageIcon.Question)
         If cancelYN = MsgBoxResult.Yes Then
@@ -785,7 +752,7 @@ Public Class Main
 
     End Sub
 
-    'Programmed by BRENZ 20th Point reserved records at releasing management
+    'Programmed by BRENZ 19th Point reserved records at releasing management
 
     Public Sub reserved_load_table()
         MysqlConn = New MySqlConnection
@@ -819,7 +786,7 @@ Public Class Main
 
     End Sub
 
-    'Programmed by BRENZ 21st Point reserved_grid_list cell double click at releasing management
+    'Programmed by BRENZ 20th Point reserved_grid_list cell double click at releasing management
     Private Sub reserved_grid_list_CellDoubleClick(sender As Object, e As GridViewCellEventArgs) Handles reserved_grid_list.CellDoubleClick
         updateYN = RadMessageBox.Show(Me, "Do you want to select this information?", "TLTD Scheduling Management", MessageBoxButtons.YesNo, RadMessageIcon.Question)
         If updateYN = MsgBoxResult.Yes Then
