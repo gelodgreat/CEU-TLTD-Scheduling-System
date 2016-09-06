@@ -66,6 +66,9 @@ Partial Class Login
         '
         'btn_login
         '
+        Me.btn_login.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btn_login.Location = New System.Drawing.Point(131, 181)
         Me.btn_login.Name = "btn_login"
         Me.btn_login.Size = New System.Drawing.Size(110, 24)
@@ -95,7 +98,7 @@ Partial Class Login
         '
         'RadLabel1
         '
-        Me.RadLabel1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
+        Me.RadLabel1.Anchor = System.Windows.Forms.AnchorStyles.Top
         Me.RadLabel1.Location = New System.Drawing.Point(12, 12)
         Me.RadLabel1.Name = "RadLabel1"
         Me.RadLabel1.Size = New System.Drawing.Size(39, 18)
@@ -105,7 +108,7 @@ Partial Class Login
         '
         'log_lbl_dbstatus
         '
-        Me.log_lbl_dbstatus.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
+        Me.log_lbl_dbstatus.Anchor = System.Windows.Forms.AnchorStyles.Top
         Me.log_lbl_dbstatus.Location = New System.Drawing.Point(57, 12)
         Me.log_lbl_dbstatus.Name = "log_lbl_dbstatus"
         Me.log_lbl_dbstatus.Size = New System.Drawing.Size(77, 18)
@@ -146,7 +149,7 @@ Partial Class Login
         '
         'log_lbl_timer
         '
-        Me.log_lbl_timer.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
+        Me.log_lbl_timer.Anchor = System.Windows.Forms.AnchorStyles.Top
         Me.log_lbl_timer.Location = New System.Drawing.Point(222, 12)
         Me.log_lbl_timer.Name = "log_lbl_timer"
         Me.log_lbl_timer.Size = New System.Drawing.Size(31, 18)
@@ -157,6 +160,9 @@ Partial Class Login
         'RadGroupBox1
         '
         Me.RadGroupBox1.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping
+        Me.RadGroupBox1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.RadGroupBox1.Controls.Add(Me.btn_login)
         Me.RadGroupBox1.Controls.Add(Me.RadLabel14)
         Me.RadGroupBox1.Controls.Add(Me.log_password)
@@ -173,6 +179,9 @@ Partial Class Login
         'RadGroupBox2
         '
         Me.RadGroupBox2.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping
+        Me.RadGroupBox2.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.RadGroupBox2.Controls.Add(Me.btn_w8)
         Me.RadGroupBox2.Controls.Add(Me.btn_metroblue)
         Me.RadGroupBox2.Controls.Add(Me.btn_metrotheme)
@@ -188,6 +197,9 @@ Partial Class Login
         '
         'btn_w8
         '
+        Me.btn_w8.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btn_w8.Location = New System.Drawing.Point(41, 186)
         Me.btn_w8.Name = "btn_w8"
         Me.btn_w8.Size = New System.Drawing.Size(110, 24)
@@ -197,6 +209,9 @@ Partial Class Login
         '
         'btn_metroblue
         '
+        Me.btn_metroblue.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btn_metroblue.Location = New System.Drawing.Point(41, 156)
         Me.btn_metroblue.Name = "btn_metroblue"
         Me.btn_metroblue.Size = New System.Drawing.Size(110, 24)
@@ -206,6 +221,9 @@ Partial Class Login
         '
         'btn_metrotheme
         '
+        Me.btn_metrotheme.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btn_metrotheme.Location = New System.Drawing.Point(41, 126)
         Me.btn_metrotheme.Name = "btn_metrotheme"
         Me.btn_metrotheme.Size = New System.Drawing.Size(110, 24)
@@ -215,6 +233,9 @@ Partial Class Login
         '
         'btn_vsdark
         '
+        Me.btn_vsdark.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btn_vsdark.Location = New System.Drawing.Point(41, 94)
         Me.btn_vsdark.Name = "btn_vsdark"
         Me.btn_vsdark.Size = New System.Drawing.Size(110, 24)
@@ -224,6 +245,9 @@ Partial Class Login
         '
         'btn_vslight
         '
+        Me.btn_vslight.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btn_vslight.Location = New System.Drawing.Point(41, 64)
         Me.btn_vslight.Name = "btn_vslight"
         Me.btn_vslight.Size = New System.Drawing.Size(110, 24)
@@ -241,6 +265,8 @@ Partial Class Login
         Me.Controls.Add(Me.log_lbl_timer)
         Me.Controls.Add(Me.log_lbl_dbstatus)
         Me.Controls.Add(Me.RadLabel1)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
+        Me.MaximizeBox = False
         Me.Name = "Login"
         '
         '

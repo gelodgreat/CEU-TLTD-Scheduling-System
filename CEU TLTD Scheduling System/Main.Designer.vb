@@ -817,7 +817,7 @@ Partial Class Main
         Me.rpv1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.rpv1.Location = New System.Drawing.Point(0, 0)
         Me.rpv1.Name = "rpv1"
-        Me.rpv1.SelectedPage = Me.rpvp2_reservation
+        Me.rpv1.SelectedPage = Me.rpvp1_main
         Me.rpv1.Size = New System.Drawing.Size(1358, 583)
         Me.rpv1.TabIndex = 0
         Me.rpv1.Text = "Home"
@@ -1096,7 +1096,7 @@ Partial Class Main
         Me.RadPageView1.Location = New System.Drawing.Point(0, -3)
         Me.RadPageView1.Name = "RadPageView1"
         Me.RadPageView1.SelectedPage = Me.RadPageViewPage1
-        Me.RadPageView1.Size = New System.Drawing.Size(1368, 305)
+        Me.RadPageView1.Size = New System.Drawing.Size(1353, 305)
         Me.RadPageView1.TabIndex = 4
         Me.RadPageView1.Text = "RadPageView1"
         Me.RadPageView1.ThemeName = "VisualStudio2012Dark"
@@ -1105,9 +1105,10 @@ Partial Class Main
         'RadPageViewPage1
         '
         Me.RadPageViewPage1.Controls.Add(Me.acc_staff_list)
+        Me.RadPageViewPage1.ItemSize = New System.Drawing.SizeF(78.0!, 24.0!)
         Me.RadPageViewPage1.Location = New System.Drawing.Point(5, 30)
         Me.RadPageViewPage1.Name = "RadPageViewPage1"
-        Me.RadPageViewPage1.Size = New System.Drawing.Size(1358, 270)
+        Me.RadPageViewPage1.Size = New System.Drawing.Size(1343, 270)
         Me.RadPageViewPage1.Text = "Staff Records"
         '
         'acc_staff_list
@@ -1125,7 +1126,7 @@ Partial Class Main
         Me.acc_staff_list.MasterTemplate.ViewDefinition = TableViewDefinition2
         Me.acc_staff_list.Name = "acc_staff_list"
         Me.acc_staff_list.ReadOnly = True
-        Me.acc_staff_list.Size = New System.Drawing.Size(1358, 270)
+        Me.acc_staff_list.Size = New System.Drawing.Size(1343, 270)
         Me.acc_staff_list.TabIndex = 0
         Me.acc_staff_list.Text = "RadGridView2"
         Me.acc_staff_list.ThemeName = "VisualStudio2012Dark"
@@ -1133,6 +1134,7 @@ Partial Class Main
         'RadPageViewPage2
         '
         Me.RadPageViewPage2.Controls.Add(Me.acc_prof_list)
+        Me.RadPageViewPage2.ItemSize = New System.Drawing.SizeF(102.0!, 24.0!)
         Me.RadPageViewPage2.Location = New System.Drawing.Point(5, 30)
         Me.RadPageViewPage2.Name = "RadPageViewPage2"
         Me.RadPageViewPage2.Size = New System.Drawing.Size(1358, 270)
@@ -1962,7 +1964,7 @@ Partial Class Main
         Me.RadGroupBox14.HeaderText = "Equipment Records"
         Me.RadGroupBox14.Location = New System.Drawing.Point(0, -3)
         Me.RadGroupBox14.Name = "RadGroupBox14"
-        Me.RadGroupBox14.Size = New System.Drawing.Size(1368, 305)
+        Me.RadGroupBox14.Size = New System.Drawing.Size(1336, 305)
         Me.RadGroupBox14.TabIndex = 0
         Me.RadGroupBox14.Text = "Equipment Records"
         Me.RadGroupBox14.ThemeName = "VisualStudio2012Dark"
@@ -1984,7 +1986,7 @@ Partial Class Main
         Me.eq_rgv_showregequipment.MasterTemplate.ViewDefinition = TableViewDefinition4
         Me.eq_rgv_showregequipment.Name = "eq_rgv_showregequipment"
         Me.eq_rgv_showregequipment.ReadOnly = True
-        Me.eq_rgv_showregequipment.Size = New System.Drawing.Size(1364, 285)
+        Me.eq_rgv_showregequipment.Size = New System.Drawing.Size(1332, 285)
         Me.eq_rgv_showregequipment.TabIndex = 0
         Me.eq_rgv_showregequipment.Text = "RadGridView2"
         Me.eq_rgv_showregequipment.ThemeName = "VisualStudio2012Dark"
@@ -2807,7 +2809,7 @@ Partial Class Main
         Me.RadPageView2.Location = New System.Drawing.Point(0, -3)
         Me.RadPageView2.Name = "RadPageView2"
         Me.RadPageView2.SelectedPage = Me.res_list_info
-        Me.RadPageView2.Size = New System.Drawing.Size(1368, 305)
+        Me.RadPageView2.Size = New System.Drawing.Size(1345, 305)
         Me.RadPageView2.TabIndex = 5
         Me.RadPageView2.Text = "RadPageView2"
         Me.RadPageView2.ThemeName = "VisualStudio2012Dark"
@@ -2816,9 +2818,10 @@ Partial Class Main
         'res_list_info
         '
         Me.res_list_info.Controls.Add(Me.reserved_grid_list)
+        Me.res_list_info.ItemSize = New System.Drawing.SizeF(153.0!, 24.0!)
         Me.res_list_info.Location = New System.Drawing.Point(5, 30)
         Me.res_list_info.Name = "res_list_info"
-        Me.res_list_info.Size = New System.Drawing.Size(1358, 270)
+        Me.res_list_info.Size = New System.Drawing.Size(1335, 270)
         Me.res_list_info.Text = "List of Reserved Equipments"
         '
         'reserved_grid_list
@@ -2836,7 +2839,7 @@ Partial Class Main
         Me.reserved_grid_list.MasterTemplate.ViewDefinition = TableViewDefinition8
         Me.reserved_grid_list.Name = "reserved_grid_list"
         Me.reserved_grid_list.ReadOnly = True
-        Me.reserved_grid_list.Size = New System.Drawing.Size(1358, 270)
+        Me.reserved_grid_list.Size = New System.Drawing.Size(1335, 270)
         Me.reserved_grid_list.TabIndex = 0
         Me.reserved_grid_list.Text = "RadGridView2"
         Me.reserved_grid_list.ThemeName = "VisualStudio2012Dark"
@@ -2844,6 +2847,7 @@ Partial Class Main
         'rel_list_info
         '
         Me.rel_list_info.Controls.Add(Me.released_grid_list)
+        Me.rel_list_info.ItemSize = New System.Drawing.SizeF(152.0!, 24.0!)
         Me.rel_list_info.Location = New System.Drawing.Point(5, 30)
         Me.rel_list_info.Name = "rel_list_info"
         Me.rel_list_info.Size = New System.Drawing.Size(1358, 270)
@@ -3349,7 +3353,7 @@ Partial Class Main
         Me.RadPageView3.Location = New System.Drawing.Point(0, -3)
         Me.RadPageView3.Name = "RadPageView3"
         Me.RadPageView3.SelectedPage = Me.rel_list_info2
-        Me.RadPageView3.Size = New System.Drawing.Size(1368, 305)
+        Me.RadPageView3.Size = New System.Drawing.Size(1341, 305)
         Me.RadPageView3.TabIndex = 6
         Me.RadPageView3.Text = "RadPageView3"
         Me.RadPageView3.ThemeName = "VisualStudio2012Dark"
@@ -3358,9 +3362,10 @@ Partial Class Main
         'rel_list_info2
         '
         Me.rel_list_info2.Controls.Add(Me.released_grid_list2)
+        Me.rel_list_info2.ItemSize = New System.Drawing.SizeF(152.0!, 24.0!)
         Me.rel_list_info2.Location = New System.Drawing.Point(5, 30)
         Me.rel_list_info2.Name = "rel_list_info2"
-        Me.rel_list_info2.Size = New System.Drawing.Size(1358, 270)
+        Me.rel_list_info2.Size = New System.Drawing.Size(1331, 270)
         Me.rel_list_info2.Text = "List of Released Equipments"
         '
         'released_grid_list2
@@ -3378,7 +3383,7 @@ Partial Class Main
         Me.released_grid_list2.MasterTemplate.ViewDefinition = TableViewDefinition10
         Me.released_grid_list2.Name = "released_grid_list2"
         Me.released_grid_list2.ReadOnly = True
-        Me.released_grid_list2.Size = New System.Drawing.Size(1358, 270)
+        Me.released_grid_list2.Size = New System.Drawing.Size(1331, 270)
         Me.released_grid_list2.TabIndex = 0
         Me.released_grid_list2.Text = "RadGridView2"
         Me.released_grid_list2.ThemeName = "VisualStudio2012Dark"
@@ -3386,6 +3391,7 @@ Partial Class Main
         'ret_list_info
         '
         Me.ret_list_info.Controls.Add(Me.returned_grid_list)
+        Me.ret_list_info.ItemSize = New System.Drawing.SizeF(153.0!, 24.0!)
         Me.ret_list_info.Location = New System.Drawing.Point(5, 30)
         Me.ret_list_info.Name = "ret_list_info"
         Me.ret_list_info.Size = New System.Drawing.Size(1358, 270)
