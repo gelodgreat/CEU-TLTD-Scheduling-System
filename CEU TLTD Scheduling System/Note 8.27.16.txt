@@ -3,31 +3,33 @@ change serial to number - done
 add time to change equipment tab - done
 change equipment time 
 
-add activity reservation/classroom reservation
-use check 
+add activity reservation/classroom reservation - done
+use check - done but i use dropdownlist
 
-add function on text changed on start date
+add function on text changed on start date -done
 
-change functions in main delete end date
-delete starttime endtime
-sort by hour
-datagrid show only for the day
+change term location to venue - done
+
+change functions in main delete end date -done
+delete starttime endtime -done
+sort by hour -done
+datagrid show only for the day - done
 
 reservation
-main priority activities over classroom reservation
+main priority activities over classroom reservation -pending
 
 main datagrid
-first column borrower
+first column borrower - done
 
 add equipment on main grid
-remove date,location, 
+remove date,location  - done
 
-needed borrower, equipment,starttime,endtime 
-add name filter on main form (like)
- change account to fullname
+needed borrower, equipment,starttime,endtime - done
+add name filter on main form (like) - pendinh
+ change account to fullname -done
 
 
-remove middle name
+remove middle name 
 if activities 
 show input box (event name)
 

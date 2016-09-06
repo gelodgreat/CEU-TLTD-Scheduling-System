@@ -126,7 +126,7 @@ Public Class Main
         Try
             MysqlConn.Open()
 
-            query = "Select reservationno as 'Reservation Number' ,borrower as 'Borrower', equipmentno as 'Equipment No', equipment as 'Equipment', DATE_FORMAT(date,'%M %d %Y') as 'Date',TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time' from reservation where date ='" & Format(CDate(rec_dtp_date.Value), "yyyy-MM-dd") & "' ORDER by date ASC"
+            query = "Select reservationno as 'Reservation Number' ,borrower as 'Borrower',id as 'ID', equipmentno as 'Equipment No', equipment as 'Equipment', DATE_FORMAT(date,'%M %d %Y') as 'Date',TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time' from reservation where date ='" & Format(CDate(rec_dtp_date.Value), "yyyy-MM-dd") & "' ORDER by date ASC"
 
             comm = New MySqlCommand(query, MysqlConn)
             sda.SelectCommand = comm
@@ -160,7 +160,7 @@ Public Class Main
         Try
             MysqlConn.Open()
 
-            query = "Select borrower as 'Borrower', equipmentno as 'Equipment No', equipment as 'Equipment', DATE_FORMAT(date,'%M %d %Y') as 'Date',TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time' from reservation where date='" & Format(CDate(lu_date.Value), "yyyy-MM-dd") & "' ORDER BY date ASC"
+            query = "Select borrower as 'Borrower',id as 'ID', equipmentno as 'Equipment No', equipment as 'Equipment', DATE_FORMAT(date,'%M %d %Y') as 'Date',TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time' from reservation where date='" & Format(CDate(lu_date.Value), "yyyy-MM-dd") & "' ORDER BY starttime ASC"
 
             comm = New MySqlCommand(query, MysqlConn)
             sda.SelectCommand = comm
@@ -1349,10 +1349,12 @@ Public Class Main
     ' Reservation Management Code Umali R2 = LOADING DATA TO rec_eq_choosesn 
 
     Private Sub rec_eq_type_choose_SelectedIndexChanged(sender As Object, e As UI.Data.PositionChangedEventArgs) Handles rec_eq_type_choose.SelectedIndexChanged
+        rec_eq_chooseno.Items.Clear()
         If MysqlConn.State = ConnectionState.Open Then
             MysqlConn.Close()
         End If
         MysqlConn.ConnectionString = connstring
+
         Try
             MysqlConn.Open()
 
@@ -1376,7 +1378,7 @@ Public Class Main
     End Sub
 
     ' Reservation Management Code Umali R2.5 = LOADING DATA TO rec_eq_chooseeq 
-    Private Sub rec_eq_choosesn_SelectedIndexChanged(sender As Object, e As UI.Data.PositionChangedEventArgs) Handles rec_eq_chooseno.SelectedIndexChanged
+    Private Sub rec_eq_chooseno_SelectedIndexChanged(sender As Object, e As UI.Data.PositionChangedEventArgs) Handles rec_eq_chooseno.SelectedIndexChanged
         If MysqlConn.State = ConnectionState.Open Then
             MysqlConn.Close()
         End If
@@ -1402,7 +1404,6 @@ Public Class Main
         Finally
             MysqlConn.Dispose()
         End Try
-
     End Sub
 
 
@@ -1531,61 +1532,10 @@ Public Class Main
         Dim conflictequipmentno As String = ""
         Dim conflictequipment As String = ""
         Dim conflictequipmentsn As String = ""
-        If (rec_cb_reserveno.Text = "") Or (rec_cb_idnum.Text = "") Or (rec_cb_borrower.Text = "") Or (rec_dtp_date.Text = "") Or (rec_dtp_starttime.Text = "") Or (rec_dtp_endtime.Text = "") Or (rec_cb_college_school.Text = "") Or (rec_cb_location.Text = "") Or (rec_cb_status.Text = "") Or (rec_cb_reserved.Text = "") Or (rec_eq_chooseno.Text = "") Or (rec_eq_type_choose.Text = "") Or (eq_rgv_addeq.Rows.Count < 0) Then
+        If (rec_cb_reserveno.Text = "") Or (rec_cb_idnum.Text = "") Or (rec_cb_borrower.Text = "") Or (rec_dtp_date.Text = "") Or (rec_dtp_starttime.Text = "") Or (rec_dtp_endtime.Text = "") Or (rec_cb_college_school.Text = "") Or (rec_cb_location.Text = "") Or (rec_cb_status.Text = "") Or (rec_cb_reserved.Text = "") Or (rec_eq_chooseno.Text = "") Or (rec_eq_type_choose.Text = "") Or (eq_rgv_addeq.Rows.Count < 0) Or (rec_cb_acttype.Text = "") Then
 
             RadMessageBox.Show(Me, "Please complete the fields", "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
         Else
-
-            'Try
-            '    MysqlConn.Close()
-            '    MysqlConn.Open()
-
-            '    'Pending Changes
-            '    '    query = "Select * from reservation where id='" & rec_cb_idnum.Text & "' and (('" & Format(CDate(rec_dtp_startdate.Value), "yyyy-MM-dd") & " " & Format(CDate(rec_dtp_starttime.Text), "hh:mm") & "' BETWEEN CONCAT(startdate,' ',starttime) AND CONCAT(enddate,' ',endtime)) OR
-            '    '('" & Format(CDate(rec_dtp_enddate.Value), "yyyy-MM-dd") & " " & Format(CDate(rec_dtp_endtime.Text), "hh:mm") & "' BETWEEN CONCAT (enddate,' ',starttime) AND CONCAT(enddate,' ',endtime)))"
-
-
-
-            '    query = "SELECT * FROM reservation WHERE id ='" & rec_cb_idnum.Text & "' AND (('" & Format(CDate(rec_dtp_date.Value), "yyyy-MM-dd") & " " & Format(CDate(rec_dtp_starttime.Text), "hh:mm") & "' BETWEEN CONCAT(date,' ',starttime) AND CONCAT(date,' ',endtime)) OR
-            '('" & Format(CDate(rec_dtp_endtime.Text), "hh:mm") & "'))"
-            '    comm = New MySqlCommand(query, MysqlConn)
-            '    READER = comm.ExecuteReader
-
-            '    Dim count As Integer
-            '    count = 0
-            '    While READER.Read
-            '        count = count + 1
-            '    End While
-
-            '    If count = 1 Then
-            '        RadMessageBox.Show(Me, "The time " & Format(CDate(rec_dtp_starttime.Text), "HH:mm") & " is already in used.", "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
-            '    Else
-
-
-            '        MysqlConn.Close()
-            '        MysqlConn.Open()
-
-            '        query = "INSERT INTO `reservation` VALUES (@rec_reserveno, @rec_id, @rec_dtpstartdate, @rec_dtpstarttime, @rec_dtpendtime, @rec_cbborrower, @rec_cblocation ,@rec_cb_reserved, @rec_cb_status) "
-            '        comm = New MySqlCommand(query, MysqlConn)
-            '        comm.Parameters.AddWithValue("rec_reserveno", rec_cb_reserveno.Text)
-            '        comm.Parameters.AddWithValue("rec_id", rec_cb_idnum.Text)
-            '        comm.Parameters.AddWithValue("rec_dtpstartdate", Format(CDate(rec_dtp_date.Value), "yyyy-MM-dd"))
-            '        comm.Parameters.AddWithValue("rec_dtpstarttime", Format(CDate(rec_dtp_starttime.Text), "HH:mm"))
-            '        comm.Parameters.AddWithValue("rec_dtpendtime", Format(CDate(rec_dtp_endtime.Text), "HH:mm"))
-            '        comm.Parameters.AddWithValue("rec_cbborrower", rec_cb_borrower.Text)
-            '        comm.Parameters.AddWithValue("rec_cblocation", rec_cb_location.Text)
-            '        comm.Parameters.AddWithValue("rec_cb_reserved", rec_cb_reserved.Text)
-            '        comm.Parameters.AddWithValue("rec_cb_status", rec_cb_status.Text)
-
-            '        READER = comm.ExecuteReader
-            '        MysqlConn.Close()
-
-            '    End If
-
-
-            'Catch ex As Exception
-            '    RadMessageBox.Show(Me, ex.Message, "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
-            'End Try
 
             Dim counter As Integer
             Dim rownumber As Integer = eq_rgv_addeq.Rows.Count
@@ -1632,12 +1582,12 @@ Public Class Main
 
                             MysqlConn.Close()
                             MysqlConn.Open()
-                            query = "INSERT INTO `reservation` VALUES ('" & rec_cb_reserveno.Text & "','" & equipmentnorgv & "', '" & equipmentrgv & "', '" & equipmentsnrgv & "', '" & rec_cb_idnum.Text & "', '" & Format(CDate(rec_dtp_date.Value), "yyyy-MM-dd") & "','" & Format(CDate(rec_dtp_starttime.Text), "HH:mm") & "', '" & Format(CDate(rec_dtp_endtime.Text), "HH:mm") & "', '" & rec_cb_borrower.Text & "', '" & rec_cb_location.Text & "' ,'" & rec_cb_reserved.Text & "', '" & rec_cb_status.Text & "')"
+                            query = "INSERT INTO `reservation` VALUES ('" & rec_cb_reserveno.Text & "','" & equipmentnorgv & "', '" & equipmentrgv & "', '" & equipmentsnrgv & "', '" & rec_cb_idnum.Text & "', '" & Format(CDate(rec_dtp_date.Value), "yyyy-MM-dd") & "','" & Format(CDate(rec_dtp_starttime.Text), "HH:mm") & "', '" & Format(CDate(rec_dtp_endtime.Text), "HH:mm") & "', '" & rec_cb_borrower.Text & "', '" & rec_cb_location.Text & "' ,'" & rec_cb_reserved.Text & "', '" & rec_cb_status.Text & "','" & rec_cb_acttype.Text & "')
+                            ;INSERT INTO `reservation_equipments` VALUES ('" & rec_cb_reserveno.Text & "','" & equipmentnorgv & "', '" & equipmentrgv & "', '" & equipmentsnrgv & "')"
 
                             comm = New MySqlCommand(query, MysqlConn)
                             READER = comm.ExecuteReader
                             MysqlConn.Close()
-
 
                         End If
 
@@ -1665,7 +1615,6 @@ Public Class Main
         load_main_table()
         load_rec_table()
         reserved_load_table()
-        auto_generate_reservationno()
     End Sub
 
     'Showing All Data to Reservation Grid View
@@ -1755,16 +1704,10 @@ Public Class Main
 
     End Sub
 
-    'Opening of the Change Equipment Form
-    Private Sub rec_btn_go_to_changeequipment_Click(sender As Object, e As EventArgs) Handles rec_btn_go_to_changeequipment.Click
-        ChangeEquipmentReservation.ShowDialog()
-
-    End Sub
-
     'AutoGenerating of Reservation#
 
     Public Sub auto_generate_reservationno()
-        identifier_reservationno = Now.ToString("mmddyyy")
+        identifier_reservationno = Now.ToString("mmddyyy" + "-")
         identifier_reservationno = identifier_reservationno + random.Next(1, 100000000).ToString
         rec_cb_reserveno.Text = identifier_reservationno
     End Sub
@@ -1798,6 +1741,8 @@ Public Class Main
                 MysqlConn.Dispose()
             End Try
         End If
+        load_rec_table()
+        load_main_table()
     End Sub
 
 
@@ -1808,14 +1753,14 @@ Public Class Main
         MysqlConn.ConnectionString = connstring
         Try
             MysqlConn.Open()
-            query = "SELECT username FROM accounts WHERE id=@rec_idno"
+            query = "SELECT CONCAT (lname,', ',fname) as 'Name' FROM accounts WHERE id=@rec_idno"
             comm = New MySqlCommand(query, MysqlConn)
             comm.Parameters.AddWithValue("rec_idno", rec_cb_idnum.Text)
             reader = comm.ExecuteReader
 
             rec_cb_borrower.Items.Clear()
             While reader.Read
-                rec_cb_borrower.Items.Add(reader.GetString("username"))
+                rec_cb_borrower.Items.Add(reader.GetString("name"))
             End While
 
             MysqlConn.Close()
@@ -1829,6 +1774,22 @@ Public Class Main
 
 
     Private Sub rec_btn_clear_Click(sender As Object, e As EventArgs) Handles rec_btn_clear.Click
+        auto_generate_reservationno()
+        rec_cb_borrower.Text = ""
+        rec_cb_idnum.Text = ""
+        rec_cb_acttype.Text = ""
+        rec_dtp_date.Value = Date.Now
+        rec_cb_status.Text = ""
+        rec_dtp_starttime.Text = ""
+        rec_dtp_endtime.Text = ""
+        rec_cb_college_school.Text = ""
+        rec_cb_location.Text = ""
+        rec_cb_status.Text = ""
+        rec_cb_reserved.Text = ""
+        rec_eq_chooseeq.Text = ""
+        rec_eq_chooseno.Text = ""
+        rec_eq_type_choose.Text = ""
+        eq_rgv_addeq.Rows.Clear()
 
     End Sub
 
@@ -1839,6 +1800,20 @@ Public Class Main
     Private Sub lu_date_ValueChanged(sender As Object, e As EventArgs) Handles lu_date.ValueChanged
         load_main_table()
     End Sub
+
+    Private Sub reservation_rgv_recordeddata_CellDoubleClick(sender As Object, e As GridViewCellEventArgs) Handles reservation_rgv_recordeddata.CellDoubleClick
+        If e.RowIndex >= 0 Then
+            Dim row As Telerik.WinControls.UI.GridViewRowInfo
+
+            row = Me.reservation_rgv_recordeddata.Rows(e.RowIndex)
+
+            rec_cb_reserveno.Text = row.Cells("Reservation Number").Value.ToString
+            rec_cb_idnum.Text = row.Cells("ID").Value.ToString.ToString
+
+
+        End If
+    End Sub
+
 
 
 

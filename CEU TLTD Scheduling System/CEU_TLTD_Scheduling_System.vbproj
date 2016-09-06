@@ -48,7 +48,7 @@
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="MySql.Data, Version=6.9.6.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
+    <Reference Include="MySql.Data, Version=6.9.8.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
@@ -92,12 +92,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.vb" />
-    <Compile Include="ChangeEquipmentReservation.Designer.vb">
-      <DependentUpon>ChangeEquipmentReservation.vb</DependentUpon>
-    </Compile>
-    <Compile Include="ChangeEquipmentReservation.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="GlobalVariableModule.vb" />
     <Compile Include="Login.Designer.vb">
       <DependentUpon>Login.vb</DependentUpon>
@@ -128,9 +122,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="ChangeEquipmentReservation.resx">
-      <DependentUpon>ChangeEquipmentReservation.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.vb</DependentUpon>
     </EmbeddedResource>
