@@ -42,6 +42,8 @@ Public Class Main
         lu_date.Value = Date.Now
         rec_dtp_date.Value = Date.Now
     End Sub
+
+
     Public Sub startup_disabled_buttons()
         eq_btn_update.Hide()
         eq_btn_delete.Hide()
