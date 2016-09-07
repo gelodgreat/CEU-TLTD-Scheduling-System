@@ -820,6 +820,7 @@ Public Class Main
     'Main Window Search Functions Umali C1
 
 
+    'Pending Code
     Private Sub btn_searchbydate_Click(sender As Object, e As EventArgs) Handles btn_searchbydate.Click
         load_main_table()
 
@@ -1346,8 +1347,8 @@ Public Class Main
         End Try
     End Sub
 
-    ' Reservation Management Code Umali R2 = LOADING DATA TO rec_eq_choosesn 
 
+    ' Reservation Management Code Umali R2 = LOADING DATA TO rec_eq_choosesn 
     Private Sub rec_eq_type_choose_SelectedIndexChanged(sender As Object, e As UI.Data.PositionChangedEventArgs) Handles rec_eq_type_choose.SelectedIndexChanged
         rec_eq_chooseno.Items.Clear()
         If MysqlConn.State = ConnectionState.Open Then
@@ -1409,7 +1410,6 @@ Public Class Main
 
 
     'Reservation Management Code Umali R3 = Adding Data from combobox to eq_rgv_addeq RadDataGrid
-
     Private Sub rec_btn_add_eq_Click(sender As Object, e As EventArgs) Handles rec_btn_add_eq.Click
 
         If MysqlConn.State = ConnectionState.Open Then
@@ -1514,15 +1514,7 @@ Public Class Main
 
 
     'Reservation Management Code Umali R6 = Inserting Data to database
-    'THIS NEED FIXING BECAUSE OF MANY CHANGES OCCURED IN ITS INTERFACE 
-    'FIXED SINGLE SAVED IN EQUIPMENTS 8.15
-    'GOING TO DO
-    'FIXED SOME LOGIC LIKE RECORD WILL NOT SAVE IF EQUIPMENT IS EMPTY
-    '
-    '08.26.16 
-    'NEED TO FIX THE ERROR IN DUPLICATION OF TIME ACCORDING TO BORROWER. NEED TO REFERENCE THE EQUIPMENT NOT THE USER
-    '08.26.16 Update 2
-    'Parameter can't record multi-rows like reserving many rows
+    'Under observation because of bugs that can be found in the future ' as of 09.06.16 4:55pm'
 
     Private Sub rec_btn_save_Click(sender As Object, e As EventArgs) Handles rec_btn_save.Click
         MysqlConn = New MySqlConnection
@@ -1618,49 +1610,47 @@ Public Class Main
     End Sub
 
     'Showing All Data to Reservation Grid View
-
     Private Sub rec_btn_showalldata_Click(sender As Object, e As EventArgs) Handles rec_btn_showalldata.Click
         load_rec_table()
     End Sub
 
     'SHowing all available equipments to Reservation Grid View
-
+    'Currently Pending because of importance
     Private Sub rec_btn_showavailequip_Click(sender As Object, e As EventArgs) Handles rec_btn_showavailequip.Click
-        MysqlConn = New MySqlConnection
-        MysqlConn.ConnectionString = connstring
+        'MysqlConn = New MySqlConnection
+        'MysqlConn.ConnectionString = connstring
 
-        Dim sda As New MySqlDataAdapter
-        Dim dbdataset As New DataTable
-        Dim bsource As New BindingSource
+        'Dim sda As New MySqlDataAdapter
+        'Dim dbdataset As New DataTable
+        'Dim bsource As New BindingSource
 
-        If MysqlConn.State = ConnectionState.Open Then
-            MysqlConn.Close()
-        End If
+        'If MysqlConn.State = ConnectionState.Open Then
+        '    MysqlConn.Close()
+        'End If
 
-        Try
-            MysqlConn.Open()
-            'Relacing on how to show the taken equipments
-            query = "Select equipmenttype as 'Equipment Type',equipmentno as 'Equipment No.',equipment as 'Equipment', equipmentsn as 'Equipment SN.' from equipments  ORDER BY equipmenttype ASC"
+        'Try
+        '    MysqlConn.Open()
+        '    'Relacing on how to show the taken equipments
+        '    query = "SELECT equipmenttype AS 'Equipment Type',equipmentno AS 'Equipment No.',equipment AS 'Equipment', equipmentsn AS 'Equipment Serial' FROM equipments  ORDER BY equipmenttype ASC"
 
-            comm = New MySqlCommand(query, MysqlConn)
-            sda.SelectCommand = comm
-            sda.Fill(dbdataset)
-            bsource.DataSource = dbdataset
-            reservation_rgv_recordeddata.DataSource = bsource
-            reservation_rgv_recordeddata.ReadOnly = True
-            sda.Update(dbdataset)
-            MysqlConn.Close()
+        '    comm = New MySqlCommand(query, MysqlConn)
+        '    sda.SelectCommand = comm
+        '    sda.Fill(dbdataset)
+        '    bsource.DataSource = dbdataset
+        '    reservation_rgv_recordeddata.DataSource = bsource
+        '    reservation_rgv_recordeddata.ReadOnly = True
+        '    sda.Update(dbdataset)
+        '    MysqlConn.Close()
 
-        Catch ex As Exception
-            RadMessageBox.Show(Me, ex.Message, "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
-        Finally
-            MysqlConn.Dispose()
+        'Catch ex As Exception
+        '    RadMessageBox.Show(Me, ex.Message, "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
+        'Finally
+        '    MysqlConn.Dispose()
 
-        End Try
+        'End Try
     End Sub
 
     'Showing all Taken equipments to Reservation Grid View
-
     Private Sub rec_btn_showalltakeneq_Click(sender As Object, e As EventArgs) Handles rec_btn_showalltakeneq.Click
         MysqlConn = New MySqlConnection
         MysqlConn.ConnectionString = connstring
@@ -1676,7 +1666,7 @@ Public Class Main
         Try
             MysqlConn.Open()
             'Pending Changes to show all taken equipments
-            query = "Select equipmenttype as 'Equipment Type',equipmentno as 'Equipment No.',equipment as 'Equipment', equipmentsn as 'Equipment SN.' from equipments ORDER BY equipmenttype ASC"
+            query = "SELECT equipmenttype AS 'Equipment Type',equipmentno AS 'Equipment No.',equipment AS 'Equipment', equipmentsn AS 'Equipment Serial' FROM reservation_equipments"
 
             comm = New MySqlCommand(query, MysqlConn)
             sda.SelectCommand = comm
@@ -1696,7 +1686,6 @@ Public Class Main
     End Sub
 
     'Clearing of the Equipment Choice
-
     Private Sub rec_btn_eqclear_Click(sender As Object, e As EventArgs) Handles rec_btn_eqclear.Click
         rec_eq_type_choose.Text = ""
         rec_eq_chooseno.Text = ""
@@ -1705,17 +1694,13 @@ Public Class Main
     End Sub
 
     'AutoGenerating of Reservation#
-
     Public Sub auto_generate_reservationno()
         identifier_reservationno = Now.ToString("mmddyyy" + "-")
         identifier_reservationno = identifier_reservationno + random.Next(1, 100000000).ToString
         rec_cb_reserveno.Text = identifier_reservationno
     End Sub
 
-
-    'DELETING OF RECORD IN RESERVATION RECORD
-    'NEED TO FIX QUERY
-    'MANY ERRORS FOUND
+    'Deletion of data in Reservation Page
     Private Sub rec_btn_delete_Click(sender As Object, e As EventArgs) Handles rec_btn_delete.Click
         If MysqlConn.State = ConnectionState.Open Then
             MysqlConn.Close()
@@ -1745,7 +1730,7 @@ Public Class Main
         load_main_table()
     End Sub
 
-
+    'Combining (Fname,Lname) in Borrower Field in Reservation
     Private Sub rec_cb_idnum_TextChanged(sender As Object, e As EventArgs) Handles rec_cb_idnum.TextChanged
         If MysqlConn.State = ConnectionState.Open Then
             MysqlConn.Close()
@@ -1772,7 +1757,7 @@ Public Class Main
     End Sub
 
 
-
+    'Clearing of Fields in Reservation Page
     Private Sub rec_btn_clear_Click(sender As Object, e As EventArgs) Handles rec_btn_clear.Click
         auto_generate_reservationno()
         rec_cb_borrower.Text = ""
@@ -1793,14 +1778,17 @@ Public Class Main
 
     End Sub
 
+    'Loading of data in Reservation Page Grid
     Private Sub rec_dtp_date_ValueChanged(sender As Object, e As EventArgs) Handles rec_dtp_date.ValueChanged
         load_rec_table()
     End Sub
 
+    'Loading of data in Main Page Grid
     Private Sub lu_date_ValueChanged(sender As Object, e As EventArgs) Handles lu_date.ValueChanged
         load_main_table()
     End Sub
 
+    'Double Click function in Reservation Tab Page
     Private Sub reservation_rgv_recordeddata_CellDoubleClick(sender As Object, e As GridViewCellEventArgs) Handles reservation_rgv_recordeddata.CellDoubleClick
         If e.RowIndex >= 0 Then
             Dim row As Telerik.WinControls.UI.GridViewRowInfo
@@ -1809,10 +1797,73 @@ Public Class Main
 
             rec_cb_reserveno.Text = row.Cells("Reservation Number").Value.ToString
             rec_cb_idnum.Text = row.Cells("ID").Value.ToString.ToString
-
-
         End If
+
+        If MysqlConn.State = ConnectionState.Open Then
+            MysqlConn.Close()
+        End If
+
+        deleteYN = RadMessageBox.Show(Me, "Are you sure you want to delete?", "TLTD Scheduling Management", MessageBoxButtons.YesNo, RadMessageIcon.Question)
+        If deleteYN = MsgBoxResult.Yes Then
+            Try
+                MysqlConn.Open()
+                query = "DELETE FROM reservation WHERE (reservationno=@R_rec_cb_reserveno) AND (id=@R_rec_cb_idnum)"
+                comm = New MySqlCommand(query, MysqlConn)
+                comm.Parameters.AddWithValue("R_rec_cb_reserveno", rec_cb_reserveno.Text)
+                comm.Parameters.AddWithValue("R_rec_cb_idnum", rec_cb_idnum.Text)
+
+                reader = comm.ExecuteReader
+
+
+                RadMessageBox.Show(Me, "Successfully Deleted!", "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Info)
+                MysqlConn.Close()
+            Catch ex As Exception
+                RadMessageBox.Show(Me, ex.Message, "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
+            Finally
+                MysqlConn.Dispose()
+            End Try
+        End If
+        load_rec_table()
+        load_main_table()
     End Sub
+
+    'Search by Name in Main Tab
+    Private Sub lu_byname_TextChanged(sender As Object, e As EventArgs) Handles lu_byname.TextChanged
+        MysqlConn = New MySqlConnection
+        MysqlConn.ConnectionString = connstring
+        Dim SDA As New MySqlDataAdapter
+        Dim dbdataset As New DataTable
+        Dim bsource As New BindingSource
+        Try
+            MysqlConn.Open()
+
+            query = "SELECT borrower as 'Borrower',id as 'ID', equipmentno as 'Equipment No', equipment as 'Equipment', DATE_FORMAT(date,'%M %d %Y') as 'Date',TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time' from reservation where date='" & Format(CDate(lu_date.Value), "yyyy-MM-dd") & "' ORDER BY starttime ASC"
+            comm = New MySqlCommand(query, MysqlConn)
+            SDA.SelectCommand = comm
+            SDA.Fill(dbdataset)
+            bsource.DataSource = dbdataset
+            main_rgv_recordeddatamain.DataSource = bsource
+            SDA.Update(dbdataset)
+
+            MysqlConn.Close()
+
+        Catch ex As MySqlException
+            RadMessageBox.Show(Me, ex.Message, "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
+        Finally
+            MysqlConn.Dispose()
+        End Try
+
+        Dim DV As New DataView(dbdataset)
+        DV.RowFilter = String.Format("`Borrower` Like'%{0}%'", lu_byname.Text)
+        main_rgv_recordeddatamain.DataSource = DV
+    End Sub
+
+    'Auto Generating of Reservation Number
+    Private Sub btn_resetreservationno_Click(sender As Object, e As EventArgs) Handles btn_resetreservationno.Click
+        auto_generate_reservationno()
+    End Sub
+
+
 
 
 
