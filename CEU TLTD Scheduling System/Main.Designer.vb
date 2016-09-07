@@ -470,9 +470,9 @@ Partial Class Main
         Me.RadLabel1 = New Telerik.WinControls.UI.RadLabel()
         Me.rec_dtp_date = New Telerik.WinControls.UI.RadDateTimePicker()
         Me.RadGroupBox5 = New Telerik.WinControls.UI.RadGroupBox()
+        Me.rec_eq_chooseeq = New Telerik.WinControls.UI.RadDropDownList()
         Me.rec_eq_chooseno = New Telerik.WinControls.UI.RadDropDownList()
         Me.rec_eq_type_choose = New Telerik.WinControls.UI.RadDropDownList()
-        Me.rec_eq_chooseeq = New Telerik.WinControls.UI.RadDropDownList()
         Me.rec_btn_showalltakeneq = New Telerik.WinControls.UI.RadButton()
         Me.RadLabel71 = New Telerik.WinControls.UI.RadLabel()
         Me.rec_btn_check_availability = New Telerik.WinControls.UI.RadButton()
@@ -702,9 +702,9 @@ Partial Class Main
         CType(Me.rec_dtp_date, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RadGroupBox5, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.RadGroupBox5.SuspendLayout()
+        CType(Me.rec_eq_chooseeq, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.rec_eq_chooseno, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.rec_eq_type_choose, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.rec_eq_chooseeq, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.rec_btn_showalltakeneq, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RadLabel71, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.rec_btn_check_availability, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -817,7 +817,7 @@ Partial Class Main
         Me.rpv1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.rpv1.Location = New System.Drawing.Point(0, 0)
         Me.rpv1.Name = "rpv1"
-        Me.rpv1.SelectedPage = Me.rpvp1_main
+        Me.rpv1.SelectedPage = Me.rpvp2_reservation
         Me.rpv1.Size = New System.Drawing.Size(1358, 583)
         Me.rpv1.TabIndex = 0
         Me.rpv1.Text = "Home"
@@ -2555,6 +2555,16 @@ Partial Class Main
         Me.RadGroupBox5.Text = "Equipments"
         Me.RadGroupBox5.ThemeName = "VisualStudio2012Dark"
         '
+        'rec_eq_chooseeq
+        '
+        Me.rec_eq_chooseeq.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
+        Me.rec_eq_chooseeq.DropDownStyle = Telerik.WinControls.RadDropDownStyle.DropDownList
+        Me.rec_eq_chooseeq.Location = New System.Drawing.Point(5, 153)
+        Me.rec_eq_chooseeq.Name = "rec_eq_chooseeq"
+        Me.rec_eq_chooseeq.Size = New System.Drawing.Size(217, 24)
+        Me.rec_eq_chooseeq.TabIndex = 13
+        Me.rec_eq_chooseeq.ThemeName = "VisualStudio2012Dark"
+        '
         'rec_eq_chooseno
         '
         Me.rec_eq_chooseno.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
@@ -2574,16 +2584,6 @@ Partial Class Main
         Me.rec_eq_type_choose.Size = New System.Drawing.Size(217, 24)
         Me.rec_eq_type_choose.TabIndex = 11
         Me.rec_eq_type_choose.ThemeName = "VisualStudio2012Dark"
-        '
-        'rec_eq_chooseeq
-        '
-        Me.rec_eq_chooseeq.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
-        Me.rec_eq_chooseeq.DropDownStyle = Telerik.WinControls.RadDropDownStyle.DropDownList
-        Me.rec_eq_chooseeq.Location = New System.Drawing.Point(5, 153)
-        Me.rec_eq_chooseeq.Name = "rec_eq_chooseeq"
-        Me.rec_eq_chooseeq.Size = New System.Drawing.Size(217, 24)
-        Me.rec_eq_chooseeq.TabIndex = 13
-        Me.rec_eq_chooseeq.ThemeName = "VisualStudio2012Dark"
         '
         'rec_btn_showalltakeneq
         '
@@ -2818,7 +2818,6 @@ Partial Class Main
         'res_list_info
         '
         Me.res_list_info.Controls.Add(Me.reserved_grid_list)
-        Me.res_list_info.ItemSize = New System.Drawing.SizeF(153.0!, 24.0!)
         Me.res_list_info.Location = New System.Drawing.Point(5, 30)
         Me.res_list_info.Name = "res_list_info"
         Me.res_list_info.Size = New System.Drawing.Size(1335, 270)
@@ -2847,7 +2846,6 @@ Partial Class Main
         'rel_list_info
         '
         Me.rel_list_info.Controls.Add(Me.released_grid_list)
-        Me.rel_list_info.ItemSize = New System.Drawing.SizeF(152.0!, 24.0!)
         Me.rel_list_info.Location = New System.Drawing.Point(5, 30)
         Me.rel_list_info.Name = "rel_list_info"
         Me.rel_list_info.Size = New System.Drawing.Size(1358, 270)
@@ -3362,7 +3360,6 @@ Partial Class Main
         'rel_list_info2
         '
         Me.rel_list_info2.Controls.Add(Me.released_grid_list2)
-        Me.rel_list_info2.ItemSize = New System.Drawing.SizeF(152.0!, 24.0!)
         Me.rel_list_info2.Location = New System.Drawing.Point(5, 30)
         Me.rel_list_info2.Name = "rel_list_info2"
         Me.rel_list_info2.Size = New System.Drawing.Size(1331, 270)
@@ -3391,7 +3388,6 @@ Partial Class Main
         'ret_list_info
         '
         Me.ret_list_info.Controls.Add(Me.returned_grid_list)
-        Me.ret_list_info.ItemSize = New System.Drawing.SizeF(153.0!, 24.0!)
         Me.ret_list_info.Location = New System.Drawing.Point(5, 30)
         Me.ret_list_info.Name = "ret_list_info"
         Me.ret_list_info.Size = New System.Drawing.Size(1358, 270)
@@ -4078,9 +4074,9 @@ Partial Class Main
         CType(Me.RadGroupBox5, System.ComponentModel.ISupportInitialize).EndInit()
         Me.RadGroupBox5.ResumeLayout(False)
         Me.RadGroupBox5.PerformLayout()
+        CType(Me.rec_eq_chooseeq, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.rec_eq_chooseno, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.rec_eq_type_choose, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.rec_eq_chooseeq, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.rec_btn_showalltakeneq, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RadLabel71, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.rec_btn_check_availability, System.ComponentModel.ISupportInitialize).EndInit()
