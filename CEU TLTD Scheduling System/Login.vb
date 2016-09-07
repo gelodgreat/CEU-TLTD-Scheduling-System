@@ -51,7 +51,8 @@ Public Class Login
 
     'System Timer
     Private Sub log_timer_Tick(sender As Object, e As EventArgs) Handles log_timer.Tick
-        log_lbl_timer.Text = Date.Now.ToString("MMMM dd yyyy hh:mm:ss tt")
+        log_lbl_date.Text = Date.Now.ToString("MMMM dd, yyyy")
+        log_lbl_time.Text = Date.Now.ToString("hh:mm:ss tt")
     End Sub
 
     'Theme Changer

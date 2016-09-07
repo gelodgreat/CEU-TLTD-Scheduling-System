@@ -44,6 +44,7 @@ Public Class Main
         color_coding()
         lu_date.Value = Date.Now
         rec_dtp_date.Value = Date.Now
+        Main_Timer.Enabled = True
     End Sub
 
 
@@ -1598,10 +1599,10 @@ Public Class Main
 
             If errorcount = False Then
                 RadMessageBox.Show(Me, "Succesfully Equipment Reserved!", "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Info)
-                auto_generate_reservationno()
+
             Else
                 RadMessageBox.Show(Me, "Some equipments are not succesfully reserved", "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
-                auto_generate_reservationno()
+
             End If
         End If
         load_main_table()
@@ -1862,6 +1863,16 @@ Public Class Main
     Private Sub btn_resetreservationno_Click(sender As Object, e As EventArgs) Handles btn_resetreservationno.Click
         auto_generate_reservationno()
     End Sub
+
+    Private Sub Main_Timer_Tick(sender As Object, e As EventArgs) Handles Main_Timer.Tick
+        Dim title As String = "TLTD Scheduling System"
+        Me.Text = title + Date.Now.ToString("            MMMM dd, yyyy  hh:mm:ss tt")
+    End Sub
+
+
+
+
+
 
 
 

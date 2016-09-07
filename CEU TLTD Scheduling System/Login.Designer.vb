@@ -32,7 +32,7 @@ Partial Class Login
         Me.log_username = New Telerik.WinControls.UI.RadTextBox()
         Me.log_password = New Telerik.WinControls.UI.RadTextBox()
         Me.log_timer = New System.Windows.Forms.Timer(Me.components)
-        Me.log_lbl_timer = New Telerik.WinControls.UI.RadLabel()
+        Me.log_lbl_date = New Telerik.WinControls.UI.RadLabel()
         Me.RadGroupBox1 = New Telerik.WinControls.UI.RadGroupBox()
         Me.RadGroupBox2 = New Telerik.WinControls.UI.RadGroupBox()
         Me.btn_w8 = New Telerik.WinControls.UI.RadButton()
@@ -44,6 +44,7 @@ Partial Class Login
         Me.TelerikMetroTheme1 = New Telerik.WinControls.Themes.TelerikMetroTheme()
         Me.Windows8Theme1 = New Telerik.WinControls.Themes.Windows8Theme()
         Me.TelerikMetroBlueTheme1 = New Telerik.WinControls.Themes.TelerikMetroBlueTheme()
+        Me.log_lbl_time = New Telerik.WinControls.UI.RadLabel()
         CType(Me.btn_login, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RadLabel17, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RadLabel14, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -51,7 +52,7 @@ Partial Class Login
         CType(Me.log_lbl_dbstatus, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.log_username, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.log_password, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.log_lbl_timer, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.log_lbl_date, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RadGroupBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.RadGroupBox1.SuspendLayout()
         CType(Me.RadGroupBox2, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -61,6 +62,7 @@ Partial Class Login
         CType(Me.btn_metrotheme, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.btn_vsdark, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.btn_vslight, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.log_lbl_time, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -147,15 +149,15 @@ Partial Class Login
         'log_timer
         '
         '
-        'log_lbl_timer
+        'log_lbl_date
         '
-        Me.log_lbl_timer.Anchor = System.Windows.Forms.AnchorStyles.Top
-        Me.log_lbl_timer.Location = New System.Drawing.Point(222, 12)
-        Me.log_lbl_timer.Name = "log_lbl_timer"
-        Me.log_lbl_timer.Size = New System.Drawing.Size(31, 18)
-        Me.log_lbl_timer.TabIndex = 29
-        Me.log_lbl_timer.Text = "Time"
-        Me.log_lbl_timer.ThemeName = "VisualStudio2012Dark"
+        Me.log_lbl_date.Anchor = System.Windows.Forms.AnchorStyles.Top
+        Me.log_lbl_date.Location = New System.Drawing.Point(266, 12)
+        Me.log_lbl_date.Name = "log_lbl_date"
+        Me.log_lbl_date.Size = New System.Drawing.Size(30, 18)
+        Me.log_lbl_date.TabIndex = 29
+        Me.log_lbl_date.Text = "Date"
+        Me.log_lbl_date.ThemeName = "VisualStudio2012Dark"
         '
         'RadGroupBox1
         '
@@ -188,9 +190,9 @@ Partial Class Login
         Me.RadGroupBox2.Controls.Add(Me.btn_vsdark)
         Me.RadGroupBox2.Controls.Add(Me.btn_vslight)
         Me.RadGroupBox2.HeaderText = "Themes"
-        Me.RadGroupBox2.Location = New System.Drawing.Point(404, 12)
+        Me.RadGroupBox2.Location = New System.Drawing.Point(404, 27)
         Me.RadGroupBox2.Name = "RadGroupBox2"
-        Me.RadGroupBox2.Size = New System.Drawing.Size(190, 275)
+        Me.RadGroupBox2.Size = New System.Drawing.Size(190, 260)
         Me.RadGroupBox2.TabIndex = 31
         Me.RadGroupBox2.Text = "Themes"
         Me.RadGroupBox2.ThemeName = "VisualStudio2012Dark"
@@ -255,14 +257,25 @@ Partial Class Login
         Me.btn_vslight.Text = "VS2012 Light"
         Me.btn_vslight.ThemeName = "VisualStudio2012Dark"
         '
+        'log_lbl_time
+        '
+        Me.log_lbl_time.Anchor = System.Windows.Forms.AnchorStyles.Top
+        Me.log_lbl_time.Location = New System.Drawing.Point(404, 3)
+        Me.log_lbl_time.Name = "log_lbl_time"
+        Me.log_lbl_time.Size = New System.Drawing.Size(31, 18)
+        Me.log_lbl_time.TabIndex = 32
+        Me.log_lbl_time.Text = "Time"
+        Me.log_lbl_time.ThemeName = "VisualStudio2012Dark"
+        '
         'Login
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(605, 312)
+        Me.Controls.Add(Me.log_lbl_time)
         Me.Controls.Add(Me.RadGroupBox2)
         Me.Controls.Add(Me.RadGroupBox1)
-        Me.Controls.Add(Me.log_lbl_timer)
+        Me.Controls.Add(Me.log_lbl_date)
         Me.Controls.Add(Me.log_lbl_dbstatus)
         Me.Controls.Add(Me.RadLabel1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
@@ -281,7 +294,7 @@ Partial Class Login
         CType(Me.log_lbl_dbstatus, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.log_username, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.log_password, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.log_lbl_timer, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.log_lbl_date, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RadGroupBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.RadGroupBox1.ResumeLayout(False)
         Me.RadGroupBox1.PerformLayout()
@@ -292,6 +305,7 @@ Partial Class Login
         CType(Me.btn_metrotheme, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.btn_vsdark, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.btn_vslight, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.log_lbl_time, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
@@ -307,7 +321,7 @@ Partial Class Login
     Friend WithEvents log_username As Telerik.WinControls.UI.RadTextBox
     Friend WithEvents log_password As Telerik.WinControls.UI.RadTextBox
     Friend WithEvents log_timer As Timer
-    Friend WithEvents log_lbl_timer As Telerik.WinControls.UI.RadLabel
+    Friend WithEvents log_lbl_date As Telerik.WinControls.UI.RadLabel
     Friend WithEvents RadGroupBox1 As Telerik.WinControls.UI.RadGroupBox
     Friend WithEvents RadGroupBox2 As Telerik.WinControls.UI.RadGroupBox
     Friend WithEvents btn_w8 As Telerik.WinControls.UI.RadButton
@@ -319,5 +333,6 @@ Partial Class Login
     Friend WithEvents TelerikMetroTheme1 As Telerik.WinControls.Themes.TelerikMetroTheme
     Friend WithEvents Windows8Theme1 As Telerik.WinControls.Themes.Windows8Theme
     Friend WithEvents TelerikMetroBlueTheme1 As Telerik.WinControls.Themes.TelerikMetroBlueTheme
+    Friend WithEvents log_lbl_time As Telerik.WinControls.UI.RadLabel
 End Class
 
