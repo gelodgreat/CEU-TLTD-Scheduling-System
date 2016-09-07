@@ -8,7 +8,7 @@ Public Class Main
     Dim ds As New DataSet
     Dim MysqlConn As MySqlConnection
 
-    Dim dbDataSet As New DataTable
+
     Dim svYN As DialogResult
     Dim addYN As DialogResult
     Dim editYN As DialogResult
@@ -16,6 +16,8 @@ Public Class Main
     Dim updateYN As DialogResult
     Dim deleteYN As DialogResult
     Dim doneYN As DialogResult
+
+    Public dbdataset As New DataTable
 
     Public identifier_reservationno As String
     Public random As System.Random = New System.Random
@@ -29,6 +31,7 @@ Public Class Main
         reservation_rgv_recordeddata.Show()
         reservations_rgv_showavailableitems.Hide()
         load_main_table()
+        load_academics_table()
         load_rec_table()
         load_eq_table()
         load_main_acc()
@@ -105,7 +108,7 @@ Public Class Main
         e.CellElement.TextAlignment = ContentAlignment.MiddleCenter
     End Sub
 
-    Private Sub main_rgv_recordeddatamain_ViewCellFormatting(sender As Object, e As CellFormattingEventArgs) Handles main_rgv_recordeddatamain.ViewCellFormatting
+    Private Sub main_rgv_recordeddatamain_ViewCellFormatting(sender As Object, e As CellFormattingEventArgs) Handles main_rgv_recordedacademicsmain.ViewCellFormatting
         e.CellElement.TextAlignment = ContentAlignment.MiddleCenter
     End Sub
 
@@ -118,7 +121,7 @@ Public Class Main
         MysqlConn.ConnectionString = connstring
 
         Dim sda As New MySqlDataAdapter
-        Dim dbdataset As New DataTable
+       
         Dim bsource As New BindingSource
 
         If MysqlConn.State = ConnectionState.Open Then
@@ -151,8 +154,8 @@ Public Class Main
         MysqlConn = New MySqlConnection
         MysqlConn.ConnectionString = connstring
 
+
         Dim sda As New MySqlDataAdapter
-        Dim dbdataset As New DataTable
         Dim bsource As New BindingSource
 
         If MysqlConn.State = ConnectionState.Open Then
@@ -161,15 +164,45 @@ Public Class Main
 
         Try
             MysqlConn.Open()
-
-            query = "Select borrower as 'Borrower',id as 'ID', equipmentno as 'Equipment No', equipment as 'Equipment', DATE_FORMAT(date,'%M %d %Y') as 'Date',TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time' from reservation where date='" & Format(CDate(lu_date.Value), "yyyy-MM-dd") & "' ORDER BY starttime ASC"
-
+            query = "SELECT TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time',borrower as 'Borrower', equipment as 'Equipment', equipmentno as 'Equipment No' ,DATE_FORMAT(date,'%M %d %Y') as 'Date',id as 'ID' from reservation where date='" & Format(CDate(lu_date.Value), "yyyy-MM-dd") & "' and activitytype='Academic' ORDER BY starttime ASC"
             comm = New MySqlCommand(query, MysqlConn)
             sda.SelectCommand = comm
             sda.Fill(dbdataset)
             bsource.DataSource = dbdataset
-            main_rgv_recordeddatamain.DataSource = bsource
-            main_rgv_recordeddatamain.ReadOnly = True
+            main_rgv_recordedacademicsmain.DataSource = bsource
+            main_rgv_recordedacademicsmain.ReadOnly = True
+            sda.Update(dbdataset)
+            MysqlConn.Close()
+
+        Catch ex As Exception
+            RadMessageBox.Show(Me, ex.Message, "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
+        Finally
+            MysqlConn.Dispose()
+
+        End Try
+    End Sub
+
+
+    Public Sub load_academics_table()
+        MysqlConn = New MySqlConnection
+        MysqlConn.ConnectionString = connstring
+
+        Dim sda As New MySqlDataAdapter
+        Dim bsource As New BindingSource
+
+        If MysqlConn.State = ConnectionState.Open Then
+            MysqlConn.Close()
+        End If
+
+        Try
+            MysqlConn.Open()
+            query = "SELECT TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time',borrower as 'Borrower', equipment as 'Equipment', equipmentno as 'Equipment No' ,DATE_FORMAT(date,'%M %d %Y') as 'Date',id as 'ID' from reservation where date='" & Format(CDate(lu_date.Value), "yyyy-MM-dd") & "' and activitytype='Co-Curricular/Extra-Curricular' ORDER BY starttime ASC"
+            comm = New MySqlCommand(query, MysqlConn)
+            sda.SelectCommand = comm
+            sda.Fill(dbdataset)
+            bsource.DataSource = dbdataset
+            main_rgv_recordedcurricularmain.DataSource = bsource
+            main_rgv_recordedcurricularmain.ReadOnly = True
             sda.Update(dbdataset)
             MysqlConn.Close()
 
@@ -1579,13 +1612,15 @@ Public Class Main
                         MysqlConn.Close()
                         MysqlConn.Open()
 
-                        query = "SELECT * from reservation where reservationno=@RE_reservationno and equipment=@RE_equipment and equipmentsn=@RE_equipmentsn and equipmentno=@RE_equipmentno"
+                        query = "SELECT * from reservation where reservationno=@RE_reservationno and equipment=@RE_equipment and equipmentsn=@RE_equipmentsn and equipmentno=@RE_equipmentno and date=@RE_date and starttime=@RE_starttime and endtime=@RE_endtime"
                         comm = New MySqlCommand(query, MysqlConn)
                         comm.Parameters.AddWithValue("RE_reservationno", rec_cb_reserveno.Text)
                         comm.Parameters.AddWithValue("RE_equipment", equipmentrgv)
                         comm.Parameters.AddWithValue("RE_equipmentsn", equipmentsnrgv)
                         comm.Parameters.AddWithValue("RE_equipmentno", equipmentnorgv)
-
+                        comm.Parameters.AddWithValue("RE_date", Format(CDate(rec_dtp_date.Value), "yyyy-MM-dd"))
+                        comm.Parameters.AddWithValue("RE_starttime", Format(CDate(rec_dtp_starttime.Text), "HH:mm"))
+                        comm.Parameters.AddWithValue("RE_endtime", Format(CDate(rec_dtp_endtime.Text), "HH:mm"))
 
                         READER = comm.ExecuteReader
                         Dim count As Integer
@@ -1640,6 +1675,7 @@ Public Class Main
         End If
         load_main_table()
         load_rec_table()
+        load_academics_table()
         reserved_load_table()
     End Sub
 
@@ -1762,6 +1798,7 @@ Public Class Main
         End If
         load_rec_table()
         load_main_table()
+        load_academics_table()
     End Sub
 
     'Combining (Fname,Lname) in Borrower Field in Reservation
@@ -1876,7 +1913,7 @@ Public Class Main
             SDA.SelectCommand = comm
             SDA.Fill(dbdataset)
             bsource.DataSource = dbdataset
-            main_rgv_recordeddatamain.DataSource = bsource
+            main_rgv_recordedacademicsmain.DataSource = bsource
             SDA.Update(dbdataset)
 
             MysqlConn.Close()
@@ -1889,7 +1926,7 @@ Public Class Main
 
         Dim DV As New DataView(dbdataset)
         DV.RowFilter = String.Format("`Borrower` Like'%{0}%'", lu_byname.Text)
-        main_rgv_recordeddatamain.DataSource = DV
+        main_rgv_recordedacademicsmain.DataSource = DV
     End Sub
 
     'Auto Generating of Reservation Number
@@ -1901,6 +1938,13 @@ Public Class Main
         Dim title As String = "TLTD Scheduling System"
         Me.Text = title + Date.Now.ToString("            MMMM dd, yyyy  hh:mm:ss tt")
     End Sub
+
+    Private Sub rpv1_Click(sender As Object, e As EventArgs) Handles rpv1.Click
+        load_academics_table()
+        load_main_table()
+        load_rec_table()
+    End Sub
+
 
 
 
