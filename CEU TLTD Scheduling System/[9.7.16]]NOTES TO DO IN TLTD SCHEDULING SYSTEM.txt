@@ -20,6 +20,7 @@ main
 	-add new grid for school activity
 	-academic / co-curricular/extra-curricular
 	
+	-idea (use 2 tab pages seperately)
 	-pending changes on datagrid in main can't add 2 grids in one form need to seperate as of 09.07.16
 
 	-Done
