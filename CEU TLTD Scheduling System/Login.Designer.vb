@@ -146,6 +146,7 @@ Partial Class Login
         Me.log_password.Location = New System.Drawing.Point(121, 108)
         Me.log_password.MinimumSize = New System.Drawing.Size(0, 24)
         Me.log_password.Name = "log_password"
+        Me.log_password.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
         '
         '
         '
@@ -319,6 +320,7 @@ Partial Class Login
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Login"
         Me.ThemeName = "VisualStudio2012Dark"
+        Me.TopMost = True
         CType(Me.btn_login, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RadLabel17, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RadLabel14, System.ComponentModel.ISupportInitialize).EndInit()

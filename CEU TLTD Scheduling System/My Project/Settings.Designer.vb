@@ -54,16 +54,6 @@ Namespace My
             End Get
         End Property
         
-        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("server=localhost;user id=root;password=root;database=ceutltdscheduler")>  _
-        Public ReadOnly Property ceutltdschedulerConnectionString() As String
-            Get
-                Return CType(Me("ceutltdschedulerConnectionString"),String)
-            End Get
-        End Property
-        
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.Configuration.DefaultSettingValueAttribute("")>  _
@@ -73,6 +63,66 @@ Namespace My
             End Get
             Set
                 Me("WindowTheme") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
+        Public Property cons_server() As String
+            Get
+                Return CType(Me("cons_server"),String)
+            End Get
+            Set
+                Me("cons_server") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
+        Public Property cons_port() As String
+            Get
+                Return CType(Me("cons_port"),String)
+            End Get
+            Set
+                Me("cons_port") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
+        Public Property cons_database() As String
+            Get
+                Return CType(Me("cons_database"),String)
+            End Get
+            Set
+                Me("cons_database") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
+        Public Property cons_username() As String
+            Get
+                Return CType(Me("cons_username"),String)
+            End Get
+            Set
+                Me("cons_username") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
+        Public Property cons_password() As String
+            Get
+                Return CType(Me("cons_password"),String)
+            End Get
+            Set
+                Me("cons_password") = value
             End Set
         End Property
     End Class
