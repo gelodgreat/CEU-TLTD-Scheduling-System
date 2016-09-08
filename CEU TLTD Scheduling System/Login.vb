@@ -168,4 +168,18 @@ Public Class Login
         Main.Show()
         Me.Hide()
     End Sub
+
+    Private Sub settingButton_Click(sender As Object, e As EventArgs) Handles settingButton.Click
+        ConnectionWindow.ShowDialog()
+    End Sub
+
+    Private Sub settingButton_MouseHover(sender As Object, e As EventArgs) Handles settingButton.MouseHover
+        settingButton.Image = New Bitmap(My.Resources.settingIcon_Hover)
+        Cursor = Cursors.Hand
+    End Sub
+
+    Private Sub settingButton_MouseLeave(sender As Object, e As EventArgs) Handles settingButton.MouseLeave
+        settingButton.Image = New Bitmap(My.Resources.settingIcon)
+        Cursor = Cursors.Arrow
+    End Sub
 End Class
