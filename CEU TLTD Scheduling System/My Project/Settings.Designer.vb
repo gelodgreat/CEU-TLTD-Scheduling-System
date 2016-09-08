@@ -63,6 +63,18 @@ Namespace My
                 Return CType(Me("ceutltdschedulerConnectionString"),String)
             End Get
         End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
+        Public Property WindowTheme() As String
+            Get
+                Return CType(Me("WindowTheme"),String)
+            End Get
+            Set
+                Me("WindowTheme") = value
+            End Set
+        End Property
     End Class
 End Namespace
 
