@@ -299,8 +299,16 @@ Public Class Main
             Try
                 MysqlConn.Open()
                 Dim Query As String
-                Query = "insert into ceutltdscheduler.staff_reg (staff_id,staff_fname,staff_mname,staff_surname,staff_type,staff_username,staff_password) values ('" & acc_sf_id.Text & "' , '" & acc_sf_fname.Text & "', '" & acc_sf_mname.Text & "', '" & acc_sf_lname.Text & "' ,  '" & acc_sf_usertype.Text & "' , '" & acc_sf_username.Text & "' , sha2('" & acc_sf_password.Text & "', 512))"
+                Query = "insert into ceutltdscheduler.staff_reg (staff_id,staff_fname,staff_mname,staff_surname,staff_type,staff_username,staff_password) values (@staffid, @staffFname, @staffMname, @staffLname, @staffUsertype, @staffUsername, sha2(@staffPassword, 512))"
                 comm = New MySqlCommand(Query, MysqlConn)
+                comm.Parameters.AddWithValue("staffid", acc_sf_id.Text)
+                comm.Parameters.AddWithValue("staffFname", acc_sf_fname.Text)
+                comm.Parameters.AddWithValue("staffMname", acc_sf_mname.Text)
+                comm.Parameters.AddWithValue("staffLname", acc_sf_lname.Text)
+                comm.Parameters.AddWithValue("staffUsertype", acc_sf_usertype.Text)
+                comm.Parameters.AddWithValue("staffUsername", acc_sf_username.Text)
+                comm.Parameters.AddWithValue("staffPassword", acc_sf_password.Text)
+
 
                 svYN = RadMessageBox.Show(Me, "Are you sure you want To save this information? ", "TLTD Scheduling Management", MessageBoxButtons.YesNo, RadMessageIcon.Question)
                 If svYN = MsgBoxResult.Yes Then
@@ -463,8 +471,15 @@ Public Class Main
             Try
                 MysqlConn.Open()
                 Dim Query As String
-                Query = "insert into ceutltdscheduler.prof_reg (prof_id,prof_fname,prof_mname,prof_surname,prof_college,prof_type) values ('" & acc_pf_id.Text & "' , '" & acc_pf_fname.Text & "' , '" & acc_pf_mname.Text & "' , '" & acc_pf_lname.Text & "' , '" & acc_pf_college.Text & "' , '" & acc_pf_usertype.Text & "')"
+                Query = "insert into ceutltdscheduler.prof_reg (prof_id,prof_fname,prof_mname,prof_surname,prof_college,prof_type) values (@ProfID, @ProfFname, @ProfMname, @ProfLname, @ProfCollege, @ProfUsertype)"
                 comm = New MySqlCommand(Query, MysqlConn)
+                comm.Parameters.AddWithValue("ProfID", acc_pf_id.Text)
+                comm.Parameters.AddWithValue("ProfFname", acc_pf_fname.Text)
+                comm.Parameters.AddWithValue("ProfMname", acc_pf_mname.Text)
+                comm.Parameters.AddWithValue("ProfLname", acc_pf_lname.Text)
+                comm.Parameters.AddWithValue("ProfCollege", acc_pf_college.Text)
+                comm.Parameters.AddWithValue("ProfUsertype", acc_pf_usertype.Text)
+
 
                 svYN = RadMessageBox.Show(Me, "Are you sure you want To save this information? ", "TLTD Schuling Management", MessageBoxButtons.YesNo, RadMessageIcon.Question)
                 If svYN = MsgBoxResult.Yes Then
@@ -685,6 +700,10 @@ Public Class Main
                 Query = "insert into `released_info`  values ('" & rel_tb_id.Text & "' ,'" & rel_tb_reservationnum.Text & " ',  '" & rel_tb_borrower.Text & "' , '" & rel_tb_reservationnum.Text & "', '" & rel_tb_equipment.Text & "', '" & Format(CDate(rel_tb_startdate.Value), "yyyy-MM-dd") & "','" & Format(CDate(rel_tb_starttime.Text), "HH:mm") & "', '" & Format(CDate(rel_tb_endtime.Text), "HH:mm") & "', '" & rel_tb_status.Text & "' , '" & rel_tb_releasedby.Text & "'); delete from reservation where  reservationno = '" & rel_tb_reservationnum.Text & "'"
                 'Query = "delete from reservation where  reservationno = '" & rel_tb_reservationnum.Text & "'"
                 comm = New MySqlCommand(Query, MysqlConn)
+                'comm.Parameters.AddWithValue("ID", rel_tb_id.Text)
+                'comm.Parameters.AddWithValue("ID", rel_tb_id.Text)
+                'comm.Parameters.AddWithValue("ID", rel_tb_id.Text)
+
 
                 svYN = RadMessageBox.Show(Me, "Are you sure you want to Release this Equipment/s? ", "TLTD Schuling Management", MessageBoxButtons.YesNo, RadMessageIcon.Question)
                 If svYN = MsgBoxResult.Yes Then
