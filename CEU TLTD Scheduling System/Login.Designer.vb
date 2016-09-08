@@ -45,6 +45,7 @@ Partial Class Login
         Me.Windows8Theme1 = New Telerik.WinControls.Themes.Windows8Theme()
         Me.TelerikMetroBlueTheme1 = New Telerik.WinControls.Themes.TelerikMetroBlueTheme()
         Me.log_lbl_time = New Telerik.WinControls.UI.RadLabel()
+        Me.btn_bypass_log = New Telerik.WinControls.UI.RadButton()
         CType(Me.btn_login, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RadLabel17, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RadLabel14, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -63,6 +64,7 @@ Partial Class Login
         CType(Me.btn_vsdark, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.btn_vslight, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.log_lbl_time, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.btn_bypass_log, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -81,7 +83,8 @@ Partial Class Login
         'RadLabel17
         '
         Me.RadLabel17.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
-        Me.RadLabel17.Location = New System.Drawing.Point(59, 114)
+        Me.RadLabel17.BackColor = System.Drawing.Color.Transparent
+        Me.RadLabel17.Location = New System.Drawing.Point(59, 109)
         Me.RadLabel17.Name = "RadLabel17"
         Me.RadLabel17.Size = New System.Drawing.Size(56, 18)
         Me.RadLabel17.TabIndex = 24
@@ -91,7 +94,8 @@ Partial Class Login
         'RadLabel14
         '
         Me.RadLabel14.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
-        Me.RadLabel14.Location = New System.Drawing.Point(56, 84)
+        Me.RadLabel14.BackColor = System.Drawing.Color.Transparent
+        Me.RadLabel14.Location = New System.Drawing.Point(56, 79)
         Me.RadLabel14.Name = "RadLabel14"
         Me.RadLabel14.Size = New System.Drawing.Size(59, 18)
         Me.RadLabel14.TabIndex = 23
@@ -101,9 +105,10 @@ Partial Class Login
         'RadLabel1
         '
         Me.RadLabel1.Anchor = System.Windows.Forms.AnchorStyles.Top
+        Me.RadLabel1.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.RadLabel1.Location = New System.Drawing.Point(12, 12)
         Me.RadLabel1.Name = "RadLabel1"
-        Me.RadLabel1.Size = New System.Drawing.Size(39, 18)
+        Me.RadLabel1.Size = New System.Drawing.Size(46, 21)
         Me.RadLabel1.TabIndex = 25
         Me.RadLabel1.Text = "Status:"
         Me.RadLabel1.ThemeName = "VisualStudio2012Dark"
@@ -111,9 +116,10 @@ Partial Class Login
         'log_lbl_dbstatus
         '
         Me.log_lbl_dbstatus.Anchor = System.Windows.Forms.AnchorStyles.Top
+        Me.log_lbl_dbstatus.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.log_lbl_dbstatus.Location = New System.Drawing.Point(57, 12)
         Me.log_lbl_dbstatus.Name = "log_lbl_dbstatus"
-        Me.log_lbl_dbstatus.Size = New System.Drawing.Size(77, 18)
+        Me.log_lbl_dbstatus.Size = New System.Drawing.Size(97, 21)
         Me.log_lbl_dbstatus.TabIndex = 26
         Me.log_lbl_dbstatus.Text = "Online/Offline"
         Me.log_lbl_dbstatus.ThemeName = "VisualStudio2012Dark"
@@ -151,10 +157,13 @@ Partial Class Login
         '
         'log_lbl_date
         '
-        Me.log_lbl_date.Anchor = System.Windows.Forms.AnchorStyles.Top
-        Me.log_lbl_date.Location = New System.Drawing.Point(266, 12)
+        Me.log_lbl_date.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.log_lbl_date.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.log_lbl_date.Location = New System.Drawing.Point(218, 12)
         Me.log_lbl_date.Name = "log_lbl_date"
-        Me.log_lbl_date.Size = New System.Drawing.Size(30, 18)
+        Me.log_lbl_date.Size = New System.Drawing.Size(35, 21)
         Me.log_lbl_date.TabIndex = 29
         Me.log_lbl_date.Text = "Date"
         Me.log_lbl_date.ThemeName = "VisualStudio2012Dark"
@@ -165,6 +174,7 @@ Partial Class Login
         Me.RadGroupBox1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.RadGroupBox1.Controls.Add(Me.btn_bypass_log)
         Me.RadGroupBox1.Controls.Add(Me.btn_login)
         Me.RadGroupBox1.Controls.Add(Me.RadLabel14)
         Me.RadGroupBox1.Controls.Add(Me.log_password)
@@ -190,19 +200,17 @@ Partial Class Login
         Me.RadGroupBox2.Controls.Add(Me.btn_vsdark)
         Me.RadGroupBox2.Controls.Add(Me.btn_vslight)
         Me.RadGroupBox2.HeaderText = "Themes"
-        Me.RadGroupBox2.Location = New System.Drawing.Point(404, 27)
+        Me.RadGroupBox2.Location = New System.Drawing.Point(404, 51)
         Me.RadGroupBox2.Name = "RadGroupBox2"
-        Me.RadGroupBox2.Size = New System.Drawing.Size(190, 260)
+        Me.RadGroupBox2.Size = New System.Drawing.Size(190, 236)
         Me.RadGroupBox2.TabIndex = 31
         Me.RadGroupBox2.Text = "Themes"
         Me.RadGroupBox2.ThemeName = "VisualStudio2012Dark"
         '
         'btn_w8
         '
-        Me.btn_w8.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btn_w8.Location = New System.Drawing.Point(41, 186)
+        Me.btn_w8.Anchor = System.Windows.Forms.AnchorStyles.None
+        Me.btn_w8.Location = New System.Drawing.Point(41, 174)
         Me.btn_w8.Name = "btn_w8"
         Me.btn_w8.Size = New System.Drawing.Size(110, 24)
         Me.btn_w8.TabIndex = 4
@@ -211,10 +219,8 @@ Partial Class Login
         '
         'btn_metroblue
         '
-        Me.btn_metroblue.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btn_metroblue.Location = New System.Drawing.Point(41, 156)
+        Me.btn_metroblue.Anchor = System.Windows.Forms.AnchorStyles.None
+        Me.btn_metroblue.Location = New System.Drawing.Point(41, 144)
         Me.btn_metroblue.Name = "btn_metroblue"
         Me.btn_metroblue.Size = New System.Drawing.Size(110, 24)
         Me.btn_metroblue.TabIndex = 3
@@ -223,10 +229,8 @@ Partial Class Login
         '
         'btn_metrotheme
         '
-        Me.btn_metrotheme.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btn_metrotheme.Location = New System.Drawing.Point(41, 126)
+        Me.btn_metrotheme.Anchor = System.Windows.Forms.AnchorStyles.None
+        Me.btn_metrotheme.Location = New System.Drawing.Point(41, 114)
         Me.btn_metrotheme.Name = "btn_metrotheme"
         Me.btn_metrotheme.Size = New System.Drawing.Size(110, 24)
         Me.btn_metrotheme.TabIndex = 2
@@ -235,10 +239,8 @@ Partial Class Login
         '
         'btn_vsdark
         '
-        Me.btn_vsdark.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btn_vsdark.Location = New System.Drawing.Point(41, 94)
+        Me.btn_vsdark.Anchor = System.Windows.Forms.AnchorStyles.None
+        Me.btn_vsdark.Location = New System.Drawing.Point(41, 82)
         Me.btn_vsdark.Name = "btn_vsdark"
         Me.btn_vsdark.Size = New System.Drawing.Size(110, 24)
         Me.btn_vsdark.TabIndex = 2
@@ -247,10 +249,8 @@ Partial Class Login
         '
         'btn_vslight
         '
-        Me.btn_vslight.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btn_vslight.Location = New System.Drawing.Point(41, 64)
+        Me.btn_vslight.Anchor = System.Windows.Forms.AnchorStyles.None
+        Me.btn_vslight.Location = New System.Drawing.Point(41, 52)
         Me.btn_vslight.Name = "btn_vslight"
         Me.btn_vslight.Size = New System.Drawing.Size(110, 24)
         Me.btn_vslight.TabIndex = 1
@@ -259,16 +259,32 @@ Partial Class Login
         '
         'log_lbl_time
         '
-        Me.log_lbl_time.Anchor = System.Windows.Forms.AnchorStyles.Top
-        Me.log_lbl_time.Location = New System.Drawing.Point(404, 3)
+        Me.log_lbl_time.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.log_lbl_time.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.log_lbl_time.Location = New System.Drawing.Point(347, 12)
         Me.log_lbl_time.Name = "log_lbl_time"
-        Me.log_lbl_time.Size = New System.Drawing.Size(31, 18)
+        Me.log_lbl_time.Size = New System.Drawing.Size(36, 21)
         Me.log_lbl_time.TabIndex = 32
         Me.log_lbl_time.Text = "Time"
         Me.log_lbl_time.ThemeName = "VisualStudio2012Dark"
         '
+        'btn_bypass_log
+        '
+        Me.btn_bypass_log.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btn_bypass_log.Location = New System.Drawing.Point(131, 151)
+        Me.btn_bypass_log.Name = "btn_bypass_log"
+        Me.btn_bypass_log.Size = New System.Drawing.Size(110, 24)
+        Me.btn_bypass_log.TabIndex = 1
+        Me.btn_bypass_log.Text = "Bypass Login"
+        Me.btn_bypass_log.ThemeName = "VisualStudio2012Dark"
+        '
         'Login
         '
+        Me.AcceptButton = Me.btn_login
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(605, 312)
@@ -285,6 +301,7 @@ Partial Class Login
         '
         '
         Me.RootElement.ApplyShapeToControl = True
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Login"
         Me.ThemeName = "VisualStudio2012Dark"
         CType(Me.btn_login, System.ComponentModel.ISupportInitialize).EndInit()
@@ -306,6 +323,7 @@ Partial Class Login
         CType(Me.btn_vsdark, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.btn_vslight, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.log_lbl_time, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.btn_bypass_log, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
@@ -334,5 +352,6 @@ Partial Class Login
     Friend WithEvents Windows8Theme1 As Telerik.WinControls.Themes.Windows8Theme
     Friend WithEvents TelerikMetroBlueTheme1 As Telerik.WinControls.Themes.TelerikMetroBlueTheme
     Friend WithEvents log_lbl_time As Telerik.WinControls.UI.RadLabel
+    Friend WithEvents btn_bypass_log As Telerik.WinControls.UI.RadButton
 End Class
 

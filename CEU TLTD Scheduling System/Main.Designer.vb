@@ -825,7 +825,7 @@ Partial Class Main
         Me.rpv1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.rpv1.Location = New System.Drawing.Point(0, 0)
         Me.rpv1.Name = "rpv1"
-        Me.rpv1.SelectedPage = Me.rpvp_releasing
+        Me.rpv1.SelectedPage = Me.rpvp1_main
         Me.rpv1.Size = New System.Drawing.Size(1358, 583)
         Me.rpv1.TabIndex = 0
         Me.rpv1.Text = "Home"
@@ -1016,7 +1016,7 @@ Partial Class Main
         Me.lu_date.Size = New System.Drawing.Size(129, 24)
         Me.lu_date.TabIndex = 16
         Me.lu_date.TabStop = False
-        Me.lu_date.Text = "07/25/2016"
+        Me.lu_date.Text = "07 25 2016"
         Me.lu_date.ThemeName = "VisualStudio2012Dark"
         Me.lu_date.Value = New Date(2016, 7, 25, 10, 55, 49, 565)
         '
@@ -2564,7 +2564,7 @@ Partial Class Main
         Me.rec_dtp_date.Size = New System.Drawing.Size(105, 24)
         Me.rec_dtp_date.TabIndex = 4
         Me.rec_dtp_date.TabStop = False
-        Me.rec_dtp_date.Text = "07/25/2016"
+        Me.rec_dtp_date.Text = "07 25 2016"
         Me.rec_dtp_date.ThemeName = "VisualStudio2012Dark"
         Me.rec_dtp_date.Value = New Date(2016, 7, 25, 10, 55, 49, 565)
         '
@@ -2857,7 +2857,6 @@ Partial Class Main
         'res_list_info
         '
         Me.res_list_info.Controls.Add(Me.reserved_grid_list)
-        Me.res_list_info.ItemSize = New System.Drawing.SizeF(153.0!, 24.0!)
         Me.res_list_info.Location = New System.Drawing.Point(5, 30)
         Me.res_list_info.Name = "res_list_info"
         Me.res_list_info.Size = New System.Drawing.Size(1335, 270)
@@ -2886,7 +2885,6 @@ Partial Class Main
         'rel_list_info
         '
         Me.rel_list_info.Controls.Add(Me.released_grid_list)
-        Me.rel_list_info.ItemSize = New System.Drawing.SizeF(152.0!, 24.0!)
         Me.rel_list_info.Location = New System.Drawing.Point(5, 30)
         Me.rel_list_info.Name = "rel_list_info"
         Me.rel_list_info.Size = New System.Drawing.Size(1358, 270)
@@ -2994,7 +2992,7 @@ Partial Class Main
         Me.rel_tb_startdate.Size = New System.Drawing.Size(102, 24)
         Me.rel_tb_startdate.TabIndex = 37
         Me.rel_tb_startdate.TabStop = False
-        Me.rel_tb_startdate.Text = "07/25/2016"
+        Me.rel_tb_startdate.Text = "07 25 2016"
         Me.rel_tb_startdate.ThemeName = "VisualStudio2012Dark"
         Me.rel_tb_startdate.Value = New Date(2016, 7, 25, 10, 55, 49, 565)
         '
@@ -3875,7 +3873,7 @@ Partial Class Main
         Me.ret_tb_sdate.Size = New System.Drawing.Size(102, 24)
         Me.ret_tb_sdate.TabIndex = 16
         Me.ret_tb_sdate.TabStop = False
-        Me.ret_tb_sdate.Text = "07/25/2016"
+        Me.ret_tb_sdate.Text = "07 25 2016"
         Me.ret_tb_sdate.ThemeName = "VisualStudio2012Dark"
         Me.ret_tb_sdate.Value = New Date(2016, 7, 25, 10, 55, 49, 565)
         '
@@ -3958,6 +3956,7 @@ Partial Class Main
         '
         '
         Me.RootElement.ApplyShapeToControl = True
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "TLTD Scheduling System"
         Me.ThemeName = "VisualStudio2012Dark"
         CType(Me.rpv1, System.ComponentModel.ISupportInitialize).EndInit()

@@ -1931,6 +1931,11 @@ Public Class Main
         load_rec_table()
     End Sub
 
+    Private Sub Main_FormClosed(sender As Object, e As FormClosedEventArgs) Handles Me.FormClosed
+        Me.Dispose()
+        Login.Show()
+    End Sub
+
 
 
 
