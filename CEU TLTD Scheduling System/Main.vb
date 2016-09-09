@@ -1136,8 +1136,9 @@ Public Class Main
     End Sub
 
     'Equipment Management Codes Umali E7 = SEARCH BY EQ_NO
-    Private Sub eq_filter_eqno_TextChanged(sender As Object, e As EventArgs) Handles eq_filter_eqno.TextChanged
 
+    Private Sub eqno_filter_delay_Tick(sender As Object, e As EventArgs) Handles eqno_filter_delay.Tick
+        eqno_filter_delay.Stop()
         MysqlConn = New MySqlConnection
         MysqlConn.ConnectionString = connstring
         Dim SDA As New MySqlDataAdapter
@@ -1171,6 +1172,13 @@ Public Class Main
         Dim DV As New DataView(dbdataset)
         DV.RowFilter = String.Format("`Equipment Number` Like'%{0}%' and `Equipment Type` Like'%{1}%' and `Status` Like'%{2}%' ", eq_filter_eqno.Text, eq_filter_eqtype.Text, eq_filter_eqstatus.Text)
         eq_rgv_showregequipment.DataSource = DV
+    End Sub
+
+    Private Sub eq_filter_eqno_TextChanged(sender As Object, e As EventArgs) Handles eq_filter_eqno.TextChanged
+        'THIS IS TO DELAY THE FILTER WHEN the user types so that it won't be laggy
+        eqno_filter_delay.Interval = 700
+        eqno_filter_delay.Stop()
+        eqno_filter_delay.Start()
     End Sub
 
     'Equipment Management Codes Umali E8 = SEARCH BY EQ_TYPE
@@ -1301,10 +1309,12 @@ Public Class Main
 
 
             rec_eq_type_choose.Items.Clear()
+            eq_counter_type.Items.Clear()
+
             While reader.Read
 
                 rec_eq_type_choose.Items.Add(reader.GetString("equipmenttype"))
-
+                eq_counter_type.Items.Add(reader.GetString("equipmenttype"))
             End While
             MysqlConn.Close()
         Catch ex As Exception
@@ -1314,7 +1324,6 @@ Public Class Main
 
         End Try
     End Sub
-
 
     ' Reservation Management Code Umali R2 = LOADING DATA TO rec_eq_choosesn 
     Private Sub rec_eq_type_choose_SelectedIndexChanged(sender As Object, e As UI.Data.PositionChangedEventArgs) Handles rec_eq_type_choose.SelectedIndexChanged
@@ -1825,6 +1834,10 @@ Public Class Main
 
 
     End Sub
+
+
+
+
 
 
 
