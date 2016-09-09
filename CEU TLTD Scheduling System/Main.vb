@@ -27,11 +27,12 @@ Public Class Main
     Dim query As String
 
 
+
     Private Sub Main_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
         reservation_rgv_recordeddata.Show()
         reservations_rgv_showavailableitems.Hide()
         load_main_table()
-        load_academics_table()
         load_rec_table()
         load_eq_table()
         load_main_acc()
@@ -90,8 +91,6 @@ Public Class Main
         lbl_equipmentnum.Hide()
         rel_tb_equipmentnum.Hide()
         rel_tb_equipment.Hide()
-
-
     End Sub
 
     Private Sub btn_showavailequip_Click(sender As Object, e As EventArgs)
@@ -120,10 +119,10 @@ Public Class Main
     Public Sub load_rec_table()
         MysqlConn = New MySqlConnection
         MysqlConn.ConnectionString = connstring
-
         Dim sda As New MySqlDataAdapter
-       
         Dim bsource As New BindingSource
+
+        dbdataset.Clear()
 
         If MysqlConn.State = ConnectionState.Open Then
             MysqlConn.Close()
@@ -132,7 +131,7 @@ Public Class Main
         Try
             MysqlConn.Open()
 
-            query = "Select reservationno as 'Reservation Number' ,borrower as 'Borrower',id as 'ID', equipmentno as 'Equipment No', equipment as 'Equipment', DATE_FORMAT(date,'%M %d %Y') as 'Date',TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time' from reservation where date ='" & Format(CDate(rec_dtp_date.Value), "yyyy-MM-dd") & "' ORDER by date ASC"
+            query = "Select reservationno as 'Reservation Number' ,borrower as 'Borrower',id as 'ID', equipmentno as 'Equipment No', equipment as 'Equipment', DATE_FORMAT(date,'%M %d %Y') as 'Date',TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time',activitytype as 'Activiity Type',actname as 'Activity' from reservation where date ='" & Format(CDate(rec_dtp_date.Value), "yyyy-MM-dd") & "' ORDER by date ASC"
 
             comm = New MySqlCommand(query, MysqlConn)
             sda.SelectCommand = comm
@@ -154,7 +153,7 @@ Public Class Main
     Public Sub load_main_table()
         MysqlConn = New MySqlConnection
         MysqlConn.ConnectionString = connstring
-
+        dbdataset.Clear()
 
         Dim sda As New MySqlDataAdapter
         Dim bsource As New BindingSource
@@ -165,7 +164,7 @@ Public Class Main
 
         Try
             MysqlConn.Open()
-            query = "SELECT TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time',borrower as 'Borrower', equipment as 'Equipment', equipmentno as 'Equipment No' ,DATE_FORMAT(date,'%M %d %Y') as 'Date',id as 'ID' from reservation where date='" & Format(CDate(lu_date.Value), "yyyy-MM-dd") & "' and activitytype='Academic' ORDER BY starttime ASC"
+            query = "SELECT TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time',borrower as 'Borrower', equipment as 'Equipment', equipmentno as 'Equipment No' ,DATE_FORMAT(date,'%M %d %Y') as 'Date', activitytype as 'Activiity Type',actname as 'Activity' from reservation where date='" & Format(CDate(lu_date.Value), "yyyy-MM-dd") & "'ORDER BY starttime ASC"
             comm = New MySqlCommand(query, MysqlConn)
             sda.SelectCommand = comm
             sda.Fill(dbdataset)
@@ -182,42 +181,6 @@ Public Class Main
 
         End Try
     End Sub
-
-
-    Public Sub load_academics_table()
-        MysqlConn = New MySqlConnection
-        MysqlConn.ConnectionString = connstring
-
-        Dim sda As New MySqlDataAdapter
-        Dim bsource As New BindingSource
-
-        If MysqlConn.State = ConnectionState.Open Then
-            MysqlConn.Close()
-        End If
-
-        Try
-            MysqlConn.Open()
-            query = "SELECT TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time',borrower as 'Borrower', equipment as 'Equipment', equipmentno as 'Equipment No' ,DATE_FORMAT(date,'%M %d %Y') as 'Date',id as 'ID' from reservation where date='" & Format(CDate(lu_date.Value), "yyyy-MM-dd") & "' and activitytype='Co-Curricular/Extra-Curricular' ORDER BY starttime ASC"
-            comm = New MySqlCommand(query, MysqlConn)
-            sda.SelectCommand = comm
-            sda.Fill(dbdataset)
-            bsource.DataSource = dbdataset
-            main_rgv_recordedcurricularmain.DataSource = bsource
-            main_rgv_recordedcurricularmain.ReadOnly = True
-            sda.Update(dbdataset)
-            MysqlConn.Close()
-
-        Catch ex As Exception
-            RadMessageBox.Show(Me, ex.Message, "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
-        Finally
-            MysqlConn.Dispose()
-
-        End Try
-    End Sub
-
-
-
-
 
     'Programmed by BRENZ STARTING POINT
 
@@ -873,60 +836,6 @@ Public Class Main
     End Sub
 
     'Main Window Search Functions Umali C1
-
-
-    'Pending Code
-    Private Sub btn_searchbydate_Click(sender As Object, e As EventArgs) Handles btn_searchbydate.Click
-        load_main_table()
-
-        ''''''''Pending Changes because of client request
-
-        'MysqlConn = New MySqlConnection
-        'MysqlConn.ConnectionString = connstring
-        'Dim SDA As New MySqlDataAdapter
-        'Dim dbdataset As New DataTable
-        'Dim bsource As New BindingSource
-
-        'If (lu_startdate.Text = "") Or (lu_enddate.Text = "") Or (lu_starttime.Text = "") Or (lu_endtime.Text) Then
-        '    RadMessageBox.Show(Me, "Please fill all fields to search.", "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
-        'Else
-
-        '    Try
-        '        MysqlConn.Open()
-
-        '        query = "select DATE_FORMAT(startdate,'%M %d %Y') as 'Start Date', DATE_FORMAT(enddate,'%M %d, %Y') as 
-        '    'End Date', TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time', borrower as 
-        '    'Borrower',location as 'Location' from reservation
-        '    where (((startdate between @startdate and @enddate and 
-        '    (starttime between @starttime and @endtime)) or
-        '    ((enddate between @startdate and @enddate) and
-        '    (endtime between @endtime and @endtime))))"
-
-        '        comm = New MySqlCommand(query, MysqlConn)
-        '        comm.Parameters.AddWithValue("startdate", Format(CDate(lu_startdate.Value), "yyyy-MM-dd"))
-        '        comm.Parameters.AddWithValue("enddate", Format(CDate(lu_enddate.Value), "yyyy-MM-dd"))
-        '        comm.Parameters.AddWithValue("starttime", Format(CDate(lu_starttime.Text), "HH:mm"))
-        '        comm.Parameters.AddWithValue("endtime", Format(CDate(lu_starttime.Text), "HH:mm"))
-
-
-        '        SDA.SelectCommand = comm
-        '        SDA.Fill(dbdataset)
-        '        bsource.DataSource = dbdataset
-        '        main_rgv_recordeddatamain.DataSource = bsource
-        '        SDA.Update(dbdataset)
-
-        '        MysqlConn.Close()
-
-        '    Catch ex As MySqlException
-        '        RadMessageBox.Show(Me, ex.Message, "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
-        '    Finally
-        '        MysqlConn.Dispose()
-        '    End Try
-
-        'End If
-    End Sub
-
-    'Main Window Search Functions Umali C2
 
     Private Sub lu_bylocation_TextChanged(sender As Object, e As EventArgs) Handles lu_bylocation.TextChanged
         ''''''''Pending Changes because of client request
@@ -1631,8 +1540,12 @@ Public Class Main
 
                             MysqlConn.Close()
                             MysqlConn.Open()
-                            query = "INSERT INTO `reservation` VALUES ('" & rec_cb_reserveno.Text & "','" & equipmentnorgv & "', '" & equipmentrgv & "', '" & equipmentsnrgv & "', '" & rec_cb_idnum.Text & "', '" & Format(CDate(rec_dtp_date.Value), "yyyy-MM-dd") & "','" & Format(CDate(rec_dtp_starttime.Text), "HH:mm") & "', '" & Format(CDate(rec_dtp_endtime.Text), "HH:mm") & "', '" & rec_cb_borrower.Text & "', '" & rec_cb_location.Text & "' ,'" & rec_cb_reserved.Text & "', '" & rec_cb_status.Text & "','" & rec_cb_acttype.Text & "')
+
+
+                            query = "INSERT INTO `reservation` VALUES ('" & rec_cb_reserveno.Text & "','" & equipmentnorgv & "', '" & equipmentrgv & "', '" & equipmentsnrgv & "', '" & rec_cb_idnum.Text & "', '" & Format(CDate(rec_dtp_date.Value), "yyyy-MM-dd") & "','" & Format(CDate(rec_dtp_starttime.Text), "HH:mm") & "', '" & Format(CDate(rec_dtp_endtime.Text), "HH:mm") & "', '" & rec_cb_borrower.Text & "', '" & rec_cb_location.Text & "' ,'" & rec_cb_reserved.Text & "', '" & rec_cb_status.Text & "','" & rec_cb_acttype.Text & "','" & rec_rrtc_actname.Text & "')
                             ;INSERT INTO `reservation_equipments` VALUES ('" & rec_cb_reserveno.Text & "','" & equipmentnorgv & "', '" & equipmentrgv & "', '" & equipmentsnrgv & "')"
+
+
 
                             comm = New MySqlCommand(query, MysqlConn)
                             READER = comm.ExecuteReader
@@ -1663,7 +1576,6 @@ Public Class Main
         End If
         load_main_table()
         load_rec_table()
-        load_academics_table()
         reserved_load_table()
     End Sub
 
@@ -1786,7 +1698,6 @@ Public Class Main
         End If
         load_rec_table()
         load_main_table()
-        load_academics_table()
     End Sub
 
     'Combining (Fname,Lname) in Borrower Field in Reservation
@@ -1834,7 +1745,7 @@ Public Class Main
         rec_eq_chooseno.Text = ""
         rec_eq_type_choose.Text = ""
         eq_rgv_addeq.Rows.Clear()
-
+        rec_rrtc_actname.Text = ""
     End Sub
 
     'Loading of data in Reservation Page Grid
@@ -1928,7 +1839,6 @@ Public Class Main
     End Sub
 
     Private Sub rpv1_Click(sender As Object, e As EventArgs) Handles rpv1.Click
-        load_academics_table()
         load_main_table()
         load_rec_table()
     End Sub
@@ -1939,11 +1849,15 @@ Public Class Main
     End Sub
 
     Private Sub rec_cb_acttype_SelectedIndexChanged(sender As Object, e As UI.Data.PositionChangedEventArgs) Handles rec_cb_acttype.SelectedIndexChanged
-        If rec_cb_acttype.Text = "Co-Curricular/Extra-Curricular" Then
+        If rec_cb_acttype.Text = "School Activity" Then
             rec_rrtc_actname.Enabled = True
             rec_lbl_actname.Enabled = True
-
+        Else
+            rec_rrtc_actname.Enabled = False
+            rec_lbl_actname.Enabled = False
+            rec_rrtc_actname.Text = ""
         End If
+
 
 
     End Sub
