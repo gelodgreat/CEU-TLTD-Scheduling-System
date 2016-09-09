@@ -45,6 +45,8 @@ Public Class Main
         startup_disabled_textbox()
         show_hide_txt_lbl()
         color_coding()
+        rec_rrtc_actname.Enabled = False
+        rec_lbl_actname.Enabled = False
         lu_date.Value = Date.Now
         rec_dtp_date.Value = Date.Now
         Main_Timer.Enabled = True
@@ -1934,6 +1936,16 @@ Public Class Main
     Private Sub Main_FormClosed(sender As Object, e As FormClosedEventArgs) Handles Me.FormClosed
         Me.Dispose()
         Login.Show()
+    End Sub
+
+    Private Sub rec_cb_acttype_SelectedIndexChanged(sender As Object, e As UI.Data.PositionChangedEventArgs) Handles rec_cb_acttype.SelectedIndexChanged
+        If rec_cb_acttype.Text = "Co-Curricular/Extra-Curricular" Then
+            rec_rrtc_actname.Enabled = True
+            rec_lbl_actname.Enabled = True
+
+        End If
+
+
     End Sub
 
 
