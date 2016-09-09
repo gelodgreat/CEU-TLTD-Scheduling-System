@@ -38,10 +38,13 @@ Public Class Login
                     activeuserlname = reader.GetString("staff_surname")
                 End While
                 mysqlconn.Close()
+                log_username.Text = String.Empty
+                log_password.Text = String.Empty
+                log_username.Select()
 
                 If looper = 1 Then
-                    Main.Show()
                     Me.Hide()
+                    Main.Show()
                 Else
                     RadMessageBox.Show(Me, "Incorrect Username or Password.", "Login", MessageBoxButtons.OK, RadMessageIcon.Error, MessageBoxDefaultButton.Button1)
                 End If
