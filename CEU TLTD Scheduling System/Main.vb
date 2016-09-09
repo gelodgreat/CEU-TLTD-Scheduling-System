@@ -1171,7 +1171,7 @@ Public Class Main
         End Try
 
         Dim DV As New DataView(dbdataset)
-        DV.RowFilter = String.Format("`Equipment Number`= '{0}'", eq_filter_eqno.Text)
+        DV.RowFilter = String.Format("`Equipment Number` Like'%{0}%' and `Equipment Type` Like'%{1}%' and `Status` Like'%{2}%' ", eq_filter_eqno.Text, eq_filter_eqtype.Text, eq_filter_eqstatus.Text)
         eq_rgv_showregequipment.DataSource = DV
     End Sub
 
@@ -1207,7 +1207,7 @@ Public Class Main
         End Try
 
         Dim DV As New DataView(dbdataset)
-        DV.RowFilter = String.Format("`Equipment Type` Like'%{0}%'", eq_filter_eqtype.Text)
+        DV.RowFilter = String.Format("`Equipment Number` Like'%{0}%' and `Equipment Type` Like'%{1}%' and `Status` Like'%{2}%' ", eq_filter_eqno.Text, eq_filter_eqtype.Text, eq_filter_eqstatus.Text)
         eq_rgv_showregequipment.DataSource = DV
     End Sub
 
@@ -1247,7 +1247,7 @@ Public Class Main
             End Try
 
             Dim DV As New DataView(dbdataset)
-            DV.RowFilter = String.Format("`Status` Like'%{0}%'", eq_filter_eqstatus.Text)
+            DV.RowFilter = String.Format("`Equipment Number` Like'%{0}%' and `Equipment Type` Like'%{1}%' and `Status` Like'%{2}%' ", eq_filter_eqno.Text, eq_filter_eqtype.Text, eq_filter_eqstatus.Text)
             eq_rgv_showregequipment.DataSource = DV
         End If
     End Sub
