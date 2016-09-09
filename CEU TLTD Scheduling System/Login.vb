@@ -21,7 +21,7 @@ Public Class Login
         Else
             Try
                 Dim looper As Integer
-                Dim looper2 As Integer
+                ' Dim looper2 As Integer
                 Dim account_Table_Check As Boolean = False
                 Dim staff_Table_Check As Boolean = False
                 Dim temp_username As String
@@ -30,26 +30,26 @@ Public Class Login
                 If ConnectionState.Open = True Then
                     mysqlconn.Close()
                 End If
-                mysqlconn.Open()
-                Dim q As String = "SELECT * FROM accounts WHERE BINARY username=@proc_email_login and password=sha2(@proc_password_login, 512)"
-                comm = New MySqlCommand(q, mysqlconn)
-                comm.Parameters.AddWithValue("@proc_email_login", log_username.Text)
-                comm.Parameters.AddWithValue("@proc_password_login", log_password.Text)
-                reader = comm.ExecuteReader
-                While reader.Read
-                    looper += 1
-                    temp_username = reader.GetString("username")
-                    temp_activeuserfname = reader.GetString("fname")
-                    temp_activeuserlname = reader.GetString("lname")
-                End While
-                mysqlconn.Close()
+                'mysqlconn.Open()
+                'Dim q As String = "SELECT * FROM accounts WHERE BINARY username=@proc_email_login and password=sha2(@proc_password_login, 512)"
+                'comm = New MySqlCommand(q, mysqlconn)
+                'comm.Parameters.AddWithValue("@proc_email_login", log_username.Text)
+                'comm.Parameters.AddWithValue("@proc_password_login", log_password.Text)
+                'reader = comm.ExecuteReader
+                'While reader.Read
+                '    looper += 1
+                '    temp_username = reader.GetString("username")
+                '    temp_activeuserfname = reader.GetString("fname")
+                '    temp_activeuserlname = reader.GetString("lname")
+                'End While
+                'mysqlconn.Close()
 
-                If looper = 1 Then
-                    account_Table_Check = True
-                    username = temp_username
-                    activeuserfname = temp_activeuserfname
-                    activeuserlname = temp_activeuserlname
-                End If
+                'If looper = 1 Then
+                '    account_Table_Check = True
+                '    username = temp_username
+                '    activeuserfname = temp_activeuserfname
+                '    activeuserlname = temp_activeuserlname
+                'End If
 
 
                 mysqlconn.Open()
@@ -59,41 +59,37 @@ Public Class Login
                 comm.Parameters.AddWithValue("@proc_password_login", log_password.Text)
                 reader = comm.ExecuteReader
                 While reader.Read
-                    looper2 += 1
-                    temp_username = reader.GetString("staff_username")
-                    temp_activeuserfname = reader.GetString("staff_fname")
-                    temp_activeuserlname = reader.GetString("staff_surname")
+                    looper += 1
+                    username = reader.GetString("staff_username")
+                    activeuserfname = reader.GetString("staff_fname")
+                    activeuserlname = reader.GetString("staff_surname")
                 End While
                 mysqlconn.Close()
 
-                If looper2 = 1 Then
-                    staff_Table_Check = True
-                    username = temp_username
-                    activeuserfname = temp_activeuserfname
-                    activeuserlname = temp_activeuserlname
-                End If
-
-                If staff_Table_Check Or account_Table_Check Then
-                    If looper = 1 And looper2 = 1 Then
-                        RadMessageBox.Show(Me, "Two accounts exists between two tables", "Login", MessageBoxButtons.OK, RadMessageIcon.Error, MessageBoxDefaultButton.Button1)
-                    Else
-                        Main.Show()
-                        Me.Hide()
-                    End If
+                If looper = 1 Then
+                    Main.Show()
+                    Me.Hide()
                 Else
                     RadMessageBox.Show(Me, "Incorrect Username or Password.", "Login", MessageBoxButtons.OK, RadMessageIcon.Error, MessageBoxDefaultButton.Button1)
                 End If
+
+
+                'If staff_Table_Check Or account_Table_Check Then
+                '    If looper = 1 And looper2 = 1 Then
+                '        RadMessageBox.Show(Me, "Two accounts exists between two tables", "Login", MessageBoxButtons.OK, RadMessageIcon.Error, MessageBoxDefaultButton.Button1)
+                '    Else
+                '        Main.Show()
+                '        Me.Hide()
+                '    End If
+                'Else
+                '    RadMessageBox.Show(Me, "Incorrect Username or Password.", "Login", MessageBoxButtons.OK, RadMessageIcon.Error, MessageBoxDefaultButton.Button1)
+                'End If
 
 
             Catch ex As MySqlException
                 RadMessageBox.Show(Me, ex.Message, "Login", MessageBoxButtons.OK, RadMessageIcon.Error, MessageBoxDefaultButton.Button1)
             End Try
         End If
-
-
-
-
-
     End Sub
 
     'Codes for timer and connection status

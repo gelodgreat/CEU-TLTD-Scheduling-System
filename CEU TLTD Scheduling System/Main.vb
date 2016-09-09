@@ -16,6 +16,7 @@ Public Class Main
     Dim updateYN As DialogResult
     Dim deleteYN As DialogResult
     Dim doneYN As DialogResult
+    Dim closingYN As DialogResult
 
     Public dbdataset As New DataTable
 
@@ -233,7 +234,7 @@ Public Class Main
         Try
             MysqlConn.Open()
             Dim query As String
-            query = "Select prof_id as 'Professor ID' , prof_fname as 'First Name' , prof_mname as 'Middle Name' , prof_surname as 'Surname' , prof_college as 'College/School' , prof_type as 'User Type'  from prof_reg"
+            query = "Select bor_id as 'Professor ID' , bor_fname as 'First Name' , bor_mname as 'Middle Name' , bor_surname as 'Surname' , bor_college as 'College/School'  from borrowers_reg"
             comm = New MySqlCommand(query, MysqlConn)
             sda.SelectCommand = comm
             sda.Fill(dbdataset)
@@ -430,20 +431,19 @@ Public Class Main
         MysqlConn = New MySqlConnection
         MysqlConn.ConnectionString = connstring
         Dim READER As MySqlDataReader
-        If (acc_pf_id.Text = "") Or (acc_pf_fname.Text = "") Or (acc_pf_mname.Text = " ") Or (acc_pf_lname.Text = " ") Or (acc_pf_college.Text = " ") Or (acc_pf_usertype.Text = " ") Then
+        If (acc_pf_id.Text = "") Or (acc_pf_fname.Text = "") Or (acc_pf_mname.Text = " ") Or (acc_pf_lname.Text = " ") Or (acc_pf_college.Text = " ") Then
             RadMessageBox.Show(Me, "Please complete the fields to Save!", "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
         Else
             Try
                 MysqlConn.Open()
                 Dim Query As String
-                Query = "insert into ceutltdscheduler.prof_reg (prof_id,prof_fname,prof_mname,prof_surname,prof_college,prof_type) values (@ProfID, @ProfFname, @ProfMname, @ProfLname, @ProfCollege, @ProfUsertype)"
+                Query = "insert into `borrowers_reg`  values (@BorID, @BorFname, @BorMname, @BorLname, @BorCollege)"
                 comm = New MySqlCommand(Query, MysqlConn)
-                comm.Parameters.AddWithValue("ProfID", acc_pf_id.Text)
-                comm.Parameters.AddWithValue("ProfFname", acc_pf_fname.Text)
-                comm.Parameters.AddWithValue("ProfMname", acc_pf_mname.Text)
-                comm.Parameters.AddWithValue("ProfLname", acc_pf_lname.Text)
-                comm.Parameters.AddWithValue("ProfCollege", acc_pf_college.Text)
-                comm.Parameters.AddWithValue("ProfUsertype", acc_pf_usertype.Text)
+                comm.Parameters.AddWithValue("BorID", acc_pf_id.Text)
+                comm.Parameters.AddWithValue("BorFname", acc_pf_fname.Text)
+                comm.Parameters.AddWithValue("BorMname", acc_pf_mname.Text)
+                comm.Parameters.AddWithValue("BorLname", acc_pf_lname.Text)
+                comm.Parameters.AddWithValue("BorCollege", acc_pf_college.Text)
 
 
                 svYN = RadMessageBox.Show(Me, "Are you sure you want To save this information? ", "TLTD Schuling Management", MessageBoxButtons.YesNo, RadMessageIcon.Question)
@@ -464,7 +464,6 @@ Public Class Main
                 acc_pf_mname.Text = " "
                 acc_pf_lname.Text = " "
                 acc_pf_college.Text = " "
-                acc_pf_usertype.Text = " "
 
             End Try
         End If
@@ -487,7 +486,6 @@ Public Class Main
                 acc_pf_mname.Text = row.Cells("Middle Name").Value.ToString
                 acc_pf_lname.Text = row.Cells("Surname").Value.ToString
                 acc_pf_college.Text = row.Cells("College/School").Value.ToString
-                acc_pf_usertype.Text = row.Cells("User Type").Value.ToString
 
                 acc_pf_id.Enabled = False
                 acc_prof_btn_update.Show()
@@ -509,12 +507,12 @@ Public Class Main
 
         updateYN = RadMessageBox.Show(Me, "Do you want to update the selected Information?", "TLTD Scheduling Management", MessageBoxButtons.YesNo, RadMessageIcon.Question)
         If updateYN = MsgBoxResult.Yes Then
-            If (acc_pf_id.Text = "") Or (acc_pf_fname.Text = "") Or (acc_pf_mname.Text = " ") Or (acc_pf_lname.Text = " ") Or (acc_pf_college.Text = " ") Or (acc_pf_usertype.Text = " ") Then
+            If (acc_pf_id.Text = "") Or (acc_pf_fname.Text = "") Or (acc_pf_mname.Text = " ") Or (acc_pf_lname.Text = " ") Or (acc_pf_college.Text = " ") Then
                 RadMessageBox.Show(Me, "Please complete the fields to update!", "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
             Else
                 Try
                     MysqlConn.Open()
-                    query = "UPDATE prof_reg set prof_id = '" & acc_pf_id.Text & "' , prof_fname = '" & acc_pf_fname.Text & "' , prof_mname = '" & acc_pf_mname.Text & "' , prof_surname = '" & acc_pf_lname.Text & "' , prof_college = '" & acc_pf_college.Text & "' , prof_type = '" & acc_pf_usertype.Text & "' where prof_id = '" & acc_pf_id.Text & "' "
+                    query = "UPDATE borrowers_reg set bor_id = '" & acc_pf_id.Text & "' , bor_fname = '" & acc_pf_fname.Text & "' , bor_mname = '" & acc_pf_mname.Text & "' , bor_surname = '" & acc_pf_lname.Text & "' , bor_college = '" & acc_pf_college.Text & "' where bor_id = '" & acc_pf_id.Text & "' "
                     comm = New MySqlCommand(query, MysqlConn)
                     reader = comm.ExecuteReader
 
@@ -543,7 +541,7 @@ Public Class Main
             Try
                 MysqlConn.Open()
                 Dim Query As String
-                Query = "delete from prof_reg where prof_id = '" & acc_pf_id.Text & "'"
+                Query = "delete from borrowers_reg where bor_id = '" & acc_pf_id.Text & "'"
                 comm = New MySqlCommand(Query, MysqlConn)
                 reader = comm.ExecuteReader
 
@@ -559,7 +557,6 @@ Public Class Main
                 acc_pf_mname.Text = " "
                 acc_pf_lname.Text = " "
                 acc_pf_college.Text = " "
-                acc_pf_usertype.Text = " "
 
             End Try
         End If
@@ -577,7 +574,6 @@ Public Class Main
             acc_pf_mname.Text = " "
             acc_pf_lname.Text = " "
             acc_pf_college.Text = " "
-            acc_pf_usertype.Text = " "
 
             acc_prof_btn_delete.Hide()
             acc_prof_btn_update.Hide()
@@ -655,14 +651,14 @@ Public Class Main
         MysqlConn = New MySqlConnection
         MysqlConn.ConnectionString = connstring
         Dim READER As MySqlDataReader
-        If (rel_tb_id.Text = "") Or (rel_tb_reservationnum.Text = "") Or (rel_tb_borrower.Text = "") Or (rel_tb_equipmentnum.Text = "") Or (rel_tb_equipment.Text = "") Or (rel_tb_startdate.Text = " ") Or (rel_tb_starttime.Text = " ") Or (rel_tb_endtime.Text = " ") Or (rel_tb_releasedby.Text = " ") Then
+        If (rel_tb_id.Text = "") Or (rel_tb_reservationnum.Text = "") Or (rel_tb_borrower.Text = "") Or (rel_tb_equipmentnum.Text = "") Or (rel_tb_equipment.Text = "") Or (rel_tb_startdate.Text = " ") Or (rel_tb_starttime.Text = " ") Or (rel_tb_endtime.Text = " ") Then
             RadMessageBox.Show(Me, "Please complete the fields to Save!", "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
         Else
             Try
                 MysqlConn.Open()
                 Dim Query As String
                 ' Dim Query2 As String
-                Query = "insert into `released_info`  values ('" & rel_tb_id.Text & "' ,'" & rel_tb_reservationnum.Text & " ',  '" & rel_tb_borrower.Text & "' , '" & rel_tb_reservationnum.Text & "', '" & rel_tb_equipment.Text & "', '" & Format(CDate(rel_tb_startdate.Value), "yyyy-MM-dd") & "','" & Format(CDate(rel_tb_starttime.Text), "HH:mm") & "', '" & Format(CDate(rel_tb_endtime.Text), "HH:mm") & "', '" & rel_tb_status.Text & "' , '" & rel_tb_releasedby.Text & "'); delete from reservation  where  reservationno = '" & rel_tb_reservationnum.Text & "'"
+                Query = "insert into `released_info`  values ('" & rel_tb_id.Text & "' ,'" & rel_tb_reservationnum.Text & " ',  '" & rel_tb_borrower.Text & "' , '" & rel_tb_reservationnum.Text & "', '" & rel_tb_equipment.Text & "', '" & Format(CDate(rel_tb_startdate.Value), "yyyy-MM-dd") & "','" & Format(CDate(rel_tb_starttime.Text), "HH:mm") & "', '" & Format(CDate(rel_tb_endtime.Text), "HH:mm") & "', '" & rel_tb_status.Text & "' ); update reservation set  res_status = '" & rel_tb_status.Text & "' where reservationno = '" & rel_tb_reservationnum.Text & "'"
                 'Query = "delete from reservation where  reservationno = '" & rel_tb_reservationnum.Text & "'"
                 comm = New MySqlCommand(Query, MysqlConn)
                 'comm.Parameters.AddWithValue("ID", rel_tb_id.Text)
@@ -737,8 +733,6 @@ Public Class Main
             ret_tb_stime.Text = ""
             ret_tb_etime.Text = ""
             ret_tb_status.Text = ""
-            ret_tb_released.Text = ""
-            rel_tb_returned.Text = ""
         End If
     End Sub
 
@@ -752,7 +746,6 @@ Public Class Main
             rel_tb_startdate.Text = "01/01/99"
             rel_tb_starttime.Text = ""
             rel_tb_status.Text = ""
-            rel_tb_releasedby.Text = ""
             rel_tb_equipment.Text = ""
             rel_tb_equipmentnum.Text = ""
             lbl_equipment.Hide()
@@ -834,6 +827,19 @@ Public Class Main
 
         End If
     End Sub
+
+
+    'Programmed by BRENZ 21st Point Closing button
+    Private Sub Main_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
+        closingYN = RadMessageBox.Show(Me, "Are you sure you want to Log-Out?", "TLTD Scheduling Management", MessageBoxButtons.YesNo, RadMessageIcon.Exclamation)
+        If closingYN = MsgBoxResult.Yes Then
+            Me.Hide()
+            Login.Show()
+        ElseIf closingYN = MsgBoxResult.No Then
+            e.Cancel = True
+        End If
+    End Sub
+
 
     'Main Window Search Functions Umali C1
 
@@ -1488,7 +1494,7 @@ Public Class Main
         Dim conflictequipmentno As String = ""
         Dim conflictequipment As String = ""
         Dim conflictequipmentsn As String = ""
-        If (rec_cb_reserveno.Text = "") Or (rec_cb_idnum.Text = "") Or (rec_cb_borrower.Text = "") Or (rec_dtp_date.Text = "") Or (rec_dtp_starttime.Text = "") Or (rec_dtp_endtime.Text = "") Or (rec_cb_college_school.Text = "") Or (rec_cb_location.Text = "") Or (rec_cb_status.Text = "") Or (rec_cb_reserved.Text = "") Or (rec_eq_chooseno.Text = "") Or (rec_eq_type_choose.Text = "") Or (eq_rgv_addeq.Rows.Count < 0) Or (rec_cb_acttype.Text = "") Then
+        If (rec_cb_reserveno.Text = "") Or (rec_cb_idnum.Text = "") Or (rec_cb_borrower.Text = "") Or (rec_dtp_date.Text = "") Or (rec_dtp_starttime.Text = "") Or (rec_dtp_endtime.Text = "") Or (rec_cb_college_school.Text = "") Or (rec_cb_location.Text = "") Or (rec_cb_status.Text = "") Or (rec_eq_chooseno.Text = "") Or (rec_eq_type_choose.Text = "") Or (eq_rgv_addeq.Rows.Count < 0) Or (rec_cb_acttype.Text = "") Then
 
             RadMessageBox.Show(Me, "Please complete the fields", "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
         Else
@@ -1542,7 +1548,7 @@ Public Class Main
                             MysqlConn.Open()
 
 
-                            query = "INSERT INTO `reservation` VALUES ('" & rec_cb_reserveno.Text & "','" & equipmentnorgv & "', '" & equipmentrgv & "', '" & equipmentsnrgv & "', '" & rec_cb_idnum.Text & "', '" & Format(CDate(rec_dtp_date.Value), "yyyy-MM-dd") & "','" & Format(CDate(rec_dtp_starttime.Text), "HH:mm") & "', '" & Format(CDate(rec_dtp_endtime.Text), "HH:mm") & "', '" & rec_cb_borrower.Text & "', '" & rec_cb_location.Text & "' ,'" & rec_cb_reserved.Text & "', '" & rec_cb_status.Text & "','" & rec_cb_acttype.Text & "','" & rec_rrtc_actname.Text & "')
+                            query = "INSERT INTO `reservation` VALUES ('" & rec_cb_reserveno.Text & "','" & equipmentnorgv & "', '" & equipmentrgv & "', '" & equipmentsnrgv & "', '" & rec_cb_idnum.Text & "', '" & Format(CDate(rec_dtp_date.Value), "yyyy-MM-dd") & "','" & Format(CDate(rec_dtp_starttime.Text), "HH:mm") & "', '" & Format(CDate(rec_dtp_endtime.Text), "HH:mm") & "', '" & rec_cb_borrower.Text & "', '" & rec_cb_location.Text & "' , '" & rec_cb_status.Text & "','" & rec_cb_acttype.Text & "','" & rec_rrtc_actname.Text & "')
                             ;INSERT INTO `reservation_equipments` VALUES ('" & rec_cb_reserveno.Text & "','" & equipmentnorgv & "', '" & equipmentrgv & "', '" & equipmentsnrgv & "')"
 
 
@@ -1708,9 +1714,9 @@ Public Class Main
         MysqlConn.ConnectionString = connstring
         Try
             MysqlConn.Open()
-            query = "SELECT CONCAT (lname,', ',fname) as 'Name' FROM accounts WHERE id=@rec_idno"
+            query = "SELECT CONCAT (bor_surname,', ',bor_fname) as 'Name' FROM borrowers_reg WHERE bor_id=@bor_idno"
             comm = New MySqlCommand(query, MysqlConn)
-            comm.Parameters.AddWithValue("rec_idno", rec_cb_idnum.Text)
+            comm.Parameters.AddWithValue("bor_idno", rec_cb_idnum.Text)
             reader = comm.ExecuteReader
 
             rec_cb_borrower.Items.Clear()
@@ -1740,7 +1746,6 @@ Public Class Main
         rec_cb_college_school.Text = ""
         rec_cb_location.Text = ""
         rec_cb_status.Text = ""
-        rec_cb_reserved.Text = ""
         rec_eq_chooseeq.Text = ""
         rec_eq_chooseno.Text = ""
         rec_eq_type_choose.Text = ""
@@ -1843,10 +1848,6 @@ Public Class Main
         load_rec_table()
     End Sub
 
-    Private Sub Main_FormClosed(sender As Object, e As FormClosedEventArgs) Handles Me.FormClosed
-        Me.Dispose()
-        Login.Show()
-    End Sub
 
     Private Sub rec_cb_acttype_SelectedIndexChanged(sender As Object, e As UI.Data.PositionChangedEventArgs) Handles rec_cb_acttype.SelectedIndexChanged
         If rec_cb_acttype.Text = "School Activity" Then
