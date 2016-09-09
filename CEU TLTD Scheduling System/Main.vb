@@ -840,77 +840,75 @@ Public Class Main
         End If
     End Sub
 
-
     'Main Window Search Functions Umali C1
-
-    Private Sub lu_bylocation_TextChanged(sender As Object, e As EventArgs) Handles lu_bylocation.TextChanged
-        ''''''''Pending Changes because of client request
-
-
-        'MysqlConn = New MySqlConnection
-        'MysqlConn.ConnectionString = connstring
-        'Dim SDA As New MySqlDataAdapter
-        'Dim dbdataset As New DataTable
-        'Dim bsource As New BindingSource
-        'Try
-        '    MysqlConn.Open()
-
-        '    query = "SELECT DATE_FORMAT(startdate,'%M %d %Y') AS 'Start Date', DATE_FORMAT(enddate,'%M %d, %Y') AS 
-        '    'End Date', TIME_FORMAT(starttime, '%H:%i') AS 'Start Time', TIME_FORMAT(endtime, '%H:%i') AS 'End Time', borrower AS 
-        '    'Borrower',location AS 'Location', equipment AS 'Equipment' FROM reservation ORDER BY location desc"
-        '    comm = New MySqlCommand(query, MysqlConn)
-        '    SDA.SelectCommand = comm
-        '    SDA.Fill(dbdataset)
-        '    bsource.DataSource = dbdataset
-        '    main_rgv_recordeddatamain.DataSource = bsource
-        '    SDA.Update(dbdataset)
-
-        '    MysqlConn.Close()
-
-        'Catch ex As MySqlException
-        '    RadMessageBox.Show(Me, ex.Message, "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
-        'Finally
-        '    MysqlConn.Dispose()
-        'End Try
-
-        'Dim DV As New DataView(dbdataset)
-        'DV.RowFilter = String.Format("`Location` Like'%{0}%'", lu_bylocation.Text)
-        'main_rgv_recordeddatamain.DataSource = DV
-    End Sub
-
-    'Main Window Search Functions Umali C3
     Private Sub lu_byequipment_TextChanged(sender As Object, e As EventArgs) Handles lu_byequipment.TextChanged
         ''''''''Pending Changes because of client request
 
-        'MysqlConn = New MySqlConnection
-        'MysqlConn.ConnectionString = connstring
-        'Dim SDA As New MySqlDataAdapter
-        'Dim dbdataset As New DataTable
-        'Dim bsource As New BindingSource
-        'Try
-        '    MysqlConn.Open()
+        MysqlConn = New MySqlConnection
+        MysqlConn.ConnectionString = connstring
+        Dim SDA As New MySqlDataAdapter
+        Dim dbdataset As New DataTable
+        Dim bsource As New BindingSource
+        Try
+            MysqlConn.Open()
 
-        '    query = "SELECT DATE_FORMAT(startdate,'%M %d %Y') AS 'Start Date', DATE_FORMAT(enddate,'%M %d, %Y') AS 
-        '    'End Date', TIME_FORMAT(starttime, '%H:%i') AS 'Start Time', TIME_FORMAT(endtime, '%H:%i') AS 'End Time', borrower AS 
-        '    'Borrower',location AS 'Location', equipment AS 'Equipment' FROM reservation ORDER BY equipment desc"
-        '    comm = New MySqlCommand(query, MysqlConn)
-        '    SDA.SelectCommand = comm
-        '    SDA.Fill(dbdataset)
-        '    bsource.DataSource = dbdataset
-        '    main_rgv_recordeddatamain.DataSource = bsource
-        '    SDA.Update(dbdataset)
 
-        '    MysqlConn.Close()
+            query = "Select reservationno as 'Reservation Number' ,borrower as 'Borrower',id as 'ID', equipmentno as 'Equipment No', equipment as 'Equipment',
+            DATE_FORMAT(date,'%M %d %Y') as 'Date',TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time',
+            activitytype as 'Activiity Type',actname as 'Activity' from reservation where date ='" & Format(CDate(rec_dtp_date.Value), "yyyy-MM-dd") & "'  ORDER BY equipment desc"
 
-        'Catch ex As MySqlException
-        '    RadMessageBox.Show(Me, ex.Message, "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
-        'Finally
-        '    MysqlConn.Dispose()
-        'End Try
+            comm = New MySqlCommand(query, MysqlConn)
+            SDA.SelectCommand = comm
+            SDA.Fill(dbdataset)
+            bsource.DataSource = dbdataset
+            main_rgv_recordedacademicsmain.DataSource = bsource
+            SDA.Update(dbdataset)
 
-        'Dim DV As New DataView(dbdataset)
-        'DV.RowFilter = String.Format("`Equipment` Like'%{0}%'", lu_byequipment.Text)
-        'main_rgv_recordeddatamain.DataSource = DV
+            MysqlConn.Close()
+
+        Catch ex As MySqlException
+            RadMessageBox.Show(Me, ex.Message, "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
+        Finally
+            MysqlConn.Dispose()
+        End Try
+
+        Dim DV As New DataView(dbdataset)
+        DV.RowFilter = String.Format("`Equipment` Like'%{0}%'", lu_byequipment.Text)
+        main_rgv_recordedacademicsmain.DataSource = DV
+    End Sub
+
+    'Search by Name in Main Tab
+    Private Sub lu_byname_TextChanged(sender As Object, e As EventArgs) Handles lu_byname.TextChanged
+        MysqlConn = New MySqlConnection
+        MysqlConn.ConnectionString = connstring
+        Dim SDA As New MySqlDataAdapter
+        Dim dbdataset As New DataTable
+        Dim bsource As New BindingSource
+        Try
+            MysqlConn.Open()
+
+            query = "Select reservationno as 'Reservation Number' ,borrower as 'Borrower',id as 'ID', equipmentno as 'Equipment No', equipment as 'Equipment',
+            DATE_FORMAT(date,'%M %d %Y') as 'Date',TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time',
+            activitytype as 'Activiity Type',actname as 'Activity' from reservation where date ='" & Format(CDate(rec_dtp_date.Value), "yyyy-MM-dd") & "'"
+
+            comm = New MySqlCommand(query, MysqlConn)
+            SDA.SelectCommand = comm
+            SDA.Fill(dbdataset)
+            bsource.DataSource = dbdataset
+            main_rgv_recordedacademicsmain.DataSource = bsource
+            SDA.Update(dbdataset)
+
+            MysqlConn.Close()
+
+        Catch ex As MySqlException
+            RadMessageBox.Show(Me, ex.Message, "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
+        Finally
+            MysqlConn.Dispose()
+        End Try
+
+        Dim DV As New DataView(dbdataset)
+        DV.RowFilter = String.Format("`Borrower` Like'%{0}%'", lu_byname.Text)
+        main_rgv_recordedacademicsmain.DataSource = DV
     End Sub
 
     'Equipment Management Codes Umali E1 EQ_LOAD_EQ_TABLE
@@ -1802,36 +1800,6 @@ Public Class Main
         load_main_table()
     End Sub
 
-    'Search by Name in Main Tab
-    Private Sub lu_byname_TextChanged(sender As Object, e As EventArgs) Handles lu_byname.TextChanged
-        MysqlConn = New MySqlConnection
-        MysqlConn.ConnectionString = connstring
-        Dim SDA As New MySqlDataAdapter
-        Dim dbdataset As New DataTable
-        Dim bsource As New BindingSource
-        Try
-            MysqlConn.Open()
-
-            query = "SELECT borrower as 'Borrower',id as 'ID', equipmentno as 'Equipment No', equipment as 'Equipment', DATE_FORMAT(date,'%M %d %Y') as 'Date',TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time' from reservation where date='" & Format(CDate(lu_date.Value), "yyyy-MM-dd") & "' ORDER BY starttime ASC"
-            comm = New MySqlCommand(query, MysqlConn)
-            SDA.SelectCommand = comm
-            SDA.Fill(dbdataset)
-            bsource.DataSource = dbdataset
-            main_rgv_recordedacademicsmain.DataSource = bsource
-            SDA.Update(dbdataset)
-
-            MysqlConn.Close()
-
-        Catch ex As MySqlException
-            RadMessageBox.Show(Me, ex.Message, "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
-        Finally
-            MysqlConn.Dispose()
-        End Try
-
-        Dim DV As New DataView(dbdataset)
-        DV.RowFilter = String.Format("`Borrower` Like'%{0}%'", lu_byname.Text)
-        main_rgv_recordedacademicsmain.DataSource = DV
-    End Sub
 
     'Auto Generating of Reservation Number
     Private Sub btn_resetreservationno_Click(sender As Object, e As EventArgs) Handles btn_resetreservationno.Click
@@ -1862,6 +1830,8 @@ Public Class Main
 
 
     End Sub
+
+
 
 
 
