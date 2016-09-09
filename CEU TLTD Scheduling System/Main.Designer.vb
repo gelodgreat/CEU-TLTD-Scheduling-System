@@ -440,6 +440,7 @@ Partial Class Main
         Me.rec_btn_delete = New Telerik.WinControls.UI.RadButton()
         Me.rec_btn_save = New Telerik.WinControls.UI.RadButton()
         Me.RadGroupBox4 = New Telerik.WinControls.UI.RadGroupBox()
+        Me.lbl_nameofstaff_reserved = New Telerik.WinControls.UI.RadLabel()
         Me.rec_rrtc_actname = New Telerik.WinControls.UI.RadTextBox()
         Me.rec_lbl_actname = New Telerik.WinControls.UI.RadLabel()
         Me.rec_cb_reserveno = New Telerik.WinControls.UI.RadTextBox()
@@ -492,6 +493,7 @@ Partial Class Main
         Me.released_btn_release = New Telerik.WinControls.UI.RadButton()
         Me.released_btn_cancel = New Telerik.WinControls.UI.RadButton()
         Me.gp_details = New Telerik.WinControls.UI.RadGroupBox()
+        Me.rel_nameofstaff_release = New Telerik.WinControls.UI.RadLabel()
         Me.rel_tb_startdate = New Telerik.WinControls.UI.RadDateTimePicker()
         Me.rel_tb_equipment = New Telerik.WinControls.UI.RadTextBox()
         Me.rel_tb_equipmentnum = New Telerik.WinControls.UI.RadTextBox()
@@ -521,6 +523,12 @@ Partial Class Main
         Me.return_btn_returned = New Telerik.WinControls.UI.RadButton()
         Me.return_btn_cancel = New Telerik.WinControls.UI.RadButton()
         Me.RadGroupBox24 = New Telerik.WinControls.UI.RadGroupBox()
+        Me.ret_tb_equipment = New Telerik.WinControls.UI.RadTextBox()
+        Me.ret_tb_equipmentnum = New Telerik.WinControls.UI.RadTextBox()
+        Me.RadLabel9 = New Telerik.WinControls.UI.RadLabel()
+        Me.RadLabel10 = New Telerik.WinControls.UI.RadLabel()
+        Me.ret_nameofstaff_return = New Telerik.WinControls.UI.RadLabel()
+        Me.ret_nameofstaff_release2 = New Telerik.WinControls.UI.RadLabel()
         Me.ret_tb_id = New Telerik.WinControls.UI.RadDropDownList()
         Me.ret_tb_reservationnum = New Telerik.WinControls.UI.RadTextBox()
         Me.RadLabel42 = New Telerik.WinControls.UI.RadLabel()
@@ -542,14 +550,6 @@ Partial Class Main
         Me.VisualStudio2012DarkTheme1 = New Telerik.WinControls.Themes.VisualStudio2012DarkTheme()
         Me.Main_Timer = New System.Windows.Forms.Timer(Me.components)
         Me.CeutltdschedulerDataSetBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.lbl_nameofstaff_reserved = New Telerik.WinControls.UI.RadLabel()
-        Me.rel_nameofstaff_release = New Telerik.WinControls.UI.RadLabel()
-        Me.ret_nameofstaff_release2 = New Telerik.WinControls.UI.RadLabel()
-        Me.ret_nameofstaff_return = New Telerik.WinControls.UI.RadLabel()
-        Me.ret_tb_equipment = New Telerik.WinControls.UI.RadTextBox()
-        Me.ret_tb_equipmentnum = New Telerik.WinControls.UI.RadTextBox()
-        Me.RadLabel9 = New Telerik.WinControls.UI.RadLabel()
-        Me.RadLabel10 = New Telerik.WinControls.UI.RadLabel()
         CType(Me.rpv1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.rpv1.SuspendLayout()
         Me.rpvp1_main.SuspendLayout()
@@ -672,6 +672,7 @@ Partial Class Main
         CType(Me.rec_btn_save, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RadGroupBox4, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.RadGroupBox4.SuspendLayout()
+        CType(Me.lbl_nameofstaff_reserved, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.rec_rrtc_actname, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.rec_lbl_actname, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.rec_cb_reserveno, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -735,6 +736,7 @@ Partial Class Main
         CType(Me.released_btn_cancel, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.gp_details, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.gp_details.SuspendLayout()
+        CType(Me.rel_nameofstaff_release, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.rel_tb_startdate, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.rel_tb_equipment, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.rel_tb_equipmentnum, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -769,6 +771,12 @@ Partial Class Main
         CType(Me.return_btn_cancel, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RadGroupBox24, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.RadGroupBox24.SuspendLayout()
+        CType(Me.ret_tb_equipment, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ret_tb_equipmentnum, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RadLabel9, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RadLabel10, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ret_nameofstaff_return, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ret_nameofstaff_release2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ret_tb_id, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ret_tb_reservationnum, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RadLabel42, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -788,14 +796,6 @@ Partial Class Main
         CType(Me.RadGroupBox16, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RadGroupBox13, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.CeutltdschedulerDataSetBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.lbl_nameofstaff_reserved, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.rel_nameofstaff_release, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.ret_nameofstaff_release2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.ret_nameofstaff_return, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.ret_tb_equipment, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.ret_tb_equipmentnum, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RadLabel9, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RadLabel10, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -811,7 +811,7 @@ Partial Class Main
         Me.rpv1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.rpv1.Location = New System.Drawing.Point(0, 0)
         Me.rpv1.Name = "rpv1"
-        Me.rpv1.SelectedPage = Me.rpvp_returning
+        Me.rpv1.SelectedPage = Me.rpvp_releasing
         Me.rpv1.Size = New System.Drawing.Size(1358, 583)
         Me.rpv1.TabIndex = 0
         Me.rpv1.Text = "Home"
@@ -876,6 +876,7 @@ Partial Class Main
         '
         'RadLabel13
         '
+        Me.RadLabel13.BackColor = System.Drawing.Color.Transparent
         Me.RadLabel13.Location = New System.Drawing.Point(6, 30)
         Me.RadLabel13.Name = "RadLabel13"
         Me.RadLabel13.Size = New System.Drawing.Size(112, 18)
@@ -885,6 +886,7 @@ Partial Class Main
         '
         'RadLabel12
         '
+        Me.RadLabel12.BackColor = System.Drawing.Color.Transparent
         Me.RadLabel12.Location = New System.Drawing.Point(6, 100)
         Me.RadLabel12.Name = "RadLabel12"
         Me.RadLabel12.Size = New System.Drawing.Size(100, 18)
@@ -922,6 +924,7 @@ Partial Class Main
         '
         'RadLabel8
         '
+        Me.RadLabel8.BackColor = System.Drawing.Color.Transparent
         Me.RadLabel8.Location = New System.Drawing.Point(5, 119)
         Me.RadLabel8.Name = "RadLabel8"
         Me.RadLabel8.Size = New System.Drawing.Size(90, 18)
@@ -962,6 +965,7 @@ Partial Class Main
         '
         'RadLabel11
         '
+        Me.RadLabel11.BackColor = System.Drawing.Color.Transparent
         Me.RadLabel11.Location = New System.Drawing.Point(6, 45)
         Me.RadLabel11.Name = "RadLabel11"
         Me.RadLabel11.Size = New System.Drawing.Size(32, 18)
@@ -1082,7 +1086,7 @@ Partial Class Main
         Me.RadPageView1.Controls.Add(Me.RadPageViewPage2)
         Me.RadPageView1.Location = New System.Drawing.Point(0, -3)
         Me.RadPageView1.Name = "RadPageView1"
-        Me.RadPageView1.SelectedPage = Me.RadPageViewPage1
+        Me.RadPageView1.SelectedPage = Me.RadPageViewPage2
         Me.RadPageView1.Size = New System.Drawing.Size(1353, 305)
         Me.RadPageView1.TabIndex = 4
         Me.RadPageView1.Text = "RadPageView1"
@@ -1124,7 +1128,7 @@ Partial Class Main
         Me.RadPageViewPage2.ItemSize = New System.Drawing.SizeF(102.0!, 24.0!)
         Me.RadPageViewPage2.Location = New System.Drawing.Point(5, 30)
         Me.RadPageViewPage2.Name = "RadPageViewPage2"
-        Me.RadPageViewPage2.Size = New System.Drawing.Size(1358, 270)
+        Me.RadPageViewPage2.Size = New System.Drawing.Size(1343, 270)
         Me.RadPageViewPage2.Text = "Professor Records"
         '
         'acc_prof_list
@@ -1144,7 +1148,7 @@ Partial Class Main
         Me.acc_prof_list.MasterTemplate.ViewDefinition = TableViewDefinition3
         Me.acc_prof_list.Name = "acc_prof_list"
         Me.acc_prof_list.ReadOnly = True
-        Me.acc_prof_list.Size = New System.Drawing.Size(1358, 270)
+        Me.acc_prof_list.Size = New System.Drawing.Size(1343, 270)
         Me.acc_prof_list.TabIndex = 0
         Me.acc_prof_list.Text = "RadGridView3"
         Me.acc_prof_list.ThemeName = "VisualStudio2012Dark"
@@ -1282,6 +1286,7 @@ Partial Class Main
         '
         'RadLabel34
         '
+        Me.RadLabel34.BackColor = System.Drawing.Color.Transparent
         Me.RadLabel34.Location = New System.Drawing.Point(393, 27)
         Me.RadLabel34.Name = "RadLabel34"
         Me.RadLabel34.Size = New System.Drawing.Size(61, 18)
@@ -1291,6 +1296,7 @@ Partial Class Main
         '
         'RadLabel35
         '
+        Me.RadLabel35.BackColor = System.Drawing.Color.Transparent
         Me.RadLabel35.Location = New System.Drawing.Point(42, 61)
         Me.RadLabel35.Name = "RadLabel35"
         Me.RadLabel35.Size = New System.Drawing.Size(63, 18)
@@ -1300,6 +1306,7 @@ Partial Class Main
         '
         'RadLabel36
         '
+        Me.RadLabel36.BackColor = System.Drawing.Color.Transparent
         Me.RadLabel36.Location = New System.Drawing.Point(28, 87)
         Me.RadLabel36.Name = "RadLabel36"
         Me.RadLabel36.Size = New System.Drawing.Size(77, 18)
@@ -1309,6 +1316,7 @@ Partial Class Main
         '
         'RadLabel37
         '
+        Me.RadLabel37.BackColor = System.Drawing.Color.Transparent
         Me.RadLabel37.Location = New System.Drawing.Point(79, 27)
         Me.RadLabel37.Name = "RadLabel37"
         Me.RadLabel37.Size = New System.Drawing.Size(26, 18)
@@ -1326,6 +1334,7 @@ Partial Class Main
         '
         'RadLabel38
         '
+        Me.RadLabel38.BackColor = System.Drawing.Color.Transparent
         Me.RadLabel38.Location = New System.Drawing.Point(370, 57)
         Me.RadLabel38.Name = "RadLabel38"
         Me.RadLabel38.Size = New System.Drawing.Size(84, 18)
@@ -1373,6 +1382,7 @@ Partial Class Main
         '
         'RadLabel39
         '
+        Me.RadLabel39.BackColor = System.Drawing.Color.Transparent
         Me.RadLabel39.Location = New System.Drawing.Point(385, 33)
         Me.RadLabel39.Name = "RadLabel39"
         Me.RadLabel39.Size = New System.Drawing.Size(58, 18)
@@ -1421,6 +1431,7 @@ Partial Class Main
         '
         'RadLabel31
         '
+        Me.RadLabel31.BackColor = System.Drawing.Color.Transparent
         Me.RadLabel31.Location = New System.Drawing.Point(387, 93)
         Me.RadLabel31.Name = "RadLabel31"
         Me.RadLabel31.Size = New System.Drawing.Size(56, 18)
@@ -1430,6 +1441,7 @@ Partial Class Main
         '
         'RadLabel32
         '
+        Me.RadLabel32.BackColor = System.Drawing.Color.Transparent
         Me.RadLabel32.Location = New System.Drawing.Point(343, 123)
         Me.RadLabel32.Name = "RadLabel32"
         Me.RadLabel32.Size = New System.Drawing.Size(100, 18)
@@ -1439,6 +1451,7 @@ Partial Class Main
         '
         'RadLabel33
         '
+        Me.RadLabel33.BackColor = System.Drawing.Color.Transparent
         Me.RadLabel33.Location = New System.Drawing.Point(384, 63)
         Me.RadLabel33.Name = "RadLabel33"
         Me.RadLabel33.Size = New System.Drawing.Size(59, 18)
@@ -1500,6 +1513,7 @@ Partial Class Main
         '
         'RadLabel30
         '
+        Me.RadLabel30.BackColor = System.Drawing.Color.Transparent
         Me.RadLabel30.Location = New System.Drawing.Point(25, 123)
         Me.RadLabel30.Name = "RadLabel30"
         Me.RadLabel30.Size = New System.Drawing.Size(61, 18)
@@ -1509,6 +1523,7 @@ Partial Class Main
         '
         'RadLabel29
         '
+        Me.RadLabel29.BackColor = System.Drawing.Color.Transparent
         Me.RadLabel29.Location = New System.Drawing.Point(23, 63)
         Me.RadLabel29.Name = "RadLabel29"
         Me.RadLabel29.Size = New System.Drawing.Size(63, 18)
@@ -1518,6 +1533,7 @@ Partial Class Main
         '
         'RadLabel28
         '
+        Me.RadLabel28.BackColor = System.Drawing.Color.Transparent
         Me.RadLabel28.Location = New System.Drawing.Point(9, 93)
         Me.RadLabel28.Name = "RadLabel28"
         Me.RadLabel28.Size = New System.Drawing.Size(77, 18)
@@ -1527,6 +1543,7 @@ Partial Class Main
         '
         'RadLabel27
         '
+        Me.RadLabel27.BackColor = System.Drawing.Color.Transparent
         Me.RadLabel27.Location = New System.Drawing.Point(60, 31)
         Me.RadLabel27.Name = "RadLabel27"
         Me.RadLabel27.Size = New System.Drawing.Size(26, 18)
@@ -1621,6 +1638,7 @@ Partial Class Main
         '
         'eq_total_units
         '
+        Me.eq_total_units.BackColor = System.Drawing.Color.Transparent
         Me.eq_total_units.Location = New System.Drawing.Point(96, 124)
         Me.eq_total_units.Name = "eq_total_units"
         Me.eq_total_units.Size = New System.Drawing.Size(32, 18)
@@ -1630,6 +1648,7 @@ Partial Class Main
         '
         'RadLabel43
         '
+        Me.RadLabel43.BackColor = System.Drawing.Color.Transparent
         Me.RadLabel43.Location = New System.Drawing.Point(28, 124)
         Me.RadLabel43.Name = "RadLabel43"
         Me.RadLabel43.Size = New System.Drawing.Size(62, 18)
@@ -1688,6 +1707,7 @@ Partial Class Main
         '
         'RadLabel56
         '
+        Me.RadLabel56.BackColor = System.Drawing.Color.Transparent
         Me.RadLabel56.Location = New System.Drawing.Point(86, 98)
         Me.RadLabel56.Name = "RadLabel56"
         Me.RadLabel56.Size = New System.Drawing.Size(39, 18)
@@ -1697,6 +1717,7 @@ Partial Class Main
         '
         'RadLabel55
         '
+        Me.RadLabel55.BackColor = System.Drawing.Color.Transparent
         Me.RadLabel55.Location = New System.Drawing.Point(35, 62)
         Me.RadLabel55.Name = "RadLabel55"
         Me.RadLabel55.Size = New System.Drawing.Size(90, 18)
@@ -1732,6 +1753,7 @@ Partial Class Main
         '
         'RadLabel54
         '
+        Me.RadLabel54.BackColor = System.Drawing.Color.Transparent
         Me.RadLabel54.Location = New System.Drawing.Point(18, 28)
         Me.RadLabel54.Name = "RadLabel54"
         Me.RadLabel54.Size = New System.Drawing.Size(107, 18)
@@ -1822,6 +1844,7 @@ Partial Class Main
         '
         'RadLabel53
         '
+        Me.RadLabel53.BackColor = System.Drawing.Color.Transparent
         Me.RadLabel53.Location = New System.Drawing.Point(70, 87)
         Me.RadLabel53.Name = "RadLabel53"
         Me.RadLabel53.Size = New System.Drawing.Size(90, 18)
@@ -1843,6 +1866,7 @@ Partial Class Main
         '
         'RadLabel52
         '
+        Me.RadLabel52.BackColor = System.Drawing.Color.Transparent
         Me.RadLabel52.Location = New System.Drawing.Point(280, 27)
         Me.RadLabel52.Name = "RadLabel52"
         Me.RadLabel52.Size = New System.Drawing.Size(39, 18)
@@ -1852,6 +1876,7 @@ Partial Class Main
         '
         'RadLabel51
         '
+        Me.RadLabel51.BackColor = System.Drawing.Color.Transparent
         Me.RadLabel51.Location = New System.Drawing.Point(23, 57)
         Me.RadLabel51.Name = "RadLabel51"
         Me.RadLabel51.Size = New System.Drawing.Size(137, 18)
@@ -1874,6 +1899,7 @@ Partial Class Main
         '
         'RadLabel25
         '
+        Me.RadLabel25.BackColor = System.Drawing.Color.Transparent
         Me.RadLabel25.Location = New System.Drawing.Point(52, 147)
         Me.RadLabel25.Name = "RadLabel25"
         Me.RadLabel25.Size = New System.Drawing.Size(108, 18)
@@ -1883,6 +1909,7 @@ Partial Class Main
         '
         'RadLabel24
         '
+        Me.RadLabel24.BackColor = System.Drawing.Color.Transparent
         Me.RadLabel24.Location = New System.Drawing.Point(97, 117)
         Me.RadLabel24.Name = "RadLabel24"
         Me.RadLabel24.Size = New System.Drawing.Size(63, 18)
@@ -1892,6 +1919,7 @@ Partial Class Main
         '
         'RadLabel23
         '
+        Me.RadLabel23.BackColor = System.Drawing.Color.Transparent
         Me.RadLabel23.Location = New System.Drawing.Point(118, 177)
         Me.RadLabel23.Name = "RadLabel23"
         Me.RadLabel23.Size = New System.Drawing.Size(42, 18)
@@ -1901,6 +1929,7 @@ Partial Class Main
         '
         'RadLabel22
         '
+        Me.RadLabel22.BackColor = System.Drawing.Color.Transparent
         Me.RadLabel22.Location = New System.Drawing.Point(53, 27)
         Me.RadLabel22.Name = "RadLabel22"
         Me.RadLabel22.Size = New System.Drawing.Size(107, 18)
@@ -2060,6 +2089,16 @@ Partial Class Main
         Me.RadGroupBox4.Text = "Details"
         Me.RadGroupBox4.ThemeName = "VisualStudio2012Dark"
         '
+        'lbl_nameofstaff_reserved
+        '
+        Me.lbl_nameofstaff_reserved.BackColor = System.Drawing.Color.Transparent
+        Me.lbl_nameofstaff_reserved.ForeColor = System.Drawing.Color.White
+        Me.lbl_nameofstaff_reserved.Location = New System.Drawing.Point(497, 114)
+        Me.lbl_nameofstaff_reserved.Name = "lbl_nameofstaff_reserved"
+        Me.lbl_nameofstaff_reserved.Size = New System.Drawing.Size(75, 18)
+        Me.lbl_nameofstaff_reserved.TabIndex = 36
+        Me.lbl_nameofstaff_reserved.Text = "Name of Staff"
+        '
         'rec_rrtc_actname
         '
         Me.rec_rrtc_actname.Location = New System.Drawing.Point(85, 138)
@@ -2076,6 +2115,7 @@ Partial Class Main
         'rec_lbl_actname
         '
         Me.rec_lbl_actname.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
+        Me.rec_lbl_actname.BackColor = System.Drawing.Color.Transparent
         Me.rec_lbl_actname.Location = New System.Drawing.Point(3, 136)
         Me.rec_lbl_actname.Name = "rec_lbl_actname"
         Me.rec_lbl_actname.Size = New System.Drawing.Size(78, 18)
@@ -2100,6 +2140,7 @@ Partial Class Main
         'RadLabel2
         '
         Me.RadLabel2.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
+        Me.RadLabel2.BackColor = System.Drawing.Color.Transparent
         Me.RadLabel2.Location = New System.Drawing.Point(7, 109)
         Me.RadLabel2.Name = "RadLabel2"
         Me.RadLabel2.Size = New System.Drawing.Size(72, 18)
@@ -2125,6 +2166,7 @@ Partial Class Main
         'RadLabel72
         '
         Me.RadLabel72.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
+        Me.RadLabel72.BackColor = System.Drawing.Color.Transparent
         Me.RadLabel72.Location = New System.Drawing.Point(3, 18)
         Me.RadLabel72.Name = "RadLabel72"
         Me.RadLabel72.Size = New System.Drawing.Size(77, 18)
@@ -2135,6 +2177,7 @@ Partial Class Main
         'RadLabel68
         '
         Me.RadLabel68.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
+        Me.RadLabel68.BackColor = System.Drawing.Color.Transparent
         Me.RadLabel68.Location = New System.Drawing.Point(439, 21)
         Me.RadLabel68.Name = "RadLabel68"
         Me.RadLabel68.Size = New System.Drawing.Size(46, 18)
@@ -2168,6 +2211,7 @@ Partial Class Main
         'RadLabel26
         '
         Me.RadLabel26.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
+        Me.RadLabel26.BackColor = System.Drawing.Color.Transparent
         Me.RadLabel26.Location = New System.Drawing.Point(2, 48)
         Me.RadLabel26.Name = "RadLabel26"
         Me.RadLabel26.Size = New System.Drawing.Size(29, 18)
@@ -2178,6 +2222,7 @@ Partial Class Main
         'RadLabel17
         '
         Me.RadLabel17.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
+        Me.RadLabel17.BackColor = System.Drawing.Color.Transparent
         Me.RadLabel17.Location = New System.Drawing.Point(415, 115)
         Me.RadLabel17.Name = "RadLabel17"
         Me.RadLabel17.Size = New System.Drawing.Size(69, 18)
@@ -2188,6 +2233,7 @@ Partial Class Main
         'RadLabel14
         '
         Me.RadLabel14.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
+        Me.RadLabel14.BackColor = System.Drawing.Color.Transparent
         Me.RadLabel14.Location = New System.Drawing.Point(446, 85)
         Me.RadLabel14.Name = "RadLabel14"
         Me.RadLabel14.Size = New System.Drawing.Size(39, 18)
@@ -2419,6 +2465,7 @@ Partial Class Main
         'RadLabel6
         '
         Me.RadLabel6.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
+        Me.RadLabel6.BackColor = System.Drawing.Color.Transparent
         Me.RadLabel6.Location = New System.Drawing.Point(0, 78)
         Me.RadLabel6.Name = "RadLabel6"
         Me.RadLabel6.Size = New System.Drawing.Size(54, 18)
@@ -2438,6 +2485,7 @@ Partial Class Main
         'RadLabel5
         '
         Me.RadLabel5.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
+        Me.RadLabel5.BackColor = System.Drawing.Color.Transparent
         Me.RadLabel5.Location = New System.Drawing.Point(443, 51)
         Me.RadLabel5.Name = "RadLabel5"
         Me.RadLabel5.Size = New System.Drawing.Size(40, 18)
@@ -2458,6 +2506,7 @@ Partial Class Main
         'RadLabel4
         '
         Me.RadLabel4.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
+        Me.RadLabel4.BackColor = System.Drawing.Color.Transparent
         Me.RadLabel4.Location = New System.Drawing.Point(259, 76)
         Me.RadLabel4.Name = "RadLabel4"
         Me.RadLabel4.Size = New System.Drawing.Size(55, 18)
@@ -2468,6 +2517,7 @@ Partial Class Main
         'RadLabel3
         '
         Me.RadLabel3.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
+        Me.RadLabel3.BackColor = System.Drawing.Color.Transparent
         Me.RadLabel3.Location = New System.Drawing.Point(255, 46)
         Me.RadLabel3.Name = "RadLabel3"
         Me.RadLabel3.Size = New System.Drawing.Size(59, 18)
@@ -2478,6 +2528,7 @@ Partial Class Main
         'RadLabel1
         '
         Me.RadLabel1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
+        Me.RadLabel1.BackColor = System.Drawing.Color.Transparent
         Me.RadLabel1.Location = New System.Drawing.Point(282, 19)
         Me.RadLabel1.Name = "RadLabel1"
         Me.RadLabel1.Size = New System.Drawing.Size(32, 18)
@@ -2573,6 +2624,7 @@ Partial Class Main
         'RadLabel71
         '
         Me.RadLabel71.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
+        Me.RadLabel71.BackColor = System.Drawing.Color.Transparent
         Me.RadLabel71.Location = New System.Drawing.Point(5, 129)
         Me.RadLabel71.Name = "RadLabel71"
         Me.RadLabel71.Size = New System.Drawing.Size(63, 18)
@@ -2613,6 +2665,7 @@ Partial Class Main
         'RadLabel70
         '
         Me.RadLabel70.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
+        Me.RadLabel70.BackColor = System.Drawing.Color.Transparent
         Me.RadLabel70.Location = New System.Drawing.Point(5, 75)
         Me.RadLabel70.Name = "RadLabel70"
         Me.RadLabel70.Size = New System.Drawing.Size(107, 18)
@@ -2623,6 +2676,7 @@ Partial Class Main
         'RadLabel50
         '
         Me.RadLabel50.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
+        Me.RadLabel50.BackColor = System.Drawing.Color.Transparent
         Me.RadLabel50.Location = New System.Drawing.Point(5, 21)
         Me.RadLabel50.Name = "RadLabel50"
         Me.RadLabel50.Size = New System.Drawing.Size(90, 18)
@@ -2783,7 +2837,7 @@ Partial Class Main
         Me.RadPageView2.Controls.Add(Me.rel_list_info)
         Me.RadPageView2.Location = New System.Drawing.Point(0, -3)
         Me.RadPageView2.Name = "RadPageView2"
-        Me.RadPageView2.SelectedPage = Me.res_list_info
+        Me.RadPageView2.SelectedPage = Me.rel_list_info
         Me.RadPageView2.Size = New System.Drawing.Size(1345, 305)
         Me.RadPageView2.TabIndex = 5
         Me.RadPageView2.Text = "RadPageView2"
@@ -2825,7 +2879,7 @@ Partial Class Main
         Me.rel_list_info.ItemSize = New System.Drawing.SizeF(152.0!, 24.0!)
         Me.rel_list_info.Location = New System.Drawing.Point(5, 30)
         Me.rel_list_info.Name = "rel_list_info"
-        Me.rel_list_info.Size = New System.Drawing.Size(1358, 270)
+        Me.rel_list_info.Size = New System.Drawing.Size(1335, 270)
         Me.rel_list_info.Text = "List of Released Equipments"
         '
         'released_grid_list
@@ -2845,7 +2899,7 @@ Partial Class Main
         Me.released_grid_list.MasterTemplate.ViewDefinition = TableViewDefinition9
         Me.released_grid_list.Name = "released_grid_list"
         Me.released_grid_list.ReadOnly = True
-        Me.released_grid_list.Size = New System.Drawing.Size(1358, 270)
+        Me.released_grid_list.Size = New System.Drawing.Size(1335, 270)
         Me.released_grid_list.TabIndex = 0
         Me.released_grid_list.Text = "RadGridView3"
         Me.released_grid_list.ThemeName = "VisualStudio2012Dark"
@@ -2916,6 +2970,16 @@ Partial Class Main
         Me.gp_details.Text = "Details:"
         Me.gp_details.ThemeName = "VisualStudio2012Dark"
         '
+        'rel_nameofstaff_release
+        '
+        Me.rel_nameofstaff_release.BackColor = System.Drawing.Color.Transparent
+        Me.rel_nameofstaff_release.ForeColor = System.Drawing.Color.White
+        Me.rel_nameofstaff_release.Location = New System.Drawing.Point(578, 114)
+        Me.rel_nameofstaff_release.Name = "rel_nameofstaff_release"
+        Me.rel_nameofstaff_release.Size = New System.Drawing.Size(75, 18)
+        Me.rel_nameofstaff_release.TabIndex = 38
+        Me.rel_nameofstaff_release.Text = "Name of Staff"
+        '
         'rel_tb_startdate
         '
         Me.rel_tb_startdate.CustomFormat = "MM/d/yyyy"
@@ -2964,6 +3028,7 @@ Partial Class Main
         '
         'lbl_equipmentnum
         '
+        Me.lbl_equipmentnum.BackColor = System.Drawing.Color.Transparent
         Me.lbl_equipmentnum.Location = New System.Drawing.Point(465, 19)
         Me.lbl_equipmentnum.Name = "lbl_equipmentnum"
         Me.lbl_equipmentnum.Size = New System.Drawing.Size(107, 18)
@@ -2973,6 +3038,7 @@ Partial Class Main
         '
         'lbl_equipment
         '
+        Me.lbl_equipment.BackColor = System.Drawing.Color.Transparent
         Me.lbl_equipment.Location = New System.Drawing.Point(509, 48)
         Me.lbl_equipment.Name = "lbl_equipment"
         Me.lbl_equipment.Size = New System.Drawing.Size(63, 18)
@@ -3015,6 +3081,7 @@ Partial Class Main
         '
         'RadLabel41
         '
+        Me.RadLabel41.BackColor = System.Drawing.Color.Transparent
         Me.RadLabel41.Location = New System.Drawing.Point(31, 22)
         Me.RadLabel41.Name = "RadLabel41"
         Me.RadLabel41.Size = New System.Drawing.Size(77, 18)
@@ -3024,6 +3091,7 @@ Partial Class Main
         '
         'RadLabel49
         '
+        Me.RadLabel49.BackColor = System.Drawing.Color.Transparent
         Me.RadLabel49.Location = New System.Drawing.Point(300, 111)
         Me.RadLabel49.Name = "RadLabel49"
         Me.RadLabel49.Size = New System.Drawing.Size(39, 18)
@@ -3237,6 +3305,7 @@ Partial Class Main
         '
         'RadLabel45
         '
+        Me.RadLabel45.BackColor = System.Drawing.Color.Transparent
         Me.RadLabel45.Location = New System.Drawing.Point(281, 84)
         Me.RadLabel45.Name = "RadLabel45"
         Me.RadLabel45.Size = New System.Drawing.Size(55, 18)
@@ -3246,6 +3315,7 @@ Partial Class Main
         '
         'RadLabel46
         '
+        Me.RadLabel46.BackColor = System.Drawing.Color.Transparent
         Me.RadLabel46.Location = New System.Drawing.Point(281, 54)
         Me.RadLabel46.Name = "RadLabel46"
         Me.RadLabel46.Size = New System.Drawing.Size(59, 18)
@@ -3255,6 +3325,7 @@ Partial Class Main
         '
         'RadLabel48
         '
+        Me.RadLabel48.BackColor = System.Drawing.Color.Transparent
         Me.RadLabel48.Location = New System.Drawing.Point(307, 21)
         Me.RadLabel48.Name = "RadLabel48"
         Me.RadLabel48.Size = New System.Drawing.Size(32, 18)
@@ -3264,6 +3335,7 @@ Partial Class Main
         '
         'RadLabel20
         '
+        Me.RadLabel20.BackColor = System.Drawing.Color.Transparent
         Me.RadLabel20.Location = New System.Drawing.Point(504, 114)
         Me.RadLabel20.Name = "RadLabel20"
         Me.RadLabel20.Size = New System.Drawing.Size(68, 18)
@@ -3273,6 +3345,7 @@ Partial Class Main
         '
         'RadLabel16
         '
+        Me.RadLabel16.BackColor = System.Drawing.Color.Transparent
         Me.RadLabel16.Location = New System.Drawing.Point(54, 85)
         Me.RadLabel16.Name = "RadLabel16"
         Me.RadLabel16.Size = New System.Drawing.Size(54, 18)
@@ -3291,6 +3364,7 @@ Partial Class Main
         '
         'RadLabel15
         '
+        Me.RadLabel15.BackColor = System.Drawing.Color.Transparent
         Me.RadLabel15.Location = New System.Drawing.Point(57, 54)
         Me.RadLabel15.Name = "RadLabel15"
         Me.RadLabel15.Size = New System.Drawing.Size(51, 18)
@@ -3318,7 +3392,7 @@ Partial Class Main
         Me.RadPageView3.Controls.Add(Me.ret_list_info)
         Me.RadPageView3.Location = New System.Drawing.Point(0, -3)
         Me.RadPageView3.Name = "RadPageView3"
-        Me.RadPageView3.SelectedPage = Me.ret_list_info
+        Me.RadPageView3.SelectedPage = Me.rel_list_info2
         Me.RadPageView3.Size = New System.Drawing.Size(1341, 305)
         Me.RadPageView3.TabIndex = 6
         Me.RadPageView3.Text = "RadPageView3"
@@ -3453,6 +3527,74 @@ Partial Class Main
         Me.RadGroupBox24.Text = "Details:"
         Me.RadGroupBox24.ThemeName = "VisualStudio2012Dark"
         '
+        'ret_tb_equipment
+        '
+        Me.ret_tb_equipment.Location = New System.Drawing.Point(578, 48)
+        Me.ret_tb_equipment.MinimumSize = New System.Drawing.Size(0, 24)
+        Me.ret_tb_equipment.Name = "ret_tb_equipment"
+        Me.ret_tb_equipment.ReadOnly = True
+        '
+        '
+        '
+        Me.ret_tb_equipment.RootElement.MinSize = New System.Drawing.Size(0, 24)
+        Me.ret_tb_equipment.Size = New System.Drawing.Size(199, 24)
+        Me.ret_tb_equipment.TabIndex = 41
+        Me.ret_tb_equipment.ThemeName = "VisualStudio2012Dark"
+        '
+        'ret_tb_equipmentnum
+        '
+        Me.ret_tb_equipmentnum.Location = New System.Drawing.Point(578, 18)
+        Me.ret_tb_equipmentnum.MinimumSize = New System.Drawing.Size(0, 24)
+        Me.ret_tb_equipmentnum.Name = "ret_tb_equipmentnum"
+        Me.ret_tb_equipmentnum.ReadOnly = True
+        '
+        '
+        '
+        Me.ret_tb_equipmentnum.RootElement.MinSize = New System.Drawing.Size(0, 24)
+        Me.ret_tb_equipmentnum.Size = New System.Drawing.Size(199, 24)
+        Me.ret_tb_equipmentnum.TabIndex = 40
+        Me.ret_tb_equipmentnum.ThemeName = "VisualStudio2012Dark"
+        '
+        'RadLabel9
+        '
+        Me.RadLabel9.BackColor = System.Drawing.Color.Transparent
+        Me.RadLabel9.Location = New System.Drawing.Point(465, 19)
+        Me.RadLabel9.Name = "RadLabel9"
+        Me.RadLabel9.Size = New System.Drawing.Size(107, 18)
+        Me.RadLabel9.TabIndex = 38
+        Me.RadLabel9.Text = "Equipment Number:"
+        Me.RadLabel9.ThemeName = "VisualStudio2012Dark"
+        '
+        'RadLabel10
+        '
+        Me.RadLabel10.BackColor = System.Drawing.Color.Transparent
+        Me.RadLabel10.Location = New System.Drawing.Point(509, 48)
+        Me.RadLabel10.Name = "RadLabel10"
+        Me.RadLabel10.Size = New System.Drawing.Size(63, 18)
+        Me.RadLabel10.TabIndex = 39
+        Me.RadLabel10.Text = "Equipment:"
+        Me.RadLabel10.ThemeName = "VisualStudio2012Dark"
+        '
+        'ret_nameofstaff_return
+        '
+        Me.ret_nameofstaff_return.BackColor = System.Drawing.Color.Transparent
+        Me.ret_nameofstaff_return.ForeColor = System.Drawing.Color.White
+        Me.ret_nameofstaff_return.Location = New System.Drawing.Point(583, 119)
+        Me.ret_nameofstaff_return.Name = "ret_nameofstaff_return"
+        Me.ret_nameofstaff_return.Size = New System.Drawing.Size(75, 18)
+        Me.ret_nameofstaff_return.TabIndex = 37
+        Me.ret_nameofstaff_return.Text = "Name of Staff"
+        '
+        'ret_nameofstaff_release2
+        '
+        Me.ret_nameofstaff_release2.BackColor = System.Drawing.Color.Transparent
+        Me.ret_nameofstaff_release2.ForeColor = System.Drawing.Color.White
+        Me.ret_nameofstaff_release2.Location = New System.Drawing.Point(583, 88)
+        Me.ret_nameofstaff_release2.Name = "ret_nameofstaff_release2"
+        Me.ret_nameofstaff_release2.Size = New System.Drawing.Size(75, 18)
+        Me.ret_nameofstaff_release2.TabIndex = 37
+        Me.ret_nameofstaff_release2.Text = "Name of Staff"
+        '
         'ret_tb_id
         '
         Me.ret_tb_id.Location = New System.Drawing.Point(114, 51)
@@ -3478,6 +3620,7 @@ Partial Class Main
         '
         'RadLabel42
         '
+        Me.RadLabel42.BackColor = System.Drawing.Color.Transparent
         Me.RadLabel42.Location = New System.Drawing.Point(31, 22)
         Me.RadLabel42.Name = "RadLabel42"
         Me.RadLabel42.Size = New System.Drawing.Size(77, 18)
@@ -3487,6 +3630,7 @@ Partial Class Main
         '
         'RadLabel69
         '
+        Me.RadLabel69.BackColor = System.Drawing.Color.Transparent
         Me.RadLabel69.Location = New System.Drawing.Point(509, 119)
         Me.RadLabel69.Name = "RadLabel69"
         Me.RadLabel69.Size = New System.Drawing.Size(68, 18)
@@ -3509,6 +3653,7 @@ Partial Class Main
         '
         'RadLabel58
         '
+        Me.RadLabel58.BackColor = System.Drawing.Color.Transparent
         Me.RadLabel58.Location = New System.Drawing.Point(300, 111)
         Me.RadLabel58.Name = "RadLabel58"
         Me.RadLabel58.Size = New System.Drawing.Size(39, 18)
@@ -3722,6 +3867,7 @@ Partial Class Main
         '
         'RadLabel59
         '
+        Me.RadLabel59.BackColor = System.Drawing.Color.Transparent
         Me.RadLabel59.Location = New System.Drawing.Point(281, 84)
         Me.RadLabel59.Name = "RadLabel59"
         Me.RadLabel59.Size = New System.Drawing.Size(55, 18)
@@ -3731,6 +3877,7 @@ Partial Class Main
         '
         'RadLabel60
         '
+        Me.RadLabel60.BackColor = System.Drawing.Color.Transparent
         Me.RadLabel60.Location = New System.Drawing.Point(281, 54)
         Me.RadLabel60.Name = "RadLabel60"
         Me.RadLabel60.Size = New System.Drawing.Size(59, 18)
@@ -3740,6 +3887,7 @@ Partial Class Main
         '
         'RadLabel62
         '
+        Me.RadLabel62.BackColor = System.Drawing.Color.Transparent
         Me.RadLabel62.Location = New System.Drawing.Point(307, 21)
         Me.RadLabel62.Name = "RadLabel62"
         Me.RadLabel62.Size = New System.Drawing.Size(32, 18)
@@ -3767,6 +3915,7 @@ Partial Class Main
         '
         'RadLabel63
         '
+        Me.RadLabel63.BackColor = System.Drawing.Color.Transparent
         Me.RadLabel63.Location = New System.Drawing.Point(509, 88)
         Me.RadLabel63.Name = "RadLabel63"
         Me.RadLabel63.Size = New System.Drawing.Size(68, 18)
@@ -3776,6 +3925,7 @@ Partial Class Main
         '
         'RadLabel66
         '
+        Me.RadLabel66.BackColor = System.Drawing.Color.Transparent
         Me.RadLabel66.Location = New System.Drawing.Point(54, 85)
         Me.RadLabel66.Name = "RadLabel66"
         Me.RadLabel66.Size = New System.Drawing.Size(54, 18)
@@ -3794,6 +3944,7 @@ Partial Class Main
         '
         'RadLabel67
         '
+        Me.RadLabel67.BackColor = System.Drawing.Color.Transparent
         Me.RadLabel67.Location = New System.Drawing.Point(57, 54)
         Me.RadLabel67.Name = "RadLabel67"
         Me.RadLabel67.Size = New System.Drawing.Size(51, 18)
@@ -3823,84 +3974,6 @@ Partial Class Main
         '
         'Main_Timer
         '
-        '
-        'lbl_nameofstaff_reserved
-        '
-        Me.lbl_nameofstaff_reserved.Location = New System.Drawing.Point(497, 114)
-        Me.lbl_nameofstaff_reserved.Name = "lbl_nameofstaff_reserved"
-        Me.lbl_nameofstaff_reserved.Size = New System.Drawing.Size(75, 18)
-        Me.lbl_nameofstaff_reserved.TabIndex = 36
-        Me.lbl_nameofstaff_reserved.Text = "Name of Staff"
-        '
-        'rel_nameofstaff_release
-        '
-        Me.rel_nameofstaff_release.Location = New System.Drawing.Point(578, 114)
-        Me.rel_nameofstaff_release.Name = "rel_nameofstaff_release"
-        Me.rel_nameofstaff_release.Size = New System.Drawing.Size(75, 18)
-        Me.rel_nameofstaff_release.TabIndex = 38
-        Me.rel_nameofstaff_release.Text = "Name of Staff"
-        '
-        'ret_nameofstaff_release2
-        '
-        Me.ret_nameofstaff_release2.Location = New System.Drawing.Point(583, 88)
-        Me.ret_nameofstaff_release2.Name = "ret_nameofstaff_release2"
-        Me.ret_nameofstaff_release2.Size = New System.Drawing.Size(75, 18)
-        Me.ret_nameofstaff_release2.TabIndex = 37
-        Me.ret_nameofstaff_release2.Text = "Name of Staff"
-        '
-        'ret_nameofstaff_return
-        '
-        Me.ret_nameofstaff_return.Location = New System.Drawing.Point(583, 119)
-        Me.ret_nameofstaff_return.Name = "ret_nameofstaff_return"
-        Me.ret_nameofstaff_return.Size = New System.Drawing.Size(75, 18)
-        Me.ret_nameofstaff_return.TabIndex = 37
-        Me.ret_nameofstaff_return.Text = "Name of Staff"
-        '
-        'ret_tb_equipment
-        '
-        Me.ret_tb_equipment.Location = New System.Drawing.Point(578, 48)
-        Me.ret_tb_equipment.MinimumSize = New System.Drawing.Size(0, 24)
-        Me.ret_tb_equipment.Name = "ret_tb_equipment"
-        Me.ret_tb_equipment.ReadOnly = True
-        '
-        '
-        '
-        Me.ret_tb_equipment.RootElement.MinSize = New System.Drawing.Size(0, 24)
-        Me.ret_tb_equipment.Size = New System.Drawing.Size(199, 24)
-        Me.ret_tb_equipment.TabIndex = 41
-        Me.ret_tb_equipment.ThemeName = "VisualStudio2012Dark"
-        '
-        'ret_tb_equipmentnum
-        '
-        Me.ret_tb_equipmentnum.Location = New System.Drawing.Point(578, 18)
-        Me.ret_tb_equipmentnum.MinimumSize = New System.Drawing.Size(0, 24)
-        Me.ret_tb_equipmentnum.Name = "ret_tb_equipmentnum"
-        Me.ret_tb_equipmentnum.ReadOnly = True
-        '
-        '
-        '
-        Me.ret_tb_equipmentnum.RootElement.MinSize = New System.Drawing.Size(0, 24)
-        Me.ret_tb_equipmentnum.Size = New System.Drawing.Size(199, 24)
-        Me.ret_tb_equipmentnum.TabIndex = 40
-        Me.ret_tb_equipmentnum.ThemeName = "VisualStudio2012Dark"
-        '
-        'RadLabel9
-        '
-        Me.RadLabel9.Location = New System.Drawing.Point(465, 19)
-        Me.RadLabel9.Name = "RadLabel9"
-        Me.RadLabel9.Size = New System.Drawing.Size(107, 18)
-        Me.RadLabel9.TabIndex = 38
-        Me.RadLabel9.Text = "Equipment Number:"
-        Me.RadLabel9.ThemeName = "VisualStudio2012Dark"
-        '
-        'RadLabel10
-        '
-        Me.RadLabel10.Location = New System.Drawing.Point(509, 48)
-        Me.RadLabel10.Name = "RadLabel10"
-        Me.RadLabel10.Size = New System.Drawing.Size(63, 18)
-        Me.RadLabel10.TabIndex = 39
-        Me.RadLabel10.Text = "Equipment:"
-        Me.RadLabel10.ThemeName = "VisualStudio2012Dark"
         '
         'Main
         '
@@ -4048,6 +4121,7 @@ Partial Class Main
         CType(Me.RadGroupBox4, System.ComponentModel.ISupportInitialize).EndInit()
         Me.RadGroupBox4.ResumeLayout(False)
         Me.RadGroupBox4.PerformLayout()
+        CType(Me.lbl_nameofstaff_reserved, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.rec_rrtc_actname, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.rec_lbl_actname, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.rec_cb_reserveno, System.ComponentModel.ISupportInitialize).EndInit()
@@ -4113,6 +4187,7 @@ Partial Class Main
         CType(Me.gp_details, System.ComponentModel.ISupportInitialize).EndInit()
         Me.gp_details.ResumeLayout(False)
         Me.gp_details.PerformLayout()
+        CType(Me.rel_nameofstaff_release, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.rel_tb_startdate, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.rel_tb_equipment, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.rel_tb_equipmentnum, System.ComponentModel.ISupportInitialize).EndInit()
@@ -4148,6 +4223,12 @@ Partial Class Main
         CType(Me.RadGroupBox24, System.ComponentModel.ISupportInitialize).EndInit()
         Me.RadGroupBox24.ResumeLayout(False)
         Me.RadGroupBox24.PerformLayout()
+        CType(Me.ret_tb_equipment, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ret_tb_equipmentnum, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RadLabel9, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RadLabel10, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ret_nameofstaff_return, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ret_nameofstaff_release2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ret_tb_id, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ret_tb_reservationnum, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RadLabel42, System.ComponentModel.ISupportInitialize).EndInit()
@@ -4167,14 +4248,6 @@ Partial Class Main
         CType(Me.RadGroupBox16, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RadGroupBox13, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.CeutltdschedulerDataSetBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.lbl_nameofstaff_reserved, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.rel_nameofstaff_release, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.ret_nameofstaff_release2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.ret_nameofstaff_return, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.ret_tb_equipment, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.ret_tb_equipmentnum, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RadLabel9, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RadLabel10, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
