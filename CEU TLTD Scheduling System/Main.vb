@@ -649,7 +649,7 @@ Public Class Main
                 MysqlConn.Open()
                 Dim Query As String
                 ' Dim Query2 As String
-                Query = "insert into `released_info`  values ('" & rel_tb_id.Text & "' ,'" & rel_tb_reservationnum.Text & " ',  '" & rel_tb_borrower.Text & "' , '" & rel_tb_reservationnum.Text & "', '" & rel_tb_equipment.Text & "', '" & Format(CDate(rel_tb_startdate.Value), "yyyy-MM-dd") & "','" & Format(CDate(rel_tb_starttime.Text), "HH:mm") & "', '" & Format(CDate(rel_tb_endtime.Text), "HH:mm") & "', '" & rel_tb_status.Text & "' , '" & rel_tb_releasedby.Text & "'); delete from reservation where  reservationno = '" & rel_tb_reservationnum.Text & "'"
+                Query = "insert into `released_info`  values ('" & rel_tb_id.Text & "' ,'" & rel_tb_reservationnum.Text & " ',  '" & rel_tb_borrower.Text & "' , '" & rel_tb_reservationnum.Text & "', '" & rel_tb_equipment.Text & "', '" & Format(CDate(rel_tb_startdate.Value), "yyyy-MM-dd") & "','" & Format(CDate(rel_tb_starttime.Text), "HH:mm") & "', '" & Format(CDate(rel_tb_endtime.Text), "HH:mm") & "', '" & rel_tb_status.Text & "' , '" & rel_tb_releasedby.Text & "'); delete from reservation  where  reservationno = '" & rel_tb_reservationnum.Text & "'"
                 'Query = "delete from reservation where  reservationno = '" & rel_tb_reservationnum.Text & "'"
                 comm = New MySqlCommand(Query, MysqlConn)
 
