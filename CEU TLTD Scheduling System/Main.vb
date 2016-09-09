@@ -8,7 +8,7 @@ Public Class Main
     Dim ds As New DataSet
     Dim MysqlConn As MySqlConnection
 
-    Dim dbDataSet As New DataTable
+
     Dim svYN As DialogResult
     Dim addYN As DialogResult
     Dim editYN As DialogResult
@@ -16,6 +16,8 @@ Public Class Main
     Dim updateYN As DialogResult
     Dim deleteYN As DialogResult
     Dim doneYN As DialogResult
+
+    Public dbdataset As New DataTable
 
     Public identifier_reservationno As String
     Public random As System.Random = New System.Random
@@ -29,6 +31,7 @@ Public Class Main
         reservation_rgv_recordeddata.Show()
         reservations_rgv_showavailableitems.Hide()
         load_main_table()
+        load_academics_table()
         load_rec_table()
         load_eq_table()
         load_main_acc()
@@ -104,7 +107,7 @@ Public Class Main
         e.CellElement.TextAlignment = ContentAlignment.MiddleCenter
     End Sub
 
-    Private Sub main_rgv_recordeddatamain_ViewCellFormatting(sender As Object, e As CellFormattingEventArgs) Handles main_rgv_recordeddatamain.ViewCellFormatting
+    Private Sub main_rgv_recordeddatamain_ViewCellFormatting(sender As Object, e As CellFormattingEventArgs) Handles main_rgv_recordedacademicsmain.ViewCellFormatting
         e.CellElement.TextAlignment = ContentAlignment.MiddleCenter
     End Sub
 
@@ -117,7 +120,7 @@ Public Class Main
         MysqlConn.ConnectionString = connstring
 
         Dim sda As New MySqlDataAdapter
-        Dim dbdataset As New DataTable
+       
         Dim bsource As New BindingSource
 
         If MysqlConn.State = ConnectionState.Open Then
@@ -150,8 +153,8 @@ Public Class Main
         MysqlConn = New MySqlConnection
         MysqlConn.ConnectionString = connstring
 
+
         Dim sda As New MySqlDataAdapter
-        Dim dbdataset As New DataTable
         Dim bsource As New BindingSource
 
         If MysqlConn.State = ConnectionState.Open Then
@@ -160,15 +163,45 @@ Public Class Main
 
         Try
             MysqlConn.Open()
-
-            query = "Select borrower as 'Borrower',id as 'ID', equipmentno as 'Equipment No', equipment as 'Equipment', DATE_FORMAT(date,'%M %d %Y') as 'Date',TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time' from reservation where date='" & Format(CDate(lu_date.Value), "yyyy-MM-dd") & "' ORDER BY starttime ASC"
-
+            query = "SELECT TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time',borrower as 'Borrower', equipment as 'Equipment', equipmentno as 'Equipment No' ,DATE_FORMAT(date,'%M %d %Y') as 'Date',id as 'ID' from reservation where date='" & Format(CDate(lu_date.Value), "yyyy-MM-dd") & "' and activitytype='Academic' ORDER BY starttime ASC"
             comm = New MySqlCommand(query, MysqlConn)
             sda.SelectCommand = comm
             sda.Fill(dbdataset)
             bsource.DataSource = dbdataset
-            main_rgv_recordeddatamain.DataSource = bsource
-            main_rgv_recordeddatamain.ReadOnly = True
+            main_rgv_recordedacademicsmain.DataSource = bsource
+            main_rgv_recordedacademicsmain.ReadOnly = True
+            sda.Update(dbdataset)
+            MysqlConn.Close()
+
+        Catch ex As Exception
+            RadMessageBox.Show(Me, ex.Message, "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
+        Finally
+            MysqlConn.Dispose()
+
+        End Try
+    End Sub
+
+
+    Public Sub load_academics_table()
+        MysqlConn = New MySqlConnection
+        MysqlConn.ConnectionString = connstring
+
+        Dim sda As New MySqlDataAdapter
+        Dim bsource As New BindingSource
+
+        If MysqlConn.State = ConnectionState.Open Then
+            MysqlConn.Close()
+        End If
+
+        Try
+            MysqlConn.Open()
+            query = "SELECT TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time',borrower as 'Borrower', equipment as 'Equipment', equipmentno as 'Equipment No' ,DATE_FORMAT(date,'%M %d %Y') as 'Date',id as 'ID' from reservation where date='" & Format(CDate(lu_date.Value), "yyyy-MM-dd") & "' and activitytype='Co-Curricular/Extra-Curricular' ORDER BY starttime ASC"
+            comm = New MySqlCommand(query, MysqlConn)
+            sda.SelectCommand = comm
+            sda.Fill(dbdataset)
+            bsource.DataSource = dbdataset
+            main_rgv_recordedcurricularmain.DataSource = bsource
+            main_rgv_recordedcurricularmain.ReadOnly = True
             sda.Update(dbdataset)
             MysqlConn.Close()
 
@@ -266,8 +299,16 @@ Public Class Main
             Try
                 MysqlConn.Open()
                 Dim Query As String
-                Query = "insert into ceutltdscheduler.staff_reg (staff_id,staff_fname,staff_mname,staff_surname,staff_type,staff_username,staff_password) values ('" & acc_sf_id.Text & "' , '" & acc_sf_fname.Text & "', '" & acc_sf_mname.Text & "', '" & acc_sf_lname.Text & "' ,  '" & acc_sf_usertype.Text & "' , '" & acc_sf_username.Text & "' , sha2('" & acc_sf_password.Text & "', 512))"
+                Query = "insert into ceutltdscheduler.staff_reg (staff_id,staff_fname,staff_mname,staff_surname,staff_type,staff_username,staff_password) values (@staffid, @staffFname, @staffMname, @staffLname, @staffUsertype, @staffUsername, sha2(@staffPassword, 512))"
                 comm = New MySqlCommand(Query, MysqlConn)
+                comm.Parameters.AddWithValue("staffid", acc_sf_id.Text)
+                comm.Parameters.AddWithValue("staffFname", acc_sf_fname.Text)
+                comm.Parameters.AddWithValue("staffMname", acc_sf_mname.Text)
+                comm.Parameters.AddWithValue("staffLname", acc_sf_lname.Text)
+                comm.Parameters.AddWithValue("staffUsertype", acc_sf_usertype.Text)
+                comm.Parameters.AddWithValue("staffUsername", acc_sf_username.Text)
+                comm.Parameters.AddWithValue("staffPassword", acc_sf_password.Text)
+
 
                 svYN = RadMessageBox.Show(Me, "Are you sure you want To save this information? ", "TLTD Scheduling Management", MessageBoxButtons.YesNo, RadMessageIcon.Question)
                 If svYN = MsgBoxResult.Yes Then
@@ -430,8 +471,15 @@ Public Class Main
             Try
                 MysqlConn.Open()
                 Dim Query As String
-                Query = "insert into ceutltdscheduler.prof_reg (prof_id,prof_fname,prof_mname,prof_surname,prof_college,prof_type) values ('" & acc_pf_id.Text & "' , '" & acc_pf_fname.Text & "' , '" & acc_pf_mname.Text & "' , '" & acc_pf_lname.Text & "' , '" & acc_pf_college.Text & "' , '" & acc_pf_usertype.Text & "')"
+                Query = "insert into ceutltdscheduler.prof_reg (prof_id,prof_fname,prof_mname,prof_surname,prof_college,prof_type) values (@ProfID, @ProfFname, @ProfMname, @ProfLname, @ProfCollege, @ProfUsertype)"
                 comm = New MySqlCommand(Query, MysqlConn)
+                comm.Parameters.AddWithValue("ProfID", acc_pf_id.Text)
+                comm.Parameters.AddWithValue("ProfFname", acc_pf_fname.Text)
+                comm.Parameters.AddWithValue("ProfMname", acc_pf_mname.Text)
+                comm.Parameters.AddWithValue("ProfLname", acc_pf_lname.Text)
+                comm.Parameters.AddWithValue("ProfCollege", acc_pf_college.Text)
+                comm.Parameters.AddWithValue("ProfUsertype", acc_pf_usertype.Text)
+
 
                 svYN = RadMessageBox.Show(Me, "Are you sure you want To save this information? ", "TLTD Schuling Management", MessageBoxButtons.YesNo, RadMessageIcon.Question)
                 If svYN = MsgBoxResult.Yes Then
@@ -652,6 +700,10 @@ Public Class Main
                 Query = "insert into `released_info`  values ('" & rel_tb_id.Text & "' ,'" & rel_tb_reservationnum.Text & " ',  '" & rel_tb_borrower.Text & "' , '" & rel_tb_reservationnum.Text & "', '" & rel_tb_equipment.Text & "', '" & Format(CDate(rel_tb_startdate.Value), "yyyy-MM-dd") & "','" & Format(CDate(rel_tb_starttime.Text), "HH:mm") & "', '" & Format(CDate(rel_tb_endtime.Text), "HH:mm") & "', '" & rel_tb_status.Text & "' , '" & rel_tb_releasedby.Text & "'); delete from reservation  where  reservationno = '" & rel_tb_reservationnum.Text & "'"
                 'Query = "delete from reservation where  reservationno = '" & rel_tb_reservationnum.Text & "'"
                 comm = New MySqlCommand(Query, MysqlConn)
+                'comm.Parameters.AddWithValue("ID", rel_tb_id.Text)
+                'comm.Parameters.AddWithValue("ID", rel_tb_id.Text)
+                'comm.Parameters.AddWithValue("ID", rel_tb_id.Text)
+
 
                 svYN = RadMessageBox.Show(Me, "Are you sure you want to Release this Equipment/s? ", "TLTD Schuling Management", MessageBoxButtons.YesNo, RadMessageIcon.Question)
                 If svYN = MsgBoxResult.Yes Then
@@ -1546,13 +1598,15 @@ Public Class Main
                         MysqlConn.Close()
                         MysqlConn.Open()
 
-                        query = "SELECT * from reservation where reservationno=@RE_reservationno and equipment=@RE_equipment and equipmentsn=@RE_equipmentsn and equipmentno=@RE_equipmentno"
+                        query = "SELECT * from reservation where reservationno=@RE_reservationno and equipment=@RE_equipment and equipmentsn=@RE_equipmentsn and equipmentno=@RE_equipmentno and date=@RE_date and starttime=@RE_starttime and endtime=@RE_endtime"
                         comm = New MySqlCommand(query, MysqlConn)
                         comm.Parameters.AddWithValue("RE_reservationno", rec_cb_reserveno.Text)
                         comm.Parameters.AddWithValue("RE_equipment", equipmentrgv)
                         comm.Parameters.AddWithValue("RE_equipmentsn", equipmentsnrgv)
                         comm.Parameters.AddWithValue("RE_equipmentno", equipmentnorgv)
-
+                        comm.Parameters.AddWithValue("RE_date", Format(CDate(rec_dtp_date.Value), "yyyy-MM-dd"))
+                        comm.Parameters.AddWithValue("RE_starttime", Format(CDate(rec_dtp_starttime.Text), "HH:mm"))
+                        comm.Parameters.AddWithValue("RE_endtime", Format(CDate(rec_dtp_endtime.Text), "HH:mm"))
 
                         READER = comm.ExecuteReader
                         Dim count As Integer
@@ -1607,6 +1661,7 @@ Public Class Main
         End If
         load_main_table()
         load_rec_table()
+        load_academics_table()
         reserved_load_table()
     End Sub
 
@@ -1729,6 +1784,7 @@ Public Class Main
         End If
         load_rec_table()
         load_main_table()
+        load_academics_table()
     End Sub
 
     'Combining (Fname,Lname) in Borrower Field in Reservation
@@ -1843,7 +1899,7 @@ Public Class Main
             SDA.SelectCommand = comm
             SDA.Fill(dbdataset)
             bsource.DataSource = dbdataset
-            main_rgv_recordeddatamain.DataSource = bsource
+            main_rgv_recordedacademicsmain.DataSource = bsource
             SDA.Update(dbdataset)
 
             MysqlConn.Close()
@@ -1856,7 +1912,7 @@ Public Class Main
 
         Dim DV As New DataView(dbdataset)
         DV.RowFilter = String.Format("`Borrower` Like'%{0}%'", lu_byname.Text)
-        main_rgv_recordeddatamain.DataSource = DV
+        main_rgv_recordedacademicsmain.DataSource = DV
     End Sub
 
     'Auto Generating of Reservation Number
@@ -1868,6 +1924,18 @@ Public Class Main
         Dim title As String = "TLTD Scheduling System"
         Me.Text = title + Date.Now.ToString("            MMMM dd, yyyy  hh:mm:ss tt")
     End Sub
+
+    Private Sub rpv1_Click(sender As Object, e As EventArgs) Handles rpv1.Click
+        load_academics_table()
+        load_main_table()
+        load_rec_table()
+    End Sub
+
+    Private Sub Main_FormClosed(sender As Object, e As FormClosedEventArgs) Handles Me.FormClosed
+        Me.Dispose()
+        Login.Show()
+    End Sub
+
 
 
 
