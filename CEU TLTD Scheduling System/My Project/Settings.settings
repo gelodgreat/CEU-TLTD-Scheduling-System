@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="WindowTheme" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">VisualStudio2012Dark</Value>
     </Setting>
     <Setting Name="cons_server" Type="System.String" Scope="User">
       <Value Profile="(Default)" />

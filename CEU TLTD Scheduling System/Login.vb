@@ -8,7 +8,7 @@ Public Class Login
 
     Private Sub Login_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         timerandstatus()
-        ThemeResolutionService.ApplicationThemeName = My.Settings.WindowTheme
+        ThemeResolutionService.ApplicationThemeName = "VisualStudio2012Dark"
         log_username.Select()
     End Sub
 
