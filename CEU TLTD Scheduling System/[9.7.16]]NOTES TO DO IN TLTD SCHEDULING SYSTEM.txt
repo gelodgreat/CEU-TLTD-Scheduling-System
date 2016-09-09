@@ -16,7 +16,7 @@ returning
 	- have list of unreturned
 
 main
-	-fixed the sort by location
+	-fixed the sort by location - done (removed)
 	-add new grid for school activity - done (but changed finished layout. Added 2 columns in datagrid)
 	-academic / co-curricular/extra-curricular - done
 	

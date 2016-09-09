@@ -1535,7 +1535,6 @@ Public Class Main
 
                         End While
 
-
                         If count > 0 Then
                             RadMessageBox.Show(Me, "The equipment " & equipmentrgv & " with serial number of " & equipmentsnrgv & " is already taken", "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
                             errorcount = True
@@ -1544,12 +1543,8 @@ Public Class Main
 
                             MysqlConn.Close()
                             MysqlConn.Open()
-
-
                             query = "INSERT INTO `reservation` VALUES ('" & rec_cb_reserveno.Text & "','" & equipmentnorgv & "', '" & equipmentrgv & "', '" & equipmentsnrgv & "', '" & rec_cb_idnum.Text & "', '" & Format(CDate(rec_dtp_date.Value), "yyyy-MM-dd") & "','" & Format(CDate(rec_dtp_starttime.Text), "HH:mm") & "', '" & Format(CDate(rec_dtp_endtime.Text), "HH:mm") & "', '" & rec_cb_borrower.Text & "', '" & rec_cb_location.Text & "' , '" & rec_cb_status.Text & "','" & rec_cb_acttype.Text & "','" & rec_rrtc_actname.Text & "')
                             ;INSERT INTO `reservation_equipments` VALUES ('" & rec_cb_reserveno.Text & "','" & equipmentnorgv & "', '" & equipmentrgv & "', '" & equipmentsnrgv & "')"
-
-
 
                             comm = New MySqlCommand(query, MysqlConn)
                             READER = comm.ExecuteReader
@@ -1574,7 +1569,7 @@ Public Class Main
                 RadMessageBox.Show(Me, "Succesfully Equipment Reserved!", "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Info)
 
             Else
-                RadMessageBox.Show(Me, "Some equipments are not succesfully reserved", "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
+                RadMessageBox.Show(Me, "Not Successfully Reserved!", "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
 
             End If
         End If
@@ -1640,7 +1635,7 @@ Public Class Main
         Try
             MysqlConn.Open()
             'Pending Changes to show all taken equipments
-            query = "SELECT equipmenttype AS 'Equipment Type',equipmentno AS 'Equipment No.',equipment AS 'Equipment', equipmentsn AS 'Equipment Serial' FROM reservation_equipments"
+            query = "SELECT reservationno as 'Reservation Number',equipmentno AS 'Equipment No.',equipment AS 'Equipment', equipmentsn AS 'Equipment Serial' FROM reservation_equipments"
 
             comm = New MySqlCommand(query, MysqlConn)
             sda.SelectCommand = comm
