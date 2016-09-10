@@ -27,6 +27,7 @@ Public Class Main
     Public equipment As String
     Public rowcounter As Integer = 0
     Dim query As String
+    Dim eq_keepSelectedRowIndexAfterUpdate As Integer 'WU_TRY1
 
 
 
@@ -268,7 +269,7 @@ Public Class Main
 
     End Sub
 
-    Public Sub load_eq_table_retain_filters_after_update()
+    Public Sub load_eq_table_retain_filters_after_update()  'WU_TRY1
         If MysqlConn.State = ConnectionState.Open Then
             MysqlConn.Close()
         End If
@@ -300,7 +301,10 @@ Public Class Main
         Dim DV As New DataView(dbdataset)
         DV.RowFilter = String.Format("`Equipment Number` Like'%{0}%' and `Equipment Type` Like'%{1}%' and `Status` Like'%{2}%' ", eq_filter_eqno.Text, eq_filter_eqtype.Text, eq_filter_eqstatus.Text)
         eq_rgv_showregequipment.DataSource = DV
+        eq_rgv_showregequipment.Rows(eq_keepSelectedRowIndexAfterUpdate).IsCurrent = True  'WUTRY_1
+        eq_sn.Enabled = False 'WUTRY1
     End Sub
+
 
     'Programmed by BRENZ THIRD POINT SAVE BUTTON
 
@@ -1196,7 +1200,7 @@ Public Class Main
         End If
 
         load_eq_table_retain_filters_after_update()
-        eq_sn.Enabled = True
+
 
         counter_of_total_eq()
     End Sub
@@ -1249,7 +1253,7 @@ Public Class Main
     Private Sub eq_rgv_showregequipment_CellDoubleClick(sender As Object, e As GridViewCellEventArgs) Handles eq_rgv_showregequipment.CellDoubleClick
         If e.RowIndex >= 0 Then
             Dim row As Telerik.WinControls.UI.GridViewRowInfo
-
+            eq_keepSelectedRowIndexAfterUpdate = e.RowIndex 'WUTRY_1
             row = Me.eq_rgv_showregequipment.Rows(e.RowIndex)
 
             eq_equipmentno.Text = row.Cells("Equipment Number").Value.ToString
