@@ -268,6 +268,40 @@ Public Class Main
 
     End Sub
 
+    Public Sub load_eq_table_retain_filters_after_update()
+        If MysqlConn.State = ConnectionState.Open Then
+            MysqlConn.Close()
+        End If
+        MysqlConn = New MySqlConnection
+        MysqlConn.ConnectionString = connstring
+        Dim SDA As New MySqlDataAdapter
+        Dim dbdataset As New DataTable
+        Dim bsource As New BindingSource
+        Try
+            MysqlConn.Open()
+
+            query = "SELECT equipmentno AS 'Equipment Number', equipment AS 'Equipment', equipmentsn AS 'Serial Number',equipmenttype AS 'Equipment Type', equipmentlocation AS 'Equipment Location',equipmentowner AS 'Owner',equipmentstatus AS 'Status' FROM equipments ORDER BY equipmentno DESC"
+
+            comm = New MySqlCommand(query, MysqlConn)
+            SDA.SelectCommand = comm
+            SDA.Fill(dbdataset)
+            bsource.DataSource = dbdataset
+            eq_rgv_showregequipment.DataSource = bsource
+            SDA.Update(dbdataset)
+
+            MysqlConn.Close()
+
+        Catch ex As MySqlException
+            RadMessageBox.Show(Me, ex.Message, "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
+        Finally
+            MysqlConn.Dispose()
+        End Try
+
+        Dim DV As New DataView(dbdataset)
+        DV.RowFilter = String.Format("`Equipment Number` Like'%{0}%' and `Equipment Type` Like'%{1}%' and `Status` Like'%{2}%' ", eq_filter_eqno.Text, eq_filter_eqtype.Text, eq_filter_eqstatus.Text)
+        eq_rgv_showregequipment.DataSource = DV
+    End Sub
+
     'Programmed by BRENZ THIRD POINT SAVE BUTTON
 
     Private Sub acc_staff_btn_save_Click(sender As Object, e As EventArgs) Handles acc_staff_btn_save.Click
@@ -1128,14 +1162,14 @@ Public Class Main
             MysqlConn.Close()
         End If
 
-        updateYN = RadMessageBox.Show(Me, "Do you want To update the selected equipment?", "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Question)
+        updateYN = RadMessageBox.Show(Me, "Do you want To update the selected equipment?", "TLTD Scheduling Management", MessageBoxButtons.YesNo, RadMessageIcon.Question)
         If updateYN = MsgBoxResult.Yes Then
             If (eq_equipmentno.Text = "") Or (eq_sn.Text = "") Or (eq_equipment.Text = "") Or (eq_equipmentlocation.Text = "") Or (eq_owner.Text = "") Or (eq_status.Text = "") Then
                 RadMessageBox.Show(Me, "Please complete the fields To update!", "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
             Else
                 Try
                     MysqlConn.Open()
-                    query = "UPDATE equipments SET equipmentno=@eq_eqno, equipmentsn=@eq_eqsn, equipment=@eq_eqeq, equipmentlocation=@eq_eqlocation, equipmentowner=@eq_eqowner, equipmentstatus=@eq_eqstatus, equipmentype=@eq_eqtype WHERE (equipmentsn=@eq_eqsn) AND (equipmentno=@eq_eqno)"
+                    query = "UPDATE equipments SET equipmentno=@eq_eqno, equipmentsn=@eq_eqsn, equipment=@eq_eqeq, equipmentlocation=@eq_eqlocation, equipmentowner=@eq_eqowner, equipmentstatus=@eq_eqstatus, equipmenttype=@eq_eqtype WHERE (equipmentsn=@eq_eqsn) AND (equipmentno=@eq_eqno)"
                     comm = New MySqlCommand(query, MysqlConn)
 
                     comm.Parameters.AddWithValue("eq_eqno", eq_equipmentno.Text)
@@ -1160,7 +1194,10 @@ Public Class Main
                 End Try
             End If
         End If
-        load_eq_table()
+
+        load_eq_table_retain_filters_after_update()
+        eq_sn.Enabled = True
+
         counter_of_total_eq()
     End Sub
 
@@ -1201,6 +1238,12 @@ Public Class Main
         counter_of_total_eq()
     End Sub
 
+    Private Sub eq_clear_filter_Click(sender As Object, e As EventArgs) Handles eq_clear_filter.Click
+        eq_filter_eqno.Text = ""
+        eq_filter_eqtype.Text = ""
+        eq_filter_eqstatus.Text = ""
+    End Sub
+
     'Equipment Management Codes Umali E5 EQ_CELLDOUBLECLICK
 
     Private Sub eq_rgv_showregequipment_CellDoubleClick(sender As Object, e As GridViewCellEventArgs) Handles eq_rgv_showregequipment.CellDoubleClick
@@ -1217,6 +1260,7 @@ Public Class Main
             eq_owner.Text = row.Cells("Owner").Value.ToString
             eq_type.Text = row.Cells("Equipment Type").Value.ToString
 
+            eq_sn.Enabled = False
             eq_btn_update.Show()
             eq_btn_delete.Show()
             eq_btn_save.Hide()
@@ -1233,7 +1277,7 @@ Public Class Main
         eq_status.Text = ""
         eq_owner.Text = ""
         eq_type.Text = ""
-
+        eq_sn.Enabled = True
         eq_btn_update.Hide()
         eq_btn_delete.Hide()
         eq_btn_save.Show()
@@ -1956,6 +2000,8 @@ Public Class Main
         End If
 
     End Sub
+
+
 
 
 

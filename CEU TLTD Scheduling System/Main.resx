@@ -145,9 +145,9 @@
     <value>206, 58</value>
   </metadata>
   <metadata name="lu_date_filter_delay.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>380, 58</value>
+    <value>378, 53</value>
   </metadata>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>120</value>
+    <value>82</value>
   </metadata>
 </root>
