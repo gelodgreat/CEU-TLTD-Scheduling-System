@@ -1662,88 +1662,94 @@ Public Class Main
         Dim conflictequipmentno As String = ""
         Dim conflictequipment As String = ""
         Dim conflictequipmentsn As String = ""
-        If (rec_cb_reserveno.Text = "") Or (rec_cb_idnum.Text = "") Or (rec_cb_borrower.Text = "") Or (rec_dtp_date.Text = "") Or (rec_dtp_starttime.Text = "") Or (rec_dtp_endtime.Text = "") Or (rec_cb_college_school.Text = "") Or (rec_cb_location.Text = "") Or (rec_cb_status.Text = "") Or (rec_eq_chooseno.Text = "") Or (rec_eq_type_choose.Text = "") Or (eq_rgv_addeq.Rows.Count < 0) Or (rec_cb_acttype.Text = "") Then
 
+        If (rec_cb_reserveno.Text = "") Or (rec_cb_idnum.Text = "") Or (rec_cb_borrower.Text = "") Or (rec_dtp_date.Text = "") Or (rec_dtp_starttime.Text = "") Or (rec_dtp_endtime.Text = "") Or (rec_cb_college_school.Text = "") Or (rec_cb_location.Text = "") Or (rec_cb_status.Text = "") Or (rec_eq_chooseno.Text = "") Or (rec_eq_type_choose.Text = "") Or (eq_rgv_addeq.Rows.Count < 0) Or (rec_cb_acttype.Text = "") Then
             RadMessageBox.Show(Me, "Please complete the fields", "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
         Else
+            'ADD THE CHECKBOX TO PICK IF IT IS FROM ANOTHER DAY, ANOTHER DATE PICKER, BUT BY DEFAULT IT IS NOT CHECKED
+            Dim elapsedTime As TimeSpan = DateTime.Parse(Format(CDate(rec_dtp_date.Value), "yyyy-MM-dd") & " " & rec_dtp_endtime.Text).Subtract(DateTime.Parse(DateTime.Parse(Format(CDate(rec_dtp_date.Value), "yyyy-MM-dd") & " " & rec_dtp_starttime.Text)))
+            'ADD THE CHECKBOX TO PICK IF IT IS FROM ANOTHER DAY, ANOTHER DATE PICKER, BUT BY DEFAULT IT IS NOT CHECKED
+            If elapsedTime.CompareTo(TimeSpan.Zero) <= 0 Then
+                RadMessageBox.Show(Me, "The Starting Time can't be the same or later on the Ending Time.", "Reservation", MessageBoxButtons.OK, RadMessageIcon.Error, MessageBoxDefaultButton.Button1)
+            Else
+                Dim counter As Integer
+                Dim rownumber As Integer = eq_rgv_addeq.Rows.Count
+                counter = 0
+                Dim errorcount As Boolean = False
+                If rownumber > 0 Then
+                    While counter <> rownumber
 
-            Dim counter As Integer
-            Dim rownumber As Integer = eq_rgv_addeq.Rows.Count
-            counter = 0
-            Dim errorcount As Boolean = False
-            If rownumber > 0 Then
-                While counter <> rownumber
+                        Dim equipmentnorgv As String = eq_rgv_addeq.Rows(counter).Cells(0).Value
+                        Dim equipmentrgv As String = eq_rgv_addeq.Rows(counter).Cells(1).Value
+                        Dim equipmentsnrgv As String = eq_rgv_addeq.Rows(counter).Cells(2).Value
 
-                    Dim equipmentnorgv As String = eq_rgv_addeq.Rows(counter).Cells(0).Value
-                    Dim equipmentrgv As String = eq_rgv_addeq.Rows(counter).Cells(1).Value
-                    Dim equipmentsnrgv As String = eq_rgv_addeq.Rows(counter).Cells(2).Value
-
-                    Try
-
-                        MysqlConn.Close()
-                        MysqlConn.Open()
-
-                        query = "SELECT * from reservation where reservationno=@RE_reservationno and equipment=@RE_equipment and equipmentsn=@RE_equipmentsn and equipmentno=@RE_equipmentno and date=@RE_date and starttime=@RE_starttime and endtime=@RE_endtime"
-                        comm = New MySqlCommand(query, MysqlConn)
-                        comm.Parameters.AddWithValue("RE_reservationno", rec_cb_reserveno.Text)
-                        comm.Parameters.AddWithValue("RE_equipment", equipmentrgv)
-                        comm.Parameters.AddWithValue("RE_equipmentsn", equipmentsnrgv)
-                        comm.Parameters.AddWithValue("RE_equipmentno", equipmentnorgv)
-                        comm.Parameters.AddWithValue("RE_date", Format(CDate(rec_dtp_date.Value), "yyyy-MM-dd"))
-                        comm.Parameters.AddWithValue("RE_starttime", Format(CDate(rec_dtp_starttime.Text), "HH:mm"))
-                        comm.Parameters.AddWithValue("RE_endtime", Format(CDate(rec_dtp_endtime.Text), "HH:mm"))
-
-                        READER = comm.ExecuteReader
-                        Dim count As Integer
-                        count = 0
-                        While READER.Read
-
-                            count = count + 1
-                            equipmentnorgv = READER.GetString("equipmentno")
-                            equipmentrgv = READER.GetString("equipment")
-                            equipmentsnrgv = READER.GetString("equipmentsn")
-
-                        End While
-
-                        If count > 0 Then
-                            RadMessageBox.Show(Me, "The equipment " & equipmentrgv & " with serial number of " & equipmentsnrgv & " is already taken", "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
-                            errorcount = True
-                            Exit While
-                        Else
+                        Try
 
                             MysqlConn.Close()
                             MysqlConn.Open()
-                            query = "INSERT INTO `reservation` VALUES ('" & rec_cb_reserveno.Text & "','" & equipmentnorgv & "', '" & equipmentrgv & "', '" & equipmentsnrgv & "', '" & rec_cb_idnum.Text & "', '" & Format(CDate(rec_dtp_date.Value), "yyyy-MM-dd") & "','" & Format(CDate(rec_dtp_starttime.Text), "HH:mm") & "', '" & Format(CDate(rec_dtp_endtime.Text), "HH:mm") & "', '" & rec_cb_borrower.Text & "', '" & rec_cb_location.Text & "' , '" & lbl_nameofstaff_reserved.Text & "' ,'" & rec_cb_status.Text & "','" & rec_cb_acttype.Text & "','" & rec_rrtc_actname.Text & "')
+
+                            query = "SELECT * from reservation where reservationno=@RE_reservationno and equipment=@RE_equipment and equipmentsn=@RE_equipmentsn and equipmentno=@RE_equipmentno and date=@RE_date and starttime=@RE_starttime and endtime=@RE_endtime"
+                            comm = New MySqlCommand(query, MysqlConn)
+                            comm.Parameters.AddWithValue("RE_reservationno", rec_cb_reserveno.Text)
+                            comm.Parameters.AddWithValue("RE_equipment", equipmentrgv)
+                            comm.Parameters.AddWithValue("RE_equipmentsn", equipmentsnrgv)
+                            comm.Parameters.AddWithValue("RE_equipmentno", equipmentnorgv)
+                            comm.Parameters.AddWithValue("RE_date", Format(CDate(rec_dtp_date.Value), "yyyy-MM-dd"))
+                            comm.Parameters.AddWithValue("RE_starttime", Format(CDate(rec_dtp_starttime.Text), "HH:mm"))
+                            comm.Parameters.AddWithValue("RE_endtime", Format(CDate(rec_dtp_endtime.Text), "HH:mm"))
+
+                            READER = comm.ExecuteReader
+                            Dim count As Integer
+                            count = 0
+                            While READER.Read
+
+                                count = count + 1
+                                equipmentnorgv = READER.GetString("equipmentno")
+                                equipmentrgv = READER.GetString("equipment")
+                                equipmentsnrgv = READER.GetString("equipmentsn")
+
+                            End While
+
+                            If count > 0 Then
+                                RadMessageBox.Show(Me, "The equipment " & equipmentrgv & " with serial number of " & equipmentsnrgv & " is already taken", "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
+                                errorcount = True
+                                Exit While
+                            Else
+
+                                MysqlConn.Close()
+                                MysqlConn.Open()
+                                query = "INSERT INTO `reservation` VALUES ('" & rec_cb_reserveno.Text & "','" & equipmentnorgv & "', '" & equipmentrgv & "', '" & equipmentsnrgv & "', '" & rec_cb_idnum.Text & "', '" & Format(CDate(rec_dtp_date.Value), "yyyy-MM-dd") & "','" & Format(CDate(rec_dtp_starttime.Text), "HH:mm") & "', '" & Format(CDate(rec_dtp_endtime.Text), "HH:mm") & "', '" & rec_cb_borrower.Text & "', '" & rec_cb_location.Text & "' , '" & lbl_nameofstaff_reserved.Text & "' ,'" & rec_cb_status.Text & "','" & rec_cb_acttype.Text & "','" & rec_rrtc_actname.Text & "')
                             ;INSERT INTO `reservation_equipments` VALUES ('" & rec_cb_reserveno.Text & "','" & equipmentnorgv & "', '" & equipmentrgv & "', '" & equipmentsnrgv & "')"
 
-                            comm = New MySqlCommand(query, MysqlConn)
-                            READER = comm.ExecuteReader
-                            MysqlConn.Close()
+                                comm = New MySqlCommand(query, MysqlConn)
+                                READER = comm.ExecuteReader
+                                MysqlConn.Close()
 
-                        End If
+                            End If
 
-                    Catch ex As Exception
-                        RadMessageBox.Show(Me, ex.Message, "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
-                    Finally
-                        MysqlConn.Dispose()
-                    End Try
-                    counter = counter + 1
+                        Catch ex As Exception
+                            RadMessageBox.Show(Me, ex.Message, "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
+                        Finally
+                            MysqlConn.Dispose()
+                        End Try
+                        counter = counter + 1
 
 
-                End While
-                eq_rgv_addeq.Rows.Clear()
-                rowcounter = 0
+                    End While
+                    eq_rgv_addeq.Rows.Clear()
+                    rowcounter = 0
+                End If
+
+                If errorcount = False Then
+                    RadMessageBox.Show(Me, "Succesfully Equipment Reserved!", "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Info)
+
+                Else
+                    RadMessageBox.Show(Me, "Not Successfully Reserved!", "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
+
+                End If
             End If
-
-            If errorcount = False Then
-                RadMessageBox.Show(Me, "Succesfully Equipment Reserved!", "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Info)
-
-            Else
-                RadMessageBox.Show(Me, "Not Successfully Reserved!", "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
-
             End If
-        End If
-        load_main_table()
+            load_main_table()
         load_rec_table()
         reserved_load_table()
     End Sub
