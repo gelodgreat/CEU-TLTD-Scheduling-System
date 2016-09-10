@@ -36,6 +36,9 @@ Public Class Login
                     username = reader.GetString("staff_username")
                     activeuserfname = reader.GetString("staff_fname")
                     activeuserlname = reader.GetString("staff_surname")
+                    Main.lbl_nameofstaff_reserved.Text = activeuserlname + " " + activeuserfname
+                    Main.rel_nameofstaff_release.Text = activeuserlname + " " + activeuserfname
+                    Main.ret_nameofstaff_return.Text = activeuserlname + " " + activeuserfname
                 End While
                 mysqlconn.Close()
                 log_username.Text = String.Empty
