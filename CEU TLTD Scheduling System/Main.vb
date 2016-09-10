@@ -833,7 +833,7 @@ Public Class Main
     Private Sub Main_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
         closingYN = RadMessageBox.Show(Me, "Are you sure you want to Log-Out?", "TLTD Scheduling Management", MessageBoxButtons.YesNo, RadMessageIcon.Exclamation)
         If closingYN = MsgBoxResult.Yes Then
-            Me.Hide()
+            Me.Dispose()
             Login.Show()
         ElseIf closingYN = MsgBoxResult.No Then
             e.Cancel = True
@@ -842,6 +842,13 @@ Public Class Main
 
     'Main Window Search Functions Umali C1
     Private Sub lu_byequipment_TextChanged(sender As Object, e As EventArgs) Handles lu_byequipment.TextChanged
+        lu_byequipment_filter_delay.Interval = 700
+        lu_byequipment_filter_delay.Stop()
+        lu_byequipment_filter_delay.Start()
+    End Sub
+
+    Private Sub lu_byequipment_filter_delay_Tick(sender As Object, e As EventArgs) Handles lu_byequipment_filter_delay.Tick
+        lu_byequipment_filter_delay.Stop()
         ''''''''Pending Changes because of client request
 
         MysqlConn = New MySqlConnection
@@ -873,12 +880,19 @@ Public Class Main
         End Try
 
         Dim DV As New DataView(dbdataset)
-        DV.RowFilter = String.Format("`Equipment` Like'%{0}%'", lu_byequipment.Text)
+        DV.RowFilter = String.Format("`Equipment` Like'%{0}%' and `Borrower` Like'%{1}%'", lu_byequipment.Text, lu_byname.Text)
         main_rgv_recordedacademicsmain.DataSource = DV
     End Sub
 
     'Search by Name in Main Tab
     Private Sub lu_byname_TextChanged(sender As Object, e As EventArgs) Handles lu_byname.TextChanged
+        lu_byname_filter_delay.Interval = 700
+        lu_byname_filter_delay.Stop()
+        lu_byname_filter_delay.Start()
+    End Sub
+
+    Private Sub lu_byname_filter_delay_Tick(sender As Object, e As EventArgs) Handles lu_byname_filter_delay.Tick
+        lu_byname_filter_delay.Stop()
         MysqlConn = New MySqlConnection
         MysqlConn.ConnectionString = connstring
         Dim SDA As New MySqlDataAdapter
@@ -907,7 +921,7 @@ Public Class Main
         End Try
 
         Dim DV As New DataView(dbdataset)
-        DV.RowFilter = String.Format("`Borrower` Like'%{0}%'", lu_byname.Text)
+        DV.RowFilter = String.Format("`Borrower` Like'%{0}%' and `Equipment` Like'%{1}%'", lu_byname.Text, lu_byequipment.Text)
         main_rgv_recordedacademicsmain.DataSource = DV
     End Sub
 
@@ -1174,8 +1188,8 @@ Public Class Main
         eq_rgv_showregequipment.DataSource = DV
     End Sub
 
+
     Private Sub eq_filter_eqno_TextChanged(sender As Object, e As EventArgs) Handles eq_filter_eqno.TextChanged
-        'THIS IS TO DELAY THE FILTER WHEN the user types so that it won't be laggy
         eqno_filter_delay.Interval = 700
         eqno_filter_delay.Stop()
         eqno_filter_delay.Start()
@@ -1183,10 +1197,16 @@ Public Class Main
 
     'Equipment Management Codes Umali E8 = SEARCH BY EQ_TYPE
     Private Sub eq_filter_eqtype_TextChanged(sender As Object, e As EventArgs) Handles eq_filter_eqtype.TextChanged
+        eqtype_filter_delay.Interval = 700
+        eqtype_filter_delay.Stop()
+        eqtype_filter_delay.Start()
+    End Sub
+    'THIS IS TO DELAY THE FILTER WHEN the user types so that it won't be laggy
+    Private Sub eqtype_filter_delay_Tick(sender As Object, e As EventArgs) Handles eqtype_filter_delay.Tick
+        eqtype_filter_delay.Stop()
         If MysqlConn.State = ConnectionState.Open Then
             MysqlConn.Close()
         End If
-
         MysqlConn = New MySqlConnection
         MysqlConn.ConnectionString = connstring
         Dim SDA As New MySqlDataAdapter
@@ -1219,6 +1239,13 @@ Public Class Main
 
     'Equipment Management Codes Umali E9 = SEARCH BY EQ_STATUS
     Private Sub eq_filter_eqstatus_TextChanged(sender As Object, e As EventArgs) Handles eq_filter_eqstatus.TextChanged
+        eqstatus_filter_delay.Interval = 700
+        eqstatus_filter_delay.Stop()
+        eqstatus_filter_delay.Start()
+    End Sub
+
+    Private Sub eqstatus_filter_delay_Tick(sender As Object, e As EventArgs) Handles eqstatus_filter_delay.Tick
+        eqstatus_filter_delay.Stop()
         If MysqlConn.State = ConnectionState.Open Then
             MysqlConn.Close()
         End If
@@ -1761,8 +1788,15 @@ Public Class Main
     End Sub
 
     'Loading of data in Main Page Grid
-    Private Sub lu_date_ValueChanged(sender As Object, e As EventArgs) Handles lu_date.ValueChanged
+    Private Sub lu_date_filter_delay_Tick(sender As Object, e As EventArgs) Handles lu_date_filter_delay.Tick
+        lu_date_filter_delay.Stop()
         load_main_table()
+    End Sub
+
+    Private Sub lu_date_ValueChanged(sender As Object, e As EventArgs) Handles lu_date.ValueChanged
+        lu_date_filter_delay.Interval = 500
+        lu_date_filter_delay.Stop()
+        lu_date_filter_delay.Start()
     End Sub
 
     'Double Click function in Reservation Tab Page
@@ -1831,9 +1865,15 @@ Public Class Main
             rec_rrtc_actname.Text = ""
         End If
 
-
-
     End Sub
+
+
+
+
+
+
+
+
 
 
 

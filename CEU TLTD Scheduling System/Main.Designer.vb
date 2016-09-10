@@ -549,6 +549,11 @@ Partial Class Main
         Me.Main_Timer = New System.Windows.Forms.Timer(Me.components)
         Me.CeutltdschedulerDataSetBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.eqno_filter_delay = New System.Windows.Forms.Timer(Me.components)
+        Me.eqtype_filter_delay = New System.Windows.Forms.Timer(Me.components)
+        Me.eqstatus_filter_delay = New System.Windows.Forms.Timer(Me.components)
+        Me.lu_byname_filter_delay = New System.Windows.Forms.Timer(Me.components)
+        Me.lu_byequipment_filter_delay = New System.Windows.Forms.Timer(Me.components)
+        Me.lu_date_filter_delay = New System.Windows.Forms.Timer(Me.components)
         CType(Me.rpv1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.rpv1.SuspendLayout()
         Me.rpvp1_main.SuspendLayout()
@@ -808,7 +813,7 @@ Partial Class Main
         Me.rpv1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.rpv1.Location = New System.Drawing.Point(0, 0)
         Me.rpv1.Name = "rpv1"
-        Me.rpv1.SelectedPage = Me.rpvp_equipment
+        Me.rpv1.SelectedPage = Me.rpvp1_main
         Me.rpv1.Size = New System.Drawing.Size(1358, 583)
         Me.rpv1.TabIndex = 0
         Me.rpv1.Text = "Home"
@@ -837,7 +842,7 @@ Partial Class Main
         Me.RadGroupBox2.Location = New System.Drawing.Point(-5, 3)
         Me.RadGroupBox2.Name = "RadGroupBox2"
         Me.RadGroupBox2.Size = New System.Drawing.Size(211, 288)
-        Me.RadGroupBox2.TabIndex = 1
+        Me.RadGroupBox2.TabIndex = 30
         Me.RadGroupBox2.Text = "Filters"
         Me.RadGroupBox2.ThemeName = "VisualStudio2012Dark"
         '
@@ -852,7 +857,7 @@ Partial Class Main
         Me.RadGroupBox8.Location = New System.Drawing.Point(5, 129)
         Me.RadGroupBox8.Name = "RadGroupBox8"
         Me.RadGroupBox8.Size = New System.Drawing.Size(197, 150)
-        Me.RadGroupBox8.TabIndex = 1
+        Me.RadGroupBox8.TabIndex = 30
         Me.RadGroupBox8.Text = "Custom Filters"
         Me.RadGroupBox8.ThemeName = "VisualStudio2012Dark"
         '
@@ -876,7 +881,7 @@ Partial Class Main
         '
         Me.lu_byname.RootElement.MinSize = New System.Drawing.Size(0, 24)
         Me.lu_byname.Size = New System.Drawing.Size(182, 24)
-        Me.lu_byname.TabIndex = 27
+        Me.lu_byname.TabIndex = 2
         Me.lu_byname.ThemeName = "VisualStudio2012Dark"
         '
         'lu_byequipment
@@ -889,7 +894,7 @@ Partial Class Main
         '
         Me.lu_byequipment.RootElement.MinSize = New System.Drawing.Size(0, 24)
         Me.lu_byequipment.Size = New System.Drawing.Size(183, 24)
-        Me.lu_byequipment.TabIndex = 26
+        Me.lu_byequipment.TabIndex = 3
         Me.lu_byequipment.ThemeName = "VisualStudio2012Dark"
         '
         'RadLabel13
@@ -911,7 +916,7 @@ Partial Class Main
         Me.RadGroupBox7.Location = New System.Drawing.Point(5, 21)
         Me.RadGroupBox7.Name = "RadGroupBox7"
         Me.RadGroupBox7.Size = New System.Drawing.Size(197, 102)
-        Me.RadGroupBox7.TabIndex = 1
+        Me.RadGroupBox7.TabIndex = 30
         Me.RadGroupBox7.Text = "Search by Date:"
         Me.RadGroupBox7.ThemeName = "VisualStudio2012Dark"
         '
@@ -927,7 +932,7 @@ Partial Class Main
         '
         Me.lu_date.RootElement.MinSize = New System.Drawing.Size(0, 24)
         Me.lu_date.Size = New System.Drawing.Size(129, 24)
-        Me.lu_date.TabIndex = 16
+        Me.lu_date.TabIndex = 1
         Me.lu_date.TabStop = False
         Me.lu_date.Text = "07/25/2016"
         Me.lu_date.ThemeName = "VisualStudio2012Dark"
@@ -955,7 +960,7 @@ Partial Class Main
         Me.RadGroupBox1.Location = New System.Drawing.Point(212, 3)
         Me.RadGroupBox1.Name = "RadGroupBox1"
         Me.RadGroupBox1.Size = New System.Drawing.Size(1133, 538)
-        Me.RadGroupBox1.TabIndex = 0
+        Me.RadGroupBox1.TabIndex = 30
         Me.RadGroupBox1.Text = "Activities"
         Me.RadGroupBox1.ThemeName = "VisualStudio2012Dark"
         '
@@ -977,7 +982,7 @@ Partial Class Main
         Me.main_rgv_recordedacademicsmain.Name = "main_rgv_recordedacademicsmain"
         Me.main_rgv_recordedacademicsmain.ReadOnly = True
         Me.main_rgv_recordedacademicsmain.Size = New System.Drawing.Size(1129, 518)
-        Me.main_rgv_recordedacademicsmain.TabIndex = 0
+        Me.main_rgv_recordedacademicsmain.TabIndex = 30
         Me.main_rgv_recordedacademicsmain.Text = "RadGridView1"
         Me.main_rgv_recordedacademicsmain.ThemeName = "VisualStudio2012Dark"
         '
@@ -3943,6 +3948,21 @@ Partial Class Main
         '
         Me.eqno_filter_delay.Interval = 700
         '
+        'eqtype_filter_delay
+        '
+        '
+        'eqstatus_filter_delay
+        '
+        '
+        'lu_byname_filter_delay
+        '
+        '
+        'lu_byequipment_filter_delay
+        '
+        '
+        'lu_date_filter_delay
+        '
+        '
         'Main
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -4433,5 +4453,10 @@ Partial Class Main
     Friend WithEvents RadLabel8 As Telerik.WinControls.UI.RadLabel
     Friend WithEvents lu_byname As Telerik.WinControls.UI.RadTextBox
     Friend WithEvents eqno_filter_delay As Timer
+    Friend WithEvents eqtype_filter_delay As Timer
+    Friend WithEvents eqstatus_filter_delay As Timer
+    Friend WithEvents lu_byname_filter_delay As Timer
+    Friend WithEvents lu_byequipment_filter_delay As Timer
+    Friend WithEvents lu_date_filter_delay As Timer
 End Class
 
