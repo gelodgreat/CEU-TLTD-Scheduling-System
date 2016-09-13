@@ -181,7 +181,9 @@ Public Class Main
 
         Try
             MysqlConn.Open()
-            query = "SELECT TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time',borrower as 'Borrower', equipment as 'Equipment', equipmentno as 'Equipment No' ,DATE_FORMAT(date,'%M %d %Y') as 'Date', activitytype as 'Activiity Type',actname as 'Activity' from reservation where date='" & Format(CDate(lu_date.Value), "yyyy-MM-dd") & "'ORDER BY starttime ASC"
+            query = "Select reservationno as 'Reservation Number' ,borrower as 'Borrower',id as 'ID', equipmentno as 'Equipment No', equipment as 'Equipment', DATE_FORMAT(date,'%M %d %Y') as 'Date',TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time',activitytype as 'Activiity Type',actname as 'Activity' from reservation where date ='" & Format(CDate(lu_date.Value), "yyyy-MM-dd") & "' ORDER by date ASC"
+            ' PROBLEM: ID and Reservation is missing. THE NEXT COMMENT shows the old query
+            'query = "SELECT TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time',borrower as 'Borrower', equipment as 'Equipment', equipmentno as 'Equipment No' ,DATE_FORMAT(date,'%M %d %Y') as 'Date', activitytype as 'Activiity Type',actname as 'Activity' from reservation where date='" & Format(CDate(lu_date.Value), "yyyy-MM-dd") & "'ORDER BY starttime ASC"
             comm = New MySqlCommand(query, MysqlConn)
             sda.SelectCommand = comm
             sda.Fill(dbdataset)
@@ -1994,8 +1996,8 @@ Public Class Main
     End Sub
 
     Private Sub rpv1_Click(sender As Object, e As EventArgs) Handles rpv1.Click
-        load_main_table()
-        load_rec_table()
+        'load_main_table()
+        'load_rec_table()
     End Sub
 
 
