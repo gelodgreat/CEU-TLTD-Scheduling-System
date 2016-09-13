@@ -433,11 +433,14 @@ Partial Class Main
         Me.eq_rgv_showregequipment = New Telerik.WinControls.UI.RadGridView()
         Me.rpvp2_reservation = New Telerik.WinControls.UI.RadPageViewPage()
         Me.RadGroupBox6 = New Telerik.WinControls.UI.RadGroupBox()
+        Me.rec_ckb_dted = New Telerik.WinControls.UI.RadCheckBox()
         Me.btn_resetreservationno = New Telerik.WinControls.UI.RadButton()
         Me.rec_btn_clear = New Telerik.WinControls.UI.RadButton()
         Me.rec_btn_delete = New Telerik.WinControls.UI.RadButton()
         Me.rec_btn_save = New Telerik.WinControls.UI.RadButton()
         Me.RadGroupBox4 = New Telerik.WinControls.UI.RadGroupBox()
+        Me.rec_dtp_enddate = New Telerik.WinControls.UI.RadDateTimePicker()
+        Me.RadLabel9 = New Telerik.WinControls.UI.RadLabel()
         Me.lbl_nameofstaff_reserved = New Telerik.WinControls.UI.RadLabel()
         Me.rec_rrtc_actname = New Telerik.WinControls.UI.RadTextBox()
         Me.rec_lbl_actname = New Telerik.WinControls.UI.RadLabel()
@@ -671,12 +674,15 @@ Partial Class Main
         Me.rpvp2_reservation.SuspendLayout()
         CType(Me.RadGroupBox6, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.RadGroupBox6.SuspendLayout()
+        CType(Me.rec_ckb_dted, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.btn_resetreservationno, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.rec_btn_clear, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.rec_btn_delete, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.rec_btn_save, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RadGroupBox4, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.RadGroupBox4.SuspendLayout()
+        CType(Me.rec_dtp_enddate, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RadLabel9, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.lbl_nameofstaff_reserved, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.rec_rrtc_actname, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.rec_lbl_actname, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -816,7 +822,7 @@ Partial Class Main
         Me.rpv1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.rpv1.Location = New System.Drawing.Point(0, 0)
         Me.rpv1.Name = "rpv1"
-        Me.rpv1.SelectedPage = Me.rpvp_releasing
+        Me.rpv1.SelectedPage = Me.rpvp2_reservation
         Me.rpv1.Size = New System.Drawing.Size(1358, 583)
         Me.rpv1.TabIndex = 0
         Me.rpv1.Text = "Home"
@@ -2005,6 +2011,7 @@ Partial Class Main
         '
         Me.RadGroupBox6.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping
         Me.RadGroupBox6.Anchor = System.Windows.Forms.AnchorStyles.Bottom
+        Me.RadGroupBox6.Controls.Add(Me.rec_ckb_dted)
         Me.RadGroupBox6.Controls.Add(Me.btn_resetreservationno)
         Me.RadGroupBox6.Controls.Add(Me.rec_btn_clear)
         Me.RadGroupBox6.Controls.Add(Me.rec_btn_delete)
@@ -2016,6 +2023,16 @@ Partial Class Main
         Me.RadGroupBox6.TabIndex = 3
         Me.RadGroupBox6.Text = "Controls"
         Me.RadGroupBox6.ThemeName = "VisualStudio2012Dark"
+        '
+        'rec_ckb_dted
+        '
+        Me.rec_ckb_dted.Anchor = System.Windows.Forms.AnchorStyles.None
+        Me.rec_ckb_dted.Location = New System.Drawing.Point(319, 22)
+        Me.rec_ckb_dted.Name = "rec_ckb_dted"
+        Me.rec_ckb_dted.Size = New System.Drawing.Size(121, 18)
+        Me.rec_ckb_dted.TabIndex = 22
+        Me.rec_ckb_dted.Text = "Different End Date?"
+        Me.rec_ckb_dted.ThemeName = "VisualStudio2012Dark"
         '
         'btn_resetreservationno
         '
@@ -2061,6 +2078,8 @@ Partial Class Main
         '
         Me.RadGroupBox4.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping
         Me.RadGroupBox4.Anchor = System.Windows.Forms.AnchorStyles.Bottom
+        Me.RadGroupBox4.Controls.Add(Me.rec_dtp_enddate)
+        Me.RadGroupBox4.Controls.Add(Me.RadLabel9)
         Me.RadGroupBox4.Controls.Add(Me.lbl_nameofstaff_reserved)
         Me.RadGroupBox4.Controls.Add(Me.rec_rrtc_actname)
         Me.RadGroupBox4.Controls.Add(Me.rec_lbl_actname)
@@ -2093,11 +2112,43 @@ Partial Class Main
         Me.RadGroupBox4.Text = "Details"
         Me.RadGroupBox4.ThemeName = "VisualStudio2012Dark"
         '
+        'rec_dtp_enddate
+        '
+        Me.rec_dtp_enddate.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
+        Me.rec_dtp_enddate.CustomFormat = "MM/d/yyyy"
+        Me.rec_dtp_enddate.Format = System.Windows.Forms.DateTimePickerFormat.Custom
+        Me.rec_dtp_enddate.Location = New System.Drawing.Point(561, 109)
+        Me.rec_dtp_enddate.MinimumSize = New System.Drawing.Size(0, 24)
+        Me.rec_dtp_enddate.Name = "rec_dtp_enddate"
+        '
+        '
+        '
+        Me.rec_dtp_enddate.RootElement.MinSize = New System.Drawing.Size(0, 24)
+        Me.rec_dtp_enddate.Size = New System.Drawing.Size(105, 24)
+        Me.rec_dtp_enddate.TabIndex = 5
+        Me.rec_dtp_enddate.TabStop = False
+        Me.rec_dtp_enddate.Text = "07/25/2016"
+        Me.rec_dtp_enddate.ThemeName = "VisualStudio2012Dark"
+        Me.rec_dtp_enddate.Value = New Date(2016, 7, 25, 10, 55, 49, 565)
+        Me.rec_dtp_enddate.Visible = False
+        '
+        'RadLabel9
+        '
+        Me.RadLabel9.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
+        Me.RadLabel9.BackColor = System.Drawing.Color.Transparent
+        Me.RadLabel9.Location = New System.Drawing.Point(501, 113)
+        Me.RadLabel9.Name = "RadLabel9"
+        Me.RadLabel9.Size = New System.Drawing.Size(54, 18)
+        Me.RadLabel9.TabIndex = 27
+        Me.RadLabel9.Text = "End Date:"
+        Me.RadLabel9.ThemeName = "VisualStudio2012Dark"
+        Me.RadLabel9.Visible = False
+        '
         'lbl_nameofstaff_reserved
         '
         Me.lbl_nameofstaff_reserved.BackColor = System.Drawing.Color.Transparent
         Me.lbl_nameofstaff_reserved.ForeColor = System.Drawing.Color.White
-        Me.lbl_nameofstaff_reserved.Location = New System.Drawing.Point(491, 115)
+        Me.lbl_nameofstaff_reserved.Location = New System.Drawing.Point(577, 157)
         Me.lbl_nameofstaff_reserved.Name = "lbl_nameofstaff_reserved"
         Me.lbl_nameofstaff_reserved.Size = New System.Drawing.Size(75, 18)
         Me.lbl_nameofstaff_reserved.TabIndex = 36
@@ -2182,7 +2233,7 @@ Partial Class Main
         '
         Me.RadLabel68.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
         Me.RadLabel68.BackColor = System.Drawing.Color.Transparent
-        Me.RadLabel68.Location = New System.Drawing.Point(439, 21)
+        Me.RadLabel68.Location = New System.Drawing.Point(258, 21)
         Me.RadLabel68.Name = "RadLabel68"
         Me.RadLabel68.Size = New System.Drawing.Size(46, 18)
         Me.RadLabel68.TabIndex = 26
@@ -2192,7 +2243,7 @@ Partial Class Main
         'rec_cb_college_school
         '
         Me.rec_cb_college_school.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
-        Me.rec_cb_college_school.Location = New System.Drawing.Point(490, 19)
+        Me.rec_cb_college_school.Location = New System.Drawing.Point(310, 19)
         Me.rec_cb_college_school.Name = "rec_cb_college_school"
         Me.rec_cb_college_school.Size = New System.Drawing.Size(175, 24)
         Me.rec_cb_college_school.TabIndex = 7
@@ -2227,7 +2278,7 @@ Partial Class Main
         '
         Me.RadLabel17.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
         Me.RadLabel17.BackColor = System.Drawing.Color.Transparent
-        Me.RadLabel17.Location = New System.Drawing.Point(416, 114)
+        Me.RadLabel17.Location = New System.Drawing.Point(502, 156)
         Me.RadLabel17.Name = "RadLabel17"
         Me.RadLabel17.Size = New System.Drawing.Size(69, 18)
         Me.RadLabel17.TabIndex = 20
@@ -2238,7 +2289,7 @@ Partial Class Main
         '
         Me.RadLabel14.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
         Me.RadLabel14.BackColor = System.Drawing.Color.Transparent
-        Me.RadLabel14.Location = New System.Drawing.Point(446, 85)
+        Me.RadLabel14.Location = New System.Drawing.Point(266, 81)
         Me.RadLabel14.Name = "RadLabel14"
         Me.RadLabel14.Size = New System.Drawing.Size(39, 18)
         Me.RadLabel14.TabIndex = 17
@@ -2250,7 +2301,7 @@ Partial Class Main
         Me.rec_cb_status.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
         RadListDataItem17.Text = "Reserved"
         Me.rec_cb_status.Items.Add(RadListDataItem17)
-        Me.rec_cb_status.Location = New System.Drawing.Point(490, 79)
+        Me.rec_cb_status.Location = New System.Drawing.Point(310, 79)
         Me.rec_cb_status.Name = "rec_cb_status"
         Me.rec_cb_status.Size = New System.Drawing.Size(175, 24)
         Me.rec_cb_status.TabIndex = 9
@@ -2355,7 +2406,7 @@ Partial Class Main
         Me.rec_dtp_endtime.Items.Add(RadListDataItem62)
         Me.rec_dtp_endtime.Items.Add(RadListDataItem63)
         Me.rec_dtp_endtime.Items.Add(RadListDataItem64)
-        Me.rec_dtp_endtime.Location = New System.Drawing.Point(320, 78)
+        Me.rec_dtp_endtime.Location = New System.Drawing.Point(561, 79)
         Me.rec_dtp_endtime.Name = "rec_dtp_endtime"
         Me.rec_dtp_endtime.Size = New System.Drawing.Size(105, 24)
         Me.rec_dtp_endtime.TabIndex = 6
@@ -2459,7 +2510,7 @@ Partial Class Main
         Me.rec_dtp_starttime.Items.Add(RadListDataItem109)
         Me.rec_dtp_starttime.Items.Add(RadListDataItem110)
         Me.rec_dtp_starttime.Items.Add(RadListDataItem111)
-        Me.rec_dtp_starttime.Location = New System.Drawing.Point(320, 48)
+        Me.rec_dtp_starttime.Location = New System.Drawing.Point(561, 49)
         Me.rec_dtp_starttime.Name = "rec_dtp_starttime"
         Me.rec_dtp_starttime.Size = New System.Drawing.Size(105, 24)
         Me.rec_dtp_starttime.TabIndex = 5
@@ -2479,7 +2530,7 @@ Partial Class Main
         'rec_cb_location
         '
         Me.rec_cb_location.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
-        Me.rec_cb_location.Location = New System.Drawing.Point(489, 49)
+        Me.rec_cb_location.Location = New System.Drawing.Point(310, 49)
         Me.rec_cb_location.Name = "rec_cb_location"
         Me.rec_cb_location.Size = New System.Drawing.Size(176, 24)
         Me.rec_cb_location.TabIndex = 8
@@ -2489,7 +2540,7 @@ Partial Class Main
         '
         Me.RadLabel5.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
         Me.RadLabel5.BackColor = System.Drawing.Color.Transparent
-        Me.RadLabel5.Location = New System.Drawing.Point(443, 51)
+        Me.RadLabel5.Location = New System.Drawing.Point(265, 52)
         Me.RadLabel5.Name = "RadLabel5"
         Me.RadLabel5.Size = New System.Drawing.Size(40, 18)
         Me.RadLabel5.TabIndex = 9
@@ -2510,7 +2561,7 @@ Partial Class Main
         '
         Me.RadLabel4.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
         Me.RadLabel4.BackColor = System.Drawing.Color.Transparent
-        Me.RadLabel4.Location = New System.Drawing.Point(259, 76)
+        Me.RadLabel4.Location = New System.Drawing.Point(500, 82)
         Me.RadLabel4.Name = "RadLabel4"
         Me.RadLabel4.Size = New System.Drawing.Size(55, 18)
         Me.RadLabel4.TabIndex = 7
@@ -2521,7 +2572,7 @@ Partial Class Main
         '
         Me.RadLabel3.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
         Me.RadLabel3.BackColor = System.Drawing.Color.Transparent
-        Me.RadLabel3.Location = New System.Drawing.Point(255, 46)
+        Me.RadLabel3.Location = New System.Drawing.Point(496, 53)
         Me.RadLabel3.Name = "RadLabel3"
         Me.RadLabel3.Size = New System.Drawing.Size(59, 18)
         Me.RadLabel3.TabIndex = 6
@@ -2532,7 +2583,7 @@ Partial Class Main
         '
         Me.RadLabel1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
         Me.RadLabel1.BackColor = System.Drawing.Color.Transparent
-        Me.RadLabel1.Location = New System.Drawing.Point(282, 19)
+        Me.RadLabel1.Location = New System.Drawing.Point(523, 23)
         Me.RadLabel1.Name = "RadLabel1"
         Me.RadLabel1.Size = New System.Drawing.Size(32, 18)
         Me.RadLabel1.TabIndex = 2
@@ -2544,7 +2595,7 @@ Partial Class Main
         Me.rec_dtp_date.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
         Me.rec_dtp_date.CustomFormat = "MM/d/yyyy"
         Me.rec_dtp_date.Format = System.Windows.Forms.DateTimePickerFormat.Custom
-        Me.rec_dtp_date.Location = New System.Drawing.Point(320, 18)
+        Me.rec_dtp_date.Location = New System.Drawing.Point(561, 19)
         Me.rec_dtp_date.MinimumSize = New System.Drawing.Size(0, 24)
         Me.rec_dtp_date.Name = "rec_dtp_date"
         '
@@ -2850,7 +2901,6 @@ Partial Class Main
         'res_notret_info
         '
         Me.res_notret_info.Controls.Add(Me.reserved_grid_list)
-        Me.res_notret_info.ItemSize = New System.Drawing.SizeF(153.0!, 24.0!)
         Me.res_notret_info.Location = New System.Drawing.Point(5, 30)
         Me.res_notret_info.Name = "res_notret_info"
         Me.res_notret_info.Size = New System.Drawing.Size(1335, 270)
@@ -2879,7 +2929,6 @@ Partial Class Main
         'rel_penalty_info
         '
         Me.rel_penalty_info.Controls.Add(Me.released_grid_list)
-        Me.rel_penalty_info.ItemSize = New System.Drawing.SizeF(152.0!, 24.0!)
         Me.rel_penalty_info.Location = New System.Drawing.Point(5, 30)
         Me.rel_penalty_info.Name = "rel_penalty_info"
         Me.rel_penalty_info.Size = New System.Drawing.Size(1335, 270)
@@ -3405,7 +3454,6 @@ Partial Class Main
         'rel_list_info2
         '
         Me.rel_list_info2.Controls.Add(Me.released_grid_list2)
-        Me.rel_list_info2.ItemSize = New System.Drawing.SizeF(173.0!, 24.0!)
         Me.rel_list_info2.Location = New System.Drawing.Point(5, 30)
         Me.rel_list_info2.Name = "rel_list_info2"
         Me.rel_list_info2.Size = New System.Drawing.Size(1331, 270)
@@ -3434,7 +3482,6 @@ Partial Class Main
         'ret_list_info
         '
         Me.ret_list_info.Controls.Add(Me.returned_grid_list)
-        Me.ret_list_info.ItemSize = New System.Drawing.SizeF(90.0!, 24.0!)
         Me.ret_list_info.Location = New System.Drawing.Point(5, 30)
         Me.ret_list_info.Name = "ret_list_info"
         Me.ret_list_info.Size = New System.Drawing.Size(1331, 270)
@@ -4134,6 +4181,8 @@ Partial Class Main
         Me.rpvp2_reservation.ResumeLayout(False)
         CType(Me.RadGroupBox6, System.ComponentModel.ISupportInitialize).EndInit()
         Me.RadGroupBox6.ResumeLayout(False)
+        Me.RadGroupBox6.PerformLayout()
+        CType(Me.rec_ckb_dted, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.btn_resetreservationno, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.rec_btn_clear, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.rec_btn_delete, System.ComponentModel.ISupportInitialize).EndInit()
@@ -4141,6 +4190,8 @@ Partial Class Main
         CType(Me.RadGroupBox4, System.ComponentModel.ISupportInitialize).EndInit()
         Me.RadGroupBox4.ResumeLayout(False)
         Me.RadGroupBox4.PerformLayout()
+        CType(Me.rec_dtp_enddate, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RadLabel9, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.lbl_nameofstaff_reserved, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.rec_rrtc_actname, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.rec_lbl_actname, System.ComponentModel.ISupportInitialize).EndInit()
@@ -4495,5 +4546,8 @@ Partial Class Main
     Friend WithEvents eq_clear_filter As Telerik.WinControls.UI.RadButton
     Friend WithEvents eq_btn_other As Telerik.WinControls.UI.RadButton
     Friend WithEvents eq_type As Telerik.WinControls.UI.RadDropDownList
+    Friend WithEvents rec_ckb_dted As Telerik.WinControls.UI.RadCheckBox
+    Friend WithEvents RadLabel9 As Telerik.WinControls.UI.RadLabel
+    Friend WithEvents rec_dtp_enddate As Telerik.WinControls.UI.RadDateTimePicker
 End Class
 
