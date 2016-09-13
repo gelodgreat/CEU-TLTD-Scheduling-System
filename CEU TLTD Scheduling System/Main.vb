@@ -31,7 +31,6 @@ Public Class Main
 
 
 
-
     Private Sub Main_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         reservation_rgv_recordeddata.Show()
@@ -55,6 +54,7 @@ Public Class Main
         lu_date.Value = Date.Now
         rec_dtp_date.Value = Date.Now
         Main_Timer.Enabled = True
+        load_cb_eq_type()
     End Sub
 
 
@@ -2014,37 +2014,32 @@ Public Class Main
 
     End Sub
 
-    Private Sub rec_ckb_dted_CheckStateChanged(sender As Object, e As EventArgs) Handles rec_ckb_dted.CheckStateChanged
-        If rec_ckb_dted.Checked Then
-            RadLabel9.Visible = True
-            rec_dtp_enddate.Visible = True
+    Private Sub eq_btn_other_Click(sender As Object, e As EventArgs) Handles eq_btn_other.Click
+        eq_type.DropDownStyle = RadDropDownStyle.DropDown
+    End Sub
 
-            RadLabel1.Location = New Point(rec_cb_reserveno.Location) + New Point(411, 4)
-            RadLabel1.Text = "Start Date:"
-
-
-            RadLabel9.Location = New Point(rec_cb_reserveno.Location) + New Point(416, 34)
-            rec_dtp_enddate.Location = New Point(rec_cb_reserveno.Location) + New Point(475, 31)
-            rec_dtp_enddate.Value = Date.Now.AddDays(1)
-
-            RadLabel3.Location = New Point(rec_cb_reserveno.Location) + New Point(410, 63)
-            rec_dtp_starttime.Location = New Point(rec_cb_reserveno.Location) + New Point(475, 61)
-
-            RadLabel4.Location = New Point(rec_cb_reserveno.Location) + New Point(414, 93) 'end time
-            rec_dtp_endtime.Location = New Point(rec_cb_reserveno.Location) + New Point(475, 91)
-        Else
-            RadLabel9.Visible = False
-            rec_dtp_enddate.Visible = False
-
-            RadLabel1.Location = New Point(rec_cb_reserveno.Location) + New Point(438, 4)
-            RadLabel1.Text = "Date:"
-
-            RadLabel3.Location = New Point(rec_cb_reserveno.Location) + New Point(410, 34)
-            rec_dtp_starttime.Location = New Point(rec_cb_reserveno.Location) + New Point(475, 31)
-
-            RadLabel4.Location = New Point(rec_cb_reserveno.Location) + New Point(414, 63) 'end time
-            rec_dtp_endtime.Location = New Point(rec_cb_reserveno.Location) + New Point(475, 61)
+    Public Sub load_cb_eq_type()
+        If MysqlConn.State = ConnectionState.Open Then
+            MysqlConn.Close()
         End If
+        MysqlConn.ConnectionString = connstring
+        Try
+            MysqlConn.Open()
+            query = "SELECT DISTINCT(equipmenttype) from equipments"
+            comm = New MySqlCommand(query, MysqlConn)
+            reader = comm.ExecuteReader
+
+            eq_type.Items.Clear()
+            While reader.Read
+                eq_type.Items.Add(reader.GetString("equipmenttype"))
+            End While
+
+            MysqlConn.Close()
+        Catch ex As Exception
+            RadMessageBox.Show(Me, ex.Message, "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
+        Finally
+            MysqlConn.Dispose()
+        End Try
     End Sub
 
 
