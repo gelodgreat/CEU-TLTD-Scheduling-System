@@ -31,6 +31,7 @@ Public Class Main
 
 
 
+
     Private Sub Main_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         reservation_rgv_recordeddata.Show()
@@ -2011,6 +2012,39 @@ Public Class Main
             rec_rrtc_actname.Text = ""
         End If
 
+    End Sub
+
+    Private Sub rec_ckb_dted_CheckStateChanged(sender As Object, e As EventArgs) Handles rec_ckb_dted.CheckStateChanged
+        If rec_ckb_dted.Checked Then
+            RadLabel9.Visible = True
+            rec_dtp_enddate.Visible = True
+
+            RadLabel1.Location = New Point(rec_cb_reserveno.Location) + New Point(411, 4)
+            RadLabel1.Text = "Start Date:"
+
+
+            RadLabel9.Location = New Point(rec_cb_reserveno.Location) + New Point(416, 34)
+            rec_dtp_enddate.Location = New Point(rec_cb_reserveno.Location) + New Point(475, 31)
+            rec_dtp_enddate.Value = Date.Now.AddDays(1)
+
+            RadLabel3.Location = New Point(rec_cb_reserveno.Location) + New Point(410, 63)
+            rec_dtp_starttime.Location = New Point(rec_cb_reserveno.Location) + New Point(475, 61)
+
+            RadLabel4.Location = New Point(rec_cb_reserveno.Location) + New Point(414, 93) 'end time
+            rec_dtp_endtime.Location = New Point(rec_cb_reserveno.Location) + New Point(475, 91)
+        Else
+            RadLabel9.Visible = False
+            rec_dtp_enddate.Visible = False
+
+            RadLabel1.Location = New Point(rec_cb_reserveno.Location) + New Point(438, 4)
+            RadLabel1.Text = "Date:"
+
+            RadLabel3.Location = New Point(rec_cb_reserveno.Location) + New Point(410, 34)
+            rec_dtp_starttime.Location = New Point(rec_cb_reserveno.Location) + New Point(475, 31)
+
+            RadLabel4.Location = New Point(rec_cb_reserveno.Location) + New Point(414, 63) 'end time
+            rec_dtp_endtime.Location = New Point(rec_cb_reserveno.Location) + New Point(475, 61)
+        End If
     End Sub
 
 
