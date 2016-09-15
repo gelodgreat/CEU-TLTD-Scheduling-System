@@ -20,6 +20,7 @@ Public Class Main
     Dim returnYN As DialogResult
     Dim reserveYN As DialogResult
     Dim returnEquipYN As DialogResult
+    Dim penaltiesDeleteYN As DialogResult
 
     Public dbdataset As New DataTable
 
@@ -133,6 +134,10 @@ Public Class Main
     End Sub
 
     Private Sub reservation_rgv_recordeddata_ViewCellFormatting(sender As Object, e As CellFormattingEventArgs) Handles reservation_rgv_recordeddata.ViewCellFormatting
+        e.CellElement.TextAlignment = ContentAlignment.MiddleCenter
+    End Sub
+
+    Private Sub penalty_grid_list_ViewCellFormatting(sender As Object, e As CellFormattingEventArgs) Handles penalty_grid_list.ViewCellFormatting
         e.CellElement.TextAlignment = ContentAlignment.MiddleCenter
     End Sub
 
@@ -2068,7 +2073,7 @@ Public Class Main
             MysqlConn.Open()
             Dim query As String
             'query = "Select rel_reservation_no as 'Reservation Number' , rel_id_passnum as 'Pass Number' , rel_borrower as 'Borrower' , rel_equipment_no as 'Equipment No' , rel_equipment as 'Equipment' , DATE_FORMAT(rel_assign_date,'%M %d %Y') as 'Date',TIME_FORMAT(rel_starttime, '%H:%i') as 'Start Time', TIME_FORMAT(rel_endtime, '%H:%i') as 'End Time' , rel_status as 'Status' , rel_releasedby as 'Released By'  from released_info"
-            query = "SELECT pen_id as 'Penalty ID',bor_id as 'Borrower ID', bor_name as 'Borrower Name', eq_no as 'Equipment Number', eq_name as 'Equipment Name', DATE_FORMAT(res_date,'%M %d %Y') as 'Reservation Date', TIME_FORMAT(st_time, '%H:%i') as 'Start Time', TIME_FORMAT(ed_time, '%H:%i') as 'End Time', bor_price as 'Price', ret_mark as 'Marked Returned By' FROM ceutltdscheduler.penalties"
+            query = "SELECT pen_id as 'Penalty ID',bor_id as 'Borrower ID', bor_name as 'Borrower Name', eq_no as 'Equipment Number', eq_name as 'Equipment Name', DATE_FORMAT(res_date,'%M %d %Y') as 'Reservation Date', TIME_FORMAT(st_time, '%H:%i') as 'Start Time', TIME_FORMAT(ed_time, '%H:%i') as 'End Time', bor_price as 'Price', ret_mark as 'Marked Returned By', DATE_FORMAT(ret_date, '%M %d %Y %H:%i') as 'Return Date' FROM ceutltdscheduler.penalties"
             comm = New MySqlCommand(query, MysqlConn)
             sda.SelectCommand = comm
             sda.Fill(dbdataset)
@@ -2083,6 +2088,8 @@ Public Class Main
             MysqlConn.Dispose()
         End Try
     End Sub
+
+
 
 
     Private Sub return_btn_returned_Click(sender As Object, e As EventArgs) Handles return_btn_returned.Click
@@ -2118,7 +2125,7 @@ Public Class Main
                         MysqlConn.Close()
                     End If
                     MysqlConn.Open()
-                    Dim Query As String = "INSERT INTO ceutltdscheduler.penalties (bor_id,bor_name,eq_no,eq_name,res_date,st_time,ed_time,ret_mark) VALUES(@borrowerid,@borrowername,@eqno,@eqname,@resdate,@stime,@etime,@retmark)"
+                    Dim Query As String = "INSERT INTO ceutltdscheduler.penalties (bor_id,bor_name,eq_no,eq_name,res_date,st_time,ed_time,ret_mark,ret_date) VALUES(@borrowerid,@borrowername,@eqno,@eqname,@resdate,@stime,@etime,@retmark,DATE_FORMAT(now(), '%Y-%m-%d %H:%i'))"
                     comm = New MySqlCommand(Query, MysqlConn)
                     comm.Parameters.AddWithValue("@borrowerid", ret_tb_id.Text)
                     comm.Parameters.AddWithValue("@borrowername", ret_tb_borrower.Text)
@@ -2154,7 +2161,7 @@ Public Class Main
                             MysqlConn.Close()
                         End If
                         MysqlConn.Open()
-                        Dim Query As String = "INSERT INTO ceutltdscheduler.penalties (bor_id,bor_name,eq_no,eq_name,res_date,st_time,ed_time,ret_mark) VALUES(@borrowerid,@borrowername,@eqno,@eqname,@resdate,@stime,@etime,@retmark)"
+                        Dim Query As String = "INSERT INTO ceutltdscheduler.penalties (bor_id,bor_name,eq_no,eq_name,res_date,st_time,ed_time,ret_mark,ret_date) VALUES(@borrowerid,@borrowername,@eqno,@eqname,@resdate,@stime,@etime,@retmark,DATE_FORMAT(now(), '%Y-%m-%d %H:%i'))"
                         comm = New MySqlCommand(Query, MysqlConn)
                         comm.Parameters.AddWithValue("@borrowerid", ret_tb_id.Text)
                         comm.Parameters.AddWithValue("@borrowername", ret_tb_borrower.Text)
@@ -2181,7 +2188,7 @@ Public Class Main
                                 MysqlConn.Close()
                             End If
                             MysqlConn.Open()
-                            Dim Query As String = "INSERT INTO ceutltdscheduler.penalties (bor_id,bor_name,eq_no,eq_name,res_date,st_time,ed_time,bor_price,ret_mark) VALUES(@borrowerid,@borrowername,@eqno,@eqname,@resdate,@stime,@etime,@price,@retmark)"
+                            Dim Query As String = "INSERT INTO ceutltdscheduler.penalties (bor_id,bor_name,eq_no,eq_name,res_date,st_time,ed_time,bor_price,ret_mark,ret_date) VALUES(@borrowerid,@borrowername,@eqno,@eqname,@resdate,@stime,@etime,@price,@retmark,DATE_FORMAT(now(), '%Y-%m-%d %H:%i'))"
                             comm = New MySqlCommand(Query, MysqlConn)
                             comm.Parameters.AddWithValue("@borrowerid", ret_tb_id.Text)
                             comm.Parameters.AddWithValue("@borrowername", ret_tb_borrower.Text)
@@ -2207,7 +2214,7 @@ Public Class Main
                                 MysqlConn.Close()
                             End If
                             MysqlConn.Open()
-                            Dim Query As String = "INSERT INTO ceutltdscheduler.penalties (bor_id,bor_name,eq_no,eq_name,res_date,st_time,ed_time,bor_price,ret_mark) VALUES(@borrowerid,@borrowername,@eqno,@eqname,@resdate,@stime,@etime,@price,@retmark)"
+                            Dim Query As String = "INSERT INTO ceutltdscheduler.penalties (bor_id,bor_name,eq_no,eq_name,res_date,st_time,ed_time,bor_price,ret_mark,ret_date) VALUES(@borrowerid,@borrowername,@eqno,@eqname,@resdate,@stime,@etime,@price,@retmark,DATE_FORMAT(now(), '%Y-%m-%d %H:%i'))"
                             comm = New MySqlCommand(Query, MysqlConn)
                             comm.Parameters.AddWithValue("@borrowerid", ret_tb_id.Text)
                             comm.Parameters.AddWithValue("@borrowername", ret_tb_borrower.Text)
@@ -2233,13 +2240,30 @@ Public Class Main
         Else
             released_grid_list2.Focus()
         End If
-
     End Sub
 
-    Private Sub penalty_grid_list_ViewCellFormatting(sender As Object, e As CellFormattingEventArgs) Handles penalty_grid_list.ViewCellFormatting
-        e.CellElement.TextAlignment = ContentAlignment.MiddleCenter
+    Private Sub penalty_grid_list_CellDoubleClick(sender As Object, e As GridViewCellEventArgs) Handles penalty_grid_list.CellDoubleClick
+        penaltiesDeleteYN = RadMessageBox.Show(Me, "Are you sure you want to delete the selected data?", "TLTD Scheduling System", MessageBoxButtons.YesNo, RadMessageIcon.Question)
+        If penaltiesDeleteYN = MsgBoxResult.Yes Then
+            Dim uniqueid As String
+            Dim row As GridViewRowInfo = penalty_grid_list.Rows(e.RowIndex)
+            uniqueid = row.Cells("Penalty ID").Value.ToString
+            Try
+                Dim query = "DELETE FROM ceutltdscheduler.penalties where pen_id=" & uniqueid
+                MsgBox(query)
+                MysqlConn.Open()
+                comm = New MySqlCommand(query, MysqlConn)
+                comm.ExecuteNonQuery()
+                MysqlConn.Close()
+                RadMessageBox.Show(Me, "Selected penalty sucessfully deleted.", "TLTD Scheduling System", MessageBoxButtons.OK, RadMessageIcon.Info)
+            Catch ex As MySqlException
+                RadMessageBox.Show(Me, ex.Message, "TLTD Scheduling System", MessageBoxButtons.OK, RadMessageIcon.Error)
+            Finally
+                MysqlConn.Dispose()
+                load_penalty_list()
+            End Try
+        End If
     End Sub
-
 
 
 
