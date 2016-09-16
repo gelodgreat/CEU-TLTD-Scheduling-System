@@ -516,7 +516,7 @@ Partial Class Main
         Me.rel_list_info2 = New Telerik.WinControls.UI.RadPageViewPage()
         Me.released_grid_list2 = New Telerik.WinControls.UI.RadGridView()
         Me.ret_list_info = New Telerik.WinControls.UI.RadPageViewPage()
-        Me.returned_grid_list = New Telerik.WinControls.UI.RadGridView()
+        Me.penalty_grid_list = New Telerik.WinControls.UI.RadGridView()
         Me.RadGroupBox25 = New Telerik.WinControls.UI.RadGroupBox()
         Me.return_btn_returned = New Telerik.WinControls.UI.RadButton()
         Me.return_btn_cancel = New Telerik.WinControls.UI.RadButton()
@@ -768,8 +768,8 @@ Partial Class Main
         CType(Me.released_grid_list2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.released_grid_list2.MasterTemplate, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ret_list_info.SuspendLayout()
-        CType(Me.returned_grid_list, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.returned_grid_list.MasterTemplate, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.penalty_grid_list, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.penalty_grid_list.MasterTemplate, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RadGroupBox25, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.RadGroupBox25.SuspendLayout()
         CType(Me.return_btn_returned, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -2097,7 +2097,7 @@ Partial Class Main
         '
         Me.lbl_nameofstaff_reserved.BackColor = System.Drawing.Color.Transparent
         Me.lbl_nameofstaff_reserved.ForeColor = System.Drawing.Color.White
-        Me.lbl_nameofstaff_reserved.Location = New System.Drawing.Point(491, 115)
+        Me.lbl_nameofstaff_reserved.Location = New System.Drawing.Point(577, 157)
         Me.lbl_nameofstaff_reserved.Name = "lbl_nameofstaff_reserved"
         Me.lbl_nameofstaff_reserved.Size = New System.Drawing.Size(75, 18)
         Me.lbl_nameofstaff_reserved.TabIndex = 36
@@ -2182,7 +2182,7 @@ Partial Class Main
         '
         Me.RadLabel68.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
         Me.RadLabel68.BackColor = System.Drawing.Color.Transparent
-        Me.RadLabel68.Location = New System.Drawing.Point(439, 21)
+        Me.RadLabel68.Location = New System.Drawing.Point(258, 21)
         Me.RadLabel68.Name = "RadLabel68"
         Me.RadLabel68.Size = New System.Drawing.Size(46, 18)
         Me.RadLabel68.TabIndex = 26
@@ -2192,7 +2192,7 @@ Partial Class Main
         'rec_cb_college_school
         '
         Me.rec_cb_college_school.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
-        Me.rec_cb_college_school.Location = New System.Drawing.Point(490, 19)
+        Me.rec_cb_college_school.Location = New System.Drawing.Point(310, 19)
         Me.rec_cb_college_school.Name = "rec_cb_college_school"
         Me.rec_cb_college_school.Size = New System.Drawing.Size(175, 24)
         Me.rec_cb_college_school.TabIndex = 7
@@ -2227,7 +2227,7 @@ Partial Class Main
         '
         Me.RadLabel17.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
         Me.RadLabel17.BackColor = System.Drawing.Color.Transparent
-        Me.RadLabel17.Location = New System.Drawing.Point(416, 114)
+        Me.RadLabel17.Location = New System.Drawing.Point(502, 156)
         Me.RadLabel17.Name = "RadLabel17"
         Me.RadLabel17.Size = New System.Drawing.Size(69, 18)
         Me.RadLabel17.TabIndex = 20
@@ -2238,7 +2238,7 @@ Partial Class Main
         '
         Me.RadLabel14.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
         Me.RadLabel14.BackColor = System.Drawing.Color.Transparent
-        Me.RadLabel14.Location = New System.Drawing.Point(446, 85)
+        Me.RadLabel14.Location = New System.Drawing.Point(266, 81)
         Me.RadLabel14.Name = "RadLabel14"
         Me.RadLabel14.Size = New System.Drawing.Size(39, 18)
         Me.RadLabel14.TabIndex = 17
@@ -2250,7 +2250,7 @@ Partial Class Main
         Me.rec_cb_status.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
         RadListDataItem8.Text = "Reserved"
         Me.rec_cb_status.Items.Add(RadListDataItem8)
-        Me.rec_cb_status.Location = New System.Drawing.Point(490, 79)
+        Me.rec_cb_status.Location = New System.Drawing.Point(310, 79)
         Me.rec_cb_status.Name = "rec_cb_status"
         Me.rec_cb_status.Size = New System.Drawing.Size(175, 24)
         Me.rec_cb_status.TabIndex = 9
@@ -2355,7 +2355,7 @@ Partial Class Main
         Me.rec_dtp_endtime.Items.Add(RadListDataItem345)
         Me.rec_dtp_endtime.Items.Add(RadListDataItem346)
         Me.rec_dtp_endtime.Items.Add(RadListDataItem347)
-        Me.rec_dtp_endtime.Location = New System.Drawing.Point(320, 78)
+        Me.rec_dtp_endtime.Location = New System.Drawing.Point(561, 79)
         Me.rec_dtp_endtime.Name = "rec_dtp_endtime"
         Me.rec_dtp_endtime.Size = New System.Drawing.Size(105, 24)
         Me.rec_dtp_endtime.TabIndex = 6
@@ -2459,7 +2459,7 @@ Partial Class Main
         Me.rec_dtp_starttime.Items.Add(RadListDataItem62)
         Me.rec_dtp_starttime.Items.Add(RadListDataItem63)
         Me.rec_dtp_starttime.Items.Add(RadListDataItem64)
-        Me.rec_dtp_starttime.Location = New System.Drawing.Point(320, 48)
+        Me.rec_dtp_starttime.Location = New System.Drawing.Point(561, 49)
         Me.rec_dtp_starttime.Name = "rec_dtp_starttime"
         Me.rec_dtp_starttime.Size = New System.Drawing.Size(105, 24)
         Me.rec_dtp_starttime.TabIndex = 5
@@ -2479,7 +2479,7 @@ Partial Class Main
         'rec_cb_location
         '
         Me.rec_cb_location.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
-        Me.rec_cb_location.Location = New System.Drawing.Point(489, 49)
+        Me.rec_cb_location.Location = New System.Drawing.Point(310, 49)
         Me.rec_cb_location.Name = "rec_cb_location"
         Me.rec_cb_location.Size = New System.Drawing.Size(176, 24)
         Me.rec_cb_location.TabIndex = 8
@@ -2489,7 +2489,7 @@ Partial Class Main
         '
         Me.RadLabel5.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
         Me.RadLabel5.BackColor = System.Drawing.Color.Transparent
-        Me.RadLabel5.Location = New System.Drawing.Point(443, 51)
+        Me.RadLabel5.Location = New System.Drawing.Point(265, 52)
         Me.RadLabel5.Name = "RadLabel5"
         Me.RadLabel5.Size = New System.Drawing.Size(40, 18)
         Me.RadLabel5.TabIndex = 9
@@ -2510,7 +2510,7 @@ Partial Class Main
         '
         Me.RadLabel4.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
         Me.RadLabel4.BackColor = System.Drawing.Color.Transparent
-        Me.RadLabel4.Location = New System.Drawing.Point(259, 76)
+        Me.RadLabel4.Location = New System.Drawing.Point(500, 82)
         Me.RadLabel4.Name = "RadLabel4"
         Me.RadLabel4.Size = New System.Drawing.Size(55, 18)
         Me.RadLabel4.TabIndex = 7
@@ -2521,7 +2521,7 @@ Partial Class Main
         '
         Me.RadLabel3.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
         Me.RadLabel3.BackColor = System.Drawing.Color.Transparent
-        Me.RadLabel3.Location = New System.Drawing.Point(255, 46)
+        Me.RadLabel3.Location = New System.Drawing.Point(496, 53)
         Me.RadLabel3.Name = "RadLabel3"
         Me.RadLabel3.Size = New System.Drawing.Size(59, 18)
         Me.RadLabel3.TabIndex = 6
@@ -2532,7 +2532,7 @@ Partial Class Main
         '
         Me.RadLabel1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
         Me.RadLabel1.BackColor = System.Drawing.Color.Transparent
-        Me.RadLabel1.Location = New System.Drawing.Point(282, 19)
+        Me.RadLabel1.Location = New System.Drawing.Point(523, 23)
         Me.RadLabel1.Name = "RadLabel1"
         Me.RadLabel1.Size = New System.Drawing.Size(32, 18)
         Me.RadLabel1.TabIndex = 2
@@ -2544,7 +2544,7 @@ Partial Class Main
         Me.rec_dtp_date.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
         Me.rec_dtp_date.CustomFormat = "MM/d/yyyy"
         Me.rec_dtp_date.Format = System.Windows.Forms.DateTimePickerFormat.Custom
-        Me.rec_dtp_date.Location = New System.Drawing.Point(320, 18)
+        Me.rec_dtp_date.Location = New System.Drawing.Point(561, 19)
         Me.rec_dtp_date.MinimumSize = New System.Drawing.Size(0, 24)
         Me.rec_dtp_date.Name = "rec_dtp_date"
         '
@@ -2850,7 +2850,6 @@ Partial Class Main
         'res_notret_info
         '
         Me.res_notret_info.Controls.Add(Me.reserved_grid_list)
-        Me.res_notret_info.ItemSize = New System.Drawing.SizeF(153.0!, 24.0!)
         Me.res_notret_info.Location = New System.Drawing.Point(5, 30)
         Me.res_notret_info.Name = "res_notret_info"
         Me.res_notret_info.Size = New System.Drawing.Size(1335, 270)
@@ -2879,7 +2878,6 @@ Partial Class Main
         'rel_penalty_info
         '
         Me.rel_penalty_info.Controls.Add(Me.released_grid_list)
-        Me.rel_penalty_info.ItemSize = New System.Drawing.SizeF(152.0!, 24.0!)
         Me.rel_penalty_info.Location = New System.Drawing.Point(5, 30)
         Me.rel_penalty_info.Name = "rel_penalty_info"
         Me.rel_penalty_info.Size = New System.Drawing.Size(1335, 270)
@@ -3395,7 +3393,7 @@ Partial Class Main
         Me.RadPageView3.Controls.Add(Me.ret_list_info)
         Me.RadPageView3.Location = New System.Drawing.Point(0, -3)
         Me.RadPageView3.Name = "RadPageView3"
-        Me.RadPageView3.SelectedPage = Me.rel_list_info2
+        Me.RadPageView3.SelectedPage = Me.ret_list_info
         Me.RadPageView3.Size = New System.Drawing.Size(1341, 305)
         Me.RadPageView3.TabIndex = 6
         Me.RadPageView3.Text = "RadPageView3"
@@ -3405,11 +3403,11 @@ Partial Class Main
         'rel_list_info2
         '
         Me.rel_list_info2.Controls.Add(Me.released_grid_list2)
-        Me.rel_list_info2.ItemSize = New System.Drawing.SizeF(173.0!, 24.0!)
+        Me.rel_list_info2.ItemSize = New System.Drawing.SizeF(165.0!, 24.0!)
         Me.rel_list_info2.Location = New System.Drawing.Point(5, 30)
         Me.rel_list_info2.Name = "rel_list_info2"
         Me.rel_list_info2.Size = New System.Drawing.Size(1331, 270)
-        Me.rel_list_info2.Text = "List of not Returned Equipments"
+        Me.rel_list_info2.Text = "List of Unreturned Equipments"
         '
         'released_grid_list2
         '
@@ -3433,34 +3431,33 @@ Partial Class Main
         '
         'ret_list_info
         '
-        Me.ret_list_info.Controls.Add(Me.returned_grid_list)
+        Me.ret_list_info.Controls.Add(Me.penalty_grid_list)
         Me.ret_list_info.ItemSize = New System.Drawing.SizeF(90.0!, 24.0!)
         Me.ret_list_info.Location = New System.Drawing.Point(5, 30)
         Me.ret_list_info.Name = "ret_list_info"
         Me.ret_list_info.Size = New System.Drawing.Size(1331, 270)
         Me.ret_list_info.Text = "List of Penalties"
         '
-        'returned_grid_list
+        'penalty_grid_list
         '
-        Me.returned_grid_list.AutoSizeRows = True
-        Me.returned_grid_list.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.returned_grid_list.Location = New System.Drawing.Point(0, 0)
+        Me.penalty_grid_list.AutoSizeRows = True
+        Me.penalty_grid_list.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.penalty_grid_list.Location = New System.Drawing.Point(0, 0)
         '
         '
         '
-        Me.returned_grid_list.MasterTemplate.AllowAddNewRow = False
-        Me.returned_grid_list.MasterTemplate.AllowDeleteRow = False
-        Me.returned_grid_list.MasterTemplate.AllowEditRow = False
-        Me.returned_grid_list.MasterTemplate.AutoSizeColumnsMode = Telerik.WinControls.UI.GridViewAutoSizeColumnsMode.Fill
-        Me.returned_grid_list.MasterTemplate.EnableGrouping = False
-        Me.returned_grid_list.MasterTemplate.ShowRowHeaderColumn = False
-        Me.returned_grid_list.MasterTemplate.ViewDefinition = TableViewDefinition22
-        Me.returned_grid_list.Name = "returned_grid_list"
-        Me.returned_grid_list.ReadOnly = True
-        Me.returned_grid_list.Size = New System.Drawing.Size(1331, 270)
-        Me.returned_grid_list.TabIndex = 0
-        Me.returned_grid_list.Text = "RadGridView3"
-        Me.returned_grid_list.ThemeName = "VisualStudio2012Dark"
+        Me.penalty_grid_list.MasterTemplate.AllowAddNewRow = False
+        Me.penalty_grid_list.MasterTemplate.AllowEditRow = False
+        Me.penalty_grid_list.MasterTemplate.AutoSizeColumnsMode = Telerik.WinControls.UI.GridViewAutoSizeColumnsMode.Fill
+        Me.penalty_grid_list.MasterTemplate.EnableGrouping = False
+        Me.penalty_grid_list.MasterTemplate.ShowRowHeaderColumn = False
+        Me.penalty_grid_list.MasterTemplate.ViewDefinition = TableViewDefinition22
+        Me.penalty_grid_list.Name = "penalty_grid_list"
+        Me.penalty_grid_list.ReadOnly = True
+        Me.penalty_grid_list.Size = New System.Drawing.Size(1331, 270)
+        Me.penalty_grid_list.TabIndex = 0
+        Me.penalty_grid_list.Text = "RadGridView3"
+        Me.penalty_grid_list.ThemeName = "VisualStudio2012Dark"
         '
         'RadGroupBox25
         '
@@ -4234,8 +4231,8 @@ Partial Class Main
         CType(Me.released_grid_list2.MasterTemplate, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.released_grid_list2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ret_list_info.ResumeLayout(False)
-        CType(Me.returned_grid_list.MasterTemplate, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.returned_grid_list, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.penalty_grid_list.MasterTemplate, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.penalty_grid_list, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RadGroupBox25, System.ComponentModel.ISupportInitialize).EndInit()
         Me.RadGroupBox25.ResumeLayout(False)
         CType(Me.return_btn_returned, System.ComponentModel.ISupportInitialize).EndInit()
@@ -4430,7 +4427,7 @@ Partial Class Main
     Friend WithEvents rel_list_info2 As Telerik.WinControls.UI.RadPageViewPage
     Friend WithEvents released_grid_list2 As Telerik.WinControls.UI.RadGridView
     Friend WithEvents ret_list_info As Telerik.WinControls.UI.RadPageViewPage
-    Friend WithEvents returned_grid_list As Telerik.WinControls.UI.RadGridView
+    Friend WithEvents penalty_grid_list As Telerik.WinControls.UI.RadGridView
     Friend WithEvents rec_btn_eqclear As Telerik.WinControls.UI.RadButton
     Friend WithEvents RadLabel70 As Telerik.WinControls.UI.RadLabel
     Friend WithEvents rec_eq_chooseno As Telerik.WinControls.UI.RadDropDownList
