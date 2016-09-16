@@ -2005,33 +2005,18 @@ Public Class Main
         auto_generate_reservationno()
     End Sub
 
+    'Timer Code
     Private Sub Main_Timer_Tick(sender As Object, e As EventArgs) Handles Main_Timer.Tick
         Dim title As String = "TLTD Scheduling System"
         Me.Text = title + Date.Now.ToString("            MMMM dd, yyyy  hh:mm:ss tt")
     End Sub
 
-    Private Sub rpv1_Click(sender As Object, e As EventArgs) Handles rpv1.Click
-        'load_main_table()
-        'load_rec_table()
-    End Sub
-
-
-    Private Sub rec_cb_acttype_SelectedIndexChanged(sender As Object, e As UI.Data.PositionChangedEventArgs) Handles rec_cb_acttype.SelectedIndexChanged
-        If rec_cb_acttype.Text = "School Activity" Then
-            rec_rrtc_actname.Enabled = True
-            rec_lbl_actname.Enabled = True
-        Else
-            rec_rrtc_actname.Enabled = False
-            rec_lbl_actname.Enabled = False
-            rec_rrtc_actname.Text = ""
-        End If
-
-    End Sub
-
+    'DropDown Code for other
     Private Sub eq_btn_other_Click(sender As Object, e As EventArgs) Handles eq_btn_other.Click
         eq_type.DropDownStyle = RadDropDownStyle.DropDown
     End Sub
 
+    'Load eqtype
     Public Sub load_cb_eq_type()
         If MysqlConn.State = ConnectionState.Open Then
             MysqlConn.Close()
@@ -2055,6 +2040,26 @@ Public Class Main
             MysqlConn.Dispose()
         End Try
     End Sub
+
+    Private Sub rpv1_Click(sender As Object, e As EventArgs) Handles rpv1.Click
+        'load_main_table()
+        'load_rec_table()
+    End Sub
+
+
+    Private Sub rec_cb_acttype_SelectedIndexChanged(sender As Object, e As UI.Data.PositionChangedEventArgs) Handles rec_cb_acttype.SelectedIndexChanged
+        If rec_cb_acttype.Text = "School Activity" Then
+            rec_rrtc_actname.Enabled = True
+            rec_lbl_actname.Enabled = True
+        Else
+            rec_rrtc_actname.Enabled = False
+            rec_lbl_actname.Enabled = False
+            rec_rrtc_actname.Text = ""
+        End If
+
+    End Sub
+
+
 
 
     Public Sub load_penalty_list()
@@ -2263,6 +2268,88 @@ Public Class Main
                 load_penalty_list()
             End Try
         End If
+    End Sub
+
+    'STARTING HERE IS THE INSTRUCTIONAL MATERIALS CODE
+    Private Sub im_btn_save_Click(sender As Object, e As EventArgs) Handles im_btn_save.Click
+
+        If (MysqlConn.State = ConnectionState.Open) Then
+            MysqlConn.Close()
+
+        End If
+
+
+        reserveYN = RadMessageBox.Show(Me, "Are you sure you want to reserve?", "TLTD Scheduling Management", MessageBoxButtons.YesNo, RadMessageIcon.Question)
+        If reserveYN = MsgBoxResult.Yes Then
+
+
+
+            MysqlConn = New MySqlConnection
+            MysqlConn.ConnectionString = connstring
+            Dim READER As MySqlDataReader
+            Dim errorcount As Boolean = False
+
+
+            If (im_cb_title.Text = "") Or (im_cb_subject.Text = "") Or (im_cb_status.Text = "") Or (im_cb_starttime.Text = "") Or (im_cb_endtime.Text) Then
+                RadMessageBox.Show(Me, "Please complete the fields", "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
+            Else
+                'ADD THE CHECKBOX TO PICK IF IT IS FROM ANOTHER DAY, ANOTHER DATE PICKER, BUT BY DEFAULT IT IS NOT CHECKED
+                Dim elapsedTime As TimeSpan = DateTime.Parse(Format(CDate(im_dtp_date.Value), "yyyy-MM-dd") & " " & im_cb_endtime.Text).Subtract(DateTime.Parse(DateTime.Parse(Format(CDate(im_dtp_date.Value), "yyyy-MM-dd") & " " & im_cb_starttime.Text)))
+                'ADD THE CHECKBOX TO PICK IF IT IS FROM ANOTHER DAY, ANOTHER DATE PICKER, BUT BY DEFAULT IT IS NOT CHECKED
+                If elapsedTime.CompareTo(TimeSpan.Zero) <= 0 Then
+                    RadMessageBox.Show(Me, "The Starting Time can't be the same or later on the Ending Time.", "Reservation", MessageBoxButtons.OK, RadMessageIcon.Error, MessageBoxDefaultButton.Button1)
+                Else
+
+                    Try
+                        MysqlConn.Close()
+                        MysqlConn.Open()
+
+                        'PENDING QUERY
+                        'query=""
+                        comm = New MySqlCommand(query, MysqlConn)
+                        READER = comm.ExecuteReader
+                        Dim count As Integer
+                        count = 0
+                        While READER.Read
+                            count = count + 1
+                            'PENDING CODE
+                        End While
+
+                        If count > 0 Then
+                            'PENDING ERROR MESSAGE
+                            errorcount = True
+                        Else
+                            MysqlConn.Close()
+                            MysqlConn.Open()
+                            'PENDING QUERY
+                            'query="INSERT INTO "
+                            comm = New MySqlCommand(query, MysqlConn)
+                            READER = comm.ExecuteReader
+
+                            MysqlConn.Close()
+
+                        End If
+
+                    Catch ex As Exception
+                        RadMessageBox.Show(Me, ex.Message, "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
+                    Finally
+                        MysqlConn.Dispose()
+
+                    End Try
+
+                    If errorcount = False Then
+                        RadMessageBox.Show(Me, "Movie Film Successfully Reserved!", "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Info)
+
+                    Else
+                        RadMessageBox.Show(Me, "Movie Film Failed to Reserved!", "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
+
+                    End If
+                End If
+            End If
+        End If
+
+
+
     End Sub
 
 
