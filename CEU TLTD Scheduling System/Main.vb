@@ -131,14 +131,25 @@ Public Class Main
     End Sub
 
     'Formatting of GridViews
+
+    Private Sub acc_staff_list_ViewCellFormatting(sender As Object, e As CellFormattingEventArgs) Handles acc_staff_list.ViewCellFormatting
+        e.CellElement.TextAlignment = ContentAlignment.MiddleCenter
+    End Sub
     Private Sub eq_rgv_showregequipment_ViewCellFormatting(sender As Object, e As CellFormattingEventArgs) Handles eq_rgv_showregequipment.ViewCellFormatting
         e.CellElement.TextAlignment = ContentAlignment.MiddleCenter
     End Sub
 
-    Private Sub main_rgv_recordeddatamain_ViewCellFormatting(sender As Object, e As CellFormattingEventArgs) Handles main_rgv_recordedacademicsonly.ViewCellFormatting
+    Private Sub main_rgv_recordedacademicsonly_ViewCellFormatting(sender As Object, e As CellFormattingEventArgs) Handles main_rgv_recordedacademicsonly.ViewCellFormatting
         e.CellElement.TextAlignment = ContentAlignment.MiddleCenter
     End Sub
 
+    Private Sub main_rgv_recordedschoolonly_ViewCellFormatting(sender As Object, e As CellFormattingEventArgs) Handles main_rgv_recordedschoolonly.ViewCellFormatting
+        e.CellElement.TextAlignment = ContentAlignment.MiddleCenter
+    End Sub
+
+    Private Sub acc_prof_list_ViewCellFormatting(sender As Object, e As CellFormattingEventArgs) Handles acc_prof_list.ViewCellFormatting
+        e.CellElement.TextAlignment = ContentAlignment.MiddleCenter
+    End Sub
     Private Sub reservation_rgv_recordeddata_ViewCellFormatting(sender As Object, e As CellFormattingEventArgs) Handles reservation_rgv_recordeddata.ViewCellFormatting
         e.CellElement.TextAlignment = ContentAlignment.MiddleCenter
     End Sub
@@ -146,6 +157,15 @@ Public Class Main
     Private Sub penalty_grid_list_ViewCellFormatting(sender As Object, e As CellFormattingEventArgs) Handles penalty_grid_list.ViewCellFormatting
         e.CellElement.TextAlignment = ContentAlignment.MiddleCenter
     End Sub
+    Private Sub reserved_grid_list_ViewCellFormatting(sender As Object, e As CellFormattingEventArgs) Handles reserved_grid_list.ViewCellFormatting
+        e.CellElement.TextAlignment = ContentAlignment.MiddleCenter
+    End Sub
+
+    Private Sub released_grid_list_ViewCellFormatting(sender As Object, e As CellFormattingEventArgs) Handles released_grid_list.ViewCellFormatting
+        e.CellElement.TextAlignment = ContentAlignment.MiddleCenter
+    End Sub
+    'End Formatting of GridViews
+
 
     Public Sub load_rec_table()
 
@@ -2324,6 +2344,12 @@ Public Class Main
         Me.Hide()
 
     End Sub
+
+
+
+
+
+
 
 
 

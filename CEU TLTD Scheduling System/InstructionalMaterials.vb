@@ -31,11 +31,67 @@ Public Class InstructionalMaterials
     Private Sub InstructionalMaterials_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         load_all_movielist()
         load_all_subtopics()
+        load_all_movielist_in_main()
     End Sub
 
     'STARTING HERE IS THE DEVELOPMENT OF Instructional Materals Management
 
-    'Loading all movielist
+    'Loading all movielist in Main Page
+    Public Sub load_all_movielist_in_main()
+        MysqlConn = New MySqlConnection
+        MysqlConn.ConnectionString = connstring
+
+        Dim sda As New MySqlDataAdapter
+        Dim bsource As New BindingSource
+        Dim imdbdataset As New DataTable
+
+        If (MysqlConn.State = ConnectionState.Open) Then
+            MysqlConn.Close()
+        End If
+
+        Try
+            MysqlConn.Open()
+            query = "SELECT vid_id as 'Video ID', subject as 'Subject' , topic as 'Topic' , video_media_type as 'Media Type', duration as 'Duration' FROM movielist ORDER BY subject ASC,vid_id ASC"
+            comm = New MySqlCommand(query, MysqlConn)
+            sda.SelectCommand = comm
+            sda.Fill(imdbdataset)
+            bsource.DataSource = imdbdataset
+            immain_rgv_movielist.DataSource = bsource
+            immain_rgv_movielist.ReadOnly = True
+            sda.Update(imdbdataset)
+
+            MysqlConn.Close()
+
+        Catch ex As Exception
+            RadMessageBox.Show(Me, ex.Message, "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
+        Finally
+            MysqlConn.Dispose()
+
+            Dim vidid = Me.immain_rgv_movielist.Columns("Video ID")
+            vidid.TextAlignment = ContentAlignment.MiddleCenter
+            vidid.Width = 50
+
+            Dim duration = Me.immain_rgv_movielist.Columns("Duration")
+            duration.TextAlignment = ContentAlignment.MiddleCenter
+            duration.Width = 75
+
+            Dim subject = Me.immain_rgv_movielist.Columns("Subject")
+            subject.TextAlignment = ContentAlignment.MiddleCenter
+            subject.Width = 100
+
+            Dim mediatype = Me.immain_rgv_movielist.Columns("Media Type")
+            mediatype.TextAlignment = ContentAlignment.MiddleCenter
+            mediatype.Width = 50
+
+            Dim topic = Me.immain_rgv_movielist.Columns("Topic")
+            topic.WrapText = True
+            topic.TextAlignment = ContentAlignment.MiddleCenter
+            topic.Width = 300
+        End Try
+
+    End Sub
+
+    'Loading all movielist in Instructional Materials Page
     Public Sub load_all_movielist()
         MysqlConn = New MySqlConnection
         MysqlConn.ConnectionString = connstring
