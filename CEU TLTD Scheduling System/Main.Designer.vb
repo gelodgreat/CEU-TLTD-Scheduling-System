@@ -23,53 +23,55 @@ Partial Class Main
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim RadListDataItem48 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem49 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem50 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem51 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem52 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem53 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem54 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem55 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem56 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem57 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem58 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem59 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem60 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem61 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem62 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem63 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem64 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem65 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem66 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem67 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem68 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem69 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem70 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem71 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem72 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem73 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem74 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem75 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem76 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem77 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem78 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem79 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem80 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem81 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem82 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem83 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem84 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem85 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem86 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem87 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem88 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem89 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem90 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem91 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem92 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem93 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem94 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim TableViewDefinition13 As Telerik.WinControls.UI.TableViewDefinition = New Telerik.WinControls.UI.TableViewDefinition()
+        Dim TableViewDefinition14 As Telerik.WinControls.UI.TableViewDefinition = New Telerik.WinControls.UI.TableViewDefinition()
+        Dim RadListDataItem301 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem302 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem303 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem304 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem305 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem306 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem307 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem308 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem309 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem310 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem311 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem312 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem313 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem314 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem315 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem316 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem317 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem318 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem319 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem320 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem321 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem322 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem323 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem324 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem325 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem326 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem327 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem328 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem329 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem330 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem331 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem332 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem333 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem334 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem335 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem336 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem337 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem338 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem339 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem340 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem341 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem342 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem343 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem344 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem345 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem346 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem347 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
         Dim RadListDataItem1 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
         Dim RadListDataItem2 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
         Dim RadListDataItem3 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
@@ -117,55 +119,56 @@ Partial Class Main
         Dim RadListDataItem45 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
         Dim RadListDataItem46 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
         Dim RadListDataItem47 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim TableViewDefinition2 As Telerik.WinControls.UI.TableViewDefinition = New Telerik.WinControls.UI.TableViewDefinition()
-        Dim TableViewDefinition1 As Telerik.WinControls.UI.TableViewDefinition = New Telerik.WinControls.UI.TableViewDefinition()
-        Dim RadListDataItem143 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem144 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem145 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem146 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem147 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem148 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem149 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem150 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem151 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem152 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem153 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem154 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem155 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem156 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem157 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem158 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem159 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem160 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem161 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem162 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem163 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem164 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem165 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem166 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem167 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem168 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem169 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem170 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem171 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem172 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem173 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem174 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem175 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem176 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem177 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem178 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem179 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem180 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem181 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem182 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem183 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem184 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem185 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem186 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem187 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem188 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem189 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim TableViewDefinition15 As Telerik.WinControls.UI.TableViewDefinition = New Telerik.WinControls.UI.TableViewDefinition()
+        Dim TableViewDefinition16 As Telerik.WinControls.UI.TableViewDefinition = New Telerik.WinControls.UI.TableViewDefinition()
+        Dim RadListDataItem48 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem49 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem50 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem51 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem52 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem53 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem54 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem55 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem56 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem57 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem58 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem59 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem60 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem61 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem62 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem63 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem64 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem65 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem66 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem67 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem68 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem69 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem70 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem71 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem72 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem73 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem74 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem75 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem76 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem77 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem78 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem79 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem80 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem81 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem82 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem83 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem84 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem85 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem86 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem87 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem88 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem89 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem90 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem91 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem92 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem93 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem94 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem95 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
         Dim RadListDataItem96 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
         Dim RadListDataItem97 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
         Dim RadListDataItem98 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
@@ -213,62 +216,56 @@ Partial Class Main
         Dim RadListDataItem140 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
         Dim RadListDataItem141 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
         Dim RadListDataItem142 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem95 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim TableViewDefinition4 As Telerik.WinControls.UI.TableViewDefinition = New Telerik.WinControls.UI.TableViewDefinition()
-        Dim TableViewDefinition3 As Telerik.WinControls.UI.TableViewDefinition = New Telerik.WinControls.UI.TableViewDefinition()
-        Dim TableViewDefinition7 As Telerik.WinControls.UI.TableViewDefinition = New Telerik.WinControls.UI.TableViewDefinition()
-        Dim TableViewDefinition6 As Telerik.WinControls.UI.TableViewDefinition = New Telerik.WinControls.UI.TableViewDefinition()
-        Dim GridViewTextBoxColumn1 As Telerik.WinControls.UI.GridViewTextBoxColumn = New Telerik.WinControls.UI.GridViewTextBoxColumn()
-        Dim GridViewTextBoxColumn2 As Telerik.WinControls.UI.GridViewTextBoxColumn = New Telerik.WinControls.UI.GridViewTextBoxColumn()
-        Dim GridViewTextBoxColumn3 As Telerik.WinControls.UI.GridViewTextBoxColumn = New Telerik.WinControls.UI.GridViewTextBoxColumn()
-        Dim TableViewDefinition5 As Telerik.WinControls.UI.TableViewDefinition = New Telerik.WinControls.UI.TableViewDefinition()
-        Dim RadListDataItem240 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem241 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem242 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem243 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem244 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem245 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem246 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem247 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem248 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem249 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem250 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem251 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem252 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem253 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem254 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem255 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem256 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem257 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem258 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem259 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem260 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem261 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem262 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem263 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem264 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem265 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem266 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem267 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem268 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem269 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem270 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem271 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem272 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem273 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem274 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem275 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem276 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem277 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem278 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem279 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem280 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem281 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem282 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem283 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem284 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem285 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem286 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem143 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem144 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem145 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem146 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem147 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem148 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem149 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem150 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem151 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem152 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem153 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem154 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem155 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem156 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem157 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem158 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem159 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem160 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem161 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem162 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem163 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem164 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem165 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem166 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem167 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem168 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem169 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem170 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem171 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem172 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem173 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem174 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem175 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem176 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem177 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem178 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem179 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem180 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem181 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem182 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem183 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem184 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem185 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem186 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem187 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem188 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem189 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem190 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem191 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem192 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
         Dim RadListDataItem193 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
         Dim RadListDataItem194 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
         Dim RadListDataItem195 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
@@ -316,27 +313,31 @@ Partial Class Main
         Dim RadListDataItem237 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
         Dim RadListDataItem238 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
         Dim RadListDataItem239 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem192 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem190 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem191 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim TableViewDefinition8 As Telerik.WinControls.UI.TableViewDefinition = New Telerik.WinControls.UI.TableViewDefinition()
-        Dim RadListDataItem298 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem299 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem289 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem290 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem291 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem292 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem293 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem294 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem295 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem296 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem297 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem287 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem288 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem300 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim TableViewDefinition10 As Telerik.WinControls.UI.TableViewDefinition = New Telerik.WinControls.UI.TableViewDefinition()
-        Dim TableViewDefinition9 As Telerik.WinControls.UI.TableViewDefinition = New Telerik.WinControls.UI.TableViewDefinition()
-        Dim TableViewDefinition11 As Telerik.WinControls.UI.TableViewDefinition = New Telerik.WinControls.UI.TableViewDefinition()
+        Dim GridViewTextBoxColumn4 As Telerik.WinControls.UI.GridViewTextBoxColumn = New Telerik.WinControls.UI.GridViewTextBoxColumn()
+        Dim GridViewTextBoxColumn5 As Telerik.WinControls.UI.GridViewTextBoxColumn = New Telerik.WinControls.UI.GridViewTextBoxColumn()
+        Dim GridViewTextBoxColumn6 As Telerik.WinControls.UI.GridViewTextBoxColumn = New Telerik.WinControls.UI.GridViewTextBoxColumn()
+        Dim TableViewDefinition17 As Telerik.WinControls.UI.TableViewDefinition = New Telerik.WinControls.UI.TableViewDefinition()
+        Dim TableViewDefinition18 As Telerik.WinControls.UI.TableViewDefinition = New Telerik.WinControls.UI.TableViewDefinition()
+        Dim TableViewDefinition19 As Telerik.WinControls.UI.TableViewDefinition = New Telerik.WinControls.UI.TableViewDefinition()
+        Dim RadListDataItem240 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem241 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem242 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem243 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem244 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem245 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem246 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem247 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem248 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem249 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem250 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem251 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem252 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim TableViewDefinition20 As Telerik.WinControls.UI.TableViewDefinition = New Telerik.WinControls.UI.TableViewDefinition()
+        Dim TableViewDefinition21 As Telerik.WinControls.UI.TableViewDefinition = New Telerik.WinControls.UI.TableViewDefinition()
+        Dim TableViewDefinition22 As Telerik.WinControls.UI.TableViewDefinition = New Telerik.WinControls.UI.TableViewDefinition()
+        Dim RadListDataItem253 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim TableViewDefinition24 As Telerik.WinControls.UI.TableViewDefinition = New Telerik.WinControls.UI.TableViewDefinition()
+        Dim TableViewDefinition23 As Telerik.WinControls.UI.TableViewDefinition = New Telerik.WinControls.UI.TableViewDefinition()
         Me.RadGroupBox16 = New Telerik.WinControls.UI.RadGroupBox()
         Me.RadGroupBox13 = New Telerik.WinControls.UI.RadGroupBox()
         Me.VisualStudio2012DarkTheme1 = New Telerik.WinControls.Themes.VisualStudio2012DarkTheme()
@@ -350,462 +351,469 @@ Partial Class Main
         Me.lu_date_filter_delay = New System.Windows.Forms.Timer(Me.components)
         Me.CeutltdschedulerDataSetBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.rpvp_returning = New Telerik.WinControls.UI.RadPageViewPage()
-        Me.RadGroupBox24 = New Telerik.WinControls.UI.RadGroupBox()
-        Me.RadLabel67 = New Telerik.WinControls.UI.RadLabel()
-        Me.ret_tb_borrower = New Telerik.WinControls.UI.RadDropDownList()
-        Me.RadLabel66 = New Telerik.WinControls.UI.RadLabel()
-        Me.lbl_ret_release = New Telerik.WinControls.UI.RadLabel()
-        Me.RadLabel62 = New Telerik.WinControls.UI.RadLabel()
-        Me.RadLabel60 = New Telerik.WinControls.UI.RadLabel()
-        Me.RadLabel59 = New Telerik.WinControls.UI.RadLabel()
-        Me.ret_tb_stime = New Telerik.WinControls.UI.RadDropDownList()
-        Me.ret_tb_etime = New Telerik.WinControls.UI.RadDropDownList()
-        Me.RadLabel58 = New Telerik.WinControls.UI.RadLabel()
-        Me.ret_tb_status = New Telerik.WinControls.UI.RadTextBox()
-        Me.RadLabel69 = New Telerik.WinControls.UI.RadLabel()
-        Me.RadLabel42 = New Telerik.WinControls.UI.RadLabel()
-        Me.ret_tb_reservationnum = New Telerik.WinControls.UI.RadTextBox()
-        Me.ret_tb_id = New Telerik.WinControls.UI.RadDropDownList()
-        Me.ret_nameofstaff_release2 = New Telerik.WinControls.UI.RadLabel()
-        Me.ret_nameofstaff_return = New Telerik.WinControls.UI.RadLabel()
-        Me.lbl_ret_equipment = New Telerik.WinControls.UI.RadLabel()
-        Me.lbl_ret_equipmentnum = New Telerik.WinControls.UI.RadLabel()
-        Me.ret_tb_equipmentnum = New Telerik.WinControls.UI.RadTextBox()
-        Me.ret_tb_equipment = New Telerik.WinControls.UI.RadTextBox()
-        Me.RadGroupBox25 = New Telerik.WinControls.UI.RadGroupBox()
-        Me.return_btn_cancel = New Telerik.WinControls.UI.RadButton()
-        Me.return_btn_returned = New Telerik.WinControls.UI.RadButton()
         Me.RadPageView3 = New Telerik.WinControls.UI.RadPageView()
-        Me.ret_list_info = New Telerik.WinControls.UI.RadPageViewPage()
-        Me.penalty_grid_list = New Telerik.WinControls.UI.RadGridView()
         Me.rel_list_info2 = New Telerik.WinControls.UI.RadPageViewPage()
         Me.released_grid_list2 = New Telerik.WinControls.UI.RadGridView()
+        Me.ret_list_info = New Telerik.WinControls.UI.RadPageViewPage()
+        Me.penalty_grid_list = New Telerik.WinControls.UI.RadGridView()
+        Me.RadGroupBox25 = New Telerik.WinControls.UI.RadGroupBox()
+        Me.return_btn_returned = New Telerik.WinControls.UI.RadButton()
+        Me.return_btn_cancel = New Telerik.WinControls.UI.RadButton()
+        Me.RadGroupBox24 = New Telerik.WinControls.UI.RadGroupBox()
+        Me.ret_tb_equipment = New Telerik.WinControls.UI.RadTextBox()
+        Me.ret_tb_equipmentnum = New Telerik.WinControls.UI.RadTextBox()
+        Me.lbl_ret_equipmentnum = New Telerik.WinControls.UI.RadLabel()
+        Me.lbl_ret_equipment = New Telerik.WinControls.UI.RadLabel()
+        Me.ret_nameofstaff_return = New Telerik.WinControls.UI.RadLabel()
+        Me.ret_nameofstaff_release2 = New Telerik.WinControls.UI.RadLabel()
+        Me.ret_tb_id = New Telerik.WinControls.UI.RadDropDownList()
+        Me.ret_tb_reservationnum = New Telerik.WinControls.UI.RadTextBox()
+        Me.RadLabel42 = New Telerik.WinControls.UI.RadLabel()
+        Me.RadLabel69 = New Telerik.WinControls.UI.RadLabel()
+        Me.ret_tb_status = New Telerik.WinControls.UI.RadTextBox()
+        Me.RadLabel58 = New Telerik.WinControls.UI.RadLabel()
+        Me.ret_tb_etime = New Telerik.WinControls.UI.RadDropDownList()
+        Me.ret_tb_stime = New Telerik.WinControls.UI.RadDropDownList()
+        Me.RadLabel59 = New Telerik.WinControls.UI.RadLabel()
+        Me.RadLabel60 = New Telerik.WinControls.UI.RadLabel()
+        Me.RadLabel62 = New Telerik.WinControls.UI.RadLabel()
+        Me.ret_tb_sdate = New Telerik.WinControls.UI.RadDateTimePicker()
+        Me.lbl_ret_release = New Telerik.WinControls.UI.RadLabel()
+        Me.RadLabel66 = New Telerik.WinControls.UI.RadLabel()
+        Me.ret_tb_borrower = New Telerik.WinControls.UI.RadDropDownList()
+        Me.RadLabel67 = New Telerik.WinControls.UI.RadLabel()
         Me.rpvp_releasing = New Telerik.WinControls.UI.RadPageViewPage()
-        Me.gp_details = New Telerik.WinControls.UI.RadGroupBox()
-        Me.RadLabel15 = New Telerik.WinControls.UI.RadLabel()
-        Me.rel_tb_borrower = New Telerik.WinControls.UI.RadDropDownList()
-        Me.RadLabel16 = New Telerik.WinControls.UI.RadLabel()
-        Me.RadLabel20 = New Telerik.WinControls.UI.RadLabel()
-        Me.RadLabel48 = New Telerik.WinControls.UI.RadLabel()
-        Me.RadLabel46 = New Telerik.WinControls.UI.RadLabel()
-        Me.RadLabel45 = New Telerik.WinControls.UI.RadLabel()
-        Me.rel_tb_starttime = New Telerik.WinControls.UI.RadDropDownList()
-        Me.rel_tb_endtime = New Telerik.WinControls.UI.RadDropDownList()
-        Me.RadLabel49 = New Telerik.WinControls.UI.RadLabel()
-        Me.RadLabel41 = New Telerik.WinControls.UI.RadLabel()
-        Me.rel_tb_reservationnum = New Telerik.WinControls.UI.RadTextBox()
-        Me.rel_tb_id = New Telerik.WinControls.UI.RadDropDownList()
-        Me.rel_tb_status = New Telerik.WinControls.UI.RadDropDownList()
-        Me.lbl_equipment = New Telerik.WinControls.UI.RadLabel()
-        Me.lbl_equipmentnum = New Telerik.WinControls.UI.RadLabel()
-        Me.rel_tb_equipmentnum = New Telerik.WinControls.UI.RadTextBox()
-        Me.rel_tb_equipment = New Telerik.WinControls.UI.RadTextBox()
-        Me.rel_nameofstaff_release = New Telerik.WinControls.UI.RadLabel()
-        Me.RadGroupBox12 = New Telerik.WinControls.UI.RadGroupBox()
-        Me.released_btn_cancel = New Telerik.WinControls.UI.RadButton()
-        Me.released_btn_release = New Telerik.WinControls.UI.RadButton()
         Me.RadPageView2 = New Telerik.WinControls.UI.RadPageView()
-        Me.rel_penalty_info = New Telerik.WinControls.UI.RadPageViewPage()
-        Me.released_grid_list = New Telerik.WinControls.UI.RadGridView()
         Me.res_notret_info = New Telerik.WinControls.UI.RadPageViewPage()
         Me.reserved_grid_list = New Telerik.WinControls.UI.RadGridView()
+        Me.rel_penalty_info = New Telerik.WinControls.UI.RadPageViewPage()
+        Me.released_grid_list = New Telerik.WinControls.UI.RadGridView()
+        Me.RadGroupBox12 = New Telerik.WinControls.UI.RadGroupBox()
+        Me.released_btn_release = New Telerik.WinControls.UI.RadButton()
+        Me.released_btn_cancel = New Telerik.WinControls.UI.RadButton()
+        Me.gp_details = New Telerik.WinControls.UI.RadGroupBox()
+        Me.rel_nameofstaff_release = New Telerik.WinControls.UI.RadLabel()
+        Me.rel_tb_startdate = New Telerik.WinControls.UI.RadDateTimePicker()
+        Me.rel_tb_equipment = New Telerik.WinControls.UI.RadTextBox()
+        Me.rel_tb_equipmentnum = New Telerik.WinControls.UI.RadTextBox()
+        Me.lbl_equipmentnum = New Telerik.WinControls.UI.RadLabel()
+        Me.lbl_equipment = New Telerik.WinControls.UI.RadLabel()
+        Me.rel_tb_status = New Telerik.WinControls.UI.RadDropDownList()
+        Me.rel_tb_id = New Telerik.WinControls.UI.RadDropDownList()
+        Me.rel_tb_reservationnum = New Telerik.WinControls.UI.RadTextBox()
+        Me.RadLabel41 = New Telerik.WinControls.UI.RadLabel()
+        Me.RadLabel49 = New Telerik.WinControls.UI.RadLabel()
+        Me.rel_tb_endtime = New Telerik.WinControls.UI.RadDropDownList()
+        Me.rel_tb_starttime = New Telerik.WinControls.UI.RadDropDownList()
+        Me.RadLabel45 = New Telerik.WinControls.UI.RadLabel()
+        Me.RadLabel46 = New Telerik.WinControls.UI.RadLabel()
+        Me.RadLabel48 = New Telerik.WinControls.UI.RadLabel()
+        Me.RadLabel20 = New Telerik.WinControls.UI.RadLabel()
+        Me.RadLabel16 = New Telerik.WinControls.UI.RadLabel()
+        Me.rel_tb_borrower = New Telerik.WinControls.UI.RadDropDownList()
+        Me.RadLabel15 = New Telerik.WinControls.UI.RadLabel()
         Me.rpvp2_reservation = New Telerik.WinControls.UI.RadPageViewPage()
-        Me.RadGroupBox3 = New Telerik.WinControls.UI.RadGroupBox()
-        Me.reservations_rgv_showavailableitems = New Telerik.WinControls.UI.RadGridView()
-        Me.reservation_rgv_recordeddata = New Telerik.WinControls.UI.RadGridView()
+        Me.RadGroupBox4 = New Telerik.WinControls.UI.RadGroupBox()
+        Me.RadGroupBox6 = New Telerik.WinControls.UI.RadGroupBox()
+        Me.btn_resetreservationno = New Telerik.WinControls.UI.RadButton()
+        Me.rec_btn_clear = New Telerik.WinControls.UI.RadButton()
+        Me.rec_btn_delete = New Telerik.WinControls.UI.RadButton()
+        Me.rec_btn_save = New Telerik.WinControls.UI.RadButton()
+        Me.lbl_nameofstaff_reserved = New Telerik.WinControls.UI.RadLabel()
+        Me.rec_rrtc_actname = New Telerik.WinControls.UI.RadTextBox()
+        Me.rec_lbl_actname = New Telerik.WinControls.UI.RadLabel()
+        Me.rec_cb_reserveno = New Telerik.WinControls.UI.RadTextBox()
+        Me.RadLabel2 = New Telerik.WinControls.UI.RadLabel()
+        Me.rec_cb_acttype = New Telerik.WinControls.UI.RadDropDownList()
+        Me.RadLabel72 = New Telerik.WinControls.UI.RadLabel()
+        Me.RadLabel68 = New Telerik.WinControls.UI.RadLabel()
+        Me.rec_cb_college_school = New Telerik.WinControls.UI.RadDropDownList()
+        Me.rec_cb_idnum = New Telerik.WinControls.UI.RadTextBox()
+        Me.RadLabel26 = New Telerik.WinControls.UI.RadLabel()
+        Me.RadLabel17 = New Telerik.WinControls.UI.RadLabel()
+        Me.RadLabel14 = New Telerik.WinControls.UI.RadLabel()
+        Me.rec_cb_status = New Telerik.WinControls.UI.RadDropDownList()
+        Me.rec_dtp_endtime = New Telerik.WinControls.UI.RadDropDownList()
+        Me.rec_dtp_starttime = New Telerik.WinControls.UI.RadDropDownList()
+        Me.RadLabel6 = New Telerik.WinControls.UI.RadLabel()
+        Me.rec_cb_location = New Telerik.WinControls.UI.RadDropDownList()
+        Me.RadLabel5 = New Telerik.WinControls.UI.RadLabel()
+        Me.rec_cb_borrower = New Telerik.WinControls.UI.RadDropDownList()
+        Me.RadLabel4 = New Telerik.WinControls.UI.RadLabel()
+        Me.RadLabel3 = New Telerik.WinControls.UI.RadLabel()
+        Me.RadLabel1 = New Telerik.WinControls.UI.RadLabel()
+        Me.rec_dtp_date = New Telerik.WinControls.UI.RadDateTimePicker()
         Me.RadGroupBox5 = New Telerik.WinControls.UI.RadGroupBox()
+        Me.rec_eq_chooseeq = New Telerik.WinControls.UI.RadDropDownList()
+        Me.rec_eq_chooseno = New Telerik.WinControls.UI.RadDropDownList()
+        Me.rec_eq_type_choose = New Telerik.WinControls.UI.RadDropDownList()
+        Me.rec_btn_showalltakeneq = New Telerik.WinControls.UI.RadButton()
+        Me.RadLabel71 = New Telerik.WinControls.UI.RadLabel()
+        Me.rec_btn_check_availability = New Telerik.WinControls.UI.RadButton()
+        Me.rec_btn_add_eq = New Telerik.WinControls.UI.RadButton()
+        Me.rec_btn_eqclear = New Telerik.WinControls.UI.RadButton()
+        Me.RadLabel70 = New Telerik.WinControls.UI.RadLabel()
+        Me.RadLabel50 = New Telerik.WinControls.UI.RadLabel()
+        Me.rec_btn_showalldata = New Telerik.WinControls.UI.RadButton()
+        Me.rec_btn_showavailequip = New Telerik.WinControls.UI.RadButton()
+        Me.rec_del_eq = New Telerik.WinControls.UI.RadButton()
         Me.RadGroupBox17 = New Telerik.WinControls.UI.RadGroupBox()
         Me.eq_rgv_addeq = New Telerik.WinControls.UI.RadGridView()
-        Me.rec_del_eq = New Telerik.WinControls.UI.RadButton()
-        Me.rec_btn_showavailequip = New Telerik.WinControls.UI.RadButton()
-        Me.rec_btn_showalldata = New Telerik.WinControls.UI.RadButton()
-        Me.RadLabel50 = New Telerik.WinControls.UI.RadLabel()
-        Me.RadLabel70 = New Telerik.WinControls.UI.RadLabel()
-        Me.rec_btn_eqclear = New Telerik.WinControls.UI.RadButton()
-        Me.rec_btn_add_eq = New Telerik.WinControls.UI.RadButton()
-        Me.rec_btn_check_availability = New Telerik.WinControls.UI.RadButton()
-        Me.RadLabel71 = New Telerik.WinControls.UI.RadLabel()
-        Me.rec_btn_showalltakeneq = New Telerik.WinControls.UI.RadButton()
-        Me.rec_eq_type_choose = New Telerik.WinControls.UI.RadDropDownList()
-        Me.rec_eq_chooseno = New Telerik.WinControls.UI.RadDropDownList()
-        Me.rec_eq_chooseeq = New Telerik.WinControls.UI.RadDropDownList()
-        Me.RadGroupBox4 = New Telerik.WinControls.UI.RadGroupBox()
-        Me.RadLabel1 = New Telerik.WinControls.UI.RadLabel()
-        Me.RadLabel3 = New Telerik.WinControls.UI.RadLabel()
-        Me.RadLabel4 = New Telerik.WinControls.UI.RadLabel()
-        Me.rec_cb_borrower = New Telerik.WinControls.UI.RadDropDownList()
-        Me.RadLabel5 = New Telerik.WinControls.UI.RadLabel()
-        Me.rec_cb_location = New Telerik.WinControls.UI.RadDropDownList()
-        Me.RadLabel6 = New Telerik.WinControls.UI.RadLabel()
-        Me.rec_dtp_starttime = New Telerik.WinControls.UI.RadDropDownList()
-        Me.rec_dtp_endtime = New Telerik.WinControls.UI.RadDropDownList()
-        Me.rec_cb_status = New Telerik.WinControls.UI.RadDropDownList()
-        Me.RadLabel14 = New Telerik.WinControls.UI.RadLabel()
-        Me.RadLabel17 = New Telerik.WinControls.UI.RadLabel()
-        Me.RadLabel26 = New Telerik.WinControls.UI.RadLabel()
-        Me.rec_cb_idnum = New Telerik.WinControls.UI.RadTextBox()
-        Me.rec_cb_college_school = New Telerik.WinControls.UI.RadDropDownList()
-        Me.RadLabel68 = New Telerik.WinControls.UI.RadLabel()
-        Me.RadLabel72 = New Telerik.WinControls.UI.RadLabel()
-        Me.rec_cb_acttype = New Telerik.WinControls.UI.RadDropDownList()
-        Me.RadLabel2 = New Telerik.WinControls.UI.RadLabel()
-        Me.rec_cb_reserveno = New Telerik.WinControls.UI.RadTextBox()
-        Me.rec_lbl_actname = New Telerik.WinControls.UI.RadLabel()
-        Me.rec_rrtc_actname = New Telerik.WinControls.UI.RadTextBox()
-        Me.lbl_nameofstaff_reserved = New Telerik.WinControls.UI.RadLabel()
-        Me.RadGroupBox6 = New Telerik.WinControls.UI.RadGroupBox()
-        Me.rec_btn_save = New Telerik.WinControls.UI.RadButton()
-        Me.rec_btn_delete = New Telerik.WinControls.UI.RadButton()
-        Me.rec_btn_clear = New Telerik.WinControls.UI.RadButton()
-        Me.btn_resetreservationno = New Telerik.WinControls.UI.RadButton()
+        Me.RadGroupBox3 = New Telerik.WinControls.UI.RadGroupBox()
+        Me.reservation_rgv_recordeddata = New Telerik.WinControls.UI.RadGridView()
+        Me.reservations_rgv_showavailableitems = New Telerik.WinControls.UI.RadGridView()
         Me.rpvp_equipment = New Telerik.WinControls.UI.RadPageViewPage()
-        Me.RadGroupBox14 = New Telerik.WinControls.UI.RadGroupBox()
-        Me.eq_rgv_showregequipment = New Telerik.WinControls.UI.RadGridView()
-        Me.RadGroupBox15 = New Telerik.WinControls.UI.RadGroupBox()
-        Me.eq_equipmentno = New Telerik.WinControls.UI.RadTextBox()
-        Me.RadLabel22 = New Telerik.WinControls.UI.RadLabel()
-        Me.RadLabel23 = New Telerik.WinControls.UI.RadLabel()
-        Me.RadLabel24 = New Telerik.WinControls.UI.RadLabel()
-        Me.RadLabel25 = New Telerik.WinControls.UI.RadLabel()
-        Me.eq_sn = New Telerik.WinControls.UI.RadTextBox()
-        Me.RadLabel51 = New Telerik.WinControls.UI.RadLabel()
-        Me.RadLabel52 = New Telerik.WinControls.UI.RadLabel()
-        Me.eq_status = New Telerik.WinControls.UI.RadDropDownList()
-        Me.RadLabel53 = New Telerik.WinControls.UI.RadLabel()
-        Me.eq_equipment = New Telerik.WinControls.UI.RadTextBox()
-        Me.eq_equipmentlocation = New Telerik.WinControls.UI.RadTextBox()
-        Me.eq_owner = New Telerik.WinControls.UI.RadTextBox()
-        Me.eq_type = New Telerik.WinControls.UI.RadDropDownList()
-        Me.eq_btn_other = New Telerik.WinControls.UI.RadButton()
-        Me.RadGroupBox21 = New Telerik.WinControls.UI.RadGroupBox()
-        Me.eq_filter_eqno = New Telerik.WinControls.UI.RadTextBox()
-        Me.RadLabel54 = New Telerik.WinControls.UI.RadLabel()
-        Me.eq_filter_eqtype = New Telerik.WinControls.UI.RadDropDownList()
-        Me.RadLabel55 = New Telerik.WinControls.UI.RadLabel()
-        Me.RadLabel56 = New Telerik.WinControls.UI.RadLabel()
-        Me.eq_filter_eqstatus = New Telerik.WinControls.UI.RadDropDownList()
-        Me.eq_clear_filter = New Telerik.WinControls.UI.RadButton()
         Me.RadGroupBox22 = New Telerik.WinControls.UI.RadGroupBox()
-        Me.eq_counter_type = New Telerik.WinControls.UI.RadDropDownList()
-        Me.RadLabel57 = New Telerik.WinControls.UI.RadLabel()
-        Me.RadLabel43 = New Telerik.WinControls.UI.RadLabel()
         Me.eq_total_units = New Telerik.WinControls.UI.RadLabel()
-        Me.rpvp_account = New Telerik.WinControls.UI.RadPageViewPage()
-        Me.RadGroupBox18 = New Telerik.WinControls.UI.RadGroupBox()
-        Me.RadLabel27 = New Telerik.WinControls.UI.RadLabel()
-        Me.RadLabel28 = New Telerik.WinControls.UI.RadLabel()
-        Me.RadLabel29 = New Telerik.WinControls.UI.RadLabel()
-        Me.RadLabel30 = New Telerik.WinControls.UI.RadLabel()
-        Me.acc_sf_id = New Telerik.WinControls.UI.RadTextBox()
-        Me.acc_sf_fname = New Telerik.WinControls.UI.RadTextBox()
-        Me.acc_sf_mname = New Telerik.WinControls.UI.RadTextBox()
-        Me.acc_sf_lname = New Telerik.WinControls.UI.RadTextBox()
-        Me.RadLabel33 = New Telerik.WinControls.UI.RadLabel()
-        Me.RadLabel32 = New Telerik.WinControls.UI.RadLabel()
-        Me.RadLabel31 = New Telerik.WinControls.UI.RadLabel()
-        Me.acc_sf_username = New Telerik.WinControls.UI.RadTextBox()
-        Me.acc_sf_password = New Telerik.WinControls.UI.RadTextBox()
-        Me.acc_sf_retypepassword = New Telerik.WinControls.UI.RadTextBox()
-        Me.RadLabel39 = New Telerik.WinControls.UI.RadLabel()
-        Me.acc_sf_usertype = New Telerik.WinControls.UI.RadDropDownList()
-        Me.RadGroupBox19 = New Telerik.WinControls.UI.RadGroupBox()
-        Me.RadLabel38 = New Telerik.WinControls.UI.RadLabel()
-        Me.acc_pf_college = New Telerik.WinControls.UI.RadDropDownList()
-        Me.RadLabel37 = New Telerik.WinControls.UI.RadLabel()
-        Me.RadLabel36 = New Telerik.WinControls.UI.RadLabel()
-        Me.RadLabel35 = New Telerik.WinControls.UI.RadLabel()
-        Me.RadLabel34 = New Telerik.WinControls.UI.RadLabel()
-        Me.acc_pf_id = New Telerik.WinControls.UI.RadTextBox()
-        Me.acc_pf_fname = New Telerik.WinControls.UI.RadTextBox()
-        Me.acc_pf_mname = New Telerik.WinControls.UI.RadTextBox()
-        Me.acc_pf_lname = New Telerik.WinControls.UI.RadTextBox()
-        Me.RadGroupBox29 = New Telerik.WinControls.UI.RadGroupBox()
-        Me.acc_prof_btn_save = New Telerik.WinControls.UI.RadButton()
-        Me.acc_prof_btn_update = New Telerik.WinControls.UI.RadButton()
-        Me.acc_prof_btn_delete = New Telerik.WinControls.UI.RadButton()
-        Me.acc_prof_btn_clear = New Telerik.WinControls.UI.RadButton()
-        Me.RadPageView1 = New Telerik.WinControls.UI.RadPageView()
-        Me.RadPageViewPage2 = New Telerik.WinControls.UI.RadPageViewPage()
-        Me.acc_prof_list = New Telerik.WinControls.UI.RadGridView()
-        Me.RadPageViewPage1 = New Telerik.WinControls.UI.RadPageViewPage()
-        Me.acc_staff_list = New Telerik.WinControls.UI.RadGridView()
-        Me.RadGroupBox28 = New Telerik.WinControls.UI.RadGroupBox()
-        Me.acc_staff_btn_delete = New Telerik.WinControls.UI.RadButton()
-        Me.acc_staff_btn_save = New Telerik.WinControls.UI.RadButton()
-        Me.acc_staff_btn_clear = New Telerik.WinControls.UI.RadButton()
-        Me.acc_staff_btn_update = New Telerik.WinControls.UI.RadButton()
-        Me.rpvp1_main = New Telerik.WinControls.UI.RadPageViewPage()
-        Me.RadGroupBox1 = New Telerik.WinControls.UI.RadGroupBox()
-        Me.main_rgv_recordedacademicsmain = New Telerik.WinControls.UI.RadGridView()
-        Me.RadGroupBox2 = New Telerik.WinControls.UI.RadGroupBox()
-        Me.RadGroupBox7 = New Telerik.WinControls.UI.RadGroupBox()
-        Me.RadLabel11 = New Telerik.WinControls.UI.RadLabel()
-        Me.RadGroupBox8 = New Telerik.WinControls.UI.RadGroupBox()
-        Me.RadLabel13 = New Telerik.WinControls.UI.RadLabel()
-        Me.lu_byequipment = New Telerik.WinControls.UI.RadTextBox()
-        Me.lu_byname = New Telerik.WinControls.UI.RadTextBox()
-        Me.RadLabel8 = New Telerik.WinControls.UI.RadLabel()
-        Me.RadGroupBox20 = New Telerik.WinControls.UI.RadGroupBox()
-        Me.btn_gotoinsmat = New Telerik.WinControls.UI.RadButton()
-        Me.rpv1 = New Telerik.WinControls.UI.RadPageView()
-        Me.ret_tb_sdate = New Telerik.WinControls.UI.RadDateTimePicker()
-        Me.rel_tb_startdate = New Telerik.WinControls.UI.RadDateTimePicker()
-        Me.rec_dtp_date = New Telerik.WinControls.UI.RadDateTimePicker()
-        Me.lu_date = New Telerik.WinControls.UI.RadDateTimePicker()
+        Me.RadLabel43 = New Telerik.WinControls.UI.RadLabel()
+        Me.RadLabel57 = New Telerik.WinControls.UI.RadLabel()
+        Me.eq_counter_type = New Telerik.WinControls.UI.RadDropDownList()
+        Me.RadGroupBox21 = New Telerik.WinControls.UI.RadGroupBox()
+        Me.eq_clear_filter = New Telerik.WinControls.UI.RadButton()
+        Me.eq_filter_eqstatus = New Telerik.WinControls.UI.RadDropDownList()
+        Me.RadLabel56 = New Telerik.WinControls.UI.RadLabel()
+        Me.RadLabel55 = New Telerik.WinControls.UI.RadLabel()
+        Me.eq_filter_eqtype = New Telerik.WinControls.UI.RadDropDownList()
+        Me.RadLabel54 = New Telerik.WinControls.UI.RadLabel()
+        Me.eq_filter_eqno = New Telerik.WinControls.UI.RadTextBox()
+        Me.RadGroupBox15 = New Telerik.WinControls.UI.RadGroupBox()
         Me.RadGroupBox9 = New Telerik.WinControls.UI.RadGroupBox()
         Me.eq_btn_clear = New Telerik.WinControls.UI.RadButton()
         Me.eq_btn_delete = New Telerik.WinControls.UI.RadButton()
         Me.eq_btn_update = New Telerik.WinControls.UI.RadButton()
         Me.eq_btn_save = New Telerik.WinControls.UI.RadButton()
+        Me.eq_btn_other = New Telerik.WinControls.UI.RadButton()
+        Me.eq_type = New Telerik.WinControls.UI.RadDropDownList()
+        Me.eq_owner = New Telerik.WinControls.UI.RadTextBox()
+        Me.eq_equipmentlocation = New Telerik.WinControls.UI.RadTextBox()
+        Me.eq_equipment = New Telerik.WinControls.UI.RadTextBox()
+        Me.RadLabel53 = New Telerik.WinControls.UI.RadLabel()
+        Me.eq_status = New Telerik.WinControls.UI.RadDropDownList()
+        Me.RadLabel52 = New Telerik.WinControls.UI.RadLabel()
+        Me.RadLabel51 = New Telerik.WinControls.UI.RadLabel()
+        Me.eq_sn = New Telerik.WinControls.UI.RadTextBox()
+        Me.RadLabel25 = New Telerik.WinControls.UI.RadLabel()
+        Me.RadLabel24 = New Telerik.WinControls.UI.RadLabel()
+        Me.RadLabel23 = New Telerik.WinControls.UI.RadLabel()
+        Me.RadLabel22 = New Telerik.WinControls.UI.RadLabel()
+        Me.eq_equipmentno = New Telerik.WinControls.UI.RadTextBox()
+        Me.RadGroupBox14 = New Telerik.WinControls.UI.RadGroupBox()
+        Me.eq_rgv_showregequipment = New Telerik.WinControls.UI.RadGridView()
+        Me.rpvp_account = New Telerik.WinControls.UI.RadPageViewPage()
+        Me.RadPageView1 = New Telerik.WinControls.UI.RadPageView()
+        Me.RadPageViewPage1 = New Telerik.WinControls.UI.RadPageViewPage()
+        Me.acc_staff_list = New Telerik.WinControls.UI.RadGridView()
+        Me.RadPageViewPage2 = New Telerik.WinControls.UI.RadPageViewPage()
+        Me.acc_prof_list = New Telerik.WinControls.UI.RadGridView()
+        Me.RadGroupBox19 = New Telerik.WinControls.UI.RadGroupBox()
+        Me.RadGroupBox29 = New Telerik.WinControls.UI.RadGroupBox()
+        Me.acc_prof_btn_clear = New Telerik.WinControls.UI.RadButton()
+        Me.acc_prof_btn_delete = New Telerik.WinControls.UI.RadButton()
+        Me.acc_prof_btn_update = New Telerik.WinControls.UI.RadButton()
+        Me.acc_prof_btn_save = New Telerik.WinControls.UI.RadButton()
+        Me.acc_pf_lname = New Telerik.WinControls.UI.RadTextBox()
+        Me.acc_pf_mname = New Telerik.WinControls.UI.RadTextBox()
+        Me.acc_pf_fname = New Telerik.WinControls.UI.RadTextBox()
+        Me.acc_pf_id = New Telerik.WinControls.UI.RadTextBox()
+        Me.RadLabel34 = New Telerik.WinControls.UI.RadLabel()
+        Me.RadLabel35 = New Telerik.WinControls.UI.RadLabel()
+        Me.RadLabel36 = New Telerik.WinControls.UI.RadLabel()
+        Me.RadLabel37 = New Telerik.WinControls.UI.RadLabel()
+        Me.acc_pf_college = New Telerik.WinControls.UI.RadDropDownList()
+        Me.RadLabel38 = New Telerik.WinControls.UI.RadLabel()
+        Me.RadGroupBox18 = New Telerik.WinControls.UI.RadGroupBox()
+        Me.RadGroupBox28 = New Telerik.WinControls.UI.RadGroupBox()
+        Me.acc_staff_btn_update = New Telerik.WinControls.UI.RadButton()
+        Me.acc_staff_btn_clear = New Telerik.WinControls.UI.RadButton()
+        Me.acc_staff_btn_save = New Telerik.WinControls.UI.RadButton()
+        Me.acc_staff_btn_delete = New Telerik.WinControls.UI.RadButton()
+        Me.acc_sf_usertype = New Telerik.WinControls.UI.RadDropDownList()
+        Me.RadLabel39 = New Telerik.WinControls.UI.RadLabel()
+        Me.acc_sf_retypepassword = New Telerik.WinControls.UI.RadTextBox()
+        Me.acc_sf_password = New Telerik.WinControls.UI.RadTextBox()
+        Me.acc_sf_username = New Telerik.WinControls.UI.RadTextBox()
+        Me.RadLabel31 = New Telerik.WinControls.UI.RadLabel()
+        Me.RadLabel32 = New Telerik.WinControls.UI.RadLabel()
+        Me.RadLabel33 = New Telerik.WinControls.UI.RadLabel()
+        Me.acc_sf_lname = New Telerik.WinControls.UI.RadTextBox()
+        Me.acc_sf_mname = New Telerik.WinControls.UI.RadTextBox()
+        Me.acc_sf_fname = New Telerik.WinControls.UI.RadTextBox()
+        Me.acc_sf_id = New Telerik.WinControls.UI.RadTextBox()
+        Me.RadLabel30 = New Telerik.WinControls.UI.RadLabel()
+        Me.RadLabel29 = New Telerik.WinControls.UI.RadLabel()
+        Me.RadLabel28 = New Telerik.WinControls.UI.RadLabel()
+        Me.RadLabel27 = New Telerik.WinControls.UI.RadLabel()
+        Me.rpvp1_main = New Telerik.WinControls.UI.RadPageViewPage()
+        Me.RadGroupBox20 = New Telerik.WinControls.UI.RadGroupBox()
+        Me.btn_gotoinsmat = New Telerik.WinControls.UI.RadButton()
+        Me.RadPageView4 = New Telerik.WinControls.UI.RadPageView()
+        Me.main_rpv_academics = New Telerik.WinControls.UI.RadPageViewPage()
+        Me.main_rgv_recordedacademicsonly = New Telerik.WinControls.UI.RadGridView()
+        Me.main_rpv_schoolactivity = New Telerik.WinControls.UI.RadPageViewPage()
+        Me.main_rgv_recordedschoolonly = New Telerik.WinControls.UI.RadGridView()
+        Me.RadGroupBox2 = New Telerik.WinControls.UI.RadGroupBox()
+        Me.RadGroupBox8 = New Telerik.WinControls.UI.RadGroupBox()
+        Me.RadLabel8 = New Telerik.WinControls.UI.RadLabel()
+        Me.lu_byname = New Telerik.WinControls.UI.RadTextBox()
+        Me.lu_byequipment = New Telerik.WinControls.UI.RadTextBox()
+        Me.RadLabel13 = New Telerik.WinControls.UI.RadLabel()
+        Me.RadGroupBox7 = New Telerik.WinControls.UI.RadGroupBox()
+        Me.lu_date = New Telerik.WinControls.UI.RadDateTimePicker()
+        Me.RadLabel11 = New Telerik.WinControls.UI.RadLabel()
+        Me.rpv1 = New Telerik.WinControls.UI.RadPageView()
         CType(Me.RadGroupBox16, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RadGroupBox13, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.CeutltdschedulerDataSetBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.rpvp_returning.SuspendLayout()
-        CType(Me.RadGroupBox24, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.RadGroupBox24.SuspendLayout()
-        CType(Me.RadLabel67, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.ret_tb_borrower, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RadLabel66, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.lbl_ret_release, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RadLabel62, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RadLabel60, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RadLabel59, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.ret_tb_stime, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.ret_tb_etime, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RadLabel58, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.ret_tb_status, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RadLabel69, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RadLabel42, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.ret_tb_reservationnum, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.ret_tb_id, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.ret_nameofstaff_release2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.ret_nameofstaff_return, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.lbl_ret_equipment, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.lbl_ret_equipmentnum, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.ret_tb_equipmentnum, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.ret_tb_equipment, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RadGroupBox25, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.RadGroupBox25.SuspendLayout()
-        CType(Me.return_btn_cancel, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.return_btn_returned, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RadPageView3, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.RadPageView3.SuspendLayout()
-        Me.ret_list_info.SuspendLayout()
-        CType(Me.penalty_grid_list, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.penalty_grid_list.MasterTemplate, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.rel_list_info2.SuspendLayout()
         CType(Me.released_grid_list2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.released_grid_list2.MasterTemplate, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.ret_list_info.SuspendLayout()
+        CType(Me.penalty_grid_list, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.penalty_grid_list.MasterTemplate, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RadGroupBox25, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.RadGroupBox25.SuspendLayout()
+        CType(Me.return_btn_returned, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.return_btn_cancel, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RadGroupBox24, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.RadGroupBox24.SuspendLayout()
+        CType(Me.ret_tb_equipment, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ret_tb_equipmentnum, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.lbl_ret_equipmentnum, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.lbl_ret_equipment, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ret_nameofstaff_return, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ret_nameofstaff_release2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ret_tb_id, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ret_tb_reservationnum, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RadLabel42, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RadLabel69, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ret_tb_status, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RadLabel58, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ret_tb_etime, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ret_tb_stime, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RadLabel59, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RadLabel60, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RadLabel62, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ret_tb_sdate, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.lbl_ret_release, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RadLabel66, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ret_tb_borrower, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RadLabel67, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.rpvp_releasing.SuspendLayout()
-        CType(Me.gp_details, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.gp_details.SuspendLayout()
-        CType(Me.RadLabel15, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.rel_tb_borrower, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RadLabel16, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RadLabel20, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RadLabel48, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RadLabel46, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RadLabel45, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.rel_tb_starttime, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.rel_tb_endtime, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RadLabel49, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RadLabel41, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.rel_tb_reservationnum, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.rel_tb_id, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.rel_tb_status, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.lbl_equipment, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.lbl_equipmentnum, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.rel_tb_equipmentnum, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.rel_tb_equipment, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.rel_nameofstaff_release, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RadGroupBox12, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.RadGroupBox12.SuspendLayout()
-        CType(Me.released_btn_cancel, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.released_btn_release, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RadPageView2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.RadPageView2.SuspendLayout()
-        Me.rel_penalty_info.SuspendLayout()
-        CType(Me.released_grid_list, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.released_grid_list.MasterTemplate, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.res_notret_info.SuspendLayout()
         CType(Me.reserved_grid_list, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.reserved_grid_list.MasterTemplate, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.rel_penalty_info.SuspendLayout()
+        CType(Me.released_grid_list, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.released_grid_list.MasterTemplate, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RadGroupBox12, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.RadGroupBox12.SuspendLayout()
+        CType(Me.released_btn_release, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.released_btn_cancel, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.gp_details, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.gp_details.SuspendLayout()
+        CType(Me.rel_nameofstaff_release, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.rel_tb_startdate, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.rel_tb_equipment, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.rel_tb_equipmentnum, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.lbl_equipmentnum, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.lbl_equipment, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.rel_tb_status, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.rel_tb_id, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.rel_tb_reservationnum, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RadLabel41, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RadLabel49, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.rel_tb_endtime, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.rel_tb_starttime, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RadLabel45, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RadLabel46, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RadLabel48, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RadLabel20, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RadLabel16, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.rel_tb_borrower, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RadLabel15, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.rpvp2_reservation.SuspendLayout()
-        CType(Me.RadGroupBox3, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.RadGroupBox3.SuspendLayout()
-        CType(Me.reservations_rgv_showavailableitems, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.reservations_rgv_showavailableitems.MasterTemplate, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.reservation_rgv_recordeddata, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.reservation_rgv_recordeddata.MasterTemplate, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RadGroupBox4, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.RadGroupBox4.SuspendLayout()
+        CType(Me.RadGroupBox6, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.RadGroupBox6.SuspendLayout()
+        CType(Me.btn_resetreservationno, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.rec_btn_clear, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.rec_btn_delete, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.rec_btn_save, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.lbl_nameofstaff_reserved, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.rec_rrtc_actname, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.rec_lbl_actname, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.rec_cb_reserveno, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RadLabel2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.rec_cb_acttype, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RadLabel72, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RadLabel68, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.rec_cb_college_school, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.rec_cb_idnum, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RadLabel26, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RadLabel17, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RadLabel14, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.rec_cb_status, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.rec_dtp_endtime, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.rec_dtp_starttime, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RadLabel6, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.rec_cb_location, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RadLabel5, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.rec_cb_borrower, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RadLabel4, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RadLabel3, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RadLabel1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.rec_dtp_date, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RadGroupBox5, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.RadGroupBox5.SuspendLayout()
+        CType(Me.rec_eq_chooseeq, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.rec_eq_chooseno, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.rec_eq_type_choose, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.rec_btn_showalltakeneq, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RadLabel71, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.rec_btn_check_availability, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.rec_btn_add_eq, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.rec_btn_eqclear, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RadLabel70, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RadLabel50, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.rec_btn_showalldata, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.rec_btn_showavailequip, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.rec_del_eq, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RadGroupBox17, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.RadGroupBox17.SuspendLayout()
         CType(Me.eq_rgv_addeq, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.eq_rgv_addeq.MasterTemplate, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.rec_del_eq, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.rec_btn_showavailequip, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.rec_btn_showalldata, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RadLabel50, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RadLabel70, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.rec_btn_eqclear, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.rec_btn_add_eq, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.rec_btn_check_availability, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RadLabel71, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.rec_btn_showalltakeneq, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.rec_eq_type_choose, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.rec_eq_chooseno, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.rec_eq_chooseeq, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RadGroupBox4, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.RadGroupBox4.SuspendLayout()
-        CType(Me.RadLabel1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RadLabel3, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RadLabel4, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.rec_cb_borrower, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RadLabel5, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.rec_cb_location, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RadLabel6, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.rec_dtp_starttime, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.rec_dtp_endtime, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.rec_cb_status, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RadLabel14, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RadLabel17, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RadLabel26, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.rec_cb_idnum, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.rec_cb_college_school, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RadLabel68, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RadLabel72, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.rec_cb_acttype, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RadLabel2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.rec_cb_reserveno, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.rec_lbl_actname, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.rec_rrtc_actname, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.lbl_nameofstaff_reserved, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RadGroupBox6, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.RadGroupBox6.SuspendLayout()
-        CType(Me.rec_btn_save, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.rec_btn_delete, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.rec_btn_clear, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.btn_resetreservationno, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RadGroupBox3, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.RadGroupBox3.SuspendLayout()
+        CType(Me.reservation_rgv_recordeddata, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.reservation_rgv_recordeddata.MasterTemplate, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.reservations_rgv_showavailableitems, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.reservations_rgv_showavailableitems.MasterTemplate, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.rpvp_equipment.SuspendLayout()
-        CType(Me.RadGroupBox14, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.RadGroupBox14.SuspendLayout()
-        CType(Me.eq_rgv_showregequipment, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.eq_rgv_showregequipment.MasterTemplate, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RadGroupBox15, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.RadGroupBox15.SuspendLayout()
-        CType(Me.eq_equipmentno, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RadLabel22, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RadLabel23, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RadLabel24, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RadLabel25, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.eq_sn, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RadLabel51, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RadLabel52, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.eq_status, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RadLabel53, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.eq_equipment, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.eq_equipmentlocation, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.eq_owner, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.eq_type, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.eq_btn_other, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RadGroupBox21, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.RadGroupBox21.SuspendLayout()
-        CType(Me.eq_filter_eqno, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RadLabel54, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.eq_filter_eqtype, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RadLabel55, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RadLabel56, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.eq_filter_eqstatus, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.eq_clear_filter, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RadGroupBox22, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.RadGroupBox22.SuspendLayout()
-        CType(Me.eq_counter_type, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RadLabel57, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RadLabel43, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.eq_total_units, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.rpvp_account.SuspendLayout()
-        CType(Me.RadGroupBox18, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.RadGroupBox18.SuspendLayout()
-        CType(Me.RadLabel27, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RadLabel28, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RadLabel29, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RadLabel30, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.acc_sf_id, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.acc_sf_fname, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.acc_sf_mname, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.acc_sf_lname, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RadLabel33, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RadLabel32, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RadLabel31, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.acc_sf_username, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.acc_sf_password, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.acc_sf_retypepassword, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RadLabel39, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.acc_sf_usertype, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RadGroupBox19, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.RadGroupBox19.SuspendLayout()
-        CType(Me.RadLabel38, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.acc_pf_college, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RadLabel37, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RadLabel36, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RadLabel35, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RadLabel34, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.acc_pf_id, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.acc_pf_fname, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.acc_pf_mname, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.acc_pf_lname, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RadGroupBox29, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.RadGroupBox29.SuspendLayout()
-        CType(Me.acc_prof_btn_save, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.acc_prof_btn_update, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.acc_prof_btn_delete, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.acc_prof_btn_clear, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RadPageView1, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.RadPageView1.SuspendLayout()
-        Me.RadPageViewPage2.SuspendLayout()
-        CType(Me.acc_prof_list, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.acc_prof_list.MasterTemplate, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.RadPageViewPage1.SuspendLayout()
-        CType(Me.acc_staff_list, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.acc_staff_list.MasterTemplate, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RadGroupBox28, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.RadGroupBox28.SuspendLayout()
-        CType(Me.acc_staff_btn_delete, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.acc_staff_btn_save, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.acc_staff_btn_clear, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.acc_staff_btn_update, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.rpvp1_main.SuspendLayout()
-        CType(Me.RadGroupBox1, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.RadGroupBox1.SuspendLayout()
-        CType(Me.main_rgv_recordedacademicsmain, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.main_rgv_recordedacademicsmain.MasterTemplate, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RadGroupBox2, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.RadGroupBox2.SuspendLayout()
-        CType(Me.RadGroupBox7, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.RadGroupBox7.SuspendLayout()
-        CType(Me.RadLabel11, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RadGroupBox8, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.RadGroupBox8.SuspendLayout()
-        CType(Me.RadLabel13, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.lu_byequipment, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.lu_byname, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RadLabel8, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RadGroupBox20, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.RadGroupBox20.SuspendLayout()
-        CType(Me.btn_gotoinsmat, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.rpv1, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.rpv1.SuspendLayout()
-        CType(Me.ret_tb_sdate, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.rel_tb_startdate, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.rec_dtp_date, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.lu_date, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RadLabel43, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RadLabel57, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.eq_counter_type, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RadGroupBox21, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.RadGroupBox21.SuspendLayout()
+        CType(Me.eq_clear_filter, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.eq_filter_eqstatus, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RadLabel56, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RadLabel55, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.eq_filter_eqtype, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RadLabel54, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.eq_filter_eqno, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RadGroupBox15, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.RadGroupBox15.SuspendLayout()
         CType(Me.RadGroupBox9, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.RadGroupBox9.SuspendLayout()
         CType(Me.eq_btn_clear, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.eq_btn_delete, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.eq_btn_update, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.eq_btn_save, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.eq_btn_other, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.eq_type, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.eq_owner, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.eq_equipmentlocation, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.eq_equipment, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RadLabel53, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.eq_status, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RadLabel52, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RadLabel51, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.eq_sn, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RadLabel25, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RadLabel24, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RadLabel23, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RadLabel22, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.eq_equipmentno, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RadGroupBox14, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.RadGroupBox14.SuspendLayout()
+        CType(Me.eq_rgv_showregequipment, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.eq_rgv_showregequipment.MasterTemplate, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.rpvp_account.SuspendLayout()
+        CType(Me.RadPageView1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.RadPageView1.SuspendLayout()
+        Me.RadPageViewPage1.SuspendLayout()
+        CType(Me.acc_staff_list, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.acc_staff_list.MasterTemplate, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.RadPageViewPage2.SuspendLayout()
+        CType(Me.acc_prof_list, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.acc_prof_list.MasterTemplate, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RadGroupBox19, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.RadGroupBox19.SuspendLayout()
+        CType(Me.RadGroupBox29, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.RadGroupBox29.SuspendLayout()
+        CType(Me.acc_prof_btn_clear, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.acc_prof_btn_delete, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.acc_prof_btn_update, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.acc_prof_btn_save, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.acc_pf_lname, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.acc_pf_mname, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.acc_pf_fname, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.acc_pf_id, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RadLabel34, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RadLabel35, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RadLabel36, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RadLabel37, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.acc_pf_college, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RadLabel38, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RadGroupBox18, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.RadGroupBox18.SuspendLayout()
+        CType(Me.RadGroupBox28, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.RadGroupBox28.SuspendLayout()
+        CType(Me.acc_staff_btn_update, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.acc_staff_btn_clear, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.acc_staff_btn_save, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.acc_staff_btn_delete, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.acc_sf_usertype, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RadLabel39, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.acc_sf_retypepassword, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.acc_sf_password, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.acc_sf_username, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RadLabel31, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RadLabel32, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RadLabel33, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.acc_sf_lname, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.acc_sf_mname, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.acc_sf_fname, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.acc_sf_id, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RadLabel30, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RadLabel29, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RadLabel28, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RadLabel27, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.rpvp1_main.SuspendLayout()
+        CType(Me.RadGroupBox20, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.RadGroupBox20.SuspendLayout()
+        CType(Me.btn_gotoinsmat, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RadPageView4, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.RadPageView4.SuspendLayout()
+        Me.main_rpv_academics.SuspendLayout()
+        CType(Me.main_rgv_recordedacademicsonly, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.main_rgv_recordedacademicsonly.MasterTemplate, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.main_rpv_schoolactivity.SuspendLayout()
+        CType(Me.main_rgv_recordedschoolonly, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.main_rgv_recordedschoolonly.MasterTemplate, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RadGroupBox2, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.RadGroupBox2.SuspendLayout()
+        CType(Me.RadGroupBox8, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.RadGroupBox8.SuspendLayout()
+        CType(Me.RadLabel8, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.lu_byname, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.lu_byequipment, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RadLabel13, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RadGroupBox7, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.RadGroupBox7.SuspendLayout()
+        CType(Me.lu_date, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RadLabel11, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.rpv1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.rpv1.SuspendLayout()
         CType(Me, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -862,6 +870,113 @@ Partial Class Main
         Me.rpvp_returning.Size = New System.Drawing.Size(1348, 548)
         Me.rpvp_returning.Text = "Returning Management"
         '
+        'RadPageView3
+        '
+        Me.RadPageView3.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.RadPageView3.Controls.Add(Me.rel_list_info2)
+        Me.RadPageView3.Controls.Add(Me.ret_list_info)
+        Me.RadPageView3.Location = New System.Drawing.Point(0, -3)
+        Me.RadPageView3.Name = "RadPageView3"
+        Me.RadPageView3.SelectedPage = Me.ret_list_info
+        Me.RadPageView3.Size = New System.Drawing.Size(1341, 305)
+        Me.RadPageView3.TabIndex = 6
+        Me.RadPageView3.Text = "RadPageView3"
+        Me.RadPageView3.ThemeName = "VisualStudio2012Dark"
+        CType(Me.RadPageView3.GetChildAt(0), Telerik.WinControls.UI.RadPageViewStripElement).StripButtons = Telerik.WinControls.UI.StripViewButtons.None
+        '
+        'rel_list_info2
+        '
+        Me.rel_list_info2.Controls.Add(Me.released_grid_list2)
+        Me.rel_list_info2.Location = New System.Drawing.Point(5, 30)
+        Me.rel_list_info2.Name = "rel_list_info2"
+        Me.rel_list_info2.Size = New System.Drawing.Size(1331, 270)
+        Me.rel_list_info2.Text = "List of Unreturned Equipments"
+        '
+        'released_grid_list2
+        '
+        Me.released_grid_list2.AutoSizeRows = True
+        Me.released_grid_list2.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.released_grid_list2.Location = New System.Drawing.Point(0, 0)
+        '
+        '
+        '
+        Me.released_grid_list2.MasterTemplate.AllowAddNewRow = False
+        Me.released_grid_list2.MasterTemplate.AutoSizeColumnsMode = Telerik.WinControls.UI.GridViewAutoSizeColumnsMode.Fill
+        Me.released_grid_list2.MasterTemplate.EnableGrouping = False
+        Me.released_grid_list2.MasterTemplate.ShowRowHeaderColumn = False
+        Me.released_grid_list2.MasterTemplate.ViewDefinition = TableViewDefinition13
+        Me.released_grid_list2.Name = "released_grid_list2"
+        Me.released_grid_list2.ReadOnly = True
+        Me.released_grid_list2.Size = New System.Drawing.Size(1331, 270)
+        Me.released_grid_list2.TabIndex = 0
+        Me.released_grid_list2.Text = "RadGridView2"
+        Me.released_grid_list2.ThemeName = "VisualStudio2012Dark"
+        '
+        'ret_list_info
+        '
+        Me.ret_list_info.Controls.Add(Me.penalty_grid_list)
+        Me.ret_list_info.Location = New System.Drawing.Point(5, 30)
+        Me.ret_list_info.Name = "ret_list_info"
+        Me.ret_list_info.Size = New System.Drawing.Size(1331, 270)
+        Me.ret_list_info.Text = "List of Penalties"
+        '
+        'penalty_grid_list
+        '
+        Me.penalty_grid_list.AutoSizeRows = True
+        Me.penalty_grid_list.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.penalty_grid_list.Location = New System.Drawing.Point(0, 0)
+        '
+        '
+        '
+        Me.penalty_grid_list.MasterTemplate.AllowAddNewRow = False
+        Me.penalty_grid_list.MasterTemplate.AllowEditRow = False
+        Me.penalty_grid_list.MasterTemplate.AutoSizeColumnsMode = Telerik.WinControls.UI.GridViewAutoSizeColumnsMode.Fill
+        Me.penalty_grid_list.MasterTemplate.EnableGrouping = False
+        Me.penalty_grid_list.MasterTemplate.ShowRowHeaderColumn = False
+        Me.penalty_grid_list.MasterTemplate.ViewDefinition = TableViewDefinition14
+        Me.penalty_grid_list.Name = "penalty_grid_list"
+        Me.penalty_grid_list.ReadOnly = True
+        Me.penalty_grid_list.Size = New System.Drawing.Size(1331, 270)
+        Me.penalty_grid_list.TabIndex = 0
+        Me.penalty_grid_list.Text = "RadGridView3"
+        Me.penalty_grid_list.ThemeName = "VisualStudio2012Dark"
+        '
+        'RadGroupBox25
+        '
+        Me.RadGroupBox25.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping
+        Me.RadGroupBox25.Anchor = System.Windows.Forms.AnchorStyles.Bottom
+        Me.RadGroupBox25.Controls.Add(Me.return_btn_returned)
+        Me.RadGroupBox25.Controls.Add(Me.return_btn_cancel)
+        Me.RadGroupBox25.HeaderText = "Controls"
+        Me.RadGroupBox25.Location = New System.Drawing.Point(176, 486)
+        Me.RadGroupBox25.Name = "RadGroupBox25"
+        Me.RadGroupBox25.Size = New System.Drawing.Size(962, 64)
+        Me.RadGroupBox25.TabIndex = 4
+        Me.RadGroupBox25.Text = "Controls"
+        Me.RadGroupBox25.ThemeName = "VisualStudio2012Dark"
+        '
+        'return_btn_returned
+        '
+        Me.return_btn_returned.Anchor = System.Windows.Forms.AnchorStyles.Bottom
+        Me.return_btn_returned.Location = New System.Drawing.Point(507, 21)
+        Me.return_btn_returned.Name = "return_btn_returned"
+        Me.return_btn_returned.Size = New System.Drawing.Size(110, 25)
+        Me.return_btn_returned.TabIndex = 23
+        Me.return_btn_returned.Text = "Returned"
+        Me.return_btn_returned.ThemeName = "VisualStudio2012Dark"
+        '
+        'return_btn_cancel
+        '
+        Me.return_btn_cancel.Anchor = System.Windows.Forms.AnchorStyles.Bottom
+        Me.return_btn_cancel.Location = New System.Drawing.Point(391, 21)
+        Me.return_btn_cancel.Name = "return_btn_cancel"
+        Me.return_btn_cancel.Size = New System.Drawing.Size(110, 25)
+        Me.return_btn_cancel.TabIndex = 21
+        Me.return_btn_cancel.Text = "Cancel"
+        Me.return_btn_cancel.ThemeName = "VisualStudio2012Dark"
+        '
         'RadGroupBox24
         '
         Me.RadGroupBox24.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping
@@ -896,177 +1011,242 @@ Partial Class Main
         Me.RadGroupBox24.Text = "Details:"
         Me.RadGroupBox24.ThemeName = "VisualStudio2012Dark"
         '
-        'RadLabel67
+        'ret_tb_equipment
         '
-        Me.RadLabel67.BackColor = System.Drawing.Color.Transparent
-        Me.RadLabel67.Location = New System.Drawing.Point(57, 54)
-        Me.RadLabel67.Name = "RadLabel67"
-        Me.RadLabel67.Size = New System.Drawing.Size(51, 18)
-        Me.RadLabel67.TabIndex = 0
-        Me.RadLabel67.Text = "Pass ID#:"
-        Me.RadLabel67.ThemeName = "VisualStudio2012Dark"
+        Me.ret_tb_equipment.Location = New System.Drawing.Point(578, 48)
+        Me.ret_tb_equipment.MinimumSize = New System.Drawing.Size(0, 24)
+        Me.ret_tb_equipment.Name = "ret_tb_equipment"
+        Me.ret_tb_equipment.ReadOnly = True
         '
-        'ret_tb_borrower
         '
-        Me.ret_tb_borrower.Location = New System.Drawing.Point(114, 82)
-        Me.ret_tb_borrower.Name = "ret_tb_borrower"
-        Me.ret_tb_borrower.Size = New System.Drawing.Size(131, 24)
-        Me.ret_tb_borrower.TabIndex = 1
-        Me.ret_tb_borrower.ThemeName = "VisualStudio2012Dark"
         '
-        'RadLabel66
+        Me.ret_tb_equipment.RootElement.MinSize = New System.Drawing.Size(0, 24)
+        Me.ret_tb_equipment.Size = New System.Drawing.Size(199, 24)
+        Me.ret_tb_equipment.TabIndex = 41
+        Me.ret_tb_equipment.ThemeName = "VisualStudio2012Dark"
         '
-        Me.RadLabel66.BackColor = System.Drawing.Color.Transparent
-        Me.RadLabel66.Location = New System.Drawing.Point(54, 85)
-        Me.RadLabel66.Name = "RadLabel66"
-        Me.RadLabel66.Size = New System.Drawing.Size(54, 18)
-        Me.RadLabel66.TabIndex = 1
-        Me.RadLabel66.Text = "Borrower:"
-        Me.RadLabel66.ThemeName = "VisualStudio2012Dark"
+        'ret_tb_equipmentnum
         '
-        'lbl_ret_release
+        Me.ret_tb_equipmentnum.Location = New System.Drawing.Point(578, 18)
+        Me.ret_tb_equipmentnum.MinimumSize = New System.Drawing.Size(0, 24)
+        Me.ret_tb_equipmentnum.Name = "ret_tb_equipmentnum"
+        Me.ret_tb_equipmentnum.ReadOnly = True
         '
-        Me.lbl_ret_release.BackColor = System.Drawing.Color.Transparent
-        Me.lbl_ret_release.Location = New System.Drawing.Point(509, 88)
-        Me.lbl_ret_release.Name = "lbl_ret_release"
-        Me.lbl_ret_release.Size = New System.Drawing.Size(68, 18)
-        Me.lbl_ret_release.TabIndex = 9
-        Me.lbl_ret_release.Text = "Released by:"
-        Me.lbl_ret_release.ThemeName = "VisualStudio2012Dark"
         '
-        'RadLabel62
         '
-        Me.RadLabel62.BackColor = System.Drawing.Color.Transparent
-        Me.RadLabel62.Location = New System.Drawing.Point(307, 21)
-        Me.RadLabel62.Name = "RadLabel62"
-        Me.RadLabel62.Size = New System.Drawing.Size(32, 18)
-        Me.RadLabel62.TabIndex = 18
-        Me.RadLabel62.Text = "Date:"
-        Me.RadLabel62.ThemeName = "VisualStudio2012Dark"
+        Me.ret_tb_equipmentnum.RootElement.MinSize = New System.Drawing.Size(0, 24)
+        Me.ret_tb_equipmentnum.Size = New System.Drawing.Size(199, 24)
+        Me.ret_tb_equipmentnum.TabIndex = 40
+        Me.ret_tb_equipmentnum.ThemeName = "VisualStudio2012Dark"
         '
-        'RadLabel60
+        'lbl_ret_equipmentnum
         '
-        Me.RadLabel60.BackColor = System.Drawing.Color.Transparent
-        Me.RadLabel60.Location = New System.Drawing.Point(281, 54)
-        Me.RadLabel60.Name = "RadLabel60"
-        Me.RadLabel60.Size = New System.Drawing.Size(59, 18)
-        Me.RadLabel60.TabIndex = 20
-        Me.RadLabel60.Text = "Start Time:"
-        Me.RadLabel60.ThemeName = "VisualStudio2012Dark"
+        Me.lbl_ret_equipmentnum.BackColor = System.Drawing.Color.Transparent
+        Me.lbl_ret_equipmentnum.Location = New System.Drawing.Point(465, 19)
+        Me.lbl_ret_equipmentnum.Name = "lbl_ret_equipmentnum"
+        Me.lbl_ret_equipmentnum.Size = New System.Drawing.Size(107, 18)
+        Me.lbl_ret_equipmentnum.TabIndex = 38
+        Me.lbl_ret_equipmentnum.Text = "Equipment Number:"
+        Me.lbl_ret_equipmentnum.ThemeName = "VisualStudio2012Dark"
         '
-        'RadLabel59
+        'lbl_ret_equipment
         '
-        Me.RadLabel59.BackColor = System.Drawing.Color.Transparent
-        Me.RadLabel59.Location = New System.Drawing.Point(281, 84)
-        Me.RadLabel59.Name = "RadLabel59"
-        Me.RadLabel59.Size = New System.Drawing.Size(55, 18)
-        Me.RadLabel59.TabIndex = 21
-        Me.RadLabel59.Text = "End Time:"
-        Me.RadLabel59.ThemeName = "VisualStudio2012Dark"
+        Me.lbl_ret_equipment.BackColor = System.Drawing.Color.Transparent
+        Me.lbl_ret_equipment.Location = New System.Drawing.Point(509, 48)
+        Me.lbl_ret_equipment.Name = "lbl_ret_equipment"
+        Me.lbl_ret_equipment.Size = New System.Drawing.Size(63, 18)
+        Me.lbl_ret_equipment.TabIndex = 39
+        Me.lbl_ret_equipment.Text = "Equipment:"
+        Me.lbl_ret_equipment.ThemeName = "VisualStudio2012Dark"
         '
-        'ret_tb_stime
+        'ret_nameofstaff_return
         '
-        RadListDataItem48.Text = "01:00"
-        RadListDataItem49.Text = "01:30"
-        RadListDataItem50.Text = "02:00"
-        RadListDataItem51.Text = "02:30"
-        RadListDataItem52.Text = "03:00"
-        RadListDataItem53.Text = "03:30"
-        RadListDataItem54.Text = "04:00"
-        RadListDataItem55.Text = "04:30"
-        RadListDataItem56.Text = "05:00"
-        RadListDataItem57.Text = "05:30"
-        RadListDataItem58.Text = "06:00"
-        RadListDataItem59.Text = "06:30"
-        RadListDataItem60.Text = "07:00"
-        RadListDataItem61.Text = "07:30"
-        RadListDataItem62.Text = "08:00"
-        RadListDataItem63.Text = "08:30"
-        RadListDataItem64.Text = "09:00"
-        RadListDataItem65.Text = "09:30"
-        RadListDataItem66.Text = "10:00"
-        RadListDataItem67.Text = "10:30"
-        RadListDataItem68.Text = "11:00"
-        RadListDataItem69.Text = "11:30"
-        RadListDataItem70.Text = "12:00"
-        RadListDataItem71.Text = "12:30"
-        RadListDataItem72.Text = "13:00"
-        RadListDataItem73.Text = "13:30"
-        RadListDataItem74.Text = "14:00"
-        RadListDataItem75.Text = "14:30"
-        RadListDataItem76.Text = "15:00"
-        RadListDataItem77.Text = "15:30"
-        RadListDataItem78.Text = "16:00"
-        RadListDataItem79.Text = "16:30"
-        RadListDataItem80.Text = "17:00"
-        RadListDataItem81.Text = "17:30"
-        RadListDataItem82.Text = "18:00"
-        RadListDataItem83.Text = "18:30"
-        RadListDataItem84.Text = "19:00"
-        RadListDataItem85.Text = "19:30"
-        RadListDataItem86.Text = "20:00"
-        RadListDataItem87.Text = "20:30"
-        RadListDataItem88.Text = "21:00"
-        RadListDataItem89.Text = "21:30"
-        RadListDataItem90.Text = "22:00"
-        RadListDataItem91.Text = "22:30"
-        RadListDataItem92.Text = "23:00"
-        RadListDataItem93.Text = "23:30"
-        RadListDataItem94.Text = "24:00"
-        Me.ret_tb_stime.Items.Add(RadListDataItem48)
-        Me.ret_tb_stime.Items.Add(RadListDataItem49)
-        Me.ret_tb_stime.Items.Add(RadListDataItem50)
-        Me.ret_tb_stime.Items.Add(RadListDataItem51)
-        Me.ret_tb_stime.Items.Add(RadListDataItem52)
-        Me.ret_tb_stime.Items.Add(RadListDataItem53)
-        Me.ret_tb_stime.Items.Add(RadListDataItem54)
-        Me.ret_tb_stime.Items.Add(RadListDataItem55)
-        Me.ret_tb_stime.Items.Add(RadListDataItem56)
-        Me.ret_tb_stime.Items.Add(RadListDataItem57)
-        Me.ret_tb_stime.Items.Add(RadListDataItem58)
-        Me.ret_tb_stime.Items.Add(RadListDataItem59)
-        Me.ret_tb_stime.Items.Add(RadListDataItem60)
-        Me.ret_tb_stime.Items.Add(RadListDataItem61)
-        Me.ret_tb_stime.Items.Add(RadListDataItem62)
-        Me.ret_tb_stime.Items.Add(RadListDataItem63)
-        Me.ret_tb_stime.Items.Add(RadListDataItem64)
-        Me.ret_tb_stime.Items.Add(RadListDataItem65)
-        Me.ret_tb_stime.Items.Add(RadListDataItem66)
-        Me.ret_tb_stime.Items.Add(RadListDataItem67)
-        Me.ret_tb_stime.Items.Add(RadListDataItem68)
-        Me.ret_tb_stime.Items.Add(RadListDataItem69)
-        Me.ret_tb_stime.Items.Add(RadListDataItem70)
-        Me.ret_tb_stime.Items.Add(RadListDataItem71)
-        Me.ret_tb_stime.Items.Add(RadListDataItem72)
-        Me.ret_tb_stime.Items.Add(RadListDataItem73)
-        Me.ret_tb_stime.Items.Add(RadListDataItem74)
-        Me.ret_tb_stime.Items.Add(RadListDataItem75)
-        Me.ret_tb_stime.Items.Add(RadListDataItem76)
-        Me.ret_tb_stime.Items.Add(RadListDataItem77)
-        Me.ret_tb_stime.Items.Add(RadListDataItem78)
-        Me.ret_tb_stime.Items.Add(RadListDataItem79)
-        Me.ret_tb_stime.Items.Add(RadListDataItem80)
-        Me.ret_tb_stime.Items.Add(RadListDataItem81)
-        Me.ret_tb_stime.Items.Add(RadListDataItem82)
-        Me.ret_tb_stime.Items.Add(RadListDataItem83)
-        Me.ret_tb_stime.Items.Add(RadListDataItem84)
-        Me.ret_tb_stime.Items.Add(RadListDataItem85)
-        Me.ret_tb_stime.Items.Add(RadListDataItem86)
-        Me.ret_tb_stime.Items.Add(RadListDataItem87)
-        Me.ret_tb_stime.Items.Add(RadListDataItem88)
-        Me.ret_tb_stime.Items.Add(RadListDataItem89)
-        Me.ret_tb_stime.Items.Add(RadListDataItem90)
-        Me.ret_tb_stime.Items.Add(RadListDataItem91)
-        Me.ret_tb_stime.Items.Add(RadListDataItem92)
-        Me.ret_tb_stime.Items.Add(RadListDataItem93)
-        Me.ret_tb_stime.Items.Add(RadListDataItem94)
-        Me.ret_tb_stime.Location = New System.Drawing.Point(346, 48)
-        Me.ret_tb_stime.Name = "ret_tb_stime"
-        Me.ret_tb_stime.Size = New System.Drawing.Size(102, 24)
-        Me.ret_tb_stime.TabIndex = 22
-        Me.ret_tb_stime.ThemeName = "VisualStudio2012Dark"
+        Me.ret_nameofstaff_return.BackColor = System.Drawing.Color.Transparent
+        Me.ret_nameofstaff_return.ForeColor = System.Drawing.Color.White
+        Me.ret_nameofstaff_return.Location = New System.Drawing.Point(583, 118)
+        Me.ret_nameofstaff_return.Name = "ret_nameofstaff_return"
+        Me.ret_nameofstaff_return.Size = New System.Drawing.Size(75, 18)
+        Me.ret_nameofstaff_return.TabIndex = 37
+        Me.ret_nameofstaff_return.Text = "Name of Staff"
+        '
+        'ret_nameofstaff_release2
+        '
+        Me.ret_nameofstaff_release2.BackColor = System.Drawing.Color.Transparent
+        Me.ret_nameofstaff_release2.ForeColor = System.Drawing.Color.White
+        Me.ret_nameofstaff_release2.Location = New System.Drawing.Point(583, 88)
+        Me.ret_nameofstaff_release2.Name = "ret_nameofstaff_release2"
+        Me.ret_nameofstaff_release2.Size = New System.Drawing.Size(75, 18)
+        Me.ret_nameofstaff_release2.TabIndex = 37
+        Me.ret_nameofstaff_release2.Text = "Name of Staff"
+        '
+        'ret_tb_id
+        '
+        Me.ret_tb_id.Location = New System.Drawing.Point(114, 51)
+        Me.ret_tb_id.Name = "ret_tb_id"
+        Me.ret_tb_id.Size = New System.Drawing.Size(131, 24)
+        Me.ret_tb_id.TabIndex = 32
+        Me.ret_tb_id.ThemeName = "VisualStudio2012Dark"
+        '
+        'ret_tb_reservationnum
+        '
+        Me.ret_tb_reservationnum.Location = New System.Drawing.Point(114, 18)
+        Me.ret_tb_reservationnum.MinimumSize = New System.Drawing.Size(0, 24)
+        Me.ret_tb_reservationnum.Name = "ret_tb_reservationnum"
+        Me.ret_tb_reservationnum.ReadOnly = True
+        '
+        '
+        '
+        Me.ret_tb_reservationnum.RootElement.MinSize = New System.Drawing.Size(0, 24)
+        Me.ret_tb_reservationnum.Size = New System.Drawing.Size(131, 24)
+        Me.ret_tb_reservationnum.TabIndex = 30
+        Me.ret_tb_reservationnum.ThemeName = "VisualStudio2012Dark"
+        '
+        'RadLabel42
+        '
+        Me.RadLabel42.BackColor = System.Drawing.Color.Transparent
+        Me.RadLabel42.Location = New System.Drawing.Point(31, 22)
+        Me.RadLabel42.Name = "RadLabel42"
+        Me.RadLabel42.Size = New System.Drawing.Size(77, 18)
+        Me.RadLabel42.TabIndex = 31
+        Me.RadLabel42.Text = "Reservation #:"
+        Me.RadLabel42.ThemeName = "VisualStudio2012Dark"
+        '
+        'RadLabel69
+        '
+        Me.RadLabel69.BackColor = System.Drawing.Color.Transparent
+        Me.RadLabel69.Location = New System.Drawing.Point(509, 119)
+        Me.RadLabel69.Name = "RadLabel69"
+        Me.RadLabel69.Size = New System.Drawing.Size(68, 18)
+        Me.RadLabel69.TabIndex = 28
+        Me.RadLabel69.Text = "Returned to:"
+        Me.RadLabel69.ThemeName = "VisualStudio2012Dark"
+        '
+        'ret_tb_status
+        '
+        Me.ret_tb_status.Location = New System.Drawing.Point(346, 107)
+        Me.ret_tb_status.MinimumSize = New System.Drawing.Size(0, 24)
+        Me.ret_tb_status.Name = "ret_tb_status"
+        '
+        '
+        '
+        Me.ret_tb_status.RootElement.MinSize = New System.Drawing.Size(0, 24)
+        Me.ret_tb_status.Size = New System.Drawing.Size(102, 24)
+        Me.ret_tb_status.TabIndex = 25
+        Me.ret_tb_status.ThemeName = "VisualStudio2012Dark"
+        '
+        'RadLabel58
+        '
+        Me.RadLabel58.BackColor = System.Drawing.Color.Transparent
+        Me.RadLabel58.Location = New System.Drawing.Point(300, 111)
+        Me.RadLabel58.Name = "RadLabel58"
+        Me.RadLabel58.Size = New System.Drawing.Size(39, 18)
+        Me.RadLabel58.TabIndex = 24
+        Me.RadLabel58.Text = "Status:"
+        Me.RadLabel58.ThemeName = "VisualStudio2012Dark"
         '
         'ret_tb_etime
+        '
+        RadListDataItem301.Text = "01:00"
+        RadListDataItem302.Text = "01:30"
+        RadListDataItem303.Text = "02:00"
+        RadListDataItem304.Text = "02:30"
+        RadListDataItem305.Text = "03:00"
+        RadListDataItem306.Text = "03:30"
+        RadListDataItem307.Text = "04:00"
+        RadListDataItem308.Text = "04:30"
+        RadListDataItem309.Text = "05:00"
+        RadListDataItem310.Text = "05:30"
+        RadListDataItem311.Text = "06:00"
+        RadListDataItem312.Text = "06:30"
+        RadListDataItem313.Text = "07:00"
+        RadListDataItem314.Text = "07:30"
+        RadListDataItem315.Text = "08:00"
+        RadListDataItem316.Text = "08:30"
+        RadListDataItem317.Text = "09:00"
+        RadListDataItem318.Text = "09:30"
+        RadListDataItem319.Text = "10:00"
+        RadListDataItem320.Text = "10:30"
+        RadListDataItem321.Text = "11:00"
+        RadListDataItem322.Text = "11:30"
+        RadListDataItem323.Text = "12:00"
+        RadListDataItem324.Text = "12:30"
+        RadListDataItem325.Text = "13:00"
+        RadListDataItem326.Text = "13:30"
+        RadListDataItem327.Text = "14:00"
+        RadListDataItem328.Text = "14:30"
+        RadListDataItem329.Text = "15:00"
+        RadListDataItem330.Text = "15:30"
+        RadListDataItem331.Text = "16:00"
+        RadListDataItem332.Text = "16:30"
+        RadListDataItem333.Text = "17:00"
+        RadListDataItem334.Text = "17:30"
+        RadListDataItem335.Text = "18:00"
+        RadListDataItem336.Text = "18:30"
+        RadListDataItem337.Text = "19:00"
+        RadListDataItem338.Text = "19:30"
+        RadListDataItem339.Text = "20:00"
+        RadListDataItem340.Text = "20:30"
+        RadListDataItem341.Text = "21:00"
+        RadListDataItem342.Text = "21:30"
+        RadListDataItem343.Text = "22:00"
+        RadListDataItem344.Text = "22:30"
+        RadListDataItem345.Text = "23:00"
+        RadListDataItem346.Text = "23:30"
+        RadListDataItem347.Text = "24:00"
+        Me.ret_tb_etime.Items.Add(RadListDataItem301)
+        Me.ret_tb_etime.Items.Add(RadListDataItem302)
+        Me.ret_tb_etime.Items.Add(RadListDataItem303)
+        Me.ret_tb_etime.Items.Add(RadListDataItem304)
+        Me.ret_tb_etime.Items.Add(RadListDataItem305)
+        Me.ret_tb_etime.Items.Add(RadListDataItem306)
+        Me.ret_tb_etime.Items.Add(RadListDataItem307)
+        Me.ret_tb_etime.Items.Add(RadListDataItem308)
+        Me.ret_tb_etime.Items.Add(RadListDataItem309)
+        Me.ret_tb_etime.Items.Add(RadListDataItem310)
+        Me.ret_tb_etime.Items.Add(RadListDataItem311)
+        Me.ret_tb_etime.Items.Add(RadListDataItem312)
+        Me.ret_tb_etime.Items.Add(RadListDataItem313)
+        Me.ret_tb_etime.Items.Add(RadListDataItem314)
+        Me.ret_tb_etime.Items.Add(RadListDataItem315)
+        Me.ret_tb_etime.Items.Add(RadListDataItem316)
+        Me.ret_tb_etime.Items.Add(RadListDataItem317)
+        Me.ret_tb_etime.Items.Add(RadListDataItem318)
+        Me.ret_tb_etime.Items.Add(RadListDataItem319)
+        Me.ret_tb_etime.Items.Add(RadListDataItem320)
+        Me.ret_tb_etime.Items.Add(RadListDataItem321)
+        Me.ret_tb_etime.Items.Add(RadListDataItem322)
+        Me.ret_tb_etime.Items.Add(RadListDataItem323)
+        Me.ret_tb_etime.Items.Add(RadListDataItem324)
+        Me.ret_tb_etime.Items.Add(RadListDataItem325)
+        Me.ret_tb_etime.Items.Add(RadListDataItem326)
+        Me.ret_tb_etime.Items.Add(RadListDataItem327)
+        Me.ret_tb_etime.Items.Add(RadListDataItem328)
+        Me.ret_tb_etime.Items.Add(RadListDataItem329)
+        Me.ret_tb_etime.Items.Add(RadListDataItem330)
+        Me.ret_tb_etime.Items.Add(RadListDataItem331)
+        Me.ret_tb_etime.Items.Add(RadListDataItem332)
+        Me.ret_tb_etime.Items.Add(RadListDataItem333)
+        Me.ret_tb_etime.Items.Add(RadListDataItem334)
+        Me.ret_tb_etime.Items.Add(RadListDataItem335)
+        Me.ret_tb_etime.Items.Add(RadListDataItem336)
+        Me.ret_tb_etime.Items.Add(RadListDataItem337)
+        Me.ret_tb_etime.Items.Add(RadListDataItem338)
+        Me.ret_tb_etime.Items.Add(RadListDataItem339)
+        Me.ret_tb_etime.Items.Add(RadListDataItem340)
+        Me.ret_tb_etime.Items.Add(RadListDataItem341)
+        Me.ret_tb_etime.Items.Add(RadListDataItem342)
+        Me.ret_tb_etime.Items.Add(RadListDataItem343)
+        Me.ret_tb_etime.Items.Add(RadListDataItem344)
+        Me.ret_tb_etime.Items.Add(RadListDataItem345)
+        Me.ret_tb_etime.Items.Add(RadListDataItem346)
+        Me.ret_tb_etime.Items.Add(RadListDataItem347)
+        Me.ret_tb_etime.Location = New System.Drawing.Point(346, 78)
+        Me.ret_tb_etime.Name = "ret_tb_etime"
+        Me.ret_tb_etime.Size = New System.Drawing.Size(102, 24)
+        Me.ret_tb_etime.TabIndex = 23
+        Me.ret_tb_etime.ThemeName = "VisualStudio2012Dark"
+        '
+        'ret_tb_stime
         '
         RadListDataItem1.Text = "01:00"
         RadListDataItem2.Text = "01:30"
@@ -1115,300 +1295,144 @@ Partial Class Main
         RadListDataItem45.Text = "23:00"
         RadListDataItem46.Text = "23:30"
         RadListDataItem47.Text = "24:00"
-        Me.ret_tb_etime.Items.Add(RadListDataItem1)
-        Me.ret_tb_etime.Items.Add(RadListDataItem2)
-        Me.ret_tb_etime.Items.Add(RadListDataItem3)
-        Me.ret_tb_etime.Items.Add(RadListDataItem4)
-        Me.ret_tb_etime.Items.Add(RadListDataItem5)
-        Me.ret_tb_etime.Items.Add(RadListDataItem6)
-        Me.ret_tb_etime.Items.Add(RadListDataItem7)
-        Me.ret_tb_etime.Items.Add(RadListDataItem8)
-        Me.ret_tb_etime.Items.Add(RadListDataItem9)
-        Me.ret_tb_etime.Items.Add(RadListDataItem10)
-        Me.ret_tb_etime.Items.Add(RadListDataItem11)
-        Me.ret_tb_etime.Items.Add(RadListDataItem12)
-        Me.ret_tb_etime.Items.Add(RadListDataItem13)
-        Me.ret_tb_etime.Items.Add(RadListDataItem14)
-        Me.ret_tb_etime.Items.Add(RadListDataItem15)
-        Me.ret_tb_etime.Items.Add(RadListDataItem16)
-        Me.ret_tb_etime.Items.Add(RadListDataItem17)
-        Me.ret_tb_etime.Items.Add(RadListDataItem18)
-        Me.ret_tb_etime.Items.Add(RadListDataItem19)
-        Me.ret_tb_etime.Items.Add(RadListDataItem20)
-        Me.ret_tb_etime.Items.Add(RadListDataItem21)
-        Me.ret_tb_etime.Items.Add(RadListDataItem22)
-        Me.ret_tb_etime.Items.Add(RadListDataItem23)
-        Me.ret_tb_etime.Items.Add(RadListDataItem24)
-        Me.ret_tb_etime.Items.Add(RadListDataItem25)
-        Me.ret_tb_etime.Items.Add(RadListDataItem26)
-        Me.ret_tb_etime.Items.Add(RadListDataItem27)
-        Me.ret_tb_etime.Items.Add(RadListDataItem28)
-        Me.ret_tb_etime.Items.Add(RadListDataItem29)
-        Me.ret_tb_etime.Items.Add(RadListDataItem30)
-        Me.ret_tb_etime.Items.Add(RadListDataItem31)
-        Me.ret_tb_etime.Items.Add(RadListDataItem32)
-        Me.ret_tb_etime.Items.Add(RadListDataItem33)
-        Me.ret_tb_etime.Items.Add(RadListDataItem34)
-        Me.ret_tb_etime.Items.Add(RadListDataItem35)
-        Me.ret_tb_etime.Items.Add(RadListDataItem36)
-        Me.ret_tb_etime.Items.Add(RadListDataItem37)
-        Me.ret_tb_etime.Items.Add(RadListDataItem38)
-        Me.ret_tb_etime.Items.Add(RadListDataItem39)
-        Me.ret_tb_etime.Items.Add(RadListDataItem40)
-        Me.ret_tb_etime.Items.Add(RadListDataItem41)
-        Me.ret_tb_etime.Items.Add(RadListDataItem42)
-        Me.ret_tb_etime.Items.Add(RadListDataItem43)
-        Me.ret_tb_etime.Items.Add(RadListDataItem44)
-        Me.ret_tb_etime.Items.Add(RadListDataItem45)
-        Me.ret_tb_etime.Items.Add(RadListDataItem46)
-        Me.ret_tb_etime.Items.Add(RadListDataItem47)
-        Me.ret_tb_etime.Location = New System.Drawing.Point(346, 78)
-        Me.ret_tb_etime.Name = "ret_tb_etime"
-        Me.ret_tb_etime.Size = New System.Drawing.Size(102, 24)
-        Me.ret_tb_etime.TabIndex = 23
-        Me.ret_tb_etime.ThemeName = "VisualStudio2012Dark"
+        Me.ret_tb_stime.Items.Add(RadListDataItem1)
+        Me.ret_tb_stime.Items.Add(RadListDataItem2)
+        Me.ret_tb_stime.Items.Add(RadListDataItem3)
+        Me.ret_tb_stime.Items.Add(RadListDataItem4)
+        Me.ret_tb_stime.Items.Add(RadListDataItem5)
+        Me.ret_tb_stime.Items.Add(RadListDataItem6)
+        Me.ret_tb_stime.Items.Add(RadListDataItem7)
+        Me.ret_tb_stime.Items.Add(RadListDataItem8)
+        Me.ret_tb_stime.Items.Add(RadListDataItem9)
+        Me.ret_tb_stime.Items.Add(RadListDataItem10)
+        Me.ret_tb_stime.Items.Add(RadListDataItem11)
+        Me.ret_tb_stime.Items.Add(RadListDataItem12)
+        Me.ret_tb_stime.Items.Add(RadListDataItem13)
+        Me.ret_tb_stime.Items.Add(RadListDataItem14)
+        Me.ret_tb_stime.Items.Add(RadListDataItem15)
+        Me.ret_tb_stime.Items.Add(RadListDataItem16)
+        Me.ret_tb_stime.Items.Add(RadListDataItem17)
+        Me.ret_tb_stime.Items.Add(RadListDataItem18)
+        Me.ret_tb_stime.Items.Add(RadListDataItem19)
+        Me.ret_tb_stime.Items.Add(RadListDataItem20)
+        Me.ret_tb_stime.Items.Add(RadListDataItem21)
+        Me.ret_tb_stime.Items.Add(RadListDataItem22)
+        Me.ret_tb_stime.Items.Add(RadListDataItem23)
+        Me.ret_tb_stime.Items.Add(RadListDataItem24)
+        Me.ret_tb_stime.Items.Add(RadListDataItem25)
+        Me.ret_tb_stime.Items.Add(RadListDataItem26)
+        Me.ret_tb_stime.Items.Add(RadListDataItem27)
+        Me.ret_tb_stime.Items.Add(RadListDataItem28)
+        Me.ret_tb_stime.Items.Add(RadListDataItem29)
+        Me.ret_tb_stime.Items.Add(RadListDataItem30)
+        Me.ret_tb_stime.Items.Add(RadListDataItem31)
+        Me.ret_tb_stime.Items.Add(RadListDataItem32)
+        Me.ret_tb_stime.Items.Add(RadListDataItem33)
+        Me.ret_tb_stime.Items.Add(RadListDataItem34)
+        Me.ret_tb_stime.Items.Add(RadListDataItem35)
+        Me.ret_tb_stime.Items.Add(RadListDataItem36)
+        Me.ret_tb_stime.Items.Add(RadListDataItem37)
+        Me.ret_tb_stime.Items.Add(RadListDataItem38)
+        Me.ret_tb_stime.Items.Add(RadListDataItem39)
+        Me.ret_tb_stime.Items.Add(RadListDataItem40)
+        Me.ret_tb_stime.Items.Add(RadListDataItem41)
+        Me.ret_tb_stime.Items.Add(RadListDataItem42)
+        Me.ret_tb_stime.Items.Add(RadListDataItem43)
+        Me.ret_tb_stime.Items.Add(RadListDataItem44)
+        Me.ret_tb_stime.Items.Add(RadListDataItem45)
+        Me.ret_tb_stime.Items.Add(RadListDataItem46)
+        Me.ret_tb_stime.Items.Add(RadListDataItem47)
+        Me.ret_tb_stime.Location = New System.Drawing.Point(346, 48)
+        Me.ret_tb_stime.Name = "ret_tb_stime"
+        Me.ret_tb_stime.Size = New System.Drawing.Size(102, 24)
+        Me.ret_tb_stime.TabIndex = 22
+        Me.ret_tb_stime.ThemeName = "VisualStudio2012Dark"
         '
-        'RadLabel58
+        'RadLabel59
         '
-        Me.RadLabel58.BackColor = System.Drawing.Color.Transparent
-        Me.RadLabel58.Location = New System.Drawing.Point(300, 111)
-        Me.RadLabel58.Name = "RadLabel58"
-        Me.RadLabel58.Size = New System.Drawing.Size(39, 18)
-        Me.RadLabel58.TabIndex = 24
-        Me.RadLabel58.Text = "Status:"
-        Me.RadLabel58.ThemeName = "VisualStudio2012Dark"
+        Me.RadLabel59.BackColor = System.Drawing.Color.Transparent
+        Me.RadLabel59.Location = New System.Drawing.Point(281, 84)
+        Me.RadLabel59.Name = "RadLabel59"
+        Me.RadLabel59.Size = New System.Drawing.Size(55, 18)
+        Me.RadLabel59.TabIndex = 21
+        Me.RadLabel59.Text = "End Time:"
+        Me.RadLabel59.ThemeName = "VisualStudio2012Dark"
         '
-        'ret_tb_status
+        'RadLabel60
         '
-        Me.ret_tb_status.Location = New System.Drawing.Point(346, 107)
-        Me.ret_tb_status.MinimumSize = New System.Drawing.Size(0, 24)
-        Me.ret_tb_status.Name = "ret_tb_status"
+        Me.RadLabel60.BackColor = System.Drawing.Color.Transparent
+        Me.RadLabel60.Location = New System.Drawing.Point(281, 54)
+        Me.RadLabel60.Name = "RadLabel60"
+        Me.RadLabel60.Size = New System.Drawing.Size(59, 18)
+        Me.RadLabel60.TabIndex = 20
+        Me.RadLabel60.Text = "Start Time:"
+        Me.RadLabel60.ThemeName = "VisualStudio2012Dark"
         '
+        'RadLabel62
         '
+        Me.RadLabel62.BackColor = System.Drawing.Color.Transparent
+        Me.RadLabel62.Location = New System.Drawing.Point(307, 21)
+        Me.RadLabel62.Name = "RadLabel62"
+        Me.RadLabel62.Size = New System.Drawing.Size(32, 18)
+        Me.RadLabel62.TabIndex = 18
+        Me.RadLabel62.Text = "Date:"
+        Me.RadLabel62.ThemeName = "VisualStudio2012Dark"
         '
-        Me.ret_tb_status.RootElement.MinSize = New System.Drawing.Size(0, 24)
-        Me.ret_tb_status.Size = New System.Drawing.Size(102, 24)
-        Me.ret_tb_status.TabIndex = 25
-        Me.ret_tb_status.ThemeName = "VisualStudio2012Dark"
+        'ret_tb_sdate
         '
-        'RadLabel69
-        '
-        Me.RadLabel69.BackColor = System.Drawing.Color.Transparent
-        Me.RadLabel69.Location = New System.Drawing.Point(509, 119)
-        Me.RadLabel69.Name = "RadLabel69"
-        Me.RadLabel69.Size = New System.Drawing.Size(68, 18)
-        Me.RadLabel69.TabIndex = 28
-        Me.RadLabel69.Text = "Returned to:"
-        Me.RadLabel69.ThemeName = "VisualStudio2012Dark"
-        '
-        'RadLabel42
-        '
-        Me.RadLabel42.BackColor = System.Drawing.Color.Transparent
-        Me.RadLabel42.Location = New System.Drawing.Point(31, 22)
-        Me.RadLabel42.Name = "RadLabel42"
-        Me.RadLabel42.Size = New System.Drawing.Size(77, 18)
-        Me.RadLabel42.TabIndex = 31
-        Me.RadLabel42.Text = "Reservation #:"
-        Me.RadLabel42.ThemeName = "VisualStudio2012Dark"
-        '
-        'ret_tb_reservationnum
-        '
-        Me.ret_tb_reservationnum.Location = New System.Drawing.Point(114, 18)
-        Me.ret_tb_reservationnum.MinimumSize = New System.Drawing.Size(0, 24)
-        Me.ret_tb_reservationnum.Name = "ret_tb_reservationnum"
-        Me.ret_tb_reservationnum.ReadOnly = True
+        Me.ret_tb_sdate.CustomFormat = "MM/d/yyyy"
+        Me.ret_tb_sdate.Format = System.Windows.Forms.DateTimePickerFormat.Custom
+        Me.ret_tb_sdate.Location = New System.Drawing.Point(346, 18)
+        Me.ret_tb_sdate.MinimumSize = New System.Drawing.Size(0, 24)
+        Me.ret_tb_sdate.Name = "ret_tb_sdate"
         '
         '
         '
-        Me.ret_tb_reservationnum.RootElement.MinSize = New System.Drawing.Size(0, 24)
-        Me.ret_tb_reservationnum.Size = New System.Drawing.Size(131, 24)
-        Me.ret_tb_reservationnum.TabIndex = 30
-        Me.ret_tb_reservationnum.ThemeName = "VisualStudio2012Dark"
+        Me.ret_tb_sdate.RootElement.MinSize = New System.Drawing.Size(0, 24)
+        Me.ret_tb_sdate.Size = New System.Drawing.Size(102, 24)
+        Me.ret_tb_sdate.TabIndex = 16
+        Me.ret_tb_sdate.TabStop = False
+        Me.ret_tb_sdate.Text = "07/25/2016"
+        Me.ret_tb_sdate.ThemeName = "VisualStudio2012Dark"
+        Me.ret_tb_sdate.Value = New Date(2016, 7, 25, 10, 55, 49, 565)
         '
-        'ret_tb_id
+        'lbl_ret_release
         '
-        Me.ret_tb_id.Location = New System.Drawing.Point(114, 51)
-        Me.ret_tb_id.Name = "ret_tb_id"
-        Me.ret_tb_id.Size = New System.Drawing.Size(131, 24)
-        Me.ret_tb_id.TabIndex = 32
-        Me.ret_tb_id.ThemeName = "VisualStudio2012Dark"
+        Me.lbl_ret_release.BackColor = System.Drawing.Color.Transparent
+        Me.lbl_ret_release.Location = New System.Drawing.Point(509, 88)
+        Me.lbl_ret_release.Name = "lbl_ret_release"
+        Me.lbl_ret_release.Size = New System.Drawing.Size(68, 18)
+        Me.lbl_ret_release.TabIndex = 9
+        Me.lbl_ret_release.Text = "Released by:"
+        Me.lbl_ret_release.ThemeName = "VisualStudio2012Dark"
         '
-        'ret_nameofstaff_release2
+        'RadLabel66
         '
-        Me.ret_nameofstaff_release2.BackColor = System.Drawing.Color.Transparent
-        Me.ret_nameofstaff_release2.ForeColor = System.Drawing.Color.White
-        Me.ret_nameofstaff_release2.Location = New System.Drawing.Point(583, 88)
-        Me.ret_nameofstaff_release2.Name = "ret_nameofstaff_release2"
-        Me.ret_nameofstaff_release2.Size = New System.Drawing.Size(75, 18)
-        Me.ret_nameofstaff_release2.TabIndex = 37
-        Me.ret_nameofstaff_release2.Text = "Name of Staff"
+        Me.RadLabel66.BackColor = System.Drawing.Color.Transparent
+        Me.RadLabel66.Location = New System.Drawing.Point(54, 85)
+        Me.RadLabel66.Name = "RadLabel66"
+        Me.RadLabel66.Size = New System.Drawing.Size(54, 18)
+        Me.RadLabel66.TabIndex = 1
+        Me.RadLabel66.Text = "Borrower:"
+        Me.RadLabel66.ThemeName = "VisualStudio2012Dark"
         '
-        'ret_nameofstaff_return
+        'ret_tb_borrower
         '
-        Me.ret_nameofstaff_return.BackColor = System.Drawing.Color.Transparent
-        Me.ret_nameofstaff_return.ForeColor = System.Drawing.Color.White
-        Me.ret_nameofstaff_return.Location = New System.Drawing.Point(583, 118)
-        Me.ret_nameofstaff_return.Name = "ret_nameofstaff_return"
-        Me.ret_nameofstaff_return.Size = New System.Drawing.Size(75, 18)
-        Me.ret_nameofstaff_return.TabIndex = 37
-        Me.ret_nameofstaff_return.Text = "Name of Staff"
+        Me.ret_tb_borrower.Location = New System.Drawing.Point(114, 82)
+        Me.ret_tb_borrower.Name = "ret_tb_borrower"
+        Me.ret_tb_borrower.Size = New System.Drawing.Size(131, 24)
+        Me.ret_tb_borrower.TabIndex = 1
+        Me.ret_tb_borrower.ThemeName = "VisualStudio2012Dark"
         '
-        'lbl_ret_equipment
+        'RadLabel67
         '
-        Me.lbl_ret_equipment.BackColor = System.Drawing.Color.Transparent
-        Me.lbl_ret_equipment.Location = New System.Drawing.Point(509, 48)
-        Me.lbl_ret_equipment.Name = "lbl_ret_equipment"
-        Me.lbl_ret_equipment.Size = New System.Drawing.Size(63, 18)
-        Me.lbl_ret_equipment.TabIndex = 39
-        Me.lbl_ret_equipment.Text = "Equipment:"
-        Me.lbl_ret_equipment.ThemeName = "VisualStudio2012Dark"
-        '
-        'lbl_ret_equipmentnum
-        '
-        Me.lbl_ret_equipmentnum.BackColor = System.Drawing.Color.Transparent
-        Me.lbl_ret_equipmentnum.Location = New System.Drawing.Point(465, 19)
-        Me.lbl_ret_equipmentnum.Name = "lbl_ret_equipmentnum"
-        Me.lbl_ret_equipmentnum.Size = New System.Drawing.Size(107, 18)
-        Me.lbl_ret_equipmentnum.TabIndex = 38
-        Me.lbl_ret_equipmentnum.Text = "Equipment Number:"
-        Me.lbl_ret_equipmentnum.ThemeName = "VisualStudio2012Dark"
-        '
-        'ret_tb_equipmentnum
-        '
-        Me.ret_tb_equipmentnum.Location = New System.Drawing.Point(578, 18)
-        Me.ret_tb_equipmentnum.MinimumSize = New System.Drawing.Size(0, 24)
-        Me.ret_tb_equipmentnum.Name = "ret_tb_equipmentnum"
-        Me.ret_tb_equipmentnum.ReadOnly = True
-        '
-        '
-        '
-        Me.ret_tb_equipmentnum.RootElement.MinSize = New System.Drawing.Size(0, 24)
-        Me.ret_tb_equipmentnum.Size = New System.Drawing.Size(199, 24)
-        Me.ret_tb_equipmentnum.TabIndex = 40
-        Me.ret_tb_equipmentnum.ThemeName = "VisualStudio2012Dark"
-        '
-        'ret_tb_equipment
-        '
-        Me.ret_tb_equipment.Location = New System.Drawing.Point(578, 48)
-        Me.ret_tb_equipment.MinimumSize = New System.Drawing.Size(0, 24)
-        Me.ret_tb_equipment.Name = "ret_tb_equipment"
-        Me.ret_tb_equipment.ReadOnly = True
-        '
-        '
-        '
-        Me.ret_tb_equipment.RootElement.MinSize = New System.Drawing.Size(0, 24)
-        Me.ret_tb_equipment.Size = New System.Drawing.Size(199, 24)
-        Me.ret_tb_equipment.TabIndex = 41
-        Me.ret_tb_equipment.ThemeName = "VisualStudio2012Dark"
-        '
-        'RadGroupBox25
-        '
-        Me.RadGroupBox25.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping
-        Me.RadGroupBox25.Anchor = System.Windows.Forms.AnchorStyles.Bottom
-        Me.RadGroupBox25.Controls.Add(Me.return_btn_returned)
-        Me.RadGroupBox25.Controls.Add(Me.return_btn_cancel)
-        Me.RadGroupBox25.HeaderText = "Controls"
-        Me.RadGroupBox25.Location = New System.Drawing.Point(176, 486)
-        Me.RadGroupBox25.Name = "RadGroupBox25"
-        Me.RadGroupBox25.Size = New System.Drawing.Size(962, 64)
-        Me.RadGroupBox25.TabIndex = 4
-        Me.RadGroupBox25.Text = "Controls"
-        Me.RadGroupBox25.ThemeName = "VisualStudio2012Dark"
-        '
-        'return_btn_cancel
-        '
-        Me.return_btn_cancel.Anchor = System.Windows.Forms.AnchorStyles.Bottom
-        Me.return_btn_cancel.Location = New System.Drawing.Point(391, 21)
-        Me.return_btn_cancel.Name = "return_btn_cancel"
-        Me.return_btn_cancel.Size = New System.Drawing.Size(110, 25)
-        Me.return_btn_cancel.TabIndex = 21
-        Me.return_btn_cancel.Text = "Cancel"
-        Me.return_btn_cancel.ThemeName = "VisualStudio2012Dark"
-        '
-        'return_btn_returned
-        '
-        Me.return_btn_returned.Anchor = System.Windows.Forms.AnchorStyles.Bottom
-        Me.return_btn_returned.Location = New System.Drawing.Point(507, 21)
-        Me.return_btn_returned.Name = "return_btn_returned"
-        Me.return_btn_returned.Size = New System.Drawing.Size(110, 25)
-        Me.return_btn_returned.TabIndex = 23
-        Me.return_btn_returned.Text = "Returned"
-        Me.return_btn_returned.ThemeName = "VisualStudio2012Dark"
-        '
-        'RadPageView3
-        '
-        Me.RadPageView3.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.RadPageView3.Controls.Add(Me.rel_list_info2)
-        Me.RadPageView3.Controls.Add(Me.ret_list_info)
-        Me.RadPageView3.Location = New System.Drawing.Point(0, -3)
-        Me.RadPageView3.Name = "RadPageView3"
-        Me.RadPageView3.SelectedPage = Me.ret_list_info
-        Me.RadPageView3.Size = New System.Drawing.Size(1341, 305)
-        Me.RadPageView3.TabIndex = 6
-        Me.RadPageView3.Text = "RadPageView3"
-        Me.RadPageView3.ThemeName = "VisualStudio2012Dark"
-        CType(Me.RadPageView3.GetChildAt(0), Telerik.WinControls.UI.RadPageViewStripElement).StripButtons = Telerik.WinControls.UI.StripViewButtons.None
-        '
-        'ret_list_info
-        '
-        Me.ret_list_info.Controls.Add(Me.penalty_grid_list)
-        Me.ret_list_info.ItemSize = New System.Drawing.SizeF(90.0!, 24.0!)
-        Me.ret_list_info.Location = New System.Drawing.Point(5, 30)
-        Me.ret_list_info.Name = "ret_list_info"
-        Me.ret_list_info.Size = New System.Drawing.Size(1331, 270)
-        Me.ret_list_info.Text = "List of Penalties"
-        '
-        'penalty_grid_list
-        '
-        Me.penalty_grid_list.AutoSizeRows = True
-        Me.penalty_grid_list.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.penalty_grid_list.Location = New System.Drawing.Point(0, 0)
-        '
-        '
-        '
-        Me.penalty_grid_list.MasterTemplate.AllowAddNewRow = False
-        Me.penalty_grid_list.MasterTemplate.AllowEditRow = False
-        Me.penalty_grid_list.MasterTemplate.AutoSizeColumnsMode = Telerik.WinControls.UI.GridViewAutoSizeColumnsMode.Fill
-        Me.penalty_grid_list.MasterTemplate.EnableGrouping = False
-        Me.penalty_grid_list.MasterTemplate.ShowRowHeaderColumn = False
-        Me.penalty_grid_list.MasterTemplate.ViewDefinition = TableViewDefinition2
-        Me.penalty_grid_list.Name = "penalty_grid_list"
-        Me.penalty_grid_list.ReadOnly = True
-        Me.penalty_grid_list.Size = New System.Drawing.Size(1331, 270)
-        Me.penalty_grid_list.TabIndex = 0
-        Me.penalty_grid_list.Text = "RadGridView3"
-        Me.penalty_grid_list.ThemeName = "VisualStudio2012Dark"
-        '
-        'rel_list_info2
-        '
-        Me.rel_list_info2.Controls.Add(Me.released_grid_list2)
-        Me.rel_list_info2.ItemSize = New System.Drawing.SizeF(165.0!, 24.0!)
-        Me.rel_list_info2.Location = New System.Drawing.Point(5, 30)
-        Me.rel_list_info2.Name = "rel_list_info2"
-        Me.rel_list_info2.Size = New System.Drawing.Size(1331, 270)
-        Me.rel_list_info2.Text = "List of Unreturned Equipments"
-        '
-        'released_grid_list2
-        '
-        Me.released_grid_list2.AutoSizeRows = True
-        Me.released_grid_list2.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.released_grid_list2.Location = New System.Drawing.Point(0, 0)
-        '
-        '
-        '
-        Me.released_grid_list2.MasterTemplate.AllowAddNewRow = False
-        Me.released_grid_list2.MasterTemplate.AutoSizeColumnsMode = Telerik.WinControls.UI.GridViewAutoSizeColumnsMode.Fill
-        Me.released_grid_list2.MasterTemplate.EnableGrouping = False
-        Me.released_grid_list2.MasterTemplate.ShowRowHeaderColumn = False
-        Me.released_grid_list2.MasterTemplate.ViewDefinition = TableViewDefinition1
-        Me.released_grid_list2.Name = "released_grid_list2"
-        Me.released_grid_list2.ReadOnly = True
-        Me.released_grid_list2.Size = New System.Drawing.Size(1331, 270)
-        Me.released_grid_list2.TabIndex = 0
-        Me.released_grid_list2.Text = "RadGridView2"
-        Me.released_grid_list2.ThemeName = "VisualStudio2012Dark"
+        Me.RadLabel67.BackColor = System.Drawing.Color.Transparent
+        Me.RadLabel67.Location = New System.Drawing.Point(57, 54)
+        Me.RadLabel67.Name = "RadLabel67"
+        Me.RadLabel67.Size = New System.Drawing.Size(51, 18)
+        Me.RadLabel67.TabIndex = 0
+        Me.RadLabel67.Text = "Pass ID#:"
+        Me.RadLabel67.ThemeName = "VisualStudio2012Dark"
         '
         'rpvp_releasing
         '
@@ -1420,6 +1444,114 @@ Partial Class Main
         Me.rpvp_releasing.Name = "rpvp_releasing"
         Me.rpvp_releasing.Size = New System.Drawing.Size(1348, 548)
         Me.rpvp_releasing.Text = "Releasing Management"
+        '
+        'RadPageView2
+        '
+        Me.RadPageView2.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.RadPageView2.Controls.Add(Me.res_notret_info)
+        Me.RadPageView2.Controls.Add(Me.rel_penalty_info)
+        Me.RadPageView2.Location = New System.Drawing.Point(0, -3)
+        Me.RadPageView2.Name = "RadPageView2"
+        Me.RadPageView2.SelectedPage = Me.res_notret_info
+        Me.RadPageView2.Size = New System.Drawing.Size(1345, 305)
+        Me.RadPageView2.TabIndex = 5
+        Me.RadPageView2.Text = "RadPageView2"
+        Me.RadPageView2.ThemeName = "VisualStudio2012Dark"
+        CType(Me.RadPageView2.GetChildAt(0), Telerik.WinControls.UI.RadPageViewStripElement).StripButtons = Telerik.WinControls.UI.StripViewButtons.None
+        '
+        'res_notret_info
+        '
+        Me.res_notret_info.Controls.Add(Me.reserved_grid_list)
+        Me.res_notret_info.Location = New System.Drawing.Point(5, 30)
+        Me.res_notret_info.Name = "res_notret_info"
+        Me.res_notret_info.Size = New System.Drawing.Size(1335, 270)
+        Me.res_notret_info.Text = "List of Reserved Equipments"
+        '
+        'reserved_grid_list
+        '
+        Me.reserved_grid_list.AutoSizeRows = True
+        Me.reserved_grid_list.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.reserved_grid_list.Location = New System.Drawing.Point(0, 0)
+        '
+        '
+        '
+        Me.reserved_grid_list.MasterTemplate.AllowAddNewRow = False
+        Me.reserved_grid_list.MasterTemplate.AutoSizeColumnsMode = Telerik.WinControls.UI.GridViewAutoSizeColumnsMode.Fill
+        Me.reserved_grid_list.MasterTemplate.EnableGrouping = False
+        Me.reserved_grid_list.MasterTemplate.ShowRowHeaderColumn = False
+        Me.reserved_grid_list.MasterTemplate.ViewDefinition = TableViewDefinition15
+        Me.reserved_grid_list.Name = "reserved_grid_list"
+        Me.reserved_grid_list.ReadOnly = True
+        Me.reserved_grid_list.Size = New System.Drawing.Size(1335, 270)
+        Me.reserved_grid_list.TabIndex = 0
+        Me.reserved_grid_list.Text = "RadGridView2"
+        Me.reserved_grid_list.ThemeName = "VisualStudio2012Dark"
+        '
+        'rel_penalty_info
+        '
+        Me.rel_penalty_info.Controls.Add(Me.released_grid_list)
+        Me.rel_penalty_info.Location = New System.Drawing.Point(5, 30)
+        Me.rel_penalty_info.Name = "rel_penalty_info"
+        Me.rel_penalty_info.Size = New System.Drawing.Size(1335, 270)
+        Me.rel_penalty_info.Text = "List of Released Equipments"
+        '
+        'released_grid_list
+        '
+        Me.released_grid_list.AutoSizeRows = True
+        Me.released_grid_list.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.released_grid_list.Location = New System.Drawing.Point(0, 0)
+        '
+        '
+        '
+        Me.released_grid_list.MasterTemplate.AllowAddNewRow = False
+        Me.released_grid_list.MasterTemplate.AllowDeleteRow = False
+        Me.released_grid_list.MasterTemplate.AllowEditRow = False
+        Me.released_grid_list.MasterTemplate.AutoSizeColumnsMode = Telerik.WinControls.UI.GridViewAutoSizeColumnsMode.Fill
+        Me.released_grid_list.MasterTemplate.EnableGrouping = False
+        Me.released_grid_list.MasterTemplate.ShowRowHeaderColumn = False
+        Me.released_grid_list.MasterTemplate.ViewDefinition = TableViewDefinition16
+        Me.released_grid_list.Name = "released_grid_list"
+        Me.released_grid_list.ReadOnly = True
+        Me.released_grid_list.Size = New System.Drawing.Size(1335, 270)
+        Me.released_grid_list.TabIndex = 0
+        Me.released_grid_list.Text = "RadGridView3"
+        Me.released_grid_list.ThemeName = "VisualStudio2012Dark"
+        '
+        'RadGroupBox12
+        '
+        Me.RadGroupBox12.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping
+        Me.RadGroupBox12.Anchor = System.Windows.Forms.AnchorStyles.Bottom
+        Me.RadGroupBox12.Controls.Add(Me.released_btn_release)
+        Me.RadGroupBox12.Controls.Add(Me.released_btn_cancel)
+        Me.RadGroupBox12.HeaderText = "Controls"
+        Me.RadGroupBox12.Location = New System.Drawing.Point(176, 486)
+        Me.RadGroupBox12.Name = "RadGroupBox12"
+        Me.RadGroupBox12.Size = New System.Drawing.Size(962, 64)
+        Me.RadGroupBox12.TabIndex = 3
+        Me.RadGroupBox12.Text = "Controls"
+        Me.RadGroupBox12.ThemeName = "VisualStudio2012Dark"
+        '
+        'released_btn_release
+        '
+        Me.released_btn_release.Anchor = System.Windows.Forms.AnchorStyles.Bottom
+        Me.released_btn_release.Location = New System.Drawing.Point(507, 21)
+        Me.released_btn_release.Name = "released_btn_release"
+        Me.released_btn_release.Size = New System.Drawing.Size(110, 25)
+        Me.released_btn_release.TabIndex = 23
+        Me.released_btn_release.Text = "Release"
+        Me.released_btn_release.ThemeName = "VisualStudio2012Dark"
+        '
+        'released_btn_cancel
+        '
+        Me.released_btn_cancel.Anchor = System.Windows.Forms.AnchorStyles.Bottom
+        Me.released_btn_cancel.Location = New System.Drawing.Point(391, 21)
+        Me.released_btn_cancel.Name = "released_btn_cancel"
+        Me.released_btn_cancel.Size = New System.Drawing.Size(110, 25)
+        Me.released_btn_cancel.TabIndex = 21
+        Me.released_btn_cancel.Text = "Cancel"
+        Me.released_btn_cancel.ThemeName = "VisualStudio2012Dark"
         '
         'gp_details
         '
@@ -1453,178 +1585,238 @@ Partial Class Main
         Me.gp_details.Text = "Details:"
         Me.gp_details.ThemeName = "VisualStudio2012Dark"
         '
-        'RadLabel15
+        'rel_nameofstaff_release
         '
-        Me.RadLabel15.BackColor = System.Drawing.Color.Transparent
-        Me.RadLabel15.Location = New System.Drawing.Point(57, 54)
-        Me.RadLabel15.Name = "RadLabel15"
-        Me.RadLabel15.Size = New System.Drawing.Size(51, 18)
-        Me.RadLabel15.TabIndex = 0
-        Me.RadLabel15.Text = "Pass ID#:"
-        Me.RadLabel15.ThemeName = "VisualStudio2012Dark"
+        Me.rel_nameofstaff_release.BackColor = System.Drawing.Color.Transparent
+        Me.rel_nameofstaff_release.ForeColor = System.Drawing.Color.White
+        Me.rel_nameofstaff_release.Location = New System.Drawing.Point(578, 114)
+        Me.rel_nameofstaff_release.Name = "rel_nameofstaff_release"
+        Me.rel_nameofstaff_release.Size = New System.Drawing.Size(75, 18)
+        Me.rel_nameofstaff_release.TabIndex = 38
+        Me.rel_nameofstaff_release.Text = "Name of Staff"
         '
-        'rel_tb_borrower
+        'rel_tb_startdate
         '
-        Me.rel_tb_borrower.Location = New System.Drawing.Point(114, 82)
-        Me.rel_tb_borrower.Name = "rel_tb_borrower"
-        Me.rel_tb_borrower.Size = New System.Drawing.Size(131, 24)
-        Me.rel_tb_borrower.TabIndex = 1
-        Me.rel_tb_borrower.Text = "name ng Borrower"
-        Me.rel_tb_borrower.ThemeName = "VisualStudio2012Dark"
+        Me.rel_tb_startdate.CustomFormat = "MM/d/yyyy"
+        Me.rel_tb_startdate.Format = System.Windows.Forms.DateTimePickerFormat.Custom
+        Me.rel_tb_startdate.Location = New System.Drawing.Point(345, 18)
+        Me.rel_tb_startdate.MinimumSize = New System.Drawing.Size(0, 24)
+        Me.rel_tb_startdate.Name = "rel_tb_startdate"
         '
-        'RadLabel16
         '
-        Me.RadLabel16.BackColor = System.Drawing.Color.Transparent
-        Me.RadLabel16.Location = New System.Drawing.Point(54, 85)
-        Me.RadLabel16.Name = "RadLabel16"
-        Me.RadLabel16.Size = New System.Drawing.Size(54, 18)
-        Me.RadLabel16.TabIndex = 1
-        Me.RadLabel16.Text = "Borrower:"
-        Me.RadLabel16.ThemeName = "VisualStudio2012Dark"
         '
-        'RadLabel20
+        Me.rel_tb_startdate.RootElement.MinSize = New System.Drawing.Size(0, 24)
+        Me.rel_tb_startdate.Size = New System.Drawing.Size(102, 24)
+        Me.rel_tb_startdate.TabIndex = 37
+        Me.rel_tb_startdate.TabStop = False
+        Me.rel_tb_startdate.Text = "07/25/2016"
+        Me.rel_tb_startdate.ThemeName = "VisualStudio2012Dark"
+        Me.rel_tb_startdate.Value = New Date(2016, 7, 25, 10, 55, 49, 565)
         '
-        Me.RadLabel20.BackColor = System.Drawing.Color.Transparent
-        Me.RadLabel20.Location = New System.Drawing.Point(504, 114)
-        Me.RadLabel20.Name = "RadLabel20"
-        Me.RadLabel20.Size = New System.Drawing.Size(68, 18)
-        Me.RadLabel20.TabIndex = 9
-        Me.RadLabel20.Text = "Released by:"
-        Me.RadLabel20.ThemeName = "VisualStudio2012Dark"
+        'rel_tb_equipment
         '
-        'RadLabel48
+        Me.rel_tb_equipment.Location = New System.Drawing.Point(578, 48)
+        Me.rel_tb_equipment.MinimumSize = New System.Drawing.Size(0, 24)
+        Me.rel_tb_equipment.Name = "rel_tb_equipment"
+        Me.rel_tb_equipment.ReadOnly = True
         '
-        Me.RadLabel48.BackColor = System.Drawing.Color.Transparent
-        Me.RadLabel48.Location = New System.Drawing.Point(307, 21)
-        Me.RadLabel48.Name = "RadLabel48"
-        Me.RadLabel48.Size = New System.Drawing.Size(32, 18)
-        Me.RadLabel48.TabIndex = 18
-        Me.RadLabel48.Text = "Date:"
-        Me.RadLabel48.ThemeName = "VisualStudio2012Dark"
         '
-        'RadLabel46
         '
-        Me.RadLabel46.BackColor = System.Drawing.Color.Transparent
-        Me.RadLabel46.Location = New System.Drawing.Point(280, 85)
-        Me.RadLabel46.Name = "RadLabel46"
-        Me.RadLabel46.Size = New System.Drawing.Size(59, 18)
-        Me.RadLabel46.TabIndex = 20
-        Me.RadLabel46.Text = "Start Time:"
-        Me.RadLabel46.ThemeName = "VisualStudio2012Dark"
+        Me.rel_tb_equipment.RootElement.MinSize = New System.Drawing.Size(0, 24)
+        Me.rel_tb_equipment.Size = New System.Drawing.Size(199, 24)
+        Me.rel_tb_equipment.TabIndex = 36
+        Me.rel_tb_equipment.ThemeName = "VisualStudio2012Dark"
         '
-        'RadLabel45
+        'rel_tb_equipmentnum
         '
-        Me.RadLabel45.BackColor = System.Drawing.Color.Transparent
-        Me.RadLabel45.Location = New System.Drawing.Point(281, 114)
-        Me.RadLabel45.Name = "RadLabel45"
-        Me.RadLabel45.Size = New System.Drawing.Size(55, 18)
-        Me.RadLabel45.TabIndex = 21
-        Me.RadLabel45.Text = "End Time:"
-        Me.RadLabel45.ThemeName = "VisualStudio2012Dark"
+        Me.rel_tb_equipmentnum.Location = New System.Drawing.Point(578, 18)
+        Me.rel_tb_equipmentnum.MinimumSize = New System.Drawing.Size(0, 24)
+        Me.rel_tb_equipmentnum.Name = "rel_tb_equipmentnum"
+        Me.rel_tb_equipmentnum.ReadOnly = True
         '
-        'rel_tb_starttime
         '
-        RadListDataItem143.Text = "01:00"
-        RadListDataItem144.Text = "01:30"
-        RadListDataItem145.Text = "02:00"
-        RadListDataItem146.Text = "02:30"
-        RadListDataItem147.Text = "03:00"
-        RadListDataItem148.Text = "03:30"
-        RadListDataItem149.Text = "04:00"
-        RadListDataItem150.Text = "04:30"
-        RadListDataItem151.Text = "05:00"
-        RadListDataItem152.Text = "05:30"
-        RadListDataItem153.Text = "06:00"
-        RadListDataItem154.Text = "06:30"
-        RadListDataItem155.Text = "07:00"
-        RadListDataItem156.Text = "07:30"
-        RadListDataItem157.Text = "08:00"
-        RadListDataItem158.Text = "08:30"
-        RadListDataItem159.Text = "09:00"
-        RadListDataItem160.Text = "09:30"
-        RadListDataItem161.Text = "10:00"
-        RadListDataItem162.Text = "10:30"
-        RadListDataItem163.Text = "11:00"
-        RadListDataItem164.Text = "11:30"
-        RadListDataItem165.Text = "12:00"
-        RadListDataItem166.Text = "12:30"
-        RadListDataItem167.Text = "13:00"
-        RadListDataItem168.Text = "13:30"
-        RadListDataItem169.Text = "14:00"
-        RadListDataItem170.Text = "14:30"
-        RadListDataItem171.Text = "15:00"
-        RadListDataItem172.Text = "15:30"
-        RadListDataItem173.Text = "16:00"
-        RadListDataItem174.Text = "16:30"
-        RadListDataItem175.Text = "17:00"
-        RadListDataItem176.Text = "17:30"
-        RadListDataItem177.Text = "18:00"
-        RadListDataItem178.Text = "18:30"
-        RadListDataItem179.Text = "19:00"
-        RadListDataItem180.Text = "19:30"
-        RadListDataItem181.Text = "20:00"
-        RadListDataItem182.Text = "20:30"
-        RadListDataItem183.Text = "21:00"
-        RadListDataItem184.Text = "21:30"
-        RadListDataItem185.Text = "22:00"
-        RadListDataItem186.Text = "22:30"
-        RadListDataItem187.Text = "23:00"
-        RadListDataItem188.Text = "23:30"
-        RadListDataItem189.Text = "24:00"
-        Me.rel_tb_starttime.Items.Add(RadListDataItem143)
-        Me.rel_tb_starttime.Items.Add(RadListDataItem144)
-        Me.rel_tb_starttime.Items.Add(RadListDataItem145)
-        Me.rel_tb_starttime.Items.Add(RadListDataItem146)
-        Me.rel_tb_starttime.Items.Add(RadListDataItem147)
-        Me.rel_tb_starttime.Items.Add(RadListDataItem148)
-        Me.rel_tb_starttime.Items.Add(RadListDataItem149)
-        Me.rel_tb_starttime.Items.Add(RadListDataItem150)
-        Me.rel_tb_starttime.Items.Add(RadListDataItem151)
-        Me.rel_tb_starttime.Items.Add(RadListDataItem152)
-        Me.rel_tb_starttime.Items.Add(RadListDataItem153)
-        Me.rel_tb_starttime.Items.Add(RadListDataItem154)
-        Me.rel_tb_starttime.Items.Add(RadListDataItem155)
-        Me.rel_tb_starttime.Items.Add(RadListDataItem156)
-        Me.rel_tb_starttime.Items.Add(RadListDataItem157)
-        Me.rel_tb_starttime.Items.Add(RadListDataItem158)
-        Me.rel_tb_starttime.Items.Add(RadListDataItem159)
-        Me.rel_tb_starttime.Items.Add(RadListDataItem160)
-        Me.rel_tb_starttime.Items.Add(RadListDataItem161)
-        Me.rel_tb_starttime.Items.Add(RadListDataItem162)
-        Me.rel_tb_starttime.Items.Add(RadListDataItem163)
-        Me.rel_tb_starttime.Items.Add(RadListDataItem164)
-        Me.rel_tb_starttime.Items.Add(RadListDataItem165)
-        Me.rel_tb_starttime.Items.Add(RadListDataItem166)
-        Me.rel_tb_starttime.Items.Add(RadListDataItem167)
-        Me.rel_tb_starttime.Items.Add(RadListDataItem168)
-        Me.rel_tb_starttime.Items.Add(RadListDataItem169)
-        Me.rel_tb_starttime.Items.Add(RadListDataItem170)
-        Me.rel_tb_starttime.Items.Add(RadListDataItem171)
-        Me.rel_tb_starttime.Items.Add(RadListDataItem172)
-        Me.rel_tb_starttime.Items.Add(RadListDataItem173)
-        Me.rel_tb_starttime.Items.Add(RadListDataItem174)
-        Me.rel_tb_starttime.Items.Add(RadListDataItem175)
-        Me.rel_tb_starttime.Items.Add(RadListDataItem176)
-        Me.rel_tb_starttime.Items.Add(RadListDataItem177)
-        Me.rel_tb_starttime.Items.Add(RadListDataItem178)
-        Me.rel_tb_starttime.Items.Add(RadListDataItem179)
-        Me.rel_tb_starttime.Items.Add(RadListDataItem180)
-        Me.rel_tb_starttime.Items.Add(RadListDataItem181)
-        Me.rel_tb_starttime.Items.Add(RadListDataItem182)
-        Me.rel_tb_starttime.Items.Add(RadListDataItem183)
-        Me.rel_tb_starttime.Items.Add(RadListDataItem184)
-        Me.rel_tb_starttime.Items.Add(RadListDataItem185)
-        Me.rel_tb_starttime.Items.Add(RadListDataItem186)
-        Me.rel_tb_starttime.Items.Add(RadListDataItem187)
-        Me.rel_tb_starttime.Items.Add(RadListDataItem188)
-        Me.rel_tb_starttime.Items.Add(RadListDataItem189)
-        Me.rel_tb_starttime.Location = New System.Drawing.Point(345, 79)
-        Me.rel_tb_starttime.Name = "rel_tb_starttime"
-        Me.rel_tb_starttime.Size = New System.Drawing.Size(102, 24)
-        Me.rel_tb_starttime.TabIndex = 22
-        Me.rel_tb_starttime.ThemeName = "VisualStudio2012Dark"
+        '
+        Me.rel_tb_equipmentnum.RootElement.MinSize = New System.Drawing.Size(0, 24)
+        Me.rel_tb_equipmentnum.Size = New System.Drawing.Size(199, 24)
+        Me.rel_tb_equipmentnum.TabIndex = 35
+        Me.rel_tb_equipmentnum.ThemeName = "VisualStudio2012Dark"
+        '
+        'lbl_equipmentnum
+        '
+        Me.lbl_equipmentnum.BackColor = System.Drawing.Color.Transparent
+        Me.lbl_equipmentnum.Location = New System.Drawing.Point(465, 19)
+        Me.lbl_equipmentnum.Name = "lbl_equipmentnum"
+        Me.lbl_equipmentnum.Size = New System.Drawing.Size(107, 18)
+        Me.lbl_equipmentnum.TabIndex = 10
+        Me.lbl_equipmentnum.Text = "Equipment Number:"
+        Me.lbl_equipmentnum.ThemeName = "VisualStudio2012Dark"
+        '
+        'lbl_equipment
+        '
+        Me.lbl_equipment.BackColor = System.Drawing.Color.Transparent
+        Me.lbl_equipment.Location = New System.Drawing.Point(509, 48)
+        Me.lbl_equipment.Name = "lbl_equipment"
+        Me.lbl_equipment.Size = New System.Drawing.Size(63, 18)
+        Me.lbl_equipment.TabIndex = 34
+        Me.lbl_equipment.Text = "Equipment:"
+        Me.lbl_equipment.ThemeName = "VisualStudio2012Dark"
+        '
+        'rel_tb_status
+        '
+        RadListDataItem48.Text = "Released"
+        Me.rel_tb_status.Items.Add(RadListDataItem48)
+        Me.rel_tb_status.Location = New System.Drawing.Point(345, 138)
+        Me.rel_tb_status.Name = "rel_tb_status"
+        Me.rel_tb_status.Size = New System.Drawing.Size(102, 24)
+        Me.rel_tb_status.TabIndex = 33
+        Me.rel_tb_status.ThemeName = "VisualStudio2012Dark"
+        '
+        'rel_tb_id
+        '
+        Me.rel_tb_id.Location = New System.Drawing.Point(114, 51)
+        Me.rel_tb_id.Name = "rel_tb_id"
+        Me.rel_tb_id.Size = New System.Drawing.Size(131, 24)
+        Me.rel_tb_id.TabIndex = 32
+        Me.rel_tb_id.Text = "1"
+        Me.rel_tb_id.ThemeName = "VisualStudio2012Dark"
+        '
+        'rel_tb_reservationnum
+        '
+        Me.rel_tb_reservationnum.Location = New System.Drawing.Point(114, 18)
+        Me.rel_tb_reservationnum.MinimumSize = New System.Drawing.Size(0, 24)
+        Me.rel_tb_reservationnum.Name = "rel_tb_reservationnum"
+        Me.rel_tb_reservationnum.ReadOnly = True
+        '
+        '
+        '
+        Me.rel_tb_reservationnum.RootElement.MinSize = New System.Drawing.Size(0, 24)
+        Me.rel_tb_reservationnum.Size = New System.Drawing.Size(131, 24)
+        Me.rel_tb_reservationnum.TabIndex = 30
+        Me.rel_tb_reservationnum.ThemeName = "VisualStudio2012Dark"
+        '
+        'RadLabel41
+        '
+        Me.RadLabel41.BackColor = System.Drawing.Color.Transparent
+        Me.RadLabel41.Location = New System.Drawing.Point(31, 22)
+        Me.RadLabel41.Name = "RadLabel41"
+        Me.RadLabel41.Size = New System.Drawing.Size(77, 18)
+        Me.RadLabel41.TabIndex = 31
+        Me.RadLabel41.Text = "Reservation #:"
+        Me.RadLabel41.ThemeName = "VisualStudio2012Dark"
+        '
+        'RadLabel49
+        '
+        Me.RadLabel49.BackColor = System.Drawing.Color.Transparent
+        Me.RadLabel49.Location = New System.Drawing.Point(300, 141)
+        Me.RadLabel49.Name = "RadLabel49"
+        Me.RadLabel49.Size = New System.Drawing.Size(39, 18)
+        Me.RadLabel49.TabIndex = 24
+        Me.RadLabel49.Text = "Status:"
+        Me.RadLabel49.ThemeName = "VisualStudio2012Dark"
         '
         'rel_tb_endtime
+        '
+        RadListDataItem49.Text = "01:00"
+        RadListDataItem50.Text = "01:30"
+        RadListDataItem51.Text = "02:00"
+        RadListDataItem52.Text = "02:30"
+        RadListDataItem53.Text = "03:00"
+        RadListDataItem54.Text = "03:30"
+        RadListDataItem55.Text = "04:00"
+        RadListDataItem56.Text = "04:30"
+        RadListDataItem57.Text = "05:00"
+        RadListDataItem58.Text = "05:30"
+        RadListDataItem59.Text = "06:00"
+        RadListDataItem60.Text = "06:30"
+        RadListDataItem61.Text = "07:00"
+        RadListDataItem62.Text = "07:30"
+        RadListDataItem63.Text = "08:00"
+        RadListDataItem64.Text = "08:30"
+        RadListDataItem65.Text = "09:00"
+        RadListDataItem66.Text = "09:30"
+        RadListDataItem67.Text = "10:00"
+        RadListDataItem68.Text = "10:30"
+        RadListDataItem69.Text = "11:00"
+        RadListDataItem70.Text = "11:30"
+        RadListDataItem71.Text = "12:00"
+        RadListDataItem72.Text = "12:30"
+        RadListDataItem73.Text = "13:00"
+        RadListDataItem74.Text = "13:30"
+        RadListDataItem75.Text = "14:00"
+        RadListDataItem76.Text = "14:30"
+        RadListDataItem77.Text = "15:00"
+        RadListDataItem78.Text = "15:30"
+        RadListDataItem79.Text = "16:00"
+        RadListDataItem80.Text = "16:30"
+        RadListDataItem81.Text = "17:00"
+        RadListDataItem82.Text = "17:30"
+        RadListDataItem83.Text = "18:00"
+        RadListDataItem84.Text = "18:30"
+        RadListDataItem85.Text = "19:00"
+        RadListDataItem86.Text = "19:30"
+        RadListDataItem87.Text = "20:00"
+        RadListDataItem88.Text = "20:30"
+        RadListDataItem89.Text = "21:00"
+        RadListDataItem90.Text = "21:30"
+        RadListDataItem91.Text = "22:00"
+        RadListDataItem92.Text = "22:30"
+        RadListDataItem93.Text = "23:00"
+        RadListDataItem94.Text = "23:30"
+        RadListDataItem95.Text = "24:00"
+        Me.rel_tb_endtime.Items.Add(RadListDataItem49)
+        Me.rel_tb_endtime.Items.Add(RadListDataItem50)
+        Me.rel_tb_endtime.Items.Add(RadListDataItem51)
+        Me.rel_tb_endtime.Items.Add(RadListDataItem52)
+        Me.rel_tb_endtime.Items.Add(RadListDataItem53)
+        Me.rel_tb_endtime.Items.Add(RadListDataItem54)
+        Me.rel_tb_endtime.Items.Add(RadListDataItem55)
+        Me.rel_tb_endtime.Items.Add(RadListDataItem56)
+        Me.rel_tb_endtime.Items.Add(RadListDataItem57)
+        Me.rel_tb_endtime.Items.Add(RadListDataItem58)
+        Me.rel_tb_endtime.Items.Add(RadListDataItem59)
+        Me.rel_tb_endtime.Items.Add(RadListDataItem60)
+        Me.rel_tb_endtime.Items.Add(RadListDataItem61)
+        Me.rel_tb_endtime.Items.Add(RadListDataItem62)
+        Me.rel_tb_endtime.Items.Add(RadListDataItem63)
+        Me.rel_tb_endtime.Items.Add(RadListDataItem64)
+        Me.rel_tb_endtime.Items.Add(RadListDataItem65)
+        Me.rel_tb_endtime.Items.Add(RadListDataItem66)
+        Me.rel_tb_endtime.Items.Add(RadListDataItem67)
+        Me.rel_tb_endtime.Items.Add(RadListDataItem68)
+        Me.rel_tb_endtime.Items.Add(RadListDataItem69)
+        Me.rel_tb_endtime.Items.Add(RadListDataItem70)
+        Me.rel_tb_endtime.Items.Add(RadListDataItem71)
+        Me.rel_tb_endtime.Items.Add(RadListDataItem72)
+        Me.rel_tb_endtime.Items.Add(RadListDataItem73)
+        Me.rel_tb_endtime.Items.Add(RadListDataItem74)
+        Me.rel_tb_endtime.Items.Add(RadListDataItem75)
+        Me.rel_tb_endtime.Items.Add(RadListDataItem76)
+        Me.rel_tb_endtime.Items.Add(RadListDataItem77)
+        Me.rel_tb_endtime.Items.Add(RadListDataItem78)
+        Me.rel_tb_endtime.Items.Add(RadListDataItem79)
+        Me.rel_tb_endtime.Items.Add(RadListDataItem80)
+        Me.rel_tb_endtime.Items.Add(RadListDataItem81)
+        Me.rel_tb_endtime.Items.Add(RadListDataItem82)
+        Me.rel_tb_endtime.Items.Add(RadListDataItem83)
+        Me.rel_tb_endtime.Items.Add(RadListDataItem84)
+        Me.rel_tb_endtime.Items.Add(RadListDataItem85)
+        Me.rel_tb_endtime.Items.Add(RadListDataItem86)
+        Me.rel_tb_endtime.Items.Add(RadListDataItem87)
+        Me.rel_tb_endtime.Items.Add(RadListDataItem88)
+        Me.rel_tb_endtime.Items.Add(RadListDataItem89)
+        Me.rel_tb_endtime.Items.Add(RadListDataItem90)
+        Me.rel_tb_endtime.Items.Add(RadListDataItem91)
+        Me.rel_tb_endtime.Items.Add(RadListDataItem92)
+        Me.rel_tb_endtime.Items.Add(RadListDataItem93)
+        Me.rel_tb_endtime.Items.Add(RadListDataItem94)
+        Me.rel_tb_endtime.Items.Add(RadListDataItem95)
+        Me.rel_tb_endtime.Location = New System.Drawing.Point(346, 108)
+        Me.rel_tb_endtime.Name = "rel_tb_endtime"
+        Me.rel_tb_endtime.Size = New System.Drawing.Size(102, 24)
+        Me.rel_tb_endtime.TabIndex = 23
+        Me.rel_tb_endtime.ThemeName = "VisualStudio2012Dark"
+        '
+        'rel_tb_starttime
         '
         RadListDataItem96.Text = "01:00"
         RadListDataItem97.Text = "01:30"
@@ -1673,279 +1865,127 @@ Partial Class Main
         RadListDataItem140.Text = "23:00"
         RadListDataItem141.Text = "23:30"
         RadListDataItem142.Text = "24:00"
-        Me.rel_tb_endtime.Items.Add(RadListDataItem96)
-        Me.rel_tb_endtime.Items.Add(RadListDataItem97)
-        Me.rel_tb_endtime.Items.Add(RadListDataItem98)
-        Me.rel_tb_endtime.Items.Add(RadListDataItem99)
-        Me.rel_tb_endtime.Items.Add(RadListDataItem100)
-        Me.rel_tb_endtime.Items.Add(RadListDataItem101)
-        Me.rel_tb_endtime.Items.Add(RadListDataItem102)
-        Me.rel_tb_endtime.Items.Add(RadListDataItem103)
-        Me.rel_tb_endtime.Items.Add(RadListDataItem104)
-        Me.rel_tb_endtime.Items.Add(RadListDataItem105)
-        Me.rel_tb_endtime.Items.Add(RadListDataItem106)
-        Me.rel_tb_endtime.Items.Add(RadListDataItem107)
-        Me.rel_tb_endtime.Items.Add(RadListDataItem108)
-        Me.rel_tb_endtime.Items.Add(RadListDataItem109)
-        Me.rel_tb_endtime.Items.Add(RadListDataItem110)
-        Me.rel_tb_endtime.Items.Add(RadListDataItem111)
-        Me.rel_tb_endtime.Items.Add(RadListDataItem112)
-        Me.rel_tb_endtime.Items.Add(RadListDataItem113)
-        Me.rel_tb_endtime.Items.Add(RadListDataItem114)
-        Me.rel_tb_endtime.Items.Add(RadListDataItem115)
-        Me.rel_tb_endtime.Items.Add(RadListDataItem116)
-        Me.rel_tb_endtime.Items.Add(RadListDataItem117)
-        Me.rel_tb_endtime.Items.Add(RadListDataItem118)
-        Me.rel_tb_endtime.Items.Add(RadListDataItem119)
-        Me.rel_tb_endtime.Items.Add(RadListDataItem120)
-        Me.rel_tb_endtime.Items.Add(RadListDataItem121)
-        Me.rel_tb_endtime.Items.Add(RadListDataItem122)
-        Me.rel_tb_endtime.Items.Add(RadListDataItem123)
-        Me.rel_tb_endtime.Items.Add(RadListDataItem124)
-        Me.rel_tb_endtime.Items.Add(RadListDataItem125)
-        Me.rel_tb_endtime.Items.Add(RadListDataItem126)
-        Me.rel_tb_endtime.Items.Add(RadListDataItem127)
-        Me.rel_tb_endtime.Items.Add(RadListDataItem128)
-        Me.rel_tb_endtime.Items.Add(RadListDataItem129)
-        Me.rel_tb_endtime.Items.Add(RadListDataItem130)
-        Me.rel_tb_endtime.Items.Add(RadListDataItem131)
-        Me.rel_tb_endtime.Items.Add(RadListDataItem132)
-        Me.rel_tb_endtime.Items.Add(RadListDataItem133)
-        Me.rel_tb_endtime.Items.Add(RadListDataItem134)
-        Me.rel_tb_endtime.Items.Add(RadListDataItem135)
-        Me.rel_tb_endtime.Items.Add(RadListDataItem136)
-        Me.rel_tb_endtime.Items.Add(RadListDataItem137)
-        Me.rel_tb_endtime.Items.Add(RadListDataItem138)
-        Me.rel_tb_endtime.Items.Add(RadListDataItem139)
-        Me.rel_tb_endtime.Items.Add(RadListDataItem140)
-        Me.rel_tb_endtime.Items.Add(RadListDataItem141)
-        Me.rel_tb_endtime.Items.Add(RadListDataItem142)
-        Me.rel_tb_endtime.Location = New System.Drawing.Point(346, 108)
-        Me.rel_tb_endtime.Name = "rel_tb_endtime"
-        Me.rel_tb_endtime.Size = New System.Drawing.Size(102, 24)
-        Me.rel_tb_endtime.TabIndex = 23
-        Me.rel_tb_endtime.ThemeName = "VisualStudio2012Dark"
+        Me.rel_tb_starttime.Items.Add(RadListDataItem96)
+        Me.rel_tb_starttime.Items.Add(RadListDataItem97)
+        Me.rel_tb_starttime.Items.Add(RadListDataItem98)
+        Me.rel_tb_starttime.Items.Add(RadListDataItem99)
+        Me.rel_tb_starttime.Items.Add(RadListDataItem100)
+        Me.rel_tb_starttime.Items.Add(RadListDataItem101)
+        Me.rel_tb_starttime.Items.Add(RadListDataItem102)
+        Me.rel_tb_starttime.Items.Add(RadListDataItem103)
+        Me.rel_tb_starttime.Items.Add(RadListDataItem104)
+        Me.rel_tb_starttime.Items.Add(RadListDataItem105)
+        Me.rel_tb_starttime.Items.Add(RadListDataItem106)
+        Me.rel_tb_starttime.Items.Add(RadListDataItem107)
+        Me.rel_tb_starttime.Items.Add(RadListDataItem108)
+        Me.rel_tb_starttime.Items.Add(RadListDataItem109)
+        Me.rel_tb_starttime.Items.Add(RadListDataItem110)
+        Me.rel_tb_starttime.Items.Add(RadListDataItem111)
+        Me.rel_tb_starttime.Items.Add(RadListDataItem112)
+        Me.rel_tb_starttime.Items.Add(RadListDataItem113)
+        Me.rel_tb_starttime.Items.Add(RadListDataItem114)
+        Me.rel_tb_starttime.Items.Add(RadListDataItem115)
+        Me.rel_tb_starttime.Items.Add(RadListDataItem116)
+        Me.rel_tb_starttime.Items.Add(RadListDataItem117)
+        Me.rel_tb_starttime.Items.Add(RadListDataItem118)
+        Me.rel_tb_starttime.Items.Add(RadListDataItem119)
+        Me.rel_tb_starttime.Items.Add(RadListDataItem120)
+        Me.rel_tb_starttime.Items.Add(RadListDataItem121)
+        Me.rel_tb_starttime.Items.Add(RadListDataItem122)
+        Me.rel_tb_starttime.Items.Add(RadListDataItem123)
+        Me.rel_tb_starttime.Items.Add(RadListDataItem124)
+        Me.rel_tb_starttime.Items.Add(RadListDataItem125)
+        Me.rel_tb_starttime.Items.Add(RadListDataItem126)
+        Me.rel_tb_starttime.Items.Add(RadListDataItem127)
+        Me.rel_tb_starttime.Items.Add(RadListDataItem128)
+        Me.rel_tb_starttime.Items.Add(RadListDataItem129)
+        Me.rel_tb_starttime.Items.Add(RadListDataItem130)
+        Me.rel_tb_starttime.Items.Add(RadListDataItem131)
+        Me.rel_tb_starttime.Items.Add(RadListDataItem132)
+        Me.rel_tb_starttime.Items.Add(RadListDataItem133)
+        Me.rel_tb_starttime.Items.Add(RadListDataItem134)
+        Me.rel_tb_starttime.Items.Add(RadListDataItem135)
+        Me.rel_tb_starttime.Items.Add(RadListDataItem136)
+        Me.rel_tb_starttime.Items.Add(RadListDataItem137)
+        Me.rel_tb_starttime.Items.Add(RadListDataItem138)
+        Me.rel_tb_starttime.Items.Add(RadListDataItem139)
+        Me.rel_tb_starttime.Items.Add(RadListDataItem140)
+        Me.rel_tb_starttime.Items.Add(RadListDataItem141)
+        Me.rel_tb_starttime.Items.Add(RadListDataItem142)
+        Me.rel_tb_starttime.Location = New System.Drawing.Point(345, 79)
+        Me.rel_tb_starttime.Name = "rel_tb_starttime"
+        Me.rel_tb_starttime.Size = New System.Drawing.Size(102, 24)
+        Me.rel_tb_starttime.TabIndex = 22
+        Me.rel_tb_starttime.ThemeName = "VisualStudio2012Dark"
         '
-        'RadLabel49
+        'RadLabel45
         '
-        Me.RadLabel49.BackColor = System.Drawing.Color.Transparent
-        Me.RadLabel49.Location = New System.Drawing.Point(300, 141)
-        Me.RadLabel49.Name = "RadLabel49"
-        Me.RadLabel49.Size = New System.Drawing.Size(39, 18)
-        Me.RadLabel49.TabIndex = 24
-        Me.RadLabel49.Text = "Status:"
-        Me.RadLabel49.ThemeName = "VisualStudio2012Dark"
+        Me.RadLabel45.BackColor = System.Drawing.Color.Transparent
+        Me.RadLabel45.Location = New System.Drawing.Point(281, 114)
+        Me.RadLabel45.Name = "RadLabel45"
+        Me.RadLabel45.Size = New System.Drawing.Size(55, 18)
+        Me.RadLabel45.TabIndex = 21
+        Me.RadLabel45.Text = "End Time:"
+        Me.RadLabel45.ThemeName = "VisualStudio2012Dark"
         '
-        'RadLabel41
+        'RadLabel46
         '
-        Me.RadLabel41.BackColor = System.Drawing.Color.Transparent
-        Me.RadLabel41.Location = New System.Drawing.Point(31, 22)
-        Me.RadLabel41.Name = "RadLabel41"
-        Me.RadLabel41.Size = New System.Drawing.Size(77, 18)
-        Me.RadLabel41.TabIndex = 31
-        Me.RadLabel41.Text = "Reservation #:"
-        Me.RadLabel41.ThemeName = "VisualStudio2012Dark"
+        Me.RadLabel46.BackColor = System.Drawing.Color.Transparent
+        Me.RadLabel46.Location = New System.Drawing.Point(280, 85)
+        Me.RadLabel46.Name = "RadLabel46"
+        Me.RadLabel46.Size = New System.Drawing.Size(59, 18)
+        Me.RadLabel46.TabIndex = 20
+        Me.RadLabel46.Text = "Start Time:"
+        Me.RadLabel46.ThemeName = "VisualStudio2012Dark"
         '
-        'rel_tb_reservationnum
+        'RadLabel48
         '
-        Me.rel_tb_reservationnum.Location = New System.Drawing.Point(114, 18)
-        Me.rel_tb_reservationnum.MinimumSize = New System.Drawing.Size(0, 24)
-        Me.rel_tb_reservationnum.Name = "rel_tb_reservationnum"
-        Me.rel_tb_reservationnum.ReadOnly = True
+        Me.RadLabel48.BackColor = System.Drawing.Color.Transparent
+        Me.RadLabel48.Location = New System.Drawing.Point(307, 21)
+        Me.RadLabel48.Name = "RadLabel48"
+        Me.RadLabel48.Size = New System.Drawing.Size(32, 18)
+        Me.RadLabel48.TabIndex = 18
+        Me.RadLabel48.Text = "Date:"
+        Me.RadLabel48.ThemeName = "VisualStudio2012Dark"
         '
+        'RadLabel20
         '
+        Me.RadLabel20.BackColor = System.Drawing.Color.Transparent
+        Me.RadLabel20.Location = New System.Drawing.Point(504, 114)
+        Me.RadLabel20.Name = "RadLabel20"
+        Me.RadLabel20.Size = New System.Drawing.Size(68, 18)
+        Me.RadLabel20.TabIndex = 9
+        Me.RadLabel20.Text = "Released by:"
+        Me.RadLabel20.ThemeName = "VisualStudio2012Dark"
         '
-        Me.rel_tb_reservationnum.RootElement.MinSize = New System.Drawing.Size(0, 24)
-        Me.rel_tb_reservationnum.Size = New System.Drawing.Size(131, 24)
-        Me.rel_tb_reservationnum.TabIndex = 30
-        Me.rel_tb_reservationnum.ThemeName = "VisualStudio2012Dark"
+        'RadLabel16
         '
-        'rel_tb_id
+        Me.RadLabel16.BackColor = System.Drawing.Color.Transparent
+        Me.RadLabel16.Location = New System.Drawing.Point(54, 85)
+        Me.RadLabel16.Name = "RadLabel16"
+        Me.RadLabel16.Size = New System.Drawing.Size(54, 18)
+        Me.RadLabel16.TabIndex = 1
+        Me.RadLabel16.Text = "Borrower:"
+        Me.RadLabel16.ThemeName = "VisualStudio2012Dark"
         '
-        Me.rel_tb_id.Location = New System.Drawing.Point(114, 51)
-        Me.rel_tb_id.Name = "rel_tb_id"
-        Me.rel_tb_id.Size = New System.Drawing.Size(131, 24)
-        Me.rel_tb_id.TabIndex = 32
-        Me.rel_tb_id.Text = "1"
-        Me.rel_tb_id.ThemeName = "VisualStudio2012Dark"
+        'rel_tb_borrower
         '
-        'rel_tb_status
+        Me.rel_tb_borrower.Location = New System.Drawing.Point(114, 82)
+        Me.rel_tb_borrower.Name = "rel_tb_borrower"
+        Me.rel_tb_borrower.Size = New System.Drawing.Size(131, 24)
+        Me.rel_tb_borrower.TabIndex = 1
+        Me.rel_tb_borrower.Text = "name ng Borrower"
+        Me.rel_tb_borrower.ThemeName = "VisualStudio2012Dark"
         '
-        RadListDataItem95.Text = "Released"
-        Me.rel_tb_status.Items.Add(RadListDataItem95)
-        Me.rel_tb_status.Location = New System.Drawing.Point(345, 138)
-        Me.rel_tb_status.Name = "rel_tb_status"
-        Me.rel_tb_status.Size = New System.Drawing.Size(102, 24)
-        Me.rel_tb_status.TabIndex = 33
-        Me.rel_tb_status.ThemeName = "VisualStudio2012Dark"
+        'RadLabel15
         '
-        'lbl_equipment
-        '
-        Me.lbl_equipment.BackColor = System.Drawing.Color.Transparent
-        Me.lbl_equipment.Location = New System.Drawing.Point(509, 48)
-        Me.lbl_equipment.Name = "lbl_equipment"
-        Me.lbl_equipment.Size = New System.Drawing.Size(63, 18)
-        Me.lbl_equipment.TabIndex = 34
-        Me.lbl_equipment.Text = "Equipment:"
-        Me.lbl_equipment.ThemeName = "VisualStudio2012Dark"
-        '
-        'lbl_equipmentnum
-        '
-        Me.lbl_equipmentnum.BackColor = System.Drawing.Color.Transparent
-        Me.lbl_equipmentnum.Location = New System.Drawing.Point(465, 19)
-        Me.lbl_equipmentnum.Name = "lbl_equipmentnum"
-        Me.lbl_equipmentnum.Size = New System.Drawing.Size(107, 18)
-        Me.lbl_equipmentnum.TabIndex = 10
-        Me.lbl_equipmentnum.Text = "Equipment Number:"
-        Me.lbl_equipmentnum.ThemeName = "VisualStudio2012Dark"
-        '
-        'rel_tb_equipmentnum
-        '
-        Me.rel_tb_equipmentnum.Location = New System.Drawing.Point(578, 18)
-        Me.rel_tb_equipmentnum.MinimumSize = New System.Drawing.Size(0, 24)
-        Me.rel_tb_equipmentnum.Name = "rel_tb_equipmentnum"
-        Me.rel_tb_equipmentnum.ReadOnly = True
-        '
-        '
-        '
-        Me.rel_tb_equipmentnum.RootElement.MinSize = New System.Drawing.Size(0, 24)
-        Me.rel_tb_equipmentnum.Size = New System.Drawing.Size(199, 24)
-        Me.rel_tb_equipmentnum.TabIndex = 35
-        Me.rel_tb_equipmentnum.ThemeName = "VisualStudio2012Dark"
-        '
-        'rel_tb_equipment
-        '
-        Me.rel_tb_equipment.Location = New System.Drawing.Point(578, 48)
-        Me.rel_tb_equipment.MinimumSize = New System.Drawing.Size(0, 24)
-        Me.rel_tb_equipment.Name = "rel_tb_equipment"
-        Me.rel_tb_equipment.ReadOnly = True
-        '
-        '
-        '
-        Me.rel_tb_equipment.RootElement.MinSize = New System.Drawing.Size(0, 24)
-        Me.rel_tb_equipment.Size = New System.Drawing.Size(199, 24)
-        Me.rel_tb_equipment.TabIndex = 36
-        Me.rel_tb_equipment.ThemeName = "VisualStudio2012Dark"
-        '
-        'rel_nameofstaff_release
-        '
-        Me.rel_nameofstaff_release.BackColor = System.Drawing.Color.Transparent
-        Me.rel_nameofstaff_release.ForeColor = System.Drawing.Color.White
-        Me.rel_nameofstaff_release.Location = New System.Drawing.Point(578, 114)
-        Me.rel_nameofstaff_release.Name = "rel_nameofstaff_release"
-        Me.rel_nameofstaff_release.Size = New System.Drawing.Size(75, 18)
-        Me.rel_nameofstaff_release.TabIndex = 38
-        Me.rel_nameofstaff_release.Text = "Name of Staff"
-        '
-        'RadGroupBox12
-        '
-        Me.RadGroupBox12.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping
-        Me.RadGroupBox12.Anchor = System.Windows.Forms.AnchorStyles.Bottom
-        Me.RadGroupBox12.Controls.Add(Me.released_btn_release)
-        Me.RadGroupBox12.Controls.Add(Me.released_btn_cancel)
-        Me.RadGroupBox12.HeaderText = "Controls"
-        Me.RadGroupBox12.Location = New System.Drawing.Point(176, 486)
-        Me.RadGroupBox12.Name = "RadGroupBox12"
-        Me.RadGroupBox12.Size = New System.Drawing.Size(962, 64)
-        Me.RadGroupBox12.TabIndex = 3
-        Me.RadGroupBox12.Text = "Controls"
-        Me.RadGroupBox12.ThemeName = "VisualStudio2012Dark"
-        '
-        'released_btn_cancel
-        '
-        Me.released_btn_cancel.Anchor = System.Windows.Forms.AnchorStyles.Bottom
-        Me.released_btn_cancel.Location = New System.Drawing.Point(391, 21)
-        Me.released_btn_cancel.Name = "released_btn_cancel"
-        Me.released_btn_cancel.Size = New System.Drawing.Size(110, 25)
-        Me.released_btn_cancel.TabIndex = 21
-        Me.released_btn_cancel.Text = "Cancel"
-        Me.released_btn_cancel.ThemeName = "VisualStudio2012Dark"
-        '
-        'released_btn_release
-        '
-        Me.released_btn_release.Anchor = System.Windows.Forms.AnchorStyles.Bottom
-        Me.released_btn_release.Location = New System.Drawing.Point(507, 21)
-        Me.released_btn_release.Name = "released_btn_release"
-        Me.released_btn_release.Size = New System.Drawing.Size(110, 25)
-        Me.released_btn_release.TabIndex = 23
-        Me.released_btn_release.Text = "Release"
-        Me.released_btn_release.ThemeName = "VisualStudio2012Dark"
-        '
-        'RadPageView2
-        '
-        Me.RadPageView2.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.RadPageView2.Controls.Add(Me.res_notret_info)
-        Me.RadPageView2.Controls.Add(Me.rel_penalty_info)
-        Me.RadPageView2.Location = New System.Drawing.Point(0, -3)
-        Me.RadPageView2.Name = "RadPageView2"
-        Me.RadPageView2.SelectedPage = Me.res_notret_info
-        Me.RadPageView2.Size = New System.Drawing.Size(1345, 305)
-        Me.RadPageView2.TabIndex = 5
-        Me.RadPageView2.Text = "RadPageView2"
-        Me.RadPageView2.ThemeName = "VisualStudio2012Dark"
-        CType(Me.RadPageView2.GetChildAt(0), Telerik.WinControls.UI.RadPageViewStripElement).StripButtons = Telerik.WinControls.UI.StripViewButtons.None
-        '
-        'rel_penalty_info
-        '
-        Me.rel_penalty_info.Controls.Add(Me.released_grid_list)
-        Me.rel_penalty_info.ItemSize = New System.Drawing.SizeF(152.0!, 24.0!)
-        Me.rel_penalty_info.Location = New System.Drawing.Point(5, 30)
-        Me.rel_penalty_info.Name = "rel_penalty_info"
-        Me.rel_penalty_info.Size = New System.Drawing.Size(1335, 270)
-        Me.rel_penalty_info.Text = "List of Released Equipments"
-        '
-        'released_grid_list
-        '
-        Me.released_grid_list.AutoSizeRows = True
-        Me.released_grid_list.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.released_grid_list.Location = New System.Drawing.Point(0, 0)
-        '
-        '
-        '
-        Me.released_grid_list.MasterTemplate.AllowAddNewRow = False
-        Me.released_grid_list.MasterTemplate.AllowDeleteRow = False
-        Me.released_grid_list.MasterTemplate.AllowEditRow = False
-        Me.released_grid_list.MasterTemplate.AutoSizeColumnsMode = Telerik.WinControls.UI.GridViewAutoSizeColumnsMode.Fill
-        Me.released_grid_list.MasterTemplate.EnableGrouping = False
-        Me.released_grid_list.MasterTemplate.ShowRowHeaderColumn = False
-        Me.released_grid_list.MasterTemplate.ViewDefinition = TableViewDefinition4
-        Me.released_grid_list.Name = "released_grid_list"
-        Me.released_grid_list.ReadOnly = True
-        Me.released_grid_list.Size = New System.Drawing.Size(1335, 270)
-        Me.released_grid_list.TabIndex = 0
-        Me.released_grid_list.Text = "RadGridView3"
-        Me.released_grid_list.ThemeName = "VisualStudio2012Dark"
-        '
-        'res_notret_info
-        '
-        Me.res_notret_info.Controls.Add(Me.reserved_grid_list)
-        Me.res_notret_info.ItemSize = New System.Drawing.SizeF(153.0!, 24.0!)
-        Me.res_notret_info.Location = New System.Drawing.Point(5, 30)
-        Me.res_notret_info.Name = "res_notret_info"
-        Me.res_notret_info.Size = New System.Drawing.Size(1335, 270)
-        Me.res_notret_info.Text = "List of Reserved Equipments"
-        '
-        'reserved_grid_list
-        '
-        Me.reserved_grid_list.AutoSizeRows = True
-        Me.reserved_grid_list.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.reserved_grid_list.Location = New System.Drawing.Point(0, 0)
-        '
-        '
-        '
-        Me.reserved_grid_list.MasterTemplate.AllowAddNewRow = False
-        Me.reserved_grid_list.MasterTemplate.AutoSizeColumnsMode = Telerik.WinControls.UI.GridViewAutoSizeColumnsMode.Fill
-        Me.reserved_grid_list.MasterTemplate.EnableGrouping = False
-        Me.reserved_grid_list.MasterTemplate.ShowRowHeaderColumn = False
-        Me.reserved_grid_list.MasterTemplate.ViewDefinition = TableViewDefinition3
-        Me.reserved_grid_list.Name = "reserved_grid_list"
-        Me.reserved_grid_list.ReadOnly = True
-        Me.reserved_grid_list.Size = New System.Drawing.Size(1335, 270)
-        Me.reserved_grid_list.TabIndex = 0
-        Me.reserved_grid_list.Text = "RadGridView2"
-        Me.reserved_grid_list.ThemeName = "VisualStudio2012Dark"
+        Me.RadLabel15.BackColor = System.Drawing.Color.Transparent
+        Me.RadLabel15.Location = New System.Drawing.Point(57, 54)
+        Me.RadLabel15.Name = "RadLabel15"
+        Me.RadLabel15.Size = New System.Drawing.Size(51, 18)
+        Me.RadLabel15.TabIndex = 0
+        Me.RadLabel15.Text = "Pass ID#:"
+        Me.RadLabel15.ThemeName = "VisualStudio2012Dark"
         '
         'rpvp2_reservation
         '
@@ -1957,272 +1997,6 @@ Partial Class Main
         Me.rpvp2_reservation.Name = "rpvp2_reservation"
         Me.rpvp2_reservation.Size = New System.Drawing.Size(1348, 548)
         Me.rpvp2_reservation.Text = "Reservation Management"
-        '
-        'RadGroupBox3
-        '
-        Me.RadGroupBox3.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping
-        Me.RadGroupBox3.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.RadGroupBox3.Controls.Add(Me.reservation_rgv_recordeddata)
-        Me.RadGroupBox3.Controls.Add(Me.reservations_rgv_showavailableitems)
-        Me.RadGroupBox3.HeaderText = "List of Reservation"
-        Me.RadGroupBox3.Location = New System.Drawing.Point(0, -3)
-        Me.RadGroupBox3.Name = "RadGroupBox3"
-        Me.RadGroupBox3.Size = New System.Drawing.Size(1345, 276)
-        Me.RadGroupBox3.TabIndex = 0
-        Me.RadGroupBox3.Text = "List of Reservation"
-        Me.RadGroupBox3.ThemeName = "VisualStudio2012Dark"
-        '
-        'reservations_rgv_showavailableitems
-        '
-        Me.reservations_rgv_showavailableitems.AutoSizeRows = True
-        Me.reservations_rgv_showavailableitems.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.reservations_rgv_showavailableitems.Location = New System.Drawing.Point(2, 18)
-        '
-        '
-        '
-        Me.reservations_rgv_showavailableitems.MasterTemplate.AllowAddNewRow = False
-        Me.reservations_rgv_showavailableitems.MasterTemplate.AllowDeleteRow = False
-        Me.reservations_rgv_showavailableitems.MasterTemplate.AllowEditRow = False
-        Me.reservations_rgv_showavailableitems.MasterTemplate.AutoSizeColumnsMode = Telerik.WinControls.UI.GridViewAutoSizeColumnsMode.Fill
-        Me.reservations_rgv_showavailableitems.MasterTemplate.EnableGrouping = False
-        Me.reservations_rgv_showavailableitems.MasterTemplate.ShowRowHeaderColumn = False
-        Me.reservations_rgv_showavailableitems.MasterTemplate.ViewDefinition = TableViewDefinition7
-        Me.reservations_rgv_showavailableitems.Name = "reservations_rgv_showavailableitems"
-        Me.reservations_rgv_showavailableitems.ReadOnly = True
-        Me.reservations_rgv_showavailableitems.Size = New System.Drawing.Size(1341, 256)
-        Me.reservations_rgv_showavailableitems.TabIndex = 1
-        Me.reservations_rgv_showavailableitems.Text = "RadGridView2"
-        Me.reservations_rgv_showavailableitems.ThemeName = "VisualStudio2012Dark"
-        '
-        'reservation_rgv_recordeddata
-        '
-        Me.reservation_rgv_recordeddata.AutoSizeRows = True
-        Me.reservation_rgv_recordeddata.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.reservation_rgv_recordeddata.Location = New System.Drawing.Point(2, 18)
-        '
-        '
-        '
-        Me.reservation_rgv_recordeddata.MasterTemplate.AllowAddNewRow = False
-        Me.reservation_rgv_recordeddata.MasterTemplate.AllowDeleteRow = False
-        Me.reservation_rgv_recordeddata.MasterTemplate.AllowEditRow = False
-        Me.reservation_rgv_recordeddata.MasterTemplate.AutoSizeColumnsMode = Telerik.WinControls.UI.GridViewAutoSizeColumnsMode.Fill
-        Me.reservation_rgv_recordeddata.MasterTemplate.EnableGrouping = False
-        Me.reservation_rgv_recordeddata.MasterTemplate.ShowRowHeaderColumn = False
-        Me.reservation_rgv_recordeddata.MasterTemplate.ViewDefinition = TableViewDefinition6
-        Me.reservation_rgv_recordeddata.Name = "reservation_rgv_recordeddata"
-        Me.reservation_rgv_recordeddata.ReadOnly = True
-        Me.reservation_rgv_recordeddata.Size = New System.Drawing.Size(1341, 256)
-        Me.reservation_rgv_recordeddata.TabIndex = 3
-        Me.reservation_rgv_recordeddata.Text = "RadGridView2"
-        Me.reservation_rgv_recordeddata.ThemeName = "VisualStudio2012Dark"
-        '
-        'RadGroupBox5
-        '
-        Me.RadGroupBox5.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping
-        Me.RadGroupBox5.Anchor = System.Windows.Forms.AnchorStyles.Bottom
-        Me.RadGroupBox5.Controls.Add(Me.rec_eq_chooseeq)
-        Me.RadGroupBox5.Controls.Add(Me.rec_eq_chooseno)
-        Me.RadGroupBox5.Controls.Add(Me.rec_eq_type_choose)
-        Me.RadGroupBox5.Controls.Add(Me.rec_btn_showalltakeneq)
-        Me.RadGroupBox5.Controls.Add(Me.RadLabel71)
-        Me.RadGroupBox5.Controls.Add(Me.rec_btn_check_availability)
-        Me.RadGroupBox5.Controls.Add(Me.rec_btn_add_eq)
-        Me.RadGroupBox5.Controls.Add(Me.rec_btn_eqclear)
-        Me.RadGroupBox5.Controls.Add(Me.RadLabel70)
-        Me.RadGroupBox5.Controls.Add(Me.RadLabel50)
-        Me.RadGroupBox5.Controls.Add(Me.rec_btn_showalldata)
-        Me.RadGroupBox5.Controls.Add(Me.rec_btn_showavailequip)
-        Me.RadGroupBox5.Controls.Add(Me.rec_del_eq)
-        Me.RadGroupBox5.Controls.Add(Me.RadGroupBox17)
-        Me.RadGroupBox5.HeaderText = "Equipments"
-        Me.RadGroupBox5.Location = New System.Drawing.Point(677, 279)
-        Me.RadGroupBox5.Name = "RadGroupBox5"
-        Me.RadGroupBox5.Size = New System.Drawing.Size(668, 269)
-        Me.RadGroupBox5.TabIndex = 2
-        Me.RadGroupBox5.Text = "Equipments"
-        Me.RadGroupBox5.ThemeName = "VisualStudio2012Dark"
-        '
-        'RadGroupBox17
-        '
-        Me.RadGroupBox17.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping
-        Me.RadGroupBox17.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
-        Me.RadGroupBox17.Controls.Add(Me.eq_rgv_addeq)
-        Me.RadGroupBox17.HeaderText = "Added Equipments"
-        Me.RadGroupBox17.Location = New System.Drawing.Point(315, 21)
-        Me.RadGroupBox17.Name = "RadGroupBox17"
-        Me.RadGroupBox17.Size = New System.Drawing.Size(348, 203)
-        Me.RadGroupBox17.TabIndex = 1
-        Me.RadGroupBox17.Text = "Added Equipments"
-        Me.RadGroupBox17.ThemeName = "VisualStudio2012Dark"
-        '
-        'eq_rgv_addeq
-        '
-        Me.eq_rgv_addeq.AutoSizeRows = True
-        Me.eq_rgv_addeq.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.eq_rgv_addeq.Location = New System.Drawing.Point(2, 18)
-        '
-        '
-        '
-        Me.eq_rgv_addeq.MasterTemplate.AllowAddNewRow = False
-        Me.eq_rgv_addeq.MasterTemplate.AllowDeleteRow = False
-        Me.eq_rgv_addeq.MasterTemplate.AllowEditRow = False
-        Me.eq_rgv_addeq.MasterTemplate.AutoSizeColumnsMode = Telerik.WinControls.UI.GridViewAutoSizeColumnsMode.Fill
-        GridViewTextBoxColumn1.HeaderText = "#"
-        GridViewTextBoxColumn1.Name = "equipment_no"
-        GridViewTextBoxColumn1.Width = 48
-        GridViewTextBoxColumn2.HeaderText = "Equipments"
-        GridViewTextBoxColumn2.Name = "equipment_name"
-        GridViewTextBoxColumn2.Width = 150
-        GridViewTextBoxColumn3.HeaderText = "Serial Number"
-        GridViewTextBoxColumn3.Name = "equipment_sn"
-        GridViewTextBoxColumn3.Width = 149
-        Me.eq_rgv_addeq.MasterTemplate.Columns.AddRange(New Telerik.WinControls.UI.GridViewDataColumn() {GridViewTextBoxColumn1, GridViewTextBoxColumn2, GridViewTextBoxColumn3})
-        Me.eq_rgv_addeq.MasterTemplate.EnableGrouping = False
-        Me.eq_rgv_addeq.MasterTemplate.MultiSelect = True
-        Me.eq_rgv_addeq.MasterTemplate.ShowRowHeaderColumn = False
-        Me.eq_rgv_addeq.MasterTemplate.ViewDefinition = TableViewDefinition5
-        Me.eq_rgv_addeq.Name = "eq_rgv_addeq"
-        Me.eq_rgv_addeq.ReadOnly = True
-        Me.eq_rgv_addeq.Size = New System.Drawing.Size(344, 183)
-        Me.eq_rgv_addeq.StandardTab = True
-        Me.eq_rgv_addeq.TabIndex = 0
-        Me.eq_rgv_addeq.Text = "RadGridView1"
-        Me.eq_rgv_addeq.ThemeName = "VisualStudio2012Dark"
-        '
-        'rec_del_eq
-        '
-        Me.rec_del_eq.Anchor = System.Windows.Forms.AnchorStyles.Top
-        Me.rec_del_eq.Location = New System.Drawing.Point(232, 46)
-        Me.rec_del_eq.Name = "rec_del_eq"
-        Me.rec_del_eq.Size = New System.Drawing.Size(77, 24)
-        Me.rec_del_eq.TabIndex = 14
-        Me.rec_del_eq.Text = "<<"
-        Me.rec_del_eq.ThemeName = "VisualStudio2012Dark"
-        '
-        'rec_btn_showavailequip
-        '
-        Me.rec_btn_showavailequip.Anchor = System.Windows.Forms.AnchorStyles.Bottom
-        Me.rec_btn_showavailequip.Location = New System.Drawing.Point(358, 230)
-        Me.rec_btn_showavailequip.Name = "rec_btn_showavailequip"
-        Me.rec_btn_showavailequip.Size = New System.Drawing.Size(149, 29)
-        Me.rec_btn_showavailequip.TabIndex = 23
-        Me.rec_btn_showavailequip.Text = "Show Available Equipments"
-        Me.rec_btn_showavailequip.ThemeName = "VisualStudio2012Dark"
-        '
-        'rec_btn_showalldata
-        '
-        Me.rec_btn_showalldata.Anchor = System.Windows.Forms.AnchorStyles.Bottom
-        Me.rec_btn_showalldata.Location = New System.Drawing.Point(203, 230)
-        Me.rec_btn_showalldata.Name = "rec_btn_showalldata"
-        Me.rec_btn_showalldata.Size = New System.Drawing.Size(149, 29)
-        Me.rec_btn_showalldata.TabIndex = 24
-        Me.rec_btn_showalldata.Text = "Show All Data"
-        Me.rec_btn_showalldata.ThemeName = "VisualStudio2012Dark"
-        '
-        'RadLabel50
-        '
-        Me.RadLabel50.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
-        Me.RadLabel50.BackColor = System.Drawing.Color.Transparent
-        Me.RadLabel50.Location = New System.Drawing.Point(5, 24)
-        Me.RadLabel50.Name = "RadLabel50"
-        Me.RadLabel50.Size = New System.Drawing.Size(90, 18)
-        Me.RadLabel50.TabIndex = 26
-        Me.RadLabel50.Text = "Equipment Type:"
-        Me.RadLabel50.ThemeName = "VisualStudio2012Dark"
-        '
-        'RadLabel70
-        '
-        Me.RadLabel70.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
-        Me.RadLabel70.BackColor = System.Drawing.Color.Transparent
-        Me.RadLabel70.Location = New System.Drawing.Point(5, 78)
-        Me.RadLabel70.Name = "RadLabel70"
-        Me.RadLabel70.Size = New System.Drawing.Size(107, 18)
-        Me.RadLabel70.TabIndex = 29
-        Me.RadLabel70.Text = "Equipment Number:"
-        Me.RadLabel70.ThemeName = "VisualStudio2012Dark"
-        '
-        'rec_btn_eqclear
-        '
-        Me.rec_btn_eqclear.Anchor = System.Windows.Forms.AnchorStyles.Top
-        Me.rec_btn_eqclear.Location = New System.Drawing.Point(232, 136)
-        Me.rec_btn_eqclear.Name = "rec_btn_eqclear"
-        Me.rec_btn_eqclear.Size = New System.Drawing.Size(77, 24)
-        Me.rec_btn_eqclear.TabIndex = 17
-        Me.rec_btn_eqclear.Text = "Clear"
-        Me.rec_btn_eqclear.ThemeName = "VisualStudio2012Dark"
-        '
-        'rec_btn_add_eq
-        '
-        Me.rec_btn_add_eq.Anchor = System.Windows.Forms.AnchorStyles.Top
-        Me.rec_btn_add_eq.Location = New System.Drawing.Point(232, 76)
-        Me.rec_btn_add_eq.Name = "rec_btn_add_eq"
-        Me.rec_btn_add_eq.Size = New System.Drawing.Size(77, 24)
-        Me.rec_btn_add_eq.TabIndex = 15
-        Me.rec_btn_add_eq.Text = ">>"
-        Me.rec_btn_add_eq.ThemeName = "VisualStudio2012Dark"
-        '
-        'rec_btn_check_availability
-        '
-        Me.rec_btn_check_availability.Anchor = System.Windows.Forms.AnchorStyles.Top
-        Me.rec_btn_check_availability.Location = New System.Drawing.Point(232, 106)
-        Me.rec_btn_check_availability.Name = "rec_btn_check_availability"
-        Me.rec_btn_check_availability.Size = New System.Drawing.Size(77, 24)
-        Me.rec_btn_check_availability.TabIndex = 16
-        Me.rec_btn_check_availability.Text = "Check"
-        Me.rec_btn_check_availability.ThemeName = "VisualStudio2012Dark"
-        '
-        'RadLabel71
-        '
-        Me.RadLabel71.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
-        Me.RadLabel71.BackColor = System.Drawing.Color.Transparent
-        Me.RadLabel71.Location = New System.Drawing.Point(5, 132)
-        Me.RadLabel71.Name = "RadLabel71"
-        Me.RadLabel71.Size = New System.Drawing.Size(63, 18)
-        Me.RadLabel71.TabIndex = 32
-        Me.RadLabel71.Text = "Equipment:"
-        Me.RadLabel71.ThemeName = "VisualStudio2012Dark"
-        '
-        'rec_btn_showalltakeneq
-        '
-        Me.rec_btn_showalltakeneq.Anchor = System.Windows.Forms.AnchorStyles.Bottom
-        Me.rec_btn_showalltakeneq.Location = New System.Drawing.Point(513, 230)
-        Me.rec_btn_showalltakeneq.Name = "rec_btn_showalltakeneq"
-        Me.rec_btn_showalltakeneq.Size = New System.Drawing.Size(149, 29)
-        Me.rec_btn_showalltakeneq.TabIndex = 22
-        Me.rec_btn_showalltakeneq.Text = "Show All Taken Equipments"
-        Me.rec_btn_showalltakeneq.ThemeName = "VisualStudio2012Dark"
-        '
-        'rec_eq_type_choose
-        '
-        Me.rec_eq_type_choose.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
-        Me.rec_eq_type_choose.DropDownStyle = Telerik.WinControls.RadDropDownStyle.DropDownList
-        Me.rec_eq_type_choose.Location = New System.Drawing.Point(5, 48)
-        Me.rec_eq_type_choose.Name = "rec_eq_type_choose"
-        Me.rec_eq_type_choose.Size = New System.Drawing.Size(217, 24)
-        Me.rec_eq_type_choose.TabIndex = 11
-        Me.rec_eq_type_choose.ThemeName = "VisualStudio2012Dark"
-        '
-        'rec_eq_chooseno
-        '
-        Me.rec_eq_chooseno.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
-        Me.rec_eq_chooseno.DropDownStyle = Telerik.WinControls.RadDropDownStyle.DropDownList
-        Me.rec_eq_chooseno.Location = New System.Drawing.Point(5, 102)
-        Me.rec_eq_chooseno.Name = "rec_eq_chooseno"
-        Me.rec_eq_chooseno.Size = New System.Drawing.Size(217, 24)
-        Me.rec_eq_chooseno.TabIndex = 12
-        Me.rec_eq_chooseno.ThemeName = "VisualStudio2012Dark"
-        '
-        'rec_eq_chooseeq
-        '
-        Me.rec_eq_chooseeq.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
-        Me.rec_eq_chooseeq.DropDownStyle = Telerik.WinControls.RadDropDownStyle.DropDownList
-        Me.rec_eq_chooseeq.Location = New System.Drawing.Point(5, 156)
-        Me.rec_eq_chooseeq.Name = "rec_eq_chooseeq"
-        Me.rec_eq_chooseeq.Size = New System.Drawing.Size(217, 24)
-        Me.rec_eq_chooseeq.TabIndex = 13
-        Me.rec_eq_chooseeq.ThemeName = "VisualStudio2012Dark"
         '
         'RadGroupBox4
         '
@@ -2261,188 +2035,334 @@ Partial Class Main
         Me.RadGroupBox4.Text = "Details"
         Me.RadGroupBox4.ThemeName = "VisualStudio2012Dark"
         '
-        'RadLabel1
+        'RadGroupBox6
         '
-        Me.RadLabel1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
-        Me.RadLabel1.BackColor = System.Drawing.Color.Transparent
-        Me.RadLabel1.Location = New System.Drawing.Point(523, 28)
-        Me.RadLabel1.Name = "RadLabel1"
-        Me.RadLabel1.Size = New System.Drawing.Size(32, 18)
-        Me.RadLabel1.TabIndex = 2
-        Me.RadLabel1.Text = "Date:"
-        Me.RadLabel1.ThemeName = "VisualStudio2012Dark"
+        Me.RadGroupBox6.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping
+        Me.RadGroupBox6.Anchor = System.Windows.Forms.AnchorStyles.Bottom
+        Me.RadGroupBox6.Controls.Add(Me.btn_resetreservationno)
+        Me.RadGroupBox6.Controls.Add(Me.rec_btn_clear)
+        Me.RadGroupBox6.Controls.Add(Me.rec_btn_delete)
+        Me.RadGroupBox6.Controls.Add(Me.rec_btn_save)
+        Me.RadGroupBox6.HeaderText = "Controls"
+        Me.RadGroupBox6.Location = New System.Drawing.Point(7, 201)
+        Me.RadGroupBox6.Name = "RadGroupBox6"
+        Me.RadGroupBox6.Size = New System.Drawing.Size(659, 58)
+        Me.RadGroupBox6.TabIndex = 3
+        Me.RadGroupBox6.Text = "Controls"
+        Me.RadGroupBox6.ThemeName = "VisualStudio2012Dark"
         '
-        'RadLabel3
+        'btn_resetreservationno
         '
-        Me.RadLabel3.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
-        Me.RadLabel3.BackColor = System.Drawing.Color.Transparent
-        Me.RadLabel3.Location = New System.Drawing.Point(496, 57)
-        Me.RadLabel3.Name = "RadLabel3"
-        Me.RadLabel3.Size = New System.Drawing.Size(59, 18)
-        Me.RadLabel3.TabIndex = 6
-        Me.RadLabel3.Text = "Start Time:"
-        Me.RadLabel3.ThemeName = "VisualStudio2012Dark"
+        Me.btn_resetreservationno.Anchor = System.Windows.Forms.AnchorStyles.Bottom
+        Me.btn_resetreservationno.Location = New System.Drawing.Point(171, 21)
+        Me.btn_resetreservationno.Name = "btn_resetreservationno"
+        Me.btn_resetreservationno.Size = New System.Drawing.Size(138, 30)
+        Me.btn_resetreservationno.TabIndex = 20
+        Me.btn_resetreservationno.Text = "New Reservation Number"
+        Me.btn_resetreservationno.ThemeName = "VisualStudio2012Dark"
         '
-        'RadLabel4
+        'rec_btn_clear
         '
-        Me.RadLabel4.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
-        Me.RadLabel4.BackColor = System.Drawing.Color.Transparent
-        Me.RadLabel4.Location = New System.Drawing.Point(500, 87)
-        Me.RadLabel4.Name = "RadLabel4"
-        Me.RadLabel4.Size = New System.Drawing.Size(55, 18)
-        Me.RadLabel4.TabIndex = 7
-        Me.RadLabel4.Text = "End Time:"
-        Me.RadLabel4.ThemeName = "VisualStudio2012Dark"
+        Me.rec_btn_clear.Anchor = System.Windows.Forms.AnchorStyles.Bottom
+        Me.rec_btn_clear.Location = New System.Drawing.Point(65, 21)
+        Me.rec_btn_clear.Name = "rec_btn_clear"
+        Me.rec_btn_clear.Size = New System.Drawing.Size(100, 30)
+        Me.rec_btn_clear.TabIndex = 21
+        Me.rec_btn_clear.Text = "Clear"
+        Me.rec_btn_clear.ThemeName = "VisualStudio2012Dark"
         '
-        'rec_cb_borrower
+        'rec_btn_delete
         '
-        Me.rec_cb_borrower.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
-        Me.rec_cb_borrower.DropDownStyle = Telerik.WinControls.RadDropDownStyle.DropDownList
-        Me.rec_cb_borrower.Location = New System.Drawing.Point(86, 84)
-        Me.rec_cb_borrower.Name = "rec_cb_borrower"
-        Me.rec_cb_borrower.Size = New System.Drawing.Size(166, 24)
-        Me.rec_cb_borrower.TabIndex = 2
-        Me.rec_cb_borrower.ThemeName = "VisualStudio2012Dark"
+        Me.rec_btn_delete.Anchor = System.Windows.Forms.AnchorStyles.Bottom
+        Me.rec_btn_delete.Location = New System.Drawing.Point(449, 21)
+        Me.rec_btn_delete.Name = "rec_btn_delete"
+        Me.rec_btn_delete.Size = New System.Drawing.Size(100, 30)
+        Me.rec_btn_delete.TabIndex = 19
+        Me.rec_btn_delete.Text = "Delete"
+        Me.rec_btn_delete.ThemeName = "VisualStudio2012Dark"
         '
-        'RadLabel5
+        'rec_btn_save
         '
-        Me.RadLabel5.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
-        Me.RadLabel5.BackColor = System.Drawing.Color.Transparent
-        Me.RadLabel5.Location = New System.Drawing.Point(264, 55)
-        Me.RadLabel5.Name = "RadLabel5"
-        Me.RadLabel5.Size = New System.Drawing.Size(40, 18)
-        Me.RadLabel5.TabIndex = 9
-        Me.RadLabel5.Text = "Venue:"
-        Me.RadLabel5.ThemeName = "VisualStudio2012Dark"
+        Me.rec_btn_save.Anchor = System.Windows.Forms.AnchorStyles.Bottom
+        Me.rec_btn_save.Location = New System.Drawing.Point(555, 20)
+        Me.rec_btn_save.Name = "rec_btn_save"
+        Me.rec_btn_save.Size = New System.Drawing.Size(100, 30)
+        Me.rec_btn_save.TabIndex = 18
+        Me.rec_btn_save.Text = "Save"
+        Me.rec_btn_save.ThemeName = "VisualStudio2012Dark"
         '
-        'rec_cb_location
+        'lbl_nameofstaff_reserved
         '
-        Me.rec_cb_location.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
-        Me.rec_cb_location.Location = New System.Drawing.Point(310, 55)
-        Me.rec_cb_location.Name = "rec_cb_location"
-        Me.rec_cb_location.Size = New System.Drawing.Size(176, 24)
-        Me.rec_cb_location.TabIndex = 8
-        Me.rec_cb_location.ThemeName = "VisualStudio2012Dark"
+        Me.lbl_nameofstaff_reserved.BackColor = System.Drawing.Color.Transparent
+        Me.lbl_nameofstaff_reserved.ForeColor = System.Drawing.Color.White
+        Me.lbl_nameofstaff_reserved.Location = New System.Drawing.Point(591, 117)
+        Me.lbl_nameofstaff_reserved.Name = "lbl_nameofstaff_reserved"
+        Me.lbl_nameofstaff_reserved.Size = New System.Drawing.Size(75, 18)
+        Me.lbl_nameofstaff_reserved.TabIndex = 36
+        Me.lbl_nameofstaff_reserved.Text = "Name of Staff"
         '
-        'RadLabel6
+        'rec_rrtc_actname
         '
-        Me.RadLabel6.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
-        Me.RadLabel6.BackColor = System.Drawing.Color.Transparent
-        Me.RadLabel6.Location = New System.Drawing.Point(26, 82)
-        Me.RadLabel6.Name = "RadLabel6"
-        Me.RadLabel6.Size = New System.Drawing.Size(54, 18)
-        Me.RadLabel6.TabIndex = 11
-        Me.RadLabel6.Text = "Borrower:"
-        Me.RadLabel6.ThemeName = "VisualStudio2012Dark"
+        Me.rec_rrtc_actname.Location = New System.Drawing.Point(86, 148)
+        Me.rec_rrtc_actname.MinimumSize = New System.Drawing.Size(0, 24)
+        Me.rec_rrtc_actname.Name = "rec_rrtc_actname"
         '
-        'rec_dtp_starttime
         '
-        Me.rec_dtp_starttime.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
-        Me.rec_dtp_starttime.DropDownStyle = Telerik.WinControls.RadDropDownStyle.DropDownList
-        RadListDataItem240.Text = "01:00"
-        RadListDataItem241.Text = "01:30"
-        RadListDataItem242.Text = "02:00"
-        RadListDataItem243.Text = "02:30"
-        RadListDataItem244.Text = "03:00"
-        RadListDataItem245.Text = "03:30"
-        RadListDataItem246.Text = "04:00"
-        RadListDataItem247.Text = "04:30"
-        RadListDataItem248.Text = "05:00"
-        RadListDataItem249.Text = "05:30"
-        RadListDataItem250.Text = "06:00"
-        RadListDataItem251.Text = "06:30"
-        RadListDataItem252.Text = "07:00"
-        RadListDataItem253.Text = "07:30"
-        RadListDataItem254.Text = "08:00"
-        RadListDataItem255.Text = "08:30"
-        RadListDataItem256.Text = "09:00"
-        RadListDataItem257.Text = "09:30"
-        RadListDataItem258.Text = "10:00"
-        RadListDataItem259.Text = "10:30"
-        RadListDataItem260.Text = "11:00"
-        RadListDataItem261.Text = "11:30"
-        RadListDataItem262.Text = "12:00"
-        RadListDataItem263.Text = "12:30"
-        RadListDataItem264.Text = "13:00"
-        RadListDataItem265.Text = "13:30"
-        RadListDataItem266.Text = "14:00"
-        RadListDataItem267.Text = "14:30"
-        RadListDataItem268.Text = "15:00"
-        RadListDataItem269.Text = "15:30"
-        RadListDataItem270.Text = "16:00"
-        RadListDataItem271.Text = "16:30"
-        RadListDataItem272.Text = "17:00"
-        RadListDataItem273.Text = "17:30"
-        RadListDataItem274.Text = "18:00"
-        RadListDataItem275.Text = "18:30"
-        RadListDataItem276.Text = "19:00"
-        RadListDataItem277.Text = "19:30"
-        RadListDataItem278.Text = "20:00"
-        RadListDataItem279.Text = "20:30"
-        RadListDataItem280.Text = "21:00"
-        RadListDataItem281.Text = "21:30"
-        RadListDataItem282.Text = "22:00"
-        RadListDataItem283.Text = "22:30"
-        RadListDataItem284.Text = "23:00"
-        RadListDataItem285.Text = "23:30"
-        RadListDataItem286.Text = "24:00"
-        Me.rec_dtp_starttime.Items.Add(RadListDataItem240)
-        Me.rec_dtp_starttime.Items.Add(RadListDataItem241)
-        Me.rec_dtp_starttime.Items.Add(RadListDataItem242)
-        Me.rec_dtp_starttime.Items.Add(RadListDataItem243)
-        Me.rec_dtp_starttime.Items.Add(RadListDataItem244)
-        Me.rec_dtp_starttime.Items.Add(RadListDataItem245)
-        Me.rec_dtp_starttime.Items.Add(RadListDataItem246)
-        Me.rec_dtp_starttime.Items.Add(RadListDataItem247)
-        Me.rec_dtp_starttime.Items.Add(RadListDataItem248)
-        Me.rec_dtp_starttime.Items.Add(RadListDataItem249)
-        Me.rec_dtp_starttime.Items.Add(RadListDataItem250)
-        Me.rec_dtp_starttime.Items.Add(RadListDataItem251)
-        Me.rec_dtp_starttime.Items.Add(RadListDataItem252)
-        Me.rec_dtp_starttime.Items.Add(RadListDataItem253)
-        Me.rec_dtp_starttime.Items.Add(RadListDataItem254)
-        Me.rec_dtp_starttime.Items.Add(RadListDataItem255)
-        Me.rec_dtp_starttime.Items.Add(RadListDataItem256)
-        Me.rec_dtp_starttime.Items.Add(RadListDataItem257)
-        Me.rec_dtp_starttime.Items.Add(RadListDataItem258)
-        Me.rec_dtp_starttime.Items.Add(RadListDataItem259)
-        Me.rec_dtp_starttime.Items.Add(RadListDataItem260)
-        Me.rec_dtp_starttime.Items.Add(RadListDataItem261)
-        Me.rec_dtp_starttime.Items.Add(RadListDataItem262)
-        Me.rec_dtp_starttime.Items.Add(RadListDataItem263)
-        Me.rec_dtp_starttime.Items.Add(RadListDataItem264)
-        Me.rec_dtp_starttime.Items.Add(RadListDataItem265)
-        Me.rec_dtp_starttime.Items.Add(RadListDataItem266)
-        Me.rec_dtp_starttime.Items.Add(RadListDataItem267)
-        Me.rec_dtp_starttime.Items.Add(RadListDataItem268)
-        Me.rec_dtp_starttime.Items.Add(RadListDataItem269)
-        Me.rec_dtp_starttime.Items.Add(RadListDataItem270)
-        Me.rec_dtp_starttime.Items.Add(RadListDataItem271)
-        Me.rec_dtp_starttime.Items.Add(RadListDataItem272)
-        Me.rec_dtp_starttime.Items.Add(RadListDataItem273)
-        Me.rec_dtp_starttime.Items.Add(RadListDataItem274)
-        Me.rec_dtp_starttime.Items.Add(RadListDataItem275)
-        Me.rec_dtp_starttime.Items.Add(RadListDataItem276)
-        Me.rec_dtp_starttime.Items.Add(RadListDataItem277)
-        Me.rec_dtp_starttime.Items.Add(RadListDataItem278)
-        Me.rec_dtp_starttime.Items.Add(RadListDataItem279)
-        Me.rec_dtp_starttime.Items.Add(RadListDataItem280)
-        Me.rec_dtp_starttime.Items.Add(RadListDataItem281)
-        Me.rec_dtp_starttime.Items.Add(RadListDataItem282)
-        Me.rec_dtp_starttime.Items.Add(RadListDataItem283)
-        Me.rec_dtp_starttime.Items.Add(RadListDataItem284)
-        Me.rec_dtp_starttime.Items.Add(RadListDataItem285)
-        Me.rec_dtp_starttime.Items.Add(RadListDataItem286)
-        Me.rec_dtp_starttime.Location = New System.Drawing.Point(561, 54)
-        Me.rec_dtp_starttime.Name = "rec_dtp_starttime"
-        Me.rec_dtp_starttime.Size = New System.Drawing.Size(105, 24)
-        Me.rec_dtp_starttime.TabIndex = 5
-        Me.rec_dtp_starttime.ThemeName = "VisualStudio2012Dark"
+        '
+        Me.rec_rrtc_actname.RootElement.MinSize = New System.Drawing.Size(0, 24)
+        Me.rec_rrtc_actname.Size = New System.Drawing.Size(224, 24)
+        Me.rec_rrtc_actname.TabIndex = 35
+        Me.rec_rrtc_actname.ThemeName = "VisualStudio2012Dark"
+        '
+        'rec_lbl_actname
+        '
+        Me.rec_lbl_actname.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
+        Me.rec_lbl_actname.BackColor = System.Drawing.Color.Transparent
+        Me.rec_lbl_actname.Location = New System.Drawing.Point(2, 148)
+        Me.rec_lbl_actname.Name = "rec_lbl_actname"
+        Me.rec_lbl_actname.Size = New System.Drawing.Size(78, 18)
+        Me.rec_lbl_actname.TabIndex = 34
+        Me.rec_lbl_actname.Text = "Activity Name:"
+        Me.rec_lbl_actname.ThemeName = "VisualStudio2012Dark"
+        '
+        'rec_cb_reserveno
+        '
+        Me.rec_cb_reserveno.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
+        Me.rec_cb_reserveno.Location = New System.Drawing.Point(86, 24)
+        Me.rec_cb_reserveno.MinimumSize = New System.Drawing.Size(0, 24)
+        Me.rec_cb_reserveno.Name = "rec_cb_reserveno"
+        '
+        '
+        '
+        Me.rec_cb_reserveno.RootElement.MinSize = New System.Drawing.Size(0, 24)
+        Me.rec_cb_reserveno.Size = New System.Drawing.Size(166, 24)
+        Me.rec_cb_reserveno.TabIndex = 32
+        Me.rec_cb_reserveno.ThemeName = "VisualStudio2012Dark"
+        '
+        'RadLabel2
+        '
+        Me.RadLabel2.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
+        Me.RadLabel2.BackColor = System.Drawing.Color.Transparent
+        Me.RadLabel2.Location = New System.Drawing.Point(8, 117)
+        Me.RadLabel2.Name = "RadLabel2"
+        Me.RadLabel2.Size = New System.Drawing.Size(72, 18)
+        Me.RadLabel2.TabIndex = 31
+        Me.RadLabel2.Text = "Activity Type:"
+        Me.RadLabel2.ThemeName = "VisualStudio2012Dark"
+        '
+        'rec_cb_acttype
+        '
+        Me.rec_cb_acttype.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
+        Me.rec_cb_acttype.DropDownStyle = Telerik.WinControls.RadDropDownStyle.DropDownList
+        Me.rec_cb_acttype.ImeMode = System.Windows.Forms.ImeMode.Off
+        RadListDataItem143.Text = "Academic"
+        RadListDataItem144.Text = "School Activity"
+        Me.rec_cb_acttype.Items.Add(RadListDataItem143)
+        Me.rec_cb_acttype.Items.Add(RadListDataItem144)
+        Me.rec_cb_acttype.Location = New System.Drawing.Point(86, 118)
+        Me.rec_cb_acttype.Name = "rec_cb_acttype"
+        Me.rec_cb_acttype.Size = New System.Drawing.Size(224, 24)
+        Me.rec_cb_acttype.TabIndex = 3
+        Me.rec_cb_acttype.ThemeName = "VisualStudio2012Dark"
+        '
+        'RadLabel72
+        '
+        Me.RadLabel72.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
+        Me.RadLabel72.BackColor = System.Drawing.Color.Transparent
+        Me.RadLabel72.Location = New System.Drawing.Point(3, 24)
+        Me.RadLabel72.Name = "RadLabel72"
+        Me.RadLabel72.Size = New System.Drawing.Size(77, 18)
+        Me.RadLabel72.TabIndex = 29
+        Me.RadLabel72.Text = "Reservation #:"
+        Me.RadLabel72.ThemeName = "VisualStudio2012Dark"
+        '
+        'RadLabel68
+        '
+        Me.RadLabel68.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
+        Me.RadLabel68.BackColor = System.Drawing.Color.Transparent
+        Me.RadLabel68.Location = New System.Drawing.Point(258, 27)
+        Me.RadLabel68.Name = "RadLabel68"
+        Me.RadLabel68.Size = New System.Drawing.Size(46, 18)
+        Me.RadLabel68.TabIndex = 26
+        Me.RadLabel68.Text = "College:"
+        Me.RadLabel68.ThemeName = "VisualStudio2012Dark"
+        '
+        'rec_cb_college_school
+        '
+        Me.rec_cb_college_school.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
+        Me.rec_cb_college_school.Location = New System.Drawing.Point(310, 25)
+        Me.rec_cb_college_school.Name = "rec_cb_college_school"
+        Me.rec_cb_college_school.Size = New System.Drawing.Size(175, 24)
+        Me.rec_cb_college_school.TabIndex = 7
+        Me.rec_cb_college_school.ThemeName = "VisualStudio2012Dark"
+        '
+        'rec_cb_idnum
+        '
+        Me.rec_cb_idnum.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
+        Me.rec_cb_idnum.Location = New System.Drawing.Point(86, 54)
+        Me.rec_cb_idnum.MinimumSize = New System.Drawing.Size(0, 24)
+        Me.rec_cb_idnum.Name = "rec_cb_idnum"
+        '
+        '
+        '
+        Me.rec_cb_idnum.RootElement.MinSize = New System.Drawing.Size(0, 24)
+        Me.rec_cb_idnum.Size = New System.Drawing.Size(166, 24)
+        Me.rec_cb_idnum.TabIndex = 1
+        Me.rec_cb_idnum.ThemeName = "VisualStudio2012Dark"
+        '
+        'RadLabel26
+        '
+        Me.RadLabel26.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
+        Me.RadLabel26.BackColor = System.Drawing.Color.Transparent
+        Me.RadLabel26.Location = New System.Drawing.Point(37, 52)
+        Me.RadLabel26.Name = "RadLabel26"
+        Me.RadLabel26.Size = New System.Drawing.Size(43, 18)
+        Me.RadLabel26.TabIndex = 22
+        Me.RadLabel26.Text = "ID No. :"
+        Me.RadLabel26.ThemeName = "VisualStudio2012Dark"
+        '
+        'RadLabel17
+        '
+        Me.RadLabel17.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
+        Me.RadLabel17.BackColor = System.Drawing.Color.Transparent
+        Me.RadLabel17.Location = New System.Drawing.Point(516, 116)
+        Me.RadLabel17.Name = "RadLabel17"
+        Me.RadLabel17.Size = New System.Drawing.Size(69, 18)
+        Me.RadLabel17.TabIndex = 20
+        Me.RadLabel17.Text = "Reserved by:"
+        Me.RadLabel17.ThemeName = "VisualStudio2012Dark"
+        '
+        'RadLabel14
+        '
+        Me.RadLabel14.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
+        Me.RadLabel14.BackColor = System.Drawing.Color.Transparent
+        Me.RadLabel14.Location = New System.Drawing.Point(265, 85)
+        Me.RadLabel14.Name = "RadLabel14"
+        Me.RadLabel14.Size = New System.Drawing.Size(39, 18)
+        Me.RadLabel14.TabIndex = 17
+        Me.RadLabel14.Text = "Status:"
+        Me.RadLabel14.ThemeName = "VisualStudio2012Dark"
+        '
+        'rec_cb_status
+        '
+        Me.rec_cb_status.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
+        RadListDataItem145.Text = "Reserved"
+        Me.rec_cb_status.Items.Add(RadListDataItem145)
+        Me.rec_cb_status.Location = New System.Drawing.Point(310, 85)
+        Me.rec_cb_status.Name = "rec_cb_status"
+        Me.rec_cb_status.Size = New System.Drawing.Size(175, 24)
+        Me.rec_cb_status.TabIndex = 9
+        Me.rec_cb_status.Text = "Reserved"
+        Me.rec_cb_status.ThemeName = "VisualStudio2012Dark"
         '
         'rec_dtp_endtime
         '
         Me.rec_dtp_endtime.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
         Me.rec_dtp_endtime.DropDownStyle = Telerik.WinControls.RadDropDownStyle.DropDownList
+        RadListDataItem146.Text = "01:00"
+        RadListDataItem147.Text = "01:30"
+        RadListDataItem148.Text = "02:00"
+        RadListDataItem149.Text = "02:30"
+        RadListDataItem150.Text = "03:00"
+        RadListDataItem151.Text = "03:30"
+        RadListDataItem152.Text = "04:00"
+        RadListDataItem153.Text = "04:30"
+        RadListDataItem154.Text = "05:00"
+        RadListDataItem155.Text = "05:30"
+        RadListDataItem156.Text = "06:00"
+        RadListDataItem157.Text = "06:30"
+        RadListDataItem158.Text = "07:00"
+        RadListDataItem159.Text = "07:30"
+        RadListDataItem160.Text = "08:00"
+        RadListDataItem161.Text = "08:30"
+        RadListDataItem162.Text = "09:00"
+        RadListDataItem163.Text = "09:30"
+        RadListDataItem164.Text = "10:00"
+        RadListDataItem165.Text = "10:30"
+        RadListDataItem166.Text = "11:00"
+        RadListDataItem167.Text = "11:30"
+        RadListDataItem168.Text = "12:00"
+        RadListDataItem169.Text = "12:30"
+        RadListDataItem170.Text = "13:00"
+        RadListDataItem171.Text = "13:30"
+        RadListDataItem172.Text = "14:00"
+        RadListDataItem173.Text = "14:30"
+        RadListDataItem174.Text = "15:00"
+        RadListDataItem175.Text = "15:30"
+        RadListDataItem176.Text = "16:00"
+        RadListDataItem177.Text = "16:30"
+        RadListDataItem178.Text = "17:00"
+        RadListDataItem179.Text = "17:30"
+        RadListDataItem180.Text = "18:00"
+        RadListDataItem181.Text = "18:30"
+        RadListDataItem182.Text = "19:00"
+        RadListDataItem183.Text = "19:30"
+        RadListDataItem184.Text = "20:00"
+        RadListDataItem185.Text = "20:30"
+        RadListDataItem186.Text = "21:00"
+        RadListDataItem187.Text = "21:30"
+        RadListDataItem188.Text = "22:00"
+        RadListDataItem189.Text = "22:30"
+        RadListDataItem190.Text = "23:00"
+        RadListDataItem191.Text = "23:30"
+        RadListDataItem192.Text = "24:00"
+        Me.rec_dtp_endtime.Items.Add(RadListDataItem146)
+        Me.rec_dtp_endtime.Items.Add(RadListDataItem147)
+        Me.rec_dtp_endtime.Items.Add(RadListDataItem148)
+        Me.rec_dtp_endtime.Items.Add(RadListDataItem149)
+        Me.rec_dtp_endtime.Items.Add(RadListDataItem150)
+        Me.rec_dtp_endtime.Items.Add(RadListDataItem151)
+        Me.rec_dtp_endtime.Items.Add(RadListDataItem152)
+        Me.rec_dtp_endtime.Items.Add(RadListDataItem153)
+        Me.rec_dtp_endtime.Items.Add(RadListDataItem154)
+        Me.rec_dtp_endtime.Items.Add(RadListDataItem155)
+        Me.rec_dtp_endtime.Items.Add(RadListDataItem156)
+        Me.rec_dtp_endtime.Items.Add(RadListDataItem157)
+        Me.rec_dtp_endtime.Items.Add(RadListDataItem158)
+        Me.rec_dtp_endtime.Items.Add(RadListDataItem159)
+        Me.rec_dtp_endtime.Items.Add(RadListDataItem160)
+        Me.rec_dtp_endtime.Items.Add(RadListDataItem161)
+        Me.rec_dtp_endtime.Items.Add(RadListDataItem162)
+        Me.rec_dtp_endtime.Items.Add(RadListDataItem163)
+        Me.rec_dtp_endtime.Items.Add(RadListDataItem164)
+        Me.rec_dtp_endtime.Items.Add(RadListDataItem165)
+        Me.rec_dtp_endtime.Items.Add(RadListDataItem166)
+        Me.rec_dtp_endtime.Items.Add(RadListDataItem167)
+        Me.rec_dtp_endtime.Items.Add(RadListDataItem168)
+        Me.rec_dtp_endtime.Items.Add(RadListDataItem169)
+        Me.rec_dtp_endtime.Items.Add(RadListDataItem170)
+        Me.rec_dtp_endtime.Items.Add(RadListDataItem171)
+        Me.rec_dtp_endtime.Items.Add(RadListDataItem172)
+        Me.rec_dtp_endtime.Items.Add(RadListDataItem173)
+        Me.rec_dtp_endtime.Items.Add(RadListDataItem174)
+        Me.rec_dtp_endtime.Items.Add(RadListDataItem175)
+        Me.rec_dtp_endtime.Items.Add(RadListDataItem176)
+        Me.rec_dtp_endtime.Items.Add(RadListDataItem177)
+        Me.rec_dtp_endtime.Items.Add(RadListDataItem178)
+        Me.rec_dtp_endtime.Items.Add(RadListDataItem179)
+        Me.rec_dtp_endtime.Items.Add(RadListDataItem180)
+        Me.rec_dtp_endtime.Items.Add(RadListDataItem181)
+        Me.rec_dtp_endtime.Items.Add(RadListDataItem182)
+        Me.rec_dtp_endtime.Items.Add(RadListDataItem183)
+        Me.rec_dtp_endtime.Items.Add(RadListDataItem184)
+        Me.rec_dtp_endtime.Items.Add(RadListDataItem185)
+        Me.rec_dtp_endtime.Items.Add(RadListDataItem186)
+        Me.rec_dtp_endtime.Items.Add(RadListDataItem187)
+        Me.rec_dtp_endtime.Items.Add(RadListDataItem188)
+        Me.rec_dtp_endtime.Items.Add(RadListDataItem189)
+        Me.rec_dtp_endtime.Items.Add(RadListDataItem190)
+        Me.rec_dtp_endtime.Items.Add(RadListDataItem191)
+        Me.rec_dtp_endtime.Items.Add(RadListDataItem192)
+        Me.rec_dtp_endtime.Location = New System.Drawing.Point(561, 84)
+        Me.rec_dtp_endtime.Name = "rec_dtp_endtime"
+        Me.rec_dtp_endtime.Size = New System.Drawing.Size(105, 24)
+        Me.rec_dtp_endtime.TabIndex = 6
+        Me.rec_dtp_endtime.ThemeName = "VisualStudio2012Dark"
+        '
+        'rec_dtp_starttime
+        '
+        Me.rec_dtp_starttime.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
+        Me.rec_dtp_starttime.DropDownStyle = Telerik.WinControls.RadDropDownStyle.DropDownList
         RadListDataItem193.Text = "01:00"
         RadListDataItem194.Text = "01:30"
         RadListDataItem195.Text = "02:00"
@@ -2490,278 +2410,417 @@ Partial Class Main
         RadListDataItem237.Text = "23:00"
         RadListDataItem238.Text = "23:30"
         RadListDataItem239.Text = "24:00"
-        Me.rec_dtp_endtime.Items.Add(RadListDataItem193)
-        Me.rec_dtp_endtime.Items.Add(RadListDataItem194)
-        Me.rec_dtp_endtime.Items.Add(RadListDataItem195)
-        Me.rec_dtp_endtime.Items.Add(RadListDataItem196)
-        Me.rec_dtp_endtime.Items.Add(RadListDataItem197)
-        Me.rec_dtp_endtime.Items.Add(RadListDataItem198)
-        Me.rec_dtp_endtime.Items.Add(RadListDataItem199)
-        Me.rec_dtp_endtime.Items.Add(RadListDataItem200)
-        Me.rec_dtp_endtime.Items.Add(RadListDataItem201)
-        Me.rec_dtp_endtime.Items.Add(RadListDataItem202)
-        Me.rec_dtp_endtime.Items.Add(RadListDataItem203)
-        Me.rec_dtp_endtime.Items.Add(RadListDataItem204)
-        Me.rec_dtp_endtime.Items.Add(RadListDataItem205)
-        Me.rec_dtp_endtime.Items.Add(RadListDataItem206)
-        Me.rec_dtp_endtime.Items.Add(RadListDataItem207)
-        Me.rec_dtp_endtime.Items.Add(RadListDataItem208)
-        Me.rec_dtp_endtime.Items.Add(RadListDataItem209)
-        Me.rec_dtp_endtime.Items.Add(RadListDataItem210)
-        Me.rec_dtp_endtime.Items.Add(RadListDataItem211)
-        Me.rec_dtp_endtime.Items.Add(RadListDataItem212)
-        Me.rec_dtp_endtime.Items.Add(RadListDataItem213)
-        Me.rec_dtp_endtime.Items.Add(RadListDataItem214)
-        Me.rec_dtp_endtime.Items.Add(RadListDataItem215)
-        Me.rec_dtp_endtime.Items.Add(RadListDataItem216)
-        Me.rec_dtp_endtime.Items.Add(RadListDataItem217)
-        Me.rec_dtp_endtime.Items.Add(RadListDataItem218)
-        Me.rec_dtp_endtime.Items.Add(RadListDataItem219)
-        Me.rec_dtp_endtime.Items.Add(RadListDataItem220)
-        Me.rec_dtp_endtime.Items.Add(RadListDataItem221)
-        Me.rec_dtp_endtime.Items.Add(RadListDataItem222)
-        Me.rec_dtp_endtime.Items.Add(RadListDataItem223)
-        Me.rec_dtp_endtime.Items.Add(RadListDataItem224)
-        Me.rec_dtp_endtime.Items.Add(RadListDataItem225)
-        Me.rec_dtp_endtime.Items.Add(RadListDataItem226)
-        Me.rec_dtp_endtime.Items.Add(RadListDataItem227)
-        Me.rec_dtp_endtime.Items.Add(RadListDataItem228)
-        Me.rec_dtp_endtime.Items.Add(RadListDataItem229)
-        Me.rec_dtp_endtime.Items.Add(RadListDataItem230)
-        Me.rec_dtp_endtime.Items.Add(RadListDataItem231)
-        Me.rec_dtp_endtime.Items.Add(RadListDataItem232)
-        Me.rec_dtp_endtime.Items.Add(RadListDataItem233)
-        Me.rec_dtp_endtime.Items.Add(RadListDataItem234)
-        Me.rec_dtp_endtime.Items.Add(RadListDataItem235)
-        Me.rec_dtp_endtime.Items.Add(RadListDataItem236)
-        Me.rec_dtp_endtime.Items.Add(RadListDataItem237)
-        Me.rec_dtp_endtime.Items.Add(RadListDataItem238)
-        Me.rec_dtp_endtime.Items.Add(RadListDataItem239)
-        Me.rec_dtp_endtime.Location = New System.Drawing.Point(561, 84)
-        Me.rec_dtp_endtime.Name = "rec_dtp_endtime"
-        Me.rec_dtp_endtime.Size = New System.Drawing.Size(105, 24)
-        Me.rec_dtp_endtime.TabIndex = 6
-        Me.rec_dtp_endtime.ThemeName = "VisualStudio2012Dark"
+        Me.rec_dtp_starttime.Items.Add(RadListDataItem193)
+        Me.rec_dtp_starttime.Items.Add(RadListDataItem194)
+        Me.rec_dtp_starttime.Items.Add(RadListDataItem195)
+        Me.rec_dtp_starttime.Items.Add(RadListDataItem196)
+        Me.rec_dtp_starttime.Items.Add(RadListDataItem197)
+        Me.rec_dtp_starttime.Items.Add(RadListDataItem198)
+        Me.rec_dtp_starttime.Items.Add(RadListDataItem199)
+        Me.rec_dtp_starttime.Items.Add(RadListDataItem200)
+        Me.rec_dtp_starttime.Items.Add(RadListDataItem201)
+        Me.rec_dtp_starttime.Items.Add(RadListDataItem202)
+        Me.rec_dtp_starttime.Items.Add(RadListDataItem203)
+        Me.rec_dtp_starttime.Items.Add(RadListDataItem204)
+        Me.rec_dtp_starttime.Items.Add(RadListDataItem205)
+        Me.rec_dtp_starttime.Items.Add(RadListDataItem206)
+        Me.rec_dtp_starttime.Items.Add(RadListDataItem207)
+        Me.rec_dtp_starttime.Items.Add(RadListDataItem208)
+        Me.rec_dtp_starttime.Items.Add(RadListDataItem209)
+        Me.rec_dtp_starttime.Items.Add(RadListDataItem210)
+        Me.rec_dtp_starttime.Items.Add(RadListDataItem211)
+        Me.rec_dtp_starttime.Items.Add(RadListDataItem212)
+        Me.rec_dtp_starttime.Items.Add(RadListDataItem213)
+        Me.rec_dtp_starttime.Items.Add(RadListDataItem214)
+        Me.rec_dtp_starttime.Items.Add(RadListDataItem215)
+        Me.rec_dtp_starttime.Items.Add(RadListDataItem216)
+        Me.rec_dtp_starttime.Items.Add(RadListDataItem217)
+        Me.rec_dtp_starttime.Items.Add(RadListDataItem218)
+        Me.rec_dtp_starttime.Items.Add(RadListDataItem219)
+        Me.rec_dtp_starttime.Items.Add(RadListDataItem220)
+        Me.rec_dtp_starttime.Items.Add(RadListDataItem221)
+        Me.rec_dtp_starttime.Items.Add(RadListDataItem222)
+        Me.rec_dtp_starttime.Items.Add(RadListDataItem223)
+        Me.rec_dtp_starttime.Items.Add(RadListDataItem224)
+        Me.rec_dtp_starttime.Items.Add(RadListDataItem225)
+        Me.rec_dtp_starttime.Items.Add(RadListDataItem226)
+        Me.rec_dtp_starttime.Items.Add(RadListDataItem227)
+        Me.rec_dtp_starttime.Items.Add(RadListDataItem228)
+        Me.rec_dtp_starttime.Items.Add(RadListDataItem229)
+        Me.rec_dtp_starttime.Items.Add(RadListDataItem230)
+        Me.rec_dtp_starttime.Items.Add(RadListDataItem231)
+        Me.rec_dtp_starttime.Items.Add(RadListDataItem232)
+        Me.rec_dtp_starttime.Items.Add(RadListDataItem233)
+        Me.rec_dtp_starttime.Items.Add(RadListDataItem234)
+        Me.rec_dtp_starttime.Items.Add(RadListDataItem235)
+        Me.rec_dtp_starttime.Items.Add(RadListDataItem236)
+        Me.rec_dtp_starttime.Items.Add(RadListDataItem237)
+        Me.rec_dtp_starttime.Items.Add(RadListDataItem238)
+        Me.rec_dtp_starttime.Items.Add(RadListDataItem239)
+        Me.rec_dtp_starttime.Location = New System.Drawing.Point(561, 54)
+        Me.rec_dtp_starttime.Name = "rec_dtp_starttime"
+        Me.rec_dtp_starttime.Size = New System.Drawing.Size(105, 24)
+        Me.rec_dtp_starttime.TabIndex = 5
+        Me.rec_dtp_starttime.ThemeName = "VisualStudio2012Dark"
         '
-        'rec_cb_status
+        'RadLabel6
         '
-        Me.rec_cb_status.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
-        RadListDataItem192.Text = "Reserved"
-        Me.rec_cb_status.Items.Add(RadListDataItem192)
-        Me.rec_cb_status.Location = New System.Drawing.Point(310, 85)
-        Me.rec_cb_status.Name = "rec_cb_status"
-        Me.rec_cb_status.Size = New System.Drawing.Size(175, 24)
-        Me.rec_cb_status.TabIndex = 9
-        Me.rec_cb_status.Text = "Reserved"
-        Me.rec_cb_status.ThemeName = "VisualStudio2012Dark"
+        Me.RadLabel6.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
+        Me.RadLabel6.BackColor = System.Drawing.Color.Transparent
+        Me.RadLabel6.Location = New System.Drawing.Point(26, 82)
+        Me.RadLabel6.Name = "RadLabel6"
+        Me.RadLabel6.Size = New System.Drawing.Size(54, 18)
+        Me.RadLabel6.TabIndex = 11
+        Me.RadLabel6.Text = "Borrower:"
+        Me.RadLabel6.ThemeName = "VisualStudio2012Dark"
         '
-        'RadLabel14
+        'rec_cb_location
         '
-        Me.RadLabel14.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
-        Me.RadLabel14.BackColor = System.Drawing.Color.Transparent
-        Me.RadLabel14.Location = New System.Drawing.Point(265, 85)
-        Me.RadLabel14.Name = "RadLabel14"
-        Me.RadLabel14.Size = New System.Drawing.Size(39, 18)
-        Me.RadLabel14.TabIndex = 17
-        Me.RadLabel14.Text = "Status:"
-        Me.RadLabel14.ThemeName = "VisualStudio2012Dark"
+        Me.rec_cb_location.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
+        Me.rec_cb_location.Location = New System.Drawing.Point(310, 55)
+        Me.rec_cb_location.Name = "rec_cb_location"
+        Me.rec_cb_location.Size = New System.Drawing.Size(176, 24)
+        Me.rec_cb_location.TabIndex = 8
+        Me.rec_cb_location.ThemeName = "VisualStudio2012Dark"
         '
-        'RadLabel17
+        'RadLabel5
         '
-        Me.RadLabel17.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
-        Me.RadLabel17.BackColor = System.Drawing.Color.Transparent
-        Me.RadLabel17.Location = New System.Drawing.Point(516, 116)
-        Me.RadLabel17.Name = "RadLabel17"
-        Me.RadLabel17.Size = New System.Drawing.Size(69, 18)
-        Me.RadLabel17.TabIndex = 20
-        Me.RadLabel17.Text = "Reserved by:"
-        Me.RadLabel17.ThemeName = "VisualStudio2012Dark"
+        Me.RadLabel5.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
+        Me.RadLabel5.BackColor = System.Drawing.Color.Transparent
+        Me.RadLabel5.Location = New System.Drawing.Point(264, 55)
+        Me.RadLabel5.Name = "RadLabel5"
+        Me.RadLabel5.Size = New System.Drawing.Size(40, 18)
+        Me.RadLabel5.TabIndex = 9
+        Me.RadLabel5.Text = "Venue:"
+        Me.RadLabel5.ThemeName = "VisualStudio2012Dark"
         '
-        'RadLabel26
+        'rec_cb_borrower
         '
-        Me.RadLabel26.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
-        Me.RadLabel26.BackColor = System.Drawing.Color.Transparent
-        Me.RadLabel26.Location = New System.Drawing.Point(37, 52)
-        Me.RadLabel26.Name = "RadLabel26"
-        Me.RadLabel26.Size = New System.Drawing.Size(43, 18)
-        Me.RadLabel26.TabIndex = 22
-        Me.RadLabel26.Text = "ID No. :"
-        Me.RadLabel26.ThemeName = "VisualStudio2012Dark"
+        Me.rec_cb_borrower.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
+        Me.rec_cb_borrower.DropDownStyle = Telerik.WinControls.RadDropDownStyle.DropDownList
+        Me.rec_cb_borrower.Location = New System.Drawing.Point(86, 84)
+        Me.rec_cb_borrower.Name = "rec_cb_borrower"
+        Me.rec_cb_borrower.Size = New System.Drawing.Size(166, 24)
+        Me.rec_cb_borrower.TabIndex = 2
+        Me.rec_cb_borrower.ThemeName = "VisualStudio2012Dark"
         '
-        'rec_cb_idnum
+        'RadLabel4
         '
-        Me.rec_cb_idnum.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
-        Me.rec_cb_idnum.Location = New System.Drawing.Point(86, 54)
-        Me.rec_cb_idnum.MinimumSize = New System.Drawing.Size(0, 24)
-        Me.rec_cb_idnum.Name = "rec_cb_idnum"
+        Me.RadLabel4.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
+        Me.RadLabel4.BackColor = System.Drawing.Color.Transparent
+        Me.RadLabel4.Location = New System.Drawing.Point(500, 87)
+        Me.RadLabel4.Name = "RadLabel4"
+        Me.RadLabel4.Size = New System.Drawing.Size(55, 18)
+        Me.RadLabel4.TabIndex = 7
+        Me.RadLabel4.Text = "End Time:"
+        Me.RadLabel4.ThemeName = "VisualStudio2012Dark"
         '
+        'RadLabel3
         '
+        Me.RadLabel3.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
+        Me.RadLabel3.BackColor = System.Drawing.Color.Transparent
+        Me.RadLabel3.Location = New System.Drawing.Point(496, 57)
+        Me.RadLabel3.Name = "RadLabel3"
+        Me.RadLabel3.Size = New System.Drawing.Size(59, 18)
+        Me.RadLabel3.TabIndex = 6
+        Me.RadLabel3.Text = "Start Time:"
+        Me.RadLabel3.ThemeName = "VisualStudio2012Dark"
         '
-        Me.rec_cb_idnum.RootElement.MinSize = New System.Drawing.Size(0, 24)
-        Me.rec_cb_idnum.Size = New System.Drawing.Size(166, 24)
-        Me.rec_cb_idnum.TabIndex = 1
-        Me.rec_cb_idnum.ThemeName = "VisualStudio2012Dark"
+        'RadLabel1
         '
-        'rec_cb_college_school
+        Me.RadLabel1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
+        Me.RadLabel1.BackColor = System.Drawing.Color.Transparent
+        Me.RadLabel1.Location = New System.Drawing.Point(523, 28)
+        Me.RadLabel1.Name = "RadLabel1"
+        Me.RadLabel1.Size = New System.Drawing.Size(32, 18)
+        Me.RadLabel1.TabIndex = 2
+        Me.RadLabel1.Text = "Date:"
+        Me.RadLabel1.ThemeName = "VisualStudio2012Dark"
         '
-        Me.rec_cb_college_school.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
-        Me.rec_cb_college_school.Location = New System.Drawing.Point(310, 25)
-        Me.rec_cb_college_school.Name = "rec_cb_college_school"
-        Me.rec_cb_college_school.Size = New System.Drawing.Size(175, 24)
-        Me.rec_cb_college_school.TabIndex = 7
-        Me.rec_cb_college_school.ThemeName = "VisualStudio2012Dark"
+        'rec_dtp_date
         '
-        'RadLabel68
-        '
-        Me.RadLabel68.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
-        Me.RadLabel68.BackColor = System.Drawing.Color.Transparent
-        Me.RadLabel68.Location = New System.Drawing.Point(258, 27)
-        Me.RadLabel68.Name = "RadLabel68"
-        Me.RadLabel68.Size = New System.Drawing.Size(46, 18)
-        Me.RadLabel68.TabIndex = 26
-        Me.RadLabel68.Text = "College:"
-        Me.RadLabel68.ThemeName = "VisualStudio2012Dark"
-        '
-        'RadLabel72
-        '
-        Me.RadLabel72.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
-        Me.RadLabel72.BackColor = System.Drawing.Color.Transparent
-        Me.RadLabel72.Location = New System.Drawing.Point(3, 24)
-        Me.RadLabel72.Name = "RadLabel72"
-        Me.RadLabel72.Size = New System.Drawing.Size(77, 18)
-        Me.RadLabel72.TabIndex = 29
-        Me.RadLabel72.Text = "Reservation #:"
-        Me.RadLabel72.ThemeName = "VisualStudio2012Dark"
-        '
-        'rec_cb_acttype
-        '
-        Me.rec_cb_acttype.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
-        Me.rec_cb_acttype.DropDownStyle = Telerik.WinControls.RadDropDownStyle.DropDownList
-        Me.rec_cb_acttype.ImeMode = System.Windows.Forms.ImeMode.Off
-        RadListDataItem190.Text = "Academic"
-        RadListDataItem191.Text = "School Activity"
-        Me.rec_cb_acttype.Items.Add(RadListDataItem190)
-        Me.rec_cb_acttype.Items.Add(RadListDataItem191)
-        Me.rec_cb_acttype.Location = New System.Drawing.Point(86, 118)
-        Me.rec_cb_acttype.Name = "rec_cb_acttype"
-        Me.rec_cb_acttype.Size = New System.Drawing.Size(224, 24)
-        Me.rec_cb_acttype.TabIndex = 3
-        Me.rec_cb_acttype.ThemeName = "VisualStudio2012Dark"
-        '
-        'RadLabel2
-        '
-        Me.RadLabel2.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
-        Me.RadLabel2.BackColor = System.Drawing.Color.Transparent
-        Me.RadLabel2.Location = New System.Drawing.Point(8, 117)
-        Me.RadLabel2.Name = "RadLabel2"
-        Me.RadLabel2.Size = New System.Drawing.Size(72, 18)
-        Me.RadLabel2.TabIndex = 31
-        Me.RadLabel2.Text = "Activity Type:"
-        Me.RadLabel2.ThemeName = "VisualStudio2012Dark"
-        '
-        'rec_cb_reserveno
-        '
-        Me.rec_cb_reserveno.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
-        Me.rec_cb_reserveno.Location = New System.Drawing.Point(86, 24)
-        Me.rec_cb_reserveno.MinimumSize = New System.Drawing.Size(0, 24)
-        Me.rec_cb_reserveno.Name = "rec_cb_reserveno"
+        Me.rec_dtp_date.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
+        Me.rec_dtp_date.CustomFormat = "MM/d/yyyy"
+        Me.rec_dtp_date.Format = System.Windows.Forms.DateTimePickerFormat.Custom
+        Me.rec_dtp_date.Location = New System.Drawing.Point(561, 24)
+        Me.rec_dtp_date.MinimumSize = New System.Drawing.Size(0, 24)
+        Me.rec_dtp_date.Name = "rec_dtp_date"
         '
         '
         '
-        Me.rec_cb_reserveno.RootElement.MinSize = New System.Drawing.Size(0, 24)
-        Me.rec_cb_reserveno.Size = New System.Drawing.Size(166, 24)
-        Me.rec_cb_reserveno.TabIndex = 32
-        Me.rec_cb_reserveno.ThemeName = "VisualStudio2012Dark"
+        Me.rec_dtp_date.RootElement.MinSize = New System.Drawing.Size(0, 24)
+        Me.rec_dtp_date.Size = New System.Drawing.Size(105, 24)
+        Me.rec_dtp_date.TabIndex = 4
+        Me.rec_dtp_date.TabStop = False
+        Me.rec_dtp_date.Text = "07/25/2016"
+        Me.rec_dtp_date.ThemeName = "VisualStudio2012Dark"
+        Me.rec_dtp_date.Value = New Date(2016, 7, 25, 10, 55, 49, 565)
         '
-        'rec_lbl_actname
+        'RadGroupBox5
         '
-        Me.rec_lbl_actname.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
-        Me.rec_lbl_actname.BackColor = System.Drawing.Color.Transparent
-        Me.rec_lbl_actname.Location = New System.Drawing.Point(2, 148)
-        Me.rec_lbl_actname.Name = "rec_lbl_actname"
-        Me.rec_lbl_actname.Size = New System.Drawing.Size(78, 18)
-        Me.rec_lbl_actname.TabIndex = 34
-        Me.rec_lbl_actname.Text = "Activity Name:"
-        Me.rec_lbl_actname.ThemeName = "VisualStudio2012Dark"
+        Me.RadGroupBox5.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping
+        Me.RadGroupBox5.Anchor = System.Windows.Forms.AnchorStyles.Bottom
+        Me.RadGroupBox5.Controls.Add(Me.rec_eq_chooseeq)
+        Me.RadGroupBox5.Controls.Add(Me.rec_eq_chooseno)
+        Me.RadGroupBox5.Controls.Add(Me.rec_eq_type_choose)
+        Me.RadGroupBox5.Controls.Add(Me.rec_btn_showalltakeneq)
+        Me.RadGroupBox5.Controls.Add(Me.RadLabel71)
+        Me.RadGroupBox5.Controls.Add(Me.rec_btn_check_availability)
+        Me.RadGroupBox5.Controls.Add(Me.rec_btn_add_eq)
+        Me.RadGroupBox5.Controls.Add(Me.rec_btn_eqclear)
+        Me.RadGroupBox5.Controls.Add(Me.RadLabel70)
+        Me.RadGroupBox5.Controls.Add(Me.RadLabel50)
+        Me.RadGroupBox5.Controls.Add(Me.rec_btn_showalldata)
+        Me.RadGroupBox5.Controls.Add(Me.rec_btn_showavailequip)
+        Me.RadGroupBox5.Controls.Add(Me.rec_del_eq)
+        Me.RadGroupBox5.Controls.Add(Me.RadGroupBox17)
+        Me.RadGroupBox5.HeaderText = "Equipments"
+        Me.RadGroupBox5.Location = New System.Drawing.Point(677, 279)
+        Me.RadGroupBox5.Name = "RadGroupBox5"
+        Me.RadGroupBox5.Size = New System.Drawing.Size(668, 269)
+        Me.RadGroupBox5.TabIndex = 2
+        Me.RadGroupBox5.Text = "Equipments"
+        Me.RadGroupBox5.ThemeName = "VisualStudio2012Dark"
         '
-        'rec_rrtc_actname
+        'rec_eq_chooseeq
         '
-        Me.rec_rrtc_actname.Location = New System.Drawing.Point(86, 148)
-        Me.rec_rrtc_actname.MinimumSize = New System.Drawing.Size(0, 24)
-        Me.rec_rrtc_actname.Name = "rec_rrtc_actname"
+        Me.rec_eq_chooseeq.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
+        Me.rec_eq_chooseeq.DropDownStyle = Telerik.WinControls.RadDropDownStyle.DropDownList
+        Me.rec_eq_chooseeq.Location = New System.Drawing.Point(5, 156)
+        Me.rec_eq_chooseeq.Name = "rec_eq_chooseeq"
+        Me.rec_eq_chooseeq.Size = New System.Drawing.Size(217, 24)
+        Me.rec_eq_chooseeq.TabIndex = 13
+        Me.rec_eq_chooseeq.ThemeName = "VisualStudio2012Dark"
+        '
+        'rec_eq_chooseno
+        '
+        Me.rec_eq_chooseno.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
+        Me.rec_eq_chooseno.DropDownStyle = Telerik.WinControls.RadDropDownStyle.DropDownList
+        Me.rec_eq_chooseno.Location = New System.Drawing.Point(5, 102)
+        Me.rec_eq_chooseno.Name = "rec_eq_chooseno"
+        Me.rec_eq_chooseno.Size = New System.Drawing.Size(217, 24)
+        Me.rec_eq_chooseno.TabIndex = 12
+        Me.rec_eq_chooseno.ThemeName = "VisualStudio2012Dark"
+        '
+        'rec_eq_type_choose
+        '
+        Me.rec_eq_type_choose.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
+        Me.rec_eq_type_choose.DropDownStyle = Telerik.WinControls.RadDropDownStyle.DropDownList
+        Me.rec_eq_type_choose.Location = New System.Drawing.Point(5, 48)
+        Me.rec_eq_type_choose.Name = "rec_eq_type_choose"
+        Me.rec_eq_type_choose.Size = New System.Drawing.Size(217, 24)
+        Me.rec_eq_type_choose.TabIndex = 11
+        Me.rec_eq_type_choose.ThemeName = "VisualStudio2012Dark"
+        '
+        'rec_btn_showalltakeneq
+        '
+        Me.rec_btn_showalltakeneq.Anchor = System.Windows.Forms.AnchorStyles.Bottom
+        Me.rec_btn_showalltakeneq.Location = New System.Drawing.Point(513, 230)
+        Me.rec_btn_showalltakeneq.Name = "rec_btn_showalltakeneq"
+        Me.rec_btn_showalltakeneq.Size = New System.Drawing.Size(149, 29)
+        Me.rec_btn_showalltakeneq.TabIndex = 22
+        Me.rec_btn_showalltakeneq.Text = "Show All Taken Equipments"
+        Me.rec_btn_showalltakeneq.ThemeName = "VisualStudio2012Dark"
+        '
+        'RadLabel71
+        '
+        Me.RadLabel71.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
+        Me.RadLabel71.BackColor = System.Drawing.Color.Transparent
+        Me.RadLabel71.Location = New System.Drawing.Point(5, 132)
+        Me.RadLabel71.Name = "RadLabel71"
+        Me.RadLabel71.Size = New System.Drawing.Size(63, 18)
+        Me.RadLabel71.TabIndex = 32
+        Me.RadLabel71.Text = "Equipment:"
+        Me.RadLabel71.ThemeName = "VisualStudio2012Dark"
+        '
+        'rec_btn_check_availability
+        '
+        Me.rec_btn_check_availability.Anchor = System.Windows.Forms.AnchorStyles.Top
+        Me.rec_btn_check_availability.Location = New System.Drawing.Point(232, 106)
+        Me.rec_btn_check_availability.Name = "rec_btn_check_availability"
+        Me.rec_btn_check_availability.Size = New System.Drawing.Size(77, 24)
+        Me.rec_btn_check_availability.TabIndex = 16
+        Me.rec_btn_check_availability.Text = "Check"
+        Me.rec_btn_check_availability.ThemeName = "VisualStudio2012Dark"
+        '
+        'rec_btn_add_eq
+        '
+        Me.rec_btn_add_eq.Anchor = System.Windows.Forms.AnchorStyles.Top
+        Me.rec_btn_add_eq.Location = New System.Drawing.Point(232, 76)
+        Me.rec_btn_add_eq.Name = "rec_btn_add_eq"
+        Me.rec_btn_add_eq.Size = New System.Drawing.Size(77, 24)
+        Me.rec_btn_add_eq.TabIndex = 15
+        Me.rec_btn_add_eq.Text = ">>"
+        Me.rec_btn_add_eq.ThemeName = "VisualStudio2012Dark"
+        '
+        'rec_btn_eqclear
+        '
+        Me.rec_btn_eqclear.Anchor = System.Windows.Forms.AnchorStyles.Top
+        Me.rec_btn_eqclear.Location = New System.Drawing.Point(232, 136)
+        Me.rec_btn_eqclear.Name = "rec_btn_eqclear"
+        Me.rec_btn_eqclear.Size = New System.Drawing.Size(77, 24)
+        Me.rec_btn_eqclear.TabIndex = 17
+        Me.rec_btn_eqclear.Text = "Clear"
+        Me.rec_btn_eqclear.ThemeName = "VisualStudio2012Dark"
+        '
+        'RadLabel70
+        '
+        Me.RadLabel70.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
+        Me.RadLabel70.BackColor = System.Drawing.Color.Transparent
+        Me.RadLabel70.Location = New System.Drawing.Point(5, 78)
+        Me.RadLabel70.Name = "RadLabel70"
+        Me.RadLabel70.Size = New System.Drawing.Size(107, 18)
+        Me.RadLabel70.TabIndex = 29
+        Me.RadLabel70.Text = "Equipment Number:"
+        Me.RadLabel70.ThemeName = "VisualStudio2012Dark"
+        '
+        'RadLabel50
+        '
+        Me.RadLabel50.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
+        Me.RadLabel50.BackColor = System.Drawing.Color.Transparent
+        Me.RadLabel50.Location = New System.Drawing.Point(5, 24)
+        Me.RadLabel50.Name = "RadLabel50"
+        Me.RadLabel50.Size = New System.Drawing.Size(90, 18)
+        Me.RadLabel50.TabIndex = 26
+        Me.RadLabel50.Text = "Equipment Type:"
+        Me.RadLabel50.ThemeName = "VisualStudio2012Dark"
+        '
+        'rec_btn_showalldata
+        '
+        Me.rec_btn_showalldata.Anchor = System.Windows.Forms.AnchorStyles.Bottom
+        Me.rec_btn_showalldata.Location = New System.Drawing.Point(203, 230)
+        Me.rec_btn_showalldata.Name = "rec_btn_showalldata"
+        Me.rec_btn_showalldata.Size = New System.Drawing.Size(149, 29)
+        Me.rec_btn_showalldata.TabIndex = 24
+        Me.rec_btn_showalldata.Text = "Show All Data"
+        Me.rec_btn_showalldata.ThemeName = "VisualStudio2012Dark"
+        '
+        'rec_btn_showavailequip
+        '
+        Me.rec_btn_showavailequip.Anchor = System.Windows.Forms.AnchorStyles.Bottom
+        Me.rec_btn_showavailequip.Location = New System.Drawing.Point(358, 230)
+        Me.rec_btn_showavailequip.Name = "rec_btn_showavailequip"
+        Me.rec_btn_showavailequip.Size = New System.Drawing.Size(149, 29)
+        Me.rec_btn_showavailequip.TabIndex = 23
+        Me.rec_btn_showavailequip.Text = "Show Available Equipments"
+        Me.rec_btn_showavailequip.ThemeName = "VisualStudio2012Dark"
+        '
+        'rec_del_eq
+        '
+        Me.rec_del_eq.Anchor = System.Windows.Forms.AnchorStyles.Top
+        Me.rec_del_eq.Location = New System.Drawing.Point(232, 46)
+        Me.rec_del_eq.Name = "rec_del_eq"
+        Me.rec_del_eq.Size = New System.Drawing.Size(77, 24)
+        Me.rec_del_eq.TabIndex = 14
+        Me.rec_del_eq.Text = "<<"
+        Me.rec_del_eq.ThemeName = "VisualStudio2012Dark"
+        '
+        'RadGroupBox17
+        '
+        Me.RadGroupBox17.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping
+        Me.RadGroupBox17.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
+        Me.RadGroupBox17.Controls.Add(Me.eq_rgv_addeq)
+        Me.RadGroupBox17.HeaderText = "Added Equipments"
+        Me.RadGroupBox17.Location = New System.Drawing.Point(315, 21)
+        Me.RadGroupBox17.Name = "RadGroupBox17"
+        Me.RadGroupBox17.Size = New System.Drawing.Size(348, 203)
+        Me.RadGroupBox17.TabIndex = 1
+        Me.RadGroupBox17.Text = "Added Equipments"
+        Me.RadGroupBox17.ThemeName = "VisualStudio2012Dark"
+        '
+        'eq_rgv_addeq
+        '
+        Me.eq_rgv_addeq.AutoSizeRows = True
+        Me.eq_rgv_addeq.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.eq_rgv_addeq.Location = New System.Drawing.Point(2, 18)
         '
         '
         '
-        Me.rec_rrtc_actname.RootElement.MinSize = New System.Drawing.Size(0, 24)
-        Me.rec_rrtc_actname.Size = New System.Drawing.Size(224, 24)
-        Me.rec_rrtc_actname.TabIndex = 35
-        Me.rec_rrtc_actname.ThemeName = "VisualStudio2012Dark"
+        Me.eq_rgv_addeq.MasterTemplate.AllowAddNewRow = False
+        Me.eq_rgv_addeq.MasterTemplate.AllowDeleteRow = False
+        Me.eq_rgv_addeq.MasterTemplate.AllowEditRow = False
+        Me.eq_rgv_addeq.MasterTemplate.AutoSizeColumnsMode = Telerik.WinControls.UI.GridViewAutoSizeColumnsMode.Fill
+        GridViewTextBoxColumn4.HeaderText = "#"
+        GridViewTextBoxColumn4.Name = "equipment_no"
+        GridViewTextBoxColumn4.Width = 48
+        GridViewTextBoxColumn5.HeaderText = "Equipments"
+        GridViewTextBoxColumn5.Name = "equipment_name"
+        GridViewTextBoxColumn5.Width = 150
+        GridViewTextBoxColumn6.HeaderText = "Serial Number"
+        GridViewTextBoxColumn6.Name = "equipment_sn"
+        GridViewTextBoxColumn6.Width = 149
+        Me.eq_rgv_addeq.MasterTemplate.Columns.AddRange(New Telerik.WinControls.UI.GridViewDataColumn() {GridViewTextBoxColumn4, GridViewTextBoxColumn5, GridViewTextBoxColumn6})
+        Me.eq_rgv_addeq.MasterTemplate.EnableGrouping = False
+        Me.eq_rgv_addeq.MasterTemplate.MultiSelect = True
+        Me.eq_rgv_addeq.MasterTemplate.ShowRowHeaderColumn = False
+        Me.eq_rgv_addeq.MasterTemplate.ViewDefinition = TableViewDefinition17
+        Me.eq_rgv_addeq.Name = "eq_rgv_addeq"
+        Me.eq_rgv_addeq.ReadOnly = True
+        Me.eq_rgv_addeq.Size = New System.Drawing.Size(344, 183)
+        Me.eq_rgv_addeq.StandardTab = True
+        Me.eq_rgv_addeq.TabIndex = 0
+        Me.eq_rgv_addeq.Text = "RadGridView1"
+        Me.eq_rgv_addeq.ThemeName = "VisualStudio2012Dark"
         '
-        'lbl_nameofstaff_reserved
+        'RadGroupBox3
         '
-        Me.lbl_nameofstaff_reserved.BackColor = System.Drawing.Color.Transparent
-        Me.lbl_nameofstaff_reserved.ForeColor = System.Drawing.Color.White
-        Me.lbl_nameofstaff_reserved.Location = New System.Drawing.Point(591, 117)
-        Me.lbl_nameofstaff_reserved.Name = "lbl_nameofstaff_reserved"
-        Me.lbl_nameofstaff_reserved.Size = New System.Drawing.Size(75, 18)
-        Me.lbl_nameofstaff_reserved.TabIndex = 36
-        Me.lbl_nameofstaff_reserved.Text = "Name of Staff"
+        Me.RadGroupBox3.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping
+        Me.RadGroupBox3.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.RadGroupBox3.Controls.Add(Me.reservation_rgv_recordeddata)
+        Me.RadGroupBox3.Controls.Add(Me.reservations_rgv_showavailableitems)
+        Me.RadGroupBox3.HeaderText = "List of Reservation"
+        Me.RadGroupBox3.Location = New System.Drawing.Point(0, -3)
+        Me.RadGroupBox3.Name = "RadGroupBox3"
+        Me.RadGroupBox3.Size = New System.Drawing.Size(1345, 276)
+        Me.RadGroupBox3.TabIndex = 0
+        Me.RadGroupBox3.Text = "List of Reservation"
+        Me.RadGroupBox3.ThemeName = "VisualStudio2012Dark"
         '
-        'RadGroupBox6
+        'reservation_rgv_recordeddata
         '
-        Me.RadGroupBox6.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping
-        Me.RadGroupBox6.Anchor = System.Windows.Forms.AnchorStyles.Bottom
-        Me.RadGroupBox6.Controls.Add(Me.btn_resetreservationno)
-        Me.RadGroupBox6.Controls.Add(Me.rec_btn_clear)
-        Me.RadGroupBox6.Controls.Add(Me.rec_btn_delete)
-        Me.RadGroupBox6.Controls.Add(Me.rec_btn_save)
-        Me.RadGroupBox6.HeaderText = "Controls"
-        Me.RadGroupBox6.Location = New System.Drawing.Point(7, 201)
-        Me.RadGroupBox6.Name = "RadGroupBox6"
-        Me.RadGroupBox6.Size = New System.Drawing.Size(659, 58)
-        Me.RadGroupBox6.TabIndex = 3
-        Me.RadGroupBox6.Text = "Controls"
-        Me.RadGroupBox6.ThemeName = "VisualStudio2012Dark"
+        Me.reservation_rgv_recordeddata.AutoSizeRows = True
+        Me.reservation_rgv_recordeddata.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.reservation_rgv_recordeddata.Location = New System.Drawing.Point(2, 18)
         '
-        'rec_btn_save
         '
-        Me.rec_btn_save.Anchor = System.Windows.Forms.AnchorStyles.Bottom
-        Me.rec_btn_save.Location = New System.Drawing.Point(555, 20)
-        Me.rec_btn_save.Name = "rec_btn_save"
-        Me.rec_btn_save.Size = New System.Drawing.Size(100, 30)
-        Me.rec_btn_save.TabIndex = 18
-        Me.rec_btn_save.Text = "Save"
-        Me.rec_btn_save.ThemeName = "VisualStudio2012Dark"
         '
-        'rec_btn_delete
+        Me.reservation_rgv_recordeddata.MasterTemplate.AllowAddNewRow = False
+        Me.reservation_rgv_recordeddata.MasterTemplate.AllowDeleteRow = False
+        Me.reservation_rgv_recordeddata.MasterTemplate.AllowEditRow = False
+        Me.reservation_rgv_recordeddata.MasterTemplate.AutoSizeColumnsMode = Telerik.WinControls.UI.GridViewAutoSizeColumnsMode.Fill
+        Me.reservation_rgv_recordeddata.MasterTemplate.EnableGrouping = False
+        Me.reservation_rgv_recordeddata.MasterTemplate.ShowRowHeaderColumn = False
+        Me.reservation_rgv_recordeddata.MasterTemplate.ViewDefinition = TableViewDefinition18
+        Me.reservation_rgv_recordeddata.Name = "reservation_rgv_recordeddata"
+        Me.reservation_rgv_recordeddata.ReadOnly = True
+        Me.reservation_rgv_recordeddata.Size = New System.Drawing.Size(1341, 256)
+        Me.reservation_rgv_recordeddata.TabIndex = 3
+        Me.reservation_rgv_recordeddata.Text = "RadGridView2"
+        Me.reservation_rgv_recordeddata.ThemeName = "VisualStudio2012Dark"
         '
-        Me.rec_btn_delete.Anchor = System.Windows.Forms.AnchorStyles.Bottom
-        Me.rec_btn_delete.Location = New System.Drawing.Point(449, 21)
-        Me.rec_btn_delete.Name = "rec_btn_delete"
-        Me.rec_btn_delete.Size = New System.Drawing.Size(100, 30)
-        Me.rec_btn_delete.TabIndex = 19
-        Me.rec_btn_delete.Text = "Delete"
-        Me.rec_btn_delete.ThemeName = "VisualStudio2012Dark"
+        'reservations_rgv_showavailableitems
         '
-        'rec_btn_clear
+        Me.reservations_rgv_showavailableitems.AutoSizeRows = True
+        Me.reservations_rgv_showavailableitems.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.reservations_rgv_showavailableitems.Location = New System.Drawing.Point(2, 18)
         '
-        Me.rec_btn_clear.Anchor = System.Windows.Forms.AnchorStyles.Bottom
-        Me.rec_btn_clear.Location = New System.Drawing.Point(65, 21)
-        Me.rec_btn_clear.Name = "rec_btn_clear"
-        Me.rec_btn_clear.Size = New System.Drawing.Size(100, 30)
-        Me.rec_btn_clear.TabIndex = 21
-        Me.rec_btn_clear.Text = "Clear"
-        Me.rec_btn_clear.ThemeName = "VisualStudio2012Dark"
         '
-        'btn_resetreservationno
         '
-        Me.btn_resetreservationno.Anchor = System.Windows.Forms.AnchorStyles.Bottom
-        Me.btn_resetreservationno.Location = New System.Drawing.Point(171, 21)
-        Me.btn_resetreservationno.Name = "btn_resetreservationno"
-        Me.btn_resetreservationno.Size = New System.Drawing.Size(138, 30)
-        Me.btn_resetreservationno.TabIndex = 20
-        Me.btn_resetreservationno.Text = "New Reservation Number"
-        Me.btn_resetreservationno.ThemeName = "VisualStudio2012Dark"
+        Me.reservations_rgv_showavailableitems.MasterTemplate.AllowAddNewRow = False
+        Me.reservations_rgv_showavailableitems.MasterTemplate.AllowDeleteRow = False
+        Me.reservations_rgv_showavailableitems.MasterTemplate.AllowEditRow = False
+        Me.reservations_rgv_showavailableitems.MasterTemplate.AutoSizeColumnsMode = Telerik.WinControls.UI.GridViewAutoSizeColumnsMode.Fill
+        Me.reservations_rgv_showavailableitems.MasterTemplate.EnableGrouping = False
+        Me.reservations_rgv_showavailableitems.MasterTemplate.ShowRowHeaderColumn = False
+        Me.reservations_rgv_showavailableitems.MasterTemplate.ViewDefinition = TableViewDefinition19
+        Me.reservations_rgv_showavailableitems.Name = "reservations_rgv_showavailableitems"
+        Me.reservations_rgv_showavailableitems.ReadOnly = True
+        Me.reservations_rgv_showavailableitems.Size = New System.Drawing.Size(1341, 256)
+        Me.reservations_rgv_showavailableitems.TabIndex = 1
+        Me.reservations_rgv_showavailableitems.Text = "RadGridView2"
+        Me.reservations_rgv_showavailableitems.ThemeName = "VisualStudio2012Dark"
         '
         'rpvp_equipment
         '
@@ -2775,43 +2834,170 @@ Partial Class Main
         Me.rpvp_equipment.Size = New System.Drawing.Size(1348, 548)
         Me.rpvp_equipment.Text = "Equipment Management"
         '
-        'RadGroupBox14
+        'RadGroupBox22
         '
-        Me.RadGroupBox14.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping
-        Me.RadGroupBox14.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.RadGroupBox14.Controls.Add(Me.eq_rgv_showregequipment)
-        Me.RadGroupBox14.HeaderText = "Equipment Records"
-        Me.RadGroupBox14.Location = New System.Drawing.Point(0, -3)
-        Me.RadGroupBox14.Name = "RadGroupBox14"
-        Me.RadGroupBox14.Size = New System.Drawing.Size(1345, 275)
-        Me.RadGroupBox14.TabIndex = 0
-        Me.RadGroupBox14.Text = "Equipment Records"
-        Me.RadGroupBox14.ThemeName = "VisualStudio2012Dark"
+        Me.RadGroupBox22.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping
+        Me.RadGroupBox22.Anchor = System.Windows.Forms.AnchorStyles.Bottom
+        Me.RadGroupBox22.Controls.Add(Me.eq_total_units)
+        Me.RadGroupBox22.Controls.Add(Me.RadLabel43)
+        Me.RadGroupBox22.Controls.Add(Me.RadLabel57)
+        Me.RadGroupBox22.Controls.Add(Me.eq_counter_type)
+        Me.RadGroupBox22.HeaderText = "Equipment Compute"
+        Me.RadGroupBox22.Location = New System.Drawing.Point(1065, 278)
+        Me.RadGroupBox22.Name = "RadGroupBox22"
+        Me.RadGroupBox22.Size = New System.Drawing.Size(283, 263)
+        Me.RadGroupBox22.TabIndex = 3
+        Me.RadGroupBox22.Text = "Equipment Compute"
+        Me.RadGroupBox22.ThemeName = "VisualStudio2012Dark"
         '
-        'eq_rgv_showregequipment
+        'eq_total_units
         '
-        Me.eq_rgv_showregequipment.AutoSizeRows = True
-        Me.eq_rgv_showregequipment.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.eq_rgv_showregequipment.Location = New System.Drawing.Point(2, 18)
+        Me.eq_total_units.BackColor = System.Drawing.Color.Transparent
+        Me.eq_total_units.Location = New System.Drawing.Point(96, 124)
+        Me.eq_total_units.Name = "eq_total_units"
+        Me.eq_total_units.Size = New System.Drawing.Size(12, 18)
+        Me.eq_total_units.TabIndex = 28
+        Me.eq_total_units.Text = "0"
+        Me.eq_total_units.ThemeName = "VisualStudio2012Dark"
+        '
+        'RadLabel43
+        '
+        Me.RadLabel43.BackColor = System.Drawing.Color.Transparent
+        Me.RadLabel43.Location = New System.Drawing.Point(28, 124)
+        Me.RadLabel43.Name = "RadLabel43"
+        Me.RadLabel43.Size = New System.Drawing.Size(62, 18)
+        Me.RadLabel43.TabIndex = 27
+        Me.RadLabel43.Text = "Total Units:"
+        Me.RadLabel43.ThemeName = "VisualStudio2012Dark"
+        '
+        'RadLabel57
+        '
+        Me.RadLabel57.Location = New System.Drawing.Point(28, 46)
+        Me.RadLabel57.Name = "RadLabel57"
+        Me.RadLabel57.Size = New System.Drawing.Size(90, 18)
+        Me.RadLabel57.TabIndex = 26
+        Me.RadLabel57.Text = "Equipment Type:"
+        Me.RadLabel57.ThemeName = "VisualStudio2012Dark"
+        '
+        'eq_counter_type
+        '
+        Me.eq_counter_type.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
+        Me.eq_counter_type.Location = New System.Drawing.Point(28, 70)
+        Me.eq_counter_type.Name = "eq_counter_type"
+        Me.eq_counter_type.Size = New System.Drawing.Size(232, 27)
+        Me.eq_counter_type.TabIndex = 25
+        Me.eq_counter_type.ThemeName = "VisualStudio2012Dark"
+        '
+        'RadGroupBox21
+        '
+        Me.RadGroupBox21.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping
+        Me.RadGroupBox21.Anchor = System.Windows.Forms.AnchorStyles.Bottom
+        Me.RadGroupBox21.Controls.Add(Me.eq_clear_filter)
+        Me.RadGroupBox21.Controls.Add(Me.eq_filter_eqstatus)
+        Me.RadGroupBox21.Controls.Add(Me.RadLabel56)
+        Me.RadGroupBox21.Controls.Add(Me.RadLabel55)
+        Me.RadGroupBox21.Controls.Add(Me.eq_filter_eqtype)
+        Me.RadGroupBox21.Controls.Add(Me.RadLabel54)
+        Me.RadGroupBox21.Controls.Add(Me.eq_filter_eqno)
+        Me.RadGroupBox21.HeaderText = "Filters"
+        Me.RadGroupBox21.Location = New System.Drawing.Point(610, 278)
+        Me.RadGroupBox21.Name = "RadGroupBox21"
+        Me.RadGroupBox21.Size = New System.Drawing.Size(449, 270)
+        Me.RadGroupBox21.TabIndex = 2
+        Me.RadGroupBox21.Text = "Filters"
+        Me.RadGroupBox21.ThemeName = "VisualStudio2012Dark"
+        '
+        'eq_clear_filter
+        '
+        Me.eq_clear_filter.Anchor = System.Windows.Forms.AnchorStyles.Bottom
+        Me.eq_clear_filter.Location = New System.Drawing.Point(131, 124)
+        Me.eq_clear_filter.Name = "eq_clear_filter"
+        Me.eq_clear_filter.Size = New System.Drawing.Size(85, 24)
+        Me.eq_clear_filter.TabIndex = 11
+        Me.eq_clear_filter.Text = "Clear Filter"
+        Me.eq_clear_filter.ThemeName = "VisualStudio2012Dark"
+        '
+        'eq_filter_eqstatus
+        '
+        RadListDataItem240.Text = "Good Condition"
+        RadListDataItem241.Text = "Condemned"
+        Me.eq_filter_eqstatus.Items.Add(RadListDataItem240)
+        Me.eq_filter_eqstatus.Items.Add(RadListDataItem241)
+        Me.eq_filter_eqstatus.Location = New System.Drawing.Point(131, 92)
+        Me.eq_filter_eqstatus.Name = "eq_filter_eqstatus"
+        Me.eq_filter_eqstatus.Size = New System.Drawing.Size(302, 24)
+        Me.eq_filter_eqstatus.TabIndex = 25
+        Me.eq_filter_eqstatus.ThemeName = "VisualStudio2012Dark"
+        '
+        'RadLabel56
+        '
+        Me.RadLabel56.BackColor = System.Drawing.Color.Transparent
+        Me.RadLabel56.Location = New System.Drawing.Point(86, 98)
+        Me.RadLabel56.Name = "RadLabel56"
+        Me.RadLabel56.Size = New System.Drawing.Size(39, 18)
+        Me.RadLabel56.TabIndex = 26
+        Me.RadLabel56.Text = "Status:"
+        Me.RadLabel56.ThemeName = "VisualStudio2012Dark"
+        '
+        'RadLabel55
+        '
+        Me.RadLabel55.BackColor = System.Drawing.Color.Transparent
+        Me.RadLabel55.Location = New System.Drawing.Point(35, 62)
+        Me.RadLabel55.Name = "RadLabel55"
+        Me.RadLabel55.Size = New System.Drawing.Size(90, 18)
+        Me.RadLabel55.TabIndex = 24
+        Me.RadLabel55.Text = "Equipment Type:"
+        Me.RadLabel55.ThemeName = "VisualStudio2012Dark"
+        '
+        'eq_filter_eqtype
+        '
+        Me.eq_filter_eqtype.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
+        RadListDataItem242.Text = "Laptop"
+        RadListDataItem243.Text = "DLP/LCD"
+        RadListDataItem244.Text = "Microphone"
+        RadListDataItem245.Text = "Karaoke"
+        RadListDataItem246.Text = "Overhead Projector"
+        RadListDataItem247.Text = "VHS Player"
+        RadListDataItem248.Text = "Tape Deck"
+        RadListDataItem249.Text = "Speaker"
+        RadListDataItem250.Text = "PC Speakers"
+        Me.eq_filter_eqtype.Items.Add(RadListDataItem242)
+        Me.eq_filter_eqtype.Items.Add(RadListDataItem243)
+        Me.eq_filter_eqtype.Items.Add(RadListDataItem244)
+        Me.eq_filter_eqtype.Items.Add(RadListDataItem245)
+        Me.eq_filter_eqtype.Items.Add(RadListDataItem246)
+        Me.eq_filter_eqtype.Items.Add(RadListDataItem247)
+        Me.eq_filter_eqtype.Items.Add(RadListDataItem248)
+        Me.eq_filter_eqtype.Items.Add(RadListDataItem249)
+        Me.eq_filter_eqtype.Items.Add(RadListDataItem250)
+        Me.eq_filter_eqtype.Location = New System.Drawing.Point(131, 56)
+        Me.eq_filter_eqtype.Name = "eq_filter_eqtype"
+        Me.eq_filter_eqtype.Size = New System.Drawing.Size(302, 27)
+        Me.eq_filter_eqtype.TabIndex = 23
+        Me.eq_filter_eqtype.ThemeName = "VisualStudio2012Dark"
+        '
+        'RadLabel54
+        '
+        Me.RadLabel54.BackColor = System.Drawing.Color.Transparent
+        Me.RadLabel54.Location = New System.Drawing.Point(18, 28)
+        Me.RadLabel54.Name = "RadLabel54"
+        Me.RadLabel54.Size = New System.Drawing.Size(107, 18)
+        Me.RadLabel54.TabIndex = 14
+        Me.RadLabel54.Text = "Equipment Number:"
+        Me.RadLabel54.ThemeName = "VisualStudio2012Dark"
+        '
+        'eq_filter_eqno
+        '
+        Me.eq_filter_eqno.Location = New System.Drawing.Point(131, 22)
+        Me.eq_filter_eqno.MinimumSize = New System.Drawing.Size(0, 24)
+        Me.eq_filter_eqno.Name = "eq_filter_eqno"
         '
         '
         '
-        Me.eq_rgv_showregequipment.MasterTemplate.AllowAddNewRow = False
-        Me.eq_rgv_showregequipment.MasterTemplate.AllowDeleteRow = False
-        Me.eq_rgv_showregequipment.MasterTemplate.AllowEditRow = False
-        Me.eq_rgv_showregequipment.MasterTemplate.AutoSizeColumnsMode = Telerik.WinControls.UI.GridViewAutoSizeColumnsMode.Fill
-        Me.eq_rgv_showregequipment.MasterTemplate.EnableGrouping = False
-        Me.eq_rgv_showregequipment.MasterTemplate.ShowRowHeaderColumn = False
-        Me.eq_rgv_showregequipment.MasterTemplate.ViewDefinition = TableViewDefinition8
-        Me.eq_rgv_showregequipment.Name = "eq_rgv_showregequipment"
-        Me.eq_rgv_showregequipment.ReadOnly = True
-        Me.eq_rgv_showregequipment.Size = New System.Drawing.Size(1341, 255)
-        Me.eq_rgv_showregequipment.TabIndex = 0
-        Me.eq_rgv_showregequipment.TabStop = False
-        Me.eq_rgv_showregequipment.Text = "RadGridView2"
-        Me.eq_rgv_showregequipment.ThemeName = "VisualStudio2012Dark"
+        Me.eq_filter_eqno.RootElement.MinSize = New System.Drawing.Size(0, 24)
+        Me.eq_filter_eqno.Size = New System.Drawing.Size(70, 24)
+        Me.eq_filter_eqno.TabIndex = 13
+        Me.eq_filter_eqno.ThemeName = "VisualStudio2012Dark"
         '
         'RadGroupBox15
         '
@@ -2840,1145 +3026,6 @@ Partial Class Main
         Me.RadGroupBox15.TabIndex = 1
         Me.RadGroupBox15.Text = "Equipment Details"
         Me.RadGroupBox15.ThemeName = "VisualStudio2012Dark"
-        '
-        'eq_equipmentno
-        '
-        Me.eq_equipmentno.Location = New System.Drawing.Point(166, 21)
-        Me.eq_equipmentno.MinimumSize = New System.Drawing.Size(0, 24)
-        Me.eq_equipmentno.Name = "eq_equipmentno"
-        '
-        '
-        '
-        Me.eq_equipmentno.RootElement.MinSize = New System.Drawing.Size(0, 24)
-        Me.eq_equipmentno.Size = New System.Drawing.Size(70, 24)
-        Me.eq_equipmentno.TabIndex = 0
-        Me.eq_equipmentno.ThemeName = "VisualStudio2012Dark"
-        '
-        'RadLabel22
-        '
-        Me.RadLabel22.BackColor = System.Drawing.Color.Transparent
-        Me.RadLabel22.Location = New System.Drawing.Point(53, 27)
-        Me.RadLabel22.Name = "RadLabel22"
-        Me.RadLabel22.Size = New System.Drawing.Size(107, 18)
-        Me.RadLabel22.TabIndex = 12
-        Me.RadLabel22.Text = "Equipment Number:"
-        Me.RadLabel22.ThemeName = "VisualStudio2012Dark"
-        '
-        'RadLabel23
-        '
-        Me.RadLabel23.BackColor = System.Drawing.Color.Transparent
-        Me.RadLabel23.Location = New System.Drawing.Point(118, 177)
-        Me.RadLabel23.Name = "RadLabel23"
-        Me.RadLabel23.Size = New System.Drawing.Size(42, 18)
-        Me.RadLabel23.TabIndex = 13
-        Me.RadLabel23.Text = "Owner:"
-        Me.RadLabel23.ThemeName = "VisualStudio2012Dark"
-        '
-        'RadLabel24
-        '
-        Me.RadLabel24.BackColor = System.Drawing.Color.Transparent
-        Me.RadLabel24.Location = New System.Drawing.Point(97, 115)
-        Me.RadLabel24.Name = "RadLabel24"
-        Me.RadLabel24.Size = New System.Drawing.Size(63, 18)
-        Me.RadLabel24.TabIndex = 13
-        Me.RadLabel24.Text = "Equipment:"
-        Me.RadLabel24.ThemeName = "VisualStudio2012Dark"
-        '
-        'RadLabel25
-        '
-        Me.RadLabel25.BackColor = System.Drawing.Color.Transparent
-        Me.RadLabel25.Location = New System.Drawing.Point(52, 147)
-        Me.RadLabel25.Name = "RadLabel25"
-        Me.RadLabel25.Size = New System.Drawing.Size(108, 18)
-        Me.RadLabel25.TabIndex = 13
-        Me.RadLabel25.Text = "Equipment Location:"
-        Me.RadLabel25.ThemeName = "VisualStudio2012Dark"
-        '
-        'eq_sn
-        '
-        Me.eq_sn.Location = New System.Drawing.Point(166, 51)
-        Me.eq_sn.MinimumSize = New System.Drawing.Size(0, 24)
-        Me.eq_sn.Name = "eq_sn"
-        '
-        '
-        '
-        Me.eq_sn.RootElement.MinSize = New System.Drawing.Size(0, 24)
-        Me.eq_sn.Size = New System.Drawing.Size(153, 24)
-        Me.eq_sn.TabIndex = 1
-        Me.eq_sn.ThemeName = "VisualStudio2012Dark"
-        '
-        'RadLabel51
-        '
-        Me.RadLabel51.BackColor = System.Drawing.Color.Transparent
-        Me.RadLabel51.Location = New System.Drawing.Point(23, 55)
-        Me.RadLabel51.Name = "RadLabel51"
-        Me.RadLabel51.Size = New System.Drawing.Size(137, 18)
-        Me.RadLabel51.TabIndex = 15
-        Me.RadLabel51.Text = "Equipment Serial Number:"
-        Me.RadLabel51.ThemeName = "VisualStudio2012Dark"
-        '
-        'RadLabel52
-        '
-        Me.RadLabel52.BackColor = System.Drawing.Color.Transparent
-        Me.RadLabel52.Location = New System.Drawing.Point(351, 27)
-        Me.RadLabel52.Name = "RadLabel52"
-        Me.RadLabel52.Size = New System.Drawing.Size(39, 18)
-        Me.RadLabel52.TabIndex = 18
-        Me.RadLabel52.Text = "Status:"
-        Me.RadLabel52.ThemeName = "VisualStudio2012Dark"
-        '
-        'eq_status
-        '
-        RadListDataItem298.Text = "Good Condtion"
-        RadListDataItem299.Text = "Condemned"
-        Me.eq_status.Items.Add(RadListDataItem298)
-        Me.eq_status.Items.Add(RadListDataItem299)
-        Me.eq_status.Location = New System.Drawing.Point(396, 21)
-        Me.eq_status.Name = "eq_status"
-        Me.eq_status.Size = New System.Drawing.Size(187, 24)
-        Me.eq_status.TabIndex = 5
-        Me.eq_status.ThemeName = "VisualStudio2012Dark"
-        '
-        'RadLabel53
-        '
-        Me.RadLabel53.BackColor = System.Drawing.Color.Transparent
-        Me.RadLabel53.Location = New System.Drawing.Point(70, 85)
-        Me.RadLabel53.Name = "RadLabel53"
-        Me.RadLabel53.Size = New System.Drawing.Size(90, 18)
-        Me.RadLabel53.TabIndex = 22
-        Me.RadLabel53.Text = "Equipment Type:"
-        Me.RadLabel53.ThemeName = "VisualStudio2012Dark"
-        '
-        'eq_equipment
-        '
-        Me.eq_equipment.Location = New System.Drawing.Point(166, 112)
-        Me.eq_equipment.MinimumSize = New System.Drawing.Size(0, 24)
-        Me.eq_equipment.Name = "eq_equipment"
-        '
-        '
-        '
-        Me.eq_equipment.RootElement.MinSize = New System.Drawing.Size(0, 24)
-        Me.eq_equipment.Size = New System.Drawing.Size(302, 24)
-        Me.eq_equipment.TabIndex = 25
-        Me.eq_equipment.ThemeName = "VisualStudio2012Dark"
-        '
-        'eq_equipmentlocation
-        '
-        Me.eq_equipmentlocation.Location = New System.Drawing.Point(166, 142)
-        Me.eq_equipmentlocation.MinimumSize = New System.Drawing.Size(0, 24)
-        Me.eq_equipmentlocation.Name = "eq_equipmentlocation"
-        '
-        '
-        '
-        Me.eq_equipmentlocation.RootElement.MinSize = New System.Drawing.Size(0, 24)
-        Me.eq_equipmentlocation.Size = New System.Drawing.Size(302, 24)
-        Me.eq_equipmentlocation.TabIndex = 27
-        Me.eq_equipmentlocation.ThemeName = "VisualStudio2012Dark"
-        '
-        'eq_owner
-        '
-        Me.eq_owner.Location = New System.Drawing.Point(166, 173)
-        Me.eq_owner.MinimumSize = New System.Drawing.Size(0, 24)
-        Me.eq_owner.Name = "eq_owner"
-        '
-        '
-        '
-        Me.eq_owner.RootElement.MinSize = New System.Drawing.Size(0, 24)
-        Me.eq_owner.Size = New System.Drawing.Size(302, 24)
-        Me.eq_owner.TabIndex = 28
-        Me.eq_owner.ThemeName = "VisualStudio2012Dark"
-        '
-        'eq_type
-        '
-        Me.eq_type.DropDownStyle = Telerik.WinControls.RadDropDownStyle.DropDownList
-        Me.eq_type.Location = New System.Drawing.Point(166, 81)
-        Me.eq_type.Name = "eq_type"
-        Me.eq_type.Size = New System.Drawing.Size(302, 24)
-        Me.eq_type.TabIndex = 29
-        Me.eq_type.ThemeName = "VisualStudio2012Dark"
-        '
-        'eq_btn_other
-        '
-        Me.eq_btn_other.Anchor = System.Windows.Forms.AnchorStyles.Bottom
-        Me.eq_btn_other.Location = New System.Drawing.Point(474, 144)
-        Me.eq_btn_other.Name = "eq_btn_other"
-        Me.eq_btn_other.Size = New System.Drawing.Size(85, 24)
-        Me.eq_btn_other.TabIndex = 30
-        Me.eq_btn_other.Text = "Other"
-        Me.eq_btn_other.ThemeName = "VisualStudio2012Dark"
-        '
-        'RadGroupBox21
-        '
-        Me.RadGroupBox21.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping
-        Me.RadGroupBox21.Anchor = System.Windows.Forms.AnchorStyles.Bottom
-        Me.RadGroupBox21.Controls.Add(Me.eq_clear_filter)
-        Me.RadGroupBox21.Controls.Add(Me.eq_filter_eqstatus)
-        Me.RadGroupBox21.Controls.Add(Me.RadLabel56)
-        Me.RadGroupBox21.Controls.Add(Me.RadLabel55)
-        Me.RadGroupBox21.Controls.Add(Me.eq_filter_eqtype)
-        Me.RadGroupBox21.Controls.Add(Me.RadLabel54)
-        Me.RadGroupBox21.Controls.Add(Me.eq_filter_eqno)
-        Me.RadGroupBox21.HeaderText = "Filters"
-        Me.RadGroupBox21.Location = New System.Drawing.Point(610, 278)
-        Me.RadGroupBox21.Name = "RadGroupBox21"
-        Me.RadGroupBox21.Size = New System.Drawing.Size(449, 270)
-        Me.RadGroupBox21.TabIndex = 2
-        Me.RadGroupBox21.Text = "Filters"
-        Me.RadGroupBox21.ThemeName = "VisualStudio2012Dark"
-        '
-        'eq_filter_eqno
-        '
-        Me.eq_filter_eqno.Location = New System.Drawing.Point(131, 22)
-        Me.eq_filter_eqno.MinimumSize = New System.Drawing.Size(0, 24)
-        Me.eq_filter_eqno.Name = "eq_filter_eqno"
-        '
-        '
-        '
-        Me.eq_filter_eqno.RootElement.MinSize = New System.Drawing.Size(0, 24)
-        Me.eq_filter_eqno.Size = New System.Drawing.Size(70, 24)
-        Me.eq_filter_eqno.TabIndex = 13
-        Me.eq_filter_eqno.ThemeName = "VisualStudio2012Dark"
-        '
-        'RadLabel54
-        '
-        Me.RadLabel54.BackColor = System.Drawing.Color.Transparent
-        Me.RadLabel54.Location = New System.Drawing.Point(18, 28)
-        Me.RadLabel54.Name = "RadLabel54"
-        Me.RadLabel54.Size = New System.Drawing.Size(107, 18)
-        Me.RadLabel54.TabIndex = 14
-        Me.RadLabel54.Text = "Equipment Number:"
-        Me.RadLabel54.ThemeName = "VisualStudio2012Dark"
-        '
-        'eq_filter_eqtype
-        '
-        Me.eq_filter_eqtype.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
-        RadListDataItem289.Text = "Laptop"
-        RadListDataItem290.Text = "DLP/LCD"
-        RadListDataItem291.Text = "Microphone"
-        RadListDataItem292.Text = "Karaoke"
-        RadListDataItem293.Text = "Overhead Projector"
-        RadListDataItem294.Text = "VHS Player"
-        RadListDataItem295.Text = "Tape Deck"
-        RadListDataItem296.Text = "Speaker"
-        RadListDataItem297.Text = "PC Speakers"
-        Me.eq_filter_eqtype.Items.Add(RadListDataItem289)
-        Me.eq_filter_eqtype.Items.Add(RadListDataItem290)
-        Me.eq_filter_eqtype.Items.Add(RadListDataItem291)
-        Me.eq_filter_eqtype.Items.Add(RadListDataItem292)
-        Me.eq_filter_eqtype.Items.Add(RadListDataItem293)
-        Me.eq_filter_eqtype.Items.Add(RadListDataItem294)
-        Me.eq_filter_eqtype.Items.Add(RadListDataItem295)
-        Me.eq_filter_eqtype.Items.Add(RadListDataItem296)
-        Me.eq_filter_eqtype.Items.Add(RadListDataItem297)
-        Me.eq_filter_eqtype.Location = New System.Drawing.Point(131, 56)
-        Me.eq_filter_eqtype.Name = "eq_filter_eqtype"
-        Me.eq_filter_eqtype.Size = New System.Drawing.Size(302, 27)
-        Me.eq_filter_eqtype.TabIndex = 23
-        Me.eq_filter_eqtype.ThemeName = "VisualStudio2012Dark"
-        '
-        'RadLabel55
-        '
-        Me.RadLabel55.BackColor = System.Drawing.Color.Transparent
-        Me.RadLabel55.Location = New System.Drawing.Point(35, 62)
-        Me.RadLabel55.Name = "RadLabel55"
-        Me.RadLabel55.Size = New System.Drawing.Size(90, 18)
-        Me.RadLabel55.TabIndex = 24
-        Me.RadLabel55.Text = "Equipment Type:"
-        Me.RadLabel55.ThemeName = "VisualStudio2012Dark"
-        '
-        'RadLabel56
-        '
-        Me.RadLabel56.BackColor = System.Drawing.Color.Transparent
-        Me.RadLabel56.Location = New System.Drawing.Point(86, 98)
-        Me.RadLabel56.Name = "RadLabel56"
-        Me.RadLabel56.Size = New System.Drawing.Size(39, 18)
-        Me.RadLabel56.TabIndex = 26
-        Me.RadLabel56.Text = "Status:"
-        Me.RadLabel56.ThemeName = "VisualStudio2012Dark"
-        '
-        'eq_filter_eqstatus
-        '
-        RadListDataItem287.Text = "Good Condition"
-        RadListDataItem288.Text = "Condemned"
-        Me.eq_filter_eqstatus.Items.Add(RadListDataItem287)
-        Me.eq_filter_eqstatus.Items.Add(RadListDataItem288)
-        Me.eq_filter_eqstatus.Location = New System.Drawing.Point(131, 92)
-        Me.eq_filter_eqstatus.Name = "eq_filter_eqstatus"
-        Me.eq_filter_eqstatus.Size = New System.Drawing.Size(302, 24)
-        Me.eq_filter_eqstatus.TabIndex = 25
-        Me.eq_filter_eqstatus.ThemeName = "VisualStudio2012Dark"
-        '
-        'eq_clear_filter
-        '
-        Me.eq_clear_filter.Anchor = System.Windows.Forms.AnchorStyles.Bottom
-        Me.eq_clear_filter.Location = New System.Drawing.Point(131, 124)
-        Me.eq_clear_filter.Name = "eq_clear_filter"
-        Me.eq_clear_filter.Size = New System.Drawing.Size(85, 24)
-        Me.eq_clear_filter.TabIndex = 11
-        Me.eq_clear_filter.Text = "Clear Filter"
-        Me.eq_clear_filter.ThemeName = "VisualStudio2012Dark"
-        '
-        'RadGroupBox22
-        '
-        Me.RadGroupBox22.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping
-        Me.RadGroupBox22.Anchor = System.Windows.Forms.AnchorStyles.Bottom
-        Me.RadGroupBox22.Controls.Add(Me.eq_total_units)
-        Me.RadGroupBox22.Controls.Add(Me.RadLabel43)
-        Me.RadGroupBox22.Controls.Add(Me.RadLabel57)
-        Me.RadGroupBox22.Controls.Add(Me.eq_counter_type)
-        Me.RadGroupBox22.HeaderText = "Equipment Compute"
-        Me.RadGroupBox22.Location = New System.Drawing.Point(1065, 278)
-        Me.RadGroupBox22.Name = "RadGroupBox22"
-        Me.RadGroupBox22.Size = New System.Drawing.Size(283, 263)
-        Me.RadGroupBox22.TabIndex = 3
-        Me.RadGroupBox22.Text = "Equipment Compute"
-        Me.RadGroupBox22.ThemeName = "VisualStudio2012Dark"
-        '
-        'eq_counter_type
-        '
-        Me.eq_counter_type.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
-        Me.eq_counter_type.Location = New System.Drawing.Point(28, 70)
-        Me.eq_counter_type.Name = "eq_counter_type"
-        Me.eq_counter_type.Size = New System.Drawing.Size(232, 27)
-        Me.eq_counter_type.TabIndex = 25
-        Me.eq_counter_type.ThemeName = "VisualStudio2012Dark"
-        '
-        'RadLabel57
-        '
-        Me.RadLabel57.Location = New System.Drawing.Point(28, 46)
-        Me.RadLabel57.Name = "RadLabel57"
-        Me.RadLabel57.Size = New System.Drawing.Size(90, 18)
-        Me.RadLabel57.TabIndex = 26
-        Me.RadLabel57.Text = "Equipment Type:"
-        Me.RadLabel57.ThemeName = "VisualStudio2012Dark"
-        '
-        'RadLabel43
-        '
-        Me.RadLabel43.BackColor = System.Drawing.Color.Transparent
-        Me.RadLabel43.Location = New System.Drawing.Point(28, 124)
-        Me.RadLabel43.Name = "RadLabel43"
-        Me.RadLabel43.Size = New System.Drawing.Size(62, 18)
-        Me.RadLabel43.TabIndex = 27
-        Me.RadLabel43.Text = "Total Units:"
-        Me.RadLabel43.ThemeName = "VisualStudio2012Dark"
-        '
-        'eq_total_units
-        '
-        Me.eq_total_units.BackColor = System.Drawing.Color.Transparent
-        Me.eq_total_units.Location = New System.Drawing.Point(96, 124)
-        Me.eq_total_units.Name = "eq_total_units"
-        Me.eq_total_units.Size = New System.Drawing.Size(12, 18)
-        Me.eq_total_units.TabIndex = 28
-        Me.eq_total_units.Text = "0"
-        Me.eq_total_units.ThemeName = "VisualStudio2012Dark"
-        '
-        'rpvp_account
-        '
-        Me.rpvp_account.Controls.Add(Me.RadPageView1)
-        Me.rpvp_account.Controls.Add(Me.RadGroupBox19)
-        Me.rpvp_account.Controls.Add(Me.RadGroupBox18)
-        Me.rpvp_account.ItemSize = New System.Drawing.SizeF(123.0!, 24.0!)
-        Me.rpvp_account.Location = New System.Drawing.Point(5, 30)
-        Me.rpvp_account.Name = "rpvp_account"
-        Me.rpvp_account.Size = New System.Drawing.Size(1348, 548)
-        Me.rpvp_account.Text = "Account Management"
-        '
-        'RadGroupBox18
-        '
-        Me.RadGroupBox18.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping
-        Me.RadGroupBox18.Anchor = System.Windows.Forms.AnchorStyles.Bottom
-        Me.RadGroupBox18.Controls.Add(Me.RadGroupBox28)
-        Me.RadGroupBox18.Controls.Add(Me.acc_sf_usertype)
-        Me.RadGroupBox18.Controls.Add(Me.RadLabel39)
-        Me.RadGroupBox18.Controls.Add(Me.acc_sf_retypepassword)
-        Me.RadGroupBox18.Controls.Add(Me.acc_sf_password)
-        Me.RadGroupBox18.Controls.Add(Me.acc_sf_username)
-        Me.RadGroupBox18.Controls.Add(Me.RadLabel31)
-        Me.RadGroupBox18.Controls.Add(Me.RadLabel32)
-        Me.RadGroupBox18.Controls.Add(Me.RadLabel33)
-        Me.RadGroupBox18.Controls.Add(Me.acc_sf_lname)
-        Me.RadGroupBox18.Controls.Add(Me.acc_sf_mname)
-        Me.RadGroupBox18.Controls.Add(Me.acc_sf_fname)
-        Me.RadGroupBox18.Controls.Add(Me.acc_sf_id)
-        Me.RadGroupBox18.Controls.Add(Me.RadLabel30)
-        Me.RadGroupBox18.Controls.Add(Me.RadLabel29)
-        Me.RadGroupBox18.Controls.Add(Me.RadLabel28)
-        Me.RadGroupBox18.Controls.Add(Me.RadLabel27)
-        Me.RadGroupBox18.HeaderText = "Staff Registration"
-        Me.RadGroupBox18.Location = New System.Drawing.Point(0, 306)
-        Me.RadGroupBox18.Name = "RadGroupBox18"
-        Me.RadGroupBox18.Size = New System.Drawing.Size(671, 242)
-        Me.RadGroupBox18.TabIndex = 2
-        Me.RadGroupBox18.Text = "Staff Registration"
-        Me.RadGroupBox18.ThemeName = "VisualStudio2012Dark"
-        '
-        'RadLabel27
-        '
-        Me.RadLabel27.BackColor = System.Drawing.Color.Transparent
-        Me.RadLabel27.Location = New System.Drawing.Point(60, 31)
-        Me.RadLabel27.Name = "RadLabel27"
-        Me.RadLabel27.Size = New System.Drawing.Size(26, 18)
-        Me.RadLabel27.TabIndex = 3
-        Me.RadLabel27.Text = "ID#:"
-        Me.RadLabel27.ThemeName = "VisualStudio2012Dark"
-        '
-        'RadLabel28
-        '
-        Me.RadLabel28.BackColor = System.Drawing.Color.Transparent
-        Me.RadLabel28.Location = New System.Drawing.Point(9, 93)
-        Me.RadLabel28.Name = "RadLabel28"
-        Me.RadLabel28.Size = New System.Drawing.Size(77, 18)
-        Me.RadLabel28.TabIndex = 5
-        Me.RadLabel28.Text = "Middle Name:"
-        Me.RadLabel28.ThemeName = "VisualStudio2012Dark"
-        '
-        'RadLabel29
-        '
-        Me.RadLabel29.BackColor = System.Drawing.Color.Transparent
-        Me.RadLabel29.Location = New System.Drawing.Point(23, 63)
-        Me.RadLabel29.Name = "RadLabel29"
-        Me.RadLabel29.Size = New System.Drawing.Size(63, 18)
-        Me.RadLabel29.TabIndex = 7
-        Me.RadLabel29.Text = "First Name:"
-        Me.RadLabel29.ThemeName = "VisualStudio2012Dark"
-        '
-        'RadLabel30
-        '
-        Me.RadLabel30.BackColor = System.Drawing.Color.Transparent
-        Me.RadLabel30.Location = New System.Drawing.Point(25, 123)
-        Me.RadLabel30.Name = "RadLabel30"
-        Me.RadLabel30.Size = New System.Drawing.Size(61, 18)
-        Me.RadLabel30.TabIndex = 9
-        Me.RadLabel30.Text = "Last Name:"
-        Me.RadLabel30.ThemeName = "VisualStudio2012Dark"
-        '
-        'acc_sf_id
-        '
-        Me.acc_sf_id.Location = New System.Drawing.Point(92, 27)
-        Me.acc_sf_id.MinimumSize = New System.Drawing.Size(0, 24)
-        Me.acc_sf_id.Name = "acc_sf_id"
-        '
-        '
-        '
-        Me.acc_sf_id.RootElement.MinSize = New System.Drawing.Size(0, 24)
-        Me.acc_sf_id.Size = New System.Drawing.Size(201, 24)
-        Me.acc_sf_id.TabIndex = 10
-        Me.acc_sf_id.ThemeName = "VisualStudio2012Dark"
-        '
-        'acc_sf_fname
-        '
-        Me.acc_sf_fname.Location = New System.Drawing.Point(92, 57)
-        Me.acc_sf_fname.MinimumSize = New System.Drawing.Size(0, 24)
-        Me.acc_sf_fname.Name = "acc_sf_fname"
-        '
-        '
-        '
-        Me.acc_sf_fname.RootElement.MinSize = New System.Drawing.Size(0, 24)
-        Me.acc_sf_fname.Size = New System.Drawing.Size(201, 24)
-        Me.acc_sf_fname.TabIndex = 11
-        Me.acc_sf_fname.ThemeName = "VisualStudio2012Dark"
-        '
-        'acc_sf_mname
-        '
-        Me.acc_sf_mname.Location = New System.Drawing.Point(92, 87)
-        Me.acc_sf_mname.MinimumSize = New System.Drawing.Size(0, 24)
-        Me.acc_sf_mname.Name = "acc_sf_mname"
-        '
-        '
-        '
-        Me.acc_sf_mname.RootElement.MinSize = New System.Drawing.Size(0, 24)
-        Me.acc_sf_mname.Size = New System.Drawing.Size(201, 24)
-        Me.acc_sf_mname.TabIndex = 12
-        Me.acc_sf_mname.ThemeName = "VisualStudio2012Dark"
-        '
-        'acc_sf_lname
-        '
-        Me.acc_sf_lname.Location = New System.Drawing.Point(92, 117)
-        Me.acc_sf_lname.MinimumSize = New System.Drawing.Size(0, 24)
-        Me.acc_sf_lname.Name = "acc_sf_lname"
-        '
-        '
-        '
-        Me.acc_sf_lname.RootElement.MinSize = New System.Drawing.Size(0, 24)
-        Me.acc_sf_lname.Size = New System.Drawing.Size(201, 24)
-        Me.acc_sf_lname.TabIndex = 13
-        Me.acc_sf_lname.ThemeName = "VisualStudio2012Dark"
-        '
-        'RadLabel33
-        '
-        Me.RadLabel33.BackColor = System.Drawing.Color.Transparent
-        Me.RadLabel33.Location = New System.Drawing.Point(384, 63)
-        Me.RadLabel33.Name = "RadLabel33"
-        Me.RadLabel33.Size = New System.Drawing.Size(59, 18)
-        Me.RadLabel33.TabIndex = 14
-        Me.RadLabel33.Text = "Username:"
-        Me.RadLabel33.ThemeName = "VisualStudio2012Dark"
-        '
-        'RadLabel32
-        '
-        Me.RadLabel32.BackColor = System.Drawing.Color.Transparent
-        Me.RadLabel32.Location = New System.Drawing.Point(343, 123)
-        Me.RadLabel32.Name = "RadLabel32"
-        Me.RadLabel32.Size = New System.Drawing.Size(100, 18)
-        Me.RadLabel32.TabIndex = 15
-        Me.RadLabel32.Text = "Re-Type Password:"
-        Me.RadLabel32.ThemeName = "VisualStudio2012Dark"
-        '
-        'RadLabel31
-        '
-        Me.RadLabel31.BackColor = System.Drawing.Color.Transparent
-        Me.RadLabel31.Location = New System.Drawing.Point(387, 93)
-        Me.RadLabel31.Name = "RadLabel31"
-        Me.RadLabel31.Size = New System.Drawing.Size(56, 18)
-        Me.RadLabel31.TabIndex = 16
-        Me.RadLabel31.Text = "Password:"
-        Me.RadLabel31.ThemeName = "VisualStudio2012Dark"
-        '
-        'acc_sf_username
-        '
-        Me.acc_sf_username.Location = New System.Drawing.Point(449, 57)
-        Me.acc_sf_username.MinimumSize = New System.Drawing.Size(0, 24)
-        Me.acc_sf_username.Name = "acc_sf_username"
-        '
-        '
-        '
-        Me.acc_sf_username.RootElement.MinSize = New System.Drawing.Size(0, 24)
-        Me.acc_sf_username.Size = New System.Drawing.Size(201, 24)
-        Me.acc_sf_username.TabIndex = 17
-        Me.acc_sf_username.ThemeName = "VisualStudio2012Dark"
-        '
-        'acc_sf_password
-        '
-        Me.acc_sf_password.Location = New System.Drawing.Point(449, 87)
-        Me.acc_sf_password.MinimumSize = New System.Drawing.Size(0, 24)
-        Me.acc_sf_password.Name = "acc_sf_password"
-        '
-        '
-        '
-        Me.acc_sf_password.RootElement.MinSize = New System.Drawing.Size(0, 24)
-        Me.acc_sf_password.Size = New System.Drawing.Size(201, 24)
-        Me.acc_sf_password.TabIndex = 18
-        Me.acc_sf_password.ThemeName = "VisualStudio2012Dark"
-        '
-        'acc_sf_retypepassword
-        '
-        Me.acc_sf_retypepassword.Location = New System.Drawing.Point(449, 117)
-        Me.acc_sf_retypepassword.MinimumSize = New System.Drawing.Size(0, 24)
-        Me.acc_sf_retypepassword.Name = "acc_sf_retypepassword"
-        '
-        '
-        '
-        Me.acc_sf_retypepassword.RootElement.MinSize = New System.Drawing.Size(0, 24)
-        Me.acc_sf_retypepassword.Size = New System.Drawing.Size(201, 24)
-        Me.acc_sf_retypepassword.TabIndex = 19
-        Me.acc_sf_retypepassword.ThemeName = "VisualStudio2012Dark"
-        '
-        'RadLabel39
-        '
-        Me.RadLabel39.BackColor = System.Drawing.Color.Transparent
-        Me.RadLabel39.Location = New System.Drawing.Point(385, 33)
-        Me.RadLabel39.Name = "RadLabel39"
-        Me.RadLabel39.Size = New System.Drawing.Size(58, 18)
-        Me.RadLabel39.TabIndex = 21
-        Me.RadLabel39.Text = "User Type:"
-        Me.RadLabel39.ThemeName = "VisualStudio2012Dark"
-        '
-        'acc_sf_usertype
-        '
-        RadListDataItem300.Text = "Staff"
-        Me.acc_sf_usertype.Items.Add(RadListDataItem300)
-        Me.acc_sf_usertype.Location = New System.Drawing.Point(449, 27)
-        Me.acc_sf_usertype.Name = "acc_sf_usertype"
-        Me.acc_sf_usertype.Size = New System.Drawing.Size(201, 24)
-        Me.acc_sf_usertype.TabIndex = 22
-        Me.acc_sf_usertype.ThemeName = "VisualStudio2012Dark"
-        '
-        'RadGroupBox19
-        '
-        Me.RadGroupBox19.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping
-        Me.RadGroupBox19.Anchor = System.Windows.Forms.AnchorStyles.Bottom
-        Me.RadGroupBox19.Controls.Add(Me.RadGroupBox29)
-        Me.RadGroupBox19.Controls.Add(Me.acc_pf_lname)
-        Me.RadGroupBox19.Controls.Add(Me.acc_pf_mname)
-        Me.RadGroupBox19.Controls.Add(Me.acc_pf_fname)
-        Me.RadGroupBox19.Controls.Add(Me.acc_pf_id)
-        Me.RadGroupBox19.Controls.Add(Me.RadLabel34)
-        Me.RadGroupBox19.Controls.Add(Me.RadLabel35)
-        Me.RadGroupBox19.Controls.Add(Me.RadLabel36)
-        Me.RadGroupBox19.Controls.Add(Me.RadLabel37)
-        Me.RadGroupBox19.Controls.Add(Me.acc_pf_college)
-        Me.RadGroupBox19.Controls.Add(Me.RadLabel38)
-        Me.RadGroupBox19.HeaderText = "Borrower Registration"
-        Me.RadGroupBox19.Location = New System.Drawing.Point(677, 306)
-        Me.RadGroupBox19.Name = "RadGroupBox19"
-        Me.RadGroupBox19.Size = New System.Drawing.Size(671, 242)
-        Me.RadGroupBox19.TabIndex = 3
-        Me.RadGroupBox19.Text = "Borrower Registration"
-        Me.RadGroupBox19.ThemeName = "VisualStudio2012Dark"
-        '
-        'RadLabel38
-        '
-        Me.RadLabel38.BackColor = System.Drawing.Color.Transparent
-        Me.RadLabel38.Location = New System.Drawing.Point(370, 57)
-        Me.RadLabel38.Name = "RadLabel38"
-        Me.RadLabel38.Size = New System.Drawing.Size(84, 18)
-        Me.RadLabel38.TabIndex = 14
-        Me.RadLabel38.Text = "College/School:"
-        Me.RadLabel38.ThemeName = "VisualStudio2012Dark"
-        '
-        'acc_pf_college
-        '
-        Me.acc_pf_college.Location = New System.Drawing.Point(460, 55)
-        Me.acc_pf_college.Name = "acc_pf_college"
-        Me.acc_pf_college.Size = New System.Drawing.Size(201, 24)
-        Me.acc_pf_college.TabIndex = 15
-        Me.acc_pf_college.ThemeName = "VisualStudio2012Dark"
-        '
-        'RadLabel37
-        '
-        Me.RadLabel37.BackColor = System.Drawing.Color.Transparent
-        Me.RadLabel37.Location = New System.Drawing.Point(79, 27)
-        Me.RadLabel37.Name = "RadLabel37"
-        Me.RadLabel37.Size = New System.Drawing.Size(26, 18)
-        Me.RadLabel37.TabIndex = 16
-        Me.RadLabel37.Text = "ID#:"
-        Me.RadLabel37.ThemeName = "VisualStudio2012Dark"
-        '
-        'RadLabel36
-        '
-        Me.RadLabel36.BackColor = System.Drawing.Color.Transparent
-        Me.RadLabel36.Location = New System.Drawing.Point(28, 87)
-        Me.RadLabel36.Name = "RadLabel36"
-        Me.RadLabel36.Size = New System.Drawing.Size(77, 18)
-        Me.RadLabel36.TabIndex = 17
-        Me.RadLabel36.Text = "Middle Name:"
-        Me.RadLabel36.ThemeName = "VisualStudio2012Dark"
-        '
-        'RadLabel35
-        '
-        Me.RadLabel35.BackColor = System.Drawing.Color.Transparent
-        Me.RadLabel35.Location = New System.Drawing.Point(42, 61)
-        Me.RadLabel35.Name = "RadLabel35"
-        Me.RadLabel35.Size = New System.Drawing.Size(63, 18)
-        Me.RadLabel35.TabIndex = 18
-        Me.RadLabel35.Text = "First Name:"
-        Me.RadLabel35.ThemeName = "VisualStudio2012Dark"
-        '
-        'RadLabel34
-        '
-        Me.RadLabel34.BackColor = System.Drawing.Color.Transparent
-        Me.RadLabel34.Location = New System.Drawing.Point(393, 27)
-        Me.RadLabel34.Name = "RadLabel34"
-        Me.RadLabel34.Size = New System.Drawing.Size(61, 18)
-        Me.RadLabel34.TabIndex = 19
-        Me.RadLabel34.Text = "Last Name:"
-        Me.RadLabel34.ThemeName = "VisualStudio2012Dark"
-        '
-        'acc_pf_id
-        '
-        Me.acc_pf_id.Location = New System.Drawing.Point(111, 25)
-        Me.acc_pf_id.MinimumSize = New System.Drawing.Size(0, 24)
-        Me.acc_pf_id.Name = "acc_pf_id"
-        '
-        '
-        '
-        Me.acc_pf_id.RootElement.MinSize = New System.Drawing.Size(0, 24)
-        Me.acc_pf_id.Size = New System.Drawing.Size(201, 24)
-        Me.acc_pf_id.TabIndex = 20
-        Me.acc_pf_id.ThemeName = "VisualStudio2012Dark"
-        '
-        'acc_pf_fname
-        '
-        Me.acc_pf_fname.Location = New System.Drawing.Point(111, 55)
-        Me.acc_pf_fname.MinimumSize = New System.Drawing.Size(0, 24)
-        Me.acc_pf_fname.Name = "acc_pf_fname"
-        '
-        '
-        '
-        Me.acc_pf_fname.RootElement.MinSize = New System.Drawing.Size(0, 24)
-        Me.acc_pf_fname.Size = New System.Drawing.Size(201, 24)
-        Me.acc_pf_fname.TabIndex = 21
-        Me.acc_pf_fname.ThemeName = "VisualStudio2012Dark"
-        '
-        'acc_pf_mname
-        '
-        Me.acc_pf_mname.Location = New System.Drawing.Point(111, 85)
-        Me.acc_pf_mname.MinimumSize = New System.Drawing.Size(0, 24)
-        Me.acc_pf_mname.Name = "acc_pf_mname"
-        '
-        '
-        '
-        Me.acc_pf_mname.RootElement.MinSize = New System.Drawing.Size(0, 24)
-        Me.acc_pf_mname.Size = New System.Drawing.Size(201, 24)
-        Me.acc_pf_mname.TabIndex = 22
-        Me.acc_pf_mname.ThemeName = "VisualStudio2012Dark"
-        '
-        'acc_pf_lname
-        '
-        Me.acc_pf_lname.Location = New System.Drawing.Point(460, 25)
-        Me.acc_pf_lname.MinimumSize = New System.Drawing.Size(0, 24)
-        Me.acc_pf_lname.Name = "acc_pf_lname"
-        '
-        '
-        '
-        Me.acc_pf_lname.RootElement.MinSize = New System.Drawing.Size(0, 24)
-        Me.acc_pf_lname.Size = New System.Drawing.Size(201, 24)
-        Me.acc_pf_lname.TabIndex = 23
-        Me.acc_pf_lname.ThemeName = "VisualStudio2012Dark"
-        '
-        'RadGroupBox29
-        '
-        Me.RadGroupBox29.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping
-        Me.RadGroupBox29.Anchor = System.Windows.Forms.AnchorStyles.Bottom
-        Me.RadGroupBox29.Controls.Add(Me.acc_prof_btn_clear)
-        Me.RadGroupBox29.Controls.Add(Me.acc_prof_btn_delete)
-        Me.RadGroupBox29.Controls.Add(Me.acc_prof_btn_update)
-        Me.RadGroupBox29.Controls.Add(Me.acc_prof_btn_save)
-        Me.RadGroupBox29.HeaderText = "Controls"
-        Me.RadGroupBox29.Location = New System.Drawing.Point(0, 173)
-        Me.RadGroupBox29.Name = "RadGroupBox29"
-        Me.RadGroupBox29.Size = New System.Drawing.Size(663, 61)
-        Me.RadGroupBox29.TabIndex = 6
-        Me.RadGroupBox29.Text = "Controls"
-        Me.RadGroupBox29.ThemeName = "VisualStudio2012Dark"
-        '
-        'acc_prof_btn_save
-        '
-        Me.acc_prof_btn_save.Anchor = System.Windows.Forms.AnchorStyles.Bottom
-        Me.acc_prof_btn_save.Location = New System.Drawing.Point(564, 25)
-        Me.acc_prof_btn_save.Name = "acc_prof_btn_save"
-        Me.acc_prof_btn_save.Size = New System.Drawing.Size(85, 24)
-        Me.acc_prof_btn_save.TabIndex = 26
-        Me.acc_prof_btn_save.Text = "Save"
-        Me.acc_prof_btn_save.ThemeName = "VisualStudio2012Dark"
-        '
-        'acc_prof_btn_update
-        '
-        Me.acc_prof_btn_update.Anchor = System.Windows.Forms.AnchorStyles.Bottom
-        Me.acc_prof_btn_update.Location = New System.Drawing.Point(564, 21)
-        Me.acc_prof_btn_update.Name = "acc_prof_btn_update"
-        Me.acc_prof_btn_update.Size = New System.Drawing.Size(85, 24)
-        Me.acc_prof_btn_update.TabIndex = 27
-        Me.acc_prof_btn_update.Text = "Update"
-        Me.acc_prof_btn_update.ThemeName = "VisualStudio2012Dark"
-        '
-        'acc_prof_btn_delete
-        '
-        Me.acc_prof_btn_delete.Anchor = System.Windows.Forms.AnchorStyles.Bottom
-        Me.acc_prof_btn_delete.Location = New System.Drawing.Point(473, 21)
-        Me.acc_prof_btn_delete.Name = "acc_prof_btn_delete"
-        Me.acc_prof_btn_delete.Size = New System.Drawing.Size(85, 24)
-        Me.acc_prof_btn_delete.TabIndex = 24
-        Me.acc_prof_btn_delete.Text = "Delete"
-        Me.acc_prof_btn_delete.ThemeName = "VisualStudio2012Dark"
-        '
-        'acc_prof_btn_clear
-        '
-        Me.acc_prof_btn_clear.Anchor = System.Windows.Forms.AnchorStyles.Bottom
-        Me.acc_prof_btn_clear.Location = New System.Drawing.Point(69, 21)
-        Me.acc_prof_btn_clear.Name = "acc_prof_btn_clear"
-        Me.acc_prof_btn_clear.Size = New System.Drawing.Size(85, 24)
-        Me.acc_prof_btn_clear.TabIndex = 28
-        Me.acc_prof_btn_clear.Text = "Clear"
-        Me.acc_prof_btn_clear.ThemeName = "VisualStudio2012Dark"
-        '
-        'RadPageView1
-        '
-        Me.RadPageView1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.RadPageView1.Controls.Add(Me.RadPageViewPage1)
-        Me.RadPageView1.Controls.Add(Me.RadPageViewPage2)
-        Me.RadPageView1.Location = New System.Drawing.Point(0, -3)
-        Me.RadPageView1.Name = "RadPageView1"
-        Me.RadPageView1.SelectedPage = Me.RadPageViewPage1
-        Me.RadPageView1.Size = New System.Drawing.Size(1353, 305)
-        Me.RadPageView1.TabIndex = 4
-        Me.RadPageView1.Text = "RadPageView1"
-        Me.RadPageView1.ThemeName = "VisualStudio2012Dark"
-        CType(Me.RadPageView1.GetChildAt(0), Telerik.WinControls.UI.RadPageViewStripElement).StripButtons = Telerik.WinControls.UI.StripViewButtons.None
-        '
-        'RadPageViewPage2
-        '
-        Me.RadPageViewPage2.Controls.Add(Me.acc_prof_list)
-        Me.RadPageViewPage2.ItemSize = New System.Drawing.SizeF(101.0!, 24.0!)
-        Me.RadPageViewPage2.Location = New System.Drawing.Point(5, 30)
-        Me.RadPageViewPage2.Name = "RadPageViewPage2"
-        Me.RadPageViewPage2.Size = New System.Drawing.Size(1343, 270)
-        Me.RadPageViewPage2.Text = "Borrower Records"
-        '
-        'acc_prof_list
-        '
-        Me.acc_prof_list.AutoSizeRows = True
-        Me.acc_prof_list.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.acc_prof_list.Location = New System.Drawing.Point(0, 0)
-        '
-        '
-        '
-        Me.acc_prof_list.MasterTemplate.AllowAddNewRow = False
-        Me.acc_prof_list.MasterTemplate.AllowDeleteRow = False
-        Me.acc_prof_list.MasterTemplate.AllowEditRow = False
-        Me.acc_prof_list.MasterTemplate.AutoSizeColumnsMode = Telerik.WinControls.UI.GridViewAutoSizeColumnsMode.Fill
-        Me.acc_prof_list.MasterTemplate.EnableGrouping = False
-        Me.acc_prof_list.MasterTemplate.ShowRowHeaderColumn = False
-        Me.acc_prof_list.MasterTemplate.ViewDefinition = TableViewDefinition10
-        Me.acc_prof_list.Name = "acc_prof_list"
-        Me.acc_prof_list.ReadOnly = True
-        Me.acc_prof_list.Size = New System.Drawing.Size(1343, 270)
-        Me.acc_prof_list.TabIndex = 0
-        Me.acc_prof_list.Text = "RadGridView3"
-        Me.acc_prof_list.ThemeName = "VisualStudio2012Dark"
-        '
-        'RadPageViewPage1
-        '
-        Me.RadPageViewPage1.Controls.Add(Me.acc_staff_list)
-        Me.RadPageViewPage1.ItemSize = New System.Drawing.SizeF(78.0!, 24.0!)
-        Me.RadPageViewPage1.Location = New System.Drawing.Point(5, 30)
-        Me.RadPageViewPage1.Name = "RadPageViewPage1"
-        Me.RadPageViewPage1.Size = New System.Drawing.Size(1343, 270)
-        Me.RadPageViewPage1.Text = "Staff Records"
-        '
-        'acc_staff_list
-        '
-        Me.acc_staff_list.AutoSizeRows = True
-        Me.acc_staff_list.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.acc_staff_list.Location = New System.Drawing.Point(0, 0)
-        '
-        '
-        '
-        Me.acc_staff_list.MasterTemplate.AllowAddNewRow = False
-        Me.acc_staff_list.MasterTemplate.AutoSizeColumnsMode = Telerik.WinControls.UI.GridViewAutoSizeColumnsMode.Fill
-        Me.acc_staff_list.MasterTemplate.EnableGrouping = False
-        Me.acc_staff_list.MasterTemplate.ShowRowHeaderColumn = False
-        Me.acc_staff_list.MasterTemplate.ViewDefinition = TableViewDefinition9
-        Me.acc_staff_list.Name = "acc_staff_list"
-        Me.acc_staff_list.ReadOnly = True
-        Me.acc_staff_list.Size = New System.Drawing.Size(1343, 270)
-        Me.acc_staff_list.TabIndex = 0
-        Me.acc_staff_list.Text = "RadGridView2"
-        Me.acc_staff_list.ThemeName = "VisualStudio2012Dark"
-        '
-        'RadGroupBox28
-        '
-        Me.RadGroupBox28.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping
-        Me.RadGroupBox28.Anchor = System.Windows.Forms.AnchorStyles.Bottom
-        Me.RadGroupBox28.Controls.Add(Me.acc_staff_btn_update)
-        Me.RadGroupBox28.Controls.Add(Me.acc_staff_btn_clear)
-        Me.RadGroupBox28.Controls.Add(Me.acc_staff_btn_save)
-        Me.RadGroupBox28.Controls.Add(Me.acc_staff_btn_delete)
-        Me.RadGroupBox28.HeaderText = "Controls"
-        Me.RadGroupBox28.Location = New System.Drawing.Point(5, 173)
-        Me.RadGroupBox28.Name = "RadGroupBox28"
-        Me.RadGroupBox28.Size = New System.Drawing.Size(661, 64)
-        Me.RadGroupBox28.TabIndex = 5
-        Me.RadGroupBox28.Text = "Controls"
-        Me.RadGroupBox28.ThemeName = "VisualStudio2012Dark"
-        '
-        'acc_staff_btn_delete
-        '
-        Me.acc_staff_btn_delete.Anchor = System.Windows.Forms.AnchorStyles.Bottom
-        Me.acc_staff_btn_delete.Location = New System.Drawing.Point(459, 24)
-        Me.acc_staff_btn_delete.Name = "acc_staff_btn_delete"
-        Me.acc_staff_btn_delete.Size = New System.Drawing.Size(85, 24)
-        Me.acc_staff_btn_delete.TabIndex = 25
-        Me.acc_staff_btn_delete.Text = "Delete"
-        Me.acc_staff_btn_delete.ThemeName = "VisualStudio2012Dark"
-        '
-        'acc_staff_btn_save
-        '
-        Me.acc_staff_btn_save.Anchor = System.Windows.Forms.AnchorStyles.Bottom
-        Me.acc_staff_btn_save.Location = New System.Drawing.Point(560, 24)
-        Me.acc_staff_btn_save.Name = "acc_staff_btn_save"
-        Me.acc_staff_btn_save.Size = New System.Drawing.Size(85, 24)
-        Me.acc_staff_btn_save.TabIndex = 23
-        Me.acc_staff_btn_save.Text = "Save"
-        Me.acc_staff_btn_save.ThemeName = "VisualStudio2012Dark"
-        '
-        'acc_staff_btn_clear
-        '
-        Me.acc_staff_btn_clear.Anchor = System.Windows.Forms.AnchorStyles.Bottom
-        Me.acc_staff_btn_clear.Location = New System.Drawing.Point(69, 24)
-        Me.acc_staff_btn_clear.Name = "acc_staff_btn_clear"
-        Me.acc_staff_btn_clear.Size = New System.Drawing.Size(85, 24)
-        Me.acc_staff_btn_clear.TabIndex = 24
-        Me.acc_staff_btn_clear.Text = "Clear"
-        Me.acc_staff_btn_clear.ThemeName = "VisualStudio2012Dark"
-        '
-        'acc_staff_btn_update
-        '
-        Me.acc_staff_btn_update.Anchor = System.Windows.Forms.AnchorStyles.Bottom
-        Me.acc_staff_btn_update.Location = New System.Drawing.Point(560, 21)
-        Me.acc_staff_btn_update.Name = "acc_staff_btn_update"
-        Me.acc_staff_btn_update.Size = New System.Drawing.Size(85, 24)
-        Me.acc_staff_btn_update.TabIndex = 24
-        Me.acc_staff_btn_update.Text = "Update"
-        Me.acc_staff_btn_update.ThemeName = "VisualStudio2012Dark"
-        '
-        'rpvp1_main
-        '
-        Me.rpvp1_main.Controls.Add(Me.RadGroupBox20)
-        Me.rpvp1_main.Controls.Add(Me.RadGroupBox2)
-        Me.rpvp1_main.Controls.Add(Me.RadGroupBox1)
-        Me.rpvp1_main.ItemSize = New System.Drawing.SizeF(37.0!, 24.0!)
-        Me.rpvp1_main.Location = New System.Drawing.Point(5, 30)
-        Me.rpvp1_main.Name = "rpvp1_main"
-        Me.rpvp1_main.Size = New System.Drawing.Size(1348, 548)
-        Me.rpvp1_main.Text = "Main"
-        '
-        'RadGroupBox1
-        '
-        Me.RadGroupBox1.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping
-        Me.RadGroupBox1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.RadGroupBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
-        Me.RadGroupBox1.Controls.Add(Me.main_rgv_recordedacademicsmain)
-        Me.RadGroupBox1.HeaderText = "Activities"
-        Me.RadGroupBox1.Location = New System.Drawing.Point(212, 3)
-        Me.RadGroupBox1.Name = "RadGroupBox1"
-        Me.RadGroupBox1.Size = New System.Drawing.Size(1133, 538)
-        Me.RadGroupBox1.TabIndex = 0
-        Me.RadGroupBox1.TabStop = False
-        Me.RadGroupBox1.Text = "Activities"
-        Me.RadGroupBox1.ThemeName = "VisualStudio2012Dark"
-        '
-        'main_rgv_recordedacademicsmain
-        '
-        Me.main_rgv_recordedacademicsmain.AutoSizeRows = True
-        Me.main_rgv_recordedacademicsmain.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.main_rgv_recordedacademicsmain.Location = New System.Drawing.Point(2, 18)
-        '
-        '
-        '
-        Me.main_rgv_recordedacademicsmain.MasterTemplate.AllowAddNewRow = False
-        Me.main_rgv_recordedacademicsmain.MasterTemplate.AllowDeleteRow = False
-        Me.main_rgv_recordedacademicsmain.MasterTemplate.AllowEditRow = False
-        Me.main_rgv_recordedacademicsmain.MasterTemplate.AutoSizeColumnsMode = Telerik.WinControls.UI.GridViewAutoSizeColumnsMode.Fill
-        Me.main_rgv_recordedacademicsmain.MasterTemplate.EnableGrouping = False
-        Me.main_rgv_recordedacademicsmain.MasterTemplate.ShowRowHeaderColumn = False
-        Me.main_rgv_recordedacademicsmain.MasterTemplate.ViewDefinition = TableViewDefinition11
-        Me.main_rgv_recordedacademicsmain.Name = "main_rgv_recordedacademicsmain"
-        Me.main_rgv_recordedacademicsmain.ReadOnly = True
-        Me.main_rgv_recordedacademicsmain.Size = New System.Drawing.Size(1129, 518)
-        Me.main_rgv_recordedacademicsmain.TabIndex = 3
-        Me.main_rgv_recordedacademicsmain.Text = "RadGridView1"
-        Me.main_rgv_recordedacademicsmain.ThemeName = "VisualStudio2012Dark"
-        '
-        'RadGroupBox2
-        '
-        Me.RadGroupBox2.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping
-        Me.RadGroupBox2.Controls.Add(Me.RadGroupBox8)
-        Me.RadGroupBox2.Controls.Add(Me.RadGroupBox7)
-        Me.RadGroupBox2.HeaderText = "Filters"
-        Me.RadGroupBox2.Location = New System.Drawing.Point(-5, 3)
-        Me.RadGroupBox2.Name = "RadGroupBox2"
-        Me.RadGroupBox2.Size = New System.Drawing.Size(211, 288)
-        Me.RadGroupBox2.TabIndex = 20
-        Me.RadGroupBox2.TabStop = False
-        Me.RadGroupBox2.Text = "Filters"
-        Me.RadGroupBox2.ThemeName = "VisualStudio2012Dark"
-        '
-        'RadGroupBox7
-        '
-        Me.RadGroupBox7.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping
-        Me.RadGroupBox7.Controls.Add(Me.lu_date)
-        Me.RadGroupBox7.Controls.Add(Me.RadLabel11)
-        Me.RadGroupBox7.HeaderText = "Search by Date:"
-        Me.RadGroupBox7.Location = New System.Drawing.Point(5, 21)
-        Me.RadGroupBox7.Name = "RadGroupBox7"
-        Me.RadGroupBox7.Size = New System.Drawing.Size(197, 102)
-        Me.RadGroupBox7.TabIndex = 20
-        Me.RadGroupBox7.TabStop = False
-        Me.RadGroupBox7.Text = "Search by Date:"
-        Me.RadGroupBox7.ThemeName = "VisualStudio2012Dark"
-        '
-        'RadLabel11
-        '
-        Me.RadLabel11.BackColor = System.Drawing.Color.Transparent
-        Me.RadLabel11.Location = New System.Drawing.Point(7, 32)
-        Me.RadLabel11.Name = "RadLabel11"
-        Me.RadLabel11.Size = New System.Drawing.Size(32, 18)
-        Me.RadLabel11.TabIndex = 18
-        Me.RadLabel11.Text = "Date:"
-        Me.RadLabel11.ThemeName = "VisualStudio2012Dark"
-        '
-        'RadGroupBox8
-        '
-        Me.RadGroupBox8.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping
-        Me.RadGroupBox8.Controls.Add(Me.RadLabel8)
-        Me.RadGroupBox8.Controls.Add(Me.lu_byname)
-        Me.RadGroupBox8.Controls.Add(Me.lu_byequipment)
-        Me.RadGroupBox8.Controls.Add(Me.RadLabel13)
-        Me.RadGroupBox8.HeaderText = "Custom Filters"
-        Me.RadGroupBox8.Location = New System.Drawing.Point(5, 129)
-        Me.RadGroupBox8.Name = "RadGroupBox8"
-        Me.RadGroupBox8.Size = New System.Drawing.Size(197, 150)
-        Me.RadGroupBox8.TabIndex = 20
-        Me.RadGroupBox8.TabStop = False
-        Me.RadGroupBox8.Text = "Custom Filters"
-        Me.RadGroupBox8.ThemeName = "VisualStudio2012Dark"
-        '
-        'RadLabel13
-        '
-        Me.RadLabel13.BackColor = System.Drawing.Color.Transparent
-        Me.RadLabel13.Location = New System.Drawing.Point(7, 89)
-        Me.RadLabel13.Name = "RadLabel13"
-        Me.RadLabel13.Size = New System.Drawing.Size(112, 18)
-        Me.RadLabel13.TabIndex = 25
-        Me.RadLabel13.Text = "Search by Equipment"
-        Me.RadLabel13.ThemeName = "VisualStudio2012Dark"
-        '
-        'lu_byequipment
-        '
-        Me.lu_byequipment.Location = New System.Drawing.Point(6, 113)
-        Me.lu_byequipment.MinimumSize = New System.Drawing.Size(0, 24)
-        Me.lu_byequipment.Name = "lu_byequipment"
-        '
-        '
-        '
-        Me.lu_byequipment.RootElement.MinSize = New System.Drawing.Size(0, 24)
-        Me.lu_byequipment.Size = New System.Drawing.Size(183, 24)
-        Me.lu_byequipment.TabIndex = 2
-        Me.lu_byequipment.ThemeName = "VisualStudio2012Dark"
-        '
-        'lu_byname
-        '
-        Me.lu_byname.Location = New System.Drawing.Point(7, 55)
-        Me.lu_byname.MinimumSize = New System.Drawing.Size(0, 24)
-        Me.lu_byname.Name = "lu_byname"
-        '
-        '
-        '
-        Me.lu_byname.RootElement.MinSize = New System.Drawing.Size(0, 24)
-        Me.lu_byname.Size = New System.Drawing.Size(182, 24)
-        Me.lu_byname.TabIndex = 1
-        Me.lu_byname.ThemeName = "VisualStudio2012Dark"
-        '
-        'RadLabel8
-        '
-        Me.RadLabel8.BackColor = System.Drawing.Color.Transparent
-        Me.RadLabel8.Location = New System.Drawing.Point(6, 31)
-        Me.RadLabel8.Name = "RadLabel8"
-        Me.RadLabel8.Size = New System.Drawing.Size(90, 18)
-        Me.RadLabel8.TabIndex = 28
-        Me.RadLabel8.Text = "Search by Name:"
-        Me.RadLabel8.ThemeName = "VisualStudio2012Dark"
-        '
-        'RadGroupBox20
-        '
-        Me.RadGroupBox20.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping
-        Me.RadGroupBox20.Controls.Add(Me.btn_gotoinsmat)
-        Me.RadGroupBox20.HeaderText = "Navigation"
-        Me.RadGroupBox20.Location = New System.Drawing.Point(0, 308)
-        Me.RadGroupBox20.Name = "RadGroupBox20"
-        Me.RadGroupBox20.Size = New System.Drawing.Size(206, 124)
-        Me.RadGroupBox20.TabIndex = 21
-        Me.RadGroupBox20.Text = "Navigation"
-        Me.RadGroupBox20.ThemeName = "VisualStudio2012Dark"
-        '
-        'btn_gotoinsmat
-        '
-        Me.btn_gotoinsmat.Location = New System.Drawing.Point(27, 41)
-        Me.btn_gotoinsmat.Name = "btn_gotoinsmat"
-        Me.btn_gotoinsmat.Size = New System.Drawing.Size(142, 50)
-        Me.btn_gotoinsmat.TabIndex = 0
-        Me.btn_gotoinsmat.Text = "Instructional Materials"
-        Me.btn_gotoinsmat.ThemeName = "VisualStudio2012Dark"
-        '
-        'rpv1
-        '
-        Me.rpv1.Controls.Add(Me.rpvp1_main)
-        Me.rpv1.Controls.Add(Me.rpvp_account)
-        Me.rpv1.Controls.Add(Me.rpvp_equipment)
-        Me.rpv1.Controls.Add(Me.rpvp2_reservation)
-        Me.rpv1.Controls.Add(Me.rpvp_releasing)
-        Me.rpv1.Controls.Add(Me.rpvp_returning)
-        Me.rpv1.DefaultPage = Me.rpvp1_main
-        Me.rpv1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.rpv1.Location = New System.Drawing.Point(0, 0)
-        Me.rpv1.Name = "rpv1"
-        Me.rpv1.SelectedPage = Me.rpvp2_reservation
-        Me.rpv1.Size = New System.Drawing.Size(1358, 583)
-        Me.rpv1.TabIndex = 0
-        Me.rpv1.Text = "Home"
-        Me.rpv1.ThemeName = "VisualStudio2012Dark"
-        CType(Me.rpv1.GetChildAt(0), Telerik.WinControls.UI.RadPageViewStripElement).StripButtons = Telerik.WinControls.UI.StripViewButtons.None
-        CType(Me.rpv1.GetChildAt(0), Telerik.WinControls.UI.RadPageViewStripElement).ItemFitMode = Telerik.WinControls.UI.StripViewItemFitMode.None
-        CType(Me.rpv1.GetChildAt(0), Telerik.WinControls.UI.RadPageViewStripElement).StripAlignment = Telerik.WinControls.UI.StripViewAlignment.Top
-        CType(Me.rpv1.GetChildAt(0), Telerik.WinControls.UI.RadPageViewStripElement).ItemSpacing = 5
-        '
-        'ret_tb_sdate
-        '
-        Me.ret_tb_sdate.CustomFormat = "MM/d/yyyy"
-        Me.ret_tb_sdate.Format = System.Windows.Forms.DateTimePickerFormat.Custom
-        Me.ret_tb_sdate.Location = New System.Drawing.Point(346, 18)
-        Me.ret_tb_sdate.MinimumSize = New System.Drawing.Size(0, 24)
-        Me.ret_tb_sdate.Name = "ret_tb_sdate"
-        '
-        '
-        '
-        Me.ret_tb_sdate.RootElement.MinSize = New System.Drawing.Size(0, 24)
-        Me.ret_tb_sdate.Size = New System.Drawing.Size(102, 24)
-        Me.ret_tb_sdate.TabIndex = 16
-        Me.ret_tb_sdate.TabStop = False
-        Me.ret_tb_sdate.Text = "07/25/2016"
-        Me.ret_tb_sdate.ThemeName = "VisualStudio2012Dark"
-        Me.ret_tb_sdate.Value = New Date(2016, 7, 25, 10, 55, 49, 565)
-        '
-        'rel_tb_startdate
-        '
-        Me.rel_tb_startdate.CustomFormat = "MM/d/yyyy"
-        Me.rel_tb_startdate.Format = System.Windows.Forms.DateTimePickerFormat.Custom
-        Me.rel_tb_startdate.Location = New System.Drawing.Point(345, 18)
-        Me.rel_tb_startdate.MinimumSize = New System.Drawing.Size(0, 24)
-        Me.rel_tb_startdate.Name = "rel_tb_startdate"
-        '
-        '
-        '
-        Me.rel_tb_startdate.RootElement.MinSize = New System.Drawing.Size(0, 24)
-        Me.rel_tb_startdate.Size = New System.Drawing.Size(102, 24)
-        Me.rel_tb_startdate.TabIndex = 37
-        Me.rel_tb_startdate.TabStop = False
-        Me.rel_tb_startdate.Text = "07/25/2016"
-        Me.rel_tb_startdate.ThemeName = "VisualStudio2012Dark"
-        Me.rel_tb_startdate.Value = New Date(2016, 7, 25, 10, 55, 49, 565)
-        '
-        'rec_dtp_date
-        '
-        Me.rec_dtp_date.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
-        Me.rec_dtp_date.CustomFormat = "MM/d/yyyy"
-        Me.rec_dtp_date.Format = System.Windows.Forms.DateTimePickerFormat.Custom
-        Me.rec_dtp_date.Location = New System.Drawing.Point(561, 24)
-        Me.rec_dtp_date.MinimumSize = New System.Drawing.Size(0, 24)
-        Me.rec_dtp_date.Name = "rec_dtp_date"
-        '
-        '
-        '
-        Me.rec_dtp_date.RootElement.MinSize = New System.Drawing.Size(0, 24)
-        Me.rec_dtp_date.Size = New System.Drawing.Size(105, 24)
-        Me.rec_dtp_date.TabIndex = 4
-        Me.rec_dtp_date.TabStop = False
-        Me.rec_dtp_date.Text = "07/25/2016"
-        Me.rec_dtp_date.ThemeName = "VisualStudio2012Dark"
-        Me.rec_dtp_date.Value = New Date(2016, 7, 25, 10, 55, 49, 565)
-        '
-        'lu_date
-        '
-        Me.lu_date.CustomFormat = "MM/d/yyyy"
-        Me.lu_date.Format = System.Windows.Forms.DateTimePickerFormat.Custom
-        Me.lu_date.Location = New System.Drawing.Point(7, 56)
-        Me.lu_date.MinimumSize = New System.Drawing.Size(0, 24)
-        Me.lu_date.Name = "lu_date"
-        '
-        '
-        '
-        Me.lu_date.RootElement.MinSize = New System.Drawing.Size(0, 24)
-        Me.lu_date.Size = New System.Drawing.Size(129, 24)
-        Me.lu_date.TabIndex = 0
-        Me.lu_date.TabStop = False
-        Me.lu_date.Text = "07/25/2016"
-        Me.lu_date.ThemeName = "VisualStudio2012Dark"
-        Me.lu_date.Value = New Date(2016, 7, 25, 10, 55, 49, 565)
         '
         'RadGroupBox9
         '
@@ -4035,6 +3082,999 @@ Partial Class Main
         Me.eq_btn_save.Text = "Save"
         Me.eq_btn_save.ThemeName = "VisualStudio2012Dark"
         '
+        'eq_btn_other
+        '
+        Me.eq_btn_other.Anchor = System.Windows.Forms.AnchorStyles.Bottom
+        Me.eq_btn_other.Location = New System.Drawing.Point(474, 144)
+        Me.eq_btn_other.Name = "eq_btn_other"
+        Me.eq_btn_other.Size = New System.Drawing.Size(85, 24)
+        Me.eq_btn_other.TabIndex = 30
+        Me.eq_btn_other.Text = "Other"
+        Me.eq_btn_other.ThemeName = "VisualStudio2012Dark"
+        '
+        'eq_type
+        '
+        Me.eq_type.DropDownStyle = Telerik.WinControls.RadDropDownStyle.DropDownList
+        Me.eq_type.Location = New System.Drawing.Point(166, 81)
+        Me.eq_type.Name = "eq_type"
+        Me.eq_type.Size = New System.Drawing.Size(302, 24)
+        Me.eq_type.TabIndex = 29
+        Me.eq_type.ThemeName = "VisualStudio2012Dark"
+        '
+        'eq_owner
+        '
+        Me.eq_owner.Location = New System.Drawing.Point(166, 173)
+        Me.eq_owner.MinimumSize = New System.Drawing.Size(0, 24)
+        Me.eq_owner.Name = "eq_owner"
+        '
+        '
+        '
+        Me.eq_owner.RootElement.MinSize = New System.Drawing.Size(0, 24)
+        Me.eq_owner.Size = New System.Drawing.Size(302, 24)
+        Me.eq_owner.TabIndex = 28
+        Me.eq_owner.ThemeName = "VisualStudio2012Dark"
+        '
+        'eq_equipmentlocation
+        '
+        Me.eq_equipmentlocation.Location = New System.Drawing.Point(166, 142)
+        Me.eq_equipmentlocation.MinimumSize = New System.Drawing.Size(0, 24)
+        Me.eq_equipmentlocation.Name = "eq_equipmentlocation"
+        '
+        '
+        '
+        Me.eq_equipmentlocation.RootElement.MinSize = New System.Drawing.Size(0, 24)
+        Me.eq_equipmentlocation.Size = New System.Drawing.Size(302, 24)
+        Me.eq_equipmentlocation.TabIndex = 27
+        Me.eq_equipmentlocation.ThemeName = "VisualStudio2012Dark"
+        '
+        'eq_equipment
+        '
+        Me.eq_equipment.Location = New System.Drawing.Point(166, 112)
+        Me.eq_equipment.MinimumSize = New System.Drawing.Size(0, 24)
+        Me.eq_equipment.Name = "eq_equipment"
+        '
+        '
+        '
+        Me.eq_equipment.RootElement.MinSize = New System.Drawing.Size(0, 24)
+        Me.eq_equipment.Size = New System.Drawing.Size(302, 24)
+        Me.eq_equipment.TabIndex = 25
+        Me.eq_equipment.ThemeName = "VisualStudio2012Dark"
+        '
+        'RadLabel53
+        '
+        Me.RadLabel53.BackColor = System.Drawing.Color.Transparent
+        Me.RadLabel53.Location = New System.Drawing.Point(70, 85)
+        Me.RadLabel53.Name = "RadLabel53"
+        Me.RadLabel53.Size = New System.Drawing.Size(90, 18)
+        Me.RadLabel53.TabIndex = 22
+        Me.RadLabel53.Text = "Equipment Type:"
+        Me.RadLabel53.ThemeName = "VisualStudio2012Dark"
+        '
+        'eq_status
+        '
+        RadListDataItem251.Text = "Good Condtion"
+        RadListDataItem252.Text = "Condemned"
+        Me.eq_status.Items.Add(RadListDataItem251)
+        Me.eq_status.Items.Add(RadListDataItem252)
+        Me.eq_status.Location = New System.Drawing.Point(396, 21)
+        Me.eq_status.Name = "eq_status"
+        Me.eq_status.Size = New System.Drawing.Size(187, 24)
+        Me.eq_status.TabIndex = 5
+        Me.eq_status.ThemeName = "VisualStudio2012Dark"
+        '
+        'RadLabel52
+        '
+        Me.RadLabel52.BackColor = System.Drawing.Color.Transparent
+        Me.RadLabel52.Location = New System.Drawing.Point(351, 27)
+        Me.RadLabel52.Name = "RadLabel52"
+        Me.RadLabel52.Size = New System.Drawing.Size(39, 18)
+        Me.RadLabel52.TabIndex = 18
+        Me.RadLabel52.Text = "Status:"
+        Me.RadLabel52.ThemeName = "VisualStudio2012Dark"
+        '
+        'RadLabel51
+        '
+        Me.RadLabel51.BackColor = System.Drawing.Color.Transparent
+        Me.RadLabel51.Location = New System.Drawing.Point(23, 55)
+        Me.RadLabel51.Name = "RadLabel51"
+        Me.RadLabel51.Size = New System.Drawing.Size(137, 18)
+        Me.RadLabel51.TabIndex = 15
+        Me.RadLabel51.Text = "Equipment Serial Number:"
+        Me.RadLabel51.ThemeName = "VisualStudio2012Dark"
+        '
+        'eq_sn
+        '
+        Me.eq_sn.Location = New System.Drawing.Point(166, 51)
+        Me.eq_sn.MinimumSize = New System.Drawing.Size(0, 24)
+        Me.eq_sn.Name = "eq_sn"
+        '
+        '
+        '
+        Me.eq_sn.RootElement.MinSize = New System.Drawing.Size(0, 24)
+        Me.eq_sn.Size = New System.Drawing.Size(153, 24)
+        Me.eq_sn.TabIndex = 1
+        Me.eq_sn.ThemeName = "VisualStudio2012Dark"
+        '
+        'RadLabel25
+        '
+        Me.RadLabel25.BackColor = System.Drawing.Color.Transparent
+        Me.RadLabel25.Location = New System.Drawing.Point(52, 147)
+        Me.RadLabel25.Name = "RadLabel25"
+        Me.RadLabel25.Size = New System.Drawing.Size(108, 18)
+        Me.RadLabel25.TabIndex = 13
+        Me.RadLabel25.Text = "Equipment Location:"
+        Me.RadLabel25.ThemeName = "VisualStudio2012Dark"
+        '
+        'RadLabel24
+        '
+        Me.RadLabel24.BackColor = System.Drawing.Color.Transparent
+        Me.RadLabel24.Location = New System.Drawing.Point(97, 115)
+        Me.RadLabel24.Name = "RadLabel24"
+        Me.RadLabel24.Size = New System.Drawing.Size(63, 18)
+        Me.RadLabel24.TabIndex = 13
+        Me.RadLabel24.Text = "Equipment:"
+        Me.RadLabel24.ThemeName = "VisualStudio2012Dark"
+        '
+        'RadLabel23
+        '
+        Me.RadLabel23.BackColor = System.Drawing.Color.Transparent
+        Me.RadLabel23.Location = New System.Drawing.Point(118, 177)
+        Me.RadLabel23.Name = "RadLabel23"
+        Me.RadLabel23.Size = New System.Drawing.Size(42, 18)
+        Me.RadLabel23.TabIndex = 13
+        Me.RadLabel23.Text = "Owner:"
+        Me.RadLabel23.ThemeName = "VisualStudio2012Dark"
+        '
+        'RadLabel22
+        '
+        Me.RadLabel22.BackColor = System.Drawing.Color.Transparent
+        Me.RadLabel22.Location = New System.Drawing.Point(53, 27)
+        Me.RadLabel22.Name = "RadLabel22"
+        Me.RadLabel22.Size = New System.Drawing.Size(107, 18)
+        Me.RadLabel22.TabIndex = 12
+        Me.RadLabel22.Text = "Equipment Number:"
+        Me.RadLabel22.ThemeName = "VisualStudio2012Dark"
+        '
+        'eq_equipmentno
+        '
+        Me.eq_equipmentno.Location = New System.Drawing.Point(166, 21)
+        Me.eq_equipmentno.MinimumSize = New System.Drawing.Size(0, 24)
+        Me.eq_equipmentno.Name = "eq_equipmentno"
+        '
+        '
+        '
+        Me.eq_equipmentno.RootElement.MinSize = New System.Drawing.Size(0, 24)
+        Me.eq_equipmentno.Size = New System.Drawing.Size(70, 24)
+        Me.eq_equipmentno.TabIndex = 0
+        Me.eq_equipmentno.ThemeName = "VisualStudio2012Dark"
+        '
+        'RadGroupBox14
+        '
+        Me.RadGroupBox14.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping
+        Me.RadGroupBox14.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.RadGroupBox14.Controls.Add(Me.eq_rgv_showregequipment)
+        Me.RadGroupBox14.HeaderText = "Equipment Records"
+        Me.RadGroupBox14.Location = New System.Drawing.Point(0, -3)
+        Me.RadGroupBox14.Name = "RadGroupBox14"
+        Me.RadGroupBox14.Size = New System.Drawing.Size(1345, 275)
+        Me.RadGroupBox14.TabIndex = 0
+        Me.RadGroupBox14.Text = "Equipment Records"
+        Me.RadGroupBox14.ThemeName = "VisualStudio2012Dark"
+        '
+        'eq_rgv_showregequipment
+        '
+        Me.eq_rgv_showregequipment.AutoSizeRows = True
+        Me.eq_rgv_showregequipment.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.eq_rgv_showregequipment.Location = New System.Drawing.Point(2, 18)
+        '
+        '
+        '
+        Me.eq_rgv_showregequipment.MasterTemplate.AllowAddNewRow = False
+        Me.eq_rgv_showregequipment.MasterTemplate.AllowDeleteRow = False
+        Me.eq_rgv_showregequipment.MasterTemplate.AllowEditRow = False
+        Me.eq_rgv_showregequipment.MasterTemplate.AutoSizeColumnsMode = Telerik.WinControls.UI.GridViewAutoSizeColumnsMode.Fill
+        Me.eq_rgv_showregequipment.MasterTemplate.EnableGrouping = False
+        Me.eq_rgv_showregequipment.MasterTemplate.ShowRowHeaderColumn = False
+        Me.eq_rgv_showregequipment.MasterTemplate.ViewDefinition = TableViewDefinition20
+        Me.eq_rgv_showregequipment.Name = "eq_rgv_showregequipment"
+        Me.eq_rgv_showregequipment.ReadOnly = True
+        Me.eq_rgv_showregequipment.Size = New System.Drawing.Size(1341, 255)
+        Me.eq_rgv_showregequipment.TabIndex = 0
+        Me.eq_rgv_showregequipment.TabStop = False
+        Me.eq_rgv_showregequipment.Text = "RadGridView2"
+        Me.eq_rgv_showregequipment.ThemeName = "VisualStudio2012Dark"
+        '
+        'rpvp_account
+        '
+        Me.rpvp_account.Controls.Add(Me.RadPageView1)
+        Me.rpvp_account.Controls.Add(Me.RadGroupBox19)
+        Me.rpvp_account.Controls.Add(Me.RadGroupBox18)
+        Me.rpvp_account.ItemSize = New System.Drawing.SizeF(123.0!, 24.0!)
+        Me.rpvp_account.Location = New System.Drawing.Point(5, 30)
+        Me.rpvp_account.Name = "rpvp_account"
+        Me.rpvp_account.Size = New System.Drawing.Size(1348, 548)
+        Me.rpvp_account.Text = "Account Management"
+        '
+        'RadPageView1
+        '
+        Me.RadPageView1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.RadPageView1.Controls.Add(Me.RadPageViewPage1)
+        Me.RadPageView1.Controls.Add(Me.RadPageViewPage2)
+        Me.RadPageView1.Location = New System.Drawing.Point(0, -3)
+        Me.RadPageView1.Name = "RadPageView1"
+        Me.RadPageView1.SelectedPage = Me.RadPageViewPage1
+        Me.RadPageView1.Size = New System.Drawing.Size(1353, 305)
+        Me.RadPageView1.TabIndex = 4
+        Me.RadPageView1.Text = "RadPageView1"
+        Me.RadPageView1.ThemeName = "VisualStudio2012Dark"
+        CType(Me.RadPageView1.GetChildAt(0), Telerik.WinControls.UI.RadPageViewStripElement).StripButtons = Telerik.WinControls.UI.StripViewButtons.None
+        '
+        'RadPageViewPage1
+        '
+        Me.RadPageViewPage1.Controls.Add(Me.acc_staff_list)
+        Me.RadPageViewPage1.Location = New System.Drawing.Point(5, 30)
+        Me.RadPageViewPage1.Name = "RadPageViewPage1"
+        Me.RadPageViewPage1.Size = New System.Drawing.Size(1343, 270)
+        Me.RadPageViewPage1.Text = "Staff Records"
+        '
+        'acc_staff_list
+        '
+        Me.acc_staff_list.AutoSizeRows = True
+        Me.acc_staff_list.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.acc_staff_list.Location = New System.Drawing.Point(0, 0)
+        '
+        '
+        '
+        Me.acc_staff_list.MasterTemplate.AllowAddNewRow = False
+        Me.acc_staff_list.MasterTemplate.AutoSizeColumnsMode = Telerik.WinControls.UI.GridViewAutoSizeColumnsMode.Fill
+        Me.acc_staff_list.MasterTemplate.EnableGrouping = False
+        Me.acc_staff_list.MasterTemplate.ShowRowHeaderColumn = False
+        Me.acc_staff_list.MasterTemplate.ViewDefinition = TableViewDefinition21
+        Me.acc_staff_list.Name = "acc_staff_list"
+        Me.acc_staff_list.ReadOnly = True
+        Me.acc_staff_list.Size = New System.Drawing.Size(1343, 270)
+        Me.acc_staff_list.TabIndex = 0
+        Me.acc_staff_list.Text = "RadGridView2"
+        Me.acc_staff_list.ThemeName = "VisualStudio2012Dark"
+        '
+        'RadPageViewPage2
+        '
+        Me.RadPageViewPage2.Controls.Add(Me.acc_prof_list)
+        Me.RadPageViewPage2.Location = New System.Drawing.Point(5, 30)
+        Me.RadPageViewPage2.Name = "RadPageViewPage2"
+        Me.RadPageViewPage2.Size = New System.Drawing.Size(1343, 270)
+        Me.RadPageViewPage2.Text = "Borrower Records"
+        '
+        'acc_prof_list
+        '
+        Me.acc_prof_list.AutoSizeRows = True
+        Me.acc_prof_list.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.acc_prof_list.Location = New System.Drawing.Point(0, 0)
+        '
+        '
+        '
+        Me.acc_prof_list.MasterTemplate.AllowAddNewRow = False
+        Me.acc_prof_list.MasterTemplate.AllowDeleteRow = False
+        Me.acc_prof_list.MasterTemplate.AllowEditRow = False
+        Me.acc_prof_list.MasterTemplate.AutoSizeColumnsMode = Telerik.WinControls.UI.GridViewAutoSizeColumnsMode.Fill
+        Me.acc_prof_list.MasterTemplate.EnableGrouping = False
+        Me.acc_prof_list.MasterTemplate.ShowRowHeaderColumn = False
+        Me.acc_prof_list.MasterTemplate.ViewDefinition = TableViewDefinition22
+        Me.acc_prof_list.Name = "acc_prof_list"
+        Me.acc_prof_list.ReadOnly = True
+        Me.acc_prof_list.Size = New System.Drawing.Size(1343, 270)
+        Me.acc_prof_list.TabIndex = 0
+        Me.acc_prof_list.Text = "RadGridView3"
+        Me.acc_prof_list.ThemeName = "VisualStudio2012Dark"
+        '
+        'RadGroupBox19
+        '
+        Me.RadGroupBox19.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping
+        Me.RadGroupBox19.Anchor = System.Windows.Forms.AnchorStyles.Bottom
+        Me.RadGroupBox19.Controls.Add(Me.RadGroupBox29)
+        Me.RadGroupBox19.Controls.Add(Me.acc_pf_lname)
+        Me.RadGroupBox19.Controls.Add(Me.acc_pf_mname)
+        Me.RadGroupBox19.Controls.Add(Me.acc_pf_fname)
+        Me.RadGroupBox19.Controls.Add(Me.acc_pf_id)
+        Me.RadGroupBox19.Controls.Add(Me.RadLabel34)
+        Me.RadGroupBox19.Controls.Add(Me.RadLabel35)
+        Me.RadGroupBox19.Controls.Add(Me.RadLabel36)
+        Me.RadGroupBox19.Controls.Add(Me.RadLabel37)
+        Me.RadGroupBox19.Controls.Add(Me.acc_pf_college)
+        Me.RadGroupBox19.Controls.Add(Me.RadLabel38)
+        Me.RadGroupBox19.HeaderText = "Borrower Registration"
+        Me.RadGroupBox19.Location = New System.Drawing.Point(677, 306)
+        Me.RadGroupBox19.Name = "RadGroupBox19"
+        Me.RadGroupBox19.Size = New System.Drawing.Size(671, 242)
+        Me.RadGroupBox19.TabIndex = 3
+        Me.RadGroupBox19.Text = "Borrower Registration"
+        Me.RadGroupBox19.ThemeName = "VisualStudio2012Dark"
+        '
+        'RadGroupBox29
+        '
+        Me.RadGroupBox29.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping
+        Me.RadGroupBox29.Anchor = System.Windows.Forms.AnchorStyles.Bottom
+        Me.RadGroupBox29.Controls.Add(Me.acc_prof_btn_clear)
+        Me.RadGroupBox29.Controls.Add(Me.acc_prof_btn_delete)
+        Me.RadGroupBox29.Controls.Add(Me.acc_prof_btn_update)
+        Me.RadGroupBox29.Controls.Add(Me.acc_prof_btn_save)
+        Me.RadGroupBox29.HeaderText = "Controls"
+        Me.RadGroupBox29.Location = New System.Drawing.Point(0, 173)
+        Me.RadGroupBox29.Name = "RadGroupBox29"
+        Me.RadGroupBox29.Size = New System.Drawing.Size(663, 61)
+        Me.RadGroupBox29.TabIndex = 6
+        Me.RadGroupBox29.Text = "Controls"
+        Me.RadGroupBox29.ThemeName = "VisualStudio2012Dark"
+        '
+        'acc_prof_btn_clear
+        '
+        Me.acc_prof_btn_clear.Anchor = System.Windows.Forms.AnchorStyles.Bottom
+        Me.acc_prof_btn_clear.Location = New System.Drawing.Point(69, 21)
+        Me.acc_prof_btn_clear.Name = "acc_prof_btn_clear"
+        Me.acc_prof_btn_clear.Size = New System.Drawing.Size(85, 24)
+        Me.acc_prof_btn_clear.TabIndex = 28
+        Me.acc_prof_btn_clear.Text = "Clear"
+        Me.acc_prof_btn_clear.ThemeName = "VisualStudio2012Dark"
+        '
+        'acc_prof_btn_delete
+        '
+        Me.acc_prof_btn_delete.Anchor = System.Windows.Forms.AnchorStyles.Bottom
+        Me.acc_prof_btn_delete.Location = New System.Drawing.Point(473, 21)
+        Me.acc_prof_btn_delete.Name = "acc_prof_btn_delete"
+        Me.acc_prof_btn_delete.Size = New System.Drawing.Size(85, 24)
+        Me.acc_prof_btn_delete.TabIndex = 24
+        Me.acc_prof_btn_delete.Text = "Delete"
+        Me.acc_prof_btn_delete.ThemeName = "VisualStudio2012Dark"
+        '
+        'acc_prof_btn_update
+        '
+        Me.acc_prof_btn_update.Anchor = System.Windows.Forms.AnchorStyles.Bottom
+        Me.acc_prof_btn_update.Location = New System.Drawing.Point(564, 21)
+        Me.acc_prof_btn_update.Name = "acc_prof_btn_update"
+        Me.acc_prof_btn_update.Size = New System.Drawing.Size(85, 24)
+        Me.acc_prof_btn_update.TabIndex = 27
+        Me.acc_prof_btn_update.Text = "Update"
+        Me.acc_prof_btn_update.ThemeName = "VisualStudio2012Dark"
+        '
+        'acc_prof_btn_save
+        '
+        Me.acc_prof_btn_save.Anchor = System.Windows.Forms.AnchorStyles.Bottom
+        Me.acc_prof_btn_save.Location = New System.Drawing.Point(564, 25)
+        Me.acc_prof_btn_save.Name = "acc_prof_btn_save"
+        Me.acc_prof_btn_save.Size = New System.Drawing.Size(85, 24)
+        Me.acc_prof_btn_save.TabIndex = 26
+        Me.acc_prof_btn_save.Text = "Save"
+        Me.acc_prof_btn_save.ThemeName = "VisualStudio2012Dark"
+        '
+        'acc_pf_lname
+        '
+        Me.acc_pf_lname.Location = New System.Drawing.Point(460, 25)
+        Me.acc_pf_lname.MinimumSize = New System.Drawing.Size(0, 24)
+        Me.acc_pf_lname.Name = "acc_pf_lname"
+        '
+        '
+        '
+        Me.acc_pf_lname.RootElement.MinSize = New System.Drawing.Size(0, 24)
+        Me.acc_pf_lname.Size = New System.Drawing.Size(201, 24)
+        Me.acc_pf_lname.TabIndex = 23
+        Me.acc_pf_lname.ThemeName = "VisualStudio2012Dark"
+        '
+        'acc_pf_mname
+        '
+        Me.acc_pf_mname.Location = New System.Drawing.Point(111, 85)
+        Me.acc_pf_mname.MinimumSize = New System.Drawing.Size(0, 24)
+        Me.acc_pf_mname.Name = "acc_pf_mname"
+        '
+        '
+        '
+        Me.acc_pf_mname.RootElement.MinSize = New System.Drawing.Size(0, 24)
+        Me.acc_pf_mname.Size = New System.Drawing.Size(201, 24)
+        Me.acc_pf_mname.TabIndex = 22
+        Me.acc_pf_mname.ThemeName = "VisualStudio2012Dark"
+        '
+        'acc_pf_fname
+        '
+        Me.acc_pf_fname.Location = New System.Drawing.Point(111, 55)
+        Me.acc_pf_fname.MinimumSize = New System.Drawing.Size(0, 24)
+        Me.acc_pf_fname.Name = "acc_pf_fname"
+        '
+        '
+        '
+        Me.acc_pf_fname.RootElement.MinSize = New System.Drawing.Size(0, 24)
+        Me.acc_pf_fname.Size = New System.Drawing.Size(201, 24)
+        Me.acc_pf_fname.TabIndex = 21
+        Me.acc_pf_fname.ThemeName = "VisualStudio2012Dark"
+        '
+        'acc_pf_id
+        '
+        Me.acc_pf_id.Location = New System.Drawing.Point(111, 25)
+        Me.acc_pf_id.MinimumSize = New System.Drawing.Size(0, 24)
+        Me.acc_pf_id.Name = "acc_pf_id"
+        '
+        '
+        '
+        Me.acc_pf_id.RootElement.MinSize = New System.Drawing.Size(0, 24)
+        Me.acc_pf_id.Size = New System.Drawing.Size(201, 24)
+        Me.acc_pf_id.TabIndex = 20
+        Me.acc_pf_id.ThemeName = "VisualStudio2012Dark"
+        '
+        'RadLabel34
+        '
+        Me.RadLabel34.BackColor = System.Drawing.Color.Transparent
+        Me.RadLabel34.Location = New System.Drawing.Point(393, 27)
+        Me.RadLabel34.Name = "RadLabel34"
+        Me.RadLabel34.Size = New System.Drawing.Size(61, 18)
+        Me.RadLabel34.TabIndex = 19
+        Me.RadLabel34.Text = "Last Name:"
+        Me.RadLabel34.ThemeName = "VisualStudio2012Dark"
+        '
+        'RadLabel35
+        '
+        Me.RadLabel35.BackColor = System.Drawing.Color.Transparent
+        Me.RadLabel35.Location = New System.Drawing.Point(42, 61)
+        Me.RadLabel35.Name = "RadLabel35"
+        Me.RadLabel35.Size = New System.Drawing.Size(63, 18)
+        Me.RadLabel35.TabIndex = 18
+        Me.RadLabel35.Text = "First Name:"
+        Me.RadLabel35.ThemeName = "VisualStudio2012Dark"
+        '
+        'RadLabel36
+        '
+        Me.RadLabel36.BackColor = System.Drawing.Color.Transparent
+        Me.RadLabel36.Location = New System.Drawing.Point(28, 87)
+        Me.RadLabel36.Name = "RadLabel36"
+        Me.RadLabel36.Size = New System.Drawing.Size(77, 18)
+        Me.RadLabel36.TabIndex = 17
+        Me.RadLabel36.Text = "Middle Name:"
+        Me.RadLabel36.ThemeName = "VisualStudio2012Dark"
+        '
+        'RadLabel37
+        '
+        Me.RadLabel37.BackColor = System.Drawing.Color.Transparent
+        Me.RadLabel37.Location = New System.Drawing.Point(79, 27)
+        Me.RadLabel37.Name = "RadLabel37"
+        Me.RadLabel37.Size = New System.Drawing.Size(26, 18)
+        Me.RadLabel37.TabIndex = 16
+        Me.RadLabel37.Text = "ID#:"
+        Me.RadLabel37.ThemeName = "VisualStudio2012Dark"
+        '
+        'acc_pf_college
+        '
+        Me.acc_pf_college.Location = New System.Drawing.Point(460, 55)
+        Me.acc_pf_college.Name = "acc_pf_college"
+        Me.acc_pf_college.Size = New System.Drawing.Size(201, 24)
+        Me.acc_pf_college.TabIndex = 15
+        Me.acc_pf_college.ThemeName = "VisualStudio2012Dark"
+        '
+        'RadLabel38
+        '
+        Me.RadLabel38.BackColor = System.Drawing.Color.Transparent
+        Me.RadLabel38.Location = New System.Drawing.Point(370, 57)
+        Me.RadLabel38.Name = "RadLabel38"
+        Me.RadLabel38.Size = New System.Drawing.Size(84, 18)
+        Me.RadLabel38.TabIndex = 14
+        Me.RadLabel38.Text = "College/School:"
+        Me.RadLabel38.ThemeName = "VisualStudio2012Dark"
+        '
+        'RadGroupBox18
+        '
+        Me.RadGroupBox18.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping
+        Me.RadGroupBox18.Anchor = System.Windows.Forms.AnchorStyles.Bottom
+        Me.RadGroupBox18.Controls.Add(Me.RadGroupBox28)
+        Me.RadGroupBox18.Controls.Add(Me.acc_sf_usertype)
+        Me.RadGroupBox18.Controls.Add(Me.RadLabel39)
+        Me.RadGroupBox18.Controls.Add(Me.acc_sf_retypepassword)
+        Me.RadGroupBox18.Controls.Add(Me.acc_sf_password)
+        Me.RadGroupBox18.Controls.Add(Me.acc_sf_username)
+        Me.RadGroupBox18.Controls.Add(Me.RadLabel31)
+        Me.RadGroupBox18.Controls.Add(Me.RadLabel32)
+        Me.RadGroupBox18.Controls.Add(Me.RadLabel33)
+        Me.RadGroupBox18.Controls.Add(Me.acc_sf_lname)
+        Me.RadGroupBox18.Controls.Add(Me.acc_sf_mname)
+        Me.RadGroupBox18.Controls.Add(Me.acc_sf_fname)
+        Me.RadGroupBox18.Controls.Add(Me.acc_sf_id)
+        Me.RadGroupBox18.Controls.Add(Me.RadLabel30)
+        Me.RadGroupBox18.Controls.Add(Me.RadLabel29)
+        Me.RadGroupBox18.Controls.Add(Me.RadLabel28)
+        Me.RadGroupBox18.Controls.Add(Me.RadLabel27)
+        Me.RadGroupBox18.HeaderText = "Staff Registration"
+        Me.RadGroupBox18.Location = New System.Drawing.Point(0, 306)
+        Me.RadGroupBox18.Name = "RadGroupBox18"
+        Me.RadGroupBox18.Size = New System.Drawing.Size(671, 242)
+        Me.RadGroupBox18.TabIndex = 2
+        Me.RadGroupBox18.Text = "Staff Registration"
+        Me.RadGroupBox18.ThemeName = "VisualStudio2012Dark"
+        '
+        'RadGroupBox28
+        '
+        Me.RadGroupBox28.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping
+        Me.RadGroupBox28.Anchor = System.Windows.Forms.AnchorStyles.Bottom
+        Me.RadGroupBox28.Controls.Add(Me.acc_staff_btn_update)
+        Me.RadGroupBox28.Controls.Add(Me.acc_staff_btn_clear)
+        Me.RadGroupBox28.Controls.Add(Me.acc_staff_btn_save)
+        Me.RadGroupBox28.Controls.Add(Me.acc_staff_btn_delete)
+        Me.RadGroupBox28.HeaderText = "Controls"
+        Me.RadGroupBox28.Location = New System.Drawing.Point(5, 173)
+        Me.RadGroupBox28.Name = "RadGroupBox28"
+        Me.RadGroupBox28.Size = New System.Drawing.Size(661, 64)
+        Me.RadGroupBox28.TabIndex = 5
+        Me.RadGroupBox28.Text = "Controls"
+        Me.RadGroupBox28.ThemeName = "VisualStudio2012Dark"
+        '
+        'acc_staff_btn_update
+        '
+        Me.acc_staff_btn_update.Anchor = System.Windows.Forms.AnchorStyles.Bottom
+        Me.acc_staff_btn_update.Location = New System.Drawing.Point(560, 21)
+        Me.acc_staff_btn_update.Name = "acc_staff_btn_update"
+        Me.acc_staff_btn_update.Size = New System.Drawing.Size(85, 24)
+        Me.acc_staff_btn_update.TabIndex = 24
+        Me.acc_staff_btn_update.Text = "Update"
+        Me.acc_staff_btn_update.ThemeName = "VisualStudio2012Dark"
+        '
+        'acc_staff_btn_clear
+        '
+        Me.acc_staff_btn_clear.Anchor = System.Windows.Forms.AnchorStyles.Bottom
+        Me.acc_staff_btn_clear.Location = New System.Drawing.Point(69, 24)
+        Me.acc_staff_btn_clear.Name = "acc_staff_btn_clear"
+        Me.acc_staff_btn_clear.Size = New System.Drawing.Size(85, 24)
+        Me.acc_staff_btn_clear.TabIndex = 24
+        Me.acc_staff_btn_clear.Text = "Clear"
+        Me.acc_staff_btn_clear.ThemeName = "VisualStudio2012Dark"
+        '
+        'acc_staff_btn_save
+        '
+        Me.acc_staff_btn_save.Anchor = System.Windows.Forms.AnchorStyles.Bottom
+        Me.acc_staff_btn_save.Location = New System.Drawing.Point(560, 24)
+        Me.acc_staff_btn_save.Name = "acc_staff_btn_save"
+        Me.acc_staff_btn_save.Size = New System.Drawing.Size(85, 24)
+        Me.acc_staff_btn_save.TabIndex = 23
+        Me.acc_staff_btn_save.Text = "Save"
+        Me.acc_staff_btn_save.ThemeName = "VisualStudio2012Dark"
+        '
+        'acc_staff_btn_delete
+        '
+        Me.acc_staff_btn_delete.Anchor = System.Windows.Forms.AnchorStyles.Bottom
+        Me.acc_staff_btn_delete.Location = New System.Drawing.Point(459, 24)
+        Me.acc_staff_btn_delete.Name = "acc_staff_btn_delete"
+        Me.acc_staff_btn_delete.Size = New System.Drawing.Size(85, 24)
+        Me.acc_staff_btn_delete.TabIndex = 25
+        Me.acc_staff_btn_delete.Text = "Delete"
+        Me.acc_staff_btn_delete.ThemeName = "VisualStudio2012Dark"
+        '
+        'acc_sf_usertype
+        '
+        RadListDataItem253.Text = "Staff"
+        Me.acc_sf_usertype.Items.Add(RadListDataItem253)
+        Me.acc_sf_usertype.Location = New System.Drawing.Point(449, 27)
+        Me.acc_sf_usertype.Name = "acc_sf_usertype"
+        Me.acc_sf_usertype.Size = New System.Drawing.Size(201, 24)
+        Me.acc_sf_usertype.TabIndex = 22
+        Me.acc_sf_usertype.ThemeName = "VisualStudio2012Dark"
+        '
+        'RadLabel39
+        '
+        Me.RadLabel39.BackColor = System.Drawing.Color.Transparent
+        Me.RadLabel39.Location = New System.Drawing.Point(385, 33)
+        Me.RadLabel39.Name = "RadLabel39"
+        Me.RadLabel39.Size = New System.Drawing.Size(58, 18)
+        Me.RadLabel39.TabIndex = 21
+        Me.RadLabel39.Text = "User Type:"
+        Me.RadLabel39.ThemeName = "VisualStudio2012Dark"
+        '
+        'acc_sf_retypepassword
+        '
+        Me.acc_sf_retypepassword.Location = New System.Drawing.Point(449, 117)
+        Me.acc_sf_retypepassword.MinimumSize = New System.Drawing.Size(0, 24)
+        Me.acc_sf_retypepassword.Name = "acc_sf_retypepassword"
+        '
+        '
+        '
+        Me.acc_sf_retypepassword.RootElement.MinSize = New System.Drawing.Size(0, 24)
+        Me.acc_sf_retypepassword.Size = New System.Drawing.Size(201, 24)
+        Me.acc_sf_retypepassword.TabIndex = 19
+        Me.acc_sf_retypepassword.ThemeName = "VisualStudio2012Dark"
+        '
+        'acc_sf_password
+        '
+        Me.acc_sf_password.Location = New System.Drawing.Point(449, 87)
+        Me.acc_sf_password.MinimumSize = New System.Drawing.Size(0, 24)
+        Me.acc_sf_password.Name = "acc_sf_password"
+        '
+        '
+        '
+        Me.acc_sf_password.RootElement.MinSize = New System.Drawing.Size(0, 24)
+        Me.acc_sf_password.Size = New System.Drawing.Size(201, 24)
+        Me.acc_sf_password.TabIndex = 18
+        Me.acc_sf_password.ThemeName = "VisualStudio2012Dark"
+        '
+        'acc_sf_username
+        '
+        Me.acc_sf_username.Location = New System.Drawing.Point(449, 57)
+        Me.acc_sf_username.MinimumSize = New System.Drawing.Size(0, 24)
+        Me.acc_sf_username.Name = "acc_sf_username"
+        '
+        '
+        '
+        Me.acc_sf_username.RootElement.MinSize = New System.Drawing.Size(0, 24)
+        Me.acc_sf_username.Size = New System.Drawing.Size(201, 24)
+        Me.acc_sf_username.TabIndex = 17
+        Me.acc_sf_username.ThemeName = "VisualStudio2012Dark"
+        '
+        'RadLabel31
+        '
+        Me.RadLabel31.BackColor = System.Drawing.Color.Transparent
+        Me.RadLabel31.Location = New System.Drawing.Point(387, 93)
+        Me.RadLabel31.Name = "RadLabel31"
+        Me.RadLabel31.Size = New System.Drawing.Size(56, 18)
+        Me.RadLabel31.TabIndex = 16
+        Me.RadLabel31.Text = "Password:"
+        Me.RadLabel31.ThemeName = "VisualStudio2012Dark"
+        '
+        'RadLabel32
+        '
+        Me.RadLabel32.BackColor = System.Drawing.Color.Transparent
+        Me.RadLabel32.Location = New System.Drawing.Point(343, 123)
+        Me.RadLabel32.Name = "RadLabel32"
+        Me.RadLabel32.Size = New System.Drawing.Size(100, 18)
+        Me.RadLabel32.TabIndex = 15
+        Me.RadLabel32.Text = "Re-Type Password:"
+        Me.RadLabel32.ThemeName = "VisualStudio2012Dark"
+        '
+        'RadLabel33
+        '
+        Me.RadLabel33.BackColor = System.Drawing.Color.Transparent
+        Me.RadLabel33.Location = New System.Drawing.Point(384, 63)
+        Me.RadLabel33.Name = "RadLabel33"
+        Me.RadLabel33.Size = New System.Drawing.Size(59, 18)
+        Me.RadLabel33.TabIndex = 14
+        Me.RadLabel33.Text = "Username:"
+        Me.RadLabel33.ThemeName = "VisualStudio2012Dark"
+        '
+        'acc_sf_lname
+        '
+        Me.acc_sf_lname.Location = New System.Drawing.Point(92, 117)
+        Me.acc_sf_lname.MinimumSize = New System.Drawing.Size(0, 24)
+        Me.acc_sf_lname.Name = "acc_sf_lname"
+        '
+        '
+        '
+        Me.acc_sf_lname.RootElement.MinSize = New System.Drawing.Size(0, 24)
+        Me.acc_sf_lname.Size = New System.Drawing.Size(201, 24)
+        Me.acc_sf_lname.TabIndex = 13
+        Me.acc_sf_lname.ThemeName = "VisualStudio2012Dark"
+        '
+        'acc_sf_mname
+        '
+        Me.acc_sf_mname.Location = New System.Drawing.Point(92, 87)
+        Me.acc_sf_mname.MinimumSize = New System.Drawing.Size(0, 24)
+        Me.acc_sf_mname.Name = "acc_sf_mname"
+        '
+        '
+        '
+        Me.acc_sf_mname.RootElement.MinSize = New System.Drawing.Size(0, 24)
+        Me.acc_sf_mname.Size = New System.Drawing.Size(201, 24)
+        Me.acc_sf_mname.TabIndex = 12
+        Me.acc_sf_mname.ThemeName = "VisualStudio2012Dark"
+        '
+        'acc_sf_fname
+        '
+        Me.acc_sf_fname.Location = New System.Drawing.Point(92, 57)
+        Me.acc_sf_fname.MinimumSize = New System.Drawing.Size(0, 24)
+        Me.acc_sf_fname.Name = "acc_sf_fname"
+        '
+        '
+        '
+        Me.acc_sf_fname.RootElement.MinSize = New System.Drawing.Size(0, 24)
+        Me.acc_sf_fname.Size = New System.Drawing.Size(201, 24)
+        Me.acc_sf_fname.TabIndex = 11
+        Me.acc_sf_fname.ThemeName = "VisualStudio2012Dark"
+        '
+        'acc_sf_id
+        '
+        Me.acc_sf_id.Location = New System.Drawing.Point(92, 27)
+        Me.acc_sf_id.MinimumSize = New System.Drawing.Size(0, 24)
+        Me.acc_sf_id.Name = "acc_sf_id"
+        '
+        '
+        '
+        Me.acc_sf_id.RootElement.MinSize = New System.Drawing.Size(0, 24)
+        Me.acc_sf_id.Size = New System.Drawing.Size(201, 24)
+        Me.acc_sf_id.TabIndex = 10
+        Me.acc_sf_id.ThemeName = "VisualStudio2012Dark"
+        '
+        'RadLabel30
+        '
+        Me.RadLabel30.BackColor = System.Drawing.Color.Transparent
+        Me.RadLabel30.Location = New System.Drawing.Point(25, 123)
+        Me.RadLabel30.Name = "RadLabel30"
+        Me.RadLabel30.Size = New System.Drawing.Size(61, 18)
+        Me.RadLabel30.TabIndex = 9
+        Me.RadLabel30.Text = "Last Name:"
+        Me.RadLabel30.ThemeName = "VisualStudio2012Dark"
+        '
+        'RadLabel29
+        '
+        Me.RadLabel29.BackColor = System.Drawing.Color.Transparent
+        Me.RadLabel29.Location = New System.Drawing.Point(23, 63)
+        Me.RadLabel29.Name = "RadLabel29"
+        Me.RadLabel29.Size = New System.Drawing.Size(63, 18)
+        Me.RadLabel29.TabIndex = 7
+        Me.RadLabel29.Text = "First Name:"
+        Me.RadLabel29.ThemeName = "VisualStudio2012Dark"
+        '
+        'RadLabel28
+        '
+        Me.RadLabel28.BackColor = System.Drawing.Color.Transparent
+        Me.RadLabel28.Location = New System.Drawing.Point(9, 93)
+        Me.RadLabel28.Name = "RadLabel28"
+        Me.RadLabel28.Size = New System.Drawing.Size(77, 18)
+        Me.RadLabel28.TabIndex = 5
+        Me.RadLabel28.Text = "Middle Name:"
+        Me.RadLabel28.ThemeName = "VisualStudio2012Dark"
+        '
+        'RadLabel27
+        '
+        Me.RadLabel27.BackColor = System.Drawing.Color.Transparent
+        Me.RadLabel27.Location = New System.Drawing.Point(60, 31)
+        Me.RadLabel27.Name = "RadLabel27"
+        Me.RadLabel27.Size = New System.Drawing.Size(26, 18)
+        Me.RadLabel27.TabIndex = 3
+        Me.RadLabel27.Text = "ID#:"
+        Me.RadLabel27.ThemeName = "VisualStudio2012Dark"
+        '
+        'rpvp1_main
+        '
+        Me.rpvp1_main.Controls.Add(Me.RadGroupBox20)
+        Me.rpvp1_main.Controls.Add(Me.RadPageView4)
+        Me.rpvp1_main.Controls.Add(Me.RadGroupBox2)
+        Me.rpvp1_main.ItemSize = New System.Drawing.SizeF(37.0!, 24.0!)
+        Me.rpvp1_main.Location = New System.Drawing.Point(5, 30)
+        Me.rpvp1_main.Name = "rpvp1_main"
+        Me.rpvp1_main.Size = New System.Drawing.Size(1348, 548)
+        Me.rpvp1_main.Text = "Main"
+        '
+        'RadGroupBox20
+        '
+        Me.RadGroupBox20.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping
+        Me.RadGroupBox20.Controls.Add(Me.btn_gotoinsmat)
+        Me.RadGroupBox20.HeaderText = "Navigation"
+        Me.RadGroupBox20.Location = New System.Drawing.Point(0, 308)
+        Me.RadGroupBox20.Name = "RadGroupBox20"
+        Me.RadGroupBox20.Size = New System.Drawing.Size(206, 124)
+        Me.RadGroupBox20.TabIndex = 21
+        Me.RadGroupBox20.Text = "Navigation"
+        Me.RadGroupBox20.ThemeName = "VisualStudio2012Dark"
+        '
+        'btn_gotoinsmat
+        '
+        Me.btn_gotoinsmat.Location = New System.Drawing.Point(27, 41)
+        Me.btn_gotoinsmat.Name = "btn_gotoinsmat"
+        Me.btn_gotoinsmat.Size = New System.Drawing.Size(142, 50)
+        Me.btn_gotoinsmat.TabIndex = 0
+        Me.btn_gotoinsmat.Text = "Instructional Materials"
+        Me.btn_gotoinsmat.ThemeName = "VisualStudio2012Dark"
+        '
+        'RadPageView4
+        '
+        Me.RadPageView4.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.RadPageView4.Controls.Add(Me.main_rpv_academics)
+        Me.RadPageView4.Controls.Add(Me.main_rpv_schoolactivity)
+        Me.RadPageView4.Location = New System.Drawing.Point(212, 3)
+        Me.RadPageView4.Name = "RadPageView4"
+        Me.RadPageView4.SelectedPage = Me.main_rpv_schoolactivity
+        Me.RadPageView4.Size = New System.Drawing.Size(1133, 538)
+        Me.RadPageView4.TabIndex = 1
+        Me.RadPageView4.ThemeName = "VisualStudio2012Dark"
+        CType(Me.RadPageView4.GetChildAt(0), Telerik.WinControls.UI.RadPageViewStripElement).StripButtons = Telerik.WinControls.UI.StripViewButtons.None
+        '
+        'main_rpv_academics
+        '
+        Me.main_rpv_academics.Controls.Add(Me.main_rgv_recordedacademicsonly)
+        Me.main_rpv_academics.ItemSize = New System.Drawing.SizeF(66.0!, 24.0!)
+        Me.main_rpv_academics.Location = New System.Drawing.Point(5, 30)
+        Me.main_rpv_academics.Name = "main_rpv_academics"
+        Me.main_rpv_academics.Size = New System.Drawing.Size(1123, 503)
+        Me.main_rpv_academics.Text = "Academics"
+        '
+        'main_rgv_recordedacademicsonly
+        '
+        Me.main_rgv_recordedacademicsonly.AutoSizeRows = True
+        Me.main_rgv_recordedacademicsonly.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.main_rgv_recordedacademicsonly.Location = New System.Drawing.Point(0, 0)
+        '
+        '
+        '
+        Me.main_rgv_recordedacademicsonly.MasterTemplate.AllowAddNewRow = False
+        Me.main_rgv_recordedacademicsonly.MasterTemplate.AllowDeleteRow = False
+        Me.main_rgv_recordedacademicsonly.MasterTemplate.AllowEditRow = False
+        Me.main_rgv_recordedacademicsonly.MasterTemplate.AutoSizeColumnsMode = Telerik.WinControls.UI.GridViewAutoSizeColumnsMode.Fill
+        Me.main_rgv_recordedacademicsonly.MasterTemplate.EnableGrouping = False
+        Me.main_rgv_recordedacademicsonly.MasterTemplate.ShowRowHeaderColumn = False
+        Me.main_rgv_recordedacademicsonly.MasterTemplate.ViewDefinition = TableViewDefinition24
+        Me.main_rgv_recordedacademicsonly.Name = "main_rgv_recordedacademicsonly"
+        Me.main_rgv_recordedacademicsonly.ReadOnly = True
+        Me.main_rgv_recordedacademicsonly.Size = New System.Drawing.Size(1123, 503)
+        Me.main_rgv_recordedacademicsonly.TabIndex = 4
+        Me.main_rgv_recordedacademicsonly.Text = "RadGridView1"
+        Me.main_rgv_recordedacademicsonly.ThemeName = "VisualStudio2012Dark"
+        '
+        'main_rpv_schoolactivity
+        '
+        Me.main_rpv_schoolactivity.Controls.Add(Me.main_rgv_recordedschoolonly)
+        Me.main_rpv_schoolactivity.ItemSize = New System.Drawing.SizeF(86.0!, 24.0!)
+        Me.main_rpv_schoolactivity.Location = New System.Drawing.Point(5, 30)
+        Me.main_rpv_schoolactivity.Name = "main_rpv_schoolactivity"
+        Me.main_rpv_schoolactivity.Size = New System.Drawing.Size(1123, 503)
+        Me.main_rpv_schoolactivity.Text = "School Activity"
+        '
+        'main_rgv_recordedschoolonly
+        '
+        Me.main_rgv_recordedschoolonly.AutoSizeRows = True
+        Me.main_rgv_recordedschoolonly.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.main_rgv_recordedschoolonly.Location = New System.Drawing.Point(0, 0)
+        '
+        '
+        '
+        Me.main_rgv_recordedschoolonly.MasterTemplate.AllowAddNewRow = False
+        Me.main_rgv_recordedschoolonly.MasterTemplate.AllowDeleteRow = False
+        Me.main_rgv_recordedschoolonly.MasterTemplate.AllowEditRow = False
+        Me.main_rgv_recordedschoolonly.MasterTemplate.AutoSizeColumnsMode = Telerik.WinControls.UI.GridViewAutoSizeColumnsMode.Fill
+        Me.main_rgv_recordedschoolonly.MasterTemplate.EnableGrouping = False
+        Me.main_rgv_recordedschoolonly.MasterTemplate.ShowRowHeaderColumn = False
+        Me.main_rgv_recordedschoolonly.MasterTemplate.ViewDefinition = TableViewDefinition23
+        Me.main_rgv_recordedschoolonly.Name = "main_rgv_recordedschoolonly"
+        Me.main_rgv_recordedschoolonly.ReadOnly = True
+        Me.main_rgv_recordedschoolonly.Size = New System.Drawing.Size(1123, 503)
+        Me.main_rgv_recordedschoolonly.TabIndex = 5
+        Me.main_rgv_recordedschoolonly.Text = "RadGridView1"
+        Me.main_rgv_recordedschoolonly.ThemeName = "VisualStudio2012Dark"
+        '
+        'RadGroupBox2
+        '
+        Me.RadGroupBox2.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping
+        Me.RadGroupBox2.Controls.Add(Me.RadGroupBox8)
+        Me.RadGroupBox2.Controls.Add(Me.RadGroupBox7)
+        Me.RadGroupBox2.HeaderText = "Filters"
+        Me.RadGroupBox2.Location = New System.Drawing.Point(-5, 3)
+        Me.RadGroupBox2.Name = "RadGroupBox2"
+        Me.RadGroupBox2.Size = New System.Drawing.Size(211, 288)
+        Me.RadGroupBox2.TabIndex = 20
+        Me.RadGroupBox2.TabStop = False
+        Me.RadGroupBox2.Text = "Filters"
+        Me.RadGroupBox2.ThemeName = "VisualStudio2012Dark"
+        '
+        'RadGroupBox8
+        '
+        Me.RadGroupBox8.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping
+        Me.RadGroupBox8.Controls.Add(Me.RadLabel8)
+        Me.RadGroupBox8.Controls.Add(Me.lu_byname)
+        Me.RadGroupBox8.Controls.Add(Me.lu_byequipment)
+        Me.RadGroupBox8.Controls.Add(Me.RadLabel13)
+        Me.RadGroupBox8.HeaderText = "Custom Filters"
+        Me.RadGroupBox8.Location = New System.Drawing.Point(5, 129)
+        Me.RadGroupBox8.Name = "RadGroupBox8"
+        Me.RadGroupBox8.Size = New System.Drawing.Size(197, 150)
+        Me.RadGroupBox8.TabIndex = 20
+        Me.RadGroupBox8.TabStop = False
+        Me.RadGroupBox8.Text = "Custom Filters"
+        Me.RadGroupBox8.ThemeName = "VisualStudio2012Dark"
+        '
+        'RadLabel8
+        '
+        Me.RadLabel8.BackColor = System.Drawing.Color.Transparent
+        Me.RadLabel8.Location = New System.Drawing.Point(6, 31)
+        Me.RadLabel8.Name = "RadLabel8"
+        Me.RadLabel8.Size = New System.Drawing.Size(90, 18)
+        Me.RadLabel8.TabIndex = 28
+        Me.RadLabel8.Text = "Search by Name:"
+        Me.RadLabel8.ThemeName = "VisualStudio2012Dark"
+        '
+        'lu_byname
+        '
+        Me.lu_byname.Location = New System.Drawing.Point(7, 55)
+        Me.lu_byname.MinimumSize = New System.Drawing.Size(0, 24)
+        Me.lu_byname.Name = "lu_byname"
+        '
+        '
+        '
+        Me.lu_byname.RootElement.MinSize = New System.Drawing.Size(0, 24)
+        Me.lu_byname.Size = New System.Drawing.Size(182, 24)
+        Me.lu_byname.TabIndex = 1
+        Me.lu_byname.ThemeName = "VisualStudio2012Dark"
+        '
+        'lu_byequipment
+        '
+        Me.lu_byequipment.Location = New System.Drawing.Point(6, 113)
+        Me.lu_byequipment.MinimumSize = New System.Drawing.Size(0, 24)
+        Me.lu_byequipment.Name = "lu_byequipment"
+        '
+        '
+        '
+        Me.lu_byequipment.RootElement.MinSize = New System.Drawing.Size(0, 24)
+        Me.lu_byequipment.Size = New System.Drawing.Size(183, 24)
+        Me.lu_byequipment.TabIndex = 2
+        Me.lu_byequipment.ThemeName = "VisualStudio2012Dark"
+        '
+        'RadLabel13
+        '
+        Me.RadLabel13.BackColor = System.Drawing.Color.Transparent
+        Me.RadLabel13.Location = New System.Drawing.Point(7, 89)
+        Me.RadLabel13.Name = "RadLabel13"
+        Me.RadLabel13.Size = New System.Drawing.Size(112, 18)
+        Me.RadLabel13.TabIndex = 25
+        Me.RadLabel13.Text = "Search by Equipment"
+        Me.RadLabel13.ThemeName = "VisualStudio2012Dark"
+        '
+        'RadGroupBox7
+        '
+        Me.RadGroupBox7.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping
+        Me.RadGroupBox7.Controls.Add(Me.lu_date)
+        Me.RadGroupBox7.Controls.Add(Me.RadLabel11)
+        Me.RadGroupBox7.HeaderText = "Search by Date:"
+        Me.RadGroupBox7.Location = New System.Drawing.Point(5, 21)
+        Me.RadGroupBox7.Name = "RadGroupBox7"
+        Me.RadGroupBox7.Size = New System.Drawing.Size(197, 102)
+        Me.RadGroupBox7.TabIndex = 20
+        Me.RadGroupBox7.TabStop = False
+        Me.RadGroupBox7.Text = "Search by Date:"
+        Me.RadGroupBox7.ThemeName = "VisualStudio2012Dark"
+        '
+        'lu_date
+        '
+        Me.lu_date.CustomFormat = "MM/d/yyyy"
+        Me.lu_date.Format = System.Windows.Forms.DateTimePickerFormat.Custom
+        Me.lu_date.Location = New System.Drawing.Point(7, 56)
+        Me.lu_date.MinimumSize = New System.Drawing.Size(0, 24)
+        Me.lu_date.Name = "lu_date"
+        '
+        '
+        '
+        Me.lu_date.RootElement.MinSize = New System.Drawing.Size(0, 24)
+        Me.lu_date.Size = New System.Drawing.Size(129, 24)
+        Me.lu_date.TabIndex = 0
+        Me.lu_date.TabStop = False
+        Me.lu_date.Text = "07/25/2016"
+        Me.lu_date.ThemeName = "VisualStudio2012Dark"
+        Me.lu_date.Value = New Date(2016, 7, 25, 10, 55, 49, 565)
+        '
+        'RadLabel11
+        '
+        Me.RadLabel11.BackColor = System.Drawing.Color.Transparent
+        Me.RadLabel11.Location = New System.Drawing.Point(7, 32)
+        Me.RadLabel11.Name = "RadLabel11"
+        Me.RadLabel11.Size = New System.Drawing.Size(32, 18)
+        Me.RadLabel11.TabIndex = 18
+        Me.RadLabel11.Text = "Date:"
+        Me.RadLabel11.ThemeName = "VisualStudio2012Dark"
+        '
+        'rpv1
+        '
+        Me.rpv1.Controls.Add(Me.rpvp1_main)
+        Me.rpv1.Controls.Add(Me.rpvp_account)
+        Me.rpv1.Controls.Add(Me.rpvp_equipment)
+        Me.rpv1.Controls.Add(Me.rpvp2_reservation)
+        Me.rpv1.Controls.Add(Me.rpvp_releasing)
+        Me.rpv1.Controls.Add(Me.rpvp_returning)
+        Me.rpv1.DefaultPage = Me.rpvp1_main
+        Me.rpv1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.rpv1.Location = New System.Drawing.Point(0, 0)
+        Me.rpv1.Name = "rpv1"
+        Me.rpv1.SelectedPage = Me.rpvp1_main
+        Me.rpv1.Size = New System.Drawing.Size(1358, 583)
+        Me.rpv1.TabIndex = 0
+        Me.rpv1.Text = "Home"
+        Me.rpv1.ThemeName = "VisualStudio2012Dark"
+        CType(Me.rpv1.GetChildAt(0), Telerik.WinControls.UI.RadPageViewStripElement).StripButtons = Telerik.WinControls.UI.StripViewButtons.None
+        CType(Me.rpv1.GetChildAt(0), Telerik.WinControls.UI.RadPageViewStripElement).ItemFitMode = Telerik.WinControls.UI.StripViewItemFitMode.None
+        CType(Me.rpv1.GetChildAt(0), Telerik.WinControls.UI.RadPageViewStripElement).StripAlignment = Telerik.WinControls.UI.StripViewAlignment.Top
+        CType(Me.rpv1.GetChildAt(0), Telerik.WinControls.UI.RadPageViewStripElement).ItemSpacing = 5
+        '
         'Main
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -4055,262 +4095,266 @@ Partial Class Main
         CType(Me.RadGroupBox13, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.CeutltdschedulerDataSetBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.rpvp_returning.ResumeLayout(False)
-        CType(Me.RadGroupBox24, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.RadGroupBox24.ResumeLayout(False)
-        Me.RadGroupBox24.PerformLayout()
-        CType(Me.RadLabel67, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.ret_tb_borrower, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RadLabel66, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.lbl_ret_release, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RadLabel62, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RadLabel60, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RadLabel59, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.ret_tb_stime, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.ret_tb_etime, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RadLabel58, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.ret_tb_status, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RadLabel69, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RadLabel42, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.ret_tb_reservationnum, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.ret_tb_id, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.ret_nameofstaff_release2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.ret_nameofstaff_return, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.lbl_ret_equipment, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.lbl_ret_equipmentnum, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.ret_tb_equipmentnum, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.ret_tb_equipment, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RadGroupBox25, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.RadGroupBox25.ResumeLayout(False)
-        CType(Me.return_btn_cancel, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.return_btn_returned, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RadPageView3, System.ComponentModel.ISupportInitialize).EndInit()
         Me.RadPageView3.ResumeLayout(False)
-        Me.ret_list_info.ResumeLayout(False)
-        CType(Me.penalty_grid_list.MasterTemplate, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.penalty_grid_list, System.ComponentModel.ISupportInitialize).EndInit()
         Me.rel_list_info2.ResumeLayout(False)
         CType(Me.released_grid_list2.MasterTemplate, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.released_grid_list2, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.ret_list_info.ResumeLayout(False)
+        CType(Me.penalty_grid_list.MasterTemplate, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.penalty_grid_list, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RadGroupBox25, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.RadGroupBox25.ResumeLayout(False)
+        CType(Me.return_btn_returned, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.return_btn_cancel, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RadGroupBox24, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.RadGroupBox24.ResumeLayout(False)
+        Me.RadGroupBox24.PerformLayout()
+        CType(Me.ret_tb_equipment, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ret_tb_equipmentnum, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.lbl_ret_equipmentnum, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.lbl_ret_equipment, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ret_nameofstaff_return, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ret_nameofstaff_release2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ret_tb_id, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ret_tb_reservationnum, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RadLabel42, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RadLabel69, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ret_tb_status, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RadLabel58, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ret_tb_etime, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ret_tb_stime, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RadLabel59, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RadLabel60, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RadLabel62, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ret_tb_sdate, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.lbl_ret_release, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RadLabel66, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ret_tb_borrower, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RadLabel67, System.ComponentModel.ISupportInitialize).EndInit()
         Me.rpvp_releasing.ResumeLayout(False)
-        CType(Me.gp_details, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.gp_details.ResumeLayout(False)
-        Me.gp_details.PerformLayout()
-        CType(Me.RadLabel15, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.rel_tb_borrower, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RadLabel16, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RadLabel20, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RadLabel48, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RadLabel46, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RadLabel45, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.rel_tb_starttime, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.rel_tb_endtime, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RadLabel49, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RadLabel41, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.rel_tb_reservationnum, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.rel_tb_id, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.rel_tb_status, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.lbl_equipment, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.lbl_equipmentnum, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.rel_tb_equipmentnum, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.rel_tb_equipment, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.rel_nameofstaff_release, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RadGroupBox12, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.RadGroupBox12.ResumeLayout(False)
-        CType(Me.released_btn_cancel, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.released_btn_release, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RadPageView2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.RadPageView2.ResumeLayout(False)
-        Me.rel_penalty_info.ResumeLayout(False)
-        CType(Me.released_grid_list.MasterTemplate, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.released_grid_list, System.ComponentModel.ISupportInitialize).EndInit()
         Me.res_notret_info.ResumeLayout(False)
         CType(Me.reserved_grid_list.MasterTemplate, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.reserved_grid_list, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.rel_penalty_info.ResumeLayout(False)
+        CType(Me.released_grid_list.MasterTemplate, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.released_grid_list, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RadGroupBox12, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.RadGroupBox12.ResumeLayout(False)
+        CType(Me.released_btn_release, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.released_btn_cancel, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.gp_details, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.gp_details.ResumeLayout(False)
+        Me.gp_details.PerformLayout()
+        CType(Me.rel_nameofstaff_release, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.rel_tb_startdate, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.rel_tb_equipment, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.rel_tb_equipmentnum, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.lbl_equipmentnum, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.lbl_equipment, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.rel_tb_status, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.rel_tb_id, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.rel_tb_reservationnum, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RadLabel41, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RadLabel49, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.rel_tb_endtime, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.rel_tb_starttime, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RadLabel45, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RadLabel46, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RadLabel48, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RadLabel20, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RadLabel16, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.rel_tb_borrower, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RadLabel15, System.ComponentModel.ISupportInitialize).EndInit()
         Me.rpvp2_reservation.ResumeLayout(False)
-        CType(Me.RadGroupBox3, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.RadGroupBox3.ResumeLayout(False)
-        CType(Me.reservations_rgv_showavailableitems.MasterTemplate, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.reservations_rgv_showavailableitems, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.reservation_rgv_recordeddata.MasterTemplate, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.reservation_rgv_recordeddata, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RadGroupBox4, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.RadGroupBox4.ResumeLayout(False)
+        Me.RadGroupBox4.PerformLayout()
+        CType(Me.RadGroupBox6, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.RadGroupBox6.ResumeLayout(False)
+        CType(Me.btn_resetreservationno, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.rec_btn_clear, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.rec_btn_delete, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.rec_btn_save, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.lbl_nameofstaff_reserved, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.rec_rrtc_actname, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.rec_lbl_actname, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.rec_cb_reserveno, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RadLabel2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.rec_cb_acttype, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RadLabel72, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RadLabel68, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.rec_cb_college_school, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.rec_cb_idnum, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RadLabel26, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RadLabel17, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RadLabel14, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.rec_cb_status, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.rec_dtp_endtime, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.rec_dtp_starttime, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RadLabel6, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.rec_cb_location, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RadLabel5, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.rec_cb_borrower, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RadLabel4, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RadLabel3, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RadLabel1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.rec_dtp_date, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RadGroupBox5, System.ComponentModel.ISupportInitialize).EndInit()
         Me.RadGroupBox5.ResumeLayout(False)
         Me.RadGroupBox5.PerformLayout()
+        CType(Me.rec_eq_chooseeq, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.rec_eq_chooseno, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.rec_eq_type_choose, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.rec_btn_showalltakeneq, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RadLabel71, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.rec_btn_check_availability, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.rec_btn_add_eq, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.rec_btn_eqclear, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RadLabel70, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RadLabel50, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.rec_btn_showalldata, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.rec_btn_showavailequip, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.rec_del_eq, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RadGroupBox17, System.ComponentModel.ISupportInitialize).EndInit()
         Me.RadGroupBox17.ResumeLayout(False)
         CType(Me.eq_rgv_addeq.MasterTemplate, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.eq_rgv_addeq, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.rec_del_eq, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.rec_btn_showavailequip, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.rec_btn_showalldata, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RadLabel50, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RadLabel70, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.rec_btn_eqclear, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.rec_btn_add_eq, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.rec_btn_check_availability, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RadLabel71, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.rec_btn_showalltakeneq, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.rec_eq_type_choose, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.rec_eq_chooseno, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.rec_eq_chooseeq, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RadGroupBox4, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.RadGroupBox4.ResumeLayout(False)
-        Me.RadGroupBox4.PerformLayout()
-        CType(Me.RadLabel1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RadLabel3, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RadLabel4, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.rec_cb_borrower, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RadLabel5, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.rec_cb_location, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RadLabel6, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.rec_dtp_starttime, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.rec_dtp_endtime, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.rec_cb_status, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RadLabel14, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RadLabel17, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RadLabel26, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.rec_cb_idnum, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.rec_cb_college_school, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RadLabel68, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RadLabel72, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.rec_cb_acttype, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RadLabel2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.rec_cb_reserveno, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.rec_lbl_actname, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.rec_rrtc_actname, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.lbl_nameofstaff_reserved, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RadGroupBox6, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.RadGroupBox6.ResumeLayout(False)
-        CType(Me.rec_btn_save, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.rec_btn_delete, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.rec_btn_clear, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.btn_resetreservationno, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RadGroupBox3, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.RadGroupBox3.ResumeLayout(False)
+        CType(Me.reservation_rgv_recordeddata.MasterTemplate, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.reservation_rgv_recordeddata, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.reservations_rgv_showavailableitems.MasterTemplate, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.reservations_rgv_showavailableitems, System.ComponentModel.ISupportInitialize).EndInit()
         Me.rpvp_equipment.ResumeLayout(False)
-        CType(Me.RadGroupBox14, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.RadGroupBox14.ResumeLayout(False)
-        CType(Me.eq_rgv_showregequipment.MasterTemplate, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.eq_rgv_showregequipment, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RadGroupBox15, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.RadGroupBox15.ResumeLayout(False)
-        Me.RadGroupBox15.PerformLayout()
-        CType(Me.eq_equipmentno, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RadLabel22, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RadLabel23, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RadLabel24, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RadLabel25, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.eq_sn, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RadLabel51, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RadLabel52, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.eq_status, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RadLabel53, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.eq_equipment, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.eq_equipmentlocation, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.eq_owner, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.eq_type, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.eq_btn_other, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RadGroupBox21, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.RadGroupBox21.ResumeLayout(False)
-        Me.RadGroupBox21.PerformLayout()
-        CType(Me.eq_filter_eqno, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RadLabel54, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.eq_filter_eqtype, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RadLabel55, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RadLabel56, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.eq_filter_eqstatus, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.eq_clear_filter, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RadGroupBox22, System.ComponentModel.ISupportInitialize).EndInit()
         Me.RadGroupBox22.ResumeLayout(False)
         Me.RadGroupBox22.PerformLayout()
-        CType(Me.eq_counter_type, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RadLabel57, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RadLabel43, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.eq_total_units, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.rpvp_account.ResumeLayout(False)
-        CType(Me.RadGroupBox18, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.RadGroupBox18.ResumeLayout(False)
-        Me.RadGroupBox18.PerformLayout()
-        CType(Me.RadLabel27, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RadLabel28, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RadLabel29, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RadLabel30, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.acc_sf_id, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.acc_sf_fname, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.acc_sf_mname, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.acc_sf_lname, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RadLabel33, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RadLabel32, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RadLabel31, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.acc_sf_username, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.acc_sf_password, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.acc_sf_retypepassword, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RadLabel39, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.acc_sf_usertype, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RadGroupBox19, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.RadGroupBox19.ResumeLayout(False)
-        Me.RadGroupBox19.PerformLayout()
-        CType(Me.RadLabel38, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.acc_pf_college, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RadLabel37, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RadLabel36, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RadLabel35, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RadLabel34, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.acc_pf_id, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.acc_pf_fname, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.acc_pf_mname, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.acc_pf_lname, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RadGroupBox29, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.RadGroupBox29.ResumeLayout(False)
-        CType(Me.acc_prof_btn_save, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.acc_prof_btn_update, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.acc_prof_btn_delete, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.acc_prof_btn_clear, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RadPageView1, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.RadPageView1.ResumeLayout(False)
-        Me.RadPageViewPage2.ResumeLayout(False)
-        CType(Me.acc_prof_list.MasterTemplate, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.acc_prof_list, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.RadPageViewPage1.ResumeLayout(False)
-        CType(Me.acc_staff_list.MasterTemplate, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.acc_staff_list, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RadGroupBox28, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.RadGroupBox28.ResumeLayout(False)
-        CType(Me.acc_staff_btn_delete, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.acc_staff_btn_save, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.acc_staff_btn_clear, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.acc_staff_btn_update, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.rpvp1_main.ResumeLayout(False)
-        CType(Me.RadGroupBox1, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.RadGroupBox1.ResumeLayout(False)
-        CType(Me.main_rgv_recordedacademicsmain.MasterTemplate, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.main_rgv_recordedacademicsmain, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RadGroupBox2, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.RadGroupBox2.ResumeLayout(False)
-        CType(Me.RadGroupBox7, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.RadGroupBox7.ResumeLayout(False)
-        Me.RadGroupBox7.PerformLayout()
-        CType(Me.RadLabel11, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RadGroupBox8, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.RadGroupBox8.ResumeLayout(False)
-        Me.RadGroupBox8.PerformLayout()
-        CType(Me.RadLabel13, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.lu_byequipment, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.lu_byname, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RadLabel8, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RadGroupBox20, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.RadGroupBox20.ResumeLayout(False)
-        CType(Me.btn_gotoinsmat, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.rpv1, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.rpv1.ResumeLayout(False)
-        CType(Me.ret_tb_sdate, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.rel_tb_startdate, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.rec_dtp_date, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.lu_date, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RadLabel43, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RadLabel57, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.eq_counter_type, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RadGroupBox21, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.RadGroupBox21.ResumeLayout(False)
+        Me.RadGroupBox21.PerformLayout()
+        CType(Me.eq_clear_filter, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.eq_filter_eqstatus, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RadLabel56, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RadLabel55, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.eq_filter_eqtype, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RadLabel54, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.eq_filter_eqno, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RadGroupBox15, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.RadGroupBox15.ResumeLayout(False)
+        Me.RadGroupBox15.PerformLayout()
         CType(Me.RadGroupBox9, System.ComponentModel.ISupportInitialize).EndInit()
         Me.RadGroupBox9.ResumeLayout(False)
         CType(Me.eq_btn_clear, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.eq_btn_delete, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.eq_btn_update, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.eq_btn_save, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.eq_btn_other, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.eq_type, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.eq_owner, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.eq_equipmentlocation, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.eq_equipment, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RadLabel53, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.eq_status, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RadLabel52, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RadLabel51, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.eq_sn, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RadLabel25, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RadLabel24, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RadLabel23, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RadLabel22, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.eq_equipmentno, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RadGroupBox14, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.RadGroupBox14.ResumeLayout(False)
+        CType(Me.eq_rgv_showregequipment.MasterTemplate, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.eq_rgv_showregequipment, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.rpvp_account.ResumeLayout(False)
+        CType(Me.RadPageView1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.RadPageView1.ResumeLayout(False)
+        Me.RadPageViewPage1.ResumeLayout(False)
+        CType(Me.acc_staff_list.MasterTemplate, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.acc_staff_list, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.RadPageViewPage2.ResumeLayout(False)
+        CType(Me.acc_prof_list.MasterTemplate, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.acc_prof_list, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RadGroupBox19, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.RadGroupBox19.ResumeLayout(False)
+        Me.RadGroupBox19.PerformLayout()
+        CType(Me.RadGroupBox29, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.RadGroupBox29.ResumeLayout(False)
+        CType(Me.acc_prof_btn_clear, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.acc_prof_btn_delete, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.acc_prof_btn_update, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.acc_prof_btn_save, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.acc_pf_lname, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.acc_pf_mname, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.acc_pf_fname, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.acc_pf_id, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RadLabel34, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RadLabel35, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RadLabel36, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RadLabel37, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.acc_pf_college, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RadLabel38, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RadGroupBox18, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.RadGroupBox18.ResumeLayout(False)
+        Me.RadGroupBox18.PerformLayout()
+        CType(Me.RadGroupBox28, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.RadGroupBox28.ResumeLayout(False)
+        CType(Me.acc_staff_btn_update, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.acc_staff_btn_clear, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.acc_staff_btn_save, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.acc_staff_btn_delete, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.acc_sf_usertype, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RadLabel39, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.acc_sf_retypepassword, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.acc_sf_password, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.acc_sf_username, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RadLabel31, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RadLabel32, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RadLabel33, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.acc_sf_lname, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.acc_sf_mname, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.acc_sf_fname, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.acc_sf_id, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RadLabel30, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RadLabel29, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RadLabel28, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RadLabel27, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.rpvp1_main.ResumeLayout(False)
+        CType(Me.RadGroupBox20, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.RadGroupBox20.ResumeLayout(False)
+        CType(Me.btn_gotoinsmat, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RadPageView4, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.RadPageView4.ResumeLayout(False)
+        Me.main_rpv_academics.ResumeLayout(False)
+        CType(Me.main_rgv_recordedacademicsonly.MasterTemplate, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.main_rgv_recordedacademicsonly, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.main_rpv_schoolactivity.ResumeLayout(False)
+        CType(Me.main_rgv_recordedschoolonly.MasterTemplate, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.main_rgv_recordedschoolonly, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RadGroupBox2, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.RadGroupBox2.ResumeLayout(False)
+        CType(Me.RadGroupBox8, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.RadGroupBox8.ResumeLayout(False)
+        Me.RadGroupBox8.PerformLayout()
+        CType(Me.RadLabel8, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.lu_byname, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.lu_byequipment, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RadLabel13, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RadGroupBox7, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.RadGroupBox7.ResumeLayout(False)
+        Me.RadGroupBox7.PerformLayout()
+        CType(Me.lu_date, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RadLabel11, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.rpv1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.rpv1.ResumeLayout(False)
         CType(Me, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
@@ -4531,13 +4575,16 @@ Partial Class Main
     Friend WithEvents RadGroupBox7 As Telerik.WinControls.UI.RadGroupBox
     Friend WithEvents lu_date As Telerik.WinControls.UI.RadDateTimePicker
     Friend WithEvents RadLabel11 As Telerik.WinControls.UI.RadLabel
-    Friend WithEvents RadGroupBox1 As Telerik.WinControls.UI.RadGroupBox
-    Friend WithEvents main_rgv_recordedacademicsmain As Telerik.WinControls.UI.RadGridView
     Friend WithEvents rpv1 As Telerik.WinControls.UI.RadPageView
     Friend WithEvents RadGroupBox9 As Telerik.WinControls.UI.RadGroupBox
     Friend WithEvents eq_btn_clear As Telerik.WinControls.UI.RadButton
     Friend WithEvents eq_btn_delete As Telerik.WinControls.UI.RadButton
     Friend WithEvents eq_btn_update As Telerik.WinControls.UI.RadButton
     Friend WithEvents eq_btn_save As Telerik.WinControls.UI.RadButton
+    Friend WithEvents RadPageView4 As Telerik.WinControls.UI.RadPageView
+    Friend WithEvents main_rpv_academics As Telerik.WinControls.UI.RadPageViewPage
+    Friend WithEvents main_rgv_recordedacademicsonly As Telerik.WinControls.UI.RadGridView
+    Friend WithEvents main_rpv_schoolactivity As Telerik.WinControls.UI.RadPageViewPage
+    Friend WithEvents main_rgv_recordedschoolonly As Telerik.WinControls.UI.RadGridView
 End Class
 
