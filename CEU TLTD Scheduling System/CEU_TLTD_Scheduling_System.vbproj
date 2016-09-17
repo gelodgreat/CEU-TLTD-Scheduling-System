@@ -111,6 +111,12 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="GlobalVariableModule.vb" />
+    <Compile Include="InstructionalMaterials.Designer.vb">
+      <DependentUpon>InstructionalMaterials.vb</DependentUpon>
+    </Compile>
+    <Compile Include="InstructionalMaterials.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Login.Designer.vb">
       <DependentUpon>Login.vb</DependentUpon>
     </Compile>
@@ -142,6 +148,9 @@
   <ItemGroup>
     <EmbeddedResource Include="ConnectionSettings.resx">
       <DependentUpon>ConnectionSettings.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InstructionalMaterials.resx">
+      <DependentUpon>InstructionalMaterials.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.vb</DependentUpon>

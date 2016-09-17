@@ -27,6 +27,7 @@ Public Class Main
     Public identifier_reservationno As String
     Public random As System.Random = New System.Random
 
+
     Public equipment As String
     Public rowcounter As Integer = 0
     Dim query As String
@@ -2349,6 +2350,12 @@ Public Class Main
         End If
 
 
+
+    End Sub
+
+    Private Sub btn_gotoinsmat_Click(sender As Object, e As EventArgs) Handles btn_gotoinsmat.Click
+        InstructionalMaterials.Show()
+        Me.Hide()
 
     End Sub
 
