@@ -475,12 +475,8 @@ Partial Class Main
         Me.eq_equipment = New Telerik.WinControls.UI.RadTextBox()
         Me.eq_equipmentlocation = New Telerik.WinControls.UI.RadTextBox()
         Me.eq_owner = New Telerik.WinControls.UI.RadTextBox()
-        Me.eq_btn_save = New Telerik.WinControls.UI.RadButton()
-        Me.eq_btn_update = New Telerik.WinControls.UI.RadButton()
         Me.eq_type = New Telerik.WinControls.UI.RadDropDownList()
-        Me.eq_btn_delete = New Telerik.WinControls.UI.RadButton()
         Me.eq_btn_other = New Telerik.WinControls.UI.RadButton()
-        Me.eq_btn_clear = New Telerik.WinControls.UI.RadButton()
         Me.RadGroupBox21 = New Telerik.WinControls.UI.RadGroupBox()
         Me.eq_filter_eqno = New Telerik.WinControls.UI.RadTextBox()
         Me.RadLabel54 = New Telerik.WinControls.UI.RadLabel()
@@ -556,6 +552,11 @@ Partial Class Main
         Me.rel_tb_startdate = New Telerik.WinControls.UI.RadDateTimePicker()
         Me.rec_dtp_date = New Telerik.WinControls.UI.RadDateTimePicker()
         Me.lu_date = New Telerik.WinControls.UI.RadDateTimePicker()
+        Me.RadGroupBox9 = New Telerik.WinControls.UI.RadGroupBox()
+        Me.eq_btn_clear = New Telerik.WinControls.UI.RadButton()
+        Me.eq_btn_delete = New Telerik.WinControls.UI.RadButton()
+        Me.eq_btn_update = New Telerik.WinControls.UI.RadButton()
+        Me.eq_btn_save = New Telerik.WinControls.UI.RadButton()
         CType(Me.RadGroupBox16, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RadGroupBox13, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.CeutltdschedulerDataSetBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -706,12 +707,8 @@ Partial Class Main
         CType(Me.eq_equipment, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.eq_equipmentlocation, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.eq_owner, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.eq_btn_save, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.eq_btn_update, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.eq_type, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.eq_btn_delete, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.eq_btn_other, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.eq_btn_clear, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RadGroupBox21, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.RadGroupBox21.SuspendLayout()
         CType(Me.eq_filter_eqno, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -803,6 +800,12 @@ Partial Class Main
         CType(Me.rel_tb_startdate, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.rec_dtp_date, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.lu_date, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RadGroupBox9, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.RadGroupBox9.SuspendLayout()
+        CType(Me.eq_btn_clear, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.eq_btn_delete, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.eq_btn_update, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.eq_btn_save, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -1870,7 +1873,9 @@ Partial Class Main
         '
         'RadPageView2
         '
-        Me.RadPageView2.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
+        Me.RadPageView2.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.RadPageView2.Controls.Add(Me.res_notret_info)
         Me.RadPageView2.Controls.Add(Me.rel_penalty_info)
         Me.RadPageView2.Location = New System.Drawing.Point(0, -3)
@@ -1885,6 +1890,7 @@ Partial Class Main
         'rel_penalty_info
         '
         Me.rel_penalty_info.Controls.Add(Me.released_grid_list)
+        Me.rel_penalty_info.ItemSize = New System.Drawing.SizeF(152.0!, 24.0!)
         Me.rel_penalty_info.Location = New System.Drawing.Point(5, 30)
         Me.rel_penalty_info.Name = "rel_penalty_info"
         Me.rel_penalty_info.Size = New System.Drawing.Size(1335, 270)
@@ -1915,6 +1921,7 @@ Partial Class Main
         'res_notret_info
         '
         Me.res_notret_info.Controls.Add(Me.reserved_grid_list)
+        Me.res_notret_info.ItemSize = New System.Drawing.SizeF(153.0!, 24.0!)
         Me.res_notret_info.Location = New System.Drawing.Point(5, 30)
         Me.res_notret_info.Name = "res_notret_info"
         Me.res_notret_info.Size = New System.Drawing.Size(1335, 270)
@@ -1942,7 +1949,6 @@ Partial Class Main
         '
         'rpvp2_reservation
         '
-        Me.rpvp2_reservation.Controls.Add(Me.RadGroupBox6)
         Me.rpvp2_reservation.Controls.Add(Me.RadGroupBox4)
         Me.rpvp2_reservation.Controls.Add(Me.RadGroupBox5)
         Me.rpvp2_reservation.Controls.Add(Me.RadGroupBox3)
@@ -1955,13 +1961,15 @@ Partial Class Main
         'RadGroupBox3
         '
         Me.RadGroupBox3.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping
-        Me.RadGroupBox3.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
+        Me.RadGroupBox3.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.RadGroupBox3.Controls.Add(Me.reservation_rgv_recordeddata)
         Me.RadGroupBox3.Controls.Add(Me.reservations_rgv_showavailableitems)
         Me.RadGroupBox3.HeaderText = "List of Reservation"
         Me.RadGroupBox3.Location = New System.Drawing.Point(0, -3)
         Me.RadGroupBox3.Name = "RadGroupBox3"
-        Me.RadGroupBox3.Size = New System.Drawing.Size(1345, 305)
+        Me.RadGroupBox3.Size = New System.Drawing.Size(1345, 276)
         Me.RadGroupBox3.TabIndex = 0
         Me.RadGroupBox3.Text = "List of Reservation"
         Me.RadGroupBox3.ThemeName = "VisualStudio2012Dark"
@@ -1983,15 +1991,15 @@ Partial Class Main
         Me.reservations_rgv_showavailableitems.MasterTemplate.ViewDefinition = TableViewDefinition7
         Me.reservations_rgv_showavailableitems.Name = "reservations_rgv_showavailableitems"
         Me.reservations_rgv_showavailableitems.ReadOnly = True
-        Me.reservations_rgv_showavailableitems.Size = New System.Drawing.Size(1341, 285)
+        Me.reservations_rgv_showavailableitems.Size = New System.Drawing.Size(1341, 256)
         Me.reservations_rgv_showavailableitems.TabIndex = 1
         Me.reservations_rgv_showavailableitems.Text = "RadGridView2"
         Me.reservations_rgv_showavailableitems.ThemeName = "VisualStudio2012Dark"
         '
         'reservation_rgv_recordeddata
         '
-        Me.reservation_rgv_recordeddata.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
         Me.reservation_rgv_recordeddata.AutoSizeRows = True
+        Me.reservation_rgv_recordeddata.Dock = System.Windows.Forms.DockStyle.Fill
         Me.reservation_rgv_recordeddata.Location = New System.Drawing.Point(2, 18)
         '
         '
@@ -2005,7 +2013,7 @@ Partial Class Main
         Me.reservation_rgv_recordeddata.MasterTemplate.ViewDefinition = TableViewDefinition6
         Me.reservation_rgv_recordeddata.Name = "reservation_rgv_recordeddata"
         Me.reservation_rgv_recordeddata.ReadOnly = True
-        Me.reservation_rgv_recordeddata.Size = New System.Drawing.Size(1341, 285)
+        Me.reservation_rgv_recordeddata.Size = New System.Drawing.Size(1341, 256)
         Me.reservation_rgv_recordeddata.TabIndex = 3
         Me.reservation_rgv_recordeddata.Text = "RadGridView2"
         Me.reservation_rgv_recordeddata.ThemeName = "VisualStudio2012Dark"
@@ -2029,9 +2037,9 @@ Partial Class Main
         Me.RadGroupBox5.Controls.Add(Me.rec_del_eq)
         Me.RadGroupBox5.Controls.Add(Me.RadGroupBox17)
         Me.RadGroupBox5.HeaderText = "Equipments"
-        Me.RadGroupBox5.Location = New System.Drawing.Point(677, 306)
+        Me.RadGroupBox5.Location = New System.Drawing.Point(677, 279)
         Me.RadGroupBox5.Name = "RadGroupBox5"
-        Me.RadGroupBox5.Size = New System.Drawing.Size(668, 239)
+        Me.RadGroupBox5.Size = New System.Drawing.Size(668, 269)
         Me.RadGroupBox5.TabIndex = 2
         Me.RadGroupBox5.Text = "Equipments"
         Me.RadGroupBox5.ThemeName = "VisualStudio2012Dark"
@@ -2044,7 +2052,7 @@ Partial Class Main
         Me.RadGroupBox17.HeaderText = "Added Equipments"
         Me.RadGroupBox17.Location = New System.Drawing.Point(315, 21)
         Me.RadGroupBox17.Name = "RadGroupBox17"
-        Me.RadGroupBox17.Size = New System.Drawing.Size(348, 173)
+        Me.RadGroupBox17.Size = New System.Drawing.Size(348, 203)
         Me.RadGroupBox17.TabIndex = 1
         Me.RadGroupBox17.Text = "Added Equipments"
         Me.RadGroupBox17.ThemeName = "VisualStudio2012Dark"
@@ -2077,7 +2085,7 @@ Partial Class Main
         Me.eq_rgv_addeq.MasterTemplate.ViewDefinition = TableViewDefinition5
         Me.eq_rgv_addeq.Name = "eq_rgv_addeq"
         Me.eq_rgv_addeq.ReadOnly = True
-        Me.eq_rgv_addeq.Size = New System.Drawing.Size(344, 153)
+        Me.eq_rgv_addeq.Size = New System.Drawing.Size(344, 183)
         Me.eq_rgv_addeq.StandardTab = True
         Me.eq_rgv_addeq.TabIndex = 0
         Me.eq_rgv_addeq.Text = "RadGridView1"
@@ -2096,7 +2104,7 @@ Partial Class Main
         'rec_btn_showavailequip
         '
         Me.rec_btn_showavailequip.Anchor = System.Windows.Forms.AnchorStyles.Bottom
-        Me.rec_btn_showavailequip.Location = New System.Drawing.Point(358, 200)
+        Me.rec_btn_showavailequip.Location = New System.Drawing.Point(358, 230)
         Me.rec_btn_showavailequip.Name = "rec_btn_showavailequip"
         Me.rec_btn_showavailequip.Size = New System.Drawing.Size(149, 29)
         Me.rec_btn_showavailequip.TabIndex = 23
@@ -2106,7 +2114,7 @@ Partial Class Main
         'rec_btn_showalldata
         '
         Me.rec_btn_showalldata.Anchor = System.Windows.Forms.AnchorStyles.Bottom
-        Me.rec_btn_showalldata.Location = New System.Drawing.Point(203, 200)
+        Me.rec_btn_showalldata.Location = New System.Drawing.Point(203, 230)
         Me.rec_btn_showalldata.Name = "rec_btn_showalldata"
         Me.rec_btn_showalldata.Size = New System.Drawing.Size(149, 29)
         Me.rec_btn_showalldata.TabIndex = 24
@@ -2179,7 +2187,7 @@ Partial Class Main
         'rec_btn_showalltakeneq
         '
         Me.rec_btn_showalltakeneq.Anchor = System.Windows.Forms.AnchorStyles.Bottom
-        Me.rec_btn_showalltakeneq.Location = New System.Drawing.Point(513, 200)
+        Me.rec_btn_showalltakeneq.Location = New System.Drawing.Point(513, 230)
         Me.rec_btn_showalltakeneq.Name = "rec_btn_showalltakeneq"
         Me.rec_btn_showalltakeneq.Size = New System.Drawing.Size(149, 29)
         Me.rec_btn_showalltakeneq.TabIndex = 22
@@ -2220,6 +2228,7 @@ Partial Class Main
         '
         Me.RadGroupBox4.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping
         Me.RadGroupBox4.Anchor = System.Windows.Forms.AnchorStyles.Bottom
+        Me.RadGroupBox4.Controls.Add(Me.RadGroupBox6)
         Me.RadGroupBox4.Controls.Add(Me.lbl_nameofstaff_reserved)
         Me.RadGroupBox4.Controls.Add(Me.rec_rrtc_actname)
         Me.RadGroupBox4.Controls.Add(Me.rec_lbl_actname)
@@ -2245,9 +2254,9 @@ Partial Class Main
         Me.RadGroupBox4.Controls.Add(Me.RadLabel1)
         Me.RadGroupBox4.Controls.Add(Me.rec_dtp_date)
         Me.RadGroupBox4.HeaderText = "Details"
-        Me.RadGroupBox4.Location = New System.Drawing.Point(0, 306)
+        Me.RadGroupBox4.Location = New System.Drawing.Point(0, 279)
         Me.RadGroupBox4.Name = "RadGroupBox4"
-        Me.RadGroupBox4.Size = New System.Drawing.Size(671, 194)
+        Me.RadGroupBox4.Size = New System.Drawing.Size(671, 266)
         Me.RadGroupBox4.TabIndex = 1
         Me.RadGroupBox4.Text = "Details"
         Me.RadGroupBox4.ThemeName = "VisualStudio2012Dark"
@@ -2256,7 +2265,7 @@ Partial Class Main
         '
         Me.RadLabel1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
         Me.RadLabel1.BackColor = System.Drawing.Color.Transparent
-        Me.RadLabel1.Location = New System.Drawing.Point(523, 23)
+        Me.RadLabel1.Location = New System.Drawing.Point(523, 28)
         Me.RadLabel1.Name = "RadLabel1"
         Me.RadLabel1.Size = New System.Drawing.Size(32, 18)
         Me.RadLabel1.TabIndex = 2
@@ -2267,7 +2276,7 @@ Partial Class Main
         '
         Me.RadLabel3.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
         Me.RadLabel3.BackColor = System.Drawing.Color.Transparent
-        Me.RadLabel3.Location = New System.Drawing.Point(496, 53)
+        Me.RadLabel3.Location = New System.Drawing.Point(496, 57)
         Me.RadLabel3.Name = "RadLabel3"
         Me.RadLabel3.Size = New System.Drawing.Size(59, 18)
         Me.RadLabel3.TabIndex = 6
@@ -2278,7 +2287,7 @@ Partial Class Main
         '
         Me.RadLabel4.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
         Me.RadLabel4.BackColor = System.Drawing.Color.Transparent
-        Me.RadLabel4.Location = New System.Drawing.Point(500, 82)
+        Me.RadLabel4.Location = New System.Drawing.Point(500, 87)
         Me.RadLabel4.Name = "RadLabel4"
         Me.RadLabel4.Size = New System.Drawing.Size(55, 18)
         Me.RadLabel4.TabIndex = 7
@@ -2289,9 +2298,9 @@ Partial Class Main
         '
         Me.rec_cb_borrower.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
         Me.rec_cb_borrower.DropDownStyle = Telerik.WinControls.RadDropDownStyle.DropDownList
-        Me.rec_cb_borrower.Location = New System.Drawing.Point(60, 78)
+        Me.rec_cb_borrower.Location = New System.Drawing.Point(86, 84)
         Me.rec_cb_borrower.Name = "rec_cb_borrower"
-        Me.rec_cb_borrower.Size = New System.Drawing.Size(192, 24)
+        Me.rec_cb_borrower.Size = New System.Drawing.Size(166, 24)
         Me.rec_cb_borrower.TabIndex = 2
         Me.rec_cb_borrower.ThemeName = "VisualStudio2012Dark"
         '
@@ -2299,7 +2308,7 @@ Partial Class Main
         '
         Me.RadLabel5.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
         Me.RadLabel5.BackColor = System.Drawing.Color.Transparent
-        Me.RadLabel5.Location = New System.Drawing.Point(265, 52)
+        Me.RadLabel5.Location = New System.Drawing.Point(264, 55)
         Me.RadLabel5.Name = "RadLabel5"
         Me.RadLabel5.Size = New System.Drawing.Size(40, 18)
         Me.RadLabel5.TabIndex = 9
@@ -2309,7 +2318,7 @@ Partial Class Main
         'rec_cb_location
         '
         Me.rec_cb_location.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
-        Me.rec_cb_location.Location = New System.Drawing.Point(310, 49)
+        Me.rec_cb_location.Location = New System.Drawing.Point(310, 55)
         Me.rec_cb_location.Name = "rec_cb_location"
         Me.rec_cb_location.Size = New System.Drawing.Size(176, 24)
         Me.rec_cb_location.TabIndex = 8
@@ -2319,7 +2328,7 @@ Partial Class Main
         '
         Me.RadLabel6.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
         Me.RadLabel6.BackColor = System.Drawing.Color.Transparent
-        Me.RadLabel6.Location = New System.Drawing.Point(0, 78)
+        Me.RadLabel6.Location = New System.Drawing.Point(26, 82)
         Me.RadLabel6.Name = "RadLabel6"
         Me.RadLabel6.Size = New System.Drawing.Size(54, 18)
         Me.RadLabel6.TabIndex = 11
@@ -2424,7 +2433,7 @@ Partial Class Main
         Me.rec_dtp_starttime.Items.Add(RadListDataItem284)
         Me.rec_dtp_starttime.Items.Add(RadListDataItem285)
         Me.rec_dtp_starttime.Items.Add(RadListDataItem286)
-        Me.rec_dtp_starttime.Location = New System.Drawing.Point(561, 49)
+        Me.rec_dtp_starttime.Location = New System.Drawing.Point(561, 54)
         Me.rec_dtp_starttime.Name = "rec_dtp_starttime"
         Me.rec_dtp_starttime.Size = New System.Drawing.Size(105, 24)
         Me.rec_dtp_starttime.TabIndex = 5
@@ -2528,7 +2537,7 @@ Partial Class Main
         Me.rec_dtp_endtime.Items.Add(RadListDataItem237)
         Me.rec_dtp_endtime.Items.Add(RadListDataItem238)
         Me.rec_dtp_endtime.Items.Add(RadListDataItem239)
-        Me.rec_dtp_endtime.Location = New System.Drawing.Point(561, 79)
+        Me.rec_dtp_endtime.Location = New System.Drawing.Point(561, 84)
         Me.rec_dtp_endtime.Name = "rec_dtp_endtime"
         Me.rec_dtp_endtime.Size = New System.Drawing.Size(105, 24)
         Me.rec_dtp_endtime.TabIndex = 6
@@ -2539,7 +2548,7 @@ Partial Class Main
         Me.rec_cb_status.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
         RadListDataItem192.Text = "Reserved"
         Me.rec_cb_status.Items.Add(RadListDataItem192)
-        Me.rec_cb_status.Location = New System.Drawing.Point(310, 79)
+        Me.rec_cb_status.Location = New System.Drawing.Point(310, 85)
         Me.rec_cb_status.Name = "rec_cb_status"
         Me.rec_cb_status.Size = New System.Drawing.Size(175, 24)
         Me.rec_cb_status.TabIndex = 9
@@ -2550,7 +2559,7 @@ Partial Class Main
         '
         Me.RadLabel14.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
         Me.RadLabel14.BackColor = System.Drawing.Color.Transparent
-        Me.RadLabel14.Location = New System.Drawing.Point(266, 81)
+        Me.RadLabel14.Location = New System.Drawing.Point(265, 85)
         Me.RadLabel14.Name = "RadLabel14"
         Me.RadLabel14.Size = New System.Drawing.Size(39, 18)
         Me.RadLabel14.TabIndex = 17
@@ -2561,7 +2570,7 @@ Partial Class Main
         '
         Me.RadLabel17.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
         Me.RadLabel17.BackColor = System.Drawing.Color.Transparent
-        Me.RadLabel17.Location = New System.Drawing.Point(502, 156)
+        Me.RadLabel17.Location = New System.Drawing.Point(516, 116)
         Me.RadLabel17.Name = "RadLabel17"
         Me.RadLabel17.Size = New System.Drawing.Size(69, 18)
         Me.RadLabel17.TabIndex = 20
@@ -2572,7 +2581,7 @@ Partial Class Main
         '
         Me.RadLabel26.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
         Me.RadLabel26.BackColor = System.Drawing.Color.Transparent
-        Me.RadLabel26.Location = New System.Drawing.Point(2, 49)
+        Me.RadLabel26.Location = New System.Drawing.Point(37, 52)
         Me.RadLabel26.Name = "RadLabel26"
         Me.RadLabel26.Size = New System.Drawing.Size(43, 18)
         Me.RadLabel26.TabIndex = 22
@@ -2582,21 +2591,21 @@ Partial Class Main
         'rec_cb_idnum
         '
         Me.rec_cb_idnum.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
-        Me.rec_cb_idnum.Location = New System.Drawing.Point(51, 48)
+        Me.rec_cb_idnum.Location = New System.Drawing.Point(86, 54)
         Me.rec_cb_idnum.MinimumSize = New System.Drawing.Size(0, 24)
         Me.rec_cb_idnum.Name = "rec_cb_idnum"
         '
         '
         '
         Me.rec_cb_idnum.RootElement.MinSize = New System.Drawing.Size(0, 24)
-        Me.rec_cb_idnum.Size = New System.Drawing.Size(201, 24)
+        Me.rec_cb_idnum.Size = New System.Drawing.Size(166, 24)
         Me.rec_cb_idnum.TabIndex = 1
         Me.rec_cb_idnum.ThemeName = "VisualStudio2012Dark"
         '
         'rec_cb_college_school
         '
         Me.rec_cb_college_school.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
-        Me.rec_cb_college_school.Location = New System.Drawing.Point(310, 19)
+        Me.rec_cb_college_school.Location = New System.Drawing.Point(310, 25)
         Me.rec_cb_college_school.Name = "rec_cb_college_school"
         Me.rec_cb_college_school.Size = New System.Drawing.Size(175, 24)
         Me.rec_cb_college_school.TabIndex = 7
@@ -2606,7 +2615,7 @@ Partial Class Main
         '
         Me.RadLabel68.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
         Me.RadLabel68.BackColor = System.Drawing.Color.Transparent
-        Me.RadLabel68.Location = New System.Drawing.Point(258, 21)
+        Me.RadLabel68.Location = New System.Drawing.Point(258, 27)
         Me.RadLabel68.Name = "RadLabel68"
         Me.RadLabel68.Size = New System.Drawing.Size(46, 18)
         Me.RadLabel68.TabIndex = 26
@@ -2617,7 +2626,7 @@ Partial Class Main
         '
         Me.RadLabel72.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
         Me.RadLabel72.BackColor = System.Drawing.Color.Transparent
-        Me.RadLabel72.Location = New System.Drawing.Point(3, 18)
+        Me.RadLabel72.Location = New System.Drawing.Point(3, 24)
         Me.RadLabel72.Name = "RadLabel72"
         Me.RadLabel72.Size = New System.Drawing.Size(77, 18)
         Me.RadLabel72.TabIndex = 29
@@ -2633,7 +2642,7 @@ Partial Class Main
         RadListDataItem191.Text = "School Activity"
         Me.rec_cb_acttype.Items.Add(RadListDataItem190)
         Me.rec_cb_acttype.Items.Add(RadListDataItem191)
-        Me.rec_cb_acttype.Location = New System.Drawing.Point(86, 108)
+        Me.rec_cb_acttype.Location = New System.Drawing.Point(86, 118)
         Me.rec_cb_acttype.Name = "rec_cb_acttype"
         Me.rec_cb_acttype.Size = New System.Drawing.Size(224, 24)
         Me.rec_cb_acttype.TabIndex = 3
@@ -2643,7 +2652,7 @@ Partial Class Main
         '
         Me.RadLabel2.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
         Me.RadLabel2.BackColor = System.Drawing.Color.Transparent
-        Me.RadLabel2.Location = New System.Drawing.Point(3, 108)
+        Me.RadLabel2.Location = New System.Drawing.Point(8, 117)
         Me.RadLabel2.Name = "RadLabel2"
         Me.RadLabel2.Size = New System.Drawing.Size(72, 18)
         Me.RadLabel2.TabIndex = 31
@@ -2653,7 +2662,7 @@ Partial Class Main
         'rec_cb_reserveno
         '
         Me.rec_cb_reserveno.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
-        Me.rec_cb_reserveno.Location = New System.Drawing.Point(86, 18)
+        Me.rec_cb_reserveno.Location = New System.Drawing.Point(86, 24)
         Me.rec_cb_reserveno.MinimumSize = New System.Drawing.Size(0, 24)
         Me.rec_cb_reserveno.Name = "rec_cb_reserveno"
         '
@@ -2668,7 +2677,7 @@ Partial Class Main
         '
         Me.rec_lbl_actname.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
         Me.rec_lbl_actname.BackColor = System.Drawing.Color.Transparent
-        Me.rec_lbl_actname.Location = New System.Drawing.Point(2, 136)
+        Me.rec_lbl_actname.Location = New System.Drawing.Point(2, 148)
         Me.rec_lbl_actname.Name = "rec_lbl_actname"
         Me.rec_lbl_actname.Size = New System.Drawing.Size(78, 18)
         Me.rec_lbl_actname.TabIndex = 34
@@ -2677,7 +2686,7 @@ Partial Class Main
         '
         'rec_rrtc_actname
         '
-        Me.rec_rrtc_actname.Location = New System.Drawing.Point(86, 138)
+        Me.rec_rrtc_actname.Location = New System.Drawing.Point(86, 148)
         Me.rec_rrtc_actname.MinimumSize = New System.Drawing.Size(0, 24)
         Me.rec_rrtc_actname.Name = "rec_rrtc_actname"
         '
@@ -2692,7 +2701,7 @@ Partial Class Main
         '
         Me.lbl_nameofstaff_reserved.BackColor = System.Drawing.Color.Transparent
         Me.lbl_nameofstaff_reserved.ForeColor = System.Drawing.Color.White
-        Me.lbl_nameofstaff_reserved.Location = New System.Drawing.Point(577, 157)
+        Me.lbl_nameofstaff_reserved.Location = New System.Drawing.Point(591, 117)
         Me.lbl_nameofstaff_reserved.Name = "lbl_nameofstaff_reserved"
         Me.lbl_nameofstaff_reserved.Size = New System.Drawing.Size(75, 18)
         Me.lbl_nameofstaff_reserved.TabIndex = 36
@@ -2707,9 +2716,9 @@ Partial Class Main
         Me.RadGroupBox6.Controls.Add(Me.rec_btn_delete)
         Me.RadGroupBox6.Controls.Add(Me.rec_btn_save)
         Me.RadGroupBox6.HeaderText = "Controls"
-        Me.RadGroupBox6.Location = New System.Drawing.Point(0, 496)
+        Me.RadGroupBox6.Location = New System.Drawing.Point(7, 201)
         Me.RadGroupBox6.Name = "RadGroupBox6"
-        Me.RadGroupBox6.Size = New System.Drawing.Size(671, 52)
+        Me.RadGroupBox6.Size = New System.Drawing.Size(659, 58)
         Me.RadGroupBox6.TabIndex = 3
         Me.RadGroupBox6.Text = "Controls"
         Me.RadGroupBox6.ThemeName = "VisualStudio2012Dark"
@@ -2717,7 +2726,7 @@ Partial Class Main
         'rec_btn_save
         '
         Me.rec_btn_save.Anchor = System.Windows.Forms.AnchorStyles.Bottom
-        Me.rec_btn_save.Location = New System.Drawing.Point(561, 16)
+        Me.rec_btn_save.Location = New System.Drawing.Point(555, 20)
         Me.rec_btn_save.Name = "rec_btn_save"
         Me.rec_btn_save.Size = New System.Drawing.Size(100, 30)
         Me.rec_btn_save.TabIndex = 18
@@ -2727,7 +2736,7 @@ Partial Class Main
         'rec_btn_delete
         '
         Me.rec_btn_delete.Anchor = System.Windows.Forms.AnchorStyles.Bottom
-        Me.rec_btn_delete.Location = New System.Drawing.Point(455, 17)
+        Me.rec_btn_delete.Location = New System.Drawing.Point(449, 21)
         Me.rec_btn_delete.Name = "rec_btn_delete"
         Me.rec_btn_delete.Size = New System.Drawing.Size(100, 30)
         Me.rec_btn_delete.TabIndex = 19
@@ -2737,7 +2746,7 @@ Partial Class Main
         'rec_btn_clear
         '
         Me.rec_btn_clear.Anchor = System.Windows.Forms.AnchorStyles.Bottom
-        Me.rec_btn_clear.Location = New System.Drawing.Point(60, 17)
+        Me.rec_btn_clear.Location = New System.Drawing.Point(65, 21)
         Me.rec_btn_clear.Name = "rec_btn_clear"
         Me.rec_btn_clear.Size = New System.Drawing.Size(100, 30)
         Me.rec_btn_clear.TabIndex = 21
@@ -2747,7 +2756,7 @@ Partial Class Main
         'btn_resetreservationno
         '
         Me.btn_resetreservationno.Anchor = System.Windows.Forms.AnchorStyles.Bottom
-        Me.btn_resetreservationno.Location = New System.Drawing.Point(166, 17)
+        Me.btn_resetreservationno.Location = New System.Drawing.Point(171, 21)
         Me.btn_resetreservationno.Name = "btn_resetreservationno"
         Me.btn_resetreservationno.Size = New System.Drawing.Size(138, 30)
         Me.btn_resetreservationno.TabIndex = 20
@@ -2769,12 +2778,14 @@ Partial Class Main
         'RadGroupBox14
         '
         Me.RadGroupBox14.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping
-        Me.RadGroupBox14.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
+        Me.RadGroupBox14.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.RadGroupBox14.Controls.Add(Me.eq_rgv_showregequipment)
         Me.RadGroupBox14.HeaderText = "Equipment Records"
         Me.RadGroupBox14.Location = New System.Drawing.Point(0, -3)
         Me.RadGroupBox14.Name = "RadGroupBox14"
-        Me.RadGroupBox14.Size = New System.Drawing.Size(1336, 305)
+        Me.RadGroupBox14.Size = New System.Drawing.Size(1345, 275)
         Me.RadGroupBox14.TabIndex = 0
         Me.RadGroupBox14.Text = "Equipment Records"
         Me.RadGroupBox14.ThemeName = "VisualStudio2012Dark"
@@ -2796,7 +2807,7 @@ Partial Class Main
         Me.eq_rgv_showregequipment.MasterTemplate.ViewDefinition = TableViewDefinition8
         Me.eq_rgv_showregequipment.Name = "eq_rgv_showregequipment"
         Me.eq_rgv_showregequipment.ReadOnly = True
-        Me.eq_rgv_showregequipment.Size = New System.Drawing.Size(1332, 285)
+        Me.eq_rgv_showregequipment.Size = New System.Drawing.Size(1341, 255)
         Me.eq_rgv_showregequipment.TabIndex = 0
         Me.eq_rgv_showregequipment.TabStop = False
         Me.eq_rgv_showregequipment.Text = "RadGridView2"
@@ -2806,12 +2817,9 @@ Partial Class Main
         '
         Me.RadGroupBox15.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping
         Me.RadGroupBox15.Anchor = System.Windows.Forms.AnchorStyles.Bottom
-        Me.RadGroupBox15.Controls.Add(Me.eq_btn_clear)
+        Me.RadGroupBox15.Controls.Add(Me.RadGroupBox9)
         Me.RadGroupBox15.Controls.Add(Me.eq_btn_other)
-        Me.RadGroupBox15.Controls.Add(Me.eq_btn_delete)
         Me.RadGroupBox15.Controls.Add(Me.eq_type)
-        Me.RadGroupBox15.Controls.Add(Me.eq_btn_update)
-        Me.RadGroupBox15.Controls.Add(Me.eq_btn_save)
         Me.RadGroupBox15.Controls.Add(Me.eq_owner)
         Me.RadGroupBox15.Controls.Add(Me.eq_equipmentlocation)
         Me.RadGroupBox15.Controls.Add(Me.eq_equipment)
@@ -2826,9 +2834,9 @@ Partial Class Main
         Me.RadGroupBox15.Controls.Add(Me.RadLabel22)
         Me.RadGroupBox15.Controls.Add(Me.eq_equipmentno)
         Me.RadGroupBox15.HeaderText = "Equipment Details"
-        Me.RadGroupBox15.Location = New System.Drawing.Point(0, 306)
+        Me.RadGroupBox15.Location = New System.Drawing.Point(2, 278)
         Me.RadGroupBox15.Name = "RadGroupBox15"
-        Me.RadGroupBox15.Size = New System.Drawing.Size(602, 242)
+        Me.RadGroupBox15.Size = New System.Drawing.Size(602, 270)
         Me.RadGroupBox15.TabIndex = 1
         Me.RadGroupBox15.Text = "Equipment Details"
         Me.RadGroupBox15.ThemeName = "VisualStudio2012Dark"
@@ -2859,7 +2867,7 @@ Partial Class Main
         'RadLabel23
         '
         Me.RadLabel23.BackColor = System.Drawing.Color.Transparent
-        Me.RadLabel23.Location = New System.Drawing.Point(118, 175)
+        Me.RadLabel23.Location = New System.Drawing.Point(118, 177)
         Me.RadLabel23.Name = "RadLabel23"
         Me.RadLabel23.Size = New System.Drawing.Size(42, 18)
         Me.RadLabel23.TabIndex = 13
@@ -2879,7 +2887,7 @@ Partial Class Main
         'RadLabel25
         '
         Me.RadLabel25.BackColor = System.Drawing.Color.Transparent
-        Me.RadLabel25.Location = New System.Drawing.Point(52, 145)
+        Me.RadLabel25.Location = New System.Drawing.Point(52, 147)
         Me.RadLabel25.Name = "RadLabel25"
         Me.RadLabel25.Size = New System.Drawing.Size(108, 18)
         Me.RadLabel25.TabIndex = 13
@@ -2944,14 +2952,19 @@ Partial Class Main
         'eq_equipment
         '
         Me.eq_equipment.Location = New System.Drawing.Point(166, 112)
+        Me.eq_equipment.MinimumSize = New System.Drawing.Size(0, 24)
         Me.eq_equipment.Name = "eq_equipment"
-        Me.eq_equipment.Size = New System.Drawing.Size(302, 21)
+        '
+        '
+        '
+        Me.eq_equipment.RootElement.MinSize = New System.Drawing.Size(0, 24)
+        Me.eq_equipment.Size = New System.Drawing.Size(302, 24)
         Me.eq_equipment.TabIndex = 25
         Me.eq_equipment.ThemeName = "VisualStudio2012Dark"
         '
         'eq_equipmentlocation
         '
-        Me.eq_equipmentlocation.Location = New System.Drawing.Point(166, 140)
+        Me.eq_equipmentlocation.Location = New System.Drawing.Point(166, 142)
         Me.eq_equipmentlocation.MinimumSize = New System.Drawing.Size(0, 24)
         Me.eq_equipmentlocation.Name = "eq_equipmentlocation"
         '
@@ -2964,7 +2977,7 @@ Partial Class Main
         '
         'eq_owner
         '
-        Me.eq_owner.Location = New System.Drawing.Point(166, 171)
+        Me.eq_owner.Location = New System.Drawing.Point(166, 173)
         Me.eq_owner.MinimumSize = New System.Drawing.Size(0, 24)
         Me.eq_owner.Name = "eq_owner"
         '
@@ -2975,26 +2988,6 @@ Partial Class Main
         Me.eq_owner.TabIndex = 28
         Me.eq_owner.ThemeName = "VisualStudio2012Dark"
         '
-        'eq_btn_save
-        '
-        Me.eq_btn_save.Anchor = System.Windows.Forms.AnchorStyles.Bottom
-        Me.eq_btn_save.Location = New System.Drawing.Point(474, 214)
-        Me.eq_btn_save.Name = "eq_btn_save"
-        Me.eq_btn_save.Size = New System.Drawing.Size(85, 24)
-        Me.eq_btn_save.TabIndex = 8
-        Me.eq_btn_save.Text = "Save"
-        Me.eq_btn_save.ThemeName = "VisualStudio2012Dark"
-        '
-        'eq_btn_update
-        '
-        Me.eq_btn_update.Anchor = System.Windows.Forms.AnchorStyles.Bottom
-        Me.eq_btn_update.Location = New System.Drawing.Point(474, 211)
-        Me.eq_btn_update.Name = "eq_btn_update"
-        Me.eq_btn_update.Size = New System.Drawing.Size(85, 24)
-        Me.eq_btn_update.TabIndex = 9
-        Me.eq_btn_update.Text = "Update"
-        Me.eq_btn_update.ThemeName = "VisualStudio2012Dark"
-        '
         'eq_type
         '
         Me.eq_type.DropDownStyle = Telerik.WinControls.RadDropDownStyle.DropDownList
@@ -3004,35 +2997,15 @@ Partial Class Main
         Me.eq_type.TabIndex = 29
         Me.eq_type.ThemeName = "VisualStudio2012Dark"
         '
-        'eq_btn_delete
-        '
-        Me.eq_btn_delete.Anchor = System.Windows.Forms.AnchorStyles.Bottom
-        Me.eq_btn_delete.Location = New System.Drawing.Point(151, 211)
-        Me.eq_btn_delete.Name = "eq_btn_delete"
-        Me.eq_btn_delete.Size = New System.Drawing.Size(85, 24)
-        Me.eq_btn_delete.TabIndex = 10
-        Me.eq_btn_delete.Text = "Delete"
-        Me.eq_btn_delete.ThemeName = "VisualStudio2012Dark"
-        '
         'eq_btn_other
         '
         Me.eq_btn_other.Anchor = System.Windows.Forms.AnchorStyles.Bottom
-        Me.eq_btn_other.Location = New System.Drawing.Point(474, 120)
+        Me.eq_btn_other.Location = New System.Drawing.Point(474, 144)
         Me.eq_btn_other.Name = "eq_btn_other"
         Me.eq_btn_other.Size = New System.Drawing.Size(85, 24)
         Me.eq_btn_other.TabIndex = 30
         Me.eq_btn_other.Text = "Other"
         Me.eq_btn_other.ThemeName = "VisualStudio2012Dark"
-        '
-        'eq_btn_clear
-        '
-        Me.eq_btn_clear.Anchor = System.Windows.Forms.AnchorStyles.Bottom
-        Me.eq_btn_clear.Location = New System.Drawing.Point(60, 211)
-        Me.eq_btn_clear.Name = "eq_btn_clear"
-        Me.eq_btn_clear.Size = New System.Drawing.Size(85, 24)
-        Me.eq_btn_clear.TabIndex = 11
-        Me.eq_btn_clear.Text = "Clear"
-        Me.eq_btn_clear.ThemeName = "VisualStudio2012Dark"
         '
         'RadGroupBox21
         '
@@ -3046,9 +3019,9 @@ Partial Class Main
         Me.RadGroupBox21.Controls.Add(Me.RadLabel54)
         Me.RadGroupBox21.Controls.Add(Me.eq_filter_eqno)
         Me.RadGroupBox21.HeaderText = "Filters"
-        Me.RadGroupBox21.Location = New System.Drawing.Point(608, 306)
+        Me.RadGroupBox21.Location = New System.Drawing.Point(610, 278)
         Me.RadGroupBox21.Name = "RadGroupBox21"
-        Me.RadGroupBox21.Size = New System.Drawing.Size(449, 242)
+        Me.RadGroupBox21.Size = New System.Drawing.Size(449, 270)
         Me.RadGroupBox21.TabIndex = 2
         Me.RadGroupBox21.Text = "Filters"
         Me.RadGroupBox21.ThemeName = "VisualStudio2012Dark"
@@ -3131,14 +3104,14 @@ Partial Class Main
         Me.eq_filter_eqstatus.Items.Add(RadListDataItem288)
         Me.eq_filter_eqstatus.Location = New System.Drawing.Point(131, 92)
         Me.eq_filter_eqstatus.Name = "eq_filter_eqstatus"
-        Me.eq_filter_eqstatus.Size = New System.Drawing.Size(225, 24)
+        Me.eq_filter_eqstatus.Size = New System.Drawing.Size(302, 24)
         Me.eq_filter_eqstatus.TabIndex = 25
         Me.eq_filter_eqstatus.ThemeName = "VisualStudio2012Dark"
         '
         'eq_clear_filter
         '
         Me.eq_clear_filter.Anchor = System.Windows.Forms.AnchorStyles.Bottom
-        Me.eq_clear_filter.Location = New System.Drawing.Point(181, 213)
+        Me.eq_clear_filter.Location = New System.Drawing.Point(131, 124)
         Me.eq_clear_filter.Name = "eq_clear_filter"
         Me.eq_clear_filter.Size = New System.Drawing.Size(85, 24)
         Me.eq_clear_filter.TabIndex = 11
@@ -3154,9 +3127,9 @@ Partial Class Main
         Me.RadGroupBox22.Controls.Add(Me.RadLabel57)
         Me.RadGroupBox22.Controls.Add(Me.eq_counter_type)
         Me.RadGroupBox22.HeaderText = "Equipment Compute"
-        Me.RadGroupBox22.Location = New System.Drawing.Point(1063, 306)
+        Me.RadGroupBox22.Location = New System.Drawing.Point(1065, 278)
         Me.RadGroupBox22.Name = "RadGroupBox22"
-        Me.RadGroupBox22.Size = New System.Drawing.Size(273, 242)
+        Me.RadGroupBox22.Size = New System.Drawing.Size(283, 263)
         Me.RadGroupBox22.TabIndex = 3
         Me.RadGroupBox22.Text = "Equipment Compute"
         Me.RadGroupBox22.ThemeName = "VisualStudio2012Dark"
@@ -3201,7 +3174,6 @@ Partial Class Main
         '
         'rpvp_account
         '
-        Me.rpvp_account.Controls.Add(Me.RadGroupBox28)
         Me.rpvp_account.Controls.Add(Me.RadPageView1)
         Me.rpvp_account.Controls.Add(Me.RadGroupBox19)
         Me.rpvp_account.Controls.Add(Me.RadGroupBox18)
@@ -3215,6 +3187,7 @@ Partial Class Main
         '
         Me.RadGroupBox18.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping
         Me.RadGroupBox18.Anchor = System.Windows.Forms.AnchorStyles.Bottom
+        Me.RadGroupBox18.Controls.Add(Me.RadGroupBox28)
         Me.RadGroupBox18.Controls.Add(Me.acc_sf_usertype)
         Me.RadGroupBox18.Controls.Add(Me.RadLabel39)
         Me.RadGroupBox18.Controls.Add(Me.acc_sf_retypepassword)
@@ -3234,7 +3207,7 @@ Partial Class Main
         Me.RadGroupBox18.HeaderText = "Staff Registration"
         Me.RadGroupBox18.Location = New System.Drawing.Point(0, 306)
         Me.RadGroupBox18.Name = "RadGroupBox18"
-        Me.RadGroupBox18.Size = New System.Drawing.Size(671, 172)
+        Me.RadGroupBox18.Size = New System.Drawing.Size(671, 242)
         Me.RadGroupBox18.TabIndex = 2
         Me.RadGroupBox18.Text = "Staff Registration"
         Me.RadGroupBox18.ThemeName = "VisualStudio2012Dark"
@@ -3438,7 +3411,7 @@ Partial Class Main
         Me.RadGroupBox19.HeaderText = "Borrower Registration"
         Me.RadGroupBox19.Location = New System.Drawing.Point(677, 306)
         Me.RadGroupBox19.Name = "RadGroupBox19"
-        Me.RadGroupBox19.Size = New System.Drawing.Size(671, 199)
+        Me.RadGroupBox19.Size = New System.Drawing.Size(671, 242)
         Me.RadGroupBox19.TabIndex = 3
         Me.RadGroupBox19.Text = "Borrower Registration"
         Me.RadGroupBox19.ThemeName = "VisualStudio2012Dark"
@@ -3562,7 +3535,7 @@ Partial Class Main
         Me.RadGroupBox29.Controls.Add(Me.acc_prof_btn_update)
         Me.RadGroupBox29.Controls.Add(Me.acc_prof_btn_save)
         Me.RadGroupBox29.HeaderText = "Controls"
-        Me.RadGroupBox29.Location = New System.Drawing.Point(0, 138)
+        Me.RadGroupBox29.Location = New System.Drawing.Point(0, 173)
         Me.RadGroupBox29.Name = "RadGroupBox29"
         Me.RadGroupBox29.Size = New System.Drawing.Size(663, 61)
         Me.RadGroupBox29.TabIndex = 6
@@ -3572,7 +3545,7 @@ Partial Class Main
         'acc_prof_btn_save
         '
         Me.acc_prof_btn_save.Anchor = System.Windows.Forms.AnchorStyles.Bottom
-        Me.acc_prof_btn_save.Location = New System.Drawing.Point(567, 25)
+        Me.acc_prof_btn_save.Location = New System.Drawing.Point(564, 25)
         Me.acc_prof_btn_save.Name = "acc_prof_btn_save"
         Me.acc_prof_btn_save.Size = New System.Drawing.Size(85, 24)
         Me.acc_prof_btn_save.TabIndex = 26
@@ -3582,7 +3555,7 @@ Partial Class Main
         'acc_prof_btn_update
         '
         Me.acc_prof_btn_update.Anchor = System.Windows.Forms.AnchorStyles.Bottom
-        Me.acc_prof_btn_update.Location = New System.Drawing.Point(567, 21)
+        Me.acc_prof_btn_update.Location = New System.Drawing.Point(564, 21)
         Me.acc_prof_btn_update.Name = "acc_prof_btn_update"
         Me.acc_prof_btn_update.Size = New System.Drawing.Size(85, 24)
         Me.acc_prof_btn_update.TabIndex = 27
@@ -3592,7 +3565,7 @@ Partial Class Main
         'acc_prof_btn_delete
         '
         Me.acc_prof_btn_delete.Anchor = System.Windows.Forms.AnchorStyles.Bottom
-        Me.acc_prof_btn_delete.Location = New System.Drawing.Point(476, 21)
+        Me.acc_prof_btn_delete.Location = New System.Drawing.Point(473, 21)
         Me.acc_prof_btn_delete.Name = "acc_prof_btn_delete"
         Me.acc_prof_btn_delete.Size = New System.Drawing.Size(85, 24)
         Me.acc_prof_btn_delete.TabIndex = 24
@@ -3602,7 +3575,7 @@ Partial Class Main
         'acc_prof_btn_clear
         '
         Me.acc_prof_btn_clear.Anchor = System.Windows.Forms.AnchorStyles.Bottom
-        Me.acc_prof_btn_clear.Location = New System.Drawing.Point(59, 21)
+        Me.acc_prof_btn_clear.Location = New System.Drawing.Point(69, 21)
         Me.acc_prof_btn_clear.Name = "acc_prof_btn_clear"
         Me.acc_prof_btn_clear.Size = New System.Drawing.Size(85, 24)
         Me.acc_prof_btn_clear.TabIndex = 28
@@ -3611,7 +3584,9 @@ Partial Class Main
         '
         'RadPageView1
         '
-        Me.RadPageView1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
+        Me.RadPageView1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.RadPageView1.Controls.Add(Me.RadPageViewPage1)
         Me.RadPageView1.Controls.Add(Me.RadPageViewPage2)
         Me.RadPageView1.Location = New System.Drawing.Point(0, -3)
@@ -3626,6 +3601,7 @@ Partial Class Main
         'RadPageViewPage2
         '
         Me.RadPageViewPage2.Controls.Add(Me.acc_prof_list)
+        Me.RadPageViewPage2.ItemSize = New System.Drawing.SizeF(101.0!, 24.0!)
         Me.RadPageViewPage2.Location = New System.Drawing.Point(5, 30)
         Me.RadPageViewPage2.Name = "RadPageViewPage2"
         Me.RadPageViewPage2.Size = New System.Drawing.Size(1343, 270)
@@ -3656,6 +3632,7 @@ Partial Class Main
         'RadPageViewPage1
         '
         Me.RadPageViewPage1.Controls.Add(Me.acc_staff_list)
+        Me.RadPageViewPage1.ItemSize = New System.Drawing.SizeF(78.0!, 24.0!)
         Me.RadPageViewPage1.Location = New System.Drawing.Point(5, 30)
         Me.RadPageViewPage1.Name = "RadPageViewPage1"
         Me.RadPageViewPage1.Size = New System.Drawing.Size(1343, 270)
@@ -3690,9 +3667,9 @@ Partial Class Main
         Me.RadGroupBox28.Controls.Add(Me.acc_staff_btn_save)
         Me.RadGroupBox28.Controls.Add(Me.acc_staff_btn_delete)
         Me.RadGroupBox28.HeaderText = "Controls"
-        Me.RadGroupBox28.Location = New System.Drawing.Point(0, 484)
+        Me.RadGroupBox28.Location = New System.Drawing.Point(5, 173)
         Me.RadGroupBox28.Name = "RadGroupBox28"
-        Me.RadGroupBox28.Size = New System.Drawing.Size(671, 64)
+        Me.RadGroupBox28.Size = New System.Drawing.Size(661, 64)
         Me.RadGroupBox28.TabIndex = 5
         Me.RadGroupBox28.Text = "Controls"
         Me.RadGroupBox28.ThemeName = "VisualStudio2012Dark"
@@ -3700,7 +3677,7 @@ Partial Class Main
         'acc_staff_btn_delete
         '
         Me.acc_staff_btn_delete.Anchor = System.Windows.Forms.AnchorStyles.Bottom
-        Me.acc_staff_btn_delete.Location = New System.Drawing.Point(479, 21)
+        Me.acc_staff_btn_delete.Location = New System.Drawing.Point(459, 24)
         Me.acc_staff_btn_delete.Name = "acc_staff_btn_delete"
         Me.acc_staff_btn_delete.Size = New System.Drawing.Size(85, 24)
         Me.acc_staff_btn_delete.TabIndex = 25
@@ -3710,7 +3687,7 @@ Partial Class Main
         'acc_staff_btn_save
         '
         Me.acc_staff_btn_save.Anchor = System.Windows.Forms.AnchorStyles.Bottom
-        Me.acc_staff_btn_save.Location = New System.Drawing.Point(580, 21)
+        Me.acc_staff_btn_save.Location = New System.Drawing.Point(560, 24)
         Me.acc_staff_btn_save.Name = "acc_staff_btn_save"
         Me.acc_staff_btn_save.Size = New System.Drawing.Size(85, 24)
         Me.acc_staff_btn_save.TabIndex = 23
@@ -3720,7 +3697,7 @@ Partial Class Main
         'acc_staff_btn_clear
         '
         Me.acc_staff_btn_clear.Anchor = System.Windows.Forms.AnchorStyles.Bottom
-        Me.acc_staff_btn_clear.Location = New System.Drawing.Point(57, 17)
+        Me.acc_staff_btn_clear.Location = New System.Drawing.Point(69, 24)
         Me.acc_staff_btn_clear.Name = "acc_staff_btn_clear"
         Me.acc_staff_btn_clear.Size = New System.Drawing.Size(85, 24)
         Me.acc_staff_btn_clear.TabIndex = 24
@@ -3730,7 +3707,7 @@ Partial Class Main
         'acc_staff_btn_update
         '
         Me.acc_staff_btn_update.Anchor = System.Windows.Forms.AnchorStyles.Bottom
-        Me.acc_staff_btn_update.Location = New System.Drawing.Point(580, 18)
+        Me.acc_staff_btn_update.Location = New System.Drawing.Point(560, 21)
         Me.acc_staff_btn_update.Name = "acc_staff_btn_update"
         Me.acc_staff_btn_update.Size = New System.Drawing.Size(85, 24)
         Me.acc_staff_btn_update.TabIndex = 24
@@ -3920,7 +3897,7 @@ Partial Class Main
         Me.rpv1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.rpv1.Location = New System.Drawing.Point(0, 0)
         Me.rpv1.Name = "rpv1"
-        Me.rpv1.SelectedPage = Me.rpvp1_main
+        Me.rpv1.SelectedPage = Me.rpvp2_reservation
         Me.rpv1.Size = New System.Drawing.Size(1358, 583)
         Me.rpv1.TabIndex = 0
         Me.rpv1.Text = "Home"
@@ -3971,7 +3948,7 @@ Partial Class Main
         Me.rec_dtp_date.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
         Me.rec_dtp_date.CustomFormat = "MM/d/yyyy"
         Me.rec_dtp_date.Format = System.Windows.Forms.DateTimePickerFormat.Custom
-        Me.rec_dtp_date.Location = New System.Drawing.Point(561, 19)
+        Me.rec_dtp_date.Location = New System.Drawing.Point(561, 24)
         Me.rec_dtp_date.MinimumSize = New System.Drawing.Size(0, 24)
         Me.rec_dtp_date.Name = "rec_dtp_date"
         '
@@ -4002,6 +3979,61 @@ Partial Class Main
         Me.lu_date.Text = "07/25/2016"
         Me.lu_date.ThemeName = "VisualStudio2012Dark"
         Me.lu_date.Value = New Date(2016, 7, 25, 10, 55, 49, 565)
+        '
+        'RadGroupBox9
+        '
+        Me.RadGroupBox9.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping
+        Me.RadGroupBox9.Controls.Add(Me.eq_btn_clear)
+        Me.RadGroupBox9.Controls.Add(Me.eq_btn_delete)
+        Me.RadGroupBox9.Controls.Add(Me.eq_btn_update)
+        Me.RadGroupBox9.Controls.Add(Me.eq_btn_save)
+        Me.RadGroupBox9.HeaderText = "Controls"
+        Me.RadGroupBox9.Location = New System.Drawing.Point(5, 203)
+        Me.RadGroupBox9.Name = "RadGroupBox9"
+        Me.RadGroupBox9.Size = New System.Drawing.Size(592, 60)
+        Me.RadGroupBox9.TabIndex = 1
+        Me.RadGroupBox9.Text = "Controls"
+        Me.RadGroupBox9.ThemeName = "VisualStudio2012Dark"
+        '
+        'eq_btn_clear
+        '
+        Me.eq_btn_clear.Anchor = System.Windows.Forms.AnchorStyles.Bottom
+        Me.eq_btn_clear.Location = New System.Drawing.Point(90, 21)
+        Me.eq_btn_clear.Name = "eq_btn_clear"
+        Me.eq_btn_clear.Size = New System.Drawing.Size(85, 24)
+        Me.eq_btn_clear.TabIndex = 15
+        Me.eq_btn_clear.Text = "Clear"
+        Me.eq_btn_clear.ThemeName = "VisualStudio2012Dark"
+        '
+        'eq_btn_delete
+        '
+        Me.eq_btn_delete.Anchor = System.Windows.Forms.AnchorStyles.Bottom
+        Me.eq_btn_delete.Location = New System.Drawing.Point(181, 21)
+        Me.eq_btn_delete.Name = "eq_btn_delete"
+        Me.eq_btn_delete.Size = New System.Drawing.Size(85, 24)
+        Me.eq_btn_delete.TabIndex = 14
+        Me.eq_btn_delete.Text = "Delete"
+        Me.eq_btn_delete.ThemeName = "VisualStudio2012Dark"
+        '
+        'eq_btn_update
+        '
+        Me.eq_btn_update.Anchor = System.Windows.Forms.AnchorStyles.Bottom
+        Me.eq_btn_update.Location = New System.Drawing.Point(481, 21)
+        Me.eq_btn_update.Name = "eq_btn_update"
+        Me.eq_btn_update.Size = New System.Drawing.Size(85, 24)
+        Me.eq_btn_update.TabIndex = 13
+        Me.eq_btn_update.Text = "Update"
+        Me.eq_btn_update.ThemeName = "VisualStudio2012Dark"
+        '
+        'eq_btn_save
+        '
+        Me.eq_btn_save.Anchor = System.Windows.Forms.AnchorStyles.Bottom
+        Me.eq_btn_save.Location = New System.Drawing.Point(481, 24)
+        Me.eq_btn_save.Name = "eq_btn_save"
+        Me.eq_btn_save.Size = New System.Drawing.Size(85, 24)
+        Me.eq_btn_save.TabIndex = 12
+        Me.eq_btn_save.Text = "Save"
+        Me.eq_btn_save.ThemeName = "VisualStudio2012Dark"
         '
         'Main
         '
@@ -4174,12 +4206,8 @@ Partial Class Main
         CType(Me.eq_equipment, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.eq_equipmentlocation, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.eq_owner, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.eq_btn_save, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.eq_btn_update, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.eq_type, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.eq_btn_delete, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.eq_btn_other, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.eq_btn_clear, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RadGroupBox21, System.ComponentModel.ISupportInitialize).EndInit()
         Me.RadGroupBox21.ResumeLayout(False)
         Me.RadGroupBox21.PerformLayout()
@@ -4277,6 +4305,12 @@ Partial Class Main
         CType(Me.rel_tb_startdate, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.rec_dtp_date, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.lu_date, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RadGroupBox9, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.RadGroupBox9.ResumeLayout(False)
+        CType(Me.eq_btn_clear, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.eq_btn_delete, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.eq_btn_update, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.eq_btn_save, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
@@ -4424,12 +4458,8 @@ Partial Class Main
     Friend WithEvents RadLabel54 As Telerik.WinControls.UI.RadLabel
     Friend WithEvents eq_filter_eqno As Telerik.WinControls.UI.RadTextBox
     Friend WithEvents RadGroupBox15 As Telerik.WinControls.UI.RadGroupBox
-    Friend WithEvents eq_btn_clear As Telerik.WinControls.UI.RadButton
     Friend WithEvents eq_btn_other As Telerik.WinControls.UI.RadButton
-    Friend WithEvents eq_btn_delete As Telerik.WinControls.UI.RadButton
     Friend WithEvents eq_type As Telerik.WinControls.UI.RadDropDownList
-    Friend WithEvents eq_btn_update As Telerik.WinControls.UI.RadButton
-    Friend WithEvents eq_btn_save As Telerik.WinControls.UI.RadButton
     Friend WithEvents eq_owner As Telerik.WinControls.UI.RadTextBox
     Friend WithEvents eq_equipmentlocation As Telerik.WinControls.UI.RadTextBox
     Friend WithEvents eq_equipment As Telerik.WinControls.UI.RadTextBox
@@ -4504,5 +4534,10 @@ Partial Class Main
     Friend WithEvents RadGroupBox1 As Telerik.WinControls.UI.RadGroupBox
     Friend WithEvents main_rgv_recordedacademicsmain As Telerik.WinControls.UI.RadGridView
     Friend WithEvents rpv1 As Telerik.WinControls.UI.RadPageView
+    Friend WithEvents RadGroupBox9 As Telerik.WinControls.UI.RadGroupBox
+    Friend WithEvents eq_btn_clear As Telerik.WinControls.UI.RadButton
+    Friend WithEvents eq_btn_delete As Telerik.WinControls.UI.RadButton
+    Friend WithEvents eq_btn_update As Telerik.WinControls.UI.RadButton
+    Friend WithEvents eq_btn_save As Telerik.WinControls.UI.RadButton
 End Class
 

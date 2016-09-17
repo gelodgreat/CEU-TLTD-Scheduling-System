@@ -1110,7 +1110,7 @@ Public Class Main
 
     'Equipment Management Codes Umali E2 EQ_BTN_SAVE
 
-    Private Sub eq_btn_save_Click(sender As Object, e As EventArgs) Handles eq_btn_save.Click
+    Private Sub eq_btn_save_Click(sender As Object, e As EventArgs)
         MysqlConn = New MySqlConnection
         MysqlConn.ConnectionString = connstring
         Dim reader As MySqlDataReader
@@ -1175,7 +1175,7 @@ Public Class Main
 
     'Equipment Management Codes Umali E3 EQ_BTN_UPDATE
 
-    Private Sub eq_btn_update_Click(sender As Object, e As EventArgs) Handles eq_btn_update.Click
+    Private Sub eq_btn_update_Click(sender As Object, e As EventArgs)
         If MysqlConn.State = ConnectionState.Open Then
             MysqlConn.Close()
         End If
@@ -1221,7 +1221,7 @@ Public Class Main
 
     'Equipment Management Codes Umali E4 EQ_BTN_DELETE
 
-    Private Sub eq_btn_delete_Click(sender As Object, e As EventArgs) Handles eq_btn_delete.Click
+    Private Sub eq_btn_delete_Click(sender As Object, e As EventArgs)
         If MysqlConn.State = ConnectionState.Open Then
             MysqlConn.Close()
         End If
@@ -1287,7 +1287,7 @@ Public Class Main
 
     'Equipment Management Codes Umali E6 = EQ_BTN_CLEAR
 
-    Private Sub eq_btn_clear_Click(sender As Object, e As EventArgs) Handles eq_btn_clear.Click
+    Private Sub eq_btn_clear_Click(sender As Object, e As EventArgs)
         eq_equipmentno.Text = ""
         eq_equipment.Text = ""
         eq_equipmentlocation.Text = ""
