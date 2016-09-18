@@ -1464,7 +1464,6 @@ Partial Class Main
         'res_notret_info
         '
         Me.res_notret_info.Controls.Add(Me.reserved_grid_list)
-        Me.res_notret_info.ItemSize = New System.Drawing.SizeF(153.0!, 24.0!)
         Me.res_notret_info.Location = New System.Drawing.Point(5, 30)
         Me.res_notret_info.Name = "res_notret_info"
         Me.res_notret_info.Size = New System.Drawing.Size(1335, 270)
@@ -1493,7 +1492,6 @@ Partial Class Main
         'rel_penalty_info
         '
         Me.rel_penalty_info.Controls.Add(Me.released_grid_list)
-        Me.rel_penalty_info.ItemSize = New System.Drawing.SizeF(152.0!, 24.0!)
         Me.rel_penalty_info.Location = New System.Drawing.Point(5, 30)
         Me.rel_penalty_info.Name = "rel_penalty_info"
         Me.rel_penalty_info.Size = New System.Drawing.Size(1335, 270)
@@ -4067,7 +4065,7 @@ Partial Class Main
         Me.rpv1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.rpv1.Location = New System.Drawing.Point(0, 0)
         Me.rpv1.Name = "rpv1"
-        Me.rpv1.SelectedPage = Me.rpvp_releasing
+        Me.rpv1.SelectedPage = Me.rpvp2_reservation
         Me.rpv1.Size = New System.Drawing.Size(1358, 583)
         Me.rpv1.TabIndex = 0
         Me.rpv1.Text = "Home"
