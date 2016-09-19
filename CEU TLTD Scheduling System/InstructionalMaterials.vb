@@ -34,6 +34,50 @@ Public Class InstructionalMaterials
         load_all_movielist_in_main()
     End Sub
 
+    'MENU BAR
+     Private Sub MenuBar_MouseLeave(sender As Object, e As EventArgs) Handles menuItem_DBManage.MouseLeave, menuItem_About.MouseLeave
+        If ThemeResolutionService.ApplicationThemeName = "VisualStudio2012Dark" Then
+        Dim item As RadMenuItem = TryCast(sender, RadMenuItem)
+	   item.FillPrimitive.BackColor = Color.Transparent
+      End IF
+    End Sub
+
+    Private Sub MenuBar_MouseEnter(sender As Object, e As EventArgs) Handles menuItem_DBManage.MouseEnter, menuItem_About.MouseEnter
+    If ThemeResolutionService.ApplicationThemeName = "VisualStudio2012Dark" Then
+	Dim item As RadMenuItem = TryCast(sender, RadMenuItem)
+	item.FillPrimitive.BackColor = Color.FromArgb(62, 62, 64)
+	item.FillPrimitive.GradientStyle = Telerik.WinControls.GradientStyles.Solid
+    End IF
+End Sub
+        Private Sub menuItem_LoadDB_Click(sender As Object, e As EventArgs) Handles menuItem_LoadDB.Click
+           DBPasswordPrompt.Show()
+    End Sub
+
+    Private Sub menuItem_SaveDB_Click(sender As Object, e As EventArgs) Handles menuItem_SaveDB.Click
+        Dim savedb_dialog As New SaveFileDialog()
+        savedb_dialog.Filter = "mySQL Database|*.sql"
+        savedb_dialog.Title = "Choose a Location to Save"
+        Dim mysql_SAVE As New MySqlBackup(comm)
+        mysql_SAVE.ExportInfo.AddCreateDatabase = True
+        'mysql_SAVE.ExportInfo.EnableEncryption = True
+        'mysql_SAVE.ExportInfo.EncryptionPassword="9Wy3Z3xTApDKUtPVN+TegRLTGR2mj8_M3*3ZJwSts83g9+pL?ZLEn?3xnuMR!2g"
+        If savedb_dialog.ShowDialog() = DialogResult.OK Then
+            Try
+                MySQLConn.Open()
+                mysql_SAVE.ExportToFile(savedb_dialog.FileName.ToString)
+                MySQLConn.Close()
+                RadMessageBox.Show("Database Successfully Exported.", "TLTD Scheduling System", MessageBoxButtons.OK, RadMessageIcon.Info)
+            Catch ex As MySqlException
+                RadMessageBox.Show("Error in Importing Database:" & Environment.NewLine & ex.Message, "TLTD Scheduling System", MessageBoxButtons.OK, RadMessageIcon.Error)
+            End Try
+        End If
+    End Sub
+
+        Private Sub menuItem_About_Click(sender As Object, e As EventArgs) Handles menuItem_About.Click
+        MsgBox("ABOUT WINDOW HERE")
+    End Sub
+
+
     'STARTING HERE IS THE DEVELOPMENT OF Instructional Materals Management
 
     'Loading all movielist in Main Page
@@ -267,11 +311,7 @@ Public Class InstructionalMaterials
         End If
 
 
-
-
-
     End Sub
-
 
 
 

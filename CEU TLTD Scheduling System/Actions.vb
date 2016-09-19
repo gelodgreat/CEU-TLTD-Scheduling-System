@@ -1,5 +1,6 @@
 ﻿Imports System.Security.Cryptography
 Imports System.Security
+
 Public Class Actions
     Shared entropy As Byte() = System.Text.Encoding.Unicode.GetBytes("woprjepi0-32i-w0dowop3k2c90m4cr429j5mv430kr320-rm-32rm32-9ricm329m0329mc39mejfm209jmr09jmrxcij320cj")
 
