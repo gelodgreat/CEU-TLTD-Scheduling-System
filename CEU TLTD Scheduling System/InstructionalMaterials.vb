@@ -34,6 +34,34 @@ Public Class InstructionalMaterials
         load_all_movielist_in_main()
     End Sub
 
+    'MENU BAR
+     Private Sub MenuBar_MouseLeave(sender As Object, e As EventArgs) Handles menuItem_DBManage.MouseLeave, menuItem_About.MouseLeave
+         If ThemeResolutionService.ApplicationThemeName = "VisualStudio2012Dark" Then
+             Dim item As RadMenuItem = TryCast(sender, RadMenuItem)
+	         item.FillPrimitive.BackColor = Color.Transparent
+         End IF
+    End Sub
+
+    Private Sub MenuBar_MouseEnter(sender As Object, e As EventArgs) Handles menuItem_DBManage.MouseEnter, menuItem_About.MouseEnter
+        If ThemeResolutionService.ApplicationThemeName = "VisualStudio2012Dark" Then
+	        Dim item As RadMenuItem = TryCast(sender, RadMenuItem)
+	        item.FillPrimitive.BackColor = Color.FromArgb(62, 62, 64)
+	    item.FillPrimitive.GradientStyle = Telerik.WinControls.GradientStyles.Solid
+        End IF
+    End Sub
+    Private Sub menuItem_LoadDB_Click(sender As Object, e As EventArgs) Handles menuItem_LoadDB.Click
+        DBPasswordPrompt.Show()
+    End Sub
+
+    Private Sub menuItem_SaveDB_Click(sender As Object, e As EventArgs) Handles menuItem_SaveDB.Click
+        Actions.SaveDB()
+    End Sub
+
+        Private Sub menuItem_About_Click(sender As Object, e As EventArgs) Handles menuItem_About.Click
+        MsgBox("ABOUT WINDOW HERE")
+    End Sub
+
+
     'STARTING HERE IS THE DEVELOPMENT OF Instructional Materals Management
 
     'Loading all movielist in Main Page
@@ -267,11 +295,7 @@ Public Class InstructionalMaterials
         End If
 
 
-
-
-
     End Sub
-
 
 
 

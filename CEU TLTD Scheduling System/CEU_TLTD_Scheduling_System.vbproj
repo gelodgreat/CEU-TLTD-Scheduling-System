@@ -48,9 +48,13 @@
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="MySql.Data, Version=6.9.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+    <Reference Include="MySql.Data, Version=6.9.7.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\#Resources\MySql.Data.dll</HintPath>
+      <HintPath>dll\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="MySqlBackup, Version=2.0.9.2, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>dll\MySqlBackup.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
@@ -110,6 +114,12 @@
     <Compile Include="ConnectionSettings.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="DBPasswordPrompt.Designer.vb">
+      <DependentUpon>DBPasswordPrompt.vb</DependentUpon>
+    </Compile>
+    <Compile Include="DBPasswordPrompt.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="GlobalVariableModule.vb" />
     <Compile Include="InstructionalMaterials.Designer.vb">
       <DependentUpon>InstructionalMaterials.vb</DependentUpon>
@@ -149,6 +159,9 @@
     <EmbeddedResource Include="ConnectionSettings.resx">
       <DependentUpon>ConnectionSettings.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="DBPasswordPrompt.resx">
+      <DependentUpon>DBPasswordPrompt.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="InstructionalMaterials.resx">
       <DependentUpon>InstructionalMaterials.vb</DependentUpon>
     </EmbeddedResource>
@@ -179,6 +192,8 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="dll\MySql.Data.dll" />
+    <Content Include="dll\MySqlBackup.dll" />
     <Content Include="Note 8.27.16.txt" />
   </ItemGroup>
   <ItemGroup>
