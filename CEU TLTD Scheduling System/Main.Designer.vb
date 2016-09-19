@@ -2003,7 +2003,7 @@ Partial Class Main
         Me.rpvp2_reservation.ItemSize = New System.Drawing.SizeF(140.0!, 24.0!)
         Me.rpvp2_reservation.Location = New System.Drawing.Point(5, 30)
         Me.rpvp2_reservation.Name = "rpvp2_reservation"
-        Me.rpvp2_reservation.Size = New System.Drawing.Size(1348, 522)
+        Me.rpvp2_reservation.Size = New System.Drawing.Size(1348, 548)
         Me.rpvp2_reservation.Text = "Reservation Management"
         '
         'RadGroupBox4
@@ -2036,7 +2036,7 @@ Partial Class Main
         Me.RadGroupBox4.Controls.Add(Me.RadLabel1)
         Me.RadGroupBox4.Controls.Add(Me.rec_dtp_date)
         Me.RadGroupBox4.HeaderText = "Details"
-        Me.RadGroupBox4.Location = New System.Drawing.Point(0, 253)
+        Me.RadGroupBox4.Location = New System.Drawing.Point(0, 279)
         Me.RadGroupBox4.Name = "RadGroupBox4"
         Me.RadGroupBox4.Size = New System.Drawing.Size(671, 266)
         Me.RadGroupBox4.TabIndex = 1
@@ -2583,7 +2583,7 @@ Partial Class Main
         Me.RadGroupBox5.Controls.Add(Me.rec_del_eq)
         Me.RadGroupBox5.Controls.Add(Me.RadGroupBox17)
         Me.RadGroupBox5.HeaderText = "Equipments"
-        Me.RadGroupBox5.Location = New System.Drawing.Point(677, 253)
+        Me.RadGroupBox5.Location = New System.Drawing.Point(677, 279)
         Me.RadGroupBox5.Name = "RadGroupBox5"
         Me.RadGroupBox5.Size = New System.Drawing.Size(668, 269)
         Me.RadGroupBox5.TabIndex = 2
@@ -2781,7 +2781,7 @@ Partial Class Main
         Me.RadGroupBox3.HeaderText = "List of Reservation"
         Me.RadGroupBox3.Location = New System.Drawing.Point(0, -3)
         Me.RadGroupBox3.Name = "RadGroupBox3"
-        Me.RadGroupBox3.Size = New System.Drawing.Size(1345, 250)
+        Me.RadGroupBox3.Size = New System.Drawing.Size(1345, 276)
         Me.RadGroupBox3.TabIndex = 0
         Me.RadGroupBox3.Text = "List of Reservation"
         Me.RadGroupBox3.ThemeName = "VisualStudio2012Dark"
@@ -2803,7 +2803,7 @@ Partial Class Main
         Me.reservation_rgv_recordeddata.MasterTemplate.ViewDefinition = TableViewDefinition6
         Me.reservation_rgv_recordeddata.Name = "reservation_rgv_recordeddata"
         Me.reservation_rgv_recordeddata.ReadOnly = True
-        Me.reservation_rgv_recordeddata.Size = New System.Drawing.Size(1341, 230)
+        Me.reservation_rgv_recordeddata.Size = New System.Drawing.Size(1341, 256)
         Me.reservation_rgv_recordeddata.TabIndex = 3
         Me.reservation_rgv_recordeddata.Text = "RadGridView2"
         Me.reservation_rgv_recordeddata.ThemeName = "VisualStudio2012Dark"
@@ -2825,7 +2825,7 @@ Partial Class Main
         Me.reservations_rgv_showavailableitems.MasterTemplate.ViewDefinition = TableViewDefinition7
         Me.reservations_rgv_showavailableitems.Name = "reservations_rgv_showavailableitems"
         Me.reservations_rgv_showavailableitems.ReadOnly = True
-        Me.reservations_rgv_showavailableitems.Size = New System.Drawing.Size(1341, 230)
+        Me.reservations_rgv_showavailableitems.Size = New System.Drawing.Size(1341, 256)
         Me.reservations_rgv_showavailableitems.TabIndex = 1
         Me.reservations_rgv_showavailableitems.Text = "RadGridView2"
         Me.reservations_rgv_showavailableitems.ThemeName = "VisualStudio2012Dark"
@@ -4075,7 +4075,7 @@ Partial Class Main
         Me.rpv1.DefaultPage = Me.rpvp1_main
         Me.rpv1.Location = New System.Drawing.Point(0, 26)
         Me.rpv1.Name = "rpv1"
-        Me.rpv1.SelectedPage = Me.rpvp2_reservation
+        Me.rpv1.SelectedPage = Me.rpvp_releasing
         Me.rpv1.Size = New System.Drawing.Size(1358, 557)
         Me.rpv1.TabIndex = 0
         Me.rpv1.Text = "Home"
