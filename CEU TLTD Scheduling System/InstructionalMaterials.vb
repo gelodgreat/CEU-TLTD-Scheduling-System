@@ -23,19 +23,28 @@ Public Class InstructionalMaterials
     Dim penaltiesDeleteYN As DialogResult
 
 
+
+
+
+    Private Sub InstructionalMaterials_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        load_all_movielist()
+        load_all_movielist_in_main()
+        load_all_subtopics()
+        hide_buttons_on_load()
+    End Sub
+
+    Public Sub hide_buttons_on_load()
+        imm_nv_btn_update.Hide()
+        imm_nv_btn_delete.Hide()
+    End Sub
+
     Private Sub InstructionalMaterials_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
         Me.Hide()
         Main.Show()
     End Sub
 
-    Private Sub InstructionalMaterials_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        load_all_movielist()
-        load_all_subtopics()
-        load_all_movielist_in_main()
-    End Sub
-
     'MENU BAR
-     Private Sub MenuBar_MouseLeave(sender As Object, e As EventArgs) Handles menuItem_DBManage.MouseLeave, menuItem_About.MouseLeave
+    Private Sub MenuBar_MouseLeave(sender As Object, e As EventArgs) Handles menuItem_DBManage.MouseLeave, menuItem_About.MouseLeave
          If ThemeResolutionService.ApplicationThemeName = "VisualStudio2012Dark" Then
              Dim item As RadMenuItem = TryCast(sender, RadMenuItem)
 	         item.FillPrimitive.BackColor = Color.Transparent
@@ -79,7 +88,7 @@ Public Class InstructionalMaterials
 
         Try
             MysqlConn.Open()
-            query = "SELECT vid_id as 'Video ID', subject as 'Subject' , topic as 'Topic' , video_media_type as 'Media Type', duration as 'Duration' FROM movielist ORDER BY subject ASC,vid_id ASC"
+            query = "SELECT vid_id as 'Video ID', subject as 'Subject' , topic as 'Topic' , video_media_type as 'Media Type', duration as 'Duration',DATE_FORMAT(acquisition,'%M %d %Y') as 'Acquisition Date' FROM movielist ORDER BY subject ASC,vid_id ASC"
             comm = New MySqlCommand(query, MysqlConn)
             sda.SelectCommand = comm
             sda.Fill(imdbdataset)
@@ -101,7 +110,7 @@ Public Class InstructionalMaterials
 
             Dim duration = Me.immain_rgv_movielist.Columns("Duration")
             duration.TextAlignment = ContentAlignment.MiddleCenter
-            duration.Width = 75
+            duration.Width = 70
 
             Dim subject = Me.immain_rgv_movielist.Columns("Subject")
             subject.TextAlignment = ContentAlignment.MiddleCenter
@@ -115,6 +124,10 @@ Public Class InstructionalMaterials
             topic.WrapText = True
             topic.TextAlignment = ContentAlignment.MiddleCenter
             topic.Width = 300
+
+            Dim ac_date = Me.imm_rgv_im_movielists.Columns("Acquisition Date")
+            ac_date.TextAlignment = ContentAlignment.MiddleCenter
+            ac_date.Width = 60
         End Try
 
     End Sub
@@ -135,7 +148,7 @@ Public Class InstructionalMaterials
 
         Try
             MysqlConn.Open()
-            query = "SELECT vid_id as 'Video ID', subject as 'Subject' , topic as 'Topic' , video_media_type as 'Media Type', duration as 'Duration' FROM movielist ORDER BY subject ASC,vid_id ASC"
+            query = "SELECT vid_id as 'Video ID', subject as 'Subject' , topic as 'Topic' , video_media_type as 'Media Type', duration as 'Duration',DATE_FORMAT(acquisition,'%M %d %Y') as 'Acquisition Date' FROM movielist ORDER BY subject ASC,vid_id ASC"
             comm = New MySqlCommand(query, MysqlConn)
             sda.SelectCommand = comm
             sda.Fill(imdbdataset)
@@ -157,7 +170,7 @@ Public Class InstructionalMaterials
 
             Dim duration = Me.imm_rgv_im_movielists.Columns("Duration")
             duration.TextAlignment = ContentAlignment.MiddleCenter
-            duration.Width = 75
+            duration.Width = 70
 
             Dim subject = Me.imm_rgv_im_movielists.Columns("Subject")
             subject.TextAlignment = ContentAlignment.MiddleCenter
@@ -166,6 +179,10 @@ Public Class InstructionalMaterials
             Dim mediatype = Me.imm_rgv_im_movielists.Columns("Media Type")
             mediatype.TextAlignment = ContentAlignment.MiddleCenter
             mediatype.Width = 50
+
+            Dim ac_date = Me.imm_rgv_im_movielists.Columns("Acquisition Date")
+            ac_date.TextAlignment = ContentAlignment.MiddleCenter
+            ac_date.Width = 60
 
             Dim topic = Me.imm_rgv_im_movielists.Columns("Topic")
             topic.WrapText = True
@@ -239,7 +256,7 @@ Public Class InstructionalMaterials
         End If
 
         If (imm_nv_cb_subject.Text = "") Or (imm_nv_cb_mediatype.Text = "") Or (imm_nv_dtp_acquisitiondate.Text = "") Or (imm_nv_dtp_duration.Text = "") Or (imm_nv_tb_topic.Text = "") Or (imm_nv_tb_vidid.Text = "") Then
-            RadMessageBox.Show(Me, "Please complete the fields to update!", "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
+            RadMessageBox.Show(Me, "Please complete the fields to save the movie!", "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
 
         Else
             Try
@@ -269,17 +286,18 @@ Public Class InstructionalMaterials
 
                     addYN = RadMessageBox.Show(Me, "Are you sure you want to add this movie?", "TLTD Scheduling Management", MessageBoxButtons.YesNo, RadMessageIcon.Question)
                     If addYN = MsgBoxResult.Yes Then
-                        query = "INSERT INTO `movielist` VALUES  (vid_id=@mvl_vidid , subject=@mvl_subject , topic=@mvl_topic , video_media_type=@mvl_mediatype , duration=@mvl_duration)"
+                        query = "INSERT INTO `movielist` VALUES  (@mvl_vidid , @mvl_subject , @mvl_topic , @mvl_mediatype , @mvl_duration , @mvl_acquisition)"
                         comm = New MySqlCommand(query, MysqlConn)
 
-                        comm.Parameters.AddWithValue("mvl_id", imm_nv_tb_vidid.Text)
+                        comm.Parameters.AddWithValue("mvl_vidid", imm_nv_tb_vidid.Text)
                         comm.Parameters.AddWithValue("mvl_subject", imm_nv_cb_subject.Text)
                         comm.Parameters.AddWithValue("mvl_topic", imm_nv_tb_topic.Text)
                         comm.Parameters.AddWithValue("mvl_mediatype", imm_nv_cb_mediatype.Text)
-                        comm.Parameters.AddWithValue("mvl_duration", imm_nv_dtp_duration.Text)
+                        comm.Parameters.AddWithValue("mvl_duration", Format(CDate(imm_nv_dtp_duration.Value), "HH:mm:ss"))
+                        comm.Parameters.AddWithValue("mvl_acquisition", Format(CDate(imm_nv_dtp_acquisitiondate.Value), "yyyy-MM-dd"))
 
                         reader = comm.ExecuteReader
-                        RadMessageBox.Show(Me, "Movie Registered Successfully!", "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
+                        RadMessageBox.Show(Me, "Movie Registered Successfully!", "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Info)
                         MysqlConn.Close()
                     End If
                 End If
@@ -289,6 +307,8 @@ Public Class InstructionalMaterials
                 RadMessageBox.Show(Me, ex.Message, "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
             Finally
                 MysqlConn.Dispose()
+                load_all_movielist()
+                load_all_movielist_in_main()
             End Try
 
 
@@ -296,6 +316,96 @@ Public Class InstructionalMaterials
 
 
     End Sub
+
+    Private Sub imm_nv_btn_update_Click(sender As Object, e As EventArgs) Handles imm_nv_btn_update.Click
+        If (MysqlConn.State = ConnectionState.Open) Then
+            MysqlConn.Close()
+        End If
+
+        updateYN = RadMessageBox.Show(Me, "Are you sure you want to update this movie?", "TLTD Scheduling Management" < MessageBoxButtons.YesNo, RadMessageIcon.Question)
+        If updateYN = MsgBoxResult.Yes Then
+            If (imm_nv_tb_vidid.Text = "") Or (imm_nv_cb_subject.Text = "") Or (imm_nv_tb_topic.Text = "") Or (imm_nv_cb_mediatype.Text = "") Or (imm_nv_dtp_duration.Text = "") Or (imm_nv_dtp_acquisitiondate.Text = "") Then
+                RadMessageBox.Show(Me, "Please complete the fields To update!", "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
+            Else
+                Try
+                    MysqlConn.Open()
+                    query = "UPDATE movielist SET video_movie_type=@mvl_mediatype , duration=@mvl_duration , acquisition=@mvl_acquisition WHERE (vid_id=@mvl_vidid) AND (mvl_subject=@mvl_subject) AND (topic=@mvl_topic) "
+
+                    comm = New MySqlCommand(query, MysqlConn)
+
+                    comm.Parameters.AddWithValue("mvl_vidid", imm_nv_tb_vidid.Text)
+                    comm.Parameters.AddWithValue("mvl_subject", imm_nv_cb_subject.Text)
+                    comm.Parameters.AddWithValue("mvl_topic", imm_nv_tb_topic.Text)
+                    comm.Parameters.AddWithValue("mvl_mediatype", imm_nv_cb_mediatype.Text)
+                    comm.Parameters.AddWithValue("mvl_duration", Format(CDate(imm_nv_dtp_duration.Value), "HH:mm:ss"))
+                    comm.Parameters.AddWithValue("mvl_acquisition", Format(CDate(imm_nv_dtp_acquisitiondate.Value), "yyyy-MM-dd"))
+                    reader = comm.ExecuteReader
+
+
+                Catch ex As Exception
+                    RadMessageBox.Show(Me, ex.Message, "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
+                Finally
+                    MysqlConn.Dispose()
+                    load_all_movielist()
+                    load_all_movielist_in_main()
+                End Try
+            End If
+        End If
+    End Sub
+
+    Private Sub imm_nv_btn_delete_Click(sender As Object, e As EventArgs) Handles imm_nv_btn_delete.Click
+
+    End Sub
+
+
+    Private Sub imm_nv_btn_clear_Click(sender As Object, e As EventArgs) Handles imm_nv_btn_clear.Click
+        imm_nv_tb_vidid.Text = ""
+        imm_nv_cb_subject.Text = ""
+        imm_nv_tb_topic.Text = ""
+        imm_nv_cb_mediatype.Text = ""
+        imm_nv_dtp_duration.Text = "00:00:00"
+        imm_nv_dtp_acquisitiondate.Value = Date.Now
+        imm_nv_tb_vidid.Enabled = True
+        imm_nv_cb_subject.Enabled = True
+        imm_nv_tb_topic.Enabled = True
+    End Sub
+
+
+    Private Sub imm_rgv_im_movielists_CellDoubleClick(sender As Object, e As GridViewCellEventArgs) Handles imm_rgv_im_movielists.CellDoubleClick
+        'Unfinished
+        If e.RowIndex >= 0 Then
+            Dim row As Telerik.WinControls.UI.GridViewRowInfo
+            row = Me.imm_rgv_im_movielists.Rows(e.RowIndex)
+
+            imm_nv_tb_vidid.Text = row.Cells("Video ID").Value.ToString
+            imm_nv_cb_subject.Text = row.Cells("Subject").Value.ToString
+            imm_nv_tb_topic.Text = row.Cells("Topic").Value.ToString
+            imm_nv_cb_mediatype.Text = row.Cells("Media Type").Value.ToString
+            imm_nv_dtp_duration.Text = row.Cells("Duration").Value.ToString
+            imm_nv_dtp_acquisitiondate.Value = row.Cells("Acquisition Date").Value.ToString
+        End If
+
+        imm_nv_btn_update.Show()
+        imm_nv_btn_delete.Show()
+
+        imm_nv_tb_vidid.Enabled = False
+        imm_nv_cb_subject.Enabled = False
+        imm_nv_tb_topic.Enabled = False
+
+    End Sub
+
+
+
+    Private Sub imm_rgv_im_subtopics_CellDoubleClick(sender As Object, e As GridViewCellEventArgs) Handles imm_rgv_im_subtopics.CellDoubleClick
+        imm_nv_btn_update.Show()
+        imm_nv_btn_delete.Show()
+    End Sub
+
+
+
+
+
+
 
 
 
