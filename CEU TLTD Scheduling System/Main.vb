@@ -2228,16 +2228,20 @@ End Sub
                         MysqlConn.Close()
                     End If
                     MysqlConn.Open()
-                    Dim Query As String = "INSERT INTO ceutltdscheduler.penalties (bor_id,bor_name,eq_no,eq_name,res_date,st_time,ed_time,ret_mark,ret_date) VALUES(@borrowerid,@borrowername,@eqno,@eqname,@resdate,@stime,@etime,@retmark,DATE_FORMAT(now(), '%Y-%m-%d %H:%i'))"
+                    Dim Query As String = "INSERT INTO ceutltdscheduler.returned_info (ret_reservation_num,ret_id_passnum,ret_borrower,ret_equipment_no,ret_equipment,ret_assign_date,ret_starttime,ret_endtime,ret_status,ret_releasedby,ret_returnedto,ret_remarks) VALUES(@resno,@borrowerid,@borrowername,@eqno,@eqname,@resdate,@stime,@etime,'Returned',@staff_releaser,@staff_returner,@remarks); DELETE FROM ceutltdscheduler.released_info WHERE rel_id_passnum=@borrowerid and rel_reservation_no=@resno and rel_borrower=@borrowername and rel_equipment_no=@eqno and rel_equipment=@eqname and rel_assign_date=@resdate and rel_starttime=@stime and rel_endtime=@etime and rel_releasedby=@staff_releaser"
                     comm = New MySqlCommand(Query, MysqlConn)
-                    comm.Parameters.AddWithValue("@borrowerid", ret_tb_id.Text)
+                    comm.Parameters.AddWithValue("@resno", ret_tb_reservationnum.Text)
+					comm.Parameters.AddWithValue("@borrowerid", ret_tb_id.Text)
                     comm.Parameters.AddWithValue("@borrowername", ret_tb_borrower.Text)
                     comm.Parameters.AddWithValue("@eqno", ret_tb_equipmentnum.Text)
                     comm.Parameters.AddWithValue("@eqname", ret_tb_equipment.Text)
                     comm.Parameters.AddWithValue("@resdate", Format(CDate(ret_tb_sdate.Value), "yyyy-MM-dd"))
                     comm.Parameters.AddWithValue("@stime", ret_tb_stime.Text)
                     comm.Parameters.AddWithValue("@etime", ret_tb_etime.Text)
-                    comm.Parameters.AddWithValue("@retmark", ret_nameofstaff_return.Text)
+					comm.Parameters.AddWithValue("@staff_releaser",ret_nameofstaff_release2.Text)
+                    comm.Parameters.AddWithValue("@staff_returner", ret_nameofstaff_return.Text)
+					'comm.Parameters.AddWithValue("@remarks", ret_remarks.Text)
+					comm.Parameters.AddWithValue("@remarks", "Ganda mo Teh")
                     comm.ExecuteNonQuery()
                     MysqlConn.Close()
 
@@ -2245,7 +2249,7 @@ End Sub
                     MessageBox.Show(ex.Message)
                 Finally
                     MysqlConn.Dispose()
-                    load_penalty_list()
+                    load_released_list2()
                 End Try
                 RadMessageBox.Show(Me, "Congratulations!, The Item is returned early.", "TLTD Scheduling System", MessageBoxButtons.OK, RadMessageIcon.Info, MessageBoxDefaultButton.Button1)
             Else
@@ -2263,25 +2267,29 @@ End Sub
                         If MysqlConn.State = ConnectionState.Open Then
                             MysqlConn.Close()
                         End If
-                        MysqlConn.Open()
-                        Dim Query As String = "INSERT INTO ceutltdscheduler.penalties (bor_id,bor_name,eq_no,eq_name,res_date,st_time,ed_time,ret_mark,ret_date) VALUES(@borrowerid,@borrowername,@eqno,@eqname,@resdate,@stime,@etime,@retmark,DATE_FORMAT(now(), '%Y-%m-%d %H:%i'))"
-                        comm = New MySqlCommand(Query, MysqlConn)
-                        comm.Parameters.AddWithValue("@borrowerid", ret_tb_id.Text)
-                        comm.Parameters.AddWithValue("@borrowername", ret_tb_borrower.Text)
-                        comm.Parameters.AddWithValue("@eqno", ret_tb_equipmentnum.Text)
-                        comm.Parameters.AddWithValue("@eqname", ret_tb_equipment.Text)
-                        comm.Parameters.AddWithValue("@resdate", Format(CDate(ret_tb_sdate.Value), "yyyy-MM-dd"))
-                        comm.Parameters.AddWithValue("@stime", ret_tb_stime.Text)
-                        comm.Parameters.AddWithValue("@etime", ret_tb_etime.Text)
-                        comm.Parameters.AddWithValue("@retmark", ret_nameofstaff_return.Text)
-                        comm.ExecuteNonQuery()
-                        MysqlConn.Close()
+                         MysqlConn.Open()
+                    Dim Query As String = "INSERT INTO ceutltdscheduler.returned_info (ret_reservation_num,ret_id_passnum,ret_borrower,ret_equipment_no,ret_equipment,ret_assign_date,ret_starttime,ret_endtime,ret_status,ret_releasedby,ret_returnedto,ret_remarks) VALUES(@resno,@borrowerid,@borrowername,@eqno,@eqname,@resdate,@stime,@etime,'Returned',@staff_releaser,@staff_returner,@remarks); DELETE FROM ceutltdscheduler.released_info WHERE rel_id_passnum=@borrowerid and rel_reservation_no=@resno and rel_borrower=@borrowername and rel_equipment_no=@eqno and rel_equipment=@eqname and rel_assign_date=@resdate and rel_starttime=@stime and rel_endtime=@etime and rel_releasedby=@staff_releaser"
+                    comm = New MySqlCommand(Query, MysqlConn)
+                    comm.Parameters.AddWithValue("@resno", ret_tb_reservationnum.Text)
+					comm.Parameters.AddWithValue("@borrowerid", ret_tb_id.Text)
+                    comm.Parameters.AddWithValue("@borrowername", ret_tb_borrower.Text)
+                    comm.Parameters.AddWithValue("@eqno", ret_tb_equipmentnum.Text)
+                    comm.Parameters.AddWithValue("@eqname", ret_tb_equipment.Text)
+                    comm.Parameters.AddWithValue("@resdate", Format(CDate(ret_tb_sdate.Value), "yyyy-MM-dd"))
+                    comm.Parameters.AddWithValue("@stime", ret_tb_stime.Text)
+                    comm.Parameters.AddWithValue("@etime", ret_tb_etime.Text)
+					comm.Parameters.AddWithValue("@staff_releaser",ret_nameofstaff_release2.Text)
+                    comm.Parameters.AddWithValue("@staff_returner", ret_nameofstaff_return.Text)
+					'comm.Parameters.AddWithValue("@remarks", ret_remarks.Text)
+					comm.Parameters.AddWithValue("@remarks", "Ganda mo Teh")
+                    comm.ExecuteNonQuery()
+                    MysqlConn.Close()
 
                     Catch ex As MySqlException
                         MessageBox.Show(ex.Message)
                     Finally
                         MysqlConn.Dispose()
-                        load_penalty_list()
+                        load_released_list2()
                     End Try
                     RadMessageBox.Show(Me, "Congratulations! The item is returned on time." & Environment.NewLine & String.Format("Exceeded Time: {0:%m} minutes(s)", elapsedTime), "TLTD Scheduling System", MessageBoxButtons.OK, RadMessageIcon.Exclamation, MessageBoxDefaultButton.Button1)
                 ElseIf charge > 0 Then
@@ -2291,8 +2299,9 @@ End Sub
                                 MysqlConn.Close()
                             End If
                             MysqlConn.Open()
-                            Dim Query As String = "INSERT INTO ceutltdscheduler.penalties (bor_id,bor_name,eq_no,eq_name,res_date,st_time,ed_time,bor_price,ret_mark,ret_date) VALUES(@borrowerid,@borrowername,@eqno,@eqname,@resdate,@stime,@etime,@price,@retmark,DATE_FORMAT(now(), '%Y-%m-%d %H:%i'))"
+                            Dim Query As String = "INSERT INTO ceutltdscheduler.penalties (bor_id,bor_name,eq_no,eq_name,res_date,st_time,ed_time,bor_price,ret_mark,ret_date) VALUES(@borrowerid,@borrowername,@eqno,@eqname,@resdate,@stime,@etime,@price,@staff_returner,DATE_FORMAT(now(), '%Y-%m-%d %H:%i'));INSERT INTO ceutltdscheduler.returned_info (ret_reservation_num,ret_id_passnum,ret_borrower,ret_equipment_no,ret_equipment,ret_assign_date,ret_starttime,ret_endtime,ret_status,ret_releasedby,ret_returnedto,ret_remarks) VALUES(@resno,@borrowerid,@borrowername,@eqno,@eqname,@resdate,@stime,@etime,'Returned',@staff_releaser,@staff_returner,@remarks); DELETE FROM ceutltdscheduler.released_info WHERE rel_id_passnum=@borrowerid and rel_reservation_no=@resno and rel_borrower=@borrowername and rel_equipment_no=@eqno and rel_equipment=@eqname and rel_assign_date=@resdate and rel_starttime=@stime and rel_endtime=@etime and rel_releasedby=@staff_releaser"
                             comm = New MySqlCommand(Query, MysqlConn)
+							comm.Parameters.AddWithValue("@resno", ret_tb_reservationnum.Text)
                             comm.Parameters.AddWithValue("@borrowerid", ret_tb_id.Text)
                             comm.Parameters.AddWithValue("@borrowername", ret_tb_borrower.Text)
                             comm.Parameters.AddWithValue("@eqno", ret_tb_equipmentnum.Text)
@@ -2301,7 +2310,10 @@ End Sub
                             comm.Parameters.AddWithValue("@stime", ret_tb_stime.Text)
                             comm.Parameters.AddWithValue("@etime", ret_tb_etime.Text)
                             comm.Parameters.AddWithValue("@price", (charge * 100).ToString)
-                            comm.Parameters.AddWithValue("@retmark", ret_nameofstaff_return.Text)
+							comm.Parameters.AddWithValue("@staff_releaser",ret_nameofstaff_release2.Text)
+                            comm.Parameters.AddWithValue("@staff_returner", ret_nameofstaff_return.Text)
+							'comm.Parameters.AddWithValue("@remarks", ret_remarks.Text)
+							comm.Parameters.AddWithValue("@remarks", "Ganda mo Teh")
                             comm.ExecuteNonQuery()
                             MysqlConn.Close()
                         Catch ex As MySqlException
@@ -2309,6 +2321,7 @@ End Sub
                         Finally
                             MysqlConn.Dispose()
                             load_penalty_list()
+                            load_released_list2()
                         End Try
                         RadMessageBox.Show(Me, "Time Exceeded!!" & Environment.NewLine & Environment.NewLine & String.Format("Exceeding Time: {0:%d} day(s)", elapsedTime) & String.Format(" {0:%h} hours(s) ", elapsedTime) & String.Format("{0:%m} minutes(s)", elapsedTime) & Environment.NewLine & "Charge is: " & (charge * 100) & " pesos.", "TLTD Scheduling System", MessageBoxButtons.OK, RadMessageIcon.Error, MessageBoxDefaultButton.Button1)
                     Else
@@ -2317,8 +2330,9 @@ End Sub
                                 MysqlConn.Close()
                             End If
                             MysqlConn.Open()
-                            Dim Query As String = "INSERT INTO ceutltdscheduler.penalties (bor_id,bor_name,eq_no,eq_name,res_date,st_time,ed_time,bor_price,ret_mark,ret_date) VALUES(@borrowerid,@borrowername,@eqno,@eqname,@resdate,@stime,@etime,@price,@retmark,DATE_FORMAT(now(), '%Y-%m-%d %H:%i'))"
+                            Dim Query As String = "INSERT INTO ceutltdscheduler.penalties (bor_id,bor_name,eq_no,eq_name,res_date,st_time,ed_time,bor_price,ret_mark,ret_date) VALUES(@borrowerid,@borrowername,@eqno,@eqname,@resdate,@stime,@etime,@price,@staff_returner,DATE_FORMAT(now(), '%Y-%m-%d %H:%i'));INSERT INTO ceutltdscheduler.returned_info (ret_reservation_num,ret_id_passnum,ret_borrower,ret_equipment_no,ret_equipment,ret_assign_date,ret_starttime,ret_endtime,ret_status,ret_releasedby,ret_returnedto,ret_remarks) VALUES(@resno,@borrowerid,@borrowername,@eqno,@eqname,@resdate,@stime,@etime,'Returned',@staff_releaser,@staff_returner,@remarks); DELETE FROM ceutltdscheduler.released_info WHERE rel_id_passnum=@borrowerid and rel_reservation_no=@resno and rel_borrower=@borrowername and rel_equipment_no=@eqno and rel_equipment=@eqname and rel_assign_date=@resdate and rel_starttime=@stime and rel_endtime=@etime and rel_releasedby=@staff_releaser"
                             comm = New MySqlCommand(Query, MysqlConn)
+							comm.Parameters.AddWithValue("@resno", ret_tb_reservationnum.Text)
                             comm.Parameters.AddWithValue("@borrowerid", ret_tb_id.Text)
                             comm.Parameters.AddWithValue("@borrowername", ret_tb_borrower.Text)
                             comm.Parameters.AddWithValue("@eqno", ret_tb_equipmentnum.Text)
@@ -2327,7 +2341,10 @@ End Sub
                             comm.Parameters.AddWithValue("@stime", ret_tb_stime.Text)
                             comm.Parameters.AddWithValue("@etime", ret_tb_etime.Text)
                             comm.Parameters.AddWithValue("@price", (charge * 100).ToString)
-                            comm.Parameters.AddWithValue("@retmark", ret_nameofstaff_return.Text)
+							comm.Parameters.AddWithValue("@staff_releaser",ret_nameofstaff_release2.Text)
+                            comm.Parameters.AddWithValue("@staff_returner", ret_nameofstaff_return.Text)
+							'comm.Parameters.AddWithValue("@remarks", ret_remarks.Text)
+							comm.Parameters.AddWithValue("@remarks", "Ganda mo Teh")
                             comm.ExecuteNonQuery()
                             MysqlConn.Close()
                         Catch ex As MySqlException
@@ -2335,6 +2352,8 @@ End Sub
                         Finally
                             MysqlConn.Dispose()
                             load_penalty_list()
+							load_released_list2()
+							'load_return_info() 'NAWAWALA PAH
                         End Try
                         RadMessageBox.Show(Me, "Time Exceeded!!" & Environment.NewLine & Environment.NewLine & String.Format("Exceeding Time: {0:%h} hours(s) ", elapsedTime) & String.Format("{0:%m} minutes(s)", elapsedTime) & Environment.NewLine & "Charge is: " & (charge * 100) & " pesos.", "TLTD Scheduling System", MessageBoxButtons.OK, RadMessageIcon.Error, MessageBoxDefaultButton.Button1)
                     End If
