@@ -54,23 +54,7 @@ End Sub
     End Sub
 
     Private Sub menuItem_SaveDB_Click(sender As Object, e As EventArgs) Handles menuItem_SaveDB.Click
-        Dim savedb_dialog As New SaveFileDialog()
-        savedb_dialog.Filter = "mySQL Database|*.sql"
-        savedb_dialog.Title = "Choose a Location to Save"
-        Dim mysql_SAVE As New MySqlBackup(comm)
-        mysql_SAVE.ExportInfo.AddCreateDatabase = True
-        'mysql_SAVE.ExportInfo.EnableEncryption = True
-        'mysql_SAVE.ExportInfo.EncryptionPassword="9Wy3Z3xTApDKUtPVN+TegRLTGR2mj8_M3*3ZJwSts83g9+pL?ZLEn?3xnuMR!2g"
-        If savedb_dialog.ShowDialog() = DialogResult.OK Then
-            Try
-                MySQLConn.Open()
-                mysql_SAVE.ExportToFile(savedb_dialog.FileName.ToString)
-                MySQLConn.Close()
-                RadMessageBox.Show("Database Successfully Exported.", "TLTD Scheduling System", MessageBoxButtons.OK, RadMessageIcon.Info)
-            Catch ex As MySqlException
-                RadMessageBox.Show("Error in Importing Database:" & Environment.NewLine & ex.Message, "TLTD Scheduling System", MessageBoxButtons.OK, RadMessageIcon.Error)
-            End Try
-        End If
+      Actions.SaveDB()
     End Sub
 
     Private Sub menuItem_About_Click(sender As Object, e As EventArgs) Handles menuItem_About.Click
