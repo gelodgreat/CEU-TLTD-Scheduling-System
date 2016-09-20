@@ -1797,13 +1797,13 @@ End Sub
                                 MysqlConn.Open()
 
                                 'Modified with params and nonparams
-                                'query = "SELECT * FROM reservation WHERE reservationno=@RE_reservationno AND equipment=@RE_equipment AND equipmentsn=@RE_equipmentsn AND equipmentno=@RE_equipmentno AND (('" & Format(CDate(rec_dtp_date.Value), "yyyy-MM-dd") & " " & Format(CDate(rec_dtp_starttime.Text), "HH:mm") & "' BETWEEN CONCAT(date,' ',starttime) AND CONCAT(date,' ',endtime)) OR ('" & Format(CDate(rec_dtp_date.Value), "yyyy-MM-dd") & " " & Format(CDate(rec_dtp_endtime.Text), "HH:mm") & "' BETWEEN CONCAT(date,' ',starttime) AND CONCAT (date,' ',endtime))) "
+                                query = "SELECT * FROM reservation WHERE equipment=@RE_equipment AND equipmentsn=@RE_equipmentsn AND equipmentno=@RE_equipmentno AND (('" & Format(CDate(rec_dtp_date.Value), "yyyy-MM-dd") & " " & Format(CDate(rec_dtp_starttime.Text), "HH:mm:00") & "' BETWEEN CONCAT(date,' ',starttime) AND CONCAT(date,' ',endtime)) OR ('" & Format(CDate(rec_dtp_date.Value), "yyyy-MM-dd") & " " & Format(CDate(rec_dtp_endtime.Text), "HH:mm:00") & "' BETWEEN CONCAT(date,' ',starttime) AND CONCAT (date,' ',endtime))) "
 
                                 'Modified with Complete Params
-                                'query = "SELECT * FROM reservation WHERE (equipment=@RE_equipment OR equipmentsn=@RE_equipmentsn OR equipmentno=@RE_equipmentno) AND (('@RE_date' '@RE_starttime' BETWEEN CONCAT(date,' ',starttime) AND CONCAT(date,' ',endtime)) OR ('@RE_date' '@RE_endtime' BETWEEN CONCAT(date,' ',starttime) AND CONCAT (date,' ',endtime))) "
+                                'query = "SELECT * FROM reservation WHERE (equipment=@RE_equipment OR equipmentsn=@RE_equipmentsn OR equipmentno=@RE_equipmentno) AND (('@RE_date @RE_starttime' BETWEEN CONCAT(date,'',starttime) AND CONCAT(date,'',endtime)) OR ('@RE_date @RE_endtime' BETWEEN CONCAT(date,' ',starttime) AND CONCAT (date,' ',endtime))) "
 
                                 'Original
-                                query = "Select * from reservation where reservationno=@RE_reservationno And equipment=@RE_equipment And equipmentsn=@RE_equipmentsn And equipmentno=@RE_equipmentno And Date=@RE_date And starttime=@RE_starttime And endtime=@RE_endtime"
+                                'query = "Select * from reservation where reservationno=@RE_reservationno And equipment=@RE_equipment And equipmentsn=@RE_equipmentsn And equipmentno=@RE_equipmentno And Date=@RE_date And starttime=@RE_starttime And endtime=@RE_endtime"
                                 comm = New MySqlCommand(query, MysqlConn)
                                 comm.Parameters.AddWithValue("RE_reservationno", rec_cb_reserveno.Text)
                                 comm.Parameters.AddWithValue("RE_equipment", equipmentrgv)
