@@ -23,6 +23,7 @@ Public Class Main
     Dim reserveYN As DialogResult
     Dim returnEquipYN As DialogResult
     Dim penaltiesDeleteYN As DialogResult
+    Dim returned_eqDeleteYN As DialogResult
 
 
 
@@ -33,7 +34,12 @@ Public Class Main
     Public equipment As String
     Public rowcounter As Integer = 0
 
+    'WU_SETTINGS'
+    Dim bdsrc_penaltylist As New BindingSource
+    Dim bdsrc_returnedeq As New BindingSource
     Dim eq_keepSelectedRowIndexAfterUpdate As Integer 'WU_TRY1
+    
+    'WU_SETTINGS'
 
     'MENU Bar
      Private Sub MenuBar_MouseLeave(sender As Object, e As EventArgs) Handles menuItem_DBManage.MouseLeave, menuItem_About.MouseLeave
@@ -78,6 +84,7 @@ End Sub
         load_released_list()
         load_released_list2()
         load_penalty_list()
+        load_returned_eq_list()
         rec_load_choices_eqtype()
         auto_generate_reservationno()
         reserved_load_table()
@@ -2157,51 +2164,12 @@ End Sub
 
     End Sub
 
-
-
-
-    Public Sub load_penalty_list()
-        MysqlConn = New MySqlConnection
-        MysqlConn.ConnectionString = connstring
-
-        Dim sda As New MySqlDataAdapter
-        Dim dbdataset As New DataTable
-        Dim bsource As New BindingSource
-
-        If MysqlConn.State = ConnectionState.Open Then
-            MysqlConn.Close()
-        End If
-
-        Try
-            MysqlConn.Open()
-            Dim query As String
-            'query = "Select rel_reservation_no as 'Reservation Number' , rel_id_passnum as 'Pass Number' , rel_borrower as 'Borrower' , rel_equipment_no as 'Equipment No' , rel_equipment as 'Equipment' , DATE_FORMAT(rel_assign_date,'%M %d %Y') as 'Date',TIME_FORMAT(rel_starttime, '%H:%i') as 'Start Time', TIME_FORMAT(rel_endtime, '%H:%i') as 'End Time' , rel_status as 'Status' , rel_releasedby as 'Released By'  from released_info"
-            query = "SELECT pen_id as 'Penalty ID',bor_id as 'Borrower ID', bor_name as 'Borrower Name', eq_no as 'Equipment Number', eq_name as 'Equipment Name', DATE_FORMAT(res_date,'%M %d %Y') as 'Reservation Date', TIME_FORMAT(st_time, '%H:%i') as 'Start Time', TIME_FORMAT(ed_time, '%H:%i') as 'End Time', bor_price as 'Price', ret_mark as 'Marked Returned By', DATE_FORMAT(ret_date, '%M %d %Y %H:%i') as 'Return Date' FROM ceutltdscheduler.penalties"
-            comm = New MySqlCommand(query, MysqlConn)
-            sda.SelectCommand = comm
-            sda.Fill(dbdataset)
-            bsource.DataSource = dbdataset
-            penalty_grid_list.DataSource = bsource
-            penalty_grid_list.ReadOnly = True
-            sda.Update(dbdataset)
-            MysqlConn.Close()
-        Catch ex As Exception
-            RadMessageBox.Show(Me, ex.Message, "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
-        Finally
-            MysqlConn.Dispose()
-        End Try
-    End Sub
-
-
-
-
-    Private Sub return_btn_returned_Click(sender As Object, e As EventArgs) Handles return_btn_returned.Click
+     Private Sub return_btn_returned_Click(sender As Object, e As EventArgs) Handles return_btn_returned.Click
         returnEquipYN = RadMessageBox.Show(Me, "Are you sure you want to return this equipment?", "TLTD Scheduling System", MessageBoxButtons.YesNo, RadMessageIcon.Question)
         Dim serverdatetime As String
         If returnEquipYN = MsgBoxResult.Yes Then
             'GET SERVERTIME
             Try
-
                 MysqlConn.Open()
                 Dim q As String = "SELECT date_format(now(), '%Y-%m-%d %H:%i') As SERVERTIME"
                 comm = New MySqlCommand(q, MysqlConn)
@@ -2240,8 +2208,7 @@ End Sub
                     comm.Parameters.AddWithValue("@etime", ret_tb_etime.Text)
 					comm.Parameters.AddWithValue("@staff_releaser",ret_nameofstaff_release2.Text)
                     comm.Parameters.AddWithValue("@staff_returner", ret_nameofstaff_return.Text)
-					'comm.Parameters.AddWithValue("@remarks", ret_remarks.Text)
-					comm.Parameters.AddWithValue("@remarks", "Ganda mo Teh")
+					comm.Parameters.AddWithValue("@remarks", ret_remarks.Text)
                     comm.ExecuteNonQuery()
                     MysqlConn.Close()
 
@@ -2250,6 +2217,7 @@ End Sub
                 Finally
                     MysqlConn.Dispose()
                     load_released_list2()
+                    load_returned_eq_list()
                 End Try
                 RadMessageBox.Show(Me, "Congratulations!, The Item is returned early.", "TLTD Scheduling System", MessageBoxButtons.OK, RadMessageIcon.Info, MessageBoxDefaultButton.Button1)
             Else
@@ -2280,8 +2248,7 @@ End Sub
                     comm.Parameters.AddWithValue("@etime", ret_tb_etime.Text)
 					comm.Parameters.AddWithValue("@staff_releaser",ret_nameofstaff_release2.Text)
                     comm.Parameters.AddWithValue("@staff_returner", ret_nameofstaff_return.Text)
-					'comm.Parameters.AddWithValue("@remarks", ret_remarks.Text)
-					comm.Parameters.AddWithValue("@remarks", "Ganda mo Teh")
+					comm.Parameters.AddWithValue("@remarks", ret_remarks.Text)
                     comm.ExecuteNonQuery()
                     MysqlConn.Close()
 
@@ -2290,6 +2257,7 @@ End Sub
                     Finally
                         MysqlConn.Dispose()
                         load_released_list2()
+                        load_returned_eq_list()
                     End Try
                     RadMessageBox.Show(Me, "Congratulations! The item is returned on time." & Environment.NewLine & String.Format("Exceeded Time: {0:%m} minutes(s)", elapsedTime), "TLTD Scheduling System", MessageBoxButtons.OK, RadMessageIcon.Exclamation, MessageBoxDefaultButton.Button1)
                 ElseIf charge > 0 Then
@@ -2312,8 +2280,7 @@ End Sub
                             comm.Parameters.AddWithValue("@price", (charge * 100).ToString)
 							comm.Parameters.AddWithValue("@staff_releaser",ret_nameofstaff_release2.Text)
                             comm.Parameters.AddWithValue("@staff_returner", ret_nameofstaff_return.Text)
-							'comm.Parameters.AddWithValue("@remarks", ret_remarks.Text)
-							comm.Parameters.AddWithValue("@remarks", "Ganda mo Teh")
+							comm.Parameters.AddWithValue("@remarks", ret_remarks.Text)
                             comm.ExecuteNonQuery()
                             MysqlConn.Close()
                         Catch ex As MySqlException
@@ -2322,6 +2289,7 @@ End Sub
                             MysqlConn.Dispose()
                             load_penalty_list()
                             load_released_list2()
+                            load_returned_eq_list()
                         End Try
                         RadMessageBox.Show(Me, "Time Exceeded!!" & Environment.NewLine & Environment.NewLine & String.Format("Exceeding Time: {0:%d} day(s)", elapsedTime) & String.Format(" {0:%h} hours(s) ", elapsedTime) & String.Format("{0:%m} minutes(s)", elapsedTime) & Environment.NewLine & "Charge is: " & (charge * 100) & " pesos.", "TLTD Scheduling System", MessageBoxButtons.OK, RadMessageIcon.Error, MessageBoxDefaultButton.Button1)
                     Else
@@ -2343,8 +2311,7 @@ End Sub
                             comm.Parameters.AddWithValue("@price", (charge * 100).ToString)
 							comm.Parameters.AddWithValue("@staff_releaser",ret_nameofstaff_release2.Text)
                             comm.Parameters.AddWithValue("@staff_returner", ret_nameofstaff_return.Text)
-							'comm.Parameters.AddWithValue("@remarks", ret_remarks.Text)
-							comm.Parameters.AddWithValue("@remarks", "Ganda mo Teh")
+							comm.Parameters.AddWithValue("@remarks", ret_remarks.Text)
                             comm.ExecuteNonQuery()
                             MysqlConn.Close()
                         Catch ex As MySqlException
@@ -2353,6 +2320,7 @@ End Sub
                             MysqlConn.Dispose()
                             load_penalty_list()
 							load_released_list2()
+                            load_returned_eq_list()
 							'load_return_info() 'NAWAWALA PAH
                         End Try
                         RadMessageBox.Show(Me, "Time Exceeded!!" & Environment.NewLine & Environment.NewLine & String.Format("Exceeding Time: {0:%h} hours(s) ", elapsedTime) & String.Format("{0:%m} minutes(s)", elapsedTime) & Environment.NewLine & "Charge is: " & (charge * 100) & " pesos.", "TLTD Scheduling System", MessageBoxButtons.OK, RadMessageIcon.Error, MessageBoxDefaultButton.Button1)
@@ -2364,6 +2332,39 @@ End Sub
         End If
     End Sub
 
+     'Penalty GRIDVIEW Controls
+    Public Sub load_penalty_list()
+        MysqlConn = New MySqlConnection
+        MysqlConn.ConnectionString = connstring
+
+        Dim sda As New MySqlDataAdapter
+        Dim dbdataset As New DataTable
+        
+
+        If MysqlConn.State = ConnectionState.Open Then
+            MysqlConn.Close()
+        End If
+
+        Try
+            MysqlConn.Open()
+            Dim query As String
+            'query = "Select rel_reservation_no as 'Reservation Number' , rel_id_passnum as 'Pass Number' , rel_borrower as 'Borrower' , rel_equipment_no as 'Equipment No' , rel_equipment as 'Equipment' , DATE_FORMAT(rel_assign_date,'%M %d %Y') as 'Date',TIME_FORMAT(rel_starttime, '%H:%i') as 'Start Time', TIME_FORMAT(rel_endtime, '%H:%i') as 'End Time' , rel_status as 'Status' , rel_releasedby as 'Released By'  from released_info"
+            query = "SELECT pen_id as 'Penalty ID',bor_id as 'Pass #', bor_name as 'Borrower Name', eq_no as 'Equipment Number', eq_name as 'Equipment Name', DATE_FORMAT(res_date,'%M %d %Y') as 'Reservation Date', TIME_FORMAT(st_time, '%H:%i') as 'Start Time', TIME_FORMAT(ed_time, '%H:%i') as 'End Time', bor_price as 'Price', ret_mark as 'Marked Returned By', DATE_FORMAT(ret_date, '%M %d %Y %H:%i') as 'Return Date' FROM ceutltdscheduler.penalties"
+            comm = New MySqlCommand(query, MysqlConn)
+            sda.SelectCommand = comm
+            sda.Fill(dbdataset)
+            bdsrc_penaltylist.DataSource = dbdataset
+            penalty_grid_list.DataSource = bdsrc_penaltylist
+            penalty_grid_list.ReadOnly = True
+            sda.Update(dbdataset)
+            MysqlConn.Close()
+            'penalty_grid_list.Columns("Penalty ID").IsVisible = false 'SHOW LATER
+        Catch ex As Exception
+            RadMessageBox.Show(Me, ex.Message, "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
+        Finally
+            MysqlConn.Dispose()
+        End Try
+    End Sub
     Private Sub penalty_grid_list_CellDoubleClick(sender As Object, e As GridViewCellEventArgs) Handles penalty_grid_list.CellDoubleClick
         penaltiesDeleteYN = RadMessageBox.Show(Me, "Are you sure you want to delete the selected data?", "TLTD Scheduling System", MessageBoxButtons.YesNo, RadMessageIcon.Question)
         If penaltiesDeleteYN = MsgBoxResult.Yes Then
@@ -2372,7 +2373,6 @@ End Sub
             uniqueid = row.Cells("Penalty ID").Value.ToString
             Try
                 Dim query = "DELETE FROM ceutltdscheduler.penalties where pen_id=" & uniqueid
-                MsgBox(query)
                 MysqlConn.Open()
                 comm = New MySqlCommand(query, MysqlConn)
                 comm.ExecuteNonQuery()
@@ -2386,6 +2386,262 @@ End Sub
             End Try
         End If
     End Sub
+    Private Sub penalty_grid_list_sort(sender as object, e as GridViewCollectionChangedEventArgs)  Handles penalty_grid_list.SortChanged
+        Dim sorts As RadSortExpressionCollection = penalty_grid_list.MasterTemplate.SortDescriptors
+        If sorts.Count = 0
+          bdsrc_penaltylist.Sort = ""
+        Else
+        Dim sort as string = sorts.ToString()
+     
+    if (sort <> Me.bdsrc_penaltylist.Sort)
+        me.bdsrc_penaltylist.Sort = sort   
+    End If 
+ End If
+End Sub
+    Private Sub penalty_grid_list_ContextMenuOpening(sender As Object, e As ContextMenuOpeningEventArgs) Handles penalty_grid_list.ContextMenuOpening
+        If TypeOf Me.penalty_grid_list.CurrentRow Is GridViewDataRowInfo Then
+            Dim menu As New RadDropDownMenu()
+            Dim DeleteMenu As New RadMenuItem("Delete Selected Data")
+            AddHandler DeleteMenu.Click, AddressOf penalty_grid_list_DeleteRightClick
+            menu.Items.Add(DeleteMenu)
+            e.ContextMenu = menu
+        End If
+    End Sub
+    Private Sub penalty_grid_list_DeleteRightClick(sender As Object, e As EventArgs)
+        penaltiesDeleteYN = RadMessageBox.Show(Me, "Are you sure you want to delete the selected data?", "TLTD Scheduling System", MessageBoxButtons.YesNo, RadMessageIcon.Question)
+        If penaltiesDeleteYN = MsgBoxResult.Yes Then
+            Dim ligaw As Integer = 0
+            Dim uniqueid As String
+            Dim morethanOneSelected = False
+            Dim query = "DELETE FROM ceutltdscheduler.penalties where pen_id="
+            For Each row As GridViewRowInfo In penalty_grid_list.SelectedRows
+                row = penalty_grid_list.Rows(penalty_grid_list.SelectedRows(ligaw).Index)
+                uniqueid = row.Cells("Penalty ID").Value.ToString
+                If penalty_grid_list.SelectedRows.Count > 1 Then
+                    query += uniqueid
+                    query += " or "
+                    query += "pen_id="
+                    morethanOneSelected = True
+                Else
+                    query += uniqueid
+                End If
+                ligaw += 1
+            Next
+            Try
+                If morethanOneSelected Then
+                    query = (query.Remove(query.Length - 11, 11))
+                Else
+                End If
+                MysqlConn.Open()
+                comm = New MySqlCommand(query, MysqlConn)
+                comm.ExecuteNonQuery()
+                MysqlConn.Close()
+                RadMessageBox.Show(Me, "Selected penalties sucessfully deleted.", "TLTD Scheduling System", MessageBoxButtons.OK, RadMessageIcon.Info)
+            Catch ex As MySqlException
+                RadMessageBox.Show(Me, ex.Message, "TLTD Scheduling System", MessageBoxButtons.OK, RadMessageIcon.Error)
+            Finally
+                MysqlConn.Dispose()
+                load_penalty_list()
+            End Try
+        End If
+    End Sub
+    Private Sub penalty_grid_list_KeyPress(sender As Object, e As KeyEventArgs) Handles penalty_grid_list.KeyDown
+         If e.KeyCode = Keys.Delete Then
+        penaltiesDeleteYN = RadMessageBox.Show(Me, "Are you sure you want to delete the selected data?", "TLTD Scheduling System", MessageBoxButtons.YesNo, RadMessageIcon.Question)
+        If penaltiesDeleteYN = MsgBoxResult.Yes Then
+            Dim ligaw As Integer = 0
+            Dim uniqueid As String
+            Dim morethanOneSelected = False
+            Dim query = "DELETE FROM ceutltdscheduler.penalties where pen_id="
+            For Each row As GridViewRowInfo In penalty_grid_list.SelectedRows
+                row = penalty_grid_list.Rows(penalty_grid_list.SelectedRows(ligaw).Index)
+                uniqueid = row.Cells("Penalty ID").Value.ToString
+                If penalty_grid_list.SelectedRows.Count > 1 Then
+                    query += uniqueid
+                    query += " or "
+                    query += "pen_id="
+                    morethanOneSelected = True
+                Else
+                    query += uniqueid
+                End If
+                ligaw += 1
+            Next
+            Try
+                If morethanOneSelected Then
+                    query = (query.Remove(query.Length - 11, 11))
+                Else
+                End If
+                MysqlConn.Open()
+                comm = New MySqlCommand(query, MysqlConn)
+                comm.ExecuteNonQuery()
+                MysqlConn.Close()
+                RadMessageBox.Show(Me, "Selected penalties sucessfully deleted.", "TLTD Scheduling System", MessageBoxButtons.OK, RadMessageIcon.Info)
+            Catch ex As MySqlException
+                RadMessageBox.Show(Me, ex.Message, "TLTD Scheduling System", MessageBoxButtons.OK, RadMessageIcon.Error)
+            Finally
+                MysqlConn.Dispose()
+                load_penalty_list()
+            End Try
+
+        End If
+            End If
+    End Sub
+
+ 
+    'Returned Equipment GRIDVIEW Controls
+    Public Sub load_returned_eq_list()
+        MysqlConn = New MySqlConnection
+        MysqlConn.ConnectionString = connstring
+
+        Dim sda As New MySqlDataAdapter
+        Dim dbdataset As New DataTable
+        
+
+        If MysqlConn.State = ConnectionState.Open Then
+            MysqlConn.Close()
+        End If
+
+        Try
+            MysqlConn.Open()
+            Dim query As String
+            'query = "Select rel_reservation_no as 'Reservation Number' , rel_id_passnum as 'Pass Number' , rel_borrower as 'Borrower' , rel_equipment_no as 'Equipment No' , rel_equipment as 'Equipment' , DATE_FORMAT(rel_assign_date,'%M %d %Y') as 'Date',TIME_FORMAT(rel_starttime, '%H:%i') as 'Start Time', TIME_FORMAT(rel_endtime, '%H:%i') as 'End Time' , rel_status as 'Status' , rel_releasedby as 'Released By'  from released_info"
+            query = "SELECT ret_id as 'Return ID',ret_reservation_num as 'Reservation Number', ret_id_passnum as 'Pass #', ret_borrower as 'Borrower', ret_equipment_no as 'Equipment Number', ret_equipment as 'Equipment Name', DATE_FORMAT(ret_assign_date,'%M %d, %Y') as 'Assigned Date', TIME_FORMAT(ret_starttime, '%H:%i') as 'Start Time', TIME_FORMAT(ret_endtime, '%H:%i') as 'End Time', ret_releasedby as 'Released By', ret_returnedto as 'Returned To', ret_remarks as 'Remarks' FROM ceutltdscheduler.returned_info"
+            comm = New MySqlCommand(query, MysqlConn)
+            sda.SelectCommand = comm
+            sda.Fill(dbdataset)
+            bdsrc_returnedeq.DataSource = dbdataset
+            returned_eq_list.DataSource = bdsrc_returnedeq
+            returned_eq_list.ReadOnly = True
+            sda.Update(dbdataset)
+            MysqlConn.Close()
+            'returned_eq_list.Columns("Return ID").IsVisible = false 'SHOW LATER
+        Catch ex As Exception
+            RadMessageBox.Show(Me, ex.Message, "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
+        Finally
+            MysqlConn.Dispose()
+        End Try
+    End Sub
+    Private Sub returned_eq_list_CellDoubleClick(sender As Object, e As GridViewCellEventArgs) Handles returned_eq_list.CellDoubleClick
+        returned_eqDeleteYN = RadMessageBox.Show(Me, "Are you sure you want to delete the selected log?", "TLTD Scheduling System", MessageBoxButtons.YesNo, RadMessageIcon.Question)
+        If returned_eqDeleteYN = MsgBoxResult.Yes Then
+            Dim uniqueid As String
+            Dim row As GridViewRowInfo = returned_eq_list.Rows(e.RowIndex)
+            uniqueid = row.Cells("Return ID").Value.ToString
+            Try
+                Dim query = "DELETE FROM ceutltdscheduler.returned_info where ret_id=" & uniqueid
+                MysqlConn.Open()
+                comm = New MySqlCommand(query, MysqlConn)
+                comm.ExecuteNonQuery()
+                MysqlConn.Close()
+                RadMessageBox.Show(Me, "Selected log sucessfully deleted.", "TLTD Scheduling System", MessageBoxButtons.OK, RadMessageIcon.Info)
+            Catch ex As MySqlException
+                RadMessageBox.Show(Me, ex.Message, "TLTD Scheduling System", MessageBoxButtons.OK, RadMessageIcon.Error)
+            Finally
+                MysqlConn.Dispose()
+                load_returned_eq_list()
+            End Try
+        End If
+    End Sub
+    Private Sub returned_eq_list_sort(sender as object, e as GridViewCollectionChangedEventArgs)  Handles returned_eq_list.SortChanged
+        Dim sorts As RadSortExpressionCollection = returned_eq_list.MasterTemplate.SortDescriptors
+        If sorts.Count = 0
+          bdsrc_returnedeq.Sort = ""
+        Else
+        Dim sort as string = sorts.ToString()
+     
+    if (sort <> Me.bdsrc_returnedeq.Sort)
+        me.bdsrc_returnedeq.Sort = sort   
+    End If 
+ End If
+End Sub
+    Private Sub returned_eq_list_ContextMenuOpening(sender As Object, e As ContextMenuOpeningEventArgs) Handles returned_eq_list.ContextMenuOpening
+        If TypeOf Me.returned_eq_list.CurrentRow Is GridViewDataRowInfo Then
+            Dim menu As New RadDropDownMenu()
+            Dim DeleteMenu As New RadMenuItem("Delete Selected Data")
+            AddHandler DeleteMenu.Click, AddressOf returned_eq_list_DeleteRightClick
+            menu.Items.Add(DeleteMenu)
+            e.ContextMenu = menu
+        End If
+    End Sub
+    Private Sub returned_eq_list_DeleteRightClick(sender As Object, e As EventArgs)
+        returned_eqDeleteYN = RadMessageBox.Show(Me, "Are you sure you want to delete the selected data?", "TLTD Scheduling System", MessageBoxButtons.YesNo, RadMessageIcon.Question)
+        If returned_eqDeleteYN = MsgBoxResult.Yes Then
+            Dim ligaw As Integer = 0
+            Dim uniqueid As String
+            Dim morethanOneSelected = False
+            Dim query = "DELETE FROM ceutltdscheduler.returned_info where ret_id="
+            For Each row As GridViewRowInfo In returned_eq_list.SelectedRows
+                row = returned_eq_list.Rows(returned_eq_list.SelectedRows(ligaw).Index)
+                uniqueid = row.Cells("Return ID").Value.ToString
+                If returned_eq_list.SelectedRows.Count > 1 Then
+                    query += uniqueid
+                    query += " or "
+                    query += "ret_id="
+                    morethanOneSelected = True
+                Else
+                    query += uniqueid
+                End If
+                ligaw += 1
+            Next
+            Try
+                If morethanOneSelected Then
+                    query = (query.Remove(query.Length - 11, 11))
+                Else
+                End If
+                MysqlConn.Open()
+                comm = New MySqlCommand(query, MysqlConn)
+                comm.ExecuteNonQuery()
+                MysqlConn.Close()
+                RadMessageBox.Show(Me, "Selected logs sucessfully deleted.", "TLTD Scheduling System", MessageBoxButtons.OK, RadMessageIcon.Info)
+            Catch ex As MySqlException
+                RadMessageBox.Show(Me, ex.Message, "TLTD Scheduling System", MessageBoxButtons.OK, RadMessageIcon.Error)
+            Finally
+                MysqlConn.Dispose()
+                load_returned_eq_list()
+            End Try
+        End If
+    End Sub
+    Private Sub returned_eq_list_KeyPress(sender As Object, e As KeyEventArgs) Handles returned_eq_list.KeyDown
+         If e.KeyCode = Keys.Delete Then
+            returned_eqDeleteYN = RadMessageBox.Show(Me, "Are you sure you want to delete the selected data?", "TLTD Scheduling System", MessageBoxButtons.YesNo, RadMessageIcon.Question)
+        If returned_eqDeleteYN = MsgBoxResult.Yes Then
+            Dim ligaw As Integer = 0
+            Dim uniqueid As String
+            Dim morethanOneSelected = False
+            Dim query = "DELETE FROM ceutltdscheduler.returned_info where ret_id="
+            For Each row As GridViewRowInfo In returned_eq_list.SelectedRows
+                row = returned_eq_list.Rows(returned_eq_list.SelectedRows(ligaw).Index)
+                uniqueid = row.Cells("Return ID").Value.ToString
+                If returned_eq_list.SelectedRows.Count > 1 Then
+                    query += uniqueid
+                    query += " or "
+                    query += "ret_id="
+                    morethanOneSelected = True
+                Else
+                    query += uniqueid
+                End If
+                ligaw += 1
+            Next
+            Try
+                If morethanOneSelected Then
+                    query = (query.Remove(query.Length - 11, 11))
+                Else
+                End If
+                MysqlConn.Open()
+                comm = New MySqlCommand(query, MysqlConn)
+                comm.ExecuteNonQuery()
+                MysqlConn.Close()
+                RadMessageBox.Show(Me, "Selected logs sucessfully deleted.", "TLTD Scheduling System", MessageBoxButtons.OK, RadMessageIcon.Info)
+            Catch ex As MySqlException
+                RadMessageBox.Show(Me, ex.Message, "TLTD Scheduling System", MessageBoxButtons.OK, RadMessageIcon.Error)
+            Finally
+                MysqlConn.Dispose()
+                load_returned_eq_list()
+            End Try
+        End If
+      End If
+    End Sub
+
 
 
 
@@ -2394,12 +2650,6 @@ End Sub
         Me.Hide()
 
     End Sub
-
-
-
-
-
-
 
 
 
