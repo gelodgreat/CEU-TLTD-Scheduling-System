@@ -228,7 +228,7 @@ End Sub
             MysqlConn.Close()
 
         Catch ex As Exception
-            RadMessageBox.Show(Me, ex.Message, "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
+            RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
         Finally
             MysqlConn.Dispose()
 
@@ -263,7 +263,7 @@ End Sub
             MysqlConn.Close()
 
         Catch ex As Exception
-            RadMessageBox.Show(Me, ex.Message, "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
+            RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
         Finally
             MysqlConn.Dispose()
 
@@ -298,7 +298,7 @@ End Sub
             MysqlConn.Close()
 
         Catch ex As Exception
-            RadMessageBox.Show(Me, ex.Message, "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
+            RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
         Finally
             MysqlConn.Dispose()
 
@@ -333,7 +333,7 @@ End Sub
             MysqlConn.Close()
 
         Catch ex As Exception
-            RadMessageBox.Show(Me, ex.Message, "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
+            RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
         Finally
             MysqlConn.Dispose()
 
@@ -367,7 +367,7 @@ End Sub
             MysqlConn.Close()
 
         Catch ex As Exception
-            RadMessageBox.Show(Me, ex.Message, "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
+            RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
         Finally
             MysqlConn.Dispose()
 
@@ -399,7 +399,7 @@ End Sub
             MysqlConn.Close()
 
         Catch ex As MySqlException
-            RadMessageBox.Show(Me, ex.Message, "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
+            RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
         Finally
             MysqlConn.Dispose()
         End Try
@@ -419,7 +419,7 @@ End Sub
         MysqlConn.ConnectionString = connstring
         Dim READER As MySqlDataReader
         If (acc_sf_id.Text = "") Or (acc_sf_fname.Text = "") Or (acc_sf_mname.Text = " ") Or (acc_sf_lname.Text = " ") Or (acc_sf_usertype.Text = " ") Or (acc_sf_username.Text = " ") Then
-            RadMessageBox.Show(Me, "Please complete the fields to Save!", "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
+            RadMessageBox.Show(Me, "Please complete the fields to Save!", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
         Else
             Try
                 MysqlConn.Open()
@@ -435,7 +435,7 @@ End Sub
                 comm.Parameters.AddWithValue("staffPassword", acc_sf_password.Text)
 
 
-                svYN = RadMessageBox.Show(Me, "Are you sure you want To save this information? ", "TLTD Scheduling Management", MessageBoxButtons.YesNo, RadMessageIcon.Question)
+                svYN = RadMessageBox.Show(Me, "Are you sure you want To save this information? ", "CEU TLTD Reservation System", MessageBoxButtons.YesNo, RadMessageIcon.Question)
                 If svYN = MsgBoxResult.Yes Then
                     If (acc_sf_password.Text = acc_sf_retypepassword.Text) Then
                         READER = comm.ExecuteReader
@@ -469,7 +469,7 @@ End Sub
     'Programmed by BRENZ 4th point Cell Double Click
 
     Private Sub acc_staff_list_CellDoubleClick(sender As Object, e As GridViewCellEventArgs) Handles acc_staff_list.CellDoubleClick
-        updateYN = RadMessageBox.Show(Me, "Do you want to select this information?", "TLTD Scheduling Management", MessageBoxButtons.YesNo, RadMessageIcon.Question)
+        updateYN = RadMessageBox.Show(Me, "Do you want to select this information?", "CEU TLTD Reservation System", MessageBoxButtons.YesNo, RadMessageIcon.Question)
         If updateYN = MsgBoxResult.Yes Then
 
             If e.RowIndex >= 0 Then
@@ -504,10 +504,10 @@ End Sub
             MysqlConn.Close()
         End If
 
-        updateYN = RadMessageBox.Show(Me, "Do you want to update the selected Information?", "TLTD Scheduling Management", MessageBoxButtons.YesNo, RadMessageIcon.Question)
+        updateYN = RadMessageBox.Show(Me, "Do you want to update the selected Information?", "CEU TLTD Reservation System", MessageBoxButtons.YesNo, RadMessageIcon.Question)
         If updateYN = MsgBoxResult.Yes Then
             If (acc_sf_id.Text = "") Or (acc_sf_fname.Text = "") Or (acc_sf_mname.Text = " ") Or (acc_sf_lname.Text = " ") Or (acc_sf_usertype.Text = " ") Or (acc_sf_username.Text = " ") Then
-                RadMessageBox.Show(Me, "Please complete the fields to update!", "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
+                RadMessageBox.Show(Me, "Please complete the fields to update!", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
             Else
                 Try
                     MysqlConn.Open()
@@ -515,12 +515,12 @@ End Sub
                     comm = New MySqlCommand(query, MysqlConn)
                     reader = comm.ExecuteReader
 
-                    RadMessageBox.Show(Me, "Update Success!", "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Info)
+                    RadMessageBox.Show(Me, "Update Success!", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Info)
                     MysqlConn.Close()
 
 
                 Catch ex As Exception
-                    RadMessageBox.Show(Me, ex.Message, "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
+                    RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
                 Finally
                     MysqlConn.Dispose()
                 End Try
@@ -536,7 +536,7 @@ End Sub
             MysqlConn.Close()
         End If
 
-        deleteYN = RadMessageBox.Show(Me, "Are you sure you want To Delete this information? ", "TLTD Scheduling Management", MessageBoxButtons.YesNo, RadMessageIcon.Question)
+        deleteYN = RadMessageBox.Show(Me, "Are you sure you want To Delete this information? ", "CEU TLTD Reservation System", MessageBoxButtons.YesNo, RadMessageIcon.Question)
         If deleteYN = MsgBoxResult.Yes Then
             Try
                 MysqlConn.Open()
@@ -566,7 +566,7 @@ End Sub
 
     'Programmed by Brenz 7th point Clear Button!
     Private Sub acc_staff_btn_clear_Click(sender As Object, e As EventArgs) Handles acc_staff_btn_clear.Click
-        doneYN = RadMessageBox.Show(Me, "Are you sure you want to clear the fields?", "TLTD Scheduling Management", MessageBoxButtons.YesNo, RadMessageIcon.Question)
+        doneYN = RadMessageBox.Show(Me, "Are you sure you want to clear the fields?", "CEU TLTD Reservation System", MessageBoxButtons.YesNo, RadMessageIcon.Question)
         If doneYN = MsgBoxResult.Yes Then
             acc_sf_id.Text = " "
             acc_sf_fname.Text = " "
@@ -591,7 +591,7 @@ End Sub
         MysqlConn.ConnectionString = connstring
         Dim READER As MySqlDataReader
         If (acc_pf_id.Text = "") Or (acc_pf_fname.Text = "") Or (acc_pf_mname.Text = " ") Or (acc_pf_lname.Text = " ") Or (acc_pf_college.Text = " ") Then
-            RadMessageBox.Show(Me, "Please complete the fields to Save!", "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
+            RadMessageBox.Show(Me, "Please complete the fields to Save!", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
         Else
             Try
                 MysqlConn.Open()
@@ -632,7 +632,7 @@ End Sub
 
     'Programmed by Brenz 9th point Cell Double Click Prof List!
     Private Sub acc_prof_list_CellDoubleClick(sender As Object, e As GridViewCellEventArgs) Handles acc_prof_list.CellDoubleClick
-        updateYN = RadMessageBox.Show(Me, "Do you want to select this information?", "TLTD Scheduling Management", MessageBoxButtons.YesNo, RadMessageIcon.Question)
+        updateYN = RadMessageBox.Show(Me, "Do you want to select this information?", "CEU TLTD Reservation System", MessageBoxButtons.YesNo, RadMessageIcon.Question)
         If updateYN = MsgBoxResult.Yes Then
 
             If e.RowIndex >= 0 Then
@@ -664,10 +664,10 @@ End Sub
             MysqlConn.Close()
         End If
 
-        updateYN = RadMessageBox.Show(Me, "Do you want to update the selected Information?", "TLTD Scheduling Management", MessageBoxButtons.YesNo, RadMessageIcon.Question)
+        updateYN = RadMessageBox.Show(Me, "Do you want to update the selected Information?", "CEU TLTD Reservation System", MessageBoxButtons.YesNo, RadMessageIcon.Question)
         If updateYN = MsgBoxResult.Yes Then
             If (acc_pf_id.Text = "") Or (acc_pf_fname.Text = "") Or (acc_pf_mname.Text = " ") Or (acc_pf_lname.Text = " ") Or (acc_pf_college.Text = " ") Then
-                RadMessageBox.Show(Me, "Please complete the fields to update!", "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
+                RadMessageBox.Show(Me, "Please complete the fields to update!", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
             Else
                 Try
                     MysqlConn.Open()
@@ -675,12 +675,12 @@ End Sub
                     comm = New MySqlCommand(query, MysqlConn)
                     reader = comm.ExecuteReader
 
-                    RadMessageBox.Show(Me, "Update Success!", "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Info)
+                    RadMessageBox.Show(Me, "Update Success!", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Info)
                     MysqlConn.Close()
 
 
                 Catch ex As Exception
-                    RadMessageBox.Show(Me, ex.Message, "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
+                    RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
                 Finally
                     MysqlConn.Dispose()
                 End Try
@@ -695,7 +695,7 @@ End Sub
             MysqlConn.Close()
         End If
 
-        deleteYN = RadMessageBox.Show(Me, "Are you sure you want To Delete this information? ", "TLTD Scheduling Management", MessageBoxButtons.YesNo, RadMessageIcon.Question)
+        deleteYN = RadMessageBox.Show(Me, "Are you sure you want To Delete this information? ", "CEU TLTD Reservation System", MessageBoxButtons.YesNo, RadMessageIcon.Question)
         If deleteYN = MsgBoxResult.Yes Then
             Try
                 MysqlConn.Open()
@@ -726,7 +726,7 @@ End Sub
 
     'Programmed by Brenz 12th Point Clear Button
     Private Sub acc_prof_btn_clear_Click(sender As Object, e As EventArgs) Handles acc_prof_btn_clear.Click
-        doneYN = RadMessageBox.Show(Me, "Are you sure you want to clear the fields?", "TLTD Scheduling Management", MessageBoxButtons.YesNo, RadMessageIcon.Question)
+        doneYN = RadMessageBox.Show(Me, "Are you sure you want to clear the fields?", "CEU TLTD Reservation System", MessageBoxButtons.YesNo, RadMessageIcon.Question)
         If doneYN = MsgBoxResult.Yes Then
             acc_pf_id.Text = " "
             acc_pf_fname.Text = " "
@@ -766,7 +766,7 @@ End Sub
             sda.Update(dbdataset)
             MysqlConn.Close()
         Catch ex As Exception
-            RadMessageBox.Show(Me, ex.Message, "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
+            RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
         Finally
             MysqlConn.Dispose()
         End Try
@@ -798,7 +798,7 @@ End Sub
             sda.Update(dbdataset)
             MysqlConn.Close()
         Catch ex As Exception
-            RadMessageBox.Show(Me, ex.Message, "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
+            RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
         Finally
             MysqlConn.Dispose()
         End Try
@@ -811,7 +811,7 @@ End Sub
         MysqlConn.ConnectionString = connstring
         Dim READER As MySqlDataReader
         If (rel_tb_reservationnum.Text = "") Or (rel_tb_borrower.Text = "") Or (rel_tb_equipmentnum.Text = "") Or (rel_tb_equipment.Text = "") Or (rel_tb_startdate.Text = " ") Or (rel_tb_starttime.Text = " ") Or (rel_tb_endtime.Text = " ") Then
-            RadMessageBox.Show(Me, "Please complete the fields to Save!", "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
+            RadMessageBox.Show(Me, "Please complete the fields to Save!", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
         Else
             Try
                 MysqlConn.Open()
@@ -863,10 +863,10 @@ End Sub
             MysqlConn.Close()
         End If
 
-        updateYN = RadMessageBox.Show(Me, "Do you want to Update the Date/Time/Location of the Reserved Equipment?", "TLTD Scheduling Management", MessageBoxButtons.YesNo, RadMessageIcon.Question)
+        updateYN = RadMessageBox.Show(Me, "Do you want to Update the Date/Time/Location of the Reserved Equipment?", "CEU TLTD Reservation System", MessageBoxButtons.YesNo, RadMessageIcon.Question)
         If updateYN = MsgBoxResult.Yes Then
             If (rel_tb_startdate.Text = "") Or (rel_tb_starttime.Text = " ") Or (rel_tb_endtime.Text = " ") Then
-                RadMessageBox.Show(Me, "Please complete the fields to update!", "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
+                RadMessageBox.Show(Me, "Please complete the fields to update!", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
             Else
                 Try
                     MysqlConn.Open()
@@ -874,12 +874,12 @@ End Sub
                     comm = New MySqlCommand(query, MysqlConn)
                     reader = comm.ExecuteReader
 
-                    RadMessageBox.Show(Me, "Update Success!", "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Info)
+                    RadMessageBox.Show(Me, "Update Success!", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Info)
                     MysqlConn.Close()
 
 
                 Catch ex As Exception
-                    RadMessageBox.Show(Me, ex.Message, "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
+                    RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
                 Finally
                     MysqlConn.Dispose()
                     load_released_list()
@@ -894,7 +894,7 @@ End Sub
 
     'Programmed by BRENZ 17th Point Cancel BTN at Returning Management
     Private Sub return_btn_cancel_Click(sender As Object, e As EventArgs) Handles return_btn_cancel.Click
-        cancelYN = RadMessageBox.Show(Me, "Do you want to cancel returning? ", "TLTD Scheduling management", MessageBoxButtons.YesNo, RadMessageIcon.Question)
+        cancelYN = RadMessageBox.Show(Me, "Do you want to cancel returning? ", "CEU TLTD Reservation System", MessageBoxButtons.YesNo, RadMessageIcon.Question)
         If cancelYN = MsgBoxResult.Yes Then
             ret_tb_reservationnum.Text = ""
             ret_tb_id.Text = ""
@@ -912,7 +912,7 @@ End Sub
 
     'Programmed by BRENZ 18th Point Cancel BTN at Releasing Management
     Private Sub released_btn_cancel_Click(sender As Object, e As EventArgs) Handles released_btn_cancel.Click
-        cancelYN = RadMessageBox.Show(Me, "Do you want to cancel returning? ", "TLTD Scheduling management", MessageBoxButtons.YesNo, RadMessageIcon.Question)
+        cancelYN = RadMessageBox.Show(Me, "Do you want to cancel returning? ", "CEU TLTD Reservation System", MessageBoxButtons.YesNo, RadMessageIcon.Question)
         If cancelYN = MsgBoxResult.Yes Then
             rel_tb_id.Text = ""
             rel_tb_borrower.Text = ""
@@ -963,7 +963,7 @@ End Sub
             sda.Update(dbdataset)
             MysqlConn.Close()
         Catch ex As Exception
-            RadMessageBox.Show(Me, ex.Message, "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
+            RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
         Finally
             MysqlConn.Dispose()
         End Try
@@ -981,11 +981,11 @@ End Sub
             released = row.Cells("Status").Value.ToString
 
             If released = "Released" Then
-                RadMessageBox.Show(Me, "The equipment is already released", "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Exclamation)
+                RadMessageBox.Show(Me, "The equipment is already released", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Exclamation)
 
             Else
 
-                updateYN = RadMessageBox.Show(Me, "Do you want to select this information?", "TLTD Scheduling Management", MessageBoxButtons.YesNo, RadMessageIcon.Question)
+                updateYN = RadMessageBox.Show(Me, "Do you want to select this information?", "CEU TLTD Reservation System", MessageBoxButtons.YesNo, RadMessageIcon.Question)
                 If updateYN = MsgBoxResult.Yes Then
 
                     If e.RowIndex >= 0 Then
@@ -1021,7 +1021,7 @@ End Sub
 
     'Programmed by BRENZ/wu 21st Point Closing button
     Private Sub Main_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
-        closingYN = RadMessageBox.Show(Me, "Are you sure you want to Log-Out?", "TLTD Scheduling Management", MessageBoxButtons.YesNo, RadMessageIcon.Exclamation)
+        closingYN = RadMessageBox.Show(Me, "Are you sure you want to Log-Out?", "CEU TLTD Reservation System", MessageBoxButtons.YesNo, RadMessageIcon.Exclamation)
         If closingYN = MsgBoxResult.Yes Then
             Me.Dispose()
             Login.Show()
@@ -1035,7 +1035,7 @@ End Sub
 
 
     Private Sub released_grid_list2_CellDoubleClick(sender As Object, e As GridViewCellEventArgs) Handles released_grid_list2.CellDoubleClick
-        returnYN = RadMessageBox.Show(Me, "Do you want to select this information?", "TLTD Scheduling Management", MessageBoxButtons.YesNo, RadMessageIcon.Question)
+        returnYN = RadMessageBox.Show(Me, "Do you want to select this information?", "CEU TLTD Reservation System", MessageBoxButtons.YesNo, RadMessageIcon.Question)
         If returnYN = MsgBoxResult.Yes Then
 
             If e.RowIndex >= 0 Then
@@ -1108,7 +1108,7 @@ End Sub
             MysqlConn.Close()
 
         Catch ex As MySqlException
-            RadMessageBox.Show(Me, ex.Message, "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
+            RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
         Finally
             MysqlConn.Dispose()
         End Try
@@ -1149,7 +1149,7 @@ End Sub
             MysqlConn.Close()
 
         Catch ex As MySqlException
-            RadMessageBox.Show(Me, ex.Message, "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
+            RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
         Finally
             MysqlConn.Dispose()
         End Try
@@ -1192,7 +1192,7 @@ End Sub
             MysqlConn.Close()
 
         Catch ex As Exception
-            RadMessageBox.Show(Me, ex.Message, "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
+            RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
         Finally
             MysqlConn.Dispose()
 
@@ -1212,7 +1212,7 @@ End Sub
             MysqlConn.Close()
         End If
         If (eq_equipmentno.Text = "") Or (eq_sn.Text = "") Or (eq_equipment.Text = "") Or (eq_equipmentlocation.Text = "") Or (eq_owner.Text = "") Or (eq_status.Text = "") Then
-            RadMessageBox.Show(Me, "Please complete the fields to update!", "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
+            RadMessageBox.Show(Me, "Please complete the fields to update!", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
 
         Else
             Try
@@ -1234,7 +1234,7 @@ End Sub
                     MysqlConn.Close()
                     MysqlConn.Open()
 
-                    addYN = RadMessageBox.Show(Me, "Are you sure you want To save this equipment?", "TLTD Scheduling Management", MessageBoxButtons.YesNo, RadMessageIcon.Question)
+                    addYN = RadMessageBox.Show(Me, "Are you sure you want To save this equipment?", "CEU TLTD Reservation System", MessageBoxButtons.YesNo, RadMessageIcon.Question)
                     If addYN = MsgBoxResult.Yes Then
                         query = "INSERT INTO `equipments` VALUES (@eq_eqno, @eq_eqeq, @eq_eqsn, @eq_eqlocation, @eq_eqowner, @eq_eqstatus, @eq_eqtype)"
                         comm = New MySqlCommand(query, MysqlConn)
@@ -1249,12 +1249,12 @@ End Sub
 
 
                         reader = comm.ExecuteReader
-                        RadMessageBox.Show(Me, "Equipment Registered Successfully!", "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Info)
+                        RadMessageBox.Show(Me, "Equipment Registered Successfully!", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Info)
                         MysqlConn.Close()
                     End If
                 End If
             Catch ex As Exception
-                RadMessageBox.Show(Me, ex.Message, "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
+                RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
             Finally
                 MysqlConn.Dispose()
 
@@ -1272,10 +1272,10 @@ End Sub
             MysqlConn.Close()
         End If
 
-        updateYN = RadMessageBox.Show(Me, "Do you want To update the selected equipment?", "TLTD Scheduling Management", MessageBoxButtons.YesNo, RadMessageIcon.Question)
+        updateYN = RadMessageBox.Show(Me, "Do you want To update the selected equipment?", "CEU TLTD Reservation System", MessageBoxButtons.YesNo, RadMessageIcon.Question)
         If updateYN = MsgBoxResult.Yes Then
             If (eq_equipmentno.Text = "") Or (eq_sn.Text = "") Or (eq_equipment.Text = "") Or (eq_equipmentlocation.Text = "") Or (eq_owner.Text = "") Or (eq_status.Text = "") Then
-                RadMessageBox.Show(Me, "Please complete the fields To update!", "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
+                RadMessageBox.Show(Me, "Please complete the fields To update!", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
             Else
                 Try
                     MysqlConn.Open()
@@ -1293,12 +1293,12 @@ End Sub
 
                     reader = comm.ExecuteReader
 
-                    RadMessageBox.Show(Me, "Update Success!", "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Info)
+                    RadMessageBox.Show(Me, "Update Success!", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Info)
                     MysqlConn.Close()
 
 
                 Catch ex As Exception
-                    RadMessageBox.Show(Me, ex.Message, "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
+                    RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
                 Finally
                     MysqlConn.Dispose()
                 End Try
@@ -1318,7 +1318,7 @@ End Sub
             MysqlConn.Close()
         End If
 
-        deleteYN = RadMessageBox.Show(Me, "Are you sure you want to delete?", "TLTD Scheduling Management", MessageBoxButtons.YesNo, RadMessageIcon.Question)
+        deleteYN = RadMessageBox.Show(Me, "Are you sure you want to delete?", "CEU TLTD Reservation System", MessageBoxButtons.YesNo, RadMessageIcon.Question)
         If deleteYN = MsgBoxResult.Yes Then
             Try
                 MysqlConn.Open()
@@ -1336,10 +1336,10 @@ End Sub
                 eq_status.Text = ""
                 eq_owner.Text = ""
 
-                RadMessageBox.Show(Me, "Successfully Deleted!", "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Info)
+                RadMessageBox.Show(Me, "Successfully Deleted!", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Info)
                 MysqlConn.Close()
             Catch ex As Exception
-                RadMessageBox.Show(Me, ex.Message, "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
+                RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
             Finally
                 MysqlConn.Dispose()
             End Try
@@ -1422,7 +1422,7 @@ End Sub
             MysqlConn.Close()
 
         Catch ex As MySqlException
-            RadMessageBox.Show(Me, ex.Message, "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
+            RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
         Finally
             MysqlConn.Dispose()
         End Try
@@ -1471,7 +1471,7 @@ End Sub
             MysqlConn.Close()
 
         Catch ex As MySqlException
-            RadMessageBox.Show(Me, ex.Message, "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
+            RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
         Finally
             MysqlConn.Dispose()
         End Try
@@ -1518,7 +1518,7 @@ End Sub
                 MysqlConn.Close()
 
             Catch ex As MySqlException
-                RadMessageBox.Show(Me, ex.Message, "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
+                RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
             Finally
                 MysqlConn.Dispose()
             End Try
@@ -1558,7 +1558,7 @@ End Sub
             MysqlConn.Close()
 
         Catch ex As Exception
-            RadMessageBox.Show(Me, ex.Message, "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
+            RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
         Finally
             MysqlConn.Dispose()
 
@@ -1589,7 +1589,7 @@ End Sub
             End While
             MysqlConn.Close()
         Catch ex As Exception
-            RadMessageBox.Show(Me, ex.Message, "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
+            RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
         Finally
             MysqlConn.Dispose()
 
@@ -1619,7 +1619,7 @@ End Sub
 
             MysqlConn.Close()
         Catch ex As Exception
-            RadMessageBox.Show(Me, ex.Message, "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
+            RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
         Finally
             MysqlConn.Dispose()
         End Try
@@ -1649,7 +1649,7 @@ End Sub
 
             MysqlConn.Close()
         Catch ex As Exception
-            RadMessageBox.Show(Me, ex.Message, "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
+            RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
         Finally
             MysqlConn.Dispose()
         End Try
@@ -1666,11 +1666,11 @@ End Sub
         MysqlConn.ConnectionString = connstring
 
         If rec_eq_chooseno.Text = "" Then
-            RadMessageBox.Show(Me, "Choose Serial Number!", "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
+            RadMessageBox.Show(Me, "Choose Serial Number!", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
         ElseIf rec_eq_type_choose.Text = "" Then
-            RadMessageBox.Show(Me, "Choose the Type of Equipment!", "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
+            RadMessageBox.Show(Me, "Choose the Type of Equipment!", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
         ElseIf rec_eq_chooseeq.Text = "" Then
-            RadMessageBox.Show(Me, "Choose the Equipment!", "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
+            RadMessageBox.Show(Me, "Choose the Equipment!", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
         Else
             Try
                 MysqlConn.Open()
@@ -1697,7 +1697,7 @@ End Sub
 
                 MysqlConn.Close()
             Catch ex As Exception
-                RadMessageBox.Show(Me, ex.Message, "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
+                RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
             Finally
                 MysqlConn.Dispose()
             End Try
@@ -1710,7 +1710,7 @@ End Sub
     Private Sub rec_del_eq_Click(sender As Object, e As EventArgs) Handles rec_del_eq.Click
 
         If (eq_rgv_addeq.Rows.Count = 0) Then
-            RadMessageBox.Show(Me, "The Table is already empty.", "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
+            RadMessageBox.Show(Me, "The Table is already empty.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
         Else
             eq_rgv_addeq.Rows.RemoveAt(eq_rgv_addeq.CurrentRow.Index)
         End If
@@ -1745,13 +1745,13 @@ End Sub
             End While
 
             If count = 1 Then
-                RadMessageBox.Show(Me, "Item Not Available", "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
+                RadMessageBox.Show(Me, "Item Not Available", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
             Else
-                RadMessageBox.Show(Me, "Item Available", "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Info)
+                RadMessageBox.Show(Me, "Item Available", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Info)
             End If
             MysqlConn.Close()
         Catch ex As ArgumentOutOfRangeException
-            RadMessageBox.Show(Me, "No equipments to check.", "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
+            RadMessageBox.Show(Me, "No equipments to check.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
         Finally
             MysqlConn.Dispose()
 
@@ -1765,7 +1765,7 @@ End Sub
     'Under observation because of bugs that can be found in the future ' as of 09.06.16 4:55pm'
 
     Private Sub rec_btn_save_Click(sender As Object, e As EventArgs) Handles rec_btn_save.Click
-        reserveYN = RadMessageBox.Show(Me, "Are you sure you want to reserve?", "TLTD Scheduling Management", MessageBoxButtons.YesNo, RadMessageIcon.Question)
+        reserveYN = RadMessageBox.Show(Me, "Are you sure you want to reserve?", "CEU TLTD Reservation System", MessageBoxButtons.YesNo, RadMessageIcon.Question)
         If reserveYN = MsgBoxResult.Yes Then
 
 
@@ -1779,7 +1779,7 @@ End Sub
             Dim conflictequipmentsn As String = ""
 
             If (rec_cb_reserveno.Text = "") Or (rec_cb_idnum.Text = "") Or (rec_cb_borrower.Text = "") Or (rec_dtp_date.Text = "") Or (rec_dtp_starttime.Text = "") Or (rec_dtp_endtime.Text = "") Or (rec_cb_college_school.Text = "") Or (rec_cb_location.Text = "") Or (rec_cb_status.Text = "") Or (rec_eq_chooseno.Text = "") Or (rec_eq_type_choose.Text = "") Or (eq_rgv_addeq.Rows.Count < 0) Or (rec_cb_acttype.Text = "") Then
-                RadMessageBox.Show(Me, "Please complete the fields", "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
+                RadMessageBox.Show(Me, "Please complete the fields", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
             Else
                 'ADD THE CHECKBOX TO PICK IF IT IS FROM ANOTHER DAY, ANOTHER DATE PICKER, BUT BY DEFAULT IT IS NOT CHECKED
                 Dim elapsedTime As TimeSpan = DateTime.Parse(Format(CDate(rec_dtp_date.Value), "yyyy-MM-dd") & " " & rec_dtp_endtime.Text).Subtract(DateTime.Parse(DateTime.Parse(Format(CDate(rec_dtp_date.Value), "yyyy-MM-dd") & " " & rec_dtp_starttime.Text)))
@@ -1833,7 +1833,7 @@ End Sub
                                 End While
 
                                 If count > 0 Then
-                                    RadMessageBox.Show(Me, "The equipment " & equipmentrgv & " with serial number of " & equipmentsnrgv & " is already taken", "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
+                                    RadMessageBox.Show(Me, "The equipment " & equipmentrgv & " with serial number of " & equipmentsnrgv & " is already taken", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
                                     errorcount = True
                                     Exit While
                                 Else
@@ -1850,7 +1850,7 @@ End Sub
                                 End If
 
                             Catch ex As Exception
-                                RadMessageBox.Show(Me, ex.Message, "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
+                                RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
                             Finally
                                 MysqlConn.Dispose()
                             End Try
@@ -1863,10 +1863,10 @@ End Sub
                     End If
 
                     If errorcount = False Then
-                        RadMessageBox.Show(Me, "Succesfully Equipment Reserved!", "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Info)
+                        RadMessageBox.Show(Me, "Succesfully Equipment Reserved!", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Info)
 
                     Else
-                        RadMessageBox.Show(Me, "Not Successfully Reserved!", "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
+                        RadMessageBox.Show(Me, "Not Successfully Reserved!", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
 
                     End If
                 End If
@@ -1912,7 +1912,7 @@ End Sub
         '    MysqlConn.Close()
 
         'Catch ex As Exception
-        '    RadMessageBox.Show(Me, ex.Message, "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
+        '    RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
         'Finally
         '    MysqlConn.Dispose()
 
@@ -1947,7 +1947,7 @@ End Sub
             MysqlConn.Close()
 
         Catch ex As Exception
-            RadMessageBox.Show(Me, ex.Message, "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
+            RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
         Finally
             MysqlConn.Dispose()
 
@@ -1975,7 +1975,7 @@ End Sub
             MysqlConn.Close()
         End If
 
-        deleteYN = RadMessageBox.Show(Me, "Are you sure you want to delete?", "TLTD Scheduling Management", MessageBoxButtons.YesNo, RadMessageIcon.Question)
+        deleteYN = RadMessageBox.Show(Me, "Are you sure you want to delete?", "CEU TLTD Reservation System", MessageBoxButtons.YesNo, RadMessageIcon.Question)
         If deleteYN = MsgBoxResult.Yes Then
             Try
                 MysqlConn.Open()
@@ -1987,10 +1987,10 @@ End Sub
                 reader = comm.ExecuteReader
 
 
-                RadMessageBox.Show(Me, "Successfully Deleted!", "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Info)
+                RadMessageBox.Show(Me, "Successfully Deleted!", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Info)
                 MysqlConn.Close()
             Catch ex As Exception
-                RadMessageBox.Show(Me, ex.Message, "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
+                RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
             Finally
                 MysqlConn.Dispose()
             End Try
@@ -2020,7 +2020,7 @@ End Sub
 
             MysqlConn.Close()
         Catch ex As Exception
-            RadMessageBox.Show(Me, ex.Message, "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
+            RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
         Finally
             MysqlConn.Dispose()
         End Try
@@ -2080,7 +2080,7 @@ End Sub
             MysqlConn.Close()
         End If
 
-        deleteYN = RadMessageBox.Show(Me, "Are you sure you want to delete?", "TLTD Scheduling Management", MessageBoxButtons.YesNo, RadMessageIcon.Question)
+        deleteYN = RadMessageBox.Show(Me, "Are you sure you want to delete?", "CEU TLTD Reservation System", MessageBoxButtons.YesNo, RadMessageIcon.Question)
         If deleteYN = MsgBoxResult.Yes Then
             Try
                 MysqlConn.Open()
@@ -2092,10 +2092,10 @@ End Sub
                 reader = comm.ExecuteReader
 
 
-                RadMessageBox.Show(Me, "Successfully Deleted!", "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Info)
+                RadMessageBox.Show(Me, "Successfully Deleted!", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Info)
                 MysqlConn.Close()
             Catch ex As Exception
-                RadMessageBox.Show(Me, ex.Message, "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
+                RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
             Finally
                 MysqlConn.Dispose()
             End Try
@@ -2113,7 +2113,7 @@ End Sub
 
     'Timer Code
     Private Sub Main_Timer_Tick(sender As Object, e As EventArgs) Handles Main_Timer.Tick
-        Dim title As String = "TLTD Scheduling System"
+        Dim title As String = "CEU TLTD Reservation System"
         Me.Text = title + Date.Now.ToString("            MMMM dd, yyyy  hh:mm:ss tt")
     End Sub
 
@@ -2141,7 +2141,7 @@ End Sub
 
             MysqlConn.Close()
         Catch ex As Exception
-            RadMessageBox.Show(Me, ex.Message, "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
+            RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
         Finally
             MysqlConn.Dispose()
         End Try
@@ -2166,7 +2166,7 @@ End Sub
     End Sub
 
      Private Sub return_btn_returned_Click(sender As Object, e As EventArgs) Handles return_btn_returned.Click
-        returnEquipYN = RadMessageBox.Show(Me, "Are you sure you want to return this equipment?", "TLTD Scheduling System", MessageBoxButtons.YesNo, RadMessageIcon.Question)
+        returnEquipYN = RadMessageBox.Show(Me, "Are you sure you want to return this equipment?", "CEU TLTD Reservation System", MessageBoxButtons.YesNo, RadMessageIcon.Question)
         Dim serverdatetime As String
         If returnEquipYN = MsgBoxResult.Yes Then
             'GET SERVERTIME
@@ -2220,7 +2220,7 @@ End Sub
                     load_released_list2()
                     load_returned_eq_list()
                 End Try
-                RadMessageBox.Show(Me, "Congratulations!, The Item is returned early.", "TLTD Scheduling System", MessageBoxButtons.OK, RadMessageIcon.Info, MessageBoxDefaultButton.Button1)
+                RadMessageBox.Show(Me, "Congratulations!, The Item is returned early.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Info, MessageBoxDefaultButton.Button1)
             Else
                 Dim seconds As Integer = (elapsedTime.TotalSeconds)
                 Dim counter As Integer = 1
@@ -2260,7 +2260,7 @@ End Sub
                         load_released_list2()
                         load_returned_eq_list()
                     End Try
-                    RadMessageBox.Show(Me, "Congratulations! The item is returned on time." & Environment.NewLine & String.Format("Exceeded Time: {0:%m} minutes(s)", elapsedTime), "TLTD Scheduling System", MessageBoxButtons.OK, RadMessageIcon.Exclamation, MessageBoxDefaultButton.Button1)
+                    RadMessageBox.Show(Me, "Congratulations! The item is returned on time." & Environment.NewLine & String.Format("Exceeded Time: {0:%m} minutes(s)", elapsedTime), "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Exclamation, MessageBoxDefaultButton.Button1)
                 ElseIf charge > 0 Then
                     If seconds >= 86400 Then
                         Try
@@ -2292,7 +2292,7 @@ End Sub
                             load_released_list2()
                             load_returned_eq_list()
                         End Try
-                        RadMessageBox.Show(Me, "Time Exceeded!!" & Environment.NewLine & Environment.NewLine & String.Format("Exceeding Time: {0:%d} day(s)", elapsedTime) & String.Format(" {0:%h} hours(s) ", elapsedTime) & String.Format("{0:%m} minutes(s)", elapsedTime) & Environment.NewLine & "Charge is: " & (charge * 100) & " pesos.", "TLTD Scheduling System", MessageBoxButtons.OK, RadMessageIcon.Error, MessageBoxDefaultButton.Button1)
+                        RadMessageBox.Show(Me, "Time Exceeded!!" & Environment.NewLine & Environment.NewLine & String.Format("Exceeding Time: {0:%d} day(s)", elapsedTime) & String.Format(" {0:%h} hours(s) ", elapsedTime) & String.Format("{0:%m} minutes(s)", elapsedTime) & Environment.NewLine & "Charge is: " & (charge * 100) & " pesos.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error, MessageBoxDefaultButton.Button1)
                     Else
                         Try
                             If MysqlConn.State = ConnectionState.Open Then
@@ -2324,7 +2324,7 @@ End Sub
                             load_returned_eq_list()
 							'load_return_info() 'NAWAWALA PAH
                         End Try
-                        RadMessageBox.Show(Me, "Time Exceeded!!" & Environment.NewLine & Environment.NewLine & String.Format("Exceeding Time: {0:%h} hours(s) ", elapsedTime) & String.Format("{0:%m} minutes(s)", elapsedTime) & Environment.NewLine & "Charge is: " & (charge * 100) & " pesos.", "TLTD Scheduling System", MessageBoxButtons.OK, RadMessageIcon.Error, MessageBoxDefaultButton.Button1)
+                        RadMessageBox.Show(Me, "Time Exceeded!!" & Environment.NewLine & Environment.NewLine & String.Format("Exceeding Time: {0:%h} hours(s) ", elapsedTime) & String.Format("{0:%m} minutes(s)", elapsedTime) & Environment.NewLine & "Charge is: " & (charge * 100) & " pesos.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error, MessageBoxDefaultButton.Button1)
                     End If
                 End If
             End If
@@ -2361,13 +2361,13 @@ End Sub
             MysqlConn.Close()
             'penalty_grid_list.Columns("Penalty ID").IsVisible = false 'SHOW LATER
         Catch ex As Exception
-            RadMessageBox.Show(Me, ex.Message, "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
+            RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
         Finally
             MysqlConn.Dispose()
         End Try
     End Sub
     Private Sub penalty_grid_list_CellDoubleClick(sender As Object, e As GridViewCellEventArgs) Handles penalty_grid_list.CellDoubleClick
-        penaltiesDeleteYN = RadMessageBox.Show(Me, "Are you sure you want to delete the selected data?", "TLTD Scheduling System", MessageBoxButtons.YesNo, RadMessageIcon.Question)
+        penaltiesDeleteYN = RadMessageBox.Show(Me, "Are you sure you want to delete the selected data?", "CEU TLTD Reservation System", MessageBoxButtons.YesNo, RadMessageIcon.Question)
         If penaltiesDeleteYN = MsgBoxResult.Yes Then
             Dim uniqueid As String
             Dim row As GridViewRowInfo = penalty_grid_list.Rows(e.RowIndex)
@@ -2378,9 +2378,9 @@ End Sub
                 comm = New MySqlCommand(query, MysqlConn)
                 comm.ExecuteNonQuery()
                 MysqlConn.Close()
-                RadMessageBox.Show(Me, "Selected penalty sucessfully deleted.", "TLTD Scheduling System", MessageBoxButtons.OK, RadMessageIcon.Info)
+                RadMessageBox.Show(Me, "Selected penalty sucessfully deleted.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Info)
             Catch ex As MySqlException
-                RadMessageBox.Show(Me, ex.Message, "TLTD Scheduling System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
             Finally
                 MysqlConn.Dispose()
                 load_penalty_list()
@@ -2409,7 +2409,7 @@ End Sub
         End If
     End Sub
     Private Sub penalty_grid_list_DeleteRightClick(sender As Object, e As EventArgs)
-        penaltiesDeleteYN = RadMessageBox.Show(Me, "Are you sure you want to delete the selected data?", "TLTD Scheduling System", MessageBoxButtons.YesNo, RadMessageIcon.Question)
+        penaltiesDeleteYN = RadMessageBox.Show(Me, "Are you sure you want to delete the selected data?", "CEU TLTD Reservation System", MessageBoxButtons.YesNo, RadMessageIcon.Question)
         If penaltiesDeleteYN = MsgBoxResult.Yes Then
             Dim ligaw As Integer = 0
             Dim uniqueid As String
@@ -2437,9 +2437,9 @@ End Sub
                 comm = New MySqlCommand(query, MysqlConn)
                 comm.ExecuteNonQuery()
                 MysqlConn.Close()
-                RadMessageBox.Show(Me, "Selected penalties sucessfully deleted.", "TLTD Scheduling System", MessageBoxButtons.OK, RadMessageIcon.Info)
+                RadMessageBox.Show(Me, "Selected penalties sucessfully deleted.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Info)
             Catch ex As MySqlException
-                RadMessageBox.Show(Me, ex.Message, "TLTD Scheduling System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
             Finally
                 MysqlConn.Dispose()
                 load_penalty_list()
@@ -2448,7 +2448,7 @@ End Sub
     End Sub
     Private Sub penalty_grid_list_KeyPress(sender As Object, e As KeyEventArgs) Handles penalty_grid_list.KeyDown
          If e.KeyCode = Keys.Delete Then
-        penaltiesDeleteYN = RadMessageBox.Show(Me, "Are you sure you want to delete the selected data?", "TLTD Scheduling System", MessageBoxButtons.YesNo, RadMessageIcon.Question)
+        penaltiesDeleteYN = RadMessageBox.Show(Me, "Are you sure you want to delete the selected data?", "CEU TLTD Reservation System", MessageBoxButtons.YesNo, RadMessageIcon.Question)
         If penaltiesDeleteYN = MsgBoxResult.Yes Then
             Dim ligaw As Integer = 0
             Dim uniqueid As String
@@ -2476,9 +2476,9 @@ End Sub
                 comm = New MySqlCommand(query, MysqlConn)
                 comm.ExecuteNonQuery()
                 MysqlConn.Close()
-                RadMessageBox.Show(Me, "Selected penalties sucessfully deleted.", "TLTD Scheduling System", MessageBoxButtons.OK, RadMessageIcon.Info)
+                RadMessageBox.Show(Me, "Selected penalties sucessfully deleted.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Info)
             Catch ex As MySqlException
-                RadMessageBox.Show(Me, ex.Message, "TLTD Scheduling System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
             Finally
                 MysqlConn.Dispose()
                 load_penalty_list()
@@ -2517,13 +2517,13 @@ End Sub
             MysqlConn.Close()
             'returned_eq_list.Columns("Return ID").IsVisible = false 'SHOW LATER
         Catch ex As Exception
-            RadMessageBox.Show(Me, ex.Message, "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
+            RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
         Finally
             MysqlConn.Dispose()
         End Try
     End Sub
     Private Sub returned_eq_list_CellDoubleClick(sender As Object, e As GridViewCellEventArgs) Handles returned_eq_list.CellDoubleClick
-        returned_eqDeleteYN = RadMessageBox.Show(Me, "Are you sure you want to delete the selected log?", "TLTD Scheduling System", MessageBoxButtons.YesNo, RadMessageIcon.Question)
+        returned_eqDeleteYN = RadMessageBox.Show(Me, "Are you sure you want to delete the selected log?", "CEU TLTD Reservation System", MessageBoxButtons.YesNo, RadMessageIcon.Question)
         If returned_eqDeleteYN = MsgBoxResult.Yes Then
             Dim uniqueid As String
             Dim row As GridViewRowInfo = returned_eq_list.Rows(e.RowIndex)
@@ -2534,9 +2534,9 @@ End Sub
                 comm = New MySqlCommand(query, MysqlConn)
                 comm.ExecuteNonQuery()
                 MysqlConn.Close()
-                RadMessageBox.Show(Me, "Selected log sucessfully deleted.", "TLTD Scheduling System", MessageBoxButtons.OK, RadMessageIcon.Info)
+                RadMessageBox.Show(Me, "Selected log sucessfully deleted.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Info)
             Catch ex As MySqlException
-                RadMessageBox.Show(Me, ex.Message, "TLTD Scheduling System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
             Finally
                 MysqlConn.Dispose()
                 load_returned_eq_list()
@@ -2565,7 +2565,7 @@ End Sub
         End If
     End Sub
     Private Sub returned_eq_list_DeleteRightClick(sender As Object, e As EventArgs)
-        returned_eqDeleteYN = RadMessageBox.Show(Me, "Are you sure you want to delete the selected data?", "TLTD Scheduling System", MessageBoxButtons.YesNo, RadMessageIcon.Question)
+        returned_eqDeleteYN = RadMessageBox.Show(Me, "Are you sure you want to delete the selected data?", "CEU TLTD Reservation System", MessageBoxButtons.YesNo, RadMessageIcon.Question)
         If returned_eqDeleteYN = MsgBoxResult.Yes Then
             Dim ligaw As Integer = 0
             Dim uniqueid As String
@@ -2593,9 +2593,9 @@ End Sub
                 comm = New MySqlCommand(query, MysqlConn)
                 comm.ExecuteNonQuery()
                 MysqlConn.Close()
-                RadMessageBox.Show(Me, "Selected logs sucessfully deleted.", "TLTD Scheduling System", MessageBoxButtons.OK, RadMessageIcon.Info)
+                RadMessageBox.Show(Me, "Selected logs sucessfully deleted.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Info)
             Catch ex As MySqlException
-                RadMessageBox.Show(Me, ex.Message, "TLTD Scheduling System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
             Finally
                 MysqlConn.Dispose()
                 load_returned_eq_list()
@@ -2604,7 +2604,7 @@ End Sub
     End Sub
     Private Sub returned_eq_list_KeyPress(sender As Object, e As KeyEventArgs) Handles returned_eq_list.KeyDown
          If e.KeyCode = Keys.Delete Then
-            returned_eqDeleteYN = RadMessageBox.Show(Me, "Are you sure you want to delete the selected data?", "TLTD Scheduling System", MessageBoxButtons.YesNo, RadMessageIcon.Question)
+            returned_eqDeleteYN = RadMessageBox.Show(Me, "Are you sure you want to delete the selected data?", "CEU TLTD Reservation System", MessageBoxButtons.YesNo, RadMessageIcon.Question)
         If returned_eqDeleteYN = MsgBoxResult.Yes Then
             Dim ligaw As Integer = 0
             Dim uniqueid As String
@@ -2632,9 +2632,9 @@ End Sub
                 comm = New MySqlCommand(query, MysqlConn)
                 comm.ExecuteNonQuery()
                 MysqlConn.Close()
-                RadMessageBox.Show(Me, "Selected logs sucessfully deleted.", "TLTD Scheduling System", MessageBoxButtons.OK, RadMessageIcon.Info)
+                RadMessageBox.Show(Me, "Selected logs sucessfully deleted.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Info)
             Catch ex As MySqlException
-                RadMessageBox.Show(Me, ex.Message, "TLTD Scheduling System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
             Finally
                 MysqlConn.Dispose()
                 load_returned_eq_list()
@@ -2685,13 +2685,13 @@ End Sub
     '        End While
 
     '        If count = 1 Then
-    '            RadMessageBox.Show(Me, "Item Not Available", "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
+    '            RadMessageBox.Show(Me, "Item Not Available", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
     '        Else
-    '            RadMessageBox.Show(Me, "Item Available", "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
+    '            RadMessageBox.Show(Me, "Item Available", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
     '        End If
 
     '    Catch ex As Exception
-    '        RadMessageBox.Show(Me, ex.Message, "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
+    '        RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
     '    Finally
     '        MysqlConn.Dispose()
 
@@ -2723,7 +2723,7 @@ End Sub
 
     '        End While
     '    Catch ex As Exception
-    '        RadMessageBox.Show(Me, ex.Message, "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
+    '        RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
     '    Finally
     '        MysqlConn.Dispose()
 
@@ -2750,7 +2750,7 @@ End Sub
     '        End While
 
     '    Catch ex As Exception
-    '        RadMessageBox.Show(Me, ex.Message, "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
+    '        RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
     '    Finally
     '        MysqlConn.Dispose()
 
@@ -2777,7 +2777,7 @@ End Sub
     '        End While
 
     '    Catch ex As Exception
-    '        RadMessageBox.Show(Me, ex.Message, "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
+    '        RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
     '    Finally
     '        MysqlConn.Dispose()
 
@@ -2804,7 +2804,7 @@ End Sub
     '        End While
 
     '    Catch ex As Exception
-    '        RadMessageBox.Show(Me, ex.Message, "TLTD Scheduling Management", MessageBoxButtons.OK, RadMessageIcon.Error)
+    '        RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
     '    Finally
     '        MysqlConn.Dispose()
 
