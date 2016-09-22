@@ -22,11 +22,18 @@ Public Class MainSettingsWindow
         End Try
     End Sub
 
-    Private Sub penalty_peso_amount_TextChanged(sender As Object, e As EventArgs) Handles penalty_peso_amount.TextChanged
-        penalty_peso_amount.Text=String.Format("{0:0,0.00}", penalty_peso_amount.Text)
-    End Sub
+
+    Private Sub penalty_peso_amount_KeyPress(sender As Object, e As KeyPressEventArgs) Handles penalty_peso_amount.KeyPress
+        If penalty_peso_amount.Text.Contains(".") Then
+            e.Handled = Not (Char.IsDigit(e.KeyChar) Or (e.KeyChar=vbBack) Or (Keys.ControlKey And e.KeyChar = Convert.ToChar(Keys.A)))
+            MsgBox(Keys.ControlKey)
+        Else
+            e.Handled = Not (Char.IsDigit(e.KeyChar) Or e.KeyChar = "." Or (e.KeyChar=vbBack))
+        End If
+   End Sub
 
     Private Sub MainSettingsWindow_FormClosed(sender As Object, e As FormClosedEventArgs) Handles Me.FormClosed
         Me.Dispose()
     End Sub
+
 End Class

@@ -215,7 +215,7 @@ End Sub
                 penalty_price = reader.GetString("value")
             Else If looper=1
                 penalty_graceperiod = reader.GetString("value") 
-            Else If looper=1
+            Else If looper=2
                 penalty_chargeinterval = reader.GetString("value")
             End If
                 looper+=1
@@ -840,7 +840,7 @@ End Sub
                 MysqlConn.Open()
                 Dim Query As String
                 ' Dim Query2 As String
-                Query = "insert into `released_info`  values ('" & rel_tb_id.Text & "' ,'" & rel_tb_reservationnum.Text & " ',  '" & rel_tb_borrower.Text & "' , '" & rel_tb_equipmentnum.Text & "', '" & rel_tb_equipment.Text & "', '" & Format(CDate(rel_tb_startdate.Value), "yyyy-MM-dd") & "','" & Format(CDate(rel_tb_starttime.Text), "HH:mm") & "', '" & Format(CDate(rel_tb_endtime.Text), "HH:mm") & "', '" & rel_tb_status.Text & "' , '" & rel_nameofstaff_release.Text & "'); update reservation set  res_status = '" & rel_tb_status.Text & "' where reservationno = '" & rel_tb_reservationnum.Text & "'"
+                Query = "insert into released_info (rel_id_passnum,rel_reservation_no,rel_borrower,rel_equipment_no,rel_equipment,rel_assign_date,rel_starttime,rel_endtime,rel_status,rel_releasedby) VALUES('" & rel_tb_id.Text & "','" & rel_tb_reservationnum.Text & "','" & rel_tb_borrower.Text & "','" & rel_tb_equipmentnum.Text & "','" & rel_tb_equipment.Text & "','" & Format(CDate(rel_tb_startdate.Value), "yyyy-MM-dd") & "','" & Format(CDate(rel_tb_starttime.Text), "HH:mm") & "','" & Format(CDate(rel_tb_endtime.Text), "HH:mm") & "','" & rel_tb_status.Text & "','" & rel_nameofstaff_release.Text & "')"  '; update reservation set  res_status = '" & rel_tb_status.Text & "' where reservationno = '" & rel_tb_reservationnum.Text & "'"
                 'Query = "delete from reservation where  reservationno = '" & rel_tb_reservationnum.Text & "'"
                 comm = New MySqlCommand(Query, MysqlConn)
                 'comm.Parameters.AddWithValue("ID", rel_tb_id.Text)
@@ -2248,8 +2248,8 @@ End Sub
                 Dim seconds As Integer = (elapsedTime.TotalSeconds)
                 Dim counter As Integer = 1
                 Dim charge As Integer = 0
-                Dim graceperiod As Integer = penalty_graceperiod
-                Dim chargeinterval As Integer = penalty_chargeinterval
+                Dim graceperiod As Integer =  Convert.ToInt32(penalty_graceperiod)
+                Dim chargeinterval As Integer = Convert.ToInt32(penalty_chargeinterval)
                 While counter <= seconds
                     counter += 1
                     If counter Mod chargeinterval = 0 And counter>=graceperiod Then 'GRACE PERIOD Convert.toInt32(string_from_DB)
@@ -2293,7 +2293,7 @@ End Sub
                                 MysqlConn.Close()
                             End If
                             MysqlConn.Open()
-                            Dim Query As String = "INSERT INTO ceutltdscheduler.penalties (bor_id,bor_name,eq_no,eq_name,res_date,st_time,ed_time,bor_price,ret_mark,ret_date) VALUES(@borrowerid,@borrowername,@eqno,@eqname,@resdate,@stime,@etime,@price,@staff_returner,DATE_FORMAT(now(), '%Y-%m-%d %H:%i'));INSERT INTO ceutltdscheduler.returned_info (ret_reservation_num,ret_id_passnum,ret_borrower,ret_equipment_no,ret_equipment,ret_assign_date,ret_starttime,ret_endtime,ret_status,ret_releasedby,ret_returnedto,ret_remarks) VALUES(@resno,@borrowerid,@borrowername,@eqno,@eqname,@resdate,@stime,@etime,'Returned',@staff_releaser,@staff_returner,@remarks); DELETE FROM ceutltdscheduler.released_info WHERE rel_id_passnum=@borrowerid and rel_reservation_no=@resno and rel_borrower=@borrowername and rel_equipment_no=@eqno and rel_equipment=@eqname and rel_assign_date=@resdate and rel_starttime=@stime and rel_endtime=@etime and rel_releasedby=@staff_releaser"
+                            Dim Query As String = "INSERT INTO ceutltdscheduler.penalties (bor_id,bor_name,eq_no,eq_name,res_date,st_time,ed_time,bor_price,ret_mark,ret_date) VALUES(@borrowerid,@borrowername,@eqno,@eqname,@resdate,@stime,@etime,@price,@staff_returner,DATE_FORMAT(now(), '%Y-%m-%d %H:%i'));INSERT INTO ceutltdscheduler.returned_info (ret_reservation_num,ret_id_passnum,ret_borrower,ret_equipment_no,ret_equipment,ret_assign_date,ret_starttime,ret_endtime,ret_status,ret_releasedby,ret_returnedto,ret_remarks) VALUES(@resno,@borrowerid,@borrowername,@eqno,@eqname,@resdate,@stime,@etime,'Returned',@staff_releaser,@staff_returner,@remarks)"'; DELETE FROM ceutltdscheduler.released_info WHERE rel_id_passnum=@borrowerid and rel_reservation_no=@resno and rel_borrower=@borrowername and rel_equipment_no=@eqno and rel_equipment=@eqname and rel_assign_date=@resdate and rel_starttime=@stime and rel_endtime=@etime and rel_releasedby=@staff_releaser"
                             comm = New MySqlCommand(Query, MysqlConn)
 							comm.Parameters.AddWithValue("@resno", ret_tb_reservationnum.Text)
                             comm.Parameters.AddWithValue("@borrowerid", ret_tb_id.Text)
@@ -2324,7 +2324,7 @@ End Sub
                                 MysqlConn.Close()
                             End If
                             MysqlConn.Open()
-                            Dim Query As String = "INSERT INTO ceutltdscheduler.penalties (bor_id,bor_name,eq_no,eq_name,res_date,st_time,ed_time,bor_price,ret_mark,ret_date) VALUES(@borrowerid,@borrowername,@eqno,@eqname,@resdate,@stime,@etime,@price,@staff_returner,DATE_FORMAT(now(), '%Y-%m-%d %H:%i'));INSERT INTO ceutltdscheduler.returned_info (ret_reservation_num,ret_id_passnum,ret_borrower,ret_equipment_no,ret_equipment,ret_assign_date,ret_starttime,ret_endtime,ret_status,ret_releasedby,ret_returnedto,ret_remarks) VALUES(@resno,@borrowerid,@borrowername,@eqno,@eqname,@resdate,@stime,@etime,'Returned',@staff_releaser,@staff_returner,@remarks); DELETE FROM ceutltdscheduler.released_info WHERE rel_id_passnum=@borrowerid and rel_reservation_no=@resno and rel_borrower=@borrowername and rel_equipment_no=@eqno and rel_equipment=@eqname and rel_assign_date=@resdate and rel_starttime=@stime and rel_endtime=@etime and rel_releasedby=@staff_releaser"
+                            Dim Query As String = "INSERT INTO ceutltdscheduler.penalties (bor_id,bor_name,eq_no,eq_name,res_date,st_time,ed_time,bor_price,ret_mark,ret_date) VALUES(@borrowerid,@borrowername,@eqno,@eqname,@resdate,@stime,@etime,@price,@staff_returner,DATE_FORMAT(now(), '%Y-%m-%d %H:%i'));INSERT INTO ceutltdscheduler.returned_info (ret_reservation_num,ret_id_passnum,ret_borrower,ret_equipment_no,ret_equipment,ret_assign_date,ret_starttime,ret_endtime,ret_status,ret_releasedby,ret_returnedto,ret_remarks) VALUES(@resno,@borrowerid,@borrowername,@eqno,@eqname,@resdate,@stime,@etime,'Returned',@staff_releaser,@staff_returner,@remarks)"'; DELETE FROM ceutltdscheduler.released_info WHERE rel_id_passnum=@borrowerid and rel_reservation_no=@resno and rel_borrower=@borrowername and rel_equipment_no=@eqno and rel_equipment=@eqname and rel_assign_date=@resdate and rel_starttime=@stime and rel_endtime=@etime and rel_releasedby=@staff_releaser"
                             comm = New MySqlCommand(Query, MysqlConn)
 							comm.Parameters.AddWithValue("@resno", ret_tb_reservationnum.Text)
                             comm.Parameters.AddWithValue("@borrowerid", ret_tb_id.Text)
