@@ -139,6 +139,12 @@
     <Compile Include="Main.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="MainSettingsWindow.Designer.vb">
+      <DependentUpon>MainSettingsWindow.vb</DependentUpon>
+    </Compile>
+    <Compile Include="MainSettingsWindow.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -170,6 +176,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Main.resx">
       <DependentUpon>Main.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainSettingsWindow.resx">
+      <DependentUpon>MainSettingsWindow.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\licenses.licx" />
     <EmbeddedResource Include="My Project\Resources.resx">

@@ -38,17 +38,17 @@ Public Class Main
     Dim bdsrc_penaltylist As New BindingSource
     Dim bdsrc_returnedeq As New BindingSource
     Dim eq_keepSelectedRowIndexAfterUpdate As Integer 'WU_TRY1
-    
+
     'WU_SETTINGS'
 
     'MENU Bar
-     Private Sub MenuBar_MouseLeave(sender As Object, e As EventArgs) Handles menuItem_DBManage.MouseLeave, menuItem_About.MouseLeave
+     Private Sub MenuBar_MouseLeave(sender As Object, e As EventArgs) Handles menuItem_DBManage.MouseLeave, menuItem_About.MouseLeave, menuItem_Settings.MouseLeave
         If ThemeResolutionService.ApplicationThemeName = "VisualStudio2012Dark" Then
         Dim item As RadMenuItem = TryCast(sender, RadMenuItem)
 	   item.FillPrimitive.BackColor = Color.Transparent
       End IF
     End Sub
-    Private Sub MenuBar_MouseEnter(sender As Object, e As EventArgs) Handles menuItem_DBManage.MouseEnter, menuItem_About.MouseEnter
+    Private Sub MenuBar_MouseEnter(sender As Object, e As EventArgs) Handles menuItem_DBManage.MouseEnter, menuItem_About.MouseEnter, menuItem_Settings.MouseEnter
     If ThemeResolutionService.ApplicationThemeName = "VisualStudio2012Dark" Then
 	Dim item As RadMenuItem = TryCast(sender, RadMenuItem)
 	item.FillPrimitive.BackColor = Color.FromArgb(62, 62, 64)
@@ -63,13 +63,19 @@ End Sub
       Actions.SaveDB()
     End Sub
 
+    Private Sub menuItem_Settings_Click(sender As Object, e As EventArgs) Handles menuItem_Settings.Click
+        MainSettingsWindow.ShowDialog()
+    End Sub
+
     Private Sub menuItem_About_Click(sender As Object, e As EventArgs) Handles menuItem_About.Click
         MsgBox("ABOUT WINDOW HERE")
     End Sub
 
 
     Private Sub Main_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
+       
+        getFromDB_settings_penalty()
+         
         reservation_rgv_recordeddata.Show()
         reservations_rgv_showavailableitems.Hide()
 
@@ -198,7 +204,24 @@ End Sub
     End Sub
     'End Formatting of GridViews
 
-
+    Public Sub getFromDB_settings_penalty()
+        mysqlconn.Open()
+        Dim looper As Integer = 0
+        Dim q2 As String = "SELECT value FROM ceutltdscheduler.settings"
+        comm = New MySqlCommand(q2, mysqlconn)
+        reader = comm.ExecuteReader
+            While reader.Read
+            If looper=0
+                penalty_price = reader.GetString("value")
+            Else If looper=1
+                penalty_graceperiod = reader.GetString("value") 
+            Else If looper=1
+                penalty_chargeinterval = reader.GetString("value")
+            End If
+                looper+=1
+            End While
+        mysqlconn.Close()
+    End Sub
     Public Sub load_rec_table()
 
         MysqlConn = New MySqlConnection
@@ -2225,9 +2248,11 @@ End Sub
                 Dim seconds As Integer = (elapsedTime.TotalSeconds)
                 Dim counter As Integer = 1
                 Dim charge As Integer = 0
+                Dim graceperiod As Integer = penalty_graceperiod
+                Dim chargeinterval As Integer = penalty_chargeinterval
                 While counter <= seconds
                     counter += 1
-                    If counter Mod 3600 = 0 Then
+                    If counter Mod chargeinterval = 0 And counter>=graceperiod Then 'GRACE PERIOD Convert.toInt32(string_from_DB)
                         charge += 1
                     End If
                 End While
@@ -2278,7 +2303,7 @@ End Sub
                             comm.Parameters.AddWithValue("@resdate", Format(CDate(ret_tb_sdate.Value), "yyyy-MM-dd"))
                             comm.Parameters.AddWithValue("@stime", ret_tb_stime.Text)
                             comm.Parameters.AddWithValue("@etime", ret_tb_etime.Text)
-                            comm.Parameters.AddWithValue("@price", (charge * 100).ToString)
+                            comm.Parameters.AddWithValue("@price", Convert.ToDouble(charge * penalty_price).ToString)
 							comm.Parameters.AddWithValue("@staff_releaser",ret_nameofstaff_release2.Text)
                             comm.Parameters.AddWithValue("@staff_returner", ret_nameofstaff_return.Text)
 							comm.Parameters.AddWithValue("@remarks", ret_remarks.Text)
@@ -2292,7 +2317,7 @@ End Sub
                             load_released_list2()
                             load_returned_eq_list()
                         End Try
-                        RadMessageBox.Show(Me, "Time Exceeded!!" & Environment.NewLine & Environment.NewLine & String.Format("Exceeding Time: {0:%d} day(s)", elapsedTime) & String.Format(" {0:%h} hours(s) ", elapsedTime) & String.Format("{0:%m} minutes(s)", elapsedTime) & Environment.NewLine & "Charge is: " & (charge * 100) & " pesos.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error, MessageBoxDefaultButton.Button1)
+                        RadMessageBox.Show(Me, "Time Exceeded!!" & Environment.NewLine & Environment.NewLine & String.Format("Exceeding Time: {0:%d} day(s)", elapsedTime) & String.Format(" {0:%h} hours(s) ", elapsedTime) & String.Format("{0:%m} minutes(s)", elapsedTime) & Environment.NewLine & "Charge is: " & Convert.ToDouble(charge * penalty_price) & " pesos.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error, MessageBoxDefaultButton.Button1)
                     Else
                         Try
                             If MysqlConn.State = ConnectionState.Open Then
@@ -2309,7 +2334,7 @@ End Sub
                             comm.Parameters.AddWithValue("@resdate", Format(CDate(ret_tb_sdate.Value), "yyyy-MM-dd"))
                             comm.Parameters.AddWithValue("@stime", ret_tb_stime.Text)
                             comm.Parameters.AddWithValue("@etime", ret_tb_etime.Text)
-                            comm.Parameters.AddWithValue("@price", (charge * 100).ToString)
+                            comm.Parameters.AddWithValue("@price", Convert.ToDouble(charge * penalty_price).ToString)
 							comm.Parameters.AddWithValue("@staff_releaser",ret_nameofstaff_release2.Text)
                             comm.Parameters.AddWithValue("@staff_returner", ret_nameofstaff_return.Text)
 							comm.Parameters.AddWithValue("@remarks", ret_remarks.Text)
@@ -2324,7 +2349,7 @@ End Sub
                             load_returned_eq_list()
 							'load_return_info() 'NAWAWALA PAH
                         End Try
-                        RadMessageBox.Show(Me, "Time Exceeded!!" & Environment.NewLine & Environment.NewLine & String.Format("Exceeding Time: {0:%h} hours(s) ", elapsedTime) & String.Format("{0:%m} minutes(s)", elapsedTime) & Environment.NewLine & "Charge is: " & (charge * 100) & " pesos.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error, MessageBoxDefaultButton.Button1)
+                        RadMessageBox.Show(Me, "Time Exceeded!!" & Environment.NewLine & Environment.NewLine & String.Format("Exceeding Time: {0:%h} hours(s) ", elapsedTime) & String.Format("{0:%m} minutes(s)", elapsedTime) & Environment.NewLine & "Charge is: " & Convert.ToDouble(charge * penalty_price) & " pesos.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error, MessageBoxDefaultButton.Button1)
                     End If
                 End If
             End If
@@ -2651,6 +2676,8 @@ End Sub
         Me.Hide()
 
     End Sub
+
+
 
 
 

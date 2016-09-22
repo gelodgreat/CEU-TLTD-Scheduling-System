@@ -11,4 +11,8 @@ Module GlobalVariableModule
     Public studno As String
     Public lc As Login
 
+    'Settings
+    Public penalty_price As String
+    Public penalty_graceperiod As String
+    Public penalty_chargeinterval As String
 End Module
