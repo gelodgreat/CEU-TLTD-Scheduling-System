@@ -239,7 +239,7 @@ End Sub
         Try
             MysqlConn.Open()
 
-            query = "Select reservationno as 'Reservation Number' ,borrower as 'Borrower',id as 'ID', equipmentno as 'Equipment No', equipment as 'Equipment', DATE_FORMAT(date,'%M %d %Y') as 'Date',TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time',activitytype as 'Activiity Type',actname as 'Activity' from reservation where date ='" & Format(CDate(rec_dtp_date.Value), "yyyy-MM-dd") & "' ORDER by date ASC"
+            query = "Select reservationno as 'Reservation Number' ,borrower as 'Borrower',id as 'ID', equipmentno as 'Equipment No', equipment as 'Equipment', DATE_FORMAT(date,'%M %d %Y') as 'Date',TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time',activitytype as 'Activiity Type',actname as 'Activity' from reservation  where date ='" & Format(CDate(rec_dtp_date.Value), "yyyy-MM-dd") & "' ORDER by date ASC"
 
             comm = New MySqlCommand(query, MysqlConn)
             sda.SelectCommand = comm
@@ -976,7 +976,7 @@ End Sub
         Try
             MysqlConn.Open()
             Dim query As String
-            query = "Select reservationno as 'Reservation Number' , borrower as 'Borrower', equipmentno as 'Equipment No', equipment as 'Equipment', DATE_FORMAT(date,'%M %d %Y') as 'Date',TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time' , res_status as 'Status' from reservation  ORDER by date ASC"
+            query = "Select reservationno as 'Reservation Number' , borrower as 'Borrower', equipmentno as 'Equipment No', equipment as 'Equipment', DATE_FORMAT(date,'%M %d %Y') as 'Date',TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time'  from reservation  ORDER by date ASC"
             comm = New MySqlCommand(query, MysqlConn)
             sda.SelectCommand = comm
             sda.Fill(dbdataset)
@@ -1863,8 +1863,8 @@ End Sub
 
                                     MysqlConn.Close()
                                     MysqlConn.Open()
-                                    query = "INSERT INTO `reservation` VALUES ('" & rec_cb_reserveno.Text & "','" & equipmentnorgv & "', '" & equipmentrgv & "', '" & equipmentsnrgv & "', '" & rec_cb_idnum.Text & "', '" & Format(CDate(rec_dtp_date.Value), "yyyy-MM-dd") & "','" & Format(CDate(rec_dtp_starttime.Text), "HH:mm") & "', '" & Format(CDate(rec_dtp_endtime.Text), "HH:mm") & "', '" & rec_cb_borrower.Text & "', '" & rec_cb_location.Text & "' , '" & lbl_nameofstaff_reserved.Text & "' ,'" & rec_cb_status.Text & "','" & rec_cb_acttype.Text & "','" & rec_rrtc_actname.Text & "')
-                            ;INSERT INTO `reservation_equipments` VALUES ('" & rec_cb_reserveno.Text & "','" & equipmentnorgv & "', '" & equipmentrgv & "', '" & equipmentsnrgv & "')"
+                                    query = "INSERT INTO `reservation` VALUES ('" & rec_cb_reserveno.Text & "','" & equipmentnorgv & "', '" & equipmentrgv & "', '" & equipmentsnrgv & "', '" & rec_cb_idnum.Text & "', '" & Format(CDate(rec_dtp_date.Value), "yyyy-MM-dd") & "','" & Format(CDate(rec_dtp_starttime.Text), "HH:mm") & "', '" & Format(CDate(rec_dtp_endtime.Text), "HH:mm") & "', '" & rec_cb_borrower.Text & "', '" & rec_cb_location.Text & "' , '" & lbl_nameofstaff_reserved.Text & "' ,'" & rec_cb_acttype.Text & "','" & rec_rrtc_actname.Text & "')
+                            ;INSERT INTO `reservation_equipments` VALUES ('" & rec_cb_reserveno.Text & "','" & equipmentnorgv & "', '" & equipmentrgv & "', '" & equipmentsnrgv & "','" & rec_cb_status.Text & "',)"
 
                                     comm = New MySqlCommand(query, MysqlConn)
                                     READER = comm.ExecuteReader
@@ -2245,6 +2245,7 @@ End Sub
                 End Try
                 RadMessageBox.Show(Me, "Congratulations!, The Item is returned early.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Info, MessageBoxDefaultButton.Button1)
             Else
+                getFromDB_settings_penalty()
                 Dim seconds As Integer = (elapsedTime.TotalSeconds)
                 Dim counter As Integer = 1
                 Dim charge As Integer = 0
@@ -2252,7 +2253,7 @@ End Sub
                 Dim chargeinterval As Integer = Convert.ToInt32(penalty_chargeinterval)
                 While counter <= seconds
                     counter += 1
-                    If counter Mod chargeinterval = 0 And counter>=graceperiod Then 'GRACE PERIOD Convert.toInt32(string_from_DB)
+                    If counter Mod chargeinterval = 0 And counter>graceperiod Then 'GRACE PERIOD Convert.toInt32(string_from_DB)
                         charge += 1
                     End If
                 End While
@@ -2317,7 +2318,7 @@ End Sub
                             load_released_list2()
                             load_returned_eq_list()
                         End Try
-                        RadMessageBox.Show(Me, "Time Exceeded!!" & Environment.NewLine & Environment.NewLine & String.Format("Exceeding Time: {0:%d} day(s)", elapsedTime) & String.Format(" {0:%h} hours(s) ", elapsedTime) & String.Format("{0:%m} minutes(s)", elapsedTime) & Environment.NewLine & "Charge is: " & Convert.ToDouble(charge * penalty_price) & " pesos.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error, MessageBoxDefaultButton.Button1)
+                        RadMessageBox.Show(Me, "Time Exceeded!!" & Environment.NewLine & Environment.NewLine & String.Format("Exceeding Time: {0:%d} day(s)", elapsedTime) & String.Format(" {0:%h} hours(s) ", elapsedTime) & String.Format("{0:%m} minutes(s)", elapsedTime) & Environment.NewLine & "Charge is: " & String.Format("{0:0.00}",Convert.ToDouble(Math.Round (charge * penalty_price))) & " pesos.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error, MessageBoxDefaultButton.Button1)
                     Else
                         Try
                             If MysqlConn.State = ConnectionState.Open Then
@@ -2347,9 +2348,9 @@ End Sub
                             load_penalty_list()
 							load_released_list2()
                             load_returned_eq_list()
-							'load_return_info() 'NAWAWALA PAH
+							
                         End Try
-                        RadMessageBox.Show(Me, "Time Exceeded!!" & Environment.NewLine & Environment.NewLine & String.Format("Exceeding Time: {0:%h} hours(s) ", elapsedTime) & String.Format("{0:%m} minutes(s)", elapsedTime) & Environment.NewLine & "Charge is: " & Convert.ToDouble(charge * penalty_price) & " pesos.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error, MessageBoxDefaultButton.Button1)
+                        RadMessageBox.Show(Me, "Time Exceeded!!" & Environment.NewLine & Environment.NewLine & String.Format("Exceeding Time: {0:%h} hours(s) ", elapsedTime) & String.Format("{0:%m} minutes(s)", elapsedTime) & Environment.NewLine & "Charge is: " & String.Format("{0:0.00}",Convert.ToDouble(Math.Round (charge * penalty_price))) & " pesos.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error, MessageBoxDefaultButton.Button1)
                     End If
                 End If
             End If
@@ -2375,7 +2376,7 @@ End Sub
             MysqlConn.Open()
             Dim query As String
             'query = "Select rel_reservation_no as 'Reservation Number' , rel_id_passnum as 'Pass Number' , rel_borrower as 'Borrower' , rel_equipment_no as 'Equipment No' , rel_equipment as 'Equipment' , DATE_FORMAT(rel_assign_date,'%M %d %Y') as 'Date',TIME_FORMAT(rel_starttime, '%H:%i') as 'Start Time', TIME_FORMAT(rel_endtime, '%H:%i') as 'End Time' , rel_status as 'Status' , rel_releasedby as 'Released By'  from released_info"
-            query = "SELECT pen_id as 'Penalty ID',bor_id as 'Pass #', bor_name as 'Borrower Name', eq_no as 'Equipment Number', eq_name as 'Equipment Name', DATE_FORMAT(res_date,'%M %d %Y') as 'Reservation Date', TIME_FORMAT(st_time, '%H:%i') as 'Start Time', TIME_FORMAT(ed_time, '%H:%i') as 'End Time', bor_price as 'Price', ret_mark as 'Marked Returned By', DATE_FORMAT(ret_date, '%M %d %Y %H:%i') as 'Return Date' FROM ceutltdscheduler.penalties"
+            query = "SELECT pen_id as 'Penalty ID',bor_id as 'Pass #', bor_name as 'Borrower Name', eq_no as 'Equipment Number', eq_name as 'Equipment Name', DATE_FORMAT(res_date,'%M %d %Y') as 'Reservation Date', TIME_FORMAT(st_time, '%H:%i') as 'Start Time', TIME_FORMAT(ed_time, '%H:%i') as 'End Time', FORMAT(bor_price,2) as 'Price', ret_mark as 'Marked Returned By', DATE_FORMAT(ret_date, '%M %d %Y %H:%i') as 'Return Date' FROM ceutltdscheduler.penalties"
             comm = New MySqlCommand(query, MysqlConn)
             sda.SelectCommand = comm
             sda.Fill(dbdataset)

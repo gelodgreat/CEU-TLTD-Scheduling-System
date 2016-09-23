@@ -24,8 +24,6 @@ Partial Class MainSettingsWindow
     Private Sub InitializeComponent()
         Me.RadGroupBox1 = New Telerik.WinControls.UI.RadGroupBox()
         Me.btn_penalty_setting_save = New Telerik.WinControls.UI.RadButton()
-        Me.RadLabel6 = New Telerik.WinControls.UI.RadLabel()
-        Me.RadLabel5 = New Telerik.WinControls.UI.RadLabel()
         Me.RadLabel7 = New Telerik.WinControls.UI.RadLabel()
         Me.RadLabel4 = New Telerik.WinControls.UI.RadLabel()
         Me.penalty_ci_day = New Telerik.WinControls.UI.RadSpinEditor()
@@ -39,8 +37,6 @@ Partial Class MainSettingsWindow
         CType(Me.RadGroupBox1,System.ComponentModel.ISupportInitialize).BeginInit
         Me.RadGroupBox1.SuspendLayout
         CType(Me.btn_penalty_setting_save,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.RadLabel6,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.RadLabel5,System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.RadLabel7,System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.RadLabel4,System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.penalty_ci_day,System.ComponentModel.ISupportInitialize).BeginInit
@@ -58,8 +54,6 @@ Partial Class MainSettingsWindow
         '
         Me.RadGroupBox1.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping
         Me.RadGroupBox1.Controls.Add(Me.btn_penalty_setting_save)
-        Me.RadGroupBox1.Controls.Add(Me.RadLabel6)
-        Me.RadGroupBox1.Controls.Add(Me.RadLabel5)
         Me.RadGroupBox1.Controls.Add(Me.RadLabel7)
         Me.RadGroupBox1.Controls.Add(Me.RadLabel4)
         Me.RadGroupBox1.Controls.Add(Me.penalty_ci_day)
@@ -86,26 +80,6 @@ Partial Class MainSettingsWindow
         Me.btn_penalty_setting_save.TabIndex = 5
         Me.btn_penalty_setting_save.Text = "Save Settings"
         Me.btn_penalty_setting_save.ThemeName = "VisualStudio2012Dark"
-        '
-        'RadLabel6
-        '
-        Me.RadLabel6.BackColor = System.Drawing.Color.Transparent
-        Me.RadLabel6.Location = New System.Drawing.Point(331, 73)
-        Me.RadLabel6.Name = "RadLabel6"
-        Me.RadLabel6.Size = New System.Drawing.Size(113, 18)
-        Me.RadLabel6.TabIndex = 24
-        Me.RadLabel6.Text = "hour(s) and minute(s)"
-        Me.RadLabel6.ThemeName = "VisualStudio2012Dark"
-        '
-        'RadLabel5
-        '
-        Me.RadLabel5.BackColor = System.Drawing.Color.Transparent
-        Me.RadLabel5.Location = New System.Drawing.Point(331, 36)
-        Me.RadLabel5.Name = "RadLabel5"
-        Me.RadLabel5.Size = New System.Drawing.Size(113, 18)
-        Me.RadLabel5.TabIndex = 20
-        Me.RadLabel5.Text = "hour(s) and minute(s)"
-        Me.RadLabel5.ThemeName = "VisualStudio2012Dark"
         '
         'RadLabel7
         '
@@ -145,9 +119,9 @@ Partial Class MainSettingsWindow
         '
         'penalty_ci_hhmm
         '
-        Me.penalty_ci_hhmm.CustomFormat = "HH:mm"
+        Me.penalty_ci_hhmm.CustomFormat = "HH ""hour(s)"" ""and"" mm ""minute(s)"""
         Me.penalty_ci_hhmm.Format = System.Windows.Forms.DateTimePickerFormat.Custom
-        Me.penalty_ci_hhmm.Location = New System.Drawing.Point(258, 69)
+        Me.penalty_ci_hhmm.Location = New System.Drawing.Point(258, 71)
         Me.penalty_ci_hhmm.MinimumSize = New System.Drawing.Size(0, 24)
         Me.penalty_ci_hhmm.Name = "penalty_ci_hhmm"
         '
@@ -155,12 +129,12 @@ Partial Class MainSettingsWindow
         '
         Me.penalty_ci_hhmm.RootElement.MinSize = New System.Drawing.Size(0, 24)
         Me.penalty_ci_hhmm.ShowUpDown = true
-        Me.penalty_ci_hhmm.Size = New System.Drawing.Size(68, 24)
+        Me.penalty_ci_hhmm.Size = New System.Drawing.Size(161, 24)
         Me.penalty_ci_hhmm.TabIndex = 3
         Me.penalty_ci_hhmm.TabStop = false
-        Me.penalty_ci_hhmm.Text = "00:00"
+        Me.penalty_ci_hhmm.Text = "00 hour(s) and 00 minute(s)"
         Me.penalty_ci_hhmm.ThemeName = "VisualStudio2012Dark"
-        Me.penalty_ci_hhmm.Value = New Date(CType(0,Long))
+        Me.penalty_ci_hhmm.Value = New Date(2016, 9, 23, 0, 0, 0, 0)
         '
         'penalty_gp_day
         '
@@ -180,9 +154,9 @@ Partial Class MainSettingsWindow
         '
         'penalty_gp_hhmm
         '
-        Me.penalty_gp_hhmm.CustomFormat = "HH:mm"
+        Me.penalty_gp_hhmm.CustomFormat = "HH ""hour(s)"" ""and"" mm ""minute(s)"""
         Me.penalty_gp_hhmm.Format = System.Windows.Forms.DateTimePickerFormat.Custom
-        Me.penalty_gp_hhmm.Location = New System.Drawing.Point(258, 32)
+        Me.penalty_gp_hhmm.Location = New System.Drawing.Point(258, 34)
         Me.penalty_gp_hhmm.MinimumSize = New System.Drawing.Size(0, 24)
         Me.penalty_gp_hhmm.Name = "penalty_gp_hhmm"
         '
@@ -190,19 +164,19 @@ Partial Class MainSettingsWindow
         '
         Me.penalty_gp_hhmm.RootElement.MinSize = New System.Drawing.Size(0, 24)
         Me.penalty_gp_hhmm.ShowUpDown = true
-        Me.penalty_gp_hhmm.Size = New System.Drawing.Size(68, 24)
+        Me.penalty_gp_hhmm.Size = New System.Drawing.Size(161, 24)
         Me.penalty_gp_hhmm.TabIndex = 1
         Me.penalty_gp_hhmm.TabStop = false
-        Me.penalty_gp_hhmm.Text = "00:00"
+        Me.penalty_gp_hhmm.Text = "00 hour(s) and 00 minute(s)"
         Me.penalty_gp_hhmm.ThemeName = "VisualStudio2012Dark"
-        Me.penalty_gp_hhmm.Value = New Date(CType(0,Long))
+        Me.penalty_gp_hhmm.Value = New Date(2016, 9, 23, 0, 0, 0, 0)
         '
         'penalty_peso_amount
         '
         Me.penalty_peso_amount.Location = New System.Drawing.Point(160, 106)
         Me.penalty_peso_amount.MinimumSize = New System.Drawing.Size(0, 24)
         Me.penalty_peso_amount.Name = "penalty_peso_amount"
-        Me.penalty_peso_amount.NullText = "Peso Amout"
+        Me.penalty_peso_amount.NullText = "Peso Amount"
         '
         '
         '
@@ -265,8 +239,6 @@ Partial Class MainSettingsWindow
         Me.RadGroupBox1.ResumeLayout(false)
         Me.RadGroupBox1.PerformLayout
         CType(Me.btn_penalty_setting_save,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.RadLabel6,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.RadLabel5,System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.RadLabel7,System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.RadLabel4,System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.penalty_ci_day,System.ComponentModel.ISupportInitialize).EndInit
@@ -288,8 +260,6 @@ End Sub
     Friend WithEvents RadLabel3 As Telerik.WinControls.UI.RadLabel
     Friend WithEvents RadLabel2 As Telerik.WinControls.UI.RadLabel
     Friend WithEvents RadLabel1 As Telerik.WinControls.UI.RadLabel
-    Friend WithEvents RadLabel6 As Telerik.WinControls.UI.RadLabel
-    Friend WithEvents RadLabel5 As Telerik.WinControls.UI.RadLabel
     Friend WithEvents RadLabel7 As Telerik.WinControls.UI.RadLabel
     Friend WithEvents RadLabel4 As Telerik.WinControls.UI.RadLabel
     Friend WithEvents penalty_ci_day As Telerik.WinControls.UI.RadSpinEditor
