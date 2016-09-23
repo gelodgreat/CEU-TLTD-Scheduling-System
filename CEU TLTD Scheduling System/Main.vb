@@ -239,7 +239,7 @@ End Sub
         Try
             MysqlConn.Open()
 
-            query = "Select reservationno as 'Reservation Number' ,borrower as 'Borrower',id as 'ID', equipmentno as 'Equipment No', equipment as 'Equipment', DATE_FORMAT(date,'%M %d %Y') as 'Date',TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time',activitytype as 'Activiity Type',actname as 'Activity' from reservation  where date ='" & Format(CDate(rec_dtp_date.Value), "yyyy-MM-dd") & "' ORDER by date ASC"
+            query = "Select reservationno as 'Reservation Number' ,borrower as 'Borrower',id as 'ID', equipmentno as 'Equipment No', equipment as 'Equipment', DATE_FORMAT(date,'%M %d %Y') as 'Date',TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time',activitytype as 'Activiity Type',actname as 'Activity',res_status as 'Status' from reservation natural join reservation_equipments  where date ='" & Format(CDate(rec_dtp_date.Value), "yyyy-MM-dd") & "' ORDER by date ASC"
 
             comm = New MySqlCommand(query, MysqlConn)
             sda.SelectCommand = comm
@@ -840,7 +840,7 @@ End Sub
                 MysqlConn.Open()
                 Dim Query As String
                 ' Dim Query2 As String
-                Query = "insert into released_info (rel_id_passnum,rel_reservation_no,rel_borrower,rel_equipment_no,rel_equipment,rel_assign_date,rel_starttime,rel_endtime,rel_status,rel_releasedby) VALUES('" & rel_tb_id.Text & "','" & rel_tb_reservationnum.Text & "','" & rel_tb_borrower.Text & "','" & rel_tb_equipmentnum.Text & "','" & rel_tb_equipment.Text & "','" & Format(CDate(rel_tb_startdate.Value), "yyyy-MM-dd") & "','" & Format(CDate(rel_tb_starttime.Text), "HH:mm") & "','" & Format(CDate(rel_tb_endtime.Text), "HH:mm") & "','" & rel_tb_status.Text & "','" & rel_nameofstaff_release.Text & "')"  '; update reservation set  res_status = '" & rel_tb_status.Text & "' where reservationno = '" & rel_tb_reservationnum.Text & "'"
+                Query = "insert into released_info (rel_id_passnum,rel_reservation_no,rel_borrower,rel_equipment_no,rel_equipment,rel_assign_date,rel_starttime,rel_endtime,rel_status,rel_releasedby) VALUES('" & rel_tb_id.Text & "','" & rel_tb_reservationnum.Text & "','" & rel_tb_borrower.Text & "','" & rel_tb_equipmentnum.Text & "','" & rel_tb_equipment.Text & "','" & Format(CDate(rel_tb_startdate.Value), "yyyy-MM-dd") & "','" & Format(CDate(rel_tb_starttime.Text), "HH:mm") & "','" & Format(CDate(rel_tb_endtime.Text), "HH:mm") & "','" & rel_tb_status.Text & "','" & rel_nameofstaff_release.Text & "'); update reservation_equipments set  res_status = '" & rel_tb_status.Text & "' where reservationno = '" & rel_tb_reservationnum.Text & "' and equipmentno='" & rel_tb_equipmentnum.Text & "' and equipment= '" & rel_tb_equipment.Text & "'"
                 'Query = "delete from reservation where  reservationno = '" & rel_tb_reservationnum.Text & "'"
                 comm = New MySqlCommand(Query, MysqlConn)
                 'comm.Parameters.AddWithValue("ID", rel_tb_id.Text)
@@ -976,7 +976,7 @@ End Sub
         Try
             MysqlConn.Open()
             Dim query As String
-            query = "Select reservationno as 'Reservation Number' , borrower as 'Borrower', equipmentno as 'Equipment No', equipment as 'Equipment', DATE_FORMAT(date,'%M %d %Y') as 'Date',TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time'  from reservation  ORDER by date ASC"
+            query = "Select reservationno as 'Reservation Number' , borrower as 'Borrower', equipmentno as 'Equipment No', equipment as 'Equipment', DATE_FORMAT(date,'%M %d %Y') as 'Date',TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time',res_status as 'Status' from reservation natural join reservation_equipments  ORDER by date ASC"
             comm = New MySqlCommand(query, MysqlConn)
             sda.SelectCommand = comm
             sda.Fill(dbdataset)
@@ -1864,7 +1864,7 @@ End Sub
                                     MysqlConn.Close()
                                     MysqlConn.Open()
                                     query = "INSERT INTO `reservation` VALUES ('" & rec_cb_reserveno.Text & "','" & equipmentnorgv & "', '" & equipmentrgv & "', '" & equipmentsnrgv & "', '" & rec_cb_idnum.Text & "', '" & Format(CDate(rec_dtp_date.Value), "yyyy-MM-dd") & "','" & Format(CDate(rec_dtp_starttime.Text), "HH:mm") & "', '" & Format(CDate(rec_dtp_endtime.Text), "HH:mm") & "', '" & rec_cb_borrower.Text & "', '" & rec_cb_location.Text & "' , '" & lbl_nameofstaff_reserved.Text & "' ,'" & rec_cb_acttype.Text & "','" & rec_rrtc_actname.Text & "')
-                            ;INSERT INTO `reservation_equipments` VALUES ('" & rec_cb_reserveno.Text & "','" & equipmentnorgv & "', '" & equipmentrgv & "', '" & equipmentsnrgv & "','" & rec_cb_status.Text & "',)"
+                            ;INSERT INTO `reservation_equipments` VALUES ('" & rec_cb_reserveno.Text & "','" & equipmentnorgv & "', '" & equipmentrgv & "', '" & equipmentsnrgv & "','" & rec_cb_status.Text & "')"
 
                                     comm = New MySqlCommand(query, MysqlConn)
                                     READER = comm.ExecuteReader
