@@ -20,6 +20,9 @@ Public Class Login
 
         Else
             Try
+                If a = False Then
+                    RadMessageBox.Show(Me, "Database is Offline.", "Login", MessageBoxButtons.OK, RadMessageIcon.Error, MessageBoxDefaultButton.Button1)
+                Else
                 Dim looper As Integer
                 If ConnectionState.Open = True Then
                     mysqlconn.Close()
@@ -51,11 +54,12 @@ Public Class Login
                 Else
                     RadMessageBox.Show(Me, "Incorrect Username or Password.", "Login", MessageBoxButtons.OK, RadMessageIcon.Error, MessageBoxDefaultButton.Button1)
                 End If
-
+              End If
             Catch ex As MySqlException
                 RadMessageBox.Show(Me, ex.Message, "Login", MessageBoxButtons.OK, RadMessageIcon.Error, MessageBoxDefaultButton.Button1)
             End Try
         End If
+    
     End Sub
 
     'Codes for timer and connection status
@@ -145,5 +149,12 @@ Public Class Login
         Cursor = Cursors.Arrow
     End Sub
 
-
+    Private Sub log_lbl_dbstatus_MouseHover(sender As Object, e As EventArgs) Handles log_lbl_dbstatus.MouseHover
+        If a=False
+            Dim aa As DialogResult = RadMessageBox.Show(Me, "The Database is Offline. Would you like to restart the application to check for update on the connection?", "CEU TLTD Reservation System", MessageBoxButtons.YesNo, RadMessageIcon.Question)
+            If aa=DialogResult.Yes
+                Application.Restart()
+            End If
+        End If
+    End Sub
 End Class

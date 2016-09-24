@@ -38,23 +38,51 @@ Public Class Main
     Dim bdsrc_penaltylist As New BindingSource
     Dim bdsrc_returnedeq As New BindingSource
     Dim eq_keepSelectedRowIndexAfterUpdate As Integer 'WU_TRY1
+    Dim acc_staff_keepSelectedRowIndexAfterUpdate As Integer
+    Dim acc_prof_keepSelectedRowIndexAfterUpdate As Integer
 
     'WU_SETTINGS'
 
-    'MENU Bar
+    'Start! Groupbox Hover in Account Management
+    Private Sub gb_staff_reg_MouseEnter(sender As Object, e As EventArgs) Handles gb_staff_reg.MouseEnter
+        acct_mgmt_hover_delay_goingToStaff.Interval = 500
+        acct_mgmt_hover_delay_goingToStaff.Stop()
+        acct_mgmt_hover_delay_goingToBorrower.Stop()
+        acct_mgmt_hover_delay_goingToStaff.Start()
+    End Sub
+     Private Sub acct_mgmt_hoverdelaygoingStaff(sender As Object, e As EventArgs) Handles acct_mgmt_hover_delay_goingToStaff.Tick
+        acct_mgmt_hover_delay_goingToStaff.Stop()
+        acct_mgmt_hover_delay_goingToBorrower.Stop()
+        rpv_child_acctmgmt.SelectedPage = rpv_staff
+        End Sub
+    Private Sub gb_bor_reg_MouseEnter(sender As Object, e As EventArgs) Handles gb_bor_reg.MouseEnter
+        acct_mgmt_hover_delay_goingToBorrower.Interval = 500
+        acct_mgmt_hover_delay_goingToBorrower.Stop()
+        acct_mgmt_hover_delay_goingToStaff.Stop()
+        acct_mgmt_hover_delay_goingToBorrower.Start()
+    End Sub
+    Private Sub acct_mgmt_hoverdelaygoingToBorrower(sender As Object, e As EventArgs) Handles acct_mgmt_hover_delay_goingToBorrower.Tick
+        acct_mgmt_hover_delay_goingToBorrower.Stop()
+        acct_mgmt_hover_delay_goingToStaff.Stop()
+        rpv_child_acctmgmt.SelectedPage = rpv_borrower
+    End Sub
+    'END! Groupbox Hover in Account Management
+
+    'START! MENU Bar
      Private Sub MenuBar_MouseLeave(sender As Object, e As EventArgs) Handles menuItem_DBManage.MouseLeave, menuItem_About.MouseLeave, menuItem_Settings.MouseLeave
         If ThemeResolutionService.ApplicationThemeName = "VisualStudio2012Dark" Then
-        Dim item As RadMenuItem = TryCast(sender, RadMenuItem)
-	   item.FillPrimitive.BackColor = Color.Transparent
-      End IF
+            Dim item As RadMenuItem = TryCast(sender, RadMenuItem)
+	        item.FillPrimitive.BackColor = Color.Transparent
+      End If
     End Sub
     Private Sub MenuBar_MouseEnter(sender As Object, e As EventArgs) Handles menuItem_DBManage.MouseEnter, menuItem_About.MouseEnter, menuItem_Settings.MouseEnter
-    If ThemeResolutionService.ApplicationThemeName = "VisualStudio2012Dark" Then
-	Dim item As RadMenuItem = TryCast(sender, RadMenuItem)
-	item.FillPrimitive.BackColor = Color.FromArgb(62, 62, 64)
-	item.FillPrimitive.GradientStyle = Telerik.WinControls.GradientStyles.Solid
-    End IF
-End Sub
+        If ThemeResolutionService.ApplicationThemeName = "VisualStudio2012Dark" Then
+	        Dim item As RadMenuItem = TryCast(sender, RadMenuItem)
+	        item.FillPrimitive.BackColor = Color.FromArgb(62, 62, 64)
+	        item.FillPrimitive.GradientStyle = Telerik.WinControls.GradientStyles.Solid
+        End If
+    End Sub
+    
     Private Sub menuItem_LoadDB_Click(sender As Object, e As EventArgs) Handles menuItem_LoadDB.Click
         DBPasswordPrompt.Show()        
     End Sub
@@ -70,6 +98,7 @@ End Sub
     Private Sub menuItem_About_Click(sender As Object, e As EventArgs) Handles menuItem_About.Click
         MsgBox("ABOUT WINDOW HERE")
     End Sub
+    'END!! Menu BAR
 
 
     Private Sub Main_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -78,9 +107,10 @@ End Sub
          
         reservation_rgv_recordeddata.Show()
         reservations_rgv_showavailableitems.Hide()
-
-        main_load_academicsonly()
-        main_load_schoolonly()
+        lu_ActivityType.SelectedValue="Academic"
+        acc_sf_usertype.SelectedValue="Staff"
+        'main_load_academicsonly() 'HANDLED by the Event of SelectedIndexChanged in "lu_ActivityType"
+        'main_load_schoolonly() 'Now using single gridview, depreciated
 
         load_rec_table()
         load_eq_table()
@@ -181,9 +211,9 @@ End Sub
         e.CellElement.TextAlignment = ContentAlignment.MiddleCenter
     End Sub
 
-    Private Sub main_rgv_recordedschoolonly_ViewCellFormatting(sender As Object, e As CellFormattingEventArgs) Handles main_rgv_recordedschoolonly.ViewCellFormatting
-        e.CellElement.TextAlignment = ContentAlignment.MiddleCenter
-    End Sub
+    'Private Sub main_rgv_recordedschoolonly_ViewCellFormatting(sender As Object, e As CellFormattingEventArgs) Handles main_rgv_recordedschoolonly.ViewCellFormatting
+    '    e.CellElement.TextAlignment = ContentAlignment.MiddleCenter
+    'End Sub
 
     Private Sub acc_prof_list_ViewCellFormatting(sender As Object, e As CellFormattingEventArgs) Handles acc_prof_list.ViewCellFormatting
         e.CellElement.TextAlignment = ContentAlignment.MiddleCenter
@@ -222,6 +252,105 @@ End Sub
             End While
         mysqlconn.Close()
     End Sub
+
+    Public Sub SetSizesofMainTable()
+        If lu_ActivityType.Text="Academic" Then
+            Dim colsmain_resno = main_rgv_recordedacademicsonly.Columns("Reservation Number")
+            colsmain_resno.TextAlignment = ContentAlignment.MiddleCenter
+            colsmain_resno.Width = 113
+            colsmain_resno.WrapText = True
+
+            Dim colsmain_brr = main_rgv_recordedacademicsonly.Columns("Borrower")
+            colsmain_brr.TextAlignment = ContentAlignment.MiddleCenter
+            colsmain_brr.Width = 119
+            colsmain_brr.WrapText = True
+
+            Dim colsmain_idid = main_rgv_recordedacademicsonly.Columns("ID")
+            colsmain_idid.TextAlignment = ContentAlignment.MiddleCenter
+            colsmain_idid.Width = 71
+            colsmain_idid.WrapText = True
+
+            Dim colsmain_eqno = main_rgv_recordedacademicsonly.Columns("Equipment No")
+            colsmain_eqno.TextAlignment = ContentAlignment.MiddleCenter
+            colsmain_eqno.Width = 138
+            colsmain_eqno.WrapText = True
+
+            Dim colsmain_eqname = main_rgv_recordedacademicsonly.Columns("Equipment")
+            colsmain_eqname.TextAlignment = ContentAlignment.MiddleCenter
+            colsmain_eqname.Width = 359
+            colsmain_eqname.WrapText = True
+
+            Dim colsmain_date = main_rgv_recordedacademicsonly.Columns("Date")
+            colsmain_date.TextAlignment = ContentAlignment.MiddleCenter
+            colsmain_date.Width = 114
+            colsmain_date.WrapText = True
+
+            Dim colsmain_st = main_rgv_recordedacademicsonly.Columns("Start Time")
+            colsmain_st.TextAlignment = ContentAlignment.MiddleCenter
+            colsmain_st.Width = 68
+            colsmain_st.WrapText = True
+
+            Dim colsmain_et = main_rgv_recordedacademicsonly.Columns("End Time")
+            colsmain_et.TextAlignment = ContentAlignment.MiddleCenter
+            colsmain_et.Width = 68
+            colsmain_et.WrapText = True
+
+            Dim colsmain_at = main_rgv_recordedacademicsonly.Columns("Activity Type")
+            colsmain_at.TextAlignment = ContentAlignment.MiddleCenter
+            colsmain_at.Width = 109
+            colsmain_at.WrapText = True
+        Else
+            Dim colsmain_resno = main_rgv_recordedacademicsonly.Columns("Reservation Number")
+            colsmain_resno.TextAlignment = ContentAlignment.MiddleCenter
+            colsmain_resno.Width = 113
+            colsmain_resno.WrapText = True
+
+            Dim colsmain_brr = main_rgv_recordedacademicsonly.Columns("Borrower")
+            colsmain_brr.TextAlignment = ContentAlignment.MiddleCenter
+            colsmain_brr.Width = 119
+            colsmain_brr.WrapText = True
+
+            Dim colsmain_idid = main_rgv_recordedacademicsonly.Columns("ID")
+            colsmain_idid.TextAlignment = ContentAlignment.MiddleCenter
+            colsmain_idid.Width = 71
+            colsmain_idid.WrapText = True
+
+            Dim colsmain_eqno = main_rgv_recordedacademicsonly.Columns("Equipment No")
+            colsmain_eqno.TextAlignment = ContentAlignment.MiddleCenter
+            colsmain_eqno.Width = 138
+            colsmain_eqno.WrapText = True
+
+            Dim colsmain_eqname = main_rgv_recordedacademicsonly.Columns("Equipment")
+            colsmain_eqname.TextAlignment = ContentAlignment.MiddleCenter
+            colsmain_eqname.Width = 239
+            colsmain_eqname.WrapText = True
+
+            Dim colsmain_date = main_rgv_recordedacademicsonly.Columns("Date")
+            colsmain_date.TextAlignment = ContentAlignment.MiddleCenter
+            colsmain_date.Width = 114
+            colsmain_date.WrapText = True
+
+            Dim colsmain_st = main_rgv_recordedacademicsonly.Columns("Start Time")
+            colsmain_st.TextAlignment = ContentAlignment.MiddleCenter
+            colsmain_st.Width = 68
+            colsmain_st.WrapText = True
+
+            Dim colsmain_et = main_rgv_recordedacademicsonly.Columns("End Time")
+            colsmain_et.TextAlignment = ContentAlignment.MiddleCenter
+            colsmain_et.Width = 68
+            colsmain_et.WrapText = True
+
+            Dim colsmain_at = main_rgv_recordedacademicsonly.Columns("Activity Type")
+            colsmain_at.TextAlignment = ContentAlignment.MiddleCenter
+            colsmain_at.Width = 109
+            colsmain_at.WrapText = True
+
+            Dim colsmain_att = main_rgv_recordedacademicsonly.Columns("Activity")
+            colsmain_att.TextAlignment = ContentAlignment.MiddleCenter
+            colsmain_att.Width = 120
+            colsmain_att.WrapText = True
+      End If
+    End Sub
     Public Sub load_rec_table()
 
         MysqlConn = New MySqlConnection
@@ -259,74 +388,88 @@ End Sub
     End Sub
 
     Public Sub main_load_academicsonly()
-        MysqlConn = New MySqlConnection
-        MysqlConn.ConnectionString = connstring
-
-        Dim dbdataset As New DataTable
-        Dim ds As New DataSet
-        Dim sda As New MySqlDataAdapter
-        Dim bsource As New BindingSource
-
         If MysqlConn.State = ConnectionState.Open Then
             MysqlConn.Close()
         End If
-
+        MysqlConn = New MySqlConnection
+        MysqlConn.ConnectionString = connstring
+        Dim SDA As New MySqlDataAdapter
+        Dim dbdataset As New DataTable
+        Dim bsource As New BindingSource
+        Dim Cover As String
         Try
+            If lu_ActivityType.Text="School Activity"
+            query = "Select reservationno as 'Reservation Number' ,borrower as 'Borrower',id as 'ID', equipmentno as 'Equipment No', equipment as 'Equipment',
+            DATE_FORMAT(date,'%M %d %Y') as 'Date',TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time',
+            activitytype as 'Activity Type',actname as 'Activity' from reservation where date ='" & Format(CDate(lu_date.Value), "yyyy-MM-dd") & "' and activitytype='School Activity'"
+            Cover = "School Activity"
+            ElseIf lu_ActivityType.Text="Academic"
+                 query = "Select reservationno as 'Reservation Number' ,borrower as 'Borrower',id as 'ID', equipmentno as 'Equipment No', equipment as 'Equipment',
+            DATE_FORMAT(date,'%M %d %Y') as 'Date',TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time',
+            activitytype as 'Activity Type' from reservation where date ='" & Format(CDate(lu_date.Value), "yyyy-MM-dd") & "' and activitytype='Academic'"
+            Cover = "Academic"
+            ElseIf lu_ActivityType.Text="All"
+                 query = "Select reservationno as 'Reservation Number' ,borrower as 'Borrower',id as 'ID', equipmentno as 'Equipment No', equipment as 'Equipment',
+            DATE_FORMAT(date,'%M %d %Y') as 'Date',TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time',
+            activitytype as 'Activity Type', actname as 'Activity' from reservation where date ='" & Format(CDate(lu_date.Value), "yyyy-MM-dd") & "'"
+                Cover = ""
+            End If
+            main_rgv_recordedacademicsonly.Columns.Clear()
             MysqlConn.Open()
-            query = "Select reservationno as 'Reservation Number' ,borrower as 'Borrower',id as 'ID', equipmentno as 'Equipment No', equipment as 'Equipment', DATE_FORMAT(date,'%M %d %Y') as 'Date',TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time',activitytype as 'Activiity Type' FROM reservation where date ='" & Format(CDate(lu_date.Value), "yyyy-MM-dd") & "' and activitytype='Academic'  ORDER by date ASC"
-            ' PROBLEM: ID and Reservation is missing. THE NEXT COMMENT shows the old query
-            'query = "SELECT TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time',borrower as 'Borrower', equipment as 'Equipment', equipmentno as 'Equipment No' ,DATE_FORMAT(date,'%M %d %Y') as 'Date', activitytype as 'Activiity Type',actname as 'Activity' from reservation where date='" & Format(CDate(lu_date.Value), "yyyy-MM-dd") & "'ORDER BY starttime ASC"
             comm = New MySqlCommand(query, MysqlConn)
-            sda.SelectCommand = comm
-            sda.Fill(dbdataset)
+            SDA.SelectCommand = comm
+            SDA.Fill(dbdataset)
             bsource.DataSource = dbdataset
             main_rgv_recordedacademicsonly.DataSource = bsource
-            main_rgv_recordedacademicsonly.ReadOnly = True
-            sda.Update(dbdataset)
-            MysqlConn.Close()
+            SDA.Update(dbdataset)
 
-        Catch ex As Exception
+            MysqlConn.Close()
+            SetSizesofMainTable()
+        Catch ex As MySqlException
             RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
         Finally
             MysqlConn.Dispose()
-
         End Try
+
+        Dim DV As New DataView(dbdataset)
+        DV.RowFilter = String.Format("`Borrower` Like'%{0}%' and `Equipment` Like'%{1}%' and `Date` Like'%{2}%' and `Activity Type` Like'%{3}%'", lu_byname.Text, lu_byequipment.Text,lu_date.Value.ToString("MMMM d yyyy"),Cover)
+        main_rgv_recordedacademicsonly.DataSource = DV
     End Sub
 
-    Public Sub main_load_schoolonly()
-        MysqlConn = New MySqlConnection
-        MysqlConn.ConnectionString = connstring
+    'Public Sub main_load_schoolonly()
+    '    MysqlConn = New MySqlConnection
+    '    MysqlConn.ConnectionString = connstring
 
-        Dim dbdataset As New DataTable
-        Dim ds As New DataSet
-        Dim sda As New MySqlDataAdapter
-        Dim bsource As New BindingSource
+    '    Dim dbdataset As New DataTable
+    '    Dim ds As New DataSet
+    '    Dim sda As New MySqlDataAdapter
+    '    Dim bsource As New BindingSource
 
-        If MysqlConn.State = ConnectionState.Open Then
-            MysqlConn.Close()
-        End If
+    '    If MysqlConn.State = ConnectionState.Open Then
+    '        MysqlConn.Close()
+    '    End If
 
-        Try
-            MysqlConn.Open()
-            query = "Select reservationno as 'Reservation Number' ,borrower as 'Borrower',id as 'ID', equipmentno as 'Equipment No', equipment as 'Equipment', DATE_FORMAT(date,'%M %d %Y') as 'Date',TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time',activitytype as 'Activiity Type',actname as 'Activity' from reservation where date ='" & Format(CDate(lu_date.Value), "yyyy-MM-dd") & "'and activitytype='School Activity' ORDER by date ASC"
-            ' PROBLEM: ID and Reservation is missing. THE NEXT COMMENT shows the old query
-            'query = "SELECT TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time',borrower as 'Borrower', equipment as 'Equipment', equipmentno as 'Equipment No' ,DATE_FORMAT(date,'%M %d %Y') as 'Date', activitytype as 'Activiity Type',actname as 'Activity' from reservation where date='" & Format(CDate(lu_date.Value), "yyyy-MM-dd") & "'ORDER BY starttime ASC"
-            comm = New MySqlCommand(query, MysqlConn)
-            sda.SelectCommand = comm
-            sda.Fill(dbdataset)
-            bsource.DataSource = dbdataset
-            main_rgv_recordedschoolonly.DataSource = bsource
-            main_rgv_recordedschoolonly.ReadOnly = True
-            sda.Update(dbdataset)
-            MysqlConn.Close()
+    '    Try
+    '        MysqlConn.Open()
+    '        query = "Select reservationno as 'Reservation Number' ,borrower as 'Borrower',id as 'ID', equipmentno as 'Equipment No', equipment as 'Equipment', DATE_FORMAT(date,'%M %d %Y') as 'Date',TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time',activitytype as 'Activiity Type',actname as 'Activity' from reservation where date ='" & Format(CDate(lu_date.Value), "yyyy-MM-dd") & "'and activitytype='School Activity' ORDER by date ASC"
+    '        ' PROBLEM: ID and Reservation is missing. THE NEXT COMMENT shows the old query
+    '        'query = "SELECT TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time',borrower as 'Borrower', equipment as 'Equipment', equipmentno as 'Equipment No' ,DATE_FORMAT(date,'%M %d %Y') as 'Date', activitytype as 'Activiity Type',actname as 'Activity' from reservation where date='" & Format(CDate(lu_date.Value), "yyyy-MM-dd") & "'ORDER BY starttime ASC"
+    '        comm = New MySqlCommand(query, MysqlConn)
+    '        sda.SelectCommand = comm
+    '        sda.Fill(dbdataset)
+    '        bsource.DataSource = dbdataset
+    '        main_rgv_recordedschoolonly.DataSource = bsource
+    '        main_rgv_recordedschoolonly.ReadOnly = True
+    '        sda.Update(dbdataset)
+    '        MysqlConn.Close()
 
-        Catch ex As Exception
-            RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
-        Finally
-            MysqlConn.Dispose()
+    '    Catch ex As Exception
+    '        RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+    '    Finally
+    '        MysqlConn.Dispose()
 
-        End Try
-    End Sub
+    '    End Try
+    'End Sub
 
     'Programmed by BRENZ STARTING POINT
 
@@ -354,7 +497,7 @@ End Sub
             acc_staff_list.ReadOnly = True
             sda.Update(dbdataset)
             MysqlConn.Close()
-
+            acc_staff_list.Rows(acc_staff_keepSelectedRowIndexAfterUpdate).IsCurrent = True
         Catch ex As Exception
             RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
         Finally
@@ -388,7 +531,7 @@ End Sub
             acc_prof_list.ReadOnly = True
             sda.Update(dbdataset)
             MysqlConn.Close()
-
+            acc_prof_list.Rows(acc_prof_keepSelectedRowIndexAfterUpdate).IsCurrent = True
         Catch ex As Exception
             RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
         Finally
@@ -441,10 +584,12 @@ End Sub
         MysqlConn = New MySqlConnection
         MysqlConn.ConnectionString = connstring
         Dim READER As MySqlDataReader
-        If (acc_sf_id.Text = "") Or (acc_sf_fname.Text = "") Or (acc_sf_mname.Text = " ") Or (acc_sf_lname.Text = " ") Or (acc_sf_usertype.Text = " ") Or (acc_sf_username.Text = " ") Then
-            RadMessageBox.Show(Me, "Please complete the fields to Save!", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+        If (acc_sf_id.Text = "") Or (acc_sf_fname.Text = "") Or (acc_sf_mname.Text = "") Or (acc_sf_lname.Text = "") Or (acc_sf_usertype.Text = "") Or (acc_sf_username.Text = "") Then
+            RadMessageBox.Show(Me, "Please complete the fields to Save!", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Exclamation)
         Else
-            Try
+            If (NOT acc_sf_username.Text.Length <= 11) Then
+                If acc_sf_username.Text.Contains("@ceu.edu.ph") Then
+                Try
                 MysqlConn.Open()
                 Dim Query As String
                 Query = "insert into ceutltdscheduler.staff_reg (staff_id,staff_fname,staff_mname,staff_surname,staff_type,staff_username,staff_password) values (@staffid, @staffFname, @staffMname, @staffLname, @staffUsertype, @staffUsername, sha2(@staffPassword, 512))"
@@ -462,29 +607,43 @@ End Sub
                 If svYN = MsgBoxResult.Yes Then
                     If (acc_sf_password.Text = acc_sf_retypepassword.Text) Then
                         READER = comm.ExecuteReader
-                        RadMessageBox.Show("Register Complete!")
-                        acc_sf_id.Text = " "
-                        acc_sf_fname.Text = " "
-                        acc_sf_mname.Text = " "
-                        acc_sf_lname.Text = " "
-                        acc_sf_usertype.Text = " "
-                        acc_sf_username.Text = " "
-                        acc_sf_password.Text = ""
-                        acc_sf_retypepassword.Text = ""
-
+                        RadMessageBox.Show(Me, "Registration Complete!", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Info)
+                        acc_sf_id.Text=""
+                        acc_sf_username.Text=""
+                        acc_sf_fname.Text=""
+                        acc_sf_mname.Text=""
+                        acc_sf_lname.Text=""
+                        acc_sf_password.Text=""
+                        acc_sf_retypepassword.Text=""
+                        acc_staff_btn_delete.Hide()
+                        acc_staff_btn_update.Hide()
+                        acc_staff_btn_save.Show()
                     Else
-                        RadMessageBox.Show("Password did Not match!")
-
-
+                        RadMessageBox.Show(Me, "Please confirm your password.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Exclamation)
                     End If
                 End If
                 MysqlConn.Close()
             Catch ex As MySqlException
-                MessageBox.Show(ex.Message)
+                       If ex.Number = 1062 Then
+                RadMessageBox.Show(Me, "The ID# and the Username must be unique.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)                       
+                        Else
+                RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                            End If
             Finally
                 MysqlConn.Dispose()
                 load_main_acc()
+                rpv_child_acctmgmt.SelectedPage = rpv_staff
+                
             End Try
+                    
+                Else
+                RadMessageBox.Show(Me, "Please enter your username with the ""@ceu.edu.ph"" ", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Exclamation)
+                End If
+            Else
+                RadMessageBox.Show(Me, "Please enter your username with the ""@ceu.edu.ph"" ", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Exclamation)
+            End If
+
+
         End If
     End Sub
 
@@ -496,6 +655,7 @@ End Sub
         If updateYN = MsgBoxResult.Yes Then
 
             If e.RowIndex >= 0 Then
+                acc_staff_keepSelectedRowIndexAfterUpdate = e.RowIndex
                 Dim row As Telerik.WinControls.UI.GridViewRowInfo
 
                 row = Me.acc_staff_list.Rows(e.RowIndex)
@@ -510,6 +670,7 @@ End Sub
                 acc_sf_id.Enabled = False
                 acc_sf_password.Enabled = False
                 acc_sf_retypepassword.Enabled = False
+                acc_sf_username.Enabled=False
                 acc_staff_btn_update.Show()
                 acc_staff_btn_delete.Show()
                 acc_staff_btn_save.Hide()
@@ -522,7 +683,6 @@ End Sub
 
     'Programmed by BRENZ 5th Point Update Button!
     Private Sub acc_staff_btn_update_Click(sender As Object, e As EventArgs) Handles acc_staff_btn_update.Click
-
         If MysqlConn.State = ConnectionState.Open Then
             MysqlConn.Close()
         End If
@@ -546,11 +706,23 @@ End Sub
                     RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
                 Finally
                     MysqlConn.Dispose()
+                    acc_sf_id.Text = ""
+                    acc_sf_fname.Text = ""
+                    acc_sf_mname.Text = ""
+                    acc_sf_lname.Text = ""
+                    'acc_sf_usertype.Text = ""
+                    acc_sf_username.Text = ""
+
+                    acc_sf_id.Enabled=True
+                    acc_sf_username.Enabled = True
+                    acc_sf_password.Enabled=True
+                    acc_sf_retypepassword.Enabled=True
+                    
+                    rpv_child_acctmgmt.SelectedPage = rpv_staff
                 End Try
             End If
         End If
         load_main_acc()
-
     End Sub
 
     'Programmed by BRENZ 6th Point Delete Button!
@@ -568,20 +740,27 @@ End Sub
                 comm = New MySqlCommand(Query, MysqlConn)
                 reader = comm.ExecuteReader
 
-                RadMessageBox.Show(Me, "Delete Complete!", "Delete")
+               RadMessageBox.Show(Me, "Account Deletion Successful!", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Info)
                 MysqlConn.Close()
             Catch ex As MySqlException
                 MessageBox.Show(ex.Message)
             Finally
                 MysqlConn.Dispose()
+                acc_staff_keepSelectedRowIndexAfterUpdate = 0
                 load_main_acc()
-                acc_sf_id.Text = " "
-                acc_sf_fname.Text = " "
-                acc_sf_mname.Text = " "
-                acc_sf_lname.Text = " "
-                acc_sf_usertype.Text = " "
-                acc_sf_username.Text = " "
-
+                acc_sf_id.Text = ""
+                acc_sf_fname.Text = ""
+                acc_sf_mname.Text = ""
+                acc_sf_lname.Text = ""
+                'acc_sf_usertype.Text = ""
+                acc_sf_username.Text = ""
+                acc_sf_id.Enabled=True
+                acc_sf_username.Enabled = True
+                acc_sf_password.Enabled=True
+                acc_sf_retypepassword.Enabled=True
+                acc_staff_btn_delete.Hide()
+                acc_staff_btn_update.Hide
+                acc_staff_btn_save.Show
             End Try
         End If
 
@@ -591,16 +770,18 @@ End Sub
     Private Sub acc_staff_btn_clear_Click(sender As Object, e As EventArgs) Handles acc_staff_btn_clear.Click
         doneYN = RadMessageBox.Show(Me, "Are you sure you want to clear the fields?", "CEU TLTD Reservation System", MessageBoxButtons.YesNo, RadMessageIcon.Question)
         If doneYN = MsgBoxResult.Yes Then
-            acc_sf_id.Text = " "
-            acc_sf_fname.Text = " "
-            acc_sf_mname.Text = " "
-            acc_sf_lname.Text = " "
-            acc_sf_usertype.Text = " "
-            acc_sf_username.Text = " "
+            acc_sf_id.Text = ""
+            acc_sf_fname.Text = ""
+            acc_sf_mname.Text = ""
+            acc_sf_lname.Text = ""
+            acc_sf_usertype.SelectedValue = "Staff"
+            acc_sf_username.Text = ""
             acc_sf_password.Text = ""
             acc_sf_retypepassword.Text = ""
             acc_sf_password.Enabled = True
             acc_sf_retypepassword.Enabled = True
+            acc_sf_id.Enabled = True
+            acc_sf_username.Enabled=true
             acc_staff_btn_save.Show()
             acc_staff_btn_update.Hide()
             acc_staff_btn_delete.Hide()
@@ -630,23 +811,24 @@ End Sub
 
                 svYN = RadMessageBox.Show(Me, "Are you sure you want To save this information? ", "TLTD Schuling Management", MessageBoxButtons.YesNo, RadMessageIcon.Question)
                 If svYN = MsgBoxResult.Yes Then
-
                     READER = comm.ExecuteReader
-                    RadMessageBox.Show("Register Complete!")
-
+                    RadMessageBox.Show(Me, "Registration Complete!", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Info)
+                    acc_pf_id.Text=""
+                    acc_pf_fname.Text=""
+                    acc_pf_mname.Text=""
+                    acc_pf_lname.Text=""
                 End If
                 MysqlConn.Close()
             Catch ex As MySqlException
-                MessageBox.Show(ex.Message)
+                If ex.Number Then
+                    RadMessageBox.Show(Me, "The ID exists already.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                Else
+                RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                End If
             Finally
                 MysqlConn.Dispose()
                 load_main_prof()
-                acc_pf_id.Text = " "
-                acc_pf_fname.Text = " "
-                acc_pf_mname.Text = " "
-                acc_pf_lname.Text = " "
-                acc_pf_college.Text = " "
-
+                rpv_child_acctmgmt.SelectedPage = rpv_borrower
             End Try
         End If
     End Sub
@@ -655,10 +837,12 @@ End Sub
 
     'Programmed by Brenz 9th point Cell Double Click Prof List!
     Private Sub acc_prof_list_CellDoubleClick(sender As Object, e As GridViewCellEventArgs) Handles acc_prof_list.CellDoubleClick
+        
         updateYN = RadMessageBox.Show(Me, "Do you want to select this information?", "CEU TLTD Reservation System", MessageBoxButtons.YesNo, RadMessageIcon.Question)
         If updateYN = MsgBoxResult.Yes Then
 
-            If e.RowIndex >= 0 Then
+            If e.RowIndex >=0 Then
+                acc_prof_keepSelectedRowIndexAfterUpdate = e.RowIndex
                 Dim row As Telerik.WinControls.UI.GridViewRowInfo
 
                 row = Me.acc_prof_list.Rows(e.RowIndex)
@@ -706,6 +890,16 @@ End Sub
                     RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
                 Finally
                     MysqlConn.Dispose()
+                    acc_pf_id.Text=""
+                    acc_pf_college.Text=""
+                    acc_pf_fname.Text=""
+                    acc_pf_mname.Text=""
+                    acc_pf_lname.Text=""
+                    acc_pf_id.Enabled=True
+                    acc_prof_btn_delete.Hide()
+                    acc_prof_btn_update.Hide()
+                    acc_prof_btn_save.Show()
+                    rpv_child_acctmgmt.SelectedPage = rpv_borrower
                 End Try
             End If
         End If
@@ -726,19 +920,24 @@ End Sub
                 Query = "delete from borrowers_reg where bor_id = '" & acc_pf_id.Text & "'"
                 comm = New MySqlCommand(Query, MysqlConn)
                 reader = comm.ExecuteReader
-
-                RadMessageBox.Show(Me, "Delete Complete!", "Delete")
                 MysqlConn.Close()
+                RadMessageBox.Show(Me, "Account deleted.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Info)
+                acc_pf_id.Text = ""
+                acc_pf_fname.Text = ""
+                acc_pf_mname.Text = ""
+                acc_pf_lname.Text = ""
+                acc_pf_college.Text = ""
+                acc_pf_id.Enabled=True
+                acc_prof_btn_delete.Hide()
+                acc_prof_btn_update.Hide()
+                acc_prof_btn_save.Show()
+                
             Catch ex As MySqlException
-                MessageBox.Show(ex.Message)
+                RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
             Finally
                 MysqlConn.Dispose()
+                acc_prof_keepSelectedRowIndexAfterUpdate = 0
                 load_main_prof()
-                acc_pf_id.Text = " "
-                acc_pf_fname.Text = " "
-                acc_pf_mname.Text = " "
-                acc_pf_lname.Text = " "
-                acc_pf_college.Text = " "
 
             End Try
         End If
@@ -751,12 +950,12 @@ End Sub
     Private Sub acc_prof_btn_clear_Click(sender As Object, e As EventArgs) Handles acc_prof_btn_clear.Click
         doneYN = RadMessageBox.Show(Me, "Are you sure you want to clear the fields?", "CEU TLTD Reservation System", MessageBoxButtons.YesNo, RadMessageIcon.Question)
         If doneYN = MsgBoxResult.Yes Then
-            acc_pf_id.Text = " "
-            acc_pf_fname.Text = " "
-            acc_pf_mname.Text = " "
-            acc_pf_lname.Text = " "
-            acc_pf_college.Text = " "
-
+            acc_pf_id.Text = ""
+            acc_pf_fname.Text = ""
+            acc_pf_mname.Text = ""
+            acc_pf_lname.Text = ""
+            acc_pf_college.Text = ""
+            acc_pf_id.Enabled=true
             acc_prof_btn_delete.Hide()
             acc_prof_btn_update.Hide()
             acc_prof_btn_save.Show()
@@ -1106,39 +1305,7 @@ End Sub
 
     Private Sub lu_byequipment_filter_delay_Tick(sender As Object, e As EventArgs) Handles lu_byequipment_filter_delay.Tick
         lu_byequipment_filter_delay.Stop()
-        ''''''''Pending Changes because of client request
-
-        MysqlConn = New MySqlConnection
-        MysqlConn.ConnectionString = connstring
-        Dim SDA As New MySqlDataAdapter
-        Dim dbdataset As New DataTable
-        Dim bsource As New BindingSource
-        Try
-            MysqlConn.Open()
-
-
-            query = "Select reservationno as 'Reservation Number' ,borrower as 'Borrower',id as 'ID', equipmentno as 'Equipment No', equipment as 'Equipment',
-            DATE_FORMAT(date,'%M %d %Y') as 'Date',TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time',
-            activitytype as 'Activiity Type',actname as 'Activity' from reservation where date ='" & Format(CDate(rec_dtp_date.Value), "yyyy-MM-dd") & "'  ORDER BY equipment desc"
-
-            comm = New MySqlCommand(query, MysqlConn)
-            SDA.SelectCommand = comm
-            SDA.Fill(dbdataset)
-            bsource.DataSource = dbdataset
-            main_rgv_recordedacademicsonly.DataSource = bsource
-            SDA.Update(dbdataset)
-
-            MysqlConn.Close()
-
-        Catch ex As MySqlException
-            RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
-        Finally
-            MysqlConn.Dispose()
-        End Try
-
-        Dim DV As New DataView(dbdataset)
-        DV.RowFilter = String.Format("`Equipment` Like'%{0}%' and `Borrower` Like'%{1}%'", lu_byequipment.Text, lu_byname.Text)
-        main_rgv_recordedacademicsonly.DataSource = DV
+        main_load_academicsonly()
     End Sub
 
     'Search by Name in Main Tab
@@ -1150,18 +1317,45 @@ End Sub
 
     Private Sub lu_byname_filter_delay_Tick(sender As Object, e As EventArgs) Handles lu_byname_filter_delay.Tick
         lu_byname_filter_delay.Stop()
+       main_load_academicsonly()
+    End Sub
+
+    Private Sub lu_ActivityType_SelectedIndexChanged(sender As Object, e As UI.Data.PositionChangedEventArgs) Handles lu_ActivityType.SelectedIndexChanged
+        lu_ActivityType_filter_delay.Interval = 700
+        lu_ActivityType_filter_delay.Stop()
+        lu_ActivityType_filter_delay.Start()
+    End Sub
+
+    Private Sub lu_ActivityType_filter_delay_Tick(sender As Object, e As EventArgs) Handles lu_ActivityType_filter_delay.Tick
+        lu_ActivityType_filter_delay.Stop()
+        If MysqlConn.State = ConnectionState.Open Then
+            MysqlConn.Close()
+        End If
         MysqlConn = New MySqlConnection
         MysqlConn.ConnectionString = connstring
         Dim SDA As New MySqlDataAdapter
         Dim dbdataset As New DataTable
         Dim bsource As New BindingSource
+        Dim Cover As String
         Try
-            MysqlConn.Open()
-
+            If lu_ActivityType.Text="School Activity"
             query = "Select reservationno as 'Reservation Number' ,borrower as 'Borrower',id as 'ID', equipmentno as 'Equipment No', equipment as 'Equipment',
             DATE_FORMAT(date,'%M %d %Y') as 'Date',TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time',
-            activitytype as 'Activiity Type',actname as 'Activity' from reservation where date ='" & Format(CDate(rec_dtp_date.Value), "yyyy-MM-dd") & "'"
-
+            activitytype as 'Activity Type',actname as 'Activity' from reservation where date ='" & Format(CDate(lu_date.Value), "yyyy-MM-dd") & "' and activitytype='School Activity'"
+            Cover = "School Activity"
+            ElseIf lu_ActivityType.Text="Academic"
+                 query = "Select reservationno as 'Reservation Number' ,borrower as 'Borrower',id as 'ID', equipmentno as 'Equipment No', equipment as 'Equipment',
+            DATE_FORMAT(date,'%M %d %Y') as 'Date',TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time',
+            activitytype as 'Activity Type' from reservation where date ='" & Format(CDate(lu_date.Value), "yyyy-MM-dd") & "' and activitytype='Academic'"
+            Cover = "Academic"
+            ElseIf lu_ActivityType.Text="All"
+                 query = "Select reservationno as 'Reservation Number' ,borrower as 'Borrower',id as 'ID', equipmentno as 'Equipment No', equipment as 'Equipment',
+            DATE_FORMAT(date,'%M %d %Y') as 'Date',TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time',
+            activitytype as 'Activity Type', actname as 'Activity' from reservation where date ='" & Format(CDate(lu_date.Value), "yyyy-MM-dd") & "'"
+                Cover = ""
+            End If
+            main_rgv_recordedacademicsonly.Columns.Clear()
+            MysqlConn.Open()
             comm = New MySqlCommand(query, MysqlConn)
             SDA.SelectCommand = comm
             SDA.Fill(dbdataset)
@@ -1170,7 +1364,7 @@ End Sub
             SDA.Update(dbdataset)
 
             MysqlConn.Close()
-
+            SetSizesofMainTable()
         Catch ex As MySqlException
             RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
         Finally
@@ -1178,7 +1372,7 @@ End Sub
         End Try
 
         Dim DV As New DataView(dbdataset)
-        DV.RowFilter = String.Format("`Borrower` Like'%{0}%' and `Equipment` Like'%{1}%'", lu_byname.Text, lu_byequipment.Text)
+        DV.RowFilter = String.Format("`Borrower` Like'%{0}%' and `Equipment` Like'%{1}%' and `Date` Like'%{2}%' and `Activity Type` Like'%{3}%'", lu_byname.Text, lu_byequipment.Text,lu_date.Value.ToString("MMMM d yyyy"),Cover)
         main_rgv_recordedacademicsonly.DataSource = DV
     End Sub
 
@@ -1895,7 +2089,7 @@ End Sub
                 End If
             End If
             main_load_academicsonly()
-            main_load_schoolonly()
+            'main_load_schoolonly()
             load_rec_table()
             reserved_load_table()
         End If
@@ -2020,7 +2214,7 @@ End Sub
         End If
         load_rec_table()
         main_load_academicsonly()
-        main_load_schoolonly()
+        'main_load_schoolonly()
     End Sub
 
     'Combining (Fname,Lname) in Borrower Field in Reservation
@@ -2079,7 +2273,6 @@ End Sub
     Private Sub lu_date_filter_delay_Tick(sender As Object, e As EventArgs) Handles lu_date_filter_delay.Tick
         lu_date_filter_delay.Stop()
         main_load_academicsonly()
-        main_load_schoolonly()
     End Sub
 
     Private Sub lu_date_ValueChanged(sender As Object, e As EventArgs) Handles lu_date.ValueChanged
@@ -2125,7 +2318,7 @@ End Sub
         End If
         load_rec_table()
         main_load_academicsonly()
-        main_load_schoolonly()
+        'main_load_schoolonly()
     End Sub
 
 
@@ -2677,6 +2870,7 @@ End Sub
         Me.Hide()
 
     End Sub
+
 
 
 
