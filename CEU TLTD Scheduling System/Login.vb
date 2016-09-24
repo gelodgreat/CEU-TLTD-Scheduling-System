@@ -25,7 +25,7 @@ Public Class Login
             Try
                 If a = False Then
                     If db_is_deadCount>=3 Then
-                        RadMessageBox.Show(Me, "Database is Offline." & Environment.NewLine & "Please check the connection settings by clicking gear icon on the top right and ask the database administrator to input the required details.", "Login", MessageBoxButtons.OK, RadMessageIcon.Error, MessageBoxDefaultButton.Button1)
+                        RadMessageBox.Show(Me, "Database is Offline." & Environment.NewLine & "Please check the connection settings by clicking the gear icon on the top right and ask the database administrator to input the required details.", "Login", MessageBoxButtons.OK, RadMessageIcon.Error, MessageBoxDefaultButton.Button1)
                     Else
                     RadMessageBox.Show(Me, "Database is Offline.", "Login", MessageBoxButtons.OK, RadMessageIcon.Error, MessageBoxDefaultButton.Button1)
                     
