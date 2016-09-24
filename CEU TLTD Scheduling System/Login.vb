@@ -20,14 +20,14 @@ Public Class Login
             Try
                 If a = False Then
                     If db_is_deadCount>=3 Then
-                        RadMessageBox.Show(Me, "Database is Offline." & Environment.NewLine & "Please check the connection settings by clicking the gear icon on the top right and ask the database administrator to input the required details.", "Login", MessageBoxButtons.OK, RadMessageIcon.Error, MessageBoxDefaultButton.Button1)
+                        RadMessageBox.Show(Me, "Database is Offline." & Environment.NewLine & "Please check the connection settings by clicking the gear icon on the top right and ask the database administrator to input the required details.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error, MessageBoxDefaultButton.Button1)
                     Else
-                        RadMessageBox.Show(Me, "Database is Offline.", "Login", MessageBoxButtons.OK, RadMessageIcon.Error, MessageBoxDefaultButton.Button1)
+                        RadMessageBox.Show(Me, "Database is Offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error, MessageBoxDefaultButton.Button1)
                     End If
                     db_is_deadCount +=1
                 Else
                     If String.IsNullOrEmpty(log_username.Text) Or String.IsNullOrEmpty(log_password.Text) Then
-                        RadMessageBox.Show(Me, "Please enter username and password.", "Login", MessageBoxButtons.OK, RadMessageIcon.Error, MessageBoxDefaultButton.Button1)
+                        RadMessageBox.Show(Me, "Please enter username and password.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error, MessageBoxDefaultButton.Button1)
 
                     Else
                         Dim looper As Integer
@@ -58,12 +58,12 @@ Public Class Login
                         Me.Hide()
                         Main.Show()
                     Else
-                        RadMessageBox.Show(Me, "Incorrect Username or Password.", "Login", MessageBoxButtons.OK, RadMessageIcon.Error, MessageBoxDefaultButton.Button1)
+                        RadMessageBox.Show(Me, "Incorrect Username or Password.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error, MessageBoxDefaultButton.Button1)
                     End If
                  End If
                 End If
             Catch ex As MySqlException
-                RadMessageBox.Show(Me, ex.Message, "Login", MessageBoxButtons.OK, RadMessageIcon.Error, MessageBoxDefaultButton.Button1)
+                RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error, MessageBoxDefaultButton.Button1)
             End Try    
     End Sub
 
@@ -153,7 +153,7 @@ Public Class Login
 
     Private Sub log_lbl_dbstatus_MouseHover(sender As Object, e As EventArgs) Handles log_lbl_dbstatus.MouseHover
         If a=False
-            Dim aa As DialogResult = RadMessageBox.Show(Me, "The Database is Offline. Would you like to restart the application to check for update on the connection?", "CEU TLTD Reservation System", MessageBoxButtons.YesNo, RadMessageIcon.Question)
+            Dim aa As DialogResult = RadMessageBox.Show(Me, "The Database is Offline. Would you like to check again?", "CEU TLTD Reservation System", MessageBoxButtons.YesNo, RadMessageIcon.Question)
             If aa=DialogResult.Yes
                 CheckDBStatus()
             End If
