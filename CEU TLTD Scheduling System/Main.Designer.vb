@@ -23,30 +23,9 @@ Partial Class Main
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim TableViewDefinition1 As Telerik.WinControls.UI.TableViewDefinition = New Telerik.WinControls.UI.TableViewDefinition()
-        Dim TableViewDefinition2 As Telerik.WinControls.UI.TableViewDefinition = New Telerik.WinControls.UI.TableViewDefinition()
-        Dim TableViewDefinition3 As Telerik.WinControls.UI.TableViewDefinition = New Telerik.WinControls.UI.TableViewDefinition()
-        Dim RadListDataItem1 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem2 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem3 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem4 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem5 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem6 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem7 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem8 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem9 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem10 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem11 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem12 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem13 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem14 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem15 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem16 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem17 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem18 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem19 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem20 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem21 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim TableViewDefinition85 As Telerik.WinControls.UI.TableViewDefinition = New Telerik.WinControls.UI.TableViewDefinition()
+        Dim TableViewDefinition86 As Telerik.WinControls.UI.TableViewDefinition = New Telerik.WinControls.UI.TableViewDefinition()
+        Dim TableViewDefinition87 As Telerik.WinControls.UI.TableViewDefinition = New Telerik.WinControls.UI.TableViewDefinition()
         Dim RadListDataItem22 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
         Dim RadListDataItem23 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
         Dim RadListDataItem24 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
@@ -78,6 +57,22 @@ Partial Class Main
         Dim RadListDataItem50 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
         Dim RadListDataItem51 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
         Dim RadListDataItem52 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem287 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem288 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem289 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem290 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem291 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem292 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem293 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem294 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem295 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem296 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem297 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem298 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem299 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem300 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem301 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem302 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
         Dim RadListDataItem53 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
         Dim RadListDataItem54 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
         Dim RadListDataItem55 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
@@ -109,6 +104,24 @@ Partial Class Main
         Dim RadListDataItem81 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
         Dim RadListDataItem82 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
         Dim RadListDataItem83 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem303 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem304 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem305 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem306 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem307 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem308 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem309 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem310 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem311 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem312 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem313 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem314 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem315 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem316 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem317 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem318 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim TableViewDefinition88 As Telerik.WinControls.UI.TableViewDefinition = New Telerik.WinControls.UI.TableViewDefinition()
+        Dim TableViewDefinition89 As Telerik.WinControls.UI.TableViewDefinition = New Telerik.WinControls.UI.TableViewDefinition()
         Dim RadListDataItem84 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
         Dim RadListDataItem85 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
         Dim RadListDataItem86 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
@@ -120,8 +133,6 @@ Partial Class Main
         Dim RadListDataItem92 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
         Dim RadListDataItem93 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
         Dim RadListDataItem94 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim TableViewDefinition4 As Telerik.WinControls.UI.TableViewDefinition = New Telerik.WinControls.UI.TableViewDefinition()
-        Dim TableViewDefinition5 As Telerik.WinControls.UI.TableViewDefinition = New Telerik.WinControls.UI.TableViewDefinition()
         Dim RadListDataItem95 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
         Dim RadListDataItem96 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
         Dim RadListDataItem97 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
@@ -209,6 +220,7 @@ Partial Class Main
         Dim RadListDataItem179 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
         Dim RadListDataItem180 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
         Dim RadListDataItem181 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem1 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
         Dim RadListDataItem182 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
         Dim RadListDataItem183 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
         Dim RadListDataItem184 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
@@ -239,6 +251,7 @@ Partial Class Main
         Dim RadListDataItem209 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
         Dim RadListDataItem210 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
         Dim RadListDataItem211 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem2 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
         Dim RadListDataItem212 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
         Dim RadListDataItem213 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
         Dim RadListDataItem214 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
@@ -269,6 +282,16 @@ Partial Class Main
         Dim RadListDataItem239 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
         Dim RadListDataItem240 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
         Dim RadListDataItem241 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim GridViewTextBoxColumn22 As Telerik.WinControls.UI.GridViewTextBoxColumn = New Telerik.WinControls.UI.GridViewTextBoxColumn()
+        Dim GridViewTextBoxColumn23 As Telerik.WinControls.UI.GridViewTextBoxColumn = New Telerik.WinControls.UI.GridViewTextBoxColumn()
+        Dim GridViewTextBoxColumn24 As Telerik.WinControls.UI.GridViewTextBoxColumn = New Telerik.WinControls.UI.GridViewTextBoxColumn()
+        Dim TableViewDefinition90 As Telerik.WinControls.UI.TableViewDefinition = New Telerik.WinControls.UI.TableViewDefinition()
+        Dim TableViewDefinition91 As Telerik.WinControls.UI.TableViewDefinition = New Telerik.WinControls.UI.TableViewDefinition()
+        Dim TableViewDefinition92 As Telerik.WinControls.UI.TableViewDefinition = New Telerik.WinControls.UI.TableViewDefinition()
+        Dim RadListDataItem3 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem4 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem5 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem6 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
         Dim RadListDataItem242 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
         Dim RadListDataItem243 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
         Dim RadListDataItem244 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
@@ -276,39 +299,16 @@ Partial Class Main
         Dim RadListDataItem246 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
         Dim RadListDataItem247 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
         Dim RadListDataItem248 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem249 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem250 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem251 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem252 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem253 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem254 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim GridViewTextBoxColumn1 As Telerik.WinControls.UI.GridViewTextBoxColumn = New Telerik.WinControls.UI.GridViewTextBoxColumn()
-        Dim GridViewTextBoxColumn2 As Telerik.WinControls.UI.GridViewTextBoxColumn = New Telerik.WinControls.UI.GridViewTextBoxColumn()
-        Dim GridViewTextBoxColumn3 As Telerik.WinControls.UI.GridViewTextBoxColumn = New Telerik.WinControls.UI.GridViewTextBoxColumn()
-        Dim TableViewDefinition6 As Telerik.WinControls.UI.TableViewDefinition = New Telerik.WinControls.UI.TableViewDefinition()
-        Dim TableViewDefinition7 As Telerik.WinControls.UI.TableViewDefinition = New Telerik.WinControls.UI.TableViewDefinition()
-        Dim TableViewDefinition8 As Telerik.WinControls.UI.TableViewDefinition = New Telerik.WinControls.UI.TableViewDefinition()
-        Dim RadListDataItem255 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem256 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem257 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem258 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem259 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem260 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem261 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem262 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem263 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem264 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem265 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem266 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem267 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim TableViewDefinition9 As Telerik.WinControls.UI.TableViewDefinition = New Telerik.WinControls.UI.TableViewDefinition()
-        Dim TableViewDefinition10 As Telerik.WinControls.UI.TableViewDefinition = New Telerik.WinControls.UI.TableViewDefinition()
-        Dim TableViewDefinition11 As Telerik.WinControls.UI.TableViewDefinition = New Telerik.WinControls.UI.TableViewDefinition()
-        Dim RadListDataItem268 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem269 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem270 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem271 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim TableViewDefinition12 As Telerik.WinControls.UI.TableViewDefinition = New Telerik.WinControls.UI.TableViewDefinition()
+        Dim RadListDataItem7 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem8 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim TableViewDefinition93 As Telerik.WinControls.UI.TableViewDefinition = New Telerik.WinControls.UI.TableViewDefinition()
+        Dim TableViewDefinition94 As Telerik.WinControls.UI.TableViewDefinition = New Telerik.WinControls.UI.TableViewDefinition()
+        Dim TableViewDefinition95 As Telerik.WinControls.UI.TableViewDefinition = New Telerik.WinControls.UI.TableViewDefinition()
+        Dim RadListDataItem9 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem10 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem11 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim RadListDataItem12 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
+        Dim TableViewDefinition96 As Telerik.WinControls.UI.TableViewDefinition = New Telerik.WinControls.UI.TableViewDefinition()
         Me.RadGroupBox16 = New Telerik.WinControls.UI.RadGroupBox()
         Me.RadGroupBox13 = New Telerik.WinControls.UI.RadGroupBox()
         Me.VisualStudio2012DarkTheme1 = New Telerik.WinControls.Themes.VisualStudio2012DarkTheme()
@@ -323,6 +323,7 @@ Partial Class Main
         Me.CeutltdschedulerDataSetBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.rpvp_returning = New Telerik.WinControls.UI.RadPageViewPage()
         Me.RadGroupBox1 = New Telerik.WinControls.UI.RadGroupBox()
+        Me.ret_remarks = New Telerik.WinControls.UI.RadTextBoxControl()
         Me.RadPageView3 = New Telerik.WinControls.UI.RadPageView()
         Me.rel_list_info2 = New Telerik.WinControls.UI.RadPageViewPage()
         Me.released_grid_list2 = New Telerik.WinControls.UI.RadGridView()
@@ -542,13 +543,13 @@ Partial Class Main
         Me.lu_ActivityType_filter_delay = New System.Windows.Forms.Timer(Me.components)
         Me.acct_mgmt_hover_delay_goingToBorrower = New System.Windows.Forms.Timer(Me.components)
         Me.acct_mgmt_hover_delay_goingToStaff = New System.Windows.Forms.Timer(Me.components)
-        Me.ret_remarks = New Telerik.WinControls.UI.RadTextBoxControl()
         CType(Me.RadGroupBox16,System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.RadGroupBox13,System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.CeutltdschedulerDataSetBindingSource,System.ComponentModel.ISupportInitialize).BeginInit
         Me.rpvp_returning.SuspendLayout
         CType(Me.RadGroupBox1,System.ComponentModel.ISupportInitialize).BeginInit
         Me.RadGroupBox1.SuspendLayout
+        CType(Me.ret_remarks,System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.RadPageView3,System.ComponentModel.ISupportInitialize).BeginInit
         Me.RadPageView3.SuspendLayout
         Me.rel_list_info2.SuspendLayout
@@ -798,7 +799,6 @@ Partial Class Main
         CType(Me.rpv1,System.ComponentModel.ISupportInitialize).BeginInit
         Me.rpv1.SuspendLayout
         CType(Me.RadMenu1,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.ret_remarks,System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me,System.ComponentModel.ISupportInitialize).BeginInit
         Me.SuspendLayout
         '
@@ -869,6 +869,15 @@ Partial Class Main
         Me.RadGroupBox1.Text = "Remarks"
         Me.RadGroupBox1.ThemeName = "VisualStudio2012Dark"
         '
+        'ret_remarks
+        '
+        Me.ret_remarks.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.ret_remarks.Location = New System.Drawing.Point(2, 18)
+        Me.ret_remarks.Name = "ret_remarks"
+        Me.ret_remarks.Size = New System.Drawing.Size(335, 152)
+        Me.ret_remarks.TabIndex = 0
+        Me.ret_remarks.ThemeName = "VisualStudio2012Dark"
+        '
         'RadPageView3
         '
         Me.RadPageView3.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom)  _
@@ -889,7 +898,6 @@ Partial Class Main
         'rel_list_info2
         '
         Me.rel_list_info2.Controls.Add(Me.released_grid_list2)
-        Me.rel_list_info2.ItemSize = New System.Drawing.SizeF(152!, 24!)
         Me.rel_list_info2.Location = New System.Drawing.Point(5, 30)
         Me.rel_list_info2.Name = "rel_list_info2"
         Me.rel_list_info2.Size = New System.Drawing.Size(1331, 244)
@@ -907,7 +915,7 @@ Partial Class Main
         Me.released_grid_list2.MasterTemplate.AutoSizeColumnsMode = Telerik.WinControls.UI.GridViewAutoSizeColumnsMode.Fill
         Me.released_grid_list2.MasterTemplate.EnableGrouping = false
         Me.released_grid_list2.MasterTemplate.ShowRowHeaderColumn = false
-        Me.released_grid_list2.MasterTemplate.ViewDefinition = TableViewDefinition1
+        Me.released_grid_list2.MasterTemplate.ViewDefinition = TableViewDefinition85
         Me.released_grid_list2.Name = "released_grid_list2"
         Me.released_grid_list2.ReadOnly = true
         Me.released_grid_list2.Size = New System.Drawing.Size(1331, 244)
@@ -918,7 +926,6 @@ Partial Class Main
         'ret_list_info
         '
         Me.ret_list_info.Controls.Add(Me.penalty_grid_list)
-        Me.ret_list_info.ItemSize = New System.Drawing.SizeF(90!, 24!)
         Me.ret_list_info.Location = New System.Drawing.Point(5, 30)
         Me.ret_list_info.Name = "ret_list_info"
         Me.ret_list_info.Size = New System.Drawing.Size(1331, 244)
@@ -938,7 +945,7 @@ Partial Class Main
         Me.penalty_grid_list.MasterTemplate.EnableGrouping = false
         Me.penalty_grid_list.MasterTemplate.MultiSelect = true
         Me.penalty_grid_list.MasterTemplate.ShowRowHeaderColumn = false
-        Me.penalty_grid_list.MasterTemplate.ViewDefinition = TableViewDefinition2
+        Me.penalty_grid_list.MasterTemplate.ViewDefinition = TableViewDefinition86
         Me.penalty_grid_list.Name = "penalty_grid_list"
         Me.penalty_grid_list.ReadOnly = true
         Me.penalty_grid_list.Size = New System.Drawing.Size(1331, 244)
@@ -949,7 +956,6 @@ Partial Class Main
         'ret_eq_list
         '
         Me.ret_eq_list.Controls.Add(Me.returned_eq_list)
-        Me.ret_eq_list.ItemSize = New System.Drawing.SizeF(120!, 24!)
         Me.ret_eq_list.Location = New System.Drawing.Point(5, 30)
         Me.ret_eq_list.Name = "ret_eq_list"
         Me.ret_eq_list.Size = New System.Drawing.Size(1331, 244)
@@ -972,7 +978,7 @@ Partial Class Main
         Me.returned_eq_list.MasterTemplate.EnableGrouping = false
         Me.returned_eq_list.MasterTemplate.MultiSelect = true
         Me.returned_eq_list.MasterTemplate.ShowRowHeaderColumn = false
-        Me.returned_eq_list.MasterTemplate.ViewDefinition = TableViewDefinition3
+        Me.returned_eq_list.MasterTemplate.ViewDefinition = TableViewDefinition87
         Me.returned_eq_list.Name = "returned_eq_list"
         Me.returned_eq_list.ReadOnly = true
         Me.returned_eq_list.Size = New System.Drawing.Size(1331, 244)
@@ -1183,74 +1189,53 @@ Partial Class Main
         '
         'ret_tb_etime
         '
-        RadListDataItem1.Text = "01:00"
-        RadListDataItem2.Text = "01:30"
-        RadListDataItem3.Text = "02:00"
-        RadListDataItem4.Text = "02:30"
-        RadListDataItem5.Text = "03:00"
-        RadListDataItem6.Text = "03:30"
-        RadListDataItem7.Text = "04:00"
-        RadListDataItem8.Text = "04:30"
-        RadListDataItem9.Text = "05:00"
-        RadListDataItem10.Text = "05:30"
-        RadListDataItem11.Text = "06:00"
-        RadListDataItem12.Text = "06:30"
-        RadListDataItem13.Text = "07:00"
-        RadListDataItem14.Text = "07:30"
-        RadListDataItem15.Text = "08:00"
-        RadListDataItem16.Text = "08:30"
-        RadListDataItem17.Text = "09:00"
-        RadListDataItem18.Text = "09:30"
-        RadListDataItem19.Text = "10:00"
-        RadListDataItem20.Text = "10:30"
-        RadListDataItem21.Text = "11:00"
-        RadListDataItem22.Text = "11:30"
-        RadListDataItem23.Text = "12:00"
-        RadListDataItem24.Text = "12:30"
-        RadListDataItem25.Text = "13:00"
-        RadListDataItem26.Text = "13:30"
-        RadListDataItem27.Text = "14:00"
-        RadListDataItem28.Text = "14:30"
-        RadListDataItem29.Text = "15:00"
-        RadListDataItem30.Text = "15:30"
-        RadListDataItem31.Text = "16:00"
-        RadListDataItem32.Text = "16:30"
-        RadListDataItem33.Text = "17:00"
-        RadListDataItem34.Text = "17:30"
-        RadListDataItem35.Text = "18:00"
-        RadListDataItem36.Text = "18:30"
-        RadListDataItem37.Text = "19:00"
-        RadListDataItem38.Text = "19:30"
-        RadListDataItem39.Text = "20:00"
-        RadListDataItem40.Text = "20:30"
-        RadListDataItem41.Text = "21:00"
-        RadListDataItem42.Text = "21:30"
-        RadListDataItem43.Text = "22:00"
-        RadListDataItem44.Text = "22:30"
-        RadListDataItem45.Text = "23:00"
-        RadListDataItem46.Text = "23:30"
-        RadListDataItem47.Text = "24:00"
-        Me.ret_tb_etime.Items.Add(RadListDataItem1)
-        Me.ret_tb_etime.Items.Add(RadListDataItem2)
-        Me.ret_tb_etime.Items.Add(RadListDataItem3)
-        Me.ret_tb_etime.Items.Add(RadListDataItem4)
-        Me.ret_tb_etime.Items.Add(RadListDataItem5)
-        Me.ret_tb_etime.Items.Add(RadListDataItem6)
-        Me.ret_tb_etime.Items.Add(RadListDataItem7)
-        Me.ret_tb_etime.Items.Add(RadListDataItem8)
-        Me.ret_tb_etime.Items.Add(RadListDataItem9)
-        Me.ret_tb_etime.Items.Add(RadListDataItem10)
-        Me.ret_tb_etime.Items.Add(RadListDataItem11)
-        Me.ret_tb_etime.Items.Add(RadListDataItem12)
-        Me.ret_tb_etime.Items.Add(RadListDataItem13)
-        Me.ret_tb_etime.Items.Add(RadListDataItem14)
-        Me.ret_tb_etime.Items.Add(RadListDataItem15)
-        Me.ret_tb_etime.Items.Add(RadListDataItem16)
-        Me.ret_tb_etime.Items.Add(RadListDataItem17)
-        Me.ret_tb_etime.Items.Add(RadListDataItem18)
-        Me.ret_tb_etime.Items.Add(RadListDataItem19)
-        Me.ret_tb_etime.Items.Add(RadListDataItem20)
-        Me.ret_tb_etime.Items.Add(RadListDataItem21)
+        RadListDataItem22.Text = "01:00"
+        RadListDataItem23.Text = "01:30"
+        RadListDataItem24.Text = "02:00"
+        RadListDataItem25.Text = "02:30"
+        RadListDataItem26.Text = "03:00"
+        RadListDataItem27.Text = "03:30"
+        RadListDataItem28.Text = "04:00"
+        RadListDataItem29.Text = "04:30"
+        RadListDataItem30.Text = "05:00"
+        RadListDataItem31.Text = "05:30"
+        RadListDataItem32.Text = "06:00"
+        RadListDataItem33.Text = "06:30"
+        RadListDataItem34.Text = "07:00"
+        RadListDataItem35.Text = "07:30"
+        RadListDataItem36.Text = "08:00"
+        RadListDataItem37.Text = "08:30"
+        RadListDataItem38.Text = "09:00"
+        RadListDataItem39.Text = "09:30"
+        RadListDataItem40.Text = "10:00"
+        RadListDataItem41.Text = "10:30"
+        RadListDataItem42.Text = "11:00"
+        RadListDataItem43.Text = "11:30"
+        RadListDataItem44.Text = "12:00"
+        RadListDataItem45.Text = "12:30"
+        RadListDataItem46.Text = "13:00"
+        RadListDataItem47.Text = "13:30"
+        RadListDataItem48.Text = "14:00"
+        RadListDataItem49.Text = "14:30"
+        RadListDataItem50.Text = "15:00"
+        RadListDataItem51.Text = "15:30"
+        RadListDataItem52.Text = "16:00"
+        RadListDataItem287.Text = "16:30"
+        RadListDataItem288.Text = "17:00"
+        RadListDataItem289.Text = "17:30"
+        RadListDataItem290.Text = "18:00"
+        RadListDataItem291.Text = "18:30"
+        RadListDataItem292.Text = "19:00"
+        RadListDataItem293.Text = "19:30"
+        RadListDataItem294.Text = "20:00"
+        RadListDataItem295.Text = "20:30"
+        RadListDataItem296.Text = "21:00"
+        RadListDataItem297.Text = "21:30"
+        RadListDataItem298.Text = "22:00"
+        RadListDataItem299.Text = "22:30"
+        RadListDataItem300.Text = "23:00"
+        RadListDataItem301.Text = "23:30"
+        RadListDataItem302.Text = "24:00"
         Me.ret_tb_etime.Items.Add(RadListDataItem22)
         Me.ret_tb_etime.Items.Add(RadListDataItem23)
         Me.ret_tb_etime.Items.Add(RadListDataItem24)
@@ -1277,6 +1262,27 @@ Partial Class Main
         Me.ret_tb_etime.Items.Add(RadListDataItem45)
         Me.ret_tb_etime.Items.Add(RadListDataItem46)
         Me.ret_tb_etime.Items.Add(RadListDataItem47)
+        Me.ret_tb_etime.Items.Add(RadListDataItem48)
+        Me.ret_tb_etime.Items.Add(RadListDataItem49)
+        Me.ret_tb_etime.Items.Add(RadListDataItem50)
+        Me.ret_tb_etime.Items.Add(RadListDataItem51)
+        Me.ret_tb_etime.Items.Add(RadListDataItem52)
+        Me.ret_tb_etime.Items.Add(RadListDataItem287)
+        Me.ret_tb_etime.Items.Add(RadListDataItem288)
+        Me.ret_tb_etime.Items.Add(RadListDataItem289)
+        Me.ret_tb_etime.Items.Add(RadListDataItem290)
+        Me.ret_tb_etime.Items.Add(RadListDataItem291)
+        Me.ret_tb_etime.Items.Add(RadListDataItem292)
+        Me.ret_tb_etime.Items.Add(RadListDataItem293)
+        Me.ret_tb_etime.Items.Add(RadListDataItem294)
+        Me.ret_tb_etime.Items.Add(RadListDataItem295)
+        Me.ret_tb_etime.Items.Add(RadListDataItem296)
+        Me.ret_tb_etime.Items.Add(RadListDataItem297)
+        Me.ret_tb_etime.Items.Add(RadListDataItem298)
+        Me.ret_tb_etime.Items.Add(RadListDataItem299)
+        Me.ret_tb_etime.Items.Add(RadListDataItem300)
+        Me.ret_tb_etime.Items.Add(RadListDataItem301)
+        Me.ret_tb_etime.Items.Add(RadListDataItem302)
         Me.ret_tb_etime.Location = New System.Drawing.Point(337, 93)
         Me.ret_tb_etime.Name = "ret_tb_etime"
         Me.ret_tb_etime.Size = New System.Drawing.Size(102, 24)
@@ -1285,58 +1291,53 @@ Partial Class Main
         '
         'ret_tb_stime
         '
-        RadListDataItem48.Text = "01:00"
-        RadListDataItem49.Text = "01:30"
-        RadListDataItem50.Text = "02:00"
-        RadListDataItem51.Text = "02:30"
-        RadListDataItem52.Text = "03:00"
-        RadListDataItem53.Text = "03:30"
-        RadListDataItem54.Text = "04:00"
-        RadListDataItem55.Text = "04:30"
-        RadListDataItem56.Text = "05:00"
-        RadListDataItem57.Text = "05:30"
-        RadListDataItem58.Text = "06:00"
-        RadListDataItem59.Text = "06:30"
-        RadListDataItem60.Text = "07:00"
-        RadListDataItem61.Text = "07:30"
-        RadListDataItem62.Text = "08:00"
-        RadListDataItem63.Text = "08:30"
-        RadListDataItem64.Text = "09:00"
-        RadListDataItem65.Text = "09:30"
-        RadListDataItem66.Text = "10:00"
-        RadListDataItem67.Text = "10:30"
-        RadListDataItem68.Text = "11:00"
-        RadListDataItem69.Text = "11:30"
-        RadListDataItem70.Text = "12:00"
-        RadListDataItem71.Text = "12:30"
-        RadListDataItem72.Text = "13:00"
-        RadListDataItem73.Text = "13:30"
-        RadListDataItem74.Text = "14:00"
-        RadListDataItem75.Text = "14:30"
-        RadListDataItem76.Text = "15:00"
-        RadListDataItem77.Text = "15:30"
-        RadListDataItem78.Text = "16:00"
-        RadListDataItem79.Text = "16:30"
-        RadListDataItem80.Text = "17:00"
-        RadListDataItem81.Text = "17:30"
-        RadListDataItem82.Text = "18:00"
-        RadListDataItem83.Text = "18:30"
-        RadListDataItem84.Text = "19:00"
-        RadListDataItem85.Text = "19:30"
-        RadListDataItem86.Text = "20:00"
-        RadListDataItem87.Text = "20:30"
-        RadListDataItem88.Text = "21:00"
-        RadListDataItem89.Text = "21:30"
-        RadListDataItem90.Text = "22:00"
-        RadListDataItem91.Text = "22:30"
-        RadListDataItem92.Text = "23:00"
-        RadListDataItem93.Text = "23:30"
-        RadListDataItem94.Text = "24:00"
-        Me.ret_tb_stime.Items.Add(RadListDataItem48)
-        Me.ret_tb_stime.Items.Add(RadListDataItem49)
-        Me.ret_tb_stime.Items.Add(RadListDataItem50)
-        Me.ret_tb_stime.Items.Add(RadListDataItem51)
-        Me.ret_tb_stime.Items.Add(RadListDataItem52)
+        RadListDataItem53.Text = "01:00"
+        RadListDataItem54.Text = "01:30"
+        RadListDataItem55.Text = "02:00"
+        RadListDataItem56.Text = "02:30"
+        RadListDataItem57.Text = "03:00"
+        RadListDataItem58.Text = "03:30"
+        RadListDataItem59.Text = "04:00"
+        RadListDataItem60.Text = "04:30"
+        RadListDataItem61.Text = "05:00"
+        RadListDataItem62.Text = "05:30"
+        RadListDataItem63.Text = "06:00"
+        RadListDataItem64.Text = "06:30"
+        RadListDataItem65.Text = "07:00"
+        RadListDataItem66.Text = "07:30"
+        RadListDataItem67.Text = "08:00"
+        RadListDataItem68.Text = "08:30"
+        RadListDataItem69.Text = "09:00"
+        RadListDataItem70.Text = "09:30"
+        RadListDataItem71.Text = "10:00"
+        RadListDataItem72.Text = "10:30"
+        RadListDataItem73.Text = "11:00"
+        RadListDataItem74.Text = "11:30"
+        RadListDataItem75.Text = "12:00"
+        RadListDataItem76.Text = "12:30"
+        RadListDataItem77.Text = "13:00"
+        RadListDataItem78.Text = "13:30"
+        RadListDataItem79.Text = "14:00"
+        RadListDataItem80.Text = "14:30"
+        RadListDataItem81.Text = "15:00"
+        RadListDataItem82.Text = "15:30"
+        RadListDataItem83.Text = "16:00"
+        RadListDataItem303.Text = "16:30"
+        RadListDataItem304.Text = "17:00"
+        RadListDataItem305.Text = "17:30"
+        RadListDataItem306.Text = "18:00"
+        RadListDataItem307.Text = "18:30"
+        RadListDataItem308.Text = "19:00"
+        RadListDataItem309.Text = "19:30"
+        RadListDataItem310.Text = "20:00"
+        RadListDataItem311.Text = "20:30"
+        RadListDataItem312.Text = "21:00"
+        RadListDataItem313.Text = "21:30"
+        RadListDataItem314.Text = "22:00"
+        RadListDataItem315.Text = "22:30"
+        RadListDataItem316.Text = "23:00"
+        RadListDataItem317.Text = "23:30"
+        RadListDataItem318.Text = "24:00"
         Me.ret_tb_stime.Items.Add(RadListDataItem53)
         Me.ret_tb_stime.Items.Add(RadListDataItem54)
         Me.ret_tb_stime.Items.Add(RadListDataItem55)
@@ -1368,17 +1369,22 @@ Partial Class Main
         Me.ret_tb_stime.Items.Add(RadListDataItem81)
         Me.ret_tb_stime.Items.Add(RadListDataItem82)
         Me.ret_tb_stime.Items.Add(RadListDataItem83)
-        Me.ret_tb_stime.Items.Add(RadListDataItem84)
-        Me.ret_tb_stime.Items.Add(RadListDataItem85)
-        Me.ret_tb_stime.Items.Add(RadListDataItem86)
-        Me.ret_tb_stime.Items.Add(RadListDataItem87)
-        Me.ret_tb_stime.Items.Add(RadListDataItem88)
-        Me.ret_tb_stime.Items.Add(RadListDataItem89)
-        Me.ret_tb_stime.Items.Add(RadListDataItem90)
-        Me.ret_tb_stime.Items.Add(RadListDataItem91)
-        Me.ret_tb_stime.Items.Add(RadListDataItem92)
-        Me.ret_tb_stime.Items.Add(RadListDataItem93)
-        Me.ret_tb_stime.Items.Add(RadListDataItem94)
+        Me.ret_tb_stime.Items.Add(RadListDataItem303)
+        Me.ret_tb_stime.Items.Add(RadListDataItem304)
+        Me.ret_tb_stime.Items.Add(RadListDataItem305)
+        Me.ret_tb_stime.Items.Add(RadListDataItem306)
+        Me.ret_tb_stime.Items.Add(RadListDataItem307)
+        Me.ret_tb_stime.Items.Add(RadListDataItem308)
+        Me.ret_tb_stime.Items.Add(RadListDataItem309)
+        Me.ret_tb_stime.Items.Add(RadListDataItem310)
+        Me.ret_tb_stime.Items.Add(RadListDataItem311)
+        Me.ret_tb_stime.Items.Add(RadListDataItem312)
+        Me.ret_tb_stime.Items.Add(RadListDataItem313)
+        Me.ret_tb_stime.Items.Add(RadListDataItem314)
+        Me.ret_tb_stime.Items.Add(RadListDataItem315)
+        Me.ret_tb_stime.Items.Add(RadListDataItem316)
+        Me.ret_tb_stime.Items.Add(RadListDataItem317)
+        Me.ret_tb_stime.Items.Add(RadListDataItem318)
         Me.ret_tb_stime.Location = New System.Drawing.Point(337, 63)
         Me.ret_tb_stime.Name = "ret_tb_stime"
         Me.ret_tb_stime.Size = New System.Drawing.Size(102, 24)
@@ -1491,7 +1497,7 @@ Partial Class Main
         Me.RadPageView2.Controls.Add(Me.rel_penalty_info)
         Me.RadPageView2.Location = New System.Drawing.Point(0, -3)
         Me.RadPageView2.Name = "RadPageView2"
-        Me.RadPageView2.SelectedPage = Me.res_notret_info
+        Me.RadPageView2.SelectedPage = Me.rel_penalty_info
         Me.RadPageView2.Size = New System.Drawing.Size(1345, 279)
         Me.RadPageView2.TabIndex = 5
         Me.RadPageView2.Text = "RadPageView2"
@@ -1518,7 +1524,7 @@ Partial Class Main
         Me.reserved_grid_list.MasterTemplate.AutoSizeColumnsMode = Telerik.WinControls.UI.GridViewAutoSizeColumnsMode.Fill
         Me.reserved_grid_list.MasterTemplate.EnableGrouping = false
         Me.reserved_grid_list.MasterTemplate.ShowRowHeaderColumn = false
-        Me.reserved_grid_list.MasterTemplate.ViewDefinition = TableViewDefinition4
+        Me.reserved_grid_list.MasterTemplate.ViewDefinition = TableViewDefinition88
         Me.reserved_grid_list.Name = "reserved_grid_list"
         Me.reserved_grid_list.ReadOnly = true
         Me.reserved_grid_list.Size = New System.Drawing.Size(1335, 244)
@@ -1548,7 +1554,7 @@ Partial Class Main
         Me.released_grid_list.MasterTemplate.AutoSizeColumnsMode = Telerik.WinControls.UI.GridViewAutoSizeColumnsMode.Fill
         Me.released_grid_list.MasterTemplate.EnableGrouping = false
         Me.released_grid_list.MasterTemplate.ShowRowHeaderColumn = false
-        Me.released_grid_list.MasterTemplate.ViewDefinition = TableViewDefinition5
+        Me.released_grid_list.MasterTemplate.ViewDefinition = TableViewDefinition89
         Me.released_grid_list.Name = "released_grid_list"
         Me.released_grid_list.ReadOnly = true
         Me.released_grid_list.Size = New System.Drawing.Size(1335, 244)
@@ -1700,8 +1706,8 @@ Partial Class Main
         '
         'rel_tb_status
         '
-        RadListDataItem95.Text = "Released"
-        Me.rel_tb_status.Items.Add(RadListDataItem95)
+        RadListDataItem84.Text = "Released"
+        Me.rel_tb_status.Items.Add(RadListDataItem84)
         Me.rel_tb_status.Location = New System.Drawing.Point(345, 138)
         Me.rel_tb_status.Name = "rel_tb_status"
         Me.rel_tb_status.Size = New System.Drawing.Size(102, 24)
@@ -1753,53 +1759,64 @@ Partial Class Main
         '
         'rel_tb_endtime
         '
-        RadListDataItem96.Text = "01:00"
-        RadListDataItem97.Text = "01:30"
-        RadListDataItem98.Text = "02:00"
-        RadListDataItem99.Text = "02:30"
-        RadListDataItem100.Text = "03:00"
-        RadListDataItem101.Text = "03:30"
-        RadListDataItem102.Text = "04:00"
-        RadListDataItem103.Text = "04:30"
-        RadListDataItem104.Text = "05:00"
-        RadListDataItem105.Text = "05:30"
-        RadListDataItem106.Text = "06:00"
-        RadListDataItem107.Text = "06:30"
-        RadListDataItem108.Text = "07:00"
-        RadListDataItem109.Text = "07:30"
-        RadListDataItem110.Text = "08:00"
-        RadListDataItem111.Text = "08:30"
-        RadListDataItem112.Text = "09:00"
-        RadListDataItem113.Text = "09:30"
-        RadListDataItem114.Text = "10:00"
-        RadListDataItem115.Text = "10:30"
-        RadListDataItem116.Text = "11:00"
-        RadListDataItem117.Text = "11:30"
-        RadListDataItem118.Text = "12:00"
-        RadListDataItem119.Text = "12:30"
-        RadListDataItem120.Text = "13:00"
-        RadListDataItem121.Text = "13:30"
-        RadListDataItem122.Text = "14:00"
-        RadListDataItem123.Text = "14:30"
-        RadListDataItem124.Text = "15:00"
-        RadListDataItem125.Text = "15:30"
-        RadListDataItem126.Text = "16:00"
-        RadListDataItem127.Text = "16:30"
-        RadListDataItem128.Text = "17:00"
-        RadListDataItem129.Text = "17:30"
-        RadListDataItem130.Text = "18:00"
-        RadListDataItem131.Text = "18:30"
-        RadListDataItem132.Text = "19:00"
-        RadListDataItem133.Text = "19:30"
-        RadListDataItem134.Text = "20:00"
-        RadListDataItem135.Text = "20:30"
-        RadListDataItem136.Text = "21:00"
-        RadListDataItem137.Text = "21:30"
-        RadListDataItem138.Text = "22:00"
-        RadListDataItem139.Text = "22:30"
-        RadListDataItem140.Text = "23:00"
-        RadListDataItem141.Text = "23:30"
-        RadListDataItem142.Text = "24:00"
+        RadListDataItem85.Text = "01:00"
+        RadListDataItem86.Text = "01:30"
+        RadListDataItem87.Text = "02:00"
+        RadListDataItem88.Text = "02:30"
+        RadListDataItem89.Text = "03:00"
+        RadListDataItem90.Text = "03:30"
+        RadListDataItem91.Text = "04:00"
+        RadListDataItem92.Text = "04:30"
+        RadListDataItem93.Text = "05:00"
+        RadListDataItem94.Text = "05:30"
+        RadListDataItem95.Text = "06:00"
+        RadListDataItem96.Text = "06:30"
+        RadListDataItem97.Text = "07:00"
+        RadListDataItem98.Text = "07:30"
+        RadListDataItem99.Text = "08:00"
+        RadListDataItem100.Text = "08:30"
+        RadListDataItem101.Text = "09:00"
+        RadListDataItem102.Text = "09:30"
+        RadListDataItem103.Text = "10:00"
+        RadListDataItem104.Text = "10:30"
+        RadListDataItem105.Text = "11:00"
+        RadListDataItem106.Text = "11:30"
+        RadListDataItem107.Text = "12:00"
+        RadListDataItem108.Text = "12:30"
+        RadListDataItem109.Text = "13:00"
+        RadListDataItem110.Text = "13:30"
+        RadListDataItem111.Text = "14:00"
+        RadListDataItem112.Text = "14:30"
+        RadListDataItem113.Text = "15:00"
+        RadListDataItem114.Text = "15:30"
+        RadListDataItem115.Text = "16:00"
+        RadListDataItem116.Text = "16:30"
+        RadListDataItem117.Text = "17:00"
+        RadListDataItem118.Text = "17:30"
+        RadListDataItem119.Text = "18:00"
+        RadListDataItem120.Text = "18:30"
+        RadListDataItem121.Text = "19:00"
+        RadListDataItem122.Text = "19:30"
+        RadListDataItem123.Text = "20:00"
+        RadListDataItem124.Text = "20:30"
+        RadListDataItem125.Text = "21:00"
+        RadListDataItem126.Text = "21:30"
+        RadListDataItem127.Text = "22:00"
+        RadListDataItem128.Text = "22:30"
+        RadListDataItem129.Text = "23:00"
+        RadListDataItem130.Text = "23:30"
+        RadListDataItem131.Text = "24:00"
+        Me.rel_tb_endtime.Items.Add(RadListDataItem85)
+        Me.rel_tb_endtime.Items.Add(RadListDataItem86)
+        Me.rel_tb_endtime.Items.Add(RadListDataItem87)
+        Me.rel_tb_endtime.Items.Add(RadListDataItem88)
+        Me.rel_tb_endtime.Items.Add(RadListDataItem89)
+        Me.rel_tb_endtime.Items.Add(RadListDataItem90)
+        Me.rel_tb_endtime.Items.Add(RadListDataItem91)
+        Me.rel_tb_endtime.Items.Add(RadListDataItem92)
+        Me.rel_tb_endtime.Items.Add(RadListDataItem93)
+        Me.rel_tb_endtime.Items.Add(RadListDataItem94)
+        Me.rel_tb_endtime.Items.Add(RadListDataItem95)
         Me.rel_tb_endtime.Items.Add(RadListDataItem96)
         Me.rel_tb_endtime.Items.Add(RadListDataItem97)
         Me.rel_tb_endtime.Items.Add(RadListDataItem98)
@@ -1836,17 +1853,6 @@ Partial Class Main
         Me.rel_tb_endtime.Items.Add(RadListDataItem129)
         Me.rel_tb_endtime.Items.Add(RadListDataItem130)
         Me.rel_tb_endtime.Items.Add(RadListDataItem131)
-        Me.rel_tb_endtime.Items.Add(RadListDataItem132)
-        Me.rel_tb_endtime.Items.Add(RadListDataItem133)
-        Me.rel_tb_endtime.Items.Add(RadListDataItem134)
-        Me.rel_tb_endtime.Items.Add(RadListDataItem135)
-        Me.rel_tb_endtime.Items.Add(RadListDataItem136)
-        Me.rel_tb_endtime.Items.Add(RadListDataItem137)
-        Me.rel_tb_endtime.Items.Add(RadListDataItem138)
-        Me.rel_tb_endtime.Items.Add(RadListDataItem139)
-        Me.rel_tb_endtime.Items.Add(RadListDataItem140)
-        Me.rel_tb_endtime.Items.Add(RadListDataItem141)
-        Me.rel_tb_endtime.Items.Add(RadListDataItem142)
         Me.rel_tb_endtime.Location = New System.Drawing.Point(346, 108)
         Me.rel_tb_endtime.Name = "rel_tb_endtime"
         Me.rel_tb_endtime.Size = New System.Drawing.Size(102, 24)
@@ -1855,53 +1861,64 @@ Partial Class Main
         '
         'rel_tb_starttime
         '
-        RadListDataItem143.Text = "01:00"
-        RadListDataItem144.Text = "01:30"
-        RadListDataItem145.Text = "02:00"
-        RadListDataItem146.Text = "02:30"
-        RadListDataItem147.Text = "03:00"
-        RadListDataItem148.Text = "03:30"
-        RadListDataItem149.Text = "04:00"
-        RadListDataItem150.Text = "04:30"
-        RadListDataItem151.Text = "05:00"
-        RadListDataItem152.Text = "05:30"
-        RadListDataItem153.Text = "06:00"
-        RadListDataItem154.Text = "06:30"
-        RadListDataItem155.Text = "07:00"
-        RadListDataItem156.Text = "07:30"
-        RadListDataItem157.Text = "08:00"
-        RadListDataItem158.Text = "08:30"
-        RadListDataItem159.Text = "09:00"
-        RadListDataItem160.Text = "09:30"
-        RadListDataItem161.Text = "10:00"
-        RadListDataItem162.Text = "10:30"
-        RadListDataItem163.Text = "11:00"
-        RadListDataItem164.Text = "11:30"
-        RadListDataItem165.Text = "12:00"
-        RadListDataItem166.Text = "12:30"
-        RadListDataItem167.Text = "13:00"
-        RadListDataItem168.Text = "13:30"
-        RadListDataItem169.Text = "14:00"
-        RadListDataItem170.Text = "14:30"
-        RadListDataItem171.Text = "15:00"
-        RadListDataItem172.Text = "15:30"
-        RadListDataItem173.Text = "16:00"
-        RadListDataItem174.Text = "16:30"
-        RadListDataItem175.Text = "17:00"
-        RadListDataItem176.Text = "17:30"
-        RadListDataItem177.Text = "18:00"
-        RadListDataItem178.Text = "18:30"
-        RadListDataItem179.Text = "19:00"
-        RadListDataItem180.Text = "19:30"
-        RadListDataItem181.Text = "20:00"
-        RadListDataItem182.Text = "20:30"
-        RadListDataItem183.Text = "21:00"
-        RadListDataItem184.Text = "21:30"
-        RadListDataItem185.Text = "22:00"
-        RadListDataItem186.Text = "22:30"
-        RadListDataItem187.Text = "23:00"
-        RadListDataItem188.Text = "23:30"
-        RadListDataItem189.Text = "24:00"
+        RadListDataItem132.Text = "01:00"
+        RadListDataItem133.Text = "01:30"
+        RadListDataItem134.Text = "02:00"
+        RadListDataItem135.Text = "02:30"
+        RadListDataItem136.Text = "03:00"
+        RadListDataItem137.Text = "03:30"
+        RadListDataItem138.Text = "04:00"
+        RadListDataItem139.Text = "04:30"
+        RadListDataItem140.Text = "05:00"
+        RadListDataItem141.Text = "05:30"
+        RadListDataItem142.Text = "06:00"
+        RadListDataItem143.Text = "06:30"
+        RadListDataItem144.Text = "07:00"
+        RadListDataItem145.Text = "07:30"
+        RadListDataItem146.Text = "08:00"
+        RadListDataItem147.Text = "08:30"
+        RadListDataItem148.Text = "09:00"
+        RadListDataItem149.Text = "09:30"
+        RadListDataItem150.Text = "10:00"
+        RadListDataItem151.Text = "10:30"
+        RadListDataItem152.Text = "11:00"
+        RadListDataItem153.Text = "11:30"
+        RadListDataItem154.Text = "12:00"
+        RadListDataItem155.Text = "12:30"
+        RadListDataItem156.Text = "13:00"
+        RadListDataItem157.Text = "13:30"
+        RadListDataItem158.Text = "14:00"
+        RadListDataItem159.Text = "14:30"
+        RadListDataItem160.Text = "15:00"
+        RadListDataItem161.Text = "15:30"
+        RadListDataItem162.Text = "16:00"
+        RadListDataItem163.Text = "16:30"
+        RadListDataItem164.Text = "17:00"
+        RadListDataItem165.Text = "17:30"
+        RadListDataItem166.Text = "18:00"
+        RadListDataItem167.Text = "18:30"
+        RadListDataItem168.Text = "19:00"
+        RadListDataItem169.Text = "19:30"
+        RadListDataItem170.Text = "20:00"
+        RadListDataItem171.Text = "20:30"
+        RadListDataItem172.Text = "21:00"
+        RadListDataItem173.Text = "21:30"
+        RadListDataItem174.Text = "22:00"
+        RadListDataItem175.Text = "22:30"
+        RadListDataItem176.Text = "23:00"
+        RadListDataItem177.Text = "23:30"
+        RadListDataItem178.Text = "24:00"
+        Me.rel_tb_starttime.Items.Add(RadListDataItem132)
+        Me.rel_tb_starttime.Items.Add(RadListDataItem133)
+        Me.rel_tb_starttime.Items.Add(RadListDataItem134)
+        Me.rel_tb_starttime.Items.Add(RadListDataItem135)
+        Me.rel_tb_starttime.Items.Add(RadListDataItem136)
+        Me.rel_tb_starttime.Items.Add(RadListDataItem137)
+        Me.rel_tb_starttime.Items.Add(RadListDataItem138)
+        Me.rel_tb_starttime.Items.Add(RadListDataItem139)
+        Me.rel_tb_starttime.Items.Add(RadListDataItem140)
+        Me.rel_tb_starttime.Items.Add(RadListDataItem141)
+        Me.rel_tb_starttime.Items.Add(RadListDataItem142)
         Me.rel_tb_starttime.Items.Add(RadListDataItem143)
         Me.rel_tb_starttime.Items.Add(RadListDataItem144)
         Me.rel_tb_starttime.Items.Add(RadListDataItem145)
@@ -1938,17 +1955,6 @@ Partial Class Main
         Me.rel_tb_starttime.Items.Add(RadListDataItem176)
         Me.rel_tb_starttime.Items.Add(RadListDataItem177)
         Me.rel_tb_starttime.Items.Add(RadListDataItem178)
-        Me.rel_tb_starttime.Items.Add(RadListDataItem179)
-        Me.rel_tb_starttime.Items.Add(RadListDataItem180)
-        Me.rel_tb_starttime.Items.Add(RadListDataItem181)
-        Me.rel_tb_starttime.Items.Add(RadListDataItem182)
-        Me.rel_tb_starttime.Items.Add(RadListDataItem183)
-        Me.rel_tb_starttime.Items.Add(RadListDataItem184)
-        Me.rel_tb_starttime.Items.Add(RadListDataItem185)
-        Me.rel_tb_starttime.Items.Add(RadListDataItem186)
-        Me.rel_tb_starttime.Items.Add(RadListDataItem187)
-        Me.rel_tb_starttime.Items.Add(RadListDataItem188)
-        Me.rel_tb_starttime.Items.Add(RadListDataItem189)
         Me.rel_tb_starttime.Location = New System.Drawing.Point(345, 79)
         Me.rel_tb_starttime.Name = "rel_tb_starttime"
         Me.rel_tb_starttime.Size = New System.Drawing.Size(102, 24)
@@ -2192,10 +2198,10 @@ Partial Class Main
         Me.rec_cb_acttype.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom),System.Windows.Forms.AnchorStyles)
         Me.rec_cb_acttype.DropDownStyle = Telerik.WinControls.RadDropDownStyle.DropDownList
         Me.rec_cb_acttype.ImeMode = System.Windows.Forms.ImeMode.Off
-        RadListDataItem190.Text = "Academic"
-        RadListDataItem191.Text = "School Activity"
-        Me.rec_cb_acttype.Items.Add(RadListDataItem190)
-        Me.rec_cb_acttype.Items.Add(RadListDataItem191)
+        RadListDataItem179.Text = "Academic"
+        RadListDataItem180.Text = "School Activity"
+        Me.rec_cb_acttype.Items.Add(RadListDataItem179)
+        Me.rec_cb_acttype.Items.Add(RadListDataItem180)
         Me.rec_cb_acttype.Location = New System.Drawing.Point(86, 118)
         Me.rec_cb_acttype.Name = "rec_cb_acttype"
         Me.rec_cb_acttype.Size = New System.Drawing.Size(224, 24)
@@ -2283,8 +2289,8 @@ Partial Class Main
         'rec_cb_status
         '
         Me.rec_cb_status.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom),System.Windows.Forms.AnchorStyles)
-        RadListDataItem192.Text = "Reserved"
-        Me.rec_cb_status.Items.Add(RadListDataItem192)
+        RadListDataItem181.Text = "Reserved"
+        Me.rec_cb_status.Items.Add(RadListDataItem181)
         Me.rec_cb_status.Location = New System.Drawing.Point(310, 85)
         Me.rec_cb_status.Name = "rec_cb_status"
         Me.rec_cb_status.Size = New System.Drawing.Size(175, 24)
@@ -2296,37 +2302,49 @@ Partial Class Main
         '
         Me.rec_dtp_endtime.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom),System.Windows.Forms.AnchorStyles)
         Me.rec_dtp_endtime.DropDownStyle = Telerik.WinControls.RadDropDownStyle.DropDownList
-        RadListDataItem193.Text = "06:00"
-        RadListDataItem194.Text = "06:30"
-        RadListDataItem195.Text = "07:00"
-        RadListDataItem196.Text = "07:30"
-        RadListDataItem197.Text = "08:00"
-        RadListDataItem198.Text = "08:30"
-        RadListDataItem199.Text = "09:00"
-        RadListDataItem200.Text = "09:30"
-        RadListDataItem201.Text = "10:00"
-        RadListDataItem202.Text = "10:30"
-        RadListDataItem203.Text = "11:00"
-        RadListDataItem204.Text = "11:30"
-        RadListDataItem205.Text = "12:00"
-        RadListDataItem206.Text = "12:30"
-        RadListDataItem207.Text = "13:00"
-        RadListDataItem208.Text = "13:30"
-        RadListDataItem209.Text = "14:00"
-        RadListDataItem210.Text = "14:30"
-        RadListDataItem211.Text = "15:00"
-        RadListDataItem212.Text = "15:30"
-        RadListDataItem213.Text = "16:00"
-        RadListDataItem214.Text = "16:30"
-        RadListDataItem215.Text = "17:00"
-        RadListDataItem216.Text = "17:30"
-        RadListDataItem217.Text = "18:00"
-        RadListDataItem218.Text = "18:30"
-        RadListDataItem219.Text = "19:00"
-        RadListDataItem220.Text = "19:30"
-        RadListDataItem221.Text = "20:00"
-        RadListDataItem222.Text = "20:30"
-        RadListDataItem223.Text = "21:00"
+        RadListDataItem1.Text = "06:00"
+        RadListDataItem182.Text = "06:30"
+        RadListDataItem183.Text = "07:00"
+        RadListDataItem184.Text = "07:30"
+        RadListDataItem185.Text = "08:00"
+        RadListDataItem186.Text = "08:30"
+        RadListDataItem187.Text = "09:00"
+        RadListDataItem188.Text = "09:30"
+        RadListDataItem189.Text = "10:00"
+        RadListDataItem190.Text = "10:30"
+        RadListDataItem191.Text = "11:00"
+        RadListDataItem192.Text = "11:30"
+        RadListDataItem193.Text = "12:00"
+        RadListDataItem194.Text = "12:30"
+        RadListDataItem195.Text = "13:00"
+        RadListDataItem196.Text = "13:30"
+        RadListDataItem197.Text = "14:00"
+        RadListDataItem198.Text = "14:30"
+        RadListDataItem199.Text = "15:00"
+        RadListDataItem200.Text = "15:30"
+        RadListDataItem201.Text = "16:00"
+        RadListDataItem202.Text = "16:30"
+        RadListDataItem203.Text = "17:00"
+        RadListDataItem204.Text = "17:30"
+        RadListDataItem205.Text = "18:00"
+        RadListDataItem206.Text = "18:30"
+        RadListDataItem207.Text = "19:00"
+        RadListDataItem208.Text = "19:30"
+        RadListDataItem209.Text = "20:00"
+        RadListDataItem210.Text = "20:30"
+        RadListDataItem211.Text = "21:00"
+        Me.rec_dtp_endtime.Items.Add(RadListDataItem1)
+        Me.rec_dtp_endtime.Items.Add(RadListDataItem182)
+        Me.rec_dtp_endtime.Items.Add(RadListDataItem183)
+        Me.rec_dtp_endtime.Items.Add(RadListDataItem184)
+        Me.rec_dtp_endtime.Items.Add(RadListDataItem185)
+        Me.rec_dtp_endtime.Items.Add(RadListDataItem186)
+        Me.rec_dtp_endtime.Items.Add(RadListDataItem187)
+        Me.rec_dtp_endtime.Items.Add(RadListDataItem188)
+        Me.rec_dtp_endtime.Items.Add(RadListDataItem189)
+        Me.rec_dtp_endtime.Items.Add(RadListDataItem190)
+        Me.rec_dtp_endtime.Items.Add(RadListDataItem191)
+        Me.rec_dtp_endtime.Items.Add(RadListDataItem192)
         Me.rec_dtp_endtime.Items.Add(RadListDataItem193)
         Me.rec_dtp_endtime.Items.Add(RadListDataItem194)
         Me.rec_dtp_endtime.Items.Add(RadListDataItem195)
@@ -2346,18 +2364,6 @@ Partial Class Main
         Me.rec_dtp_endtime.Items.Add(RadListDataItem209)
         Me.rec_dtp_endtime.Items.Add(RadListDataItem210)
         Me.rec_dtp_endtime.Items.Add(RadListDataItem211)
-        Me.rec_dtp_endtime.Items.Add(RadListDataItem212)
-        Me.rec_dtp_endtime.Items.Add(RadListDataItem213)
-        Me.rec_dtp_endtime.Items.Add(RadListDataItem214)
-        Me.rec_dtp_endtime.Items.Add(RadListDataItem215)
-        Me.rec_dtp_endtime.Items.Add(RadListDataItem216)
-        Me.rec_dtp_endtime.Items.Add(RadListDataItem217)
-        Me.rec_dtp_endtime.Items.Add(RadListDataItem218)
-        Me.rec_dtp_endtime.Items.Add(RadListDataItem219)
-        Me.rec_dtp_endtime.Items.Add(RadListDataItem220)
-        Me.rec_dtp_endtime.Items.Add(RadListDataItem221)
-        Me.rec_dtp_endtime.Items.Add(RadListDataItem222)
-        Me.rec_dtp_endtime.Items.Add(RadListDataItem223)
         Me.rec_dtp_endtime.Location = New System.Drawing.Point(561, 84)
         Me.rec_dtp_endtime.Name = "rec_dtp_endtime"
         Me.rec_dtp_endtime.Size = New System.Drawing.Size(105, 24)
@@ -2368,37 +2374,50 @@ Partial Class Main
         '
         Me.rec_dtp_starttime.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom),System.Windows.Forms.AnchorStyles)
         Me.rec_dtp_starttime.DropDownStyle = Telerik.WinControls.RadDropDownStyle.DropDownList
-        RadListDataItem224.Text = "06:00"
-        RadListDataItem225.Text = "06:30"
-        RadListDataItem226.Text = "07:00"
-        RadListDataItem227.Text = "07:30"
-        RadListDataItem228.Text = "08:00"
-        RadListDataItem229.Text = "08:30"
-        RadListDataItem230.Text = "09:00"
-        RadListDataItem231.Text = "09:30"
-        RadListDataItem232.Text = "10:00"
-        RadListDataItem233.Text = "10:30"
-        RadListDataItem234.Text = "11:00"
-        RadListDataItem235.Text = "11:30"
-        RadListDataItem236.Text = "12:00"
-        RadListDataItem237.Text = "12:30"
-        RadListDataItem238.Text = "13:00"
-        RadListDataItem239.Text = "13:30"
-        RadListDataItem240.Text = "14:00"
-        RadListDataItem241.Text = "14:30"
-        RadListDataItem242.Text = "15:00"
-        RadListDataItem243.Text = "15:30"
-        RadListDataItem244.Text = "16:00"
-        RadListDataItem245.Text = "16:30"
-        RadListDataItem246.Text = "17:00"
-        RadListDataItem247.Text = "17:30"
-        RadListDataItem248.Text = "18:00"
-        RadListDataItem249.Text = "18:30"
-        RadListDataItem250.Text = "19:00"
-        RadListDataItem251.Text = "19:30"
-        RadListDataItem252.Text = "20:00"
-        RadListDataItem253.Text = "20:30"
-        RadListDataItem254.Text = "21:00"
+        RadListDataItem2.Text = "06:00"
+        RadListDataItem212.Text = "06:30"
+        RadListDataItem213.Text = "07:00"
+        RadListDataItem214.Text = "07:30"
+        RadListDataItem215.Text = "08:00"
+        RadListDataItem216.Text = "08:30"
+        RadListDataItem217.Text = "09:00"
+        RadListDataItem218.Text = "09:30"
+        RadListDataItem219.Text = "10:00"
+        RadListDataItem220.Text = "10:30"
+        RadListDataItem221.Text = "11:00"
+        RadListDataItem222.Text = "11:30"
+        RadListDataItem223.Text = "12:00"
+        RadListDataItem224.Text = "12:30"
+        RadListDataItem225.Text = "13:00"
+        RadListDataItem226.Text = "13:30"
+        RadListDataItem227.Text = "14:00"
+        RadListDataItem228.Text = "14:30"
+        RadListDataItem229.Text = "15:00"
+        RadListDataItem230.Text = "15:30"
+        RadListDataItem231.Text = "16:00"
+        RadListDataItem232.Text = "16:30"
+        RadListDataItem233.Text = "17:00"
+        RadListDataItem234.Text = "17:30"
+        RadListDataItem235.Text = "18:00"
+        RadListDataItem236.Text = "18:30"
+        RadListDataItem237.Text = "19:00"
+        RadListDataItem238.Text = "19:30"
+        RadListDataItem239.Text = "20:00"
+        RadListDataItem240.Text = "20:30"
+        RadListDataItem241.Text = "21:00"
+        Me.rec_dtp_starttime.Items.Add(RadListDataItem2)
+        Me.rec_dtp_starttime.Items.Add(RadListDataItem212)
+        Me.rec_dtp_starttime.Items.Add(RadListDataItem213)
+        Me.rec_dtp_starttime.Items.Add(RadListDataItem214)
+        Me.rec_dtp_starttime.Items.Add(RadListDataItem215)
+        Me.rec_dtp_starttime.Items.Add(RadListDataItem216)
+        Me.rec_dtp_starttime.Items.Add(RadListDataItem217)
+        Me.rec_dtp_starttime.Items.Add(RadListDataItem218)
+        Me.rec_dtp_starttime.Items.Add(RadListDataItem219)
+        Me.rec_dtp_starttime.Items.Add(RadListDataItem220)
+        Me.rec_dtp_starttime.Items.Add(RadListDataItem221)
+        Me.rec_dtp_starttime.Items.Add(RadListDataItem222)
+        Me.rec_dtp_starttime.Items.Add(RadListDataItem223)
         Me.rec_dtp_starttime.Items.Add(RadListDataItem224)
         Me.rec_dtp_starttime.Items.Add(RadListDataItem225)
         Me.rec_dtp_starttime.Items.Add(RadListDataItem226)
@@ -2417,19 +2436,6 @@ Partial Class Main
         Me.rec_dtp_starttime.Items.Add(RadListDataItem239)
         Me.rec_dtp_starttime.Items.Add(RadListDataItem240)
         Me.rec_dtp_starttime.Items.Add(RadListDataItem241)
-        Me.rec_dtp_starttime.Items.Add(RadListDataItem242)
-        Me.rec_dtp_starttime.Items.Add(RadListDataItem243)
-        Me.rec_dtp_starttime.Items.Add(RadListDataItem244)
-        Me.rec_dtp_starttime.Items.Add(RadListDataItem245)
-        Me.rec_dtp_starttime.Items.Add(RadListDataItem246)
-        Me.rec_dtp_starttime.Items.Add(RadListDataItem247)
-        Me.rec_dtp_starttime.Items.Add(RadListDataItem248)
-        Me.rec_dtp_starttime.Items.Add(RadListDataItem249)
-        Me.rec_dtp_starttime.Items.Add(RadListDataItem250)
-        Me.rec_dtp_starttime.Items.Add(RadListDataItem251)
-        Me.rec_dtp_starttime.Items.Add(RadListDataItem252)
-        Me.rec_dtp_starttime.Items.Add(RadListDataItem253)
-        Me.rec_dtp_starttime.Items.Add(RadListDataItem254)
         Me.rec_dtp_starttime.Location = New System.Drawing.Point(561, 54)
         Me.rec_dtp_starttime.Name = "rec_dtp_starttime"
         Me.rec_dtp_starttime.Size = New System.Drawing.Size(105, 24)
@@ -2713,20 +2719,20 @@ Partial Class Main
         Me.eq_rgv_addeq.MasterTemplate.AllowDeleteRow = false
         Me.eq_rgv_addeq.MasterTemplate.AllowEditRow = false
         Me.eq_rgv_addeq.MasterTemplate.AutoSizeColumnsMode = Telerik.WinControls.UI.GridViewAutoSizeColumnsMode.Fill
-        GridViewTextBoxColumn1.HeaderText = "#"
-        GridViewTextBoxColumn1.Name = "equipment_no"
-        GridViewTextBoxColumn1.Width = 48
-        GridViewTextBoxColumn2.HeaderText = "Equipments"
-        GridViewTextBoxColumn2.Name = "equipment_name"
-        GridViewTextBoxColumn2.Width = 150
-        GridViewTextBoxColumn3.HeaderText = "Serial Number"
-        GridViewTextBoxColumn3.Name = "equipment_sn"
-        GridViewTextBoxColumn3.Width = 149
-        Me.eq_rgv_addeq.MasterTemplate.Columns.AddRange(New Telerik.WinControls.UI.GridViewDataColumn() {GridViewTextBoxColumn1, GridViewTextBoxColumn2, GridViewTextBoxColumn3})
+        GridViewTextBoxColumn22.HeaderText = "#"
+        GridViewTextBoxColumn22.Name = "equipment_no"
+        GridViewTextBoxColumn22.Width = 48
+        GridViewTextBoxColumn23.HeaderText = "Equipments"
+        GridViewTextBoxColumn23.Name = "equipment_name"
+        GridViewTextBoxColumn23.Width = 150
+        GridViewTextBoxColumn24.HeaderText = "Serial Number"
+        GridViewTextBoxColumn24.Name = "equipment_sn"
+        GridViewTextBoxColumn24.Width = 149
+        Me.eq_rgv_addeq.MasterTemplate.Columns.AddRange(New Telerik.WinControls.UI.GridViewDataColumn() {GridViewTextBoxColumn22, GridViewTextBoxColumn23, GridViewTextBoxColumn24})
         Me.eq_rgv_addeq.MasterTemplate.EnableGrouping = false
         Me.eq_rgv_addeq.MasterTemplate.MultiSelect = true
         Me.eq_rgv_addeq.MasterTemplate.ShowRowHeaderColumn = false
-        Me.eq_rgv_addeq.MasterTemplate.ViewDefinition = TableViewDefinition6
+        Me.eq_rgv_addeq.MasterTemplate.ViewDefinition = TableViewDefinition90
         Me.eq_rgv_addeq.Name = "eq_rgv_addeq"
         Me.eq_rgv_addeq.ReadOnly = true
         Me.eq_rgv_addeq.Size = New System.Drawing.Size(344, 183)
@@ -2765,7 +2771,7 @@ Partial Class Main
         Me.reservation_rgv_recordeddata.MasterTemplate.AutoSizeColumnsMode = Telerik.WinControls.UI.GridViewAutoSizeColumnsMode.Fill
         Me.reservation_rgv_recordeddata.MasterTemplate.EnableGrouping = false
         Me.reservation_rgv_recordeddata.MasterTemplate.ShowRowHeaderColumn = false
-        Me.reservation_rgv_recordeddata.MasterTemplate.ViewDefinition = TableViewDefinition7
+        Me.reservation_rgv_recordeddata.MasterTemplate.ViewDefinition = TableViewDefinition91
         Me.reservation_rgv_recordeddata.Name = "reservation_rgv_recordeddata"
         Me.reservation_rgv_recordeddata.ReadOnly = true
         Me.reservation_rgv_recordeddata.Size = New System.Drawing.Size(1341, 230)
@@ -2787,7 +2793,7 @@ Partial Class Main
         Me.reservations_rgv_showavailableitems.MasterTemplate.AutoSizeColumnsMode = Telerik.WinControls.UI.GridViewAutoSizeColumnsMode.Fill
         Me.reservations_rgv_showavailableitems.MasterTemplate.EnableGrouping = false
         Me.reservations_rgv_showavailableitems.MasterTemplate.ShowRowHeaderColumn = false
-        Me.reservations_rgv_showavailableitems.MasterTemplate.ViewDefinition = TableViewDefinition8
+        Me.reservations_rgv_showavailableitems.MasterTemplate.ViewDefinition = TableViewDefinition92
         Me.reservations_rgv_showavailableitems.Name = "reservations_rgv_showavailableitems"
         Me.reservations_rgv_showavailableitems.ReadOnly = true
         Me.reservations_rgv_showavailableitems.Size = New System.Drawing.Size(1341, 230)
@@ -2892,10 +2898,10 @@ Partial Class Main
         '
         'eq_filter_eqstatus
         '
-        RadListDataItem255.Text = "Good Condition"
-        RadListDataItem256.Text = "Condemned"
-        Me.eq_filter_eqstatus.Items.Add(RadListDataItem255)
-        Me.eq_filter_eqstatus.Items.Add(RadListDataItem256)
+        RadListDataItem3.Text = "Good Condition"
+        RadListDataItem4.Text = "Condemned"
+        Me.eq_filter_eqstatus.Items.Add(RadListDataItem3)
+        Me.eq_filter_eqstatus.Items.Add(RadListDataItem4)
         Me.eq_filter_eqstatus.Location = New System.Drawing.Point(131, 92)
         Me.eq_filter_eqstatus.Name = "eq_filter_eqstatus"
         Me.eq_filter_eqstatus.Size = New System.Drawing.Size(302, 24)
@@ -2925,24 +2931,24 @@ Partial Class Main
         'eq_filter_eqtype
         '
         Me.eq_filter_eqtype.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
-        RadListDataItem257.Text = "Laptop"
-        RadListDataItem258.Text = "DLP/LCD"
-        RadListDataItem259.Text = "Microphone"
-        RadListDataItem260.Text = "Karaoke"
-        RadListDataItem261.Text = "Overhead Projector"
-        RadListDataItem262.Text = "VHS Player"
-        RadListDataItem263.Text = "Tape Deck"
-        RadListDataItem264.Text = "Speaker"
-        RadListDataItem265.Text = "PC Speakers"
-        Me.eq_filter_eqtype.Items.Add(RadListDataItem257)
-        Me.eq_filter_eqtype.Items.Add(RadListDataItem258)
-        Me.eq_filter_eqtype.Items.Add(RadListDataItem259)
-        Me.eq_filter_eqtype.Items.Add(RadListDataItem260)
-        Me.eq_filter_eqtype.Items.Add(RadListDataItem261)
-        Me.eq_filter_eqtype.Items.Add(RadListDataItem262)
-        Me.eq_filter_eqtype.Items.Add(RadListDataItem263)
-        Me.eq_filter_eqtype.Items.Add(RadListDataItem264)
-        Me.eq_filter_eqtype.Items.Add(RadListDataItem265)
+        RadListDataItem5.Text = "Laptop"
+        RadListDataItem6.Text = "DLP/LCD"
+        RadListDataItem242.Text = "Microphone"
+        RadListDataItem243.Text = "Karaoke"
+        RadListDataItem244.Text = "Overhead Projector"
+        RadListDataItem245.Text = "VHS Player"
+        RadListDataItem246.Text = "Tape Deck"
+        RadListDataItem247.Text = "Speaker"
+        RadListDataItem248.Text = "PC Speakers"
+        Me.eq_filter_eqtype.Items.Add(RadListDataItem5)
+        Me.eq_filter_eqtype.Items.Add(RadListDataItem6)
+        Me.eq_filter_eqtype.Items.Add(RadListDataItem242)
+        Me.eq_filter_eqtype.Items.Add(RadListDataItem243)
+        Me.eq_filter_eqtype.Items.Add(RadListDataItem244)
+        Me.eq_filter_eqtype.Items.Add(RadListDataItem245)
+        Me.eq_filter_eqtype.Items.Add(RadListDataItem246)
+        Me.eq_filter_eqtype.Items.Add(RadListDataItem247)
+        Me.eq_filter_eqtype.Items.Add(RadListDataItem248)
         Me.eq_filter_eqtype.Location = New System.Drawing.Point(131, 56)
         Me.eq_filter_eqtype.Name = "eq_filter_eqtype"
         Me.eq_filter_eqtype.Size = New System.Drawing.Size(302, 27)
@@ -3125,10 +3131,10 @@ Partial Class Main
         '
         'eq_status
         '
-        RadListDataItem266.Text = "Good Condtion"
-        RadListDataItem267.Text = "Condemned"
-        Me.eq_status.Items.Add(RadListDataItem266)
-        Me.eq_status.Items.Add(RadListDataItem267)
+        RadListDataItem7.Text = "Good Condtion"
+        RadListDataItem8.Text = "Condemned"
+        Me.eq_status.Items.Add(RadListDataItem7)
+        Me.eq_status.Items.Add(RadListDataItem8)
         Me.eq_status.Location = New System.Drawing.Point(396, 21)
         Me.eq_status.Name = "eq_status"
         Me.eq_status.Size = New System.Drawing.Size(187, 24)
@@ -3250,7 +3256,7 @@ Partial Class Main
         Me.eq_rgv_showregequipment.MasterTemplate.AutoSizeColumnsMode = Telerik.WinControls.UI.GridViewAutoSizeColumnsMode.Fill
         Me.eq_rgv_showregequipment.MasterTemplate.EnableGrouping = false
         Me.eq_rgv_showregequipment.MasterTemplate.ShowRowHeaderColumn = false
-        Me.eq_rgv_showregequipment.MasterTemplate.ViewDefinition = TableViewDefinition9
+        Me.eq_rgv_showregequipment.MasterTemplate.ViewDefinition = TableViewDefinition93
         Me.eq_rgv_showregequipment.Name = "eq_rgv_showregequipment"
         Me.eq_rgv_showregequipment.ReadOnly = true
         Me.eq_rgv_showregequipment.Size = New System.Drawing.Size(1341, 229)
@@ -3306,7 +3312,7 @@ Partial Class Main
         Me.acc_staff_list.MasterTemplate.AutoSizeColumnsMode = Telerik.WinControls.UI.GridViewAutoSizeColumnsMode.Fill
         Me.acc_staff_list.MasterTemplate.EnableGrouping = false
         Me.acc_staff_list.MasterTemplate.ShowRowHeaderColumn = false
-        Me.acc_staff_list.MasterTemplate.ViewDefinition = TableViewDefinition10
+        Me.acc_staff_list.MasterTemplate.ViewDefinition = TableViewDefinition94
         Me.acc_staff_list.Name = "acc_staff_list"
         Me.acc_staff_list.ReadOnly = true
         Me.acc_staff_list.Size = New System.Drawing.Size(1343, 244)
@@ -3337,7 +3343,7 @@ Partial Class Main
         Me.acc_prof_list.MasterTemplate.AutoSizeColumnsMode = Telerik.WinControls.UI.GridViewAutoSizeColumnsMode.Fill
         Me.acc_prof_list.MasterTemplate.EnableGrouping = false
         Me.acc_prof_list.MasterTemplate.ShowRowHeaderColumn = false
-        Me.acc_prof_list.MasterTemplate.ViewDefinition = TableViewDefinition11
+        Me.acc_prof_list.MasterTemplate.ViewDefinition = TableViewDefinition95
         Me.acc_prof_list.Name = "acc_prof_list"
         Me.acc_prof_list.ReadOnly = true
         Me.acc_prof_list.Size = New System.Drawing.Size(1343, 244)
@@ -3624,8 +3630,8 @@ Partial Class Main
         '
         Me.acc_sf_usertype.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
         Me.acc_sf_usertype.DropDownStyle = Telerik.WinControls.RadDropDownStyle.DropDownList
-        RadListDataItem268.Text = "Staff"
-        Me.acc_sf_usertype.Items.Add(RadListDataItem268)
+        RadListDataItem9.Text = "Staff"
+        Me.acc_sf_usertype.Items.Add(RadListDataItem9)
         Me.acc_sf_usertype.Location = New System.Drawing.Point(449, 25)
         Me.acc_sf_usertype.Name = "acc_sf_usertype"
         Me.acc_sf_usertype.Size = New System.Drawing.Size(201, 27)
@@ -3874,12 +3880,12 @@ Partial Class Main
         'lu_ActivityType
         '
         Me.lu_ActivityType.DropDownStyle = Telerik.WinControls.RadDropDownStyle.DropDownList
-        RadListDataItem269.Text = "All"
-        RadListDataItem270.Text = "Academic"
-        RadListDataItem271.Text = "School Activity"
-        Me.lu_ActivityType.Items.Add(RadListDataItem269)
-        Me.lu_ActivityType.Items.Add(RadListDataItem270)
-        Me.lu_ActivityType.Items.Add(RadListDataItem271)
+        RadListDataItem10.Text = "All"
+        RadListDataItem11.Text = "Academic"
+        RadListDataItem12.Text = "School Activity"
+        Me.lu_ActivityType.Items.Add(RadListDataItem10)
+        Me.lu_ActivityType.Items.Add(RadListDataItem11)
+        Me.lu_ActivityType.Items.Add(RadListDataItem12)
         Me.lu_ActivityType.Location = New System.Drawing.Point(17, 51)
         Me.lu_ActivityType.Name = "lu_ActivityType"
         Me.lu_ActivityType.Size = New System.Drawing.Size(129, 24)
@@ -4002,7 +4008,7 @@ Partial Class Main
         Me.main_rgv_recordedacademicsonly.MasterTemplate.AutoSizeColumnsMode = Telerik.WinControls.UI.GridViewAutoSizeColumnsMode.Fill
         Me.main_rgv_recordedacademicsonly.MasterTemplate.EnableGrouping = false
         Me.main_rgv_recordedacademicsonly.MasterTemplate.ShowRowHeaderColumn = false
-        Me.main_rgv_recordedacademicsonly.MasterTemplate.ViewDefinition = TableViewDefinition12
+        Me.main_rgv_recordedacademicsonly.MasterTemplate.ViewDefinition = TableViewDefinition96
         Me.main_rgv_recordedacademicsonly.Name = "main_rgv_recordedacademicsonly"
         Me.main_rgv_recordedacademicsonly.ReadOnly = true
         Me.main_rgv_recordedacademicsonly.Size = New System.Drawing.Size(1136, 519)
@@ -4024,7 +4030,7 @@ Partial Class Main
         Me.rpv1.DefaultPage = Me.rpvp1_main
         Me.rpv1.Location = New System.Drawing.Point(0, 26)
         Me.rpv1.Name = "rpv1"
-        Me.rpv1.SelectedPage = Me.rpvp_returning
+        Me.rpv1.SelectedPage = Me.rpvp_equipment
         Me.rpv1.Size = New System.Drawing.Size(1358, 557)
         Me.rpv1.TabIndex = 1
         Me.rpv1.Text = "Home"
@@ -4096,15 +4102,6 @@ Partial Class Main
         'acct_mgmt_hover_delay_goingToStaff
         '
         '
-        'ret_remarks
-        '
-        Me.ret_remarks.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.ret_remarks.Location = New System.Drawing.Point(2, 18)
-        Me.ret_remarks.Name = "ret_remarks"
-        Me.ret_remarks.Size = New System.Drawing.Size(335, 152)
-        Me.ret_remarks.TabIndex = 0
-        Me.ret_remarks.ThemeName = "VisualStudio2012Dark"
-        '
         'Main
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6!, 13!)
@@ -4128,6 +4125,7 @@ Partial Class Main
         Me.rpvp_returning.ResumeLayout(false)
         CType(Me.RadGroupBox1,System.ComponentModel.ISupportInitialize).EndInit
         Me.RadGroupBox1.ResumeLayout(false)
+        CType(Me.ret_remarks,System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.RadPageView3,System.ComponentModel.ISupportInitialize).EndInit
         Me.RadPageView3.ResumeLayout(false)
         Me.rel_list_info2.ResumeLayout(false)
@@ -4388,7 +4386,6 @@ Partial Class Main
         CType(Me.rpv1,System.ComponentModel.ISupportInitialize).EndInit
         Me.rpv1.ResumeLayout(false)
         CType(Me.RadMenu1,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.ret_remarks,System.ComponentModel.ISupportInitialize).EndInit
         CType(Me,System.ComponentModel.ISupportInitialize).EndInit
         Me.ResumeLayout(false)
         Me.PerformLayout

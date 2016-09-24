@@ -651,10 +651,10 @@ Public Class Main
     'Programmed by BRENZ 4th point Cell Double Click
 
     Private Sub acc_staff_list_CellDoubleClick(sender As Object, e As GridViewCellEventArgs) Handles acc_staff_list.CellDoubleClick
-        updateYN = RadMessageBox.Show(Me, "Do you want to select this information?", "CEU TLTD Reservation System", MessageBoxButtons.YesNo, RadMessageIcon.Question)
-        If updateYN = MsgBoxResult.Yes Then
-
+     
             If e.RowIndex >= 0 Then
+             updateYN = RadMessageBox.Show(Me, "Do you want to select this information?", "CEU TLTD Reservation System", MessageBoxButtons.YesNo, RadMessageIcon.Question)
+                If updateYN = MsgBoxResult.Yes Then
                 acc_staff_keepSelectedRowIndexAfterUpdate = e.RowIndex
                 Dim row As Telerik.WinControls.UI.GridViewRowInfo
 
@@ -837,11 +837,10 @@ Public Class Main
 
     'Programmed by Brenz 9th point Cell Double Click Prof List!
     Private Sub acc_prof_list_CellDoubleClick(sender As Object, e As GridViewCellEventArgs) Handles acc_prof_list.CellDoubleClick
-        
-        updateYN = RadMessageBox.Show(Me, "Do you want to select this information?", "CEU TLTD Reservation System", MessageBoxButtons.YesNo, RadMessageIcon.Question)
-        If updateYN = MsgBoxResult.Yes Then
 
             If e.RowIndex >=0 Then
+                updateYN = RadMessageBox.Show(Me, "Do you want to select this information?", "CEU TLTD Reservation System", MessageBoxButtons.YesNo, RadMessageIcon.Question)
+                If updateYN = MsgBoxResult.Yes Then
                 acc_prof_keepSelectedRowIndexAfterUpdate = e.RowIndex
                 Dim row As Telerik.WinControls.UI.GridViewRowInfo
 
@@ -1257,10 +1256,10 @@ Public Class Main
 
 
     Private Sub released_grid_list2_CellDoubleClick(sender As Object, e As GridViewCellEventArgs) Handles released_grid_list2.CellDoubleClick
-        returnYN = RadMessageBox.Show(Me, "Do you want to select this information?", "CEU TLTD Reservation System", MessageBoxButtons.YesNo, RadMessageIcon.Question)
-        If returnYN = MsgBoxResult.Yes Then
 
             If e.RowIndex >= 0 Then
+                    returnYN = RadMessageBox.Show(Me, "Do you want to select this information?", "CEU TLTD Reservation System", MessageBoxButtons.YesNo, RadMessageIcon.Question)
+                If returnYN = MsgBoxResult.Yes Then
                 Dim row As Telerik.WinControls.UI.GridViewRowInfo
 
                 row = Me.released_grid_list2.Rows(e.RowIndex)
@@ -2586,6 +2585,7 @@ Public Class Main
         End Try
     End Sub
     Private Sub penalty_grid_list_CellDoubleClick(sender As Object, e As GridViewCellEventArgs) Handles penalty_grid_list.CellDoubleClick
+        If e.RowIndex>=0 Then
         penaltiesDeleteYN = RadMessageBox.Show(Me, "Are you sure you want to delete the selected data?", "CEU TLTD Reservation System", MessageBoxButtons.YesNo, RadMessageIcon.Question)
         If penaltiesDeleteYN = MsgBoxResult.Yes Then
             Dim uniqueid As String
@@ -2605,6 +2605,7 @@ Public Class Main
                 load_penalty_list()
             End Try
         End If
+       End If
     End Sub
     Private Sub penalty_grid_list_sort(sender as object, e as GridViewCollectionChangedEventArgs)  Handles penalty_grid_list.SortChanged
         Dim sorts As RadSortExpressionCollection = penalty_grid_list.MasterTemplate.SortDescriptors
@@ -2742,6 +2743,7 @@ End Sub
         End Try
     End Sub
     Private Sub returned_eq_list_CellDoubleClick(sender As Object, e As GridViewCellEventArgs) Handles returned_eq_list.CellDoubleClick
+        If e.RowIndex>=0 Then
         returned_eqDeleteYN = RadMessageBox.Show(Me, "Are you sure you want to delete the selected log?", "CEU TLTD Reservation System", MessageBoxButtons.YesNo, RadMessageIcon.Question)
         If returned_eqDeleteYN = MsgBoxResult.Yes Then
             Dim uniqueid As String
@@ -2761,6 +2763,7 @@ End Sub
                 load_returned_eq_list()
             End Try
         End If
+       End If
     End Sub
     Private Sub returned_eq_list_sort(sender as object, e as GridViewCollectionChangedEventArgs)  Handles returned_eq_list.SortChanged
         Dim sorts As RadSortExpressionCollection = returned_eq_list.MasterTemplate.SortDescriptors
