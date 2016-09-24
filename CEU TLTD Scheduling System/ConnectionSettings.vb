@@ -10,9 +10,11 @@
             My.Settings.cons_password = Actions.EncryptString(Actions.ToSecureString(txt_cons_password.Text))
         End If
         My.Settings.Save()
+        applyconstringImmediately()
+        Login.CheckDBStatus()
         Me.Dispose()
-        Login.timerandstatus()
-        Application.Restart()
+        
+        'Application.Restart()
     End Sub
 
     Private Sub ConnectionWindow_FormClosed(sender As Object, e As FormClosedEventArgs) Handles Me.FormClosed

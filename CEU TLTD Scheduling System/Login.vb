@@ -7,7 +7,10 @@ Public Class Login
     Dim a As Boolean
 
     Private Sub Login_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        timerandstatus()
+        'Timer
+        log_timer.Enabled = True
+
+        CheckDBStatus()
         ThemeResolutionService.ApplicationThemeName = My.Settings.WindowTheme
         log_username.Select()
     End Sub
@@ -21,7 +24,13 @@ Public Class Login
         Else
             Try
                 If a = False Then
+                    If db_is_deadCount>=3 Then
+                        RadMessageBox.Show(Me, "Database is Offline." & Environment.NewLine & "Please check the connection settings by clicking gear icon on the top right and ask the database administrator to input the required details.", "Login", MessageBoxButtons.OK, RadMessageIcon.Error, MessageBoxDefaultButton.Button1)
+                    Else
                     RadMessageBox.Show(Me, "Database is Offline.", "Login", MessageBoxButtons.OK, RadMessageIcon.Error, MessageBoxDefaultButton.Button1)
+                    
+                    End If
+                    db_is_deadCount +=1
                 Else
                 Dim looper As Integer
                 If ConnectionState.Open = True Then
@@ -63,10 +72,8 @@ Public Class Login
     End Sub
 
     'Codes for timer and connection status
-    Public Sub timerandstatus()
+    Public Sub CheckDBStatus()
 
-        'Timer
-        log_timer.Enabled = True
 
         'Online/Offline Status
         a = New Boolean
@@ -153,7 +160,7 @@ Public Class Login
         If a=False
             Dim aa As DialogResult = RadMessageBox.Show(Me, "The Database is Offline. Would you like to restart the application to check for update on the connection?", "CEU TLTD Reservation System", MessageBoxButtons.YesNo, RadMessageIcon.Question)
             If aa=DialogResult.Yes
-                Application.Restart()
+                CheckDBStatus()
             End If
         End If
     End Sub
