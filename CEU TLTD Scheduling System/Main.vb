@@ -401,17 +401,17 @@ Public Class Main
             If lu_ActivityType.Text="School Activity"
             query = "Select reservationno as 'Reservation Number' ,borrower as 'Borrower',id as 'ID', equipmentno as 'Equipment No', equipment as 'Equipment',
             DATE_FORMAT(date,'%M %d %Y') as 'Date',TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time',
-            activitytype as 'Activity Type',actname as 'Activity' from reservation where date ='" & Format(CDate(lu_date.Value), "yyyy-MM-dd") & "' and activitytype='School Activity'"
+            activitytype as 'Activity Type',actname as 'Activity' from reservation where date ='" & Format(CDate(lu_date.Value), "yyyy-MM-dd") & "' and activitytype='School Activity' ORDER BY date DESC,starttime ASC"
             Cover = "School Activity"
             ElseIf lu_ActivityType.Text="Academic"
                  query = "Select reservationno as 'Reservation Number' ,borrower as 'Borrower',id as 'ID', equipmentno as 'Equipment No', equipment as 'Equipment',
             DATE_FORMAT(date,'%M %d %Y') as 'Date',TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time',
-            activitytype as 'Activity Type' from reservation where date ='" & Format(CDate(lu_date.Value), "yyyy-MM-dd") & "' and activitytype='Academic'"
+            activitytype as 'Activity Type' from reservation where date ='" & Format(CDate(lu_date.Value), "yyyy-MM-dd") & "' and activitytype='Academic' ORDER BY date DESC,starttime ASC"
             Cover = "Academic"
             ElseIf lu_ActivityType.Text="All"
                  query = "Select reservationno as 'Reservation Number' ,borrower as 'Borrower',id as 'ID', equipmentno as 'Equipment No', equipment as 'Equipment',
             DATE_FORMAT(date,'%M %d %Y') as 'Date',TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time',
-            activitytype as 'Activity Type', actname as 'Activity' from reservation where date ='" & Format(CDate(lu_date.Value), "yyyy-MM-dd") & "'"
+            activitytype as 'Activity Type', actname as 'Activity' from reservation where date ='" & Format(CDate(lu_date.Value), "yyyy-MM-dd") & "' ORDER BY date DESC,starttime ASC"
                 Cover = ""
             End If
             main_rgv_recordedacademicsonly.Columns.Clear()
@@ -2446,7 +2446,7 @@ Public Class Main
                 Dim chargeinterval As Integer = Convert.ToInt32(penalty_chargeinterval)
                 While counter <= seconds
                     counter += 1
-                    If counter Mod chargeinterval = 0 And counter>graceperiod Then 'GRACE PERIOD Convert.toInt32(string_from_DB)
+                    If counter Mod chargeinterval = 0 And counter>=graceperiod Then 'GRACE PERIOD Convert.toInt32(string_from_DB)
                         charge += 1
                     End If
                 End While
@@ -2473,7 +2473,7 @@ Public Class Main
                     MysqlConn.Close()
 
                     Catch ex As MySqlException
-                        MessageBox.Show(ex.Message)
+                       RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error, MessageBoxDefaultButton.Button1)
                     Finally
                         MysqlConn.Dispose()
                         load_released_list2()
@@ -2504,7 +2504,7 @@ Public Class Main
                             comm.ExecuteNonQuery()
                             MysqlConn.Close()
                         Catch ex As MySqlException
-                            MessageBox.Show(ex.Message)
+                            RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error, MessageBoxDefaultButton.Button1)
                         Finally
                             MysqlConn.Dispose()
                             load_penalty_list()
@@ -2535,7 +2535,7 @@ Public Class Main
                             comm.ExecuteNonQuery()
                             MysqlConn.Close()
                         Catch ex As MySqlException
-                            MessageBox.Show(ex.Message)
+                            RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error, MessageBoxDefaultButton.Button1)
                         Finally
                             MysqlConn.Dispose()
                             load_penalty_list()
