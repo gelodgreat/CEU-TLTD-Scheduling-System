@@ -146,6 +146,7 @@ Partial Class InstructionalMaterials
         Me.imm_rpv_subtopics = New Telerik.WinControls.UI.RadPageViewPage()
         Me.imm_rgv_im_subtopics = New Telerik.WinControls.UI.RadGridView()
         Me.RadGroupBox6 = New Telerik.WinControls.UI.RadGroupBox()
+        Me.imm_filter_topic = New Telerik.WinControls.UI.RadTextBoxControl()
         Me.RadLabel11 = New Telerik.WinControls.UI.RadLabel()
         Me.nst_gb_st = New Telerik.WinControls.UI.RadGroupBox()
         Me.imm_nst_dtp_duration = New Telerik.WinControls.UI.RadDateTimePicker()
@@ -163,7 +164,6 @@ Partial Class InstructionalMaterials
         Me.RadLabel13 = New Telerik.WinControls.UI.RadLabel()
         Me.imm_nst_cb_subject = New Telerik.WinControls.UI.RadDropDownList()
         Me.RadGroupBox5 = New Telerik.WinControls.UI.RadGroupBox()
-        Me.imm_btn_add_subtopics = New Telerik.WinControls.UI.RadButton()
         Me.imm_nv_btn_update = New Telerik.WinControls.UI.RadButton()
         Me.imm_nv_dtp_acquisitiondate = New Telerik.WinControls.UI.RadDateTimePicker()
         Me.imm_nv_btn_clear = New Telerik.WinControls.UI.RadButton()
@@ -214,7 +214,6 @@ Partial Class InstructionalMaterials
         Me.menuItem_SaveDB = New Telerik.WinControls.UI.RadMenuItem()
         Me.menuItem_Settings = New Telerik.WinControls.UI.RadMenuItem()
         Me.menuItem_About = New Telerik.WinControls.UI.RadMenuItem()
-        Me.imm_filter_topic = New Telerik.WinControls.UI.RadTextBoxControl()
         CType(Me.RadPageView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.RadPageView1.SuspendLayout()
         Me.im_rpvp_main.SuspendLayout()
@@ -243,6 +242,7 @@ Partial Class InstructionalMaterials
         CType(Me.imm_rgv_im_subtopics.MasterTemplate, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RadGroupBox6, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.RadGroupBox6.SuspendLayout()
+        CType(Me.imm_filter_topic, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RadLabel11, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.nst_gb_st, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.nst_gb_st.SuspendLayout()
@@ -262,7 +262,6 @@ Partial Class InstructionalMaterials
         CType(Me.imm_nst_cb_subject, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RadGroupBox5, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.RadGroupBox5.SuspendLayout()
-        CType(Me.imm_btn_add_subtopics, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.imm_nv_btn_update, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.imm_nv_dtp_acquisitiondate, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.imm_nv_btn_clear, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -312,7 +311,6 @@ Partial Class InstructionalMaterials
         CType(Me.RadGridView2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RadGridView2.MasterTemplate, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RadMenu1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.imm_filter_topic, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -352,7 +350,7 @@ Partial Class InstructionalMaterials
         Me.RadPageView3.Controls.Add(Me.main_rpvp_st)
         Me.RadPageView3.Location = New System.Drawing.Point(209, 3)
         Me.RadPageView3.Name = "RadPageView3"
-        Me.RadPageView3.SelectedPage = Me.main_rpvp_mvl
+        Me.RadPageView3.SelectedPage = Me.main_rpvp_st
         Me.RadPageView3.Size = New System.Drawing.Size(1136, 515)
         Me.RadPageView3.TabIndex = 2
         Me.RadPageView3.Text = "RadPageView3"
@@ -496,7 +494,7 @@ Partial Class InstructionalMaterials
         Me.RadPageView2.Controls.Add(Me.imm_rpv_subtopics)
         Me.RadPageView2.Location = New System.Drawing.Point(3, 3)
         Me.RadPageView2.Name = "RadPageView2"
-        Me.RadPageView2.SelectedPage = Me.imm_rpv_movielist
+        Me.RadPageView2.SelectedPage = Me.imm_rpv_subtopics
         Me.RadPageView2.Size = New System.Drawing.Size(1345, 293)
         Me.RadPageView2.TabIndex = 4
         Me.RadPageView2.Text = "RadPageView2"
@@ -578,6 +576,14 @@ Partial Class InstructionalMaterials
         Me.RadGroupBox6.TabIndex = 3
         Me.RadGroupBox6.Text = "Filters"
         Me.RadGroupBox6.ThemeName = "VisualStudio2012Dark"
+        '
+        'imm_filter_topic
+        '
+        Me.imm_filter_topic.Location = New System.Drawing.Point(8, 56)
+        Me.imm_filter_topic.Name = "imm_filter_topic"
+        Me.imm_filter_topic.Size = New System.Drawing.Size(193, 79)
+        Me.imm_filter_topic.TabIndex = 21
+        Me.imm_filter_topic.ThemeName = "VisualStudio2012Dark"
         '
         'RadLabel11
         '
@@ -769,7 +775,6 @@ Partial Class InstructionalMaterials
         '
         Me.RadGroupBox5.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping
         Me.RadGroupBox5.Anchor = System.Windows.Forms.AnchorStyles.Bottom
-        Me.RadGroupBox5.Controls.Add(Me.imm_btn_add_subtopics)
         Me.RadGroupBox5.Controls.Add(Me.imm_nv_btn_update)
         Me.RadGroupBox5.Controls.Add(Me.imm_nv_dtp_acquisitiondate)
         Me.RadGroupBox5.Controls.Add(Me.imm_nv_btn_clear)
@@ -793,16 +798,6 @@ Partial Class InstructionalMaterials
         Me.RadGroupBox5.TabIndex = 1
         Me.RadGroupBox5.Text = "New Video"
         Me.RadGroupBox5.ThemeName = "VisualStudio2012Dark"
-        '
-        'imm_btn_add_subtopics
-        '
-        Me.imm_btn_add_subtopics.Anchor = System.Windows.Forms.AnchorStyles.Bottom
-        Me.imm_btn_add_subtopics.Location = New System.Drawing.Point(420, 149)
-        Me.imm_btn_add_subtopics.Name = "imm_btn_add_subtopics"
-        Me.imm_btn_add_subtopics.Size = New System.Drawing.Size(176, 24)
-        Me.imm_btn_add_subtopics.TabIndex = 28
-        Me.imm_btn_add_subtopics.Text = "Add Sub Topics"
-        Me.imm_btn_add_subtopics.ThemeName = "VisualStudio2012Dark"
         '
         'imm_nv_btn_update
         '
@@ -1552,14 +1547,6 @@ Partial Class InstructionalMaterials
         CType(Me.menuItem_About.GetChildAt(0), Telerik.WinControls.Primitives.FillPrimitive).BackColor = System.Drawing.Color.Transparent
         CType(Me.menuItem_About.GetChildAt(1), Telerik.WinControls.Primitives.BorderPrimitive).ForeColor = System.Drawing.Color.Transparent
         '
-        'imm_filter_topic
-        '
-        Me.imm_filter_topic.Location = New System.Drawing.Point(8, 56)
-        Me.imm_filter_topic.Name = "imm_filter_topic"
-        Me.imm_filter_topic.Size = New System.Drawing.Size(193, 79)
-        Me.imm_filter_topic.TabIndex = 21
-        Me.imm_filter_topic.ThemeName = "VisualStudio2012Dark"
-        '
         'InstructionalMaterials
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1606,6 +1593,7 @@ Partial Class InstructionalMaterials
         CType(Me.RadGroupBox6, System.ComponentModel.ISupportInitialize).EndInit()
         Me.RadGroupBox6.ResumeLayout(False)
         Me.RadGroupBox6.PerformLayout()
+        CType(Me.imm_filter_topic, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RadLabel11, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.nst_gb_st, System.ComponentModel.ISupportInitialize).EndInit()
         Me.nst_gb_st.ResumeLayout(False)
@@ -1627,7 +1615,6 @@ Partial Class InstructionalMaterials
         CType(Me.RadGroupBox5, System.ComponentModel.ISupportInitialize).EndInit()
         Me.RadGroupBox5.ResumeLayout(False)
         Me.RadGroupBox5.PerformLayout()
-        CType(Me.imm_btn_add_subtopics, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.imm_nv_btn_update, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.imm_nv_dtp_acquisitiondate, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.imm_nv_btn_clear, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1679,7 +1666,6 @@ Partial Class InstructionalMaterials
         CType(Me.RadGridView2.MasterTemplate, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RadGridView2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RadMenu1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.imm_filter_topic, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(false)
         Me.PerformLayout
@@ -1771,7 +1757,6 @@ End Sub
     Friend WithEvents immain_rgv_movielist As Telerik.WinControls.UI.RadGridView
     Friend WithEvents main_rpvp_st As Telerik.WinControls.UI.RadPageViewPage
     Friend WithEvents immain_rgv_subtopic As Telerik.WinControls.UI.RadGridView
-    Friend WithEvents imm_btn_add_subtopics As Telerik.WinControls.UI.RadButton
     Friend WithEvents imm_nst_dtp_duration As Telerik.WinControls.UI.RadDateTimePicker
     Friend WithEvents imm_filter_topic As Telerik.WinControls.UI.RadTextBoxControl
 End Class

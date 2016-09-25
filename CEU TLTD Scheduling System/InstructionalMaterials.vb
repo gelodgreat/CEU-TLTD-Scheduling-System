@@ -21,10 +21,10 @@ Public Class InstructionalMaterials
     Dim reserveYN As DialogResult
     Dim returnEquipYN As DialogResult
     Dim penaltiesDeleteYN As DialogResult
-
+    Dim addst As DialogResult
 
     Private Sub InstructionalMaterials_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        nst_gb_st.Hide()
+
         load_all_movielist()
         load_all_movielist_in_main()
         load_all_subtopics()
@@ -32,7 +32,7 @@ Public Class InstructionalMaterials
         hide_buttons_on_load()
         hide_buttons_subtopics()
         imm_nv_dtp_acquisitiondate.Value = Date.Now
-
+        nst_gb_st.Hide()
     End Sub
 
     Public Sub hide_buttons_on_load()
@@ -480,6 +480,9 @@ Public Class InstructionalMaterials
         imm_nv_dtp_acquisitiondate.Value = Date.Now
         imm_nv_btn_update.Hide()
         imm_nv_btn_delete.Hide()
+
+        nst_gb_st.Hide()
+
     End Sub
 
     'MovieList Umali C9
@@ -495,11 +498,21 @@ Public Class InstructionalMaterials
             imm_nv_cb_mediatype.Text = row.Cells("Media Type").Value.ToString
             imm_nv_dtp_duration.Text = row.Cells("Duration").Value.ToString
             imm_nv_dtp_acquisitiondate.Value = row.Cells("Acquisition Date").Value.ToString
+
+            imm_nst_tb_subtopic.Text = ""
+            imm_nst_tb_vidid.Text = row.Cells("Video ID").Value.ToString
+            imm_nst_cb_subject.Text = row.Cells("Subject").Value.ToString
+            imm_nst_tb_topic.Text = row.Cells("Topic").Value.ToString
+
         End If
 
 
         imm_nv_btn_update.Show()
         imm_nv_btn_delete.Show()
+
+        imm_nst_btn_delete.Hide()
+        imm_nst_btn_update.Hide()
+        imm_nst_btn_save.Show()
 
         imm_nv_tb_vidid.Enabled = False
         imm_nv_cb_subject.Enabled = False
@@ -509,31 +522,11 @@ Public Class InstructionalMaterials
             MysqlConn.Close()
         End If
 
-        deleteYN = RadMessageBox.Show(Me, "Are you sure you want to delete?", "CEU TLTD Reservation System", MessageBoxButtons.YesNo, RadMessageIcon.Question)
-        If deleteYN = MsgBoxResult.Yes Then
-            If (imm_nv_tb_vidid.Text = "") Or (imm_nv_cb_subject.Text = "") Or (imm_nv_tb_topic.Text = "") Or (imm_nv_cb_mediatype.Text = "") Or (imm_nv_dtp_duration.Text = "") Or (imm_nv_dtp_acquisitiondate.Text = "") Then
-                RadMessageBox.Show(Me, "Please complete the fields To delete!", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
-            Else
-                Try
-                    MysqlConn.Open()
-                    query = "DELETE FROM movielist WHERE (vid_id=@mvl_vidid) AND (subject=@mvl_subject) AND (topic=@mvl_topic)"
-                    comm = New MySqlCommand(query, MysqlConn)
-                    comm.Parameters.AddWithValue("mvl_vidid", imm_nv_tb_vidid.Text)
-                    comm.Parameters.AddWithValue("mvl_subject", imm_nv_cb_subject.Text)
-                    comm.Parameters.AddWithValue("mvl_topic", imm_nv_tb_topic.Text)
-                    reader = comm.ExecuteReader
+        addst = RadMessageBox.Show(Me, "Do you want to add Sub Topic for this Movie?", "CEU TLTD Reservation System", MessageBoxButtons.YesNo, RadMessageIcon.Question)
+        If addst = MsgBoxResult.Yes Then
 
+            nst_gb_st.Show()
 
-                    RadMessageBox.Show(Me, "Successfully Deleted!", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Info)
-                    MysqlConn.Close()
-                Catch ex As Exception
-                    RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
-                Finally
-                    MysqlConn.Dispose()
-                    load_all_movielist()
-                    load_all_movielist_in_main()
-                End Try
-            End If
         End If
 
 
@@ -558,36 +551,18 @@ Public Class InstructionalMaterials
         imm_nst_tb_vidid.Enabled = False
         imm_nst_cb_subject.Enabled = False
         imm_nst_tb_topic.Enabled = False
-        nst_gb_st.Show()
+
         imm_nst_btn_save.Show()
         imm_nst_btn_update.Show()
         imm_nst_btn_delete.Show()
     End Sub
 
-    'Subtopics Umali C2
-    Private Sub imm_rgv_im_movielists_CellClick(sender As Object, e As GridViewCellEventArgs) Handles imm_rgv_im_movielists.CellClick
 
-        If e.RowIndex >= 0 Then
-            Dim row As Telerik.WinControls.UI.GridViewRowInfo
-            row = Me.imm_rgv_im_subtopics.Rows(e.RowIndex)
 
-            imm_nst_tb_vidid.Text = row.Cells("Video ID").Value.ToString
-            imm_nst_cb_subject.Text = row.Cells("Subject").Value.ToString
-            imm_nst_tb_topic.Text = row.Cells("Topic").Value.ToString
-        End If
-        imm_nst_btn_save.Show()
-        imm_nst_btn_clear.Show()
-
-    End Sub
-
-    'Subtopics Umali C3
-    Private Sub imm_btn_add_subtopics_Click(sender As Object, e As EventArgs) Handles imm_btn_add_subtopics.Click
-        nst_gb_st.Show()
-    End Sub
 
     'Subtopics Umali C4
     Public Sub hide_buttons_subtopics()
-        imm_nst_btn_save.Hide()
+
         imm_nst_btn_update.Hide()
         imm_nst_btn_delete.Hide()
     End Sub
@@ -772,6 +747,25 @@ Public Class InstructionalMaterials
         DV.RowFilter = String.Format("`Topic` Like'%{0}%' ", imm_filter_topic.Text)
         imm_rgv_im_movielists.DataSource = DV
     End Sub
+
+
+    'ayaw lumabas nung subtopics pag lumipat ng page
+    Private Sub imm_rpv_subtopics_Click(sender As Object, e As EventArgs) Handles imm_rpv_subtopics.Click
+
+        nst_gb_st.Show()
+
+    End Sub
+
+
+
+
+
+
+
+
+
+
+
 
 
 
