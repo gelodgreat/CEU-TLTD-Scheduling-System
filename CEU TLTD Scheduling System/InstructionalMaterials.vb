@@ -481,11 +481,14 @@ Public Class InstructionalMaterials
         imm_nv_btn_update.Hide()
         imm_nv_btn_delete.Hide()
 
+        'Added functions for NST
+        btn_clear_functions()
         nst_gb_st.Hide()
 
     End Sub
 
-    'MovieList Umali C9
+    'Starting here is the development of new sub topics codes
+    'Subtopics Umali C1
     Private Sub imm_rgv_im_movielists_CellDoubleClick(sender As Object, e As GridViewCellEventArgs) Handles imm_rgv_im_movielists.CellDoubleClick
 
         If e.RowIndex >= 0 Then
@@ -526,7 +529,9 @@ Public Class InstructionalMaterials
         If addst = MsgBoxResult.Yes Then
 
             nst_gb_st.Show()
-
+        Else
+            btn_clear_functions()
+            nst_gb_st.Hide()
         End If
 
 
@@ -534,8 +539,7 @@ Public Class InstructionalMaterials
     End Sub
 
 
-    'Starting here is the development of new sub topics codes
-    'Subtopics Umali C1
+
     Private Sub imm_rgv_im_subtopics_CellDoubleClick(sender As Object, e As GridViewCellEventArgs) Handles imm_rgv_im_subtopics.CellDoubleClick
         If e.RowIndex >= 0 Then
             Dim row As Telerik.WinControls.UI.GridViewRowInfo
@@ -558,16 +562,12 @@ Public Class InstructionalMaterials
     End Sub
 
 
-
-
-    'Subtopics Umali C4
     Public Sub hide_buttons_subtopics()
-
         imm_nst_btn_update.Hide()
         imm_nst_btn_delete.Hide()
     End Sub
 
-    'Subtopics Umali C5
+
     Private Sub imm_nst_btn_clear_Click(sender As Object, e As EventArgs) Handles imm_nst_btn_clear.Click
         btn_clear_functions()
     End Sub
@@ -578,10 +578,10 @@ Public Class InstructionalMaterials
         imm_nst_cb_subject.Text = ""
         imm_nst_tb_topic.Text = ""
         imm_nst_tb_subtopic.Text = ""
-        imm_nst_dtp_duration.Text = ""
-        imm_nst_tb_vidid.Enabled = True
-        imm_nst_cb_subject.Enabled = True
-        imm_nst_tb_topic.Enabled = True
+        imm_nst_dtp_duration.Text = "00:00:00"
+        imm_nst_tb_vidid.Enabled = False
+        imm_nst_cb_subject.Enabled = False
+        imm_nst_tb_topic.Enabled = False
     End Sub
 
     'Subtopics Umali C6
