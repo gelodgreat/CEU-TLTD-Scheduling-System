@@ -17,7 +17,7 @@ Public Class Login
 
     'Login Button Codes
     Private Sub btn_login_Click(sender As Object, e As EventArgs) Handles btn_login.Click
-            Try
+             Try
                 If a = False Then
                     If db_is_deadCount>=3 Then
                         RadMessageBox.Show(Me, "Database is Offline." & Environment.NewLine & "Please check the connection settings by clicking the gear icon on the top right and ask the database administrator to input the required details.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error, MessageBoxDefaultButton.Button1)
@@ -28,8 +28,12 @@ Public Class Login
                 Else
                     If String.IsNullOrEmpty(log_username.Text) Or String.IsNullOrEmpty(log_password.Text) Then
                         RadMessageBox.Show(Me, "Please enter username and password.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error, MessageBoxDefaultButton.Button1)
-
                     Else
+
+                    If log_username.Text.Contains("@ceu.edu.ph") Then
+                    Else log_username.Text = log_username.Text + "@ceu.edu.ph"
+                    End If
+        
                         Dim looper As Integer
                         If ConnectionState.Open = True Then
                             mysqlconn.Close()
