@@ -112,7 +112,7 @@ Public Class Main
         'main_load_academicsonly() 'HANDLED by the Event of SelectedIndexChanged in "lu_ActivityType"
         'main_load_schoolonly() 'Now using single gridview, depreciated
 
-        load_rec_table()
+        load_rec_table(false)
         load_eq_table()
         load_main_acc()
         load_main_prof()
@@ -127,8 +127,7 @@ Public Class Main
         startup_disabled_textbox()
         show_hide_txt_lbl()
         color_coding()
-        rec_rrtc_actname.Enabled = False
-        rec_lbl_actname.Enabled = False
+        'rec_rrtc_actname.Enabled = False
         lu_date.Value = Date.Now
         rec_dtp_date.Value = Date.Now
         Main_Timer.Enabled = True
@@ -351,25 +350,27 @@ Public Class Main
             colsmain_att.WrapText = True
       End If
     End Sub
-    Public Sub load_rec_table()
-
+    Public Sub load_rec_table(show_all_no_filter As Boolean)
         MysqlConn = New MySqlConnection
         MysqlConn.ConnectionString = connstring
         Dim sda As New MySqlDataAdapter
         Dim bsource As New BindingSource
         Dim dbdataset As New DataTable
         Dim ds As New DataSet
-        dbdataset.Clear()
-
+        'dbdataset.Clear()
+        If NOT reservation_rgv_recordeddata.ColumnCount=0 Then
+            reservation_rgv_recordeddata.Columns.Clear()
+        End If
         If MysqlConn.State = ConnectionState.Open Then
             MysqlConn.Close()
         End If
-
         Try
             MysqlConn.Open()
-
-            query = "Select reservationno as 'Reservation Number' ,borrower as 'Borrower',id as 'ID', equipmentno as 'Equipment No', equipment as 'Equipment', DATE_FORMAT(date,'%M %d %Y') as 'Date',TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time',activitytype as 'Activiity Type',actname as 'Activity',res_status as 'Status' from reservation natural join reservation_equipments  where date ='" & Format(CDate(rec_dtp_date.Value), "yyyy-MM-dd") & "' ORDER by date ASC"
-
+            If show_all_no_filter = False Then
+                query = "Select reservationno as 'Reservation Number' ,borrower as 'Borrower',id as 'ID', equipmentno as 'Equipment No', equipment as 'Equipment', DATE_FORMAT(date,'%M %d %Y') as 'Date',TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time',activitytype as 'Activiity Type',actname as 'Activity',res_status as 'Status' from reservation natural join reservation_equipments  where date ='" & Format(CDate(rec_dtp_date.Value), "yyyy-MM-dd") & "' ORDER by date ASC"
+            Else
+                query = "Select reservationno as 'Reservation Number' ,borrower as 'Borrower',id as 'ID', equipmentno as 'Equipment No', equipment as 'Equipment', DATE_FORMAT(date,'%M %d %Y') as 'Date',TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time',activitytype as 'Activiity Type',actname as 'Activity',res_status as 'Status' from reservation natural join reservation_equipments ORDER by date ASC"
+            End If
             comm = New MySqlCommand(query, MysqlConn)
             sda.SelectCommand = comm
             sda.Fill(dbdataset)
@@ -378,7 +379,6 @@ Public Class Main
             reservation_rgv_recordeddata.ReadOnly = True
             sda.Update(dbdataset)
             MysqlConn.Close()
-
         Catch ex As Exception
             RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
         Finally
@@ -1070,7 +1070,7 @@ Public Class Main
                 load_released_list()
                 load_released_list2()
                 reserved_load_table()
-                load_rec_table()
+                load_rec_table(false)
                 color_coding()
             End Try
         End If
@@ -2089,14 +2089,14 @@ Public Class Main
             End If
             main_load_academicsonly()
             'main_load_schoolonly()
-            load_rec_table()
+            load_rec_table(false)
             reserved_load_table()
         End If
     End Sub
 
     'Showing All Data to Reservation Grid View
     Private Sub rec_btn_showalldata_Click(sender As Object, e As EventArgs) Handles rec_btn_showalldata.Click
-        load_rec_table()
+        load_rec_table(true)
     End Sub
 
     'SHowing all available equipments to Reservation Grid View
@@ -2211,7 +2211,7 @@ Public Class Main
                 MysqlConn.Dispose()
             End Try
         End If
-        load_rec_table()
+        load_rec_table(false)
         main_load_academicsonly()
         'main_load_schoolonly()
     End Sub
@@ -2265,7 +2265,7 @@ Public Class Main
 
     'Loading of data in Reservation Page Grid
     Private Sub rec_dtp_date_ValueChanged(sender As Object, e As EventArgs) Handles rec_dtp_date.ValueChanged
-        load_rec_table()
+        load_rec_table(false)
     End Sub
 
     'Loading of data in Main Page Grid
@@ -2313,9 +2313,10 @@ Public Class Main
                 RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
             Finally
                 MysqlConn.Dispose()
+                load_rec_table(false)
             End Try
         End If
-        load_rec_table()
+        
         main_load_academicsonly()
         'main_load_schoolonly()
     End Sub
@@ -2371,10 +2372,8 @@ Public Class Main
     Private Sub rec_cb_acttype_SelectedIndexChanged(sender As Object, e As UI.Data.PositionChangedEventArgs) Handles rec_cb_acttype.SelectedIndexChanged
         If rec_cb_acttype.Text = "School Activity" Then
             rec_rrtc_actname.Enabled = True
-            rec_lbl_actname.Enabled = True
         Else
             rec_rrtc_actname.Enabled = False
-            rec_lbl_actname.Enabled = False
             rec_rrtc_actname.Text = ""
         End If
 
