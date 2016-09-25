@@ -543,6 +543,7 @@ Partial Class Main
         Me.lu_ActivityType_filter_delay = New System.Windows.Forms.Timer(Me.components)
         Me.acct_mgmt_hover_delay_goingToBorrower = New System.Windows.Forms.Timer(Me.components)
         Me.acct_mgmt_hover_delay_goingToStaff = New System.Windows.Forms.Timer(Me.components)
+        Me.RadGroupBox10 = New Telerik.WinControls.UI.RadGroupBox()
         CType(Me.RadGroupBox16,System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.RadGroupBox13,System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.CeutltdschedulerDataSetBindingSource,System.ComponentModel.ISupportInitialize).BeginInit
@@ -799,6 +800,8 @@ Partial Class Main
         CType(Me.rpv1,System.ComponentModel.ISupportInitialize).BeginInit
         Me.rpv1.SuspendLayout
         CType(Me.RadMenu1,System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.RadGroupBox10,System.ComponentModel.ISupportInitialize).BeginInit
+        Me.RadGroupBox10.SuspendLayout
         CType(Me,System.ComponentModel.ISupportInitialize).BeginInit
         Me.SuspendLayout
         '
@@ -3816,8 +3819,8 @@ Partial Class Main
         '
         'rpvp1_main
         '
+        Me.rpvp1_main.Controls.Add(Me.RadGroupBox10)
         Me.rpvp1_main.Controls.Add(Me.RadGroupBox2)
-        Me.rpvp1_main.Controls.Add(Me.main_rgv_recordedacademicsonly)
         Me.rpvp1_main.ItemSize = New System.Drawing.SizeF(37!, 24!)
         Me.rpvp1_main.Location = New System.Drawing.Point(5, 30)
         Me.rpvp1_main.Name = "rpvp1_main"
@@ -3994,11 +3997,9 @@ Partial Class Main
         '
         'main_rgv_recordedacademicsonly
         '
-        Me.main_rgv_recordedacademicsonly.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom)  _
-            Or System.Windows.Forms.AnchorStyles.Left)  _
-            Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
         Me.main_rgv_recordedacademicsonly.AutoSizeRows = true
-        Me.main_rgv_recordedacademicsonly.Location = New System.Drawing.Point(212, 3)
+        Me.main_rgv_recordedacademicsonly.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.main_rgv_recordedacademicsonly.Location = New System.Drawing.Point(2, 18)
         '
         '
         '
@@ -4011,7 +4012,7 @@ Partial Class Main
         Me.main_rgv_recordedacademicsonly.MasterTemplate.ViewDefinition = TableViewDefinition24
         Me.main_rgv_recordedacademicsonly.Name = "main_rgv_recordedacademicsonly"
         Me.main_rgv_recordedacademicsonly.ReadOnly = true
-        Me.main_rgv_recordedacademicsonly.Size = New System.Drawing.Size(1136, 519)
+        Me.main_rgv_recordedacademicsonly.Size = New System.Drawing.Size(1129, 498)
         Me.main_rgv_recordedacademicsonly.TabIndex = 6
         Me.main_rgv_recordedacademicsonly.TabStop = false
         Me.main_rgv_recordedacademicsonly.ThemeName = "VisualStudio2012Dark"
@@ -4101,6 +4102,22 @@ Partial Class Main
         '
         'acct_mgmt_hover_delay_goingToStaff
         '
+        '
+        'RadGroupBox10
+        '
+        Me.RadGroupBox10.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping
+        Me.RadGroupBox10.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom)  _
+            Or System.Windows.Forms.AnchorStyles.Left)  _
+            Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
+        Me.RadGroupBox10.Controls.Add(Me.main_rgv_recordedacademicsonly)
+        Me.RadGroupBox10.HeaderText = "Reserved Equipments"
+        Me.RadGroupBox10.Location = New System.Drawing.Point(212, 4)
+        Me.RadGroupBox10.Name = "RadGroupBox10"
+        Me.RadGroupBox10.Size = New System.Drawing.Size(1133, 518)
+        Me.RadGroupBox10.TabIndex = 100
+        Me.RadGroupBox10.TabStop = false
+        Me.RadGroupBox10.Text = "Reserved Equipments"
+        Me.RadGroupBox10.ThemeName = "VisualStudio2012Dark"
         '
         'Main
         '
@@ -4386,6 +4403,8 @@ Partial Class Main
         CType(Me.rpv1,System.ComponentModel.ISupportInitialize).EndInit
         Me.rpv1.ResumeLayout(false)
         CType(Me.RadMenu1,System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.RadGroupBox10,System.ComponentModel.ISupportInitialize).EndInit
+        Me.RadGroupBox10.ResumeLayout(false)
         CType(Me,System.ComponentModel.ISupportInitialize).EndInit
         Me.ResumeLayout(false)
         Me.PerformLayout
@@ -4629,5 +4648,6 @@ End Sub
     Friend WithEvents acct_mgmt_hover_delay_goingToBorrower As Timer
     Friend WithEvents acct_mgmt_hover_delay_goingToStaff As Timer
     Friend WithEvents ret_remarks As Telerik.WinControls.UI.RadTextBoxControl
+    Friend WithEvents RadGroupBox10 As Telerik.WinControls.UI.RadGroupBox
 End Class
 
