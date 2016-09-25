@@ -23,6 +23,10 @@ Public Class InstructionalMaterials
     Dim penaltiesDeleteYN As DialogResult
     Dim addst As DialogResult
 
+    'Auto Generating of Reservation No
+    Public identifier_reservationno As String
+    Public random As System.Random = New System.Random
+
     Private Sub InstructionalMaterials_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         load_all_movielist()
@@ -33,6 +37,11 @@ Public Class InstructionalMaterials
         hide_buttons_subtopics()
         imm_nv_dtp_acquisitiondate.Value = Date.Now
         nst_gb_st.Hide()
+
+        'IMR CODES
+        auto_generate_imr_reservationno()
+        load_grid_imr_reservation_grid()
+        load_allsubjectto_cb_subject()
     End Sub
 
     Public Sub hide_buttons_on_load()
@@ -756,37 +765,7 @@ Public Class InstructionalMaterials
 
     End Sub
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    'END of Instructional Materials Management
 
 
 
@@ -797,86 +776,289 @@ Public Class InstructionalMaterials
 
 
     'STARTING HERE IS THE INSTRUCTIONAL MATERIALS RESERVATION
-    'Private Sub im_btn_save_Click(sender As Object, e As EventArgs)
 
-    '    If (MysqlConn.State = ConnectionState.Open) Then
-    '        MysqlConn.Close()
-
-    '    End If
-
-
-    '    reserveYN = RadMessageBox.Show(Me, "Are you sure you want to reserve?", "CEU TLTD Reservation System", MessageBoxButtons.YesNo, RadMessageIcon.Question)
-    '    If reserveYN = MsgBoxResult.Yes Then
+    Public Sub auto_generate_imr_reservationno()
+        identifier_reservationno = Now.ToString("mmddyyy" + "-")
+        identifier_reservationno = identifier_reservationno + Random.Next(1, 100000000).ToString
+        imr_reservationno.Text = identifier_reservationno
+    End Sub
 
 
+    'Loading Reservation Grid
+    Public Sub load_grid_imr_reservation_grid()
+        If MysqlConn.State = ConnectionState.Open Then
+            MysqlConn.Close()
+        End If
 
-    '        MysqlConn = New MySqlConnection
-    '        MysqlConn.ConnectionString = connstring
-    '        Dim READER As MySqlDataReader
-    '        Dim errorcount As Boolean = False
+        MysqlConn = New MySqlConnection
+        MysqlConn.ConnectionString = connstring
+        Dim sda As New MySqlDataAdapter
+        Dim dbdataset As New DataTable
+        Dim bsource As New BindingSource
+
+        Try
+            MysqlConn.Open()
+            query = "SELECT movie_reservationno AS 'Reservation Number' , res_vid_id AS 'Video ID' , res_subject AS 'Subject' , res_topic AS 'Topic' , TIME_FORMAT(movie_starttime, '%H:%i') AS 'Start Time', TIME_FORMAT(movie_endtime, '%H:%i') AS 'End Time' ,  DATE_FORMAT(movie_date,'%M %d %Y') AS 'Date' FROM movie_reservation"
+            comm = New MySqlCommand(query, MysqlConn)
+            sda.SelectCommand = comm
+            sda.Fill(dbdataset)
+            bsource.DataSource = dbdataset
+            imr_rgv_reservationgrid.DataSource = bsource
+            imr_rgv_reservationgrid.ReadOnly = True
+            sda.Update(dbdataset)
+            MysqlConn.Close()
+
+        Catch ex As Exception
+            RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+        Finally
+            MysqlConn.Dispose()
+
+        End Try
+    End Sub
+
+    Private Sub imr_rgv_reservationgrid_CellDoubleClick(sender As Object, e As GridViewCellEventArgs) Handles imr_rgv_reservationgrid.CellDoubleClick
+        If e.RowIndex >= 0 Then
+            Dim row As Telerik.WinControls.UI.GridViewRowInfo
+
+            row = Me.imr_rgv_reservationgrid.Rows(e.RowIndex)
+
+            imr_reservationno.Text = row.Cells("Reservation Number").Value.ToString
+            imr_cb_subject.Text = row.Cells("Subject").Value.ToString
+            imr_cb_topic.Text = row.Cells("Topic").Value.ToString
+            imr_videoid.Text = row.Cells("Video ID").Value.ToString
+        End If
+    End Sub
+
+    Public Sub load_allsubjectto_cb_subject()
+        If MysqlConn.State = ConnectionState.Open Then
+            MysqlConn.Close()
+        End If
+        MysqlConn.ConnectionString = connstring
+        Try
+            MysqlConn.Open()
+            query = "SELECT DISTINCT(subject) FROM movielist ORDER BY subject ASC"
+            comm = New MySqlCommand(query, MysqlConn)
+            reader = comm.ExecuteReader
+
+            While reader.Read
+
+                imr_cb_subject.Items.Add(reader.GetString("subject"))
+            End While
+            MysqlConn.Close()
+        Catch ex As Exception
+            RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+        Finally
+            MysqlConn.Dispose()
+
+        End Try
+    End Sub
+
+    Private Sub imr_cb_subject_SelectedIndexChanged(sender As Object, e As UI.Data.PositionChangedEventArgs) Handles imr_cb_subject.SelectedIndexChanged
+        imr_cb_topic.Items.Clear()
+        If MysqlConn.State = ConnectionState.Open Then
+            MysqlConn.Close()
+        End If
+        MysqlConn.ConnectionString = connstring
+
+        Try
+            MysqlConn.Open()
+            query = "SELECT topic FROM movielist WHERE subject=@res_subject"
+            comm = New MySqlCommand(query, MysqlConn)
+            comm.Parameters.AddWithValue("res_subject", imr_cb_subject.Text)
+            reader = comm.ExecuteReader
+            imr_cb_topic.Items.Clear()
+
+            While reader.Read
+                imr_cb_topic.Items.Add(reader.GetString("topic"))
+            End While
+
+            MysqlConn.Close()
+
+        Catch ex As Exception
+            RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+        Finally
+            MysqlConn.Dispose()
+        End Try
+    End Sub
 
 
-    '        If (im_cb_title.Text = "") Or (im_cb_subject.Text = "") Or (im_cb_status.Text = "") Or (im_cb_starttime.Text = "") Or (im_cb_endtime.Text) Then
-    '            RadMessageBox.Show(Me, "Please complete the fields", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
-    '        Else
-    '            'ADD THE CHECKBOX TO PICK IF IT IS FROM ANOTHER DAY, ANOTHER DATE PICKER, BUT BY DEFAULT IT IS NOT CHECKED
-    '            Dim elapsedTime As TimeSpan = DateTime.Parse(Format(CDate(im_dtp_date.Value), "yyyy-MM-dd") & " " & im_cb_endtime.Text).Subtract(DateTime.Parse(DateTime.Parse(Format(CDate(im_dtp_date.Value), "yyyy-MM-dd") & " " & im_cb_starttime.Text)))
-    '            'ADD THE CHECKBOX TO PICK IF IT IS FROM ANOTHER DAY, ANOTHER DATE PICKER, BUT BY DEFAULT IT IS NOT CHECKED
-    '            If elapsedTime.CompareTo(TimeSpan.Zero) <= 0 Then
-    '                RadMessageBox.Show(Me, "The Starting Time can't be the same or later on the Ending Time.", "Reservation", MessageBoxButtons.OK, RadMessageIcon.Error, MessageBoxDefaultButton.Button1)
-    '            Else
+    Private Sub imr_cb_topic_SelectedIndexChanged(sender As Object, e As UI.Data.PositionChangedEventArgs) Handles imr_cb_topic.SelectedIndexChanged
 
-    '                Try
-    '                    MysqlConn.Close()
-    '                    MysqlConn.Open()
+        If MysqlConn.State = ConnectionState.Open Then
+            MysqlConn.Close()
+        End If
+        MysqlConn.ConnectionString = connstring
 
-    '                    'PENDING QUERY
-    '                    'query=""
-    '                    comm = New MySqlCommand(query, MysqlConn)
-    '                    READER = comm.ExecuteReader
-    '                    Dim count As Integer
-    '                    count = 0
-    '                    While READER.Read
-    '                        count = count + 1
-    '                        'PENDING CODE
-    '                    End While
+        Try
+            MysqlConn.Open()
+            query = "SELECT vid_id FROM movielist WHERE subject=@res_subject AND topic=@res_topic"
+            comm = New MySqlCommand(query, MysqlConn)
+            comm.Parameters.AddWithValue("res_subject", imr_cb_subject.Text)
+            comm.Parameters.AddWithValue("res_topic", imr_cb_topic.Text)
 
-    '                    If count > 0 Then
-    '                        'PENDING ERROR MESSAGE
-    '                        errorcount = True
-    '                    Else
-    '                        MysqlConn.Close()
-    '                        MysqlConn.Open()
-    '                        'PENDING QUERY
-    '                        'query="INSERT INTO "
-    '                        comm = New MySqlCommand(query, MysqlConn)
-    '                        READER = comm.ExecuteReader
+            reader = comm.ExecuteReader
 
-    '                        MysqlConn.Close()
 
-    '                    End If
+            While reader.Read
+                imr_videoid.Text = reader.GetString("vid_id")
+            End While
 
-    '                Catch ex As Exception
-    '                    RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
-    '                Finally
-    '                    MysqlConn.Dispose()
+            MysqlConn.Close()
 
-    '                End Try
+        Catch ex As Exception
+            RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+        Finally
+            MysqlConn.Dispose()
+        End Try
+    End Sub
 
-    '                If errorcount = False Then
-    '                    RadMessageBox.Show(Me, "Movie Film Successfully Reserved!", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Info)
 
-    '                Else
-    '                    RadMessageBox.Show(Me, "Movie Film Failed to Reserved!", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+    'Button Functions here
 
-    '                End If
-    '            End If
-    '        End If
-    '    End If
+    Private Sub im_btn_save_Click(sender As Object, e As EventArgs) Handles im_btn_save.Click
+
+        If (MysqlConn.State = ConnectionState.Open) Then
+            MysqlConn.Close()
+
+        End If
+
+
+        reserveYN = RadMessageBox.Show(Me, "Are you sure you want to reserve?", "CEU TLTD Reservation System", MessageBoxButtons.YesNo, RadMessageIcon.Question)
+        If reserveYN = MsgBoxResult.Yes Then
 
 
 
-    'End Sub
+            MysqlConn = New MySqlConnection
+            MysqlConn.ConnectionString = connstring
+            Dim READER As MySqlDataReader
+            Dim errorcount As Boolean = False
 
 
+            If (imr_cb_topic.Text = "") Or (imr_cb_subject.Text = "") Or (imr_cb_status.Text = "") Or (imr_cb_starttime.Text = "") Or (imr_cb_endtime.Text = "") Or (imr_dtp_date.Text = "") Then
+                RadMessageBox.Show(Me, "Please complete the fields", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+            Else
+                'ADD THE CHECKBOX TO PICK IF IT IS FROM ANOTHER DAY, ANOTHER DATE PICKER, BUT BY DEFAULT IT IS NOT CHECKED
+                Dim elapsedTime As TimeSpan = DateTime.Parse(Format(CDate(imr_dtp_date.Value), "yyyy-MM-dd") & " " & imr_cb_endtime.Text).Subtract(DateTime.Parse(DateTime.Parse(Format(CDate(imr_dtp_date.Value), "yyyy-MM-dd") & " " & imr_cb_starttime.Text)))
+                'ADD THE CHECKBOX TO PICK IF IT IS FROM ANOTHER DAY, ANOTHER DATE PICKER, BUT BY DEFAULT IT IS NOT CHECKED
+                If elapsedTime.CompareTo(TimeSpan.Zero) <= 0 Then
+                    RadMessageBox.Show(Me, "The Starting Time can't be the same or later on the Ending Time.", "Reservation", MessageBoxButtons.OK, RadMessageIcon.Error, MessageBoxDefaultButton.Button1)
+                Else
+
+                    Try
+                        MysqlConn.Close()
+                        MysqlConn.Open()
+
+                        'PENDING QUERY
+
+                        'No Params @ Date,Time
+                        query = "SELECT * FROM movie_reservation WHERE res_vid_id=@res_vidid AND res_subject=@res_subject AND res_topic=@res_topic AND (('" & Format(CDate(imr_dtp_date.Value), "yyyy-MM-dd") & " " & Format(CDate(imr_cb_starttime.Text), "HH:mm:01") & "' BETWEEN CONCAT(movie_date,' ',movie_starttime) AND CONCAT(movie_date,' ',movie_endtime)) OR ('" & Format(CDate(imr_dtp_date.Value), "yyyy-MM-dd") & " " & Format(CDate(imr_cb_endtime.Text), "HH:mm:01") & "' BETWEEN CONCAT(movie_date,' ',movie_starttime) AND CONCAT (movie_date,' ',movie_endtime))) "
+
+                        'query = "SELECT * FROM movie_reservation WHERE res_vid_id=@res_vidid AND res_subject=@res_subject AND res_topic=@res_topic AND (('@res_movie_date @res_starttime' BETWEEN CONCAT(movie_date,' ',movie_starttime) AND CONCAT(movie_date,' ',movie_endtime)) OR ('@res_movie_date @res_endtime' BETWEEN CONCAT(movie_date,' ',movie_starttime) AND CONCAT (movie_date,' ',movie_endtime))) "
+                        comm = New MySqlCommand(query, MysqlConn)
+                        comm.Parameters.AddWithValue("res_vidid", imr_videoid.Text)
+                        comm.Parameters.AddWithValue("res_subject", imr_cb_subject.Text)
+                        comm.Parameters.AddWithValue("res_topic", imr_cb_topic.Text)
+                        'comm.Parameters.AddWithValue("res_movie_date", Format(CDate(imr_dtp_date.Value), "yyyy-MM-dd"))
+                        'comm.Parameters.AddWithValue("res_starttime", Format(CDate(imr_cb_starttime.Text), "HH:mm:01"))
+                        'comm.Parameters.AddWithValue("res_endtime", Format(CDate(imr_cb_endtime.Text), "HH:mm:01"))
+
+
+
+
+                        READER = comm.ExecuteReader
+                        Dim count As Integer
+                        count = 0
+                        While READER.Read
+                            count += 1
+                        End While
+
+                        If count > 0 Then
+                            RadMessageBox.Show(Me, "The movie " & imr_cb_topic.Text & " is already taken.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                            errorcount = True
+                        Else
+                            MysqlConn.Close()
+                            MysqlConn.Open()
+                            'PENDING QUERY
+                            query = "INSERT INTO `movie_reservation` VALUES (@res_reservationno , @res_vidid , @res_subject , @res_topic , @res_status , @res_starttime , @res_endtime , @res_movie_date)"
+                            comm = New MySqlCommand(query, MysqlConn)
+                            comm.Parameters.AddWithValue("res_reservationno", imr_reservationno.Text)
+                            comm.Parameters.AddWithValue("res_vidid", imr_videoid.Text)
+                            comm.Parameters.AddWithValue("res_subject", imr_cb_subject.Text)
+                            comm.Parameters.AddWithValue("res_topic", imr_cb_topic.Text)
+                            comm.Parameters.AddWithValue("res_status", imr_cb_status.Text)
+                            comm.Parameters.AddWithValue("res_starttime", Format(CDate(imr_cb_starttime.Text), "HH:mm"))
+                            comm.Parameters.AddWithValue("res_endtime", Format(CDate(imr_cb_endtime.Text), "HH:mm"))
+                            comm.Parameters.AddWithValue("res_movie_date", Format(CDate(imr_dtp_date.Value), "yyyy-MM-dd"))
+
+                            READER = comm.ExecuteReader
+                            MysqlConn.Close()
+                        End If
+
+                    Catch ex As Exception
+                        RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                    Finally
+                        MysqlConn.Dispose()
+                        load_grid_imr_reservation_grid()
+
+
+                        If errorcount = False Then
+                            RadMessageBox.Show(Me, "Movie Film Successfully Reserved!", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Info)
+                            auto_generate_imr_reservationno()
+                        Else
+                            RadMessageBox.Show(Me, "Movie Film Failed to Reserved!", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+
+                        End If
+                    End Try
+
+
+                End If
+            End If
+        End If
+
+    End Sub
+
+
+
+    Private Sub im_btn_delete_Click(sender As Object, e As EventArgs) Handles im_btn_delete.Click
+        If MysqlConn.State = ConnectionState.Open Then
+            MysqlConn.Close()
+        End If
+
+        deleteYN = RadMessageBox.Show(Me, "Are you sure you want to delete?", "CEU TLTD Reservation System", MessageBoxButtons.YesNo, RadMessageIcon.Question)
+        If deleteYN = MsgBoxResult.Yes Then
+            Try
+                MysqlConn.Open()
+                query = "DELETE FROM movie_reservation WHERE (movie_reservationno=@res_reservationno) AND (res_vid_id=@res_vidid)"
+                comm = New MySqlCommand(query, MysqlConn)
+                comm.Parameters.AddWithValue("res_reservationno", imr_reservationno.Text)
+                comm.Parameters.AddWithValue("res_vidid", imr_videoid.Text)
+
+
+                reader = comm.ExecuteReader
+
+
+                RadMessageBox.Show(Me, "Successfully Deleted!", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Info)
+                MysqlConn.Close()
+            Catch ex As Exception
+                RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+            Finally
+                MysqlConn.Dispose()
+                load_grid_imr_reservation_grid()
+            End Try
+        End If
+
+    End Sub
+
+    Private Sub im_btn_clear_Click(sender As Object, e As EventArgs) Handles im_btn_clear.Click
+        auto_generate_imr_reservationno()
+        imr_reservationno.Text = ""
+        imr_videoid.Text = ""
+        imr_cb_topic.Text = ""
+        imr_cb_status.Text = "Reserved"
+        imr_cb_starttime.Text = ""
+        imr_cb_endtime.Text = ""
+        imr_dtp_date.Value = Date.Now
+
+
+    End Sub
 End Class
