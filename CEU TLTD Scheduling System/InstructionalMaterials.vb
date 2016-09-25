@@ -574,9 +574,9 @@ Public Class InstructionalMaterials
 
     Public Sub btn_clear_functions()
         hide_buttons_subtopics()
-        imm_nst_tb_vidid.Text = ""
-        imm_nst_cb_subject.Text = ""
-        imm_nst_tb_topic.Text = ""
+        'imm_nst_tb_vidid.Text = ""
+        'imm_nst_cb_subject.Text = ""
+        'imm_nst_tb_topic.Text = ""
         imm_nst_tb_subtopic.Text = ""
         imm_nst_dtp_duration.Text = "00:00:00"
         imm_nst_tb_vidid.Enabled = False
