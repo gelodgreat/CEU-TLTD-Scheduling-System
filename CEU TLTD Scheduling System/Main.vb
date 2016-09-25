@@ -1984,7 +1984,19 @@ Public Class Main
         reserveYN = RadMessageBox.Show(Me, "Are you sure you want to reserve?", "CEU TLTD Reservation System", MessageBoxButtons.YesNo, RadMessageIcon.Question)
         If reserveYN = MsgBoxResult.Yes Then
 
-
+        Dim serials() As String
+        Dim serialsElements As Integer = 0
+        Dim dupdup As Boolean
+        For i as integer = 0 To eq_rgv_addeq.Rows.Count -1
+            ReDim Preserve serials(serialsElements)
+            serials(serialsElements) = (LCase(eq_rgv_addeq.Rows(i).Cells(2).Value))
+            serialsElements += 1
+        Next
+        If serials.Distinct().Count() <> serials.Count() Then
+            dupdup = True
+        Else
+            dupdup = False
+        End If
 
             MysqlConn = New MySqlConnection
             MysqlConn.ConnectionString = connstring
@@ -2001,7 +2013,9 @@ Public Class Main
                 Dim elapsedTime As TimeSpan = DateTime.Parse(Format(CDate(rec_dtp_date.Value), "yyyy-MM-dd") & " " & rec_dtp_endtime.Text).Subtract(DateTime.Parse(DateTime.Parse(Format(CDate(rec_dtp_date.Value), "yyyy-MM-dd") & " " & rec_dtp_starttime.Text)))
                 'ADD THE CHECKBOX TO PICK IF IT IS FROM ANOTHER DAY, ANOTHER DATE PICKER, BUT BY DEFAULT IT IS NOT CHECKED
                 If elapsedTime.CompareTo(TimeSpan.Zero) <= 0 Then
-                    RadMessageBox.Show(Me, "The Starting Time can't be the same or later on the Ending Time.", "Reservation", MessageBoxButtons.OK, RadMessageIcon.Error, MessageBoxDefaultButton.Button1)
+                    RadMessageBox.Show(Me, "The Starting Time can't be the same or later on the Ending Time.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error, MessageBoxDefaultButton.Button1)
+                Else If dupdup
+                    RadMessageBox.Show(Me, "Please remove duplicates in the added equipments.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error, MessageBoxDefaultButton.Button1)
                 Else
                     Dim counter As Integer
                     Dim rownumber As Integer = eq_rgv_addeq.Rows.Count
