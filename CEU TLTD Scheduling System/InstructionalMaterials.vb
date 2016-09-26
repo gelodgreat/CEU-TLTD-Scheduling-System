@@ -55,19 +55,19 @@ Public Class InstructionalMaterials
     End Sub
 
     'MENU BAR
-    Private Sub MenuBar_MouseLeave(sender As Object, e As EventArgs) Handles menuItem_DBManage.MouseLeave, menuItem_About.MouseLeave, menuItem_Settings.MouseLeave
-         If ThemeResolutionService.ApplicationThemeName = "VisualStudio2012Dark" Then
-             Dim item As RadMenuItem = TryCast(sender, RadMenuItem)
-	         item.FillPrimitive.BackColor = Color.Transparent
-         End IF
+    Private Sub MenuBar_MouseLeave(sender As Object, e As EventArgs) Handles menuItem_Settings.MouseLeave, menuItem_DBManage.MouseLeave, menuItem_About.MouseLeave
+        If ThemeResolutionService.ApplicationThemeName = "VisualStudio2012Dark" Then
+            Dim item As RadMenuItem = TryCast(sender, RadMenuItem)
+            item.FillPrimitive.BackColor = Color.Transparent
+        End If
     End Sub
 
-    Private Sub MenuBar_MouseEnter(sender As Object, e As EventArgs) Handles menuItem_DBManage.MouseEnter, menuItem_About.MouseEnter, menuItem_Settings.MouseEnter
+    Private Sub MenuBar_MouseEnter(sender As Object, e As EventArgs) Handles menuItem_Settings.MouseEnter, menuItem_DBManage.MouseEnter, menuItem_About.MouseEnter
         If ThemeResolutionService.ApplicationThemeName = "VisualStudio2012Dark" Then
-	        Dim item As RadMenuItem = TryCast(sender, RadMenuItem)
-	        item.FillPrimitive.BackColor = Color.FromArgb(62, 62, 64)
-	    item.FillPrimitive.GradientStyle = Telerik.WinControls.GradientStyles.Solid
-        End IF
+            Dim item As RadMenuItem = TryCast(sender, RadMenuItem)
+            item.FillPrimitive.BackColor = Color.FromArgb(62, 62, 64)
+            item.FillPrimitive.GradientStyle = Telerik.WinControls.GradientStyles.Solid
+        End If
     End Sub
     Private Sub menuItem_LoadDB_Click(sender As Object, e As EventArgs) Handles menuItem_LoadDB.Click
         DBPasswordPrompt.Show()
@@ -779,7 +779,7 @@ Public Class InstructionalMaterials
 
     Public Sub auto_generate_imr_reservationno()
         identifier_reservationno = Now.ToString("mmddyyy" + "-")
-        identifier_reservationno = identifier_reservationno + Random.Next(1, 100000000).ToString
+        identifier_reservationno = identifier_reservationno + random.Next(1, 100000000).ToString
         imr_reservationno.Text = identifier_reservationno
     End Sub
 
@@ -843,6 +843,7 @@ Public Class InstructionalMaterials
             While reader.Read
 
                 imr_cb_subject.Items.Add(reader.GetString("subject"))
+                imlu_subject.Items.Add(reader.GetString("subject"))
             End While
             MysqlConn.Close()
         Catch ex As Exception
@@ -850,6 +851,69 @@ Public Class InstructionalMaterials
         Finally
             MysqlConn.Dispose()
 
+        End Try
+    End Sub
+
+    Private Sub imlu_subject_SelectedIndexChanged(sender As Object, e As UI.Data.PositionChangedEventArgs) Handles imlu_subject.SelectedIndexChanged
+        imlu_topic.Items.Clear()
+        If MysqlConn.State = ConnectionState.Open Then
+            MysqlConn.Close()
+        End If
+        MysqlConn.ConnectionString = connstring
+
+        Try
+            MysqlConn.Open()
+            query = "SELECT topic FROM movielist WHERE subject=@res_subject ORDER BY topic ASC"
+            comm = New MySqlCommand(query, MysqlConn)
+            comm.Parameters.AddWithValue("res_subject", imlu_subject.Text)
+            reader = comm.ExecuteReader
+            imlu_topic.Items.Clear()
+
+            While reader.Read
+                imlu_topic.Items.Add(reader.GetString("topic"))
+            End While
+
+            MysqlConn.Close()
+
+        Catch ex As Exception
+            RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+        Finally
+            MysqlConn.Dispose()
+        End Try
+    End Sub
+
+    Private Sub imlu_topic_SelectedIndexChanged(sender As Object, e As UI.Data.PositionChangedEventArgs) Handles imlu_topic.SelectedIndexChanged
+        imlu_subtopics.Items.Clear()
+        If MysqlConn.State = ConnectionState.Open Then
+            MysqlConn.Close()
+        End If
+        MysqlConn.ConnectionString = connstring
+
+        Try
+            MysqlConn.Open()
+            query = "SELECT subtopic FROM movielist_subtopics WHERE subject=@res_subject AND topic=@res_subtopic ORDER BY subtopic ASC"
+            comm = New MySqlCommand(query, MysqlConn)
+            comm.Parameters.AddWithValue("res_subject", imlu_subject.Text)
+            comm.Parameters.AddWithValue("res_subtopic", imlu_topic.Text)
+            reader = comm.ExecuteReader
+            imlu_subtopics.Items.Clear()
+
+            While reader.Read
+                imlu_subtopics.Items.Add(reader.GetString("subtopic"))
+            End While
+
+            If imlu_subtopics.Items.Count = 0 Then
+                RadMessageBox.Show(Me, "No sub topics found in this topic!", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Info)
+            Else
+                RadMessageBox.Show(Me, "We found some sub topics for this topic!", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Info)
+            End If
+
+            MysqlConn.Close()
+
+        Catch ex As Exception
+            RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+        Finally
+            MysqlConn.Dispose()
         End Try
     End Sub
 
@@ -862,7 +926,7 @@ Public Class InstructionalMaterials
 
         Try
             MysqlConn.Open()
-            query = "SELECT topic FROM movielist WHERE subject=@res_subject"
+            query = "SELECT topic FROM movielist WHERE subject=@res_subject ORDER BY topic ASC"
             comm = New MySqlCommand(query, MysqlConn)
             comm.Parameters.AddWithValue("res_subject", imr_cb_subject.Text)
             reader = comm.ExecuteReader
@@ -1061,4 +1125,6 @@ Public Class InstructionalMaterials
 
 
     End Sub
+
+
 End Class
