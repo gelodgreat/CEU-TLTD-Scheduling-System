@@ -102,7 +102,6 @@ Public Class Main
 
 
     Private Sub Main_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-       
         getFromDB_settings_penalty()
          
         reservation_rgv_recordeddata.Show()
@@ -149,20 +148,19 @@ Public Class Main
         'rel_tb_id.Enabled = False
         rel_tb_borrower.Enabled = False
         rel_tb_reservationnum.Enabled = False
-        ret_tb_reservationnum.Enabled = False
+        'ret_tb_reservationnum.Enabled = False
         rel_tb_startdate.Enabled = False
         rel_tb_starttime.Enabled = False
         rel_tb_endtime.Enabled = False
         rel_tb_equipmentnum.Enabled = False
         rel_tb_equipment.Enabled = False
-        ret_tb_reservationnum.Enabled = False
-        ret_tb_borrower.Enabled = False
-        ret_tb_sdate.Enabled = False
+        'ret_tb_borrower.Enabled = False
         ret_tb_stime.Enabled = False
         ret_tb_etime.Enabled = False
-        ret_tb_equipmentnum.Enabled = False
-        ret_tb_equipment.Enabled = False
-        ret_tb_id.Enabled = False
+        ret_tb_sdate.Enabled = False
+        'ret_tb_equipmentnum.Enabled = False
+        'ret_tb_equipment.Enabled = False
+        'ret_tb_id.Enabled = False
     End Sub
     Public Sub color_coding()
         If (rel_tb_status.Text = "Reserved") Then
@@ -192,7 +190,6 @@ Public Class Main
         ret_tb_reservationnum.Hide()
         ret_tb_id.Hide()
         ret_tb_borrower.Hide()
-        ret_tb_status.Hide()
         rel_tb_reservationnum.Hide()
         rel_tb_borrower.Hide()
 
@@ -551,43 +548,6 @@ Public Class Main
         End Try
 
     End Sub
-
-    Public Sub load_eq_table_retain_filters_after_update()  'WU_TRY1
-        If MysqlConn.State = ConnectionState.Open Then
-            MysqlConn.Close()
-        End If
-        MysqlConn = New MySqlConnection
-        MysqlConn.ConnectionString = connstring
-        Dim SDA As New MySqlDataAdapter
-        Dim dbdataset As New DataTable
-        Dim bsource As New BindingSource
-        Try
-            MysqlConn.Open()
-
-            query = "SELECT equipmentno AS 'Equipment Number', equipment AS 'Equipment', equipmentsn AS 'Serial Number',equipmenttype AS 'Equipment Type', equipmentlocation AS 'Equipment Location',equipmentowner AS 'Owner',equipmentstatus AS 'Status' FROM equipments ORDER BY equipmentno DESC"
-
-            comm = New MySqlCommand(query, MysqlConn)
-            SDA.SelectCommand = comm
-            SDA.Fill(dbdataset)
-            bsource.DataSource = dbdataset
-            eq_rgv_showregequipment.DataSource = bsource
-            SDA.Update(dbdataset)
-
-            MysqlConn.Close()
-
-        Catch ex As MySqlException
-            RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
-        Finally
-            MysqlConn.Dispose()
-        End Try
-
-        Dim DV As New DataView(dbdataset)
-        DV.RowFilter = String.Format("`Equipment Number` Like'%{0}%' and `Equipment Type` Like'%{1}%' and `Status` Like'%{2}%' ", eq_filter_eqno.Text, eq_filter_eqtype.Text, eq_filter_eqstatus.Text)
-        eq_rgv_showregequipment.DataSource = DV
-        eq_rgv_showregequipment.Rows(eq_keepSelectedRowIndexAfterUpdate).IsCurrent = True  'WUTRY_1
-        eq_sn.Enabled = False 'WUTRY1
-    End Sub
-
 
     'Programmed by BRENZ THIRD POINT SAVE BUTTON
 
@@ -1433,45 +1393,75 @@ Public Class Main
     End Sub
 
     'Equipment Management Codes Umali E1 EQ_LOAD_EQ_TABLE
-
-    Public Sub load_eq_table()
-        MysqlConn = New MySqlConnection
-        MysqlConn.ConnectionString = connstring
-
-        Dim sda As New MySqlDataAdapter
-        Dim dbdataset As New DataTable
-        Dim bsource As New BindingSource
-
+    Public Sub load_eq_table()  'WU_TRY1
         If MysqlConn.State = ConnectionState.Open Then
             MysqlConn.Close()
         End If
-
+        MysqlConn = New MySqlConnection
+        MysqlConn.ConnectionString = connstring
+        Dim SDA As New MySqlDataAdapter
+        Dim dbdataset As New DataTable
+        Dim bsource As New BindingSource
         Try
             MysqlConn.Open()
 
-            query = "SELECT equipmentno as 'Equipment Number', equipment as 'Equipment', equipmentsn as 'Serial Number',equipmenttype as 'Equipment Type', equipmentlocation as 'Equipment Location',equipmentowner as 'Owner',equipmentstatus as 'Status' from equipments ORDER BY equipment ASC"
+            query = "SELECT equipmentnumber AS 'Equipment Number', equipmentmodel as 'Equipment', equipmentserial AS 'Serial Number', equipmentname as 'Equipment Type', equipmentlocation AS 'Equipment Location', equipmentowner AS 'Owner', remarks AS 'Status' FROM ceutltdprevmaintenance.equipmentlist WHERE remarks LIKE '%Good Condition%'"
 
             comm = New MySqlCommand(query, MysqlConn)
-            sda.SelectCommand = comm
-            sda.Fill(dbdataset)
+            SDA.SelectCommand = comm
+            SDA.Fill(dbdataset)
             bsource.DataSource = dbdataset
             eq_rgv_showregequipment.DataSource = bsource
-            eq_rgv_showregequipment.ReadOnly = True
+            SDA.Update(dbdataset)
 
-
-
-
-            sda.Update(dbdataset)
             MysqlConn.Close()
 
-        Catch ex As Exception
+        Catch ex As MySqlException
             RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
         Finally
             MysqlConn.Dispose()
-
         End Try
 
+        Dim DV As New DataView(dbdataset)
+        DV.RowFilter = String.Format("`Equipment Number` Like'%{0}%' and `Equipment Type` Like'%{1}%' and `Status` Like'%{2}%' ", eq_filter_eqno.Text, eq_filter_eqtype.Text, eq_filter_eqstatus.Text)
+        eq_rgv_showregequipment.DataSource = DV
+        eq_rgv_showregequipment.Rows(eq_keepSelectedRowIndexAfterUpdate).IsCurrent = True  'WUTRY_1
+        eq_sn.Enabled = False 'WUTRY1
     End Sub
+
+    Private Sub eq_rgv_showregequipment_CellClick(sender As Object, e As GridViewCellEventArgs) Handles eq_rgv_showregequipment.CellClick
+        eq_keepSelectedRowIndexAfterUpdate = e.RowIndex
+    End Sub
+    'Public Sub load_eq_table()
+    '    MysqlConn = New MySqlConnection
+    '    MysqlConn.ConnectionString = connstring
+    '    Dim sda As New MySqlDataAdapter
+    '    Dim dbdataset As New DataTable
+    '    Dim bsource As New BindingSource
+
+    '    If MysqlConn.State = ConnectionState.Open Then
+    '        MysqlConn.Close()
+    '    End If
+    '    Try
+    '        MysqlConn.Open()
+
+    '        query = "SELECT equipmentno as 'Equipment Number', equipment as 'Equipment', equipmentsn as 'Serial Number',equipmenttype as 'Equipment Type', equipmentlocation as 'Equipment Location',equipmentowner as 'Owner',equipmentstatus as 'Status' from equipments ORDER BY equipment ASC"
+
+    '        comm = New MySqlCommand(query, MysqlConn)
+    '        sda.SelectCommand = comm
+    '        sda.Fill(dbdataset)
+    '        bsource.DataSource = dbdataset
+    '        eq_rgv_showregequipment.DataSource = bsource
+    '        eq_rgv_showregequipment.ReadOnly = True
+    '        sda.Update(dbdataset)
+    '        MysqlConn.Close()
+
+    '    Catch ex As Exception
+    '        RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+    '    Finally
+    '        MysqlConn.Dispose()
+    '    End Try
+    'End Sub
 
     'Equipment Management Codes Umali E2 EQ_BTN_SAVE
 
@@ -1577,10 +1567,7 @@ Public Class Main
                 End Try
             End If
         End If
-
-        load_eq_table_retain_filters_after_update()
-
-
+        load_eq_table()
         counter_of_total_eq()
     End Sub
 
@@ -1683,7 +1670,7 @@ Public Class Main
         Try
             MysqlConn.Open()
 
-            query = "SELECT equipmentno AS 'Equipment Number', equipment AS 'Equipment', equipmentsn AS 'Serial Number',equipmenttype AS 'Equipment Type', equipmentlocation AS 'Equipment Location',equipmentowner AS 'Owner',equipmentstatus AS 'Status' FROM equipments ORDER BY equipmentno DESC"
+             query = "SELECT equipmentnumber AS 'Equipment Number', equipmentmodel as 'Equipment', equipmentserial AS 'Serial Number', equipmentname as 'Equipment Type', equipmentlocation AS 'Equipment Location', equipmentowner AS 'Owner', remarks AS 'Status' FROM ceutltdprevmaintenance.equipmentlist WHERE remarks LIKE '%Good Condition%'"
 
             comm = New MySqlCommand(query, MysqlConn)
             SDA.SelectCommand = comm
@@ -1732,7 +1719,7 @@ Public Class Main
         Try
             MysqlConn.Open()
 
-            query = "SELECT equipmentno AS 'Equipment Number', equipment AS 'Equipment', equipmentsn AS 'Serial Number',equipmenttype AS 'Equipment Type', equipmentlocation AS 'Equipment Location',equipmentowner AS 'Owner',equipmentstatus AS 'Status' FROM equipments ORDER BY equipmentno DESC"
+            query = "SELECT equipmentnumber AS 'Equipment Number', equipmentmodel as 'Equipment', equipmentserial AS 'Serial Number', equipmentname as 'Equipment Type', equipmentlocation AS 'Equipment Location', equipmentowner AS 'Owner', remarks AS 'Status' FROM ceutltdprevmaintenance.equipmentlist WHERE remarks LIKE '%Good Condition%'"
 
             comm = New MySqlCommand(query, MysqlConn)
             SDA.SelectCommand = comm
@@ -1779,7 +1766,7 @@ Public Class Main
             Try
                 MysqlConn.Open()
 
-                query = "SELECT equipmentno AS 'Equipment Number', equipment AS 'Equipment', equipmentsn AS 'Serial Number',equipmenttype AS 'Equipment Type', equipmentlocation AS 'Equipment Location',equipmentowner AS 'Owner',equipmentstatus AS 'Status' FROM equipments ORDER BY equipmentno DESC"
+                 query = "SELECT equipmentnumber AS 'Equipment Number', equipmentmodel as 'Equipment', equipmentserial AS 'Serial Number', equipmentname as 'Equipment Type', equipmentlocation AS 'Equipment Location', equipmentowner AS 'Owner', remarks AS 'Status' FROM ceutltdprevmaintenance.equipmentlist WHERE remarks LIKE '%Good Condition%'"
 
                 comm = New MySqlCommand(query, MysqlConn)
                 SDA.SelectCommand = comm
@@ -1818,7 +1805,7 @@ Public Class Main
 
             Dim holder As String
 
-            query = "SELECT COUNT(equipmenttype) AS 'total' FROM equipments WHERE equipmenttype=@eq_countertype"
+            query = "SELECT COUNT(equipmentname) AS 'total' FROM ceutltdprevmaintenance.equipmentlist WHERE remarks LIKE '%Good Condition%' and equipmentname=@eq_countertype"
             comm = New MySqlCommand(query, MysqlConn)
             comm.Parameters.AddWithValue("eq_countertype", eq_counter_type.Text)
 
@@ -1847,7 +1834,7 @@ Public Class Main
         MysqlConn.ConnectionString = connstring
         Try
             MysqlConn.Open()
-            query = "SELECT DISTINCT(equipmenttype) FROM equipments ORDER BY equipmenttype ASC"
+            query = "SELECT DISTINCT(equipmentname) FROM ceutltdprevmaintenance.equipmentlist ORDER BY equipmentname ASC"
             comm = New MySqlCommand(query, MysqlConn)
             reader = comm.ExecuteReader
 
@@ -1857,8 +1844,8 @@ Public Class Main
 
             While reader.Read
 
-                rec_eq_type_choose.Items.Add(reader.GetString("equipmenttype"))
-                eq_counter_type.Items.Add(reader.GetString("equipmenttype"))
+                rec_eq_type_choose.Items.Add(reader.GetString("equipmentname"))
+                eq_counter_type.Items.Add(reader.GetString("equipmentname"))
             End While
             MysqlConn.Close()
         Catch ex As Exception
@@ -1880,14 +1867,14 @@ Public Class Main
         Try
             MysqlConn.Open()
 
-            query = "SELECT equipmentno FROM equipments WHERE equipmenttype=@rec_eq_type_choose"
+            query = "SELECT equipmentnumber FROM ceutltdprevmaintenance.equipmentlist WHERE remarks LIKE '%Good Condition%' and equipmentname=@rec_eq_type_choose"
             comm = New MySqlCommand(query, MysqlConn)
             comm.Parameters.AddWithValue("rec_eq_type_choose", rec_eq_type_choose.Text)
             reader = comm.ExecuteReader
 
             rec_eq_chooseno.Items.Clear()
             While reader.Read
-                rec_eq_chooseno.Items.Add(reader.GetString("equipmentno"))
+                rec_eq_chooseno.Items.Add(reader.GetString("equipmentnumber"))
             End While
 
             MysqlConn.Close()
@@ -1907,7 +1894,7 @@ Public Class Main
         MysqlConn.ConnectionString = connstring
         Try
             MysqlConn.Open()
-            query = "SELECT equipment from equipments where equipmenttype=@rec_eq_type_choose and equipmentno=@rec_eq_chooseno"
+            query = "SELECT equipmentmodel FROM ceutltdprevmaintenance.equipmentlist WHERE remarks LIKE '%Good Condition%' and equipmentname=@rec_eq_type_choose and equipmentnumber=@rec_eq_chooseno"
             comm = New MySqlCommand(query, MysqlConn)
             comm.Parameters.AddWithValue("rec_eq_type_choose", rec_eq_type_choose.Text)
             comm.Parameters.AddWithValue("rec_eq_chooseno", rec_eq_chooseno.Text)
@@ -1917,7 +1904,7 @@ Public Class Main
 
             rec_eq_chooseeq.Items.Clear()
             While reader.Read
-                rec_eq_chooseeq.Items.Add(reader.GetString("equipment"))
+                rec_eq_chooseeq.Items.Add(reader.GetString("equipmentmodel"))
             End While
 
             MysqlConn.Close()
@@ -1947,7 +1934,7 @@ Public Class Main
         Else
             Try
                 MysqlConn.Open()
-                query = "SELECT equipmentsn as 'Serial Number', equipmentno as '#' from equipments where equipmenttype=@rec_eq_type_choose and equipment=@rec_chooseeq and equipmentno=@rec_eq_chooseno"
+                query = "SELECT equipmentserial as 'Serial Number', equipmentnumber as '#' from ceutltdprevmaintenance.equipmentlist where equipmentname=@rec_eq_type_choose and equipmentmodel=@rec_chooseeq and equipmentnumber=@rec_eq_chooseno"
                 comm = New MySqlCommand(query, MysqlConn)
                 comm.Parameters.AddWithValue("rec_eq_type_choose", rec_eq_type_choose.Text)
                 comm.Parameters.AddWithValue("rec_eq_chooseno", rec_eq_chooseno.Text)
@@ -2041,20 +2028,6 @@ Public Class Main
         reserveYN = RadMessageBox.Show(Me, "Are you sure you want to reserve?", "CEU TLTD Reservation System", MessageBoxButtons.YesNo, RadMessageIcon.Question)
         If reserveYN = MsgBoxResult.Yes Then
 
-            Dim serials() As String
-            Dim serialsElements As Integer = 0
-            Dim dupdup As Boolean
-            For i As Integer = 0 To eq_rgv_addeq.Rows.Count - 1
-                ReDim Preserve serials(serialsElements)
-                serials(serialsElements) = (LCase(eq_rgv_addeq.Rows(i).Cells(2).Value))
-                serialsElements += 1
-            Next
-            If serials.Distinct().Count() <> serials.Count() Then
-                dupdup = True
-            Else
-                dupdup = False
-            End If
-
             MysqlConn = New MySqlConnection
             MysqlConn.ConnectionString = connstring
             Dim READER As MySqlDataReader
@@ -2066,14 +2039,30 @@ Public Class Main
             If (rec_cb_reserveno.Text = "") Or (rec_cb_idnum.Text = "") Or (rec_cb_borrower.Text = "") Or (rec_dtp_date.Text = "") Or (rec_dtp_starttime.Text = "") Or (rec_dtp_endtime.Text = "") Or (rec_cb_college_school.Text = "") Or (rec_cb_location.Text = "") Or (rec_cb_status.Text = "") Or (rec_eq_chooseno.Text = "") Or (rec_eq_type_choose.Text = "") Or (eq_rgv_addeq.Rows.Count < 0) Or (rec_cb_acttype.Text = "") Then
                 RadMessageBox.Show(Me, "Please complete the fields", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
             Else
-                'ADD THE CHECKBOX TO PICK IF IT IS FROM ANOTHER DAY, ANOTHER DATE PICKER, BUT BY DEFAULT IT IS NOT CHECKED
                 Dim elapsedTime As TimeSpan = DateTime.Parse(Format(CDate(rec_dtp_date.Value), "yyyy-MM-dd") & " " & rec_dtp_endtime.Text).Subtract(DateTime.Parse(DateTime.Parse(Format(CDate(rec_dtp_date.Value), "yyyy-MM-dd") & " " & rec_dtp_starttime.Text)))
-                'ADD THE CHECKBOX TO PICK IF IT IS FROM ANOTHER DAY, ANOTHER DATE PICKER, BUT BY DEFAULT IT IS NOT CHECKED
                 If elapsedTime.CompareTo(TimeSpan.Zero) <= 0 Then
                     RadMessageBox.Show(Me, "The Starting Time can't be the same or later on the Ending Time.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error, MessageBoxDefaultButton.Button1)
-                ElseIf dupdup Then
-                    RadMessageBox.Show(Me, "Please remove duplicates in the added equipments.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error, MessageBoxDefaultButton.Button1)
+                Else If eq_rgv_addeq.Rows.Count = 0
+                RadMessageBox.Show(Me, "No equipment to reserve.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
                 Else
+
+        Dim serials() As String
+            Dim serialsElements As Integer = 0
+            Dim dupdup As Boolean
+
+            For i As Integer = 0 To eq_rgv_addeq.Rows.Count - 1
+                ReDim Preserve serials(serialsElements)
+                serials(serialsElements) = (LCase(eq_rgv_addeq.Rows(i).Cells(2).Value))
+                serialsElements += 1
+            Next
+            If serials.Distinct().Count() <> serials.Count() Then
+                dupdup = True
+            Else
+                dupdup = False
+            End If
+                If dupdup Then
+                    RadMessageBox.Show(Me, "Please remove duplicates in the added equipments.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error, MessageBoxDefaultButton.Button1)
+                        Else
                     Dim counter As Integer
                     Dim rownumber As Integer = eq_rgv_addeq.Rows.Count
                     counter = 0
@@ -2145,13 +2134,14 @@ Public Class Main
 
 
                         End While
-                        eq_rgv_addeq.Rows.Clear()
+                        
                         rowcounter = 0
                     End If
 
                     If errorcount = False Then
                         RadMessageBox.Show(Me, "Succesfully Equipment Reserved!", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Info)
-
+                            eq_rgv_addeq.Rows.Clear()
+                             auto_generate_reservationno()
                     Else
                         RadMessageBox.Show(Me, "Not Successfully Reserved!", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
 
@@ -2163,6 +2153,7 @@ Public Class Main
             load_rec_table(False)
             reserved_load_table()
         End If
+      End If
     End Sub
 
     'Showing All Data to Reservation Grid View
@@ -2958,6 +2949,9 @@ End Sub
         Me.Hide()
 
     End Sub
+
+
+
 
 
 

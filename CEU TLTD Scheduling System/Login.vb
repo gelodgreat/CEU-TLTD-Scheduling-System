@@ -9,7 +9,7 @@ Public Class Login
     Private Sub Login_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'Timer
         log_timer.Enabled = True
-        CheckDBStatus()
+        CheckDBStatus(false)
         ThemeResolutionService.ApplicationThemeName = My.Settings.WindowTheme
         log_username.Select()
     End Sub
@@ -23,8 +23,9 @@ Public Class Login
                         RadMessageBox.Show(Me, "Database is Offline." & Environment.NewLine & "Please check the connection settings by clicking the gear icon on the top right and ask the database administrator to input the required details.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error, MessageBoxDefaultButton.Button1)
                     Else
                         RadMessageBox.Show(Me, "Database is Offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error, MessageBoxDefaultButton.Button1)
+                        db_is_deadCount +=1
                     End If
-                    db_is_deadCount +=1
+                    
                 Else
                     If String.IsNullOrEmpty(log_username.Text) Or String.IsNullOrEmpty(log_password.Text) Then
                         RadMessageBox.Show(Me, "Please enter username and password.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error, MessageBoxDefaultButton.Button1)
@@ -72,7 +73,7 @@ Public Class Login
     End Sub
 
     'Codes for connection status
-    Public Sub CheckDBStatus()
+    Public Sub CheckDBStatus(retry As Boolean)
 
 
         'Online/Offline Status
@@ -94,6 +95,15 @@ Public Class Login
             Else
                 log_lbl_dbstatus.Text = "Offline"
                 log_lbl_dbstatus.ForeColor = Color.Red
+                If retry = True
+                    If db_is_deadCount>=3 Then
+                        RadMessageBox.Show(Me, "Database is still Offline." & Environment.NewLine & "Please check the connection settings by clicking the gear icon on the top right and ask the database administrator to input the required details.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error, MessageBoxDefaultButton.Button1)
+                    Else
+                        RadMessageBox.Show(Me, "The Database is still offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error,MessageBoxDefaultButton.Button1)
+                        db_is_deadCount +=1
+                    End If
+                    
+                End If
             End If
 
         End Try
@@ -159,7 +169,7 @@ Public Class Login
         If a=False
             Dim aa As DialogResult = RadMessageBox.Show(Me, "The Database is Offline. Would you like to check again?", "CEU TLTD Reservation System", MessageBoxButtons.YesNo, RadMessageIcon.Question)
             If aa=DialogResult.Yes
-                CheckDBStatus()
+                CheckDBStatus(True)
             End If
         End If
     End Sub

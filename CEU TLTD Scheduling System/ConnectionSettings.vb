@@ -15,7 +15,7 @@ Public Class ConnectionWindow
             End If
             My.Settings.Save()
             applyconstringImmediately()
-            Login.CheckDBStatus()
+            Login.CheckDBStatus(false)
             Me.Dispose()
         Else
             Me.Dispose()
