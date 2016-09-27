@@ -103,16 +103,16 @@ Public Class Main
 
     Private Sub Main_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         getFromDB_settings_penalty()
-         
-        reservation_rgv_recordeddata.Show()
-        reservations_rgv_showavailableitems.Hide()
+         load_rec_table(False)
+        'reservation_rgv_recordeddata.Show()
+        'reservations_rgv_showavailableitems.Hide()
         lu_ActivityType.SelectedValue="Academic"
         acc_sf_usertype.SelectedValue="Staff"
         'main_load_academicsonly() 'HANDLED by the Event of SelectedIndexChanged in "lu_ActivityType"
         'main_load_schoolonly() 'Now using single gridview, depreciated
         returning_groupbox_info.SelectedPage = rel_list_info2
         rel_gb_listinfos.SelectedPage = res_reserved_info
-        load_rec_table(False)
+        
         load_eq_table()
         load_main_acc()
         load_main_prof()
@@ -131,13 +131,14 @@ Public Class Main
         lu_date.Value = Date.Now
         rec_dtp_date.Value = Date.Now
         Main_Timer.Enabled = True
-        load_cb_eq_type()
+        return_btn_returned.Enabled=false
+        'load_cb_eq_type()     ----->>> DEPRECIATED
     End Sub
 
 
     Public Sub startup_disabled_buttons()
-        eq_btn_update.Hide()
-        eq_btn_delete.Hide()
+        'eq_btn_update.Hide()
+        'eq_btn_delete.Hide()
         acc_staff_btn_update.Hide()
         acc_staff_btn_delete.Hide()
         acc_prof_btn_delete.Hide()
@@ -192,17 +193,6 @@ Public Class Main
         ret_tb_borrower.Hide()
         rel_tb_reservationnum.Hide()
         rel_tb_borrower.Hide()
-
-    End Sub
-
-    Private Sub btn_showavailequip_Click(sender As Object, e As EventArgs)
-        reservation_rgv_recordeddata.Hide()
-        reservations_rgv_showavailableitems.Show()
-    End Sub
-
-    Private Sub btn_showalldata_Click(sender As Object, e As EventArgs)
-        reservation_rgv_recordeddata.Show()
-        reservations_rgv_showavailableitems.Hide()
     End Sub
 
     'Formatting of GridViews
@@ -224,43 +214,28 @@ Public Class Main
 
     Private Sub acc_prof_list_ViewCellFormatting(sender As Object, e As CellFormattingEventArgs) Handles acc_prof_list.ViewCellFormatting
         e.CellElement.TextAlignment = ContentAlignment.MiddleCenter
+        e.CellElement.TextWrap=True
     End Sub
     Private Sub reservation_rgv_recordeddata_ViewCellFormatting(sender As Object, e As CellFormattingEventArgs) Handles reservation_rgv_recordeddata.ViewCellFormatting
         e.CellElement.TextAlignment = ContentAlignment.MiddleCenter
+        e.CellElement.TextWrap=True
     End Sub
 
     Private Sub penalty_grid_list_ViewCellFormatting(sender As Object, e As CellFormattingEventArgs) Handles penalty_grid_list.ViewCellFormatting
         e.CellElement.TextAlignment = ContentAlignment.MiddleCenter
+        e.CellElement.TextWrap=True
     End Sub
     Private Sub reserved_grid_list_ViewCellFormatting(sender As Object, e As CellFormattingEventArgs) Handles reserved_grid_list.ViewCellFormatting
         e.CellElement.TextAlignment = ContentAlignment.MiddleCenter
+        e.CellElement.TextWrap=True
     End Sub
 
     Private Sub released_grid_list_ViewCellFormatting(sender As Object, e As CellFormattingEventArgs) Handles released_grid_list.ViewCellFormatting
         e.CellElement.TextAlignment = ContentAlignment.MiddleCenter
-    End Sub
-    'End Formatting of GridViews
-
-    Public Sub getFromDB_settings_penalty()
-        MysqlConn.Open()
-        Dim looper As Integer = 0
-        Dim q2 As String = "SELECT value FROM ceutltdscheduler.settings"
-        comm = New MySqlCommand(q2, MysqlConn)
-        reader = comm.ExecuteReader
-        While reader.Read
-            If looper = 0 Then
-                penalty_price = reader.GetString("value")
-            ElseIf looper = 1 Then
-                penalty_graceperiod = reader.GetString("value")
-            ElseIf looper = 2 Then
-                penalty_chargeinterval = reader.GetString("value")
-            End If
-            looper += 1
-        End While
-        MysqlConn.Close()
+        e.CellElement.TextWrap=True
     End Sub
 
-    Public Sub SetSizesofMainTable()
+   Private Sub SetSizesofMainTable()
         If lu_ActivityType.Text = "Academic" Then
             Dim colsmain_resno = main_rgv_recordedacademicsonly.Columns("Reservation Number")
             colsmain_resno.TextAlignment = ContentAlignment.MiddleCenter
@@ -286,6 +261,11 @@ Public Class Main
             colsmain_eqname.TextAlignment = ContentAlignment.MiddleCenter
             colsmain_eqname.Width = 359
             colsmain_eqname.WrapText = True
+
+            Dim colsmain_location = main_rgv_recordedacademicsonly.Columns("Location")
+            colsmain_location.TextAlignment = ContentAlignment.MiddleCenter
+            colsmain_location.Width = 100
+            colsmain_location.WrapText = True
 
             Dim colsmain_date = main_rgv_recordedacademicsonly.Columns("Date")
             colsmain_date.TextAlignment = ContentAlignment.MiddleCenter
@@ -332,6 +312,11 @@ Public Class Main
             colsmain_eqname.Width = 239
             colsmain_eqname.WrapText = True
 
+            Dim colsmain_location = main_rgv_recordedacademicsonly.Columns("Location")
+            colsmain_location.TextAlignment = ContentAlignment.MiddleCenter
+            colsmain_location.Width = 100
+            colsmain_location.WrapText = True
+
             Dim colsmain_date = main_rgv_recordedacademicsonly.Columns("Date")
             colsmain_date.TextAlignment = ContentAlignment.MiddleCenter
             colsmain_date.Width = 114
@@ -357,44 +342,114 @@ Public Class Main
             colsmain_att.Width = 120
             colsmain_att.WrapText = True
         End If
+    End Sub ' Main TAB Table
+    
+   Private Sub SetSizeofReservationTable()
+        Dim cols_res_resnum As GridViewDataColumn = reservation_rgv_recordeddata.Columns("Reservation Number")
+        cols_res_resnum.TextAlignment = ContentAlignment.MiddleCenter
+        cols_res_resnum.Width=115
+
+        Dim cols_res_bor As GridViewDataColumn = reservation_rgv_recordeddata.Columns("Borrower")
+        cols_res_bor.TextAlignment = ContentAlignment.MiddleCenter
+        cols_res_bor.Width=119
+
+        Dim cols_res_id  As GridViewDataColumn = reservation_rgv_recordeddata.Columns("ID")
+        cols_res_id.TextAlignment = ContentAlignment.MiddleCenter
+        cols_res_id.Width=71
+
+        Dim cols_res_eqno As GridViewDataColumn = reservation_rgv_recordeddata.Columns("Equipment No")
+        cols_res_eqno.TextAlignment = ContentAlignment.MiddleCenter
+        cols_res_eqno.Width=138
+
+        Dim cols_res_eqname As GridViewDataColumn = reservation_rgv_recordeddata.Columns("Equipment")
+        cols_res_eqname.TextAlignment = ContentAlignment.MiddleCenter
+        cols_res_eqname.Width=239
+
+        Dim cols_res_loc As GridViewDataColumn = reservation_rgv_recordeddata.Columns("Location")
+        cols_res_loc.TextAlignment = ContentAlignment.MiddleCenter
+        cols_res_loc.Width=100
+
+        Dim cols_res_date As GridViewDataColumn = reservation_rgv_recordeddata.Columns("Date")
+        cols_res_date.TextAlignment = ContentAlignment.MiddleCenter
+        cols_res_date.Width = 114
+
+        Dim cols_res_st As GridViewDataColumn = reservation_rgv_recordeddata.Columns("Start Time")
+        cols_res_st.TextAlignment = ContentAlignment.MiddleCenter
+        cols_res_st.Width = 68
+
+        Dim cols_res_et As GridViewDataColumn = reservation_rgv_recordeddata.Columns("End Time")
+        cols_res_et.TextAlignment = ContentAlignment.MiddleCenter
+        cols_res_et.Width = 68
+        
+        Dim cols_res_at As GridViewDataColumn = reservation_rgv_recordeddata.Columns("Activity Type")
+        cols_res_at.TextAlignment = ContentAlignment.MiddleCenter
+        cols_res_at.Width = 109
+
+        Dim cols_res_att As GridViewDataColumn = reservation_rgv_recordeddata.Columns("Activity")
+        cols_res_att.TextAlignment = ContentAlignment.MiddleCenter
+        cols_res_att.Width = 120
+
+        Dim cols_res_sta As GridViewDataColumn = reservation_rgv_recordeddata.Columns("Status")
+        cols_res_sta.TextAlignment = ContentAlignment.MiddleCenter
+        cols_res_sta.Width = 120
+    End Sub 'ITO YUNG NAGPAPAERROR
+    'End Formatting of GridViews
+
+    Public Sub getFromDB_settings_penalty()
+        Try
+        MysqlConn.Open()
+        Dim looper As Integer = 0
+        Dim q2 As String = "SELECT value FROM ceutltdscheduler.settings"
+        comm = New MySqlCommand(q2, MysqlConn)
+        reader = comm.ExecuteReader
+        While reader.Read
+            If looper = 0 Then
+                penalty_price = reader.GetString("value")
+            ElseIf looper = 1 Then
+                penalty_graceperiod = reader.GetString("value")
+            ElseIf looper = 2 Then
+                penalty_chargeinterval = reader.GetString("value")
+            End If
+            looper += 1
+        End While
+            Catch ex As MySqlException
+            RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+        Finally
+        MysqlConn.Close()
+            End try
     End Sub
+
     Public Sub load_rec_table(show_all_no_filter As Boolean)
         MysqlConn = New MySqlConnection
         MysqlConn.ConnectionString = connstring
         Dim sda As New MySqlDataAdapter
         Dim bsource As New BindingSource
         Dim dbdataset As New DataTable
-        Dim ds As New DataSet
-        'dbdataset.Clear()
-        If Not reservation_rgv_recordeddata.ColumnCount = 0 Then
-            reservation_rgv_recordeddata.Columns.Clear()
-        End If
-        If MysqlConn.State = ConnectionState.Open Then
-            MysqlConn.Close()
-        End If
+
         Try
             MysqlConn.Open()
             If show_all_no_filter = False Then
-                query = "Select reservationno as 'Reservation Number' ,borrower as 'Borrower',id as 'ID', equipmentno as 'Equipment No', equipment as 'Equipment', DATE_FORMAT(date,'%M %d %Y') as 'Date',TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time',activitytype as 'Activiity Type',actname as 'Activity',res_status as 'Status' from reservation natural join reservation_equipments  where res_status='Reserved' and date ='" & Format(CDate(rec_dtp_date.Value), "yyyy-MM-dd") & "' ORDER by date DESC"
+                query = "Select reservationno as 'Reservation Number' ,borrower as 'Borrower',id as 'ID', equipmentno as 'Equipment No', equipment as 'Equipment', location as 'Location', DATE_FORMAT(date,'%M %d %Y') as 'Date',TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time',activitytype as 'Activity Type',actname as 'Activity',res_status as 'Status' from reservation natural join reservation_equipments  where res_status='Reserved' and date ='" & Format(CDate(rec_dtp_date.Value), "yyyy-MM-dd") & "' ORDER by date DESC"
             Else
-                query = "Select reservationno as 'Reservation Number' ,borrower as 'Borrower',id as 'ID', equipmentno as 'Equipment No', equipment as 'Equipment', DATE_FORMAT(date,'%M %d %Y') as 'Date',TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time',activitytype as 'Activiity Type',actname as 'Activity',res_status as 'Status' from reservation natural join reservation_equipments ORDER by date DESC"
+                query = "Select reservationno as 'Reservation Number' ,borrower as 'Borrower',id as 'ID', equipmentno as 'Equipment No', equipment as 'Equipment', location as 'Location', DATE_FORMAT(date,'%M %d %Y') as 'Date',TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time',activitytype as 'Activity Type',actname as 'Activity',res_status as 'Status' from reservation natural join reservation_equipments ORDER by date DESC"
             End If
+            'reservation_rgv_recordeddata.Columns.Clear()
             comm = New MySqlCommand(query, MysqlConn)
             sda.SelectCommand = comm
             sda.Fill(dbdataset)
             bsource.DataSource = dbdataset
             reservation_rgv_recordeddata.DataSource = bsource
-            reservation_rgv_recordeddata.ReadOnly = True
             sda.Update(dbdataset)
             MysqlConn.Close()
+            'SetSizeofReservationTable() 'METHOD CAUSES ERROR!!!!
         Catch ex As Exception
             RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
         Finally
             MysqlConn.Dispose()
-
+            
         End Try
     End Sub
-
+   
     Public Sub main_load_academicsonly()
         If MysqlConn.State = ConnectionState.Open Then
             MysqlConn.Close()
@@ -407,17 +462,17 @@ Public Class Main
         Dim Cover As String
         Try
             If lu_ActivityType.Text = "School Activity" Then
-                query = "Select reservationno as 'Reservation Number' ,borrower as 'Borrower',id as 'ID', equipmentno as 'Equipment No', equipment as 'Equipment',
+                query = "Select reservationno as 'Reservation Number' ,borrower as 'Borrower',id as 'ID', equipmentno as 'Equipment No', equipment as 'Equipment', location as 'Location',
             DATE_FORMAT(date,'%M %d %Y') as 'Date',TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time',
             activitytype as 'Activity Type',actname as 'Activity' from reservation where date ='" & Format(CDate(lu_date.Value), "yyyy-MM-dd") & "' and activitytype='School Activity' ORDER BY date DESC,starttime ASC"
                 Cover = "School Activity"
             ElseIf lu_ActivityType.Text = "Academic" Then
-                query = "Select reservationno as 'Reservation Number' ,borrower as 'Borrower',id as 'ID', equipmentno as 'Equipment No', equipment as 'Equipment',
+                query = "Select reservationno as 'Reservation Number' ,borrower as 'Borrower',id as 'ID', equipmentno as 'Equipment No', equipment as 'Equipment', location as 'Location',
             DATE_FORMAT(date,'%M %d %Y') as 'Date',TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time',
             activitytype as 'Activity Type' from reservation where date ='" & Format(CDate(lu_date.Value), "yyyy-MM-dd") & "' and activitytype='Academic' ORDER BY date DESC,starttime ASC"
                 Cover = "Academic"
             ElseIf lu_ActivityType.Text = "All" Then
-                query = "Select reservationno as 'Reservation Number' ,borrower as 'Borrower',id as 'ID', equipmentno as 'Equipment No', equipment as 'Equipment',
+                query = "Select reservationno as 'Reservation Number' ,borrower as 'Borrower',id as 'ID', equipmentno as 'Equipment No', equipment as 'Equipment', location as 'Location',
             DATE_FORMAT(date,'%M %d %Y') as 'Date',TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time',
             activitytype as 'Activity Type', actname as 'Activity' from reservation where date ='" & Format(CDate(lu_date.Value), "yyyy-MM-dd") & "' ORDER BY date DESC,starttime ASC"
                 Cover = ""
@@ -1100,7 +1155,9 @@ Public Class Main
             ret_tb_etime.Text = ""
             ret_tb_status.Text = ""
             'ret_tb_equipment.Text = ""
+            return_btn_returned.Enabled=false
             ret_tb_equipmentnum.Text = ""
+            ret_remarks.Text=""
             show_hide_txt_lbl()
         End If
     End Sub
@@ -1124,7 +1181,7 @@ Public Class Main
             rel_tb_reservationnum.Hide()
             rel_tb_borrower.Hide()
             color_coding()
-
+            return_btn_returned.Enabled=False
 
 
         End If
@@ -1241,7 +1298,7 @@ Public Class Main
                 Dim row As Telerik.WinControls.UI.GridViewRowInfo
 
                 row = Me.released_grid_list2.Rows(e.RowIndex)
-
+                return_btn_returned.Enabled=True
                 ret_tb_reservationnum.Text = row.Cells("Reservation Number").Value.ToString
                 ret_tb_id.Text = row.Cells("Pass Number").Value.ToString
                 ret_tb_borrower.Text = row.Cells("Borrower").Value.ToString
@@ -1355,17 +1412,17 @@ Public Class Main
         Dim Cover As String
         Try
             If lu_ActivityType.Text = "School Activity" Then
-                query = "Select reservationno as 'Reservation Number' ,borrower as 'Borrower',id as 'ID', equipmentno as 'Equipment No', equipment as 'Equipment',
+                query = "Select reservationno as 'Reservation Number' ,borrower as 'Borrower',id as 'ID', equipmentno as 'Equipment No', equipment as 'Equipment', location as 'Location',
             DATE_FORMAT(date,'%M %d %Y') as 'Date',TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time',
             activitytype as 'Activity Type',actname as 'Activity' from reservation where date ='" & Format(CDate(lu_date.Value), "yyyy-MM-dd") & "' and activitytype='School Activity'"
                 Cover = "School Activity"
             ElseIf lu_ActivityType.Text = "Academic" Then
-                query = "Select reservationno as 'Reservation Number' ,borrower as 'Borrower',id as 'ID', equipmentno as 'Equipment No', equipment as 'Equipment',
+                query = "Select reservationno as 'Reservation Number' ,borrower as 'Borrower',id as 'ID', equipmentno as 'Equipment No', equipment as 'Equipment', location as 'Location',
             DATE_FORMAT(date,'%M %d %Y') as 'Date',TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time',
             activitytype as 'Activity Type' from reservation where date ='" & Format(CDate(lu_date.Value), "yyyy-MM-dd") & "' and activitytype='Academic'"
                 Cover = "Academic"
             ElseIf lu_ActivityType.Text = "All" Then
-                query = "Select reservationno as 'Reservation Number' ,borrower as 'Borrower',id as 'ID', equipmentno as 'Equipment No', equipment as 'Equipment',
+                query = "Select reservationno as 'Reservation Number' ,borrower as 'Borrower',id as 'ID', equipmentno as 'Equipment No', equipment as 'Equipment', location as 'Location',
             DATE_FORMAT(date,'%M %d %Y') as 'Date',TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time',
             activitytype as 'Activity Type', actname as 'Activity' from reservation where date ='" & Format(CDate(lu_date.Value), "yyyy-MM-dd") & "'"
                 Cover = ""
@@ -1423,10 +1480,10 @@ Public Class Main
         End Try
 
         Dim DV As New DataView(dbdataset)
-        DV.RowFilter = String.Format("`Equipment Number` Like'%{0}%' and `Equipment Type` Like'%{1}%' and `Status` Like'%{2}%' ", eq_filter_eqno.Text, eq_filter_eqtype.Text, eq_filter_eqstatus.Text)
+        DV.RowFilter = String.Format("`Equipment Number` Like'%{0}%' and `Equipment Type` Like'%{1}%'", eq_filter_eqno.Text, eq_filter_eqtype.Text)
         eq_rgv_showregequipment.DataSource = DV
         eq_rgv_showregequipment.Rows(eq_keepSelectedRowIndexAfterUpdate).IsCurrent = True  'WUTRY_1
-        eq_sn.Enabled = False 'WUTRY1
+        'eq_sn.Enabled = False 'WUTRY1
     End Sub
 
     Private Sub eq_rgv_showregequipment_CellClick(sender As Object, e As GridViewCellEventArgs) Handles eq_rgv_showregequipment.CellClick
@@ -1463,195 +1520,195 @@ Public Class Main
     '    End Try
     'End Sub
 
-    'Equipment Management Codes Umali E2 EQ_BTN_SAVE
+    'Equipment Management Codes Umali E2 EQ_BTN_SAVE    --------------------------->>>DEPRECIATED
 
-    Private Sub eq_btn_save_Click(sender As Object, e As EventArgs)
-        MysqlConn = New MySqlConnection
-        MysqlConn.ConnectionString = connstring
-        Dim reader As MySqlDataReader
-
-
-        If MysqlConn.State = ConnectionState.Open Then
-            MysqlConn.Close()
-        End If
-        If (eq_equipmentno.Text = "") Or (eq_sn.Text = "") Or (eq_equipment.Text = "") Or (eq_equipmentlocation.Text = "") Or (eq_owner.Text = "") Or (eq_status.Text = "") Then
-            RadMessageBox.Show(Me, "Please complete the fields to update!", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
-
-        Else
-            Try
-                MysqlConn.Open()
-                query = "SELECT * from equipments where (equipmentsn=@eq_sn)"
-                comm = New MySqlCommand(query, MysqlConn)
-                comm.Parameters.AddWithValue("eq_sn", eq_sn.Text)
-                reader = comm.ExecuteReader
-
-                Dim count As Integer
-
-                While reader.Read
-                    count += 1
-                End While
-
-                If count = 1 Then
-                    RadMessageBox.Show(Me, "Equipment Number" & eq_equipmentno.Text & " And the equipment " & eq_equipment.Text & " Is already registered")
-                Else
-                    MysqlConn.Close()
-                    MysqlConn.Open()
-
-                    addYN = RadMessageBox.Show(Me, "Are you sure you want To save this equipment?", "CEU TLTD Reservation System", MessageBoxButtons.YesNo, RadMessageIcon.Question)
-                    If addYN = MsgBoxResult.Yes Then
-                        query = "INSERT INTO `equipments` VALUES (@eq_eqno, @eq_eqeq, @eq_eqsn, @eq_eqlocation, @eq_eqowner, @eq_eqstatus, @eq_eqtype)"
-                        comm = New MySqlCommand(query, MysqlConn)
-
-                        comm.Parameters.AddWithValue("eq_eqno", eq_equipmentno.Text)
-                        comm.Parameters.AddWithValue("eq_eqeq", eq_equipment.Text)
-                        comm.Parameters.AddWithValue("eq_eqsn", eq_sn.Text)
-                        comm.Parameters.AddWithValue("eq_eqlocation", eq_equipmentlocation.Text)
-                        comm.Parameters.AddWithValue("eq_eqowner", eq_owner.Text)
-                        comm.Parameters.AddWithValue("eq_eqstatus", eq_status.Text)
-                        comm.Parameters.AddWithValue("eq_eqtype", eq_type.Text)
+    'Private Sub eq_btn_save_Click(sender As Object, e As EventArgs)
+    '    MysqlConn = New MySqlConnection
+    '    MysqlConn.ConnectionString = connstring
+    '    Dim reader As MySqlDataReader
 
 
-                        reader = comm.ExecuteReader
-                        RadMessageBox.Show(Me, "Equipment Registered Successfully!", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Info)
-                        MysqlConn.Close()
-                    End If
-                End If
-            Catch ex As Exception
-                RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
-            Finally
-                MysqlConn.Dispose()
+    '    If MysqlConn.State = ConnectionState.Open Then
+    '        MysqlConn.Close()
+    '    End If
+    '    If (eq_equipmentno.Text = "") Or (eq_sn.Text = "") Or (eq_equipment.Text = "") Or (eq_equipmentlocation.Text = "") Or (eq_owner.Text = "") Or (eq_status.Text = "") Then
+    '        RadMessageBox.Show(Me, "Please complete the fields to update!", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
 
-            End Try
-        End If
-        load_eq_table()
-        counter_of_total_eq()
-    End Sub
+    '    Else
+    '        Try
+    '            MysqlConn.Open()
+    '            query = "SELECT * from equipments where (equipmentsn=@eq_sn)"
+    '            comm = New MySqlCommand(query, MysqlConn)
+    '            comm.Parameters.AddWithValue("eq_sn", eq_sn.Text)
+    '            reader = comm.ExecuteReader
+
+    '            Dim count As Integer
+
+    '            While reader.Read
+    '                count += 1
+    '            End While
+
+    '            If count = 1 Then
+    '                RadMessageBox.Show(Me, "Equipment Number" & eq_equipmentno.Text & " And the equipment " & eq_equipment.Text & " Is already registered")
+    '            Else
+    '                MysqlConn.Close()
+    '                MysqlConn.Open()
+
+    '                addYN = RadMessageBox.Show(Me, "Are you sure you want To save this equipment?", "CEU TLTD Reservation System", MessageBoxButtons.YesNo, RadMessageIcon.Question)
+    '                If addYN = MsgBoxResult.Yes Then
+    '                    query = "INSERT INTO `equipments` VALUES (@eq_eqno, @eq_eqeq, @eq_eqsn, @eq_eqlocation, @eq_eqowner, @eq_eqstatus, @eq_eqtype)"
+    '                    comm = New MySqlCommand(query, MysqlConn)
+
+    '                    comm.Parameters.AddWithValue("eq_eqno", eq_equipmentno.Text)
+    '                    comm.Parameters.AddWithValue("eq_eqeq", eq_equipment.Text)
+    '                    comm.Parameters.AddWithValue("eq_eqsn", eq_sn.Text)
+    '                    comm.Parameters.AddWithValue("eq_eqlocation", eq_equipmentlocation.Text)
+    '                    comm.Parameters.AddWithValue("eq_eqowner", eq_owner.Text)
+    '                    comm.Parameters.AddWithValue("eq_eqstatus", eq_status.Text)
+    '                    comm.Parameters.AddWithValue("eq_eqtype", eq_type.Text)
+
+
+    '                    reader = comm.ExecuteReader
+    '                    RadMessageBox.Show(Me, "Equipment Registered Successfully!", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Info)
+    '                    MysqlConn.Close()
+    '                End If
+    '            End If
+    '        Catch ex As Exception
+    '            RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+    '        Finally
+    '            MysqlConn.Dispose()
+
+    '        End Try
+    '    End If
+    '    load_eq_table()
+    '    counter_of_total_eq()
+    'End Sub
 
 
     'Equipment Management Codes Umali E3 EQ_BTN_UPDATE
 
-    Private Sub eq_btn_update_Click(sender As Object, e As EventArgs)
-        If MysqlConn.State = ConnectionState.Open Then
-            MysqlConn.Close()
-        End If
+    'Private Sub eq_btn_update_Click(sender As Object, e As EventArgs)      ---------------->>>>>DEPRECIATED
+    '    If MysqlConn.State = ConnectionState.Open Then
+    '        MysqlConn.Close()
+    '    End If
 
-        updateYN = RadMessageBox.Show(Me, "Do you want To update the selected equipment?", "CEU TLTD Reservation System", MessageBoxButtons.YesNo, RadMessageIcon.Question)
-        If updateYN = MsgBoxResult.Yes Then
-            If (eq_equipmentno.Text = "") Or (eq_sn.Text = "") Or (eq_equipment.Text = "") Or (eq_equipmentlocation.Text = "") Or (eq_owner.Text = "") Or (eq_status.Text = "") Then
-                RadMessageBox.Show(Me, "Please complete the fields To update!", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
-            Else
-                Try
-                    MysqlConn.Open()
-                    query = "UPDATE equipments SET equipmentno=@eq_eqno, equipmentsn=@eq_eqsn, equipment=@eq_eqeq, equipmentlocation=@eq_eqlocation, equipmentowner=@eq_eqowner, equipmentstatus=@eq_eqstatus, equipmenttype=@eq_eqtype WHERE (equipmentsn=@eq_eqsn) AND (equipmentno=@eq_eqno)"
-                    comm = New MySqlCommand(query, MysqlConn)
+    '    updateYN = RadMessageBox.Show(Me, "Do you want To update the selected equipment?", "CEU TLTD Reservation System", MessageBoxButtons.YesNo, RadMessageIcon.Question)
+    '    If updateYN = MsgBoxResult.Yes Then
+    '        If (eq_equipmentno.Text = "") Or (eq_sn.Text = "") Or (eq_equipment.Text = "") Or (eq_equipmentlocation.Text = "") Or (eq_owner.Text = "") Or (eq_status.Text = "") Then
+    '            RadMessageBox.Show(Me, "Please complete the fields To update!", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+    '        Else
+    '            Try
+    '                MysqlConn.Open()
+    '                query = "UPDATE equipments SET equipmentno=@eq_eqno, equipmentsn=@eq_eqsn, equipment=@eq_eqeq, equipmentlocation=@eq_eqlocation, equipmentowner=@eq_eqowner, equipmentstatus=@eq_eqstatus, equipmenttype=@eq_eqtype WHERE (equipmentsn=@eq_eqsn) AND (equipmentno=@eq_eqno)"
+    '                comm = New MySqlCommand(query, MysqlConn)
 
-                    comm.Parameters.AddWithValue("eq_eqno", eq_equipmentno.Text)
-                    comm.Parameters.AddWithValue("eq_eqeq", eq_equipment.Text)
-                    comm.Parameters.AddWithValue("eq_eqsn", eq_sn.Text)
-                    comm.Parameters.AddWithValue("eq_eqlocation", eq_equipmentlocation.Text)
-                    comm.Parameters.AddWithValue("eq_eqowner", eq_owner.Text)
-                    comm.Parameters.AddWithValue("eq_eqstatus", eq_status.Text)
-                    comm.Parameters.AddWithValue("eq_eqtype", eq_type.Text)
-
-
-                    reader = comm.ExecuteReader
-
-                    RadMessageBox.Show(Me, "Update Success!", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Info)
-                    MysqlConn.Close()
+    '                comm.Parameters.AddWithValue("eq_eqno", eq_equipmentno.Text)
+    '                comm.Parameters.AddWithValue("eq_eqeq", eq_equipment.Text)
+    '                comm.Parameters.AddWithValue("eq_eqsn", eq_sn.Text)
+    '                comm.Parameters.AddWithValue("eq_eqlocation", eq_equipmentlocation.Text)
+    '                comm.Parameters.AddWithValue("eq_eqowner", eq_owner.Text)
+    '                comm.Parameters.AddWithValue("eq_eqstatus", eq_status.Text)
+    '                comm.Parameters.AddWithValue("eq_eqtype", eq_type.Text)
 
 
-                Catch ex As Exception
-                    RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
-                Finally
-                    MysqlConn.Dispose()
-                End Try
-            End If
-        End If
-        load_eq_table()
-        counter_of_total_eq()
-    End Sub
+    '                reader = comm.ExecuteReader
 
-    'Equipment Management Codes Umali E4 EQ_BTN_DELETE
+    '                RadMessageBox.Show(Me, "Update Success!", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Info)
+    '                MysqlConn.Close()
 
-    Private Sub eq_btn_delete_Click(sender As Object, e As EventArgs)
-        If MysqlConn.State = ConnectionState.Open Then
-            MysqlConn.Close()
-        End If
 
-        deleteYN = RadMessageBox.Show(Me, "Are you sure you want to delete?", "CEU TLTD Reservation System", MessageBoxButtons.YesNo, RadMessageIcon.Question)
-        If deleteYN = MsgBoxResult.Yes Then
-            Try
-                MysqlConn.Open()
-                query = "DELETE FROM equipments WHERE equipmentno=@eq_eqno AND equipmentsn=@eq_eqsn "
-                comm = New MySqlCommand(query, MysqlConn)
-                comm.Parameters.AddWithValue("eq_eqno", eq_equipmentno.Text)
-                comm.Parameters.AddWithValue("eq_eqsn", eq_sn.Text)
+    '            Catch ex As Exception
+    '                RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+    '            Finally
+    '                MysqlConn.Dispose()
+    '            End Try
+    '        End If
+    '    End If
+    '    load_eq_table()
+    '    counter_of_total_eq()
+    'End Sub
 
-                reader = comm.ExecuteReader
+    'Equipment Management Codes Umali E4 EQ_BTN_DELETE                      ------->>>DEPRECIATED
 
-                eq_equipment.Text = ""
-                eq_equipmentno.Text = ""
-                eq_equipmentlocation.Text = ""
-                eq_sn.Text = ""
-                eq_status.Text = ""
-                eq_owner.Text = ""
+    'Private Sub eq_btn_delete_Click(sender As Object, e As EventArgs)
+    '    If MysqlConn.State = ConnectionState.Open Then
+    '        MysqlConn.Close()
+    '    End If
 
-                RadMessageBox.Show(Me, "Successfully Deleted!", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Info)
-                MysqlConn.Close()
-            Catch ex As Exception
-                RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
-            Finally
-                MysqlConn.Dispose()
-            End Try
-        End If
-        load_eq_table()
-        counter_of_total_eq()
-    End Sub
+    '    deleteYN = RadMessageBox.Show(Me, "Are you sure you want to delete?", "CEU TLTD Reservation System", MessageBoxButtons.YesNo, RadMessageIcon.Question)
+    '    If deleteYN = MsgBoxResult.Yes Then
+    '        Try
+    '            MysqlConn.Open()
+    '            query = "DELETE FROM equipments WHERE equipmentno=@eq_eqno AND equipmentsn=@eq_eqsn "
+    '            comm = New MySqlCommand(query, MysqlConn)
+    '            comm.Parameters.AddWithValue("eq_eqno", eq_equipmentno.Text)
+    '            comm.Parameters.AddWithValue("eq_eqsn", eq_sn.Text)
 
-    Private Sub eq_clear_filter_Click(sender As Object, e As EventArgs) Handles eq_clear_filter.Click
-        eq_filter_eqno.Text = ""
-        eq_filter_eqtype.Text = ""
-        eq_filter_eqstatus.Text = ""
-    End Sub
+    '            reader = comm.ExecuteReader
 
-    'Equipment Management Codes Umali E5 EQ_CELLDOUBLECLICK
+    '            eq_equipment.Text = ""
+    '            eq_equipmentno.Text = ""
+    '            eq_equipmentlocation.Text = ""
+    '            eq_sn.Text = ""
+    '            eq_status.Text = ""
+    '            eq_owner.Text = ""
 
-    Private Sub eq_rgv_showregequipment_CellDoubleClick(sender As Object, e As GridViewCellEventArgs) Handles eq_rgv_showregequipment.CellDoubleClick
-        If e.RowIndex >= 0 Then
-            Dim row As Telerik.WinControls.UI.GridViewRowInfo
-            eq_keepSelectedRowIndexAfterUpdate = e.RowIndex 'WUTRY_1
-            row = Me.eq_rgv_showregequipment.Rows(e.RowIndex)
+    '            RadMessageBox.Show(Me, "Successfully Deleted!", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Info)
+    '            MysqlConn.Close()
+    '        Catch ex As Exception
+    '            RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+    '        Finally
+    '            MysqlConn.Dispose()
+    '        End Try
+    '    End If
+    '    load_eq_table()
+    '    counter_of_total_eq()
+    'End Sub
 
-            eq_equipmentno.Text = row.Cells("Equipment Number").Value.ToString
-            eq_equipment.Text = row.Cells("Equipment").Value.ToString
-            eq_equipmentlocation.Text = row.Cells("Equipment Location").Value.ToString
-            eq_sn.Text = row.Cells("Serial Number").Value.ToString
-            eq_status.Text = row.Cells("Status").Value.ToString
-            eq_owner.Text = row.Cells("Owner").Value.ToString
-            eq_type.Text = row.Cells("Equipment Type").Value.ToString
+    'Private Sub eq_clear_filter_Click(sender As Object, e As EventArgs) Handles eq_clear_filter.Click
+    '    eq_filter_eqno.Text = ""
+    '    eq_filter_eqtype.Text = ""
+    '    eq_filter_eqstatus.Text = ""
+    'End Sub
 
-            eq_sn.Enabled = False
-            eq_btn_update.Show()
-            eq_btn_delete.Show()
-            eq_btn_save.Hide()
-        End If
-    End Sub
+    'Equipment Management Codes Umali E5 EQ_CELLDOUBLECLICK    ------------->>> DEPRECIATED
 
-    'Equipment Management Codes Umali E6 = EQ_BTN_CLEAR
+    'Private Sub eq_rgv_showregequipment_CellDoubleClick(sender As Object, e As GridViewCellEventArgs) Handles eq_rgv_showregequipment.CellDoubleClick
+    '    If e.RowIndex >= 0 Then
+    '        Dim row As Telerik.WinControls.UI.GridViewRowInfo
+    '        eq_keepSelectedRowIndexAfterUpdate = e.RowIndex 'WUTRY_1
+    '        row = Me.eq_rgv_showregequipment.Rows(e.RowIndex)
 
-    Private Sub eq_btn_clear_Click(sender As Object, e As EventArgs)
-        eq_equipmentno.Text = ""
-        eq_equipment.Text = ""
-        eq_equipmentlocation.Text = ""
-        eq_sn.Text = ""
-        eq_status.Text = ""
-        eq_owner.Text = ""
-        eq_type.Text = ""
-        eq_sn.Enabled = True
-        eq_btn_update.Hide()
-        eq_btn_delete.Hide()
-        eq_btn_save.Show()
-    End Sub
+    '        eq_equipmentno.Text = row.Cells("Equipment Number").Value.ToString
+    '        eq_equipment.Text = row.Cells("Equipment").Value.ToString
+    '        eq_equipmentlocation.Text = row.Cells("Equipment Location").Value.ToString
+    '        eq_sn.Text = row.Cells("Serial Number").Value.ToString
+    '        eq_status.Text = row.Cells("Status").Value.ToString
+    '        eq_owner.Text = row.Cells("Owner").Value.ToString
+    '        eq_type.Text = row.Cells("Equipment Type").Value.ToString
+
+    '        eq_sn.Enabled = False
+    '        eq_btn_update.Show()
+    '        eq_btn_delete.Show()
+    '        eq_btn_save.Hide()
+    '    End If
+    'End Sub
+
+    'Equipment Management Codes Umali E6 = EQ_BTN_CLEAR              ----------------> DEPRECIATED
+
+    'Private Sub eq_btn_clear_Click(sender As Object, e As EventArgs)
+    '    eq_equipmentno.Text = ""
+    '    eq_equipment.Text = ""
+    '    eq_equipmentlocation.Text = ""
+    '    eq_sn.Text = ""
+    '    eq_status.Text = ""
+    '    eq_owner.Text = ""
+    '    eq_type.Text = ""
+    '    eq_sn.Enabled = True
+    '    eq_btn_update.Hide()
+    '    eq_btn_delete.Hide()
+    '    eq_btn_save.Show()
+    'End Sub
 
     'Equipment Management Codes Umali E7 = SEARCH BY EQ_NO
 
@@ -1688,7 +1745,7 @@ Public Class Main
         End Try
 
         Dim DV As New DataView(dbdataset)
-        DV.RowFilter = String.Format("`Equipment Number` Like'%{0}%' and `Equipment Type` Like'%{1}%' and `Status` Like'%{2}%' ", eq_filter_eqno.Text, eq_filter_eqtype.Text, eq_filter_eqstatus.Text)
+        DV.RowFilter = String.Format("`Equipment Number` Like'%{0}%' and `Equipment Type` Like'%{1}%'", eq_filter_eqno.Text, eq_filter_eqtype.Text)
         eq_rgv_showregequipment.DataSource = DV
     End Sub
 
@@ -1737,57 +1794,62 @@ Public Class Main
         End Try
 
         Dim DV As New DataView(dbdataset)
-        DV.RowFilter = String.Format("`Equipment Number` Like'%{0}%' and `Equipment Type` Like'%{1}%' and `Status` Like'%{2}%' ", eq_filter_eqno.Text, eq_filter_eqtype.Text, eq_filter_eqstatus.Text)
+        DV.RowFilter = String.Format("`Equipment Number` Like'%{0}%' and `Equipment Type` Like'%{1}%'", eq_filter_eqno.Text, eq_filter_eqtype.Text)
         eq_rgv_showregequipment.DataSource = DV
     End Sub
 
-    'Equipment Management Codes Umali E9 = SEARCH BY EQ_STATUS
-    Private Sub eq_filter_eqstatus_TextChanged(sender As Object, e As EventArgs) Handles eq_filter_eqstatus.TextChanged
-        eqstatus_filter_delay.Interval = 700
-        eqstatus_filter_delay.Stop()
-        eqstatus_filter_delay.Start()
+    Private Sub eq_clear_filter_Click_(sender As Object, e As EventArgs) Handles eq_clear_filter.Click
+        eq_filter_eqno.Text=String.Empty
+        eq_filter_eqtype.Text=String.Empty
     End Sub
 
-    Private Sub eqstatus_filter_delay_Tick(sender As Object, e As EventArgs) Handles eqstatus_filter_delay.Tick
-        eqstatus_filter_delay.Stop()
-        If MysqlConn.State = ConnectionState.Open Then
-            MysqlConn.Close()
-        End If
+    'Equipment Management Codes Umali E9 = SEARCH BY EQ_STATUS          ------>>>>>DEPRECIATED, NOT NEEDED SINCE Equipments with Good Condition are listed Here
+    'Private Sub eq_filter_eqstatus_TextChanged(sender As Object, e As EventArgs) 
+    '    eqstatus_filter_delay.Interval = 700
+    '    eqstatus_filter_delay.Stop()
+    '    eqstatus_filter_delay.Start()
+    'End Sub
 
-        MysqlConn = New MySqlConnection
-        MysqlConn.ConnectionString = connstring
-        Dim SDA As New MySqlDataAdapter
-        Dim dbdataset As New DataTable
-        Dim bsource As New BindingSource
+    'Private Sub eqstatus_filter_delay_Tick(sender As Object, e As EventArgs) Handles eqstatus_filter_delay.Tick
+    '    eqstatus_filter_delay.Stop()
+    '    If MysqlConn.State = ConnectionState.Open Then
+    '        MysqlConn.Close()
+    '    End If
 
-        If eq_filter_eqstatus.Text = "-" Then
-            load_eq_table()
-        Else
-            Try
-                MysqlConn.Open()
+    '    MysqlConn = New MySqlConnection
+    '    MysqlConn.ConnectionString = connstring
+    '    Dim SDA As New MySqlDataAdapter
+    '    Dim dbdataset As New DataTable
+    '    Dim bsource As New BindingSource
 
-                 query = "SELECT equipmentnumber AS 'Equipment Number', equipmentmodel as 'Equipment', equipmentserial AS 'Serial Number', equipmentname as 'Equipment Type', equipmentlocation AS 'Equipment Location', equipmentowner AS 'Owner', remarks AS 'Status' FROM ceutltdprevmaintenance.equipmentlist WHERE remarks LIKE '%Good Condition%'"
+    '    If eq_filter_eqstatus.Text = "-" Then
+    '        load_eq_table()
+    '    Else
+    '        Try
+    '            MysqlConn.Open()
 
-                comm = New MySqlCommand(query, MysqlConn)
-                SDA.SelectCommand = comm
-                SDA.Fill(dbdataset)
-                bsource.DataSource = dbdataset
-                eq_rgv_showregequipment.DataSource = bsource
-                SDA.Update(dbdataset)
+    '             query = "SELECT equipmentnumber AS 'Equipment Number', equipmentmodel as 'Equipment', equipmentserial AS 'Serial Number', equipmentname as 'Equipment Type', equipmentlocation AS 'Equipment Location', equipmentowner AS 'Owner', remarks AS 'Status' FROM ceutltdprevmaintenance.equipmentlist WHERE remarks LIKE '%Good Condition%'"
 
-                MysqlConn.Close()
+    '            comm = New MySqlCommand(query, MysqlConn)
+    '            SDA.SelectCommand = comm
+    '            SDA.Fill(dbdataset)
+    '            bsource.DataSource = dbdataset
+    '            eq_rgv_showregequipment.DataSource = bsource
+    '            SDA.Update(dbdataset)
 
-            Catch ex As MySqlException
-                RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
-            Finally
-                MysqlConn.Dispose()
-            End Try
+    '            MysqlConn.Close()
 
-            Dim DV As New DataView(dbdataset)
-            DV.RowFilter = String.Format("`Equipment Number` Like'%{0}%' and `Equipment Type` Like'%{1}%' and `Status` Like'%{2}%' ", eq_filter_eqno.Text, eq_filter_eqtype.Text, eq_filter_eqstatus.Text)
-            eq_rgv_showregequipment.DataSource = DV
-        End If
-    End Sub
+    '        Catch ex As MySqlException
+    '            RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+    '        Finally
+    '            MysqlConn.Dispose()
+    '        End Try
+
+    '        Dim DV As New DataView(dbdataset)
+    '        DV.RowFilter = String.Format("`Equipment Number` Like'%{0}%' and `Equipment Type` Like'%{1}%' and `Status` Like'%{2}%' ", eq_filter_eqno.Text, eq_filter_eqtype.Text, eq_filter_eqstatus.Text)
+    '        eq_rgv_showregequipment.DataSource = DV
+    '    End If
+    'End Sub
 
     'Equipment Management Codes Umali E10 = COUNTER
     Private Sub eq_counter_type_SelectedIndexChanged_1(sender As Object, e As UI.Data.PositionChangedEventArgs) Handles eq_counter_type.SelectedIndexChanged
@@ -1834,16 +1896,16 @@ Public Class Main
         MysqlConn.ConnectionString = connstring
         Try
             MysqlConn.Open()
-            query = "SELECT DISTINCT(equipmentname) FROM ceutltdprevmaintenance.equipmentlist ORDER BY equipmentname ASC"
+            query = "SELECT DISTINCT(equipmentname) FROM ceutltdprevmaintenance.equipmentlist WHERE remarks LIKE '%Good Condition%' ORDER BY equipmentname ASC"
             comm = New MySqlCommand(query, MysqlConn)
             reader = comm.ExecuteReader
 
-
+            eq_filter_eqtype.Items.Clear()
             rec_eq_type_choose.Items.Clear()
             eq_counter_type.Items.Clear()
 
             While reader.Read
-
+                eq_filter_eqtype.Items.Add(reader.GetString("equipmentname"))
                 rec_eq_type_choose.Items.Add(reader.GetString("equipmentname"))
                 eq_counter_type.Items.Add(reader.GetString("equipmentname"))
             End While
@@ -2378,35 +2440,35 @@ Public Class Main
         Me.Text = title + Date.Now.ToString("            MMMM dd, yyyy  hh:mm:ss tt")
     End Sub
 
-    'DropDown Code for other
-    Private Sub eq_btn_other_Click(sender As Object, e As EventArgs) Handles eq_btn_other.Click
-        eq_type.DropDownStyle = RadDropDownStyle.DropDown
-    End Sub
+    'DropDown Code for other                                ----------->> DEPRECIATED
+    'Private Sub eq_btn_other_Click(sender As Object, e As EventArgs) 
+    '    eq_type.DropDownStyle = RadDropDownStyle.DropDown
+    'End Sub
 
-    'Load eqtype
-    Public Sub load_cb_eq_type()
-        If MysqlConn.State = ConnectionState.Open Then
-            MysqlConn.Close()
-        End If
-        MysqlConn.ConnectionString = connstring
-        Try
-            MysqlConn.Open()
-            query = "SELECT DISTINCT(equipmenttype) from equipments"
-            comm = New MySqlCommand(query, MysqlConn)
-            reader = comm.ExecuteReader
+    'Load eqtype                             ---->> DEPRECIATED
+    'Public Sub load_cb_eq_type()
+    '    If MysqlConn.State = ConnectionState.Open Then
+    '        MysqlConn.Close()
+    '    End If
+    '    MysqlConn.ConnectionString = connstring
+    '    Try
+    '        MysqlConn.Open()
+    '        query = "SELECT DISTINCT(equipmenttype) from equipments"
+    '        comm = New MySqlCommand(query, MysqlConn)
+    '        reader = comm.ExecuteReader
 
-            eq_type.Items.Clear()
-            While reader.Read
-                eq_type.Items.Add(reader.GetString("equipmenttype"))
-            End While
+    '        eq_type.Items.Clear()
+    '        While reader.Read
+    '            eq_type.Items.Add(reader.GetString("equipmenttype"))
+    '        End While
 
-            MysqlConn.Close()
-        Catch ex As Exception
-            RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
-        Finally
-            MysqlConn.Dispose()
-        End Try
-    End Sub
+    '        MysqlConn.Close()
+    '    Catch ex As Exception
+    '        RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+    '    Finally
+    '        MysqlConn.Dispose()
+    '    End Try
+    'End Sub
 
     Private Sub rpv1_Click(sender As Object, e As EventArgs) Handles rpv1.Click
         'load_main_table()
@@ -2428,6 +2490,7 @@ Public Class Main
         returnEquipYN = RadMessageBox.Show(Me, "Are you sure you want to return this equipment?", "CEU TLTD Reservation System", MessageBoxButtons.YesNo, RadMessageIcon.Question)
         Dim serverdatetime As String
         If returnEquipYN = MsgBoxResult.Yes Then
+             return_btn_returned.Enabled=false
             'GET SERVERTIME
             Try
                 MysqlConn.Open()
@@ -2490,6 +2553,7 @@ Public Class Main
                     ret_tb_sdate.Text = "01/01/1999"
                     ret_tb_stime.Text = ""
                     ret_tb_etime.Text = ""
+                    ret_remarks.Text=""
                 End Try
                 RadMessageBox.Show(Me, "Congratulations!, The Item is returned early.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Info, MessageBoxDefaultButton.Button1)
             Else
@@ -2545,6 +2609,7 @@ Public Class Main
                         ret_tb_sdate.Text = "01/01/1999"
                         ret_tb_stime.Text = ""
                         ret_tb_etime.Text = ""
+                        ret_remarks.Text=""
                     End Try
                     RadMessageBox.Show(Me, "Congratulations! The item is returned on time." & Environment.NewLine & String.Format("Exceeded Time: {0:%d} day(s) {1:%h} hour(s) {2:%m} minute(s)", elapsedTime,elapsedTime,elapsedTime), "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Exclamation, MessageBoxDefaultButton.Button1)
                 ElseIf charge > 0 Then
@@ -2589,6 +2654,7 @@ Public Class Main
                             ret_tb_sdate.Text = "01/01/1999"
                             ret_tb_stime.Text = ""
                             ret_tb_etime.Text = ""
+                            ret_remarks.Text=""
                         End Try
                         RadMessageBox.Show(Me, "Time Exceeded!!" & Environment.NewLine & Environment.NewLine & String.Format("Exceeding Time: {0:%d} day(s)", elapsedTime) & String.Format(" {0:%h} hours(s) ", elapsedTime) & String.Format("{0:%m} minutes(s)", elapsedTime) & Environment.NewLine & "Charge is: " & String.Format("{0:0.00}",Convert.ToDouble(Math.Round (charge * penalty_price))) & " pesos.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error, MessageBoxDefaultButton.Button1)
                     Else
@@ -2632,6 +2698,7 @@ Public Class Main
                             ret_tb_sdate.Text = "01/01/1999"
                             ret_tb_stime.Text = ""
                             ret_tb_etime.Text = ""
+                            ret_remarks.Text=""
 
                         End Try
                         RadMessageBox.Show(Me, "Time Exceeded!!" & Environment.NewLine & Environment.NewLine & String.Format("Exceeding Time: {0:%h} hours(s) ", elapsedTime) & String.Format("{0:%m} minutes(s)", elapsedTime) & Environment.NewLine & "Charge is: " & String.Format("{0:0.00}",Convert.ToDouble(Math.Round (charge * penalty_price))) & " pesos.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error, MessageBoxDefaultButton.Button1)
@@ -2640,7 +2707,6 @@ Public Class Main
             End If
         Else
             released_grid_list2.Focus()
-
         End If
     End Sub
 
@@ -2966,6 +3032,9 @@ End Sub
         Me.Hide()
 
     End Sub
+
+
+
 
 
 
