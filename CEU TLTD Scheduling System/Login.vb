@@ -36,9 +36,9 @@ Public Class Login
                     End If
         
                         Dim looper As Integer
-                        If ConnectionState.Open = True Then
-                            mysqlconn.Close()
-                        End If
+                    If MysqlConn.State = ConnectionState.Open Then
+                        MysqlConn.Close()
+                    End If
                 mysqlconn.Open()
                 Dim q2 As String = "SELECT * FROM staff_reg WHERE BINARY staff_username=@proc_email_login and staff_password=sha2(@proc_password_login, 512)"
                 comm = New MySqlCommand(q2, mysqlconn)

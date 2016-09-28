@@ -103,7 +103,7 @@ Public Class Main
 
     Private Sub Main_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         getFromDB_settings_penalty()
-         load_rec_table(False)
+        'load_rec_table(False) ''HANDLED IN rec_dtp_date_ValueChanged
         'reservation_rgv_recordeddata.Show()
         'reservations_rgv_showavailableitems.Hide()
         lu_ActivityType.SelectedValue="Academic"
@@ -112,7 +112,7 @@ Public Class Main
         'main_load_schoolonly() 'Now using single gridview, depreciated
         returning_groupbox_info.SelectedPage = rel_list_info2
         rel_gb_listinfos.SelectedPage = res_reserved_info
-        
+        rec_dtp_date.Value = Date.Now
         load_eq_table()
         load_main_acc()
         load_main_prof()
@@ -129,7 +129,7 @@ Public Class Main
         color_coding()
         'rec_rrtc_actname.Enabled = False
         lu_date.Value = Date.Now
-        rec_dtp_date.Value = Date.Now
+        
         Main_Timer.Enabled = True
         return_btn_returned.Enabled=false
         'load_cb_eq_type()     ----->>> DEPRECIATED
@@ -147,14 +147,14 @@ Public Class Main
     Public Sub startup_disabled_textbox()
         'rel_tb_status.Enabled = False
         'rel_tb_id.Enabled = False
-        rel_tb_borrower.Enabled = False
-        rel_tb_reservationnum.Enabled = False
+        'rel_tb_borrower.Enabled = False
+        'rel_tb_reservationnum.Enabled = False
         'ret_tb_reservationnum.Enabled = False
         rel_tb_startdate.Enabled = False
         rel_tb_starttime.Enabled = False
         rel_tb_endtime.Enabled = False
-        rel_tb_equipmentnum.Enabled = False
-        rel_tb_equipment.Enabled = False
+        'rel_tb_equipmentnum.Enabled = False
+        'rel_tb_equipment.Enabled = False
         'ret_tb_borrower.Enabled = False
         ret_tb_stime.Enabled = False
         ret_tb_etime.Enabled = False
@@ -162,6 +162,7 @@ Public Class Main
         'ret_tb_equipmentnum.Enabled = False
         'ret_tb_equipment.Enabled = False
         'ret_tb_id.Enabled = False
+        rel_tb_id.Enabled=False
     End Sub
     Public Sub color_coding()
         If (rel_tb_status.Text = "Reserved") Then
@@ -176,11 +177,6 @@ Public Class Main
 
     End Sub
     Public Sub show_hide_txt_lbl()
-        lbl_equipment.Hide()
-        lbl_equipmentnum.Hide()
-        lbl_ret_equipment.Hide()
-        lbl_ret_equipmentnum.Hide()
-        lbl_ret_release.Hide()
         rel_tb_equipmentnum.Hide()
         rel_tb_equipment.Hide()
         ret_tb_equipment.Hide()
@@ -199,29 +195,29 @@ Public Class Main
 
     Private Sub acc_staff_list_ViewCellFormatting(sender As Object, e As CellFormattingEventArgs) Handles acc_staff_list.ViewCellFormatting
         e.CellElement.TextAlignment = ContentAlignment.MiddleCenter
+        e.CellElement.TextWrap=True
+    End Sub
+
+    Private Sub acc_prof_list_ViewCellFormatting(sender As Object, e As CellFormattingEventArgs) Handles acc_prof_list.ViewCellFormatting
+        e.CellElement.TextAlignment = ContentAlignment.MiddleCenter
+        e.CellElement.TextWrap=True
     End Sub
     Private Sub eq_rgv_showregequipment_ViewCellFormatting(sender As Object, e As CellFormattingEventArgs) Handles eq_rgv_showregequipment.ViewCellFormatting
         e.CellElement.TextAlignment = ContentAlignment.MiddleCenter
+        e.CellElement.TextWrap=True
     End Sub
 
     Private Sub main_rgv_recordedacademicsonly_ViewCellFormatting(sender As Object, e As CellFormattingEventArgs) Handles main_rgv_recordedacademicsonly.ViewCellFormatting
         e.CellElement.TextAlignment = ContentAlignment.MiddleCenter
+        e.CellElement.TextWrap=True
     End Sub
 
     'Private Sub main_rgv_recordedschoolonly_ViewCellFormatting(sender As Object, e As CellFormattingEventArgs) Handles main_rgv_recordedschoolonly.ViewCellFormatting
     '    e.CellElement.TextAlignment = ContentAlignment.MiddleCenter
     'End Sub
 
-    Private Sub acc_prof_list_ViewCellFormatting(sender As Object, e As CellFormattingEventArgs) Handles acc_prof_list.ViewCellFormatting
-        e.CellElement.TextAlignment = ContentAlignment.MiddleCenter
-        e.CellElement.TextWrap=True
-    End Sub
-    Private Sub reservation_rgv_recordeddata_ViewCellFormatting(sender As Object, e As CellFormattingEventArgs) Handles reservation_rgv_recordeddata.ViewCellFormatting
-        e.CellElement.TextAlignment = ContentAlignment.MiddleCenter
-        e.CellElement.TextWrap=True
-    End Sub
 
-    Private Sub penalty_grid_list_ViewCellFormatting(sender As Object, e As CellFormattingEventArgs) Handles penalty_grid_list.ViewCellFormatting
+    Private Sub reservation_rgv_recordeddata_ViewCellFormatting(sender As Object, e As CellFormattingEventArgs) Handles reservation_rgv_recordeddata.ViewCellFormatting
         e.CellElement.TextAlignment = ContentAlignment.MiddleCenter
         e.CellElement.TextWrap=True
     End Sub
@@ -235,168 +231,204 @@ Public Class Main
         e.CellElement.TextWrap=True
     End Sub
 
+    Private Sub released_grid_list2_ViewCellFormatting(sender As Object, e As CellFormattingEventArgs) Handles released_grid_list2.ViewCellFormatting
+        e.CellElement.TextAlignment = ContentAlignment.MiddleCenter
+        e.CellElement.TextWrap=True
+    End Sub
+
+    Private Sub penalty_grid_list_ViewCellFormatting(sender As Object, e As CellFormattingEventArgs) Handles penalty_grid_list.ViewCellFormatting
+        e.CellElement.TextAlignment = ContentAlignment.MiddleCenter
+        e.CellElement.TextWrap=True
+    End Sub
+    Private Sub returned_eq_list_ViewCellFormatting(sender As Object, e As CellFormattingEventArgs) Handles returned_eq_list.ViewCellFormatting
+        e.CellElement.TextAlignment = ContentAlignment.MiddleCenter
+        e.CellElement.TextWrap=True
+    End Sub
+   
+
    Private Sub SetSizesofMainTable()
         If lu_ActivityType.Text = "Academic" Then
             Dim colsmain_resno = main_rgv_recordedacademicsonly.Columns("Reservation Number")
-            colsmain_resno.TextAlignment = ContentAlignment.MiddleCenter
             colsmain_resno.Width = 113
-            colsmain_resno.WrapText = True
 
             Dim colsmain_brr = main_rgv_recordedacademicsonly.Columns("Borrower")
-            colsmain_brr.TextAlignment = ContentAlignment.MiddleCenter
             colsmain_brr.Width = 119
-            colsmain_brr.WrapText = True
 
             Dim colsmain_idid = main_rgv_recordedacademicsonly.Columns("ID")
-            colsmain_idid.TextAlignment = ContentAlignment.MiddleCenter
             colsmain_idid.Width = 71
-            colsmain_idid.WrapText = True
 
-            Dim colsmain_eqno = main_rgv_recordedacademicsonly.Columns("Equipment No")
-            colsmain_eqno.TextAlignment = ContentAlignment.MiddleCenter
+            Dim colsmain_eqno = main_rgv_recordedacademicsonly.Columns("Equipment Number")
             colsmain_eqno.Width = 138
-            colsmain_eqno.WrapText = True
 
             Dim colsmain_eqname = main_rgv_recordedacademicsonly.Columns("Equipment")
-            colsmain_eqname.TextAlignment = ContentAlignment.MiddleCenter
             colsmain_eqname.Width = 359
-            colsmain_eqname.WrapText = True
 
             Dim colsmain_location = main_rgv_recordedacademicsonly.Columns("Location")
-            colsmain_location.TextAlignment = ContentAlignment.MiddleCenter
             colsmain_location.Width = 100
-            colsmain_location.WrapText = True
 
             Dim colsmain_date = main_rgv_recordedacademicsonly.Columns("Date")
-            colsmain_date.TextAlignment = ContentAlignment.MiddleCenter
             colsmain_date.Width = 114
-            colsmain_date.WrapText = True
 
             Dim colsmain_st = main_rgv_recordedacademicsonly.Columns("Start Time")
-            colsmain_st.TextAlignment = ContentAlignment.MiddleCenter
             colsmain_st.Width = 68
-            colsmain_st.WrapText = True
 
             Dim colsmain_et = main_rgv_recordedacademicsonly.Columns("End Time")
-            colsmain_et.TextAlignment = ContentAlignment.MiddleCenter
             colsmain_et.Width = 68
             colsmain_et.WrapText = True
 
             Dim colsmain_at = main_rgv_recordedacademicsonly.Columns("Activity Type")
-            colsmain_at.TextAlignment = ContentAlignment.MiddleCenter
             colsmain_at.Width = 109
-            colsmain_at.WrapText = True
         Else
             Dim colsmain_resno = main_rgv_recordedacademicsonly.Columns("Reservation Number")
-            colsmain_resno.TextAlignment = ContentAlignment.MiddleCenter
             colsmain_resno.Width = 113
-            colsmain_resno.WrapText = True
 
             Dim colsmain_brr = main_rgv_recordedacademicsonly.Columns("Borrower")
-            colsmain_brr.TextAlignment = ContentAlignment.MiddleCenter
             colsmain_brr.Width = 119
-            colsmain_brr.WrapText = True
 
             Dim colsmain_idid = main_rgv_recordedacademicsonly.Columns("ID")
-            colsmain_idid.TextAlignment = ContentAlignment.MiddleCenter
             colsmain_idid.Width = 71
-            colsmain_idid.WrapText = True
 
-            Dim colsmain_eqno = main_rgv_recordedacademicsonly.Columns("Equipment No")
-            colsmain_eqno.TextAlignment = ContentAlignment.MiddleCenter
+            Dim colsmain_eqno = main_rgv_recordedacademicsonly.Columns("Equipment Number")
             colsmain_eqno.Width = 138
-            colsmain_eqno.WrapText = True
 
             Dim colsmain_eqname = main_rgv_recordedacademicsonly.Columns("Equipment")
-            colsmain_eqname.TextAlignment = ContentAlignment.MiddleCenter
             colsmain_eqname.Width = 239
-            colsmain_eqname.WrapText = True
 
             Dim colsmain_location = main_rgv_recordedacademicsonly.Columns("Location")
-            colsmain_location.TextAlignment = ContentAlignment.MiddleCenter
             colsmain_location.Width = 100
-            colsmain_location.WrapText = True
 
             Dim colsmain_date = main_rgv_recordedacademicsonly.Columns("Date")
-            colsmain_date.TextAlignment = ContentAlignment.MiddleCenter
             colsmain_date.Width = 114
-            colsmain_date.WrapText = True
 
             Dim colsmain_st = main_rgv_recordedacademicsonly.Columns("Start Time")
-            colsmain_st.TextAlignment = ContentAlignment.MiddleCenter
             colsmain_st.Width = 68
-            colsmain_st.WrapText = True
 
             Dim colsmain_et = main_rgv_recordedacademicsonly.Columns("End Time")
-            colsmain_et.TextAlignment = ContentAlignment.MiddleCenter
             colsmain_et.Width = 68
-            colsmain_et.WrapText = True
 
             Dim colsmain_at = main_rgv_recordedacademicsonly.Columns("Activity Type")
-            colsmain_at.TextAlignment = ContentAlignment.MiddleCenter
             colsmain_at.Width = 109
-            colsmain_at.WrapText = True
 
             Dim colsmain_att = main_rgv_recordedacademicsonly.Columns("Activity")
-            colsmain_att.TextAlignment = ContentAlignment.MiddleCenter
             colsmain_att.Width = 120
-            colsmain_att.WrapText = True
         End If
     End Sub ' Main TAB Table
     
    Private Sub SetSizeofReservationTable()
+        If reservation_rgv_recordeddata.Columns("Reservation Number") Is Nothing
+         'This is Used to shut up the object reference error
+        Else
         Dim cols_res_resnum As GridViewDataColumn = reservation_rgv_recordeddata.Columns("Reservation Number")
-        cols_res_resnum.TextAlignment = ContentAlignment.MiddleCenter
         cols_res_resnum.Width=115
 
         Dim cols_res_bor As GridViewDataColumn = reservation_rgv_recordeddata.Columns("Borrower")
-        cols_res_bor.TextAlignment = ContentAlignment.MiddleCenter
         cols_res_bor.Width=119
 
         Dim cols_res_id  As GridViewDataColumn = reservation_rgv_recordeddata.Columns("ID")
-        cols_res_id.TextAlignment = ContentAlignment.MiddleCenter
         cols_res_id.Width=71
 
-        Dim cols_res_eqno As GridViewDataColumn = reservation_rgv_recordeddata.Columns("Equipment No")
-        cols_res_eqno.TextAlignment = ContentAlignment.MiddleCenter
+        Dim cols_res_eqno As GridViewDataColumn = reservation_rgv_recordeddata.Columns("Equipment Number")
         cols_res_eqno.Width=138
 
         Dim cols_res_eqname As GridViewDataColumn = reservation_rgv_recordeddata.Columns("Equipment")
-        cols_res_eqname.TextAlignment = ContentAlignment.MiddleCenter
         cols_res_eqname.Width=239
 
         Dim cols_res_loc As GridViewDataColumn = reservation_rgv_recordeddata.Columns("Location")
-        cols_res_loc.TextAlignment = ContentAlignment.MiddleCenter
         cols_res_loc.Width=100
 
         Dim cols_res_date As GridViewDataColumn = reservation_rgv_recordeddata.Columns("Date")
-        cols_res_date.TextAlignment = ContentAlignment.MiddleCenter
         cols_res_date.Width = 114
 
         Dim cols_res_st As GridViewDataColumn = reservation_rgv_recordeddata.Columns("Start Time")
-        cols_res_st.TextAlignment = ContentAlignment.MiddleCenter
         cols_res_st.Width = 68
 
         Dim cols_res_et As GridViewDataColumn = reservation_rgv_recordeddata.Columns("End Time")
-        cols_res_et.TextAlignment = ContentAlignment.MiddleCenter
         cols_res_et.Width = 68
         
         Dim cols_res_at As GridViewDataColumn = reservation_rgv_recordeddata.Columns("Activity Type")
-        cols_res_at.TextAlignment = ContentAlignment.MiddleCenter
         cols_res_at.Width = 109
 
         Dim cols_res_att As GridViewDataColumn = reservation_rgv_recordeddata.Columns("Activity")
-        cols_res_att.TextAlignment = ContentAlignment.MiddleCenter
         cols_res_att.Width = 120
 
         Dim cols_res_sta As GridViewDataColumn = reservation_rgv_recordeddata.Columns("Status")
-        cols_res_sta.TextAlignment = ContentAlignment.MiddleCenter
         cols_res_sta.Width = 120
-    End Sub 'ITO YUNG NAGPAPAERROR
+        End If
+    End Sub 'ITO YUNG NAGPAPAERROR       'OK NA
+
+   Private Sub SetSizeofReservedItemstobeReleased()
+        Dim col_rel_res_ReservationNum As GridViewDataColumn = reserved_grid_list.Columns("Reservation Number")
+        col_rel_res_ReservationNum.Width = 115
+        Dim col_rel_res_Bor as GridViewDataColumn = reserved_grid_list.Columns("Borrower")
+        col_rel_res_Bor.Width = 119
+        Dim col_rel_res_eqno As GridViewDataColumn = reserved_grid_list.Columns("Equipment Number")
+        col_rel_res_eqno.Width = 138
+        Dim col_rel_res_eqname As GridViewDataColumn = reserved_grid_list.Columns("Equipment")
+        col_rel_res_eqname.Width = 300
+        Dim col_rel_res_date As GridViewDataColumn = reserved_grid_list.Columns("Date")
+        col_rel_res_date.Width = 114
+        Dim col_rel_res_loc As GridViewDataColumn = reserved_grid_list.Columns("Location")
+        col_rel_res_loc.Width = 100
+        Dim col_rel_res_st As GridViewDataColumn = reserved_grid_list.Columns("Start Time")
+        col_rel_res_st.Width = 68
+        Dim col_rel_res_et As GridViewDataColumn = reserved_grid_list.Columns("End Time")
+        col_rel_res_et.Width = 68
+        Dim col_rel_res_stt As GridViewDataColumn = reserved_grid_list.Columns("Status")
+        col_rel_res_stt.Width = 120
+    End Sub
+
+    Private Sub SetSizeofReservedItemsReleased_Also_in_theTab_in_Returning(which_COL As Boolean)
+        If which_COL= False
+            Dim col_rel_rel_ReservationNum As GridViewDataColumn = released_grid_list.Columns("Reservation Number")
+            col_rel_rel_ReservationNum.Width = 115
+            Dim col_rel_rel_pID as GridViewDataColumn = released_grid_list.Columns("Pass ID#")
+            col_rel_rel_pID.Width = 60
+            Dim col_rel_rel_Bor As GridViewDataColumn = released_grid_list.Columns("Borrower")
+            col_rel_rel_Bor.Width = 119
+            Dim col_rel_rel_eqno As GridViewDataColumn = released_grid_list.Columns("Equipment Number")
+            col_rel_rel_eqno.Width = 138
+            Dim col_rel_rel_eqname As GridViewDataColumn = released_grid_list.Columns("Equipment")
+            col_rel_rel_eqname.Width = 239
+            Dim col_rel_rel_date As GridViewDataColumn = released_grid_list.Columns("Date")
+            col_rel_rel_date.Width = 114
+            Dim col_rel_rel_st As GridViewDataColumn = released_grid_list.Columns("Start Time")
+            col_rel_rel_st.Width = 68
+            Dim col_rel_rel_et As GridViewDataColumn = released_grid_list.Columns("End Time")
+            col_rel_rel_et.Width = 68
+            Dim col_rel_rel_stt As GridViewDataColumn = released_grid_list.Columns("Status")
+            col_rel_rel_stt.Width = 120
+            Dim col_rel_rel_rlby As GridViewDataColumn = released_grid_list.Columns("Released By")
+            col_rel_rel_rlby.Width = 119
+        Else
+            Dim col_rel_rel_ReservationNum As GridViewDataColumn = released_grid_list2.Columns("Reservation Number")
+            col_rel_rel_ReservationNum.Width = 115
+            Dim col_rel_rel_pID as GridViewDataColumn = released_grid_list2.Columns("Pass ID#")
+            col_rel_rel_pID.Width = 60
+            Dim col_rel_rel_Bor As GridViewDataColumn = released_grid_list2.Columns("Borrower")
+            col_rel_rel_Bor.Width = 119
+            Dim col_rel_rel_eqno As GridViewDataColumn = released_grid_list2.Columns("Equipment Number")
+            col_rel_rel_eqno.Width = 138
+            Dim col_rel_rel_eqname As GridViewDataColumn = released_grid_list2.Columns("Equipment")
+            col_rel_rel_eqname.Width = 239
+            Dim col_rel_rel_date As GridViewDataColumn = released_grid_list2.Columns("Date")
+            col_rel_rel_date.Width = 114
+            Dim col_rel_rel_st As GridViewDataColumn = released_grid_list2.Columns("Start Time")
+            col_rel_rel_st.Width = 68
+            Dim col_rel_rel_et As GridViewDataColumn = released_grid_list2.Columns("End Time")
+            col_rel_rel_et.Width = 68
+            Dim col_rel_rel_stt As GridViewDataColumn = released_grid_list2.Columns("Status")
+            col_rel_rel_stt.Width = 120
+            Dim col_rel_rel_rlby As GridViewDataColumn = released_grid_list2.Columns("Released By")
+            col_rel_rel_rlby.Width = 119
+        End If
+        
+    End Sub
     'End Formatting of GridViews
 
     Public Sub getFromDB_settings_penalty()
         Try
+        MysqlConn = New MySqlConnection
+        MysqlConn.ConnectionString = connstring
         MysqlConn.Open()
         Dim looper As Integer = 0
         Dim q2 As String = "SELECT value FROM ceutltdscheduler.settings"
@@ -429,11 +461,11 @@ Public Class Main
         Try
             MysqlConn.Open()
             If show_all_no_filter = False Then
-                query = "Select reservationno as 'Reservation Number' ,borrower as 'Borrower',id as 'ID', equipmentno as 'Equipment No', equipment as 'Equipment', location as 'Location', DATE_FORMAT(date,'%M %d %Y') as 'Date',TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time',activitytype as 'Activity Type',actname as 'Activity',res_status as 'Status' from reservation natural join reservation_equipments  where res_status='Reserved' and date ='" & Format(CDate(rec_dtp_date.Value), "yyyy-MM-dd") & "' ORDER by date DESC"
+                query = "Select reservationno as 'Reservation Number' ,borrower as 'Borrower',id as 'ID', equipmentno as 'Equipment Number', equipment as 'Equipment', location as 'Location', DATE_FORMAT(date,'%M %d %Y') as 'Date',TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time',activitytype as 'Activity Type',actname as 'Activity',res_status as 'Status' from reservation natural join reservation_equipments  where res_status='Reserved' and date ='" & Format(CDate(rec_dtp_date.Value), "yyyy-MM-dd") & "' ORDER by date DESC"
             Else
-                query = "Select reservationno as 'Reservation Number' ,borrower as 'Borrower',id as 'ID', equipmentno as 'Equipment No', equipment as 'Equipment', location as 'Location', DATE_FORMAT(date,'%M %d %Y') as 'Date',TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time',activitytype as 'Activity Type',actname as 'Activity',res_status as 'Status' from reservation natural join reservation_equipments ORDER by date DESC"
+                query = "Select reservationno as 'Reservation Number' ,borrower as 'Borrower',id as 'ID', equipmentno as 'Equipment Number', equipment as 'Equipment', location as 'Location', DATE_FORMAT(date,'%M %d %Y') as 'Date',TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time',activitytype as 'Activity Type',actname as 'Activity',res_status as 'Status' from reservation natural join reservation_equipments ORDER by date DESC"
             End If
-            'reservation_rgv_recordeddata.Columns.Clear()
+            reservation_rgv_recordeddata.Columns.Clear()
             comm = New MySqlCommand(query, MysqlConn)
             sda.SelectCommand = comm
             sda.Fill(dbdataset)
@@ -441,7 +473,7 @@ Public Class Main
             reservation_rgv_recordeddata.DataSource = bsource
             sda.Update(dbdataset)
             MysqlConn.Close()
-            'SetSizeofReservationTable() 'METHOD CAUSES ERROR!!!!
+            SetSizeofReservationTable() 'METHOD CAUSES ERROR!!!!
         Catch ex As Exception
             RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
         Finally
@@ -462,17 +494,17 @@ Public Class Main
         Dim Cover As String
         Try
             If lu_ActivityType.Text = "School Activity" Then
-                query = "Select reservationno as 'Reservation Number' ,borrower as 'Borrower',id as 'ID', equipmentno as 'Equipment No', equipment as 'Equipment', location as 'Location',
+                query = "Select reservationno as 'Reservation Number' ,borrower as 'Borrower',id as 'ID', equipmentno as 'Equipment Number', equipment as 'Equipment', location as 'Location',
             DATE_FORMAT(date,'%M %d %Y') as 'Date',TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time',
             activitytype as 'Activity Type',actname as 'Activity' from reservation where date ='" & Format(CDate(lu_date.Value), "yyyy-MM-dd") & "' and activitytype='School Activity' ORDER BY date DESC,starttime ASC"
                 Cover = "School Activity"
             ElseIf lu_ActivityType.Text = "Academic" Then
-                query = "Select reservationno as 'Reservation Number' ,borrower as 'Borrower',id as 'ID', equipmentno as 'Equipment No', equipment as 'Equipment', location as 'Location',
+                query = "Select reservationno as 'Reservation Number' ,borrower as 'Borrower',id as 'ID', equipmentno as 'Equipment Number', equipment as 'Equipment', location as 'Location',
             DATE_FORMAT(date,'%M %d %Y') as 'Date',TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time',
             activitytype as 'Activity Type' from reservation where date ='" & Format(CDate(lu_date.Value), "yyyy-MM-dd") & "' and activitytype='Academic' ORDER BY date DESC,starttime ASC"
                 Cover = "Academic"
             ElseIf lu_ActivityType.Text = "All" Then
-                query = "Select reservationno as 'Reservation Number' ,borrower as 'Borrower',id as 'ID', equipmentno as 'Equipment No', equipment as 'Equipment', location as 'Location',
+                query = "Select reservationno as 'Reservation Number' ,borrower as 'Borrower',id as 'ID', equipmentno as 'Equipment Number', equipment as 'Equipment', location as 'Location',
             DATE_FORMAT(date,'%M %d %Y') as 'Date',TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time',
             activitytype as 'Activity Type', actname as 'Activity' from reservation where date ='" & Format(CDate(lu_date.Value), "yyyy-MM-dd") & "' ORDER BY date DESC,starttime ASC"
                 Cover = ""
@@ -514,9 +546,9 @@ Public Class Main
 
     '    Try
     '        MysqlConn.Open()
-    '        query = "Select reservationno as 'Reservation Number' ,borrower as 'Borrower',id as 'ID', equipmentno as 'Equipment No', equipment as 'Equipment', DATE_FORMAT(date,'%M %d %Y') as 'Date',TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time',activitytype as 'Activiity Type',actname as 'Activity' from reservation where date ='" & Format(CDate(lu_date.Value), "yyyy-MM-dd") & "'and activitytype='School Activity' ORDER by date ASC"
+    '        query = "Select reservationno as 'Reservation Number' ,borrower as 'Borrower',id as 'ID', equipmentno as 'Equipment Number', equipment as 'Equipment', DATE_FORMAT(date,'%M %d %Y') as 'Date',TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time',activitytype as 'Activiity Type',actname as 'Activity' from reservation where date ='" & Format(CDate(lu_date.Value), "yyyy-MM-dd") & "'and activitytype='School Activity' ORDER by date ASC"
     '        ' PROBLEM: ID and Reservation is missing. THE NEXT COMMENT shows the old query
-    '        'query = "SELECT TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time',borrower as 'Borrower', equipment as 'Equipment', equipmentno as 'Equipment No' ,DATE_FORMAT(date,'%M %d %Y') as 'Date', activitytype as 'Activiity Type',actname as 'Activity' from reservation where date='" & Format(CDate(lu_date.Value), "yyyy-MM-dd") & "'ORDER BY starttime ASC"
+    '        'query = "SELECT TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time',borrower as 'Borrower', equipment as 'Equipment', equipmentno as 'Equipment Number' ,DATE_FORMAT(date,'%M %d %Y') as 'Date', activitytype as 'Activiity Type',actname as 'Activity' from reservation where date='" & Format(CDate(lu_date.Value), "yyyy-MM-dd") & "'ORDER BY starttime ASC"
     '        comm = New MySqlCommand(query, MysqlConn)
     '        sda.SelectCommand = comm
     '        sda.Fill(dbdataset)
@@ -846,7 +878,7 @@ Public Class Main
                 End If
                 MysqlConn.Close()
             Catch ex As MySqlException
-                If ex.Number Then
+                If ex.Number = 1062 Then
                     RadMessageBox.Show(Me, "The ID exists already.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
                 Else
                     RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -1003,7 +1035,7 @@ Public Class Main
         Try
             MysqlConn.Open()
             Dim query As String
-            query = "Select rel_reservation_no as 'Reservation Number', rel_id_passnum as 'Pass Number ' , rel_borrower as ' Borrower ' , rel_equipment_no as 'Equipment Number', rel_equipment as 'Equipment',DATE_FORMAT(rel_assign_date,'%M %d %Y') as 'Date',TIME_FORMAT(rel_starttime, '%H:%i') as 'Start Time', TIME_FORMAT(rel_endtime, '%H:%i') as 'End Time'  , rel_status as ' Status ' , rel_releasedby as ' Released By'  from released_info where rel_status = 'Released' ORDER BY date DESC,rel_reservation_no ASC"
+            query = "Select rel_reservation_no as 'Reservation Number', rel_id_passnum as 'Pass ID#' , rel_borrower as 'Borrower' , rel_equipment_no as 'Equipment Number', rel_equipment as 'Equipment',DATE_FORMAT(rel_assign_date,'%M %d %Y') as 'Date',TIME_FORMAT(rel_starttime, '%H:%i') as 'Start Time', TIME_FORMAT(rel_endtime, '%H:%i') as 'End Time'  , rel_status as 'Status' , rel_releasedby as 'Released By' from released_info where rel_status = 'Released' ORDER BY date DESC,rel_reservation_no ASC"
             comm = New MySqlCommand(query, MysqlConn)
             sda.SelectCommand = comm
             sda.Fill(dbdataset)
@@ -1012,6 +1044,7 @@ Public Class Main
             released_grid_list.ReadOnly = True
             sda.Update(dbdataset)
             MysqlConn.Close()
+            SetSizeofReservedItemsReleased_Also_in_theTab_in_Returning(False)
         Catch ex As Exception
             RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
         Finally
@@ -1034,8 +1067,9 @@ Public Class Main
 
         Try
             MysqlConn.Open()
+            released_grid_list2.Columns.Clear()
             Dim query As String
-            query = "Select rel_reservation_no as 'Reservation Number' , rel_id_passnum as 'Pass Number' , rel_borrower as 'Borrower' , rel_equipment_no as 'Equipment No' , rel_equipment as 'Equipment' , DATE_FORMAT(rel_assign_date,'%M %d %Y') as 'Date',TIME_FORMAT(rel_starttime, '%H:%i') as 'Start Time', TIME_FORMAT(rel_endtime, '%H:%i') as 'End Time' , rel_status as 'Status' , rel_releasedby as 'Released By'  from released_info where rel_status = 'Released' ORDER BY date DESC,rel_reservation_no ASC"
+            query = "Select rel_reservation_no as 'Reservation Number' , rel_id_passnum as 'Pass ID#' , rel_borrower as 'Borrower' , rel_equipment_no as 'Equipment Number' , rel_equipment as 'Equipment' , DATE_FORMAT(rel_assign_date,'%M %d %Y') as 'Date',TIME_FORMAT(rel_starttime, '%H:%i') as 'Start Time', TIME_FORMAT(rel_endtime, '%H:%i') as 'End Time' , rel_status as 'Status' , rel_releasedby as 'Released By'  from released_info where rel_status = 'Released' ORDER BY date DESC,rel_reservation_no ASC"
             comm = New MySqlCommand(query, MysqlConn)
             sda.SelectCommand = comm
             sda.Fill(dbdataset)
@@ -1044,6 +1078,7 @@ Public Class Main
             released_grid_list2.ReadOnly = True
             sda.Update(dbdataset)
             MysqlConn.Close()
+            SetSizeofReservedItemsReleased_Also_in_theTab_in_Returning(True)
         Catch ex As Exception
             RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
         Finally
@@ -1058,7 +1093,7 @@ Public Class Main
         MysqlConn.ConnectionString = connstring
         Dim READER As MySqlDataReader
         If (rel_tb_reservationnum.Text = "") Or (rel_tb_borrower.Text = "") Or (rel_tb_equipmentnum.Text = "") Or (rel_tb_equipment.Text = "") Or (rel_tb_startdate.Text = " ") Or (rel_tb_starttime.Text = " ") Or (rel_tb_endtime.Text = " ") Then
-            RadMessageBox.Show(Me, "Please complete the fields to Save!", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+            RadMessageBox.Show(Me, "Please double click an equipment to release!", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Exclamation)
         Else
             Try
                 MysqlConn.Open()
@@ -1072,16 +1107,17 @@ Public Class Main
                 'comm.Parameters.AddWithValue("ID", rel_tb_id.Text)
 
 
-                svYN = RadMessageBox.Show(Me, "Are you sure you want to Release this Equipment/s? ", "TLTD Reservation System", MessageBoxButtons.YesNo, RadMessageIcon.Question)
+                svYN = RadMessageBox.Show(Me, "Are you sure you want to release this Equipment? ", "TLTD Reservation System", MessageBoxButtons.YesNo, RadMessageIcon.Question)
                 If svYN = MsgBoxResult.Yes Then
                     If rel_tb_status.Text = "Reserved" Then
-                        RadMessageBox.Show("Please change the status to 'Released' for the confirmation of releasing this equipment/s", "TLTD Resrvation System", MessageBoxButtons.OK, RadMessageIcon.Exclamation)
+                        RadMessageBox.Show("Please change the status to 'Released' for the confirmation of releasing this equipment.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Exclamation)
                     ElseIf rel_tb_status.Text = "Released" Then
                         READER = comm.ExecuteReader
-                        RadMessageBox.Show("Released!", "TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Exclamation)
+                        RadMessageBox.Show("Released!", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Info)
                         rel_tb_borrower.Text = ""
                         rel_tb_startdate.Text = "01/01/99"
                         rel_tb_id.Text = "0"
+                        rel_tb_id.Enabled=False
                         rel_tb_starttime.Text = ""
                         rel_tb_endtime.Text = ""
                         rel_tb_status.Text = ""
@@ -1094,9 +1130,10 @@ Public Class Main
                 End If
                 MysqlConn.Close()
             Catch ex As MySqlException
-                MessageBox.Show(ex.Message)
+                RadMessageBox.Show(ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
             Finally
                 MysqlConn.Dispose()
+                rel_tb_id.Enabled=False
                 load_released_list()
                 load_released_list2()
                 reserved_load_table()
@@ -1171,11 +1208,11 @@ Public Class Main
             rel_tb_borrower.Text = ""
             rel_tb_startdate.Text = "01/01/99"
             rel_tb_starttime.Text = ""
+            rel_tb_endtime.Text=""
             rel_tb_status.Text = ""
             rel_tb_equipment.Text = ""
             rel_tb_equipmentnum.Text = ""
-            lbl_equipment.Hide()
-            lbl_equipmentnum.Hide()
+            rel_tb_id.Enabled = False
             rel_tb_equipment.Hide()
             rel_tb_equipmentnum.Hide()
             rel_tb_reservationnum.Hide()
@@ -1208,7 +1245,7 @@ Public Class Main
         Try
             MysqlConn.Open()
             Dim query As String
-            query = "Select reservationno as 'Reservation Number' , borrower as 'Borrower', equipmentno as 'Equipment No', equipment as 'Equipment', DATE_FORMAT(date,'%M %d %Y') as 'Date',TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time',res_status as 'Status' from reservation natural join reservation_equipments where res_status = 'Reserved'  ORDER by date DESC, reservationno ASC"
+            query = "Select reservationno as 'Reservation Number' , borrower as 'Borrower', equipmentno as 'Equipment Number', equipment as 'Equipment', location as 'Location', DATE_FORMAT(date,'%M %d %Y') as 'Date',TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time',res_status as 'Status' from reservation natural join reservation_equipments where res_status = 'Reserved'  ORDER by date DESC, reservationno ASC"
             comm = New MySqlCommand(query, MysqlConn)
             sda.SelectCommand = comm
             sda.Fill(dbdataset)
@@ -1217,6 +1254,7 @@ Public Class Main
             reserved_grid_list.ReadOnly = True
             sda.Update(dbdataset)
             MysqlConn.Close()
+            SetSizeofReservedItemstobeReleased()
         Catch ex As Exception
             RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
         Finally
@@ -1237,7 +1275,6 @@ Public Class Main
 
             If released = "Released" Then
                 RadMessageBox.Show(Me, "The equipment is already released", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Exclamation)
-
             Else
 
                 updateYN = RadMessageBox.Show(Me, "Do you want to select this information?", "CEU TLTD Reservation System", MessageBoxButtons.YesNo, RadMessageIcon.Question)
@@ -1254,11 +1291,11 @@ Public Class Main
                         rel_tb_starttime.Text = row2.Cells("Start Time").Value.ToString
                         rel_tb_endtime.Text = row2.Cells("End Time").Value.ToString
                         rel_tb_status.Text = row2.Cells("Status").Value.ToString
-                        rel_tb_equipmentnum.Text = row2.Cells("Equipment No").Value.ToString
+                        rel_tb_equipmentnum.Text = row2.Cells("Equipment Number").Value.ToString
                         rel_tb_equipment.Text = row2.Cells("Equipment").Value.ToString
 
 
-
+                        rel_tb_id.Enabled=True
                         rel_tb_reservationnum.Show()
                         rel_tb_borrower.Show()
                         lbl_equipment.Show()
@@ -1300,13 +1337,13 @@ Public Class Main
                 row = Me.released_grid_list2.Rows(e.RowIndex)
                 return_btn_returned.Enabled=True
                 ret_tb_reservationnum.Text = row.Cells("Reservation Number").Value.ToString
-                ret_tb_id.Text = row.Cells("Pass Number").Value.ToString
+                ret_tb_id.Text = row.Cells("Pass ID#").Value.ToString
                 ret_tb_borrower.Text = row.Cells("Borrower").Value.ToString
                 ret_tb_sdate.Text = row.Cells("Date").Value.ToString
                 ret_tb_stime.Text = row.Cells("Start Time").Value.ToString
                 ret_tb_etime.Text = row.Cells("End Time").Value.ToString
                 ret_tb_status.Text = row.Cells("Status").Value.ToString
-                ret_tb_equipmentnum.Text = row.Cells("Equipment No").Value.ToString
+                ret_tb_equipmentnum.Text = row.Cells("Equipment Number").Value.ToString
                 ret_tb_equipment.Text = row.Cells("Equipment").Value.ToString
                 ret_nameofstaff_release2.Text = row.Cells("Released By").Value.ToString
 
@@ -1412,17 +1449,17 @@ Public Class Main
         Dim Cover As String
         Try
             If lu_ActivityType.Text = "School Activity" Then
-                query = "Select reservationno as 'Reservation Number' ,borrower as 'Borrower',id as 'ID', equipmentno as 'Equipment No', equipment as 'Equipment', location as 'Location',
+                query = "Select reservationno as 'Reservation Number' ,borrower as 'Borrower',id as 'ID', equipmentno as 'Equipment Number', equipment as 'Equipment', location as 'Location',
             DATE_FORMAT(date,'%M %d %Y') as 'Date',TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time',
             activitytype as 'Activity Type',actname as 'Activity' from reservation where date ='" & Format(CDate(lu_date.Value), "yyyy-MM-dd") & "' and activitytype='School Activity'"
                 Cover = "School Activity"
             ElseIf lu_ActivityType.Text = "Academic" Then
-                query = "Select reservationno as 'Reservation Number' ,borrower as 'Borrower',id as 'ID', equipmentno as 'Equipment No', equipment as 'Equipment', location as 'Location',
+                query = "Select reservationno as 'Reservation Number' ,borrower as 'Borrower',id as 'ID', equipmentno as 'Equipment Number', equipment as 'Equipment', location as 'Location',
             DATE_FORMAT(date,'%M %d %Y') as 'Date',TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time',
             activitytype as 'Activity Type' from reservation where date ='" & Format(CDate(lu_date.Value), "yyyy-MM-dd") & "' and activitytype='Academic'"
                 Cover = "Academic"
             ElseIf lu_ActivityType.Text = "All" Then
-                query = "Select reservationno as 'Reservation Number' ,borrower as 'Borrower',id as 'ID', equipmentno as 'Equipment No', equipment as 'Equipment', location as 'Location',
+                query = "Select reservationno as 'Reservation Number' ,borrower as 'Borrower',id as 'ID', equipmentno as 'Equipment Number', equipment as 'Equipment', location as 'Location',
             DATE_FORMAT(date,'%M %d %Y') as 'Date',TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time',
             activitytype as 'Activity Type', actname as 'Activity' from reservation where date ='" & Format(CDate(lu_date.Value), "yyyy-MM-dd") & "'"
                 Cover = ""
@@ -2217,11 +2254,11 @@ Public Class Main
                     End If
 
                     If errorcount = False Then
-                        RadMessageBox.Show(Me, "Succesfully Equipment Reserved!", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Info)
+                        RadMessageBox.Show(Me, "Succesfully reserved equipment(s)!", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Info)
                             eq_rgv_addeq.Rows.Clear()
                              auto_generate_reservationno()
                     Else
-                        RadMessageBox.Show(Me, "Not Successfully Reserved!", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                        RadMessageBox.Show(Me, "Equipment(s) not successfully reserved!", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
 
                     End If
                 End If
@@ -2256,7 +2293,7 @@ Public Class Main
         'Try
         '    MysqlConn.Open()
         '    'Relacing on how to show the taken equipments
-        '    query = "SELECT equipmenttype AS 'Equipment Type',equipmentno AS 'Equipment No.',equipment AS 'Equipment', equipmentsn AS 'Equipment Serial' FROM equipments  ORDER BY equipmenttype ASC"
+        '    query = "SELECT equipmenttype AS 'Equipment Type',equipmentno AS 'Equipment Number.',equipment AS 'Equipment', equipmentsn AS 'Equipment Serial' FROM equipments  ORDER BY equipmenttype ASC"
 
         '    comm = New MySqlCommand(query, MysqlConn)
         '    sda.SelectCommand = comm
@@ -2547,15 +2584,13 @@ Public Class Main
                     ret_tb_equipment.Hide()
                     ret_tb_equipmentnum.Hide()
                     ret_nameofstaff_release2.Hide()
-                    lbl_equipment.Hide()
-                    lbl_equipmentnum.Hide()
                     lbl_ret_release.Hide()
                     ret_tb_sdate.Text = "01/01/1999"
                     ret_tb_stime.Text = ""
                     ret_tb_etime.Text = ""
                     ret_remarks.Text=""
                 End Try
-                RadMessageBox.Show(Me, "Congratulations!, The Item is returned early.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Info, MessageBoxDefaultButton.Button1)
+                RadMessageBox.Show(Me, "Congratulations!, The equipment is returned early.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Info, MessageBoxDefaultButton.Button1)
             Else
                 getFromDB_settings_penalty()
                 Dim seconds As Integer = (elapsedTime.TotalSeconds)
@@ -2603,15 +2638,13 @@ Public Class Main
                         ret_tb_equipment.Hide()
                         ret_tb_equipmentnum.Hide()
                         ret_nameofstaff_release2.Hide()
-                        lbl_equipment.Hide()
-                        lbl_equipmentnum.Hide()
                         lbl_ret_release.Hide()
                         ret_tb_sdate.Text = "01/01/1999"
                         ret_tb_stime.Text = ""
                         ret_tb_etime.Text = ""
                         ret_remarks.Text=""
                     End Try
-                    RadMessageBox.Show(Me, "Congratulations! The item is returned on time." & Environment.NewLine & String.Format("Exceeded Time: {0:%d} day(s) {1:%h} hour(s) {2:%m} minute(s)", elapsedTime,elapsedTime,elapsedTime), "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Exclamation, MessageBoxDefaultButton.Button1)
+                    RadMessageBox.Show(Me, "Congratulations! The equipment is returned on time." & Environment.NewLine & String.Format("Exceeded Time: {0:%d} day(s) {1:%h} hour(s) {2:%m} minute(s)", elapsedTime,elapsedTime,elapsedTime), "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Exclamation, MessageBoxDefaultButton.Button1)
                 ElseIf charge > 0 Then
                     If seconds >= 86400 Then
                         Try
@@ -2648,15 +2681,13 @@ Public Class Main
                             ret_tb_equipment.Hide()
                             ret_tb_equipmentnum.Hide()
                             ret_nameofstaff_release2.Hide()
-                            lbl_equipment.Hide()
-                            lbl_equipmentnum.Hide()
                             lbl_ret_release.Hide()
                             ret_tb_sdate.Text = "01/01/1999"
                             ret_tb_stime.Text = ""
                             ret_tb_etime.Text = ""
                             ret_remarks.Text=""
                         End Try
-                        RadMessageBox.Show(Me, "Time Exceeded!!" & Environment.NewLine & Environment.NewLine & String.Format("Exceeding Time: {0:%d} day(s)", elapsedTime) & String.Format(" {0:%h} hours(s) ", elapsedTime) & String.Format("{0:%m} minutes(s)", elapsedTime) & Environment.NewLine & "Charge is: " & String.Format("{0:0.00}",Convert.ToDouble(Math.Round (charge * penalty_price))) & " pesos.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error, MessageBoxDefaultButton.Button1)
+                        RadMessageBox.Show(Me,"Equipment successfully returned." & Environment.NewLine & "Time Exceeded!!" & Environment.NewLine & Environment.NewLine & String.Format("Exceeding Time: {0:%d} day(s)", elapsedTime) & String.Format(" {0:%h} hours(s) ", elapsedTime) & String.Format("{0:%m} minutes(s)", elapsedTime) & Environment.NewLine & "Charge is: " & String.Format("{0:0.00}",Convert.ToDouble(Math.Round (charge * penalty_price))) & " pesos.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error, MessageBoxDefaultButton.Button1)
                     Else
                         Try
                             If MysqlConn.State = ConnectionState.Open Then
@@ -2692,16 +2723,12 @@ Public Class Main
                             ret_tb_equipment.Hide()
                             ret_tb_equipmentnum.Hide()
                             ret_nameofstaff_release2.Hide()
-                            lbl_equipment.Hide()
-                            lbl_equipmentnum.Hide()
-                            lbl_ret_release.Hide()
                             ret_tb_sdate.Text = "01/01/1999"
                             ret_tb_stime.Text = ""
                             ret_tb_etime.Text = ""
                             ret_remarks.Text=""
-
                         End Try
-                        RadMessageBox.Show(Me, "Time Exceeded!!" & Environment.NewLine & Environment.NewLine & String.Format("Exceeding Time: {0:%h} hours(s) ", elapsedTime) & String.Format("{0:%m} minutes(s)", elapsedTime) & Environment.NewLine & "Charge is: " & String.Format("{0:0.00}",Convert.ToDouble(Math.Round (charge * penalty_price))) & " pesos.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error, MessageBoxDefaultButton.Button1)
+                        RadMessageBox.Show(Me, "Equipment successfully returned." & Environment.NewLine & "Time Exceeded!!" & Environment.NewLine & Environment.NewLine & String.Format("Exceeding Time: {0:%h} hours(s) ", elapsedTime) & String.Format("{0:%m} minutes(s)", elapsedTime) & Environment.NewLine & "Charge is: " & String.Format("{0:0.00}",Convert.ToDouble(Math.Round (charge * penalty_price))) & " pesos.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error, MessageBoxDefaultButton.Button1)
                     End If
                 End If
             End If
@@ -2726,8 +2753,8 @@ Public Class Main
         Try
             MysqlConn.Open()
             Dim query As String
-            'query = "Select rel_reservation_no as 'Reservation Number' , rel_id_passnum as 'Pass Number' , rel_borrower as 'Borrower' , rel_equipment_no as 'Equipment No' , rel_equipment as 'Equipment' , DATE_FORMAT(rel_assign_date,'%M %d %Y') as 'Date',TIME_FORMAT(rel_starttime, '%H:%i') as 'Start Time', TIME_FORMAT(rel_endtime, '%H:%i') as 'End Time' , rel_status as 'Status' , rel_releasedby as 'Released By'  from released_info"
-            query = "SELECT pen_id as 'Penalty ID',bor_id as 'Pass #', bor_name as 'Borrower Name', eq_no as 'Equipment Number', eq_name as 'Equipment Name', DATE_FORMAT(res_date,'%M %d %Y') as 'Reservation Date', TIME_FORMAT(st_time, '%H:%i') as 'Start Time', TIME_FORMAT(ed_time, '%H:%i') as 'End Time', FORMAT(bor_price,2) as 'Price', ret_mark as 'Marked Returned By', DATE_FORMAT(ret_date, '%M %d %Y %H:%i') as 'Return Date' FROM ceutltdscheduler.penalties"
+            'query = "Select rel_reservation_no as 'Reservation Number' , rel_id_passnum as 'Pass Number' , rel_borrower as 'Borrower' , rel_equipment_no as 'Equipment Number' , rel_equipment as 'Equipment' , DATE_FORMAT(rel_assign_date,'%M %d %Y') as 'Date',TIME_FORMAT(rel_starttime, '%H:%i') as 'Start Time', TIME_FORMAT(rel_endtime, '%H:%i') as 'End Time' , rel_status as 'Status' , rel_releasedby as 'Released By'  from released_info"
+            query = "SELECT pen_id as 'Penalty ID',bor_id as 'Pass ID#', bor_name as 'Borrower Name', eq_no as 'Equipment Number', eq_name as 'Equipment Name', DATE_FORMAT(res_date,'%M %d %Y') as 'Reservation Date', TIME_FORMAT(st_time, '%H:%i') as 'Start Time', TIME_FORMAT(ed_time, '%H:%i') as 'End Time', FORMAT(bor_price,2) as 'Price', ret_mark as 'Marked Returned By', DATE_FORMAT(ret_date, '%M %d %Y %H:%i') as 'Return Date' FROM ceutltdscheduler.penalties"
             comm = New MySqlCommand(query, MysqlConn)
             sda.SelectCommand = comm
             sda.Fill(dbdataset)
@@ -2884,8 +2911,8 @@ End Sub
         Try
             MysqlConn.Open()
             Dim query As String
-            'query = "Select rel_reservation_no as 'Reservation Number' , rel_id_passnum as 'Pass Number' , rel_borrower as 'Borrower' , rel_equipment_no as 'Equipment No' , rel_equipment as 'Equipment' , DATE_FORMAT(rel_assign_date,'%M %d %Y') as 'Date',TIME_FORMAT(rel_starttime, '%H:%i') as 'Start Time', TIME_FORMAT(rel_endtime, '%H:%i') as 'End Time' , rel_status as 'Status' , rel_releasedby as 'Released By'  from released_info"
-            query = "SELECT ret_id as 'Return ID',ret_reservation_num as 'Reservation Number', ret_id_passnum as 'Pass #', ret_borrower as 'Borrower', ret_equipment_no as 'Equipment Number', ret_equipment as 'Equipment Name', DATE_FORMAT(ret_assign_date,'%M %d, %Y') as 'Assigned Date', TIME_FORMAT(ret_starttime, '%H:%i') as 'Start Time', TIME_FORMAT(ret_endtime, '%H:%i') as 'End Time', ret_releasedby as 'Released By', ret_returnedto as 'Returned To', ret_remarks as 'Remarks' FROM ceutltdscheduler.returned_info"
+            'query = "Select rel_reservation_no as 'Reservation Number' , rel_id_passnum as 'Pass Number' , rel_borrower as 'Borrower' , rel_equipment_no as 'Equipment Number' , rel_equipment as 'Equipment' , DATE_FORMAT(rel_assign_date,'%M %d %Y') as 'Date',TIME_FORMAT(rel_starttime, '%H:%i') as 'Start Time', TIME_FORMAT(rel_endtime, '%H:%i') as 'End Time' , rel_status as 'Status' , rel_releasedby as 'Released By'  from released_info"
+            query = "SELECT ret_id as 'Return ID',ret_reservation_num as 'Reservation Number', ret_id_passnum as 'Pass ID#', ret_borrower as 'Borrower', ret_equipment_no as 'Equipment Number', ret_equipment as 'Equipment Name', DATE_FORMAT(ret_assign_date,'%M %d, %Y') as 'Assigned Date', TIME_FORMAT(ret_starttime, '%H:%i') as 'Start Time', TIME_FORMAT(ret_endtime, '%H:%i') as 'End Time', ret_releasedby as 'Released By', ret_returnedto as 'Returned To', ret_remarks as 'Remarks' FROM ceutltdscheduler.returned_info"
             comm = New MySqlCommand(query, MysqlConn)
             sda.SelectCommand = comm
             sda.Fill(dbdataset)
@@ -3032,6 +3059,7 @@ End Sub
         Me.Hide()
 
     End Sub
+
 
 
 
