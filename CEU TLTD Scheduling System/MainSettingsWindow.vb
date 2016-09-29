@@ -22,7 +22,9 @@ Public Class MainSettingsWindow
             If c = "."
                 RadMessageBox.Show(Me, "Please fix the formatting of the peso amount.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error, MessageBoxDefaultButton.Button1)
             Else
-
+            
+            Dim confirmChange As DialogResult = RadMessageBox.Show(Me, "Are you sure save the changes? This will change the charges to everyone who starts returning the equipment after clicking ""Yes"".","CEU TLTD Reservation System",MessageBoxButtons.YesNo, RadMessageIcon.Exclamation,MessageBoxDefaultButton.Button2)
+            If confirmChange=DialogResult.Yes
             Dim ts_gp As TimeSpan = TimeSpan.Parse(penalty_gp_day.Value.ToString & "." & penalty_gp_hhmm.Value.ToString("HH:mm"))
             Dim ts_ci As TimeSpan = TimeSpan.Parse(penalty_ci_day.Value.ToString & "." & penalty_ci_hhmm.Value.ToString("HH:mm"))
             Try
@@ -43,6 +45,7 @@ Public Class MainSettingsWindow
                 RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error, MessageBoxDefaultButton.Button1)
             End Try
         End If
+    End If
     End If
     End Sub
 

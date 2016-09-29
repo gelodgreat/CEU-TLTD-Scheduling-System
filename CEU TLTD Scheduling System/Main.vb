@@ -120,8 +120,12 @@ Public Class Main
         startup_disabled_buttons()
         load_released_list()
         load_released_list2()
-        load_penalty_list()
-        load_returned_eq_list()
+        pen_startDate.Value=Date.Now
+        pen_endDate.Value=Date.Now
+        returned_startDate.Value=Date.Now
+        returned_endDate.Value=Date.Now
+        load_penalty_list(pen_startDate.Value,pen_endDate.Value)
+        load_returned_eq_list(returned_startDate.Value,returned_endDate.Value)
         rec_load_choices_eqtype()
         auto_generate_reservationno()
         reserved_load_table()
@@ -249,7 +253,7 @@ Public Class Main
    Private Sub SetSizesofMainTable()
         If lu_ActivityType.Text = "Academic" Then
             Dim colsmain_resno = main_rgv_recordedacademicsonly.Columns("Reservation Number")
-            colsmain_resno.Width = 113
+            colsmain_resno.Width = 119
 
             Dim colsmain_brr = main_rgv_recordedacademicsonly.Columns("Borrower")
             colsmain_brr.Width = 119
@@ -280,7 +284,7 @@ Public Class Main
             colsmain_at.Width = 109
         Else
             Dim colsmain_resno = main_rgv_recordedacademicsonly.Columns("Reservation Number")
-            colsmain_resno.Width = 113
+            colsmain_resno.Width = 119
 
             Dim colsmain_brr = main_rgv_recordedacademicsonly.Columns("Borrower")
             colsmain_brr.Width = 119
@@ -473,7 +477,7 @@ Public Class Main
         ret_eqno.Width=120
 
         Dim ret_eqname = returned_eq_list.Columns("Equipment")
-        ret_eqname.Width=250
+        ret_eqname.Width=245
 
         Dim ret_date = returned_eq_list.Columns("Reservation Date")
         ret_date.Width=105
@@ -491,10 +495,10 @@ Public Class Main
         ret_retto.Width=95
 
         Dim ret_retrem = returned_eq_list.Columns("Remarks")
-        ret_retrem.Width=110
+        ret_retrem.Width=100
 
         Dim ret_pen_retdate = returned_eq_list.Columns("Return Date")
-        ret_pen_retdate.Width=120
+        ret_pen_retdate.Width=130
     End Sub
     'End Formatting of GridViews
 
@@ -2224,19 +2228,26 @@ Public Class Main
         '    MysqlConn.Dispose()
 
         'End Try
-         Dim counter As Integer
-                    Dim rownumber As Integer = eq_rgv_addeq.Rows.Count
-                    counter = 0
-                    Dim errorcount As Boolean = False
-                    If rownumber > 0 Then
-                        While counter <> rownumber
+        Dim elapsedTime As TimeSpan = DateTime.Parse(Format(CDate(rec_dtp_date.Value), "yyyy-MM-dd") & " " & rec_dtp_endtime.Text).Subtract(DateTime.Parse(DateTime.Parse(Format(CDate(rec_dtp_date.Value), "yyyy-MM-dd") & " " & rec_dtp_starttime.Text)))
+        If rec_dtp_starttime.Text="" Or rec_dtp_endtime.Text=""
+            RadMessageBox.Show(Me, "Please set the start time and the end time for checking of the availability of the equipment.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+        Else If elapsedTime.CompareTo(TimeSpan.Zero) <= 0 Then
+            RadMessageBox.Show(Me, "The Starting Time can't be the same or later on the Ending Time.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error, MessageBoxDefaultButton.Button1)
+        Else If eq_rgv_addeq.Rows.Count = 0
+            RadMessageBox.Show(Me, "No equipment to be reserved.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+        Else
+            Dim counter As Integer
+            Dim rownumber As Integer = eq_rgv_addeq.Rows.Count
+            counter = 0
+            Dim errorcount As Boolean = False
+                If rownumber > 0 Then
+                    While counter <> rownumber
 
                             Dim equipmentnorgv As String = eq_rgv_addeq.Rows(counter).Cells(0).Value
                             Dim equipmentrgv As String = eq_rgv_addeq.Rows(counter).Cells(1).Value
                             Dim equipmentsnrgv As String = eq_rgv_addeq.Rows(counter).Cells(2).Value
 
                             Try
-
                                 MysqlConn.Close()
                                 MysqlConn.Open()
                                 'Changed for the cancelled STATE
@@ -2268,7 +2279,7 @@ Public Class Main
                                     equipmentnorgv = READER.GetString("equipmentno")
                                     equipmentrgv = READER.GetString("equipment")
                                     equipmentsnrgv = READER.GetString("equipmentsn")
-                    End While
+                                End While
                                 If count > 0 Then
                                     RadMessageBox.Show(Me, "The equipment " & equipmentrgv & " with serial number of " & equipmentsnrgv & " is already taken", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
                                     errorcount = True
@@ -2282,13 +2293,10 @@ Public Class Main
                                 MysqlConn.Dispose()
                             End Try
                             counter = counter + 1
-
-
                         End While
-                        
                         rowcounter = 0
                     End If
-        
+            End If
     End Sub
 
 
@@ -2795,7 +2803,7 @@ Public Class Main
                 Finally
                     MysqlConn.Dispose()
                     load_released_list2()
-                    load_returned_eq_list()
+                    load_returned_eq_list(returned_startDate.Value,returned_endDate.Value)
                     ret_tb_reservationnum.Hide()
                     ret_tb_id.Hide()
                     ret_tb_borrower.Hide()
@@ -2849,7 +2857,7 @@ Public Class Main
                     Finally
                         MysqlConn.Dispose()
                         load_released_list2()
-                        load_returned_eq_list()
+                        load_returned_eq_list(returned_startDate.Value,returned_endDate.Value)
                         ret_tb_reservationnum.Hide()
                         ret_tb_id.Hide()
                         ret_tb_borrower.Hide()
@@ -2890,9 +2898,9 @@ Public Class Main
                             RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error, MessageBoxDefaultButton.Button1)
                         Finally
                             MysqlConn.Dispose()
-                            load_penalty_list()
+                            load_penalty_list(pen_startDate.Value,pen_endDate.Value)
                             load_released_list2()
-                            load_returned_eq_list()
+                            load_returned_eq_list(returned_startDate.Value,returned_endDate.Value)
                             ret_tb_reservationnum.Hide()
                             ret_tb_id.Hide()
                             ret_tb_borrower.Hide()
@@ -2932,9 +2940,9 @@ Public Class Main
                             RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error, MessageBoxDefaultButton.Button1)
                         Finally
                             MysqlConn.Dispose()
-                            load_penalty_list()
+                            load_penalty_list(pen_startDate.Value,pen_endDate.Value)
 							load_released_list2()
-                            load_returned_eq_list()
+                            load_returned_eq_list(returned_startDate.Value,returned_endDate.Value)
                             ret_tb_reservationnum.Hide()
                             ret_tb_id.Hide()
                             ret_tb_borrower.Hide()
@@ -2956,13 +2964,15 @@ Public Class Main
     End Sub
 
      'Penalty GRIDVIEW Controls
-    Public Sub load_penalty_list()
+    Public Sub load_penalty_list(Now1 As Date, Now2 As Date)
+        If Not penalty_grid_list.Columns.Count = 0 Then
+            penalty_grid_list.Columns.Clear()
+        End If
         MysqlConn = New MySqlConnection
         MysqlConn.ConnectionString = connstring
 
         Dim sda As New MySqlDataAdapter
         Dim dbdataset As New DataTable
-        
 
         If MysqlConn.State = ConnectionState.Open Then
             MysqlConn.Close()
@@ -2972,7 +2982,8 @@ Public Class Main
             MysqlConn.Open()
             Dim query As String
             'query = "Select rel_reservation_no as 'Reservation Number' , rel_id_passnum as 'Pass Number' , rel_borrower as 'Borrower' , rel_equipment_no as 'Equipment Number' , rel_equipment as 'Equipment' , DATE_FORMAT(rel_assign_date,'%M %d %Y') as 'Date',TIME_FORMAT(rel_starttime, '%H:%i') as 'Start Time', TIME_FORMAT(rel_endtime, '%H:%i') as 'End Time' , rel_status as 'Status' , rel_releasedby as 'Released By'  from released_info"
-            query = "SELECT pen_id as 'Penalty ID',res_num as 'Reservation Number',bor_id as 'Pass ID#', bor_name as 'Borrower', eq_no as 'Equipment Number', eq_name as 'Equipment', DATE_FORMAT(res_date,'%M %d %Y') as 'Reservation Date', TIME_FORMAT(st_time, '%H:%i') as 'Start Time', TIME_FORMAT(ed_time, '%H:%i') as 'End Time', FORMAT(bor_price,2) as 'Price', ret_mark as 'Marked Returned By', DATE_FORMAT(ret_date, '%M %d %Y %H:%i') as 'Return Date' FROM ceutltdscheduler.penalties"
+            'query = "SELECT pen_id as 'Penalty ID',res_num as 'Reservation Number',bor_id as 'Pass ID#', bor_name as 'Borrower', eq_no as 'Equipment Number', eq_name as 'Equipment', DATE_FORMAT(res_date,'%M %d %Y') as 'Reservation Date', TIME_FORMAT(st_time, '%H:%i') as 'Start Time', TIME_FORMAT(ed_time, '%H:%i') as 'End Time', FORMAT(bor_price,2) as 'Price', ret_mark as 'Marked Returned By', DATE_FORMAT(ret_date, '%M %d %Y %H:%i') as 'Return Date' FROM ceutltdscheduler.penalties"
+             query = "SELECT pen_id as 'Penalty ID',res_num as 'Reservation Number',bor_id as 'Pass ID#', bor_name as 'Borrower', eq_no as 'Equipment Number', eq_name as 'Equipment', DATE_FORMAT(res_date,'%M %d %Y') as 'Reservation Date', TIME_FORMAT(st_time, '%H:%i') as 'Start Time', TIME_FORMAT(ed_time, '%H:%i') as 'End Time', FORMAT(bor_price,2) as 'Price', ret_mark as 'Marked Returned By', DATE_FORMAT(ret_date, '%M %d %Y %H:%i') as 'Return Date' FROM ceutltdscheduler.penalties WHERE (ret_date BETWEEN '"& Format(CDate(Now1), "yyyy-MM-dd") &"' AND '" & Format(CDate(Now2), "yyyy-MM-dd")& " 23:59')"
             comm = New MySqlCommand(query, MysqlConn)
             sda.SelectCommand = comm
             sda.Fill(dbdataset)
@@ -2989,6 +3000,8 @@ Public Class Main
             MysqlConn.Dispose()
         End Try
     End Sub
+
+
     Private Sub penalty_grid_list_CellDoubleClick(sender As Object, e As GridViewCellEventArgs) Handles penalty_grid_list.CellDoubleClick
         If e.RowIndex>=0 Then
         penaltiesDeleteYN = RadMessageBox.Show(Me, "Are you sure you want to delete the selected data?", "CEU TLTD Reservation System", MessageBoxButtons.YesNo, RadMessageIcon.Question)
@@ -3007,11 +3020,22 @@ Public Class Main
                 RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
             Finally
                 MysqlConn.Dispose()
-                load_penalty_list()
+                load_penalty_list(pen_startDate.Value,pen_endDate.Value)
             End Try
         End If
        End If
     End Sub
+
+    Private Sub pen_btn_chg_filter_Click(sender As Object, e As EventArgs) Handles pen_btn_chg_filter.Click
+        Dim elapsedTime As TimeSpan = DateTime.Parse(Format(CDate(pen_endDate.Value), "yyyy-MM-dd")).Subtract(DateTime.Parse(Format(CDate(pen_startDate.Value), "yyyy-MM-dd")))
+        If elapsedTime.CompareTo(TimeSpan.Zero) < 0 Then
+            RadMessageBox.Show(Me, """From"" date can't be higher than ""To"" Date","CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+        Else
+        load_penalty_list(pen_startDate.Value,pen_endDate.Value)
+        End If
+    End Sub
+
+
     Private Sub penalty_grid_list_sort(sender as object, e as GridViewCollectionChangedEventArgs)  Handles penalty_grid_list.SortChanged
         Dim sorts As RadSortExpressionCollection = penalty_grid_list.MasterTemplate.SortDescriptors
         If sorts.Count = 0
@@ -3067,7 +3091,7 @@ End Sub
                 RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
             Finally
                 MysqlConn.Dispose()
-                load_penalty_list()
+                load_penalty_list(pen_startDate.Value,pen_endDate.Value)
             End Try
         End If
     End Sub
@@ -3106,7 +3130,7 @@ End Sub
                 RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
             Finally
                 MysqlConn.Dispose()
-                load_penalty_list()
+                load_penalty_list(pen_startDate.Value,pen_endDate.Value)
             End Try
 
         End If
@@ -3115,7 +3139,10 @@ End Sub
 
  
     'Returned Equipment GRIDVIEW Controls
-    Public Sub load_returned_eq_list()
+    Public Sub load_returned_eq_list(Now1 As Date, Now2 As Date)
+        If Not returned_eq_list.Columns.Count = 0 Then
+            returned_eq_list.Columns.Clear()
+        End If
         MysqlConn = New MySqlConnection
         MysqlConn.ConnectionString = connstring
 
@@ -3131,7 +3158,7 @@ End Sub
             MysqlConn.Open()
             Dim query As String
             'query = "Select rel_reservation_no as 'Reservation Number' , rel_id_passnum as 'Pass Number' , rel_borrower as 'Borrower' , rel_equipment_no as 'Equipment Number' , rel_equipment as 'Equipment' , DATE_FORMAT(rel_assign_date,'%M %d %Y') as 'Date',TIME_FORMAT(rel_starttime, '%H:%i') as 'Start Time', TIME_FORMAT(rel_endtime, '%H:%i') as 'End Time' , rel_status as 'Status' , rel_releasedby as 'Released By'  from released_info"
-            query = "SELECT ret_id as 'Return ID',ret_reservation_num as 'Reservation Number', ret_id_passnum as 'Pass ID#', ret_borrower as 'Borrower', ret_equipment_no as 'Equipment Number', ret_equipment as 'Equipment', DATE_FORMAT(ret_assign_date,'%M %d, %Y') as 'Reservation Date', TIME_FORMAT(ret_starttime, '%H:%i') as 'Start Time', TIME_FORMAT(ret_endtime, '%H:%i') as 'End Time', ret_releasedby as 'Released By', ret_returnedto as 'Returned To', ret_remarks as 'Remarks',DATE_FORMAT(ret_date, '%M %d %Y %H:%i') as 'Return Date' FROM ceutltdscheduler.returned_info"
+            query = "SELECT ret_id as 'Return ID',ret_reservation_num as 'Reservation Number', ret_id_passnum as 'Pass ID#', ret_borrower as 'Borrower', ret_equipment_no as 'Equipment Number', ret_equipment as 'Equipment', DATE_FORMAT(ret_assign_date,'%M %d, %Y') as 'Reservation Date', TIME_FORMAT(ret_starttime, '%H:%i') as 'Start Time', TIME_FORMAT(ret_endtime, '%H:%i') as 'End Time', ret_releasedby as 'Released By', ret_returnedto as 'Returned To', ret_remarks as 'Remarks',DATE_FORMAT(ret_date, '%M %d %Y %H:%i') as 'Return Date' FROM ceutltdscheduler.returned_info WHERE (ret_date BETWEEN '"& Format(CDate(Now1), "yyyy-MM-dd") &"' AND '" & Format(CDate(Now2), "yyyy-MM-dd") & " 23:59')"
             comm = New MySqlCommand(query, MysqlConn)
             sda.SelectCommand = comm
             sda.Fill(dbdataset)
@@ -3147,6 +3174,15 @@ End Sub
         Finally
             MysqlConn.Dispose()
         End Try
+    End Sub
+
+    Private Sub ret_btn_chg_filter_Click(sender As Object, e As EventArgs) Handles ret_btn_chg_filter.Click
+        Dim elapsedTime As TimeSpan = DateTime.Parse(Format(CDate(returned_endDate.Value), "yyyy-MM-dd")).Subtract(DateTime.Parse(Format(CDate(returned_startDate.Value), "yyyy-MM-dd")))
+        If elapsedTime.CompareTo(TimeSpan.Zero) < 0 Then
+            RadMessageBox.Show(Me, """From"" date can't be higher than ""To"" Date","CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+        Else
+        load_returned_eq_list(returned_startDate.Value,returned_endDate.Value)
+        End If
     End Sub
     Private Sub returned_eq_list_CellDoubleClick(sender As Object, e As GridViewCellEventArgs) Handles returned_eq_list.CellDoubleClick
         If e.RowIndex>=0 Then
@@ -3166,7 +3202,7 @@ End Sub
                 RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
             Finally
                 MysqlConn.Dispose()
-                load_returned_eq_list()
+                load_returned_eq_list(returned_startDate.Value,returned_endDate.Value)
             End Try
         End If
        End If
@@ -3226,7 +3262,7 @@ End Sub
                 RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
             Finally
                 MysqlConn.Dispose()
-                load_returned_eq_list()
+                load_returned_eq_list(returned_startDate.Value,returned_endDate.Value)
             End Try
         End If
     End Sub
@@ -3265,7 +3301,7 @@ End Sub
                 RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
             Finally
                 MysqlConn.Dispose()
-                load_returned_eq_list()
+                load_returned_eq_list(returned_startDate.Value,returned_endDate.Value)
             End Try
         End If
       End If
@@ -3297,6 +3333,11 @@ End Sub
          res_rdio_cancelled.ToggleState=Enumerations.ToggleState.Indeterminate
         load_rec_table("Radio_Reserved",False)
     End Sub
+
+
+
+
+
 
 
 
