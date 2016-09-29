@@ -524,19 +524,36 @@ Public Class Main
             End try
     End Sub
 
-    Public Sub load_rec_table(show_all_no_filter As Boolean)
+    Public Sub load_rec_table(show_all_no_filter As String, UPDATE As Boolean)
+        If res_rdio_reserved.ToggleState=Enumerations.ToggleState.Off And res_rdio_cancelled.ToggleState=Enumerations.ToggleState.Off And res_rdio_showall.ToggleState=Enumerations.ToggleState.Off
+            res_rdio_reserved.ToggleState=Enumerations.ToggleState.On
+        End If
+
         MysqlConn = New MySqlConnection
         MysqlConn.ConnectionString = connstring
         Dim sda As New MySqlDataAdapter
         Dim bsource As New BindingSource
         Dim dbdataset As New DataTable
+        If UPDATE  And show_all_no_filter="NONE" Then
+            If res_rdio_cancelled.ToggleState=Enumerations.ToggleState.On
+                show_all_no_filter = "Radio_Cancelled"
+            Else If res_rdio_reserved.ToggleState=Enumerations.ToggleState.On
+                show_all_no_filter = "Radio_Reserved"
+            Else If res_rdio_showall.ToggleState=Enumerations.ToggleState.On
+                show_all_no_filter = "Radio_ShowAll"
+            End If
+        End If
 
         Try
             MysqlConn.Open()
-            If show_all_no_filter = False Then
-                query = "Select reservationno as 'Reservation Number' ,borrower as 'Borrower',id as 'ID', equipmentno as 'Equipment Number', equipment as 'Equipment', location as 'Location', DATE_FORMAT(date,'%M %d %Y') as 'Date',TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time',activitytype as 'Activity Type',actname as 'Activity',res_status as 'Status' from reservation natural join reservation_equipments  where res_status='Reserved' and date ='" & Format(CDate(rec_dtp_date.Value), "yyyy-MM-dd") & "' ORDER by date DESC"
-            Else
-                query = "Select reservationno as 'Reservation Number' ,borrower as 'Borrower',id as 'ID', equipmentno as 'Equipment Number', equipment as 'Equipment', location as 'Location', DATE_FORMAT(date,'%M %d %Y') as 'Date',TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time',activitytype as 'Activity Type',actname as 'Activity',res_status as 'Status' from reservation natural join reservation_equipments ORDER by date DESC"
+            'If show_all_no_filter = "DatePicker" Then
+             '   query = "Select reservationno as 'Reservation Number' ,borrower as 'Borrower',id as 'ID', equipmentno as 'Equipment Number', equipment as 'Equipment', location as 'Location', DATE_FORMAT(date,'%M %d %Y') as 'Date',TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time',activitytype as 'Activity Type',actname as 'Activity',res_status as 'Status' from reservation natural join reservation_equipments where res_status='Reserved' and date ='" & Format(CDate(rec_dtp_date.Value), "yyyy-MM-dd") & "' ORDER by date DESC"
+            If show_all_no_filter ="Radio_Cancelled"
+                query = "Select reservationno as 'Reservation Number' ,borrower as 'Borrower',id as 'ID', equipmentno as 'Equipment Number', equipment as 'Equipment', location as 'Location', DATE_FORMAT(date,'%M %d %Y') as 'Date',TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time',activitytype as 'Activity Type',actname as 'Activity',res_status as 'Status' from reservation natural join reservation_equipments where res_status='Cancelled' and date ='" & Format(CDate(rec_dtp_date.Value), "yyyy-MM-dd") & "' ORDER by date DESC"
+            Else If show_all_no_filter = "Radio_Reserved"
+                query = "Select reservationno as 'Reservation Number' ,borrower as 'Borrower',id as 'ID', equipmentno as 'Equipment Number', equipment as 'Equipment', location as 'Location', DATE_FORMAT(date,'%M %d %Y') as 'Date',TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time',activitytype as 'Activity Type',actname as 'Activity',res_status as 'Status' from reservation natural join reservation_equipments where res_status='Reserved' and date ='" & Format(CDate(rec_dtp_date.Value), "yyyy-MM-dd") & "' ORDER by date DESC"
+            Else If show_all_no_filter = "Radio_ShowAll"
+                query = "Select reservationno as 'Reservation Number' ,borrower as 'Borrower',id as 'ID', equipmentno as 'Equipment Number', equipment as 'Equipment', location as 'Location', DATE_FORMAT(date,'%M %d %Y') as 'Date',TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time',activitytype as 'Activity Type',actname as 'Activity',res_status as 'Status' from reservation natural join reservation_equipments WHERE date ='" & Format(CDate(rec_dtp_date.Value), "yyyy-MM-dd") & "' ORDER by date DESC"
             End If
             reservation_rgv_recordeddata.Columns.Clear()
             comm = New MySqlCommand(query, MysqlConn)
@@ -1208,7 +1225,7 @@ Public Class Main
                 load_released_list()
                 load_released_list2()
                 reserved_load_table()
-                load_rec_table(False)
+                load_rec_table("NONE",True)
                 color_coding()
             End Try
         End If
@@ -1859,8 +1876,9 @@ Public Class Main
 
 
     Private Sub eq_filter_eqno_TextChanged(sender As Object, e As EventArgs) Handles eq_filter_eqno.TextChanged
-        If eq_filter_eqno.Text="" Then
-            'DO NOTHING
+        If eq_filter_eqno.Text=String.Empty And eq_filter_eqtype.Text=String.Empty Then
+            eq_rgv_showregequipment.Columns.Clear()
+            eq_rgv_showregequipment.TableElement.Text = "To Display Data, please choose an equipment or type an equipment number on the left pane."
         Else
         eqno_filter_delay.Interval = 700
         eqno_filter_delay.Stop()
@@ -1870,8 +1888,9 @@ Public Class Main
 
     'Equipment Management Codes Umali E8 = SEARCH BY EQ_TYPE
     Private Sub eq_filter_eqtype_TextChanged(sender As Object, e As EventArgs) Handles eq_filter_eqtype.TextChanged
-        If eq_filter_eqtype.Text=""
-            'DO NOTHING
+          If eq_filter_eqno.Text=String.Empty And eq_filter_eqtype.Text=String.Empty Then
+            eq_rgv_showregequipment.Columns.Clear()
+            eq_rgv_showregequipment.TableElement.Text = "To Display Data, please choose an equipment or type an equipment number on the left pane."
         Else
             eqtype_filter_delay.Interval = 700
             eqtype_filter_delay.Stop()
@@ -2168,43 +2187,108 @@ Public Class Main
 
     'Reservation Management Code Umali R5 = Checking the availabity of the equipment
     Private Sub rec_btn_check_availability_Click(sender As Object, e As EventArgs) Handles rec_btn_check_availability.Click
-        If MysqlConn.State = ConnectionState.Open Then
-            MysqlConn.Close()
-        End If
-        MysqlConn.ConnectionString = connstring
-        rowcounter = 0
+        'If MysqlConn.State = ConnectionState.Open Then
+        '    MysqlConn.Close()
+        'End If
+        'MysqlConn.ConnectionString = connstring
+        'rowcounter = 0
 
-        Try
-            MysqlConn.Open()
-            query = "SELECT equipmentno,equipment,equipmentsn from reservation where equipmentno=@rows_eqno and equipment=@rows_eq and equipmentsn=@rows_eqsn"
-            comm = New MySqlCommand(query, MysqlConn)
-            comm.Parameters.AddWithValue("rows_eqno", eq_rgv_addeq.Rows(eq_rgv_addeq.SelectedRows(0).Index).Cells(0).Value.ToString())
-            comm.Parameters.AddWithValue("rows_eq", eq_rgv_addeq.Rows(eq_rgv_addeq.SelectedRows(0).Index).Cells(1).Value.ToString())
-            comm.Parameters.AddWithValue("rows_eqsn", eq_rgv_addeq.Rows(eq_rgv_addeq.SelectedRows(0).Index).Cells(2).Value.ToString())
-
-
-            reader = comm.ExecuteReader
-
-            Dim count As Integer
-            count = 0
+        'Try
+        '    MysqlConn.Open()
+        '    query = "SELECT equipmentno,equipment,equipmentsn from reservation where equipmentno=@rows_eqno and equipment=@rows_eq and equipmentsn=@rows_eqsn"
+        '    comm = New MySqlCommand(query, MysqlConn)
+        '    comm.Parameters.AddWithValue("rows_eqno", eq_rgv_addeq.Rows(eq_rgv_addeq.SelectedRows(0).Index).Cells(0).Value.ToString())
+        '    comm.Parameters.AddWithValue("rows_eq", eq_rgv_addeq.Rows(eq_rgv_addeq.SelectedRows(0).Index).Cells(1).Value.ToString())
+        '    comm.Parameters.AddWithValue("rows_eqsn", eq_rgv_addeq.Rows(eq_rgv_addeq.SelectedRows(0).Index).Cells(2).Value.ToString())
 
 
-            While reader.Read
-                count += 1
-            End While
+        '    reader = comm.ExecuteReader
 
-            If count = 1 Then
-                RadMessageBox.Show(Me, "Item Not Available", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
-            Else
-                RadMessageBox.Show(Me, "Item Available", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Info)
-            End If
-            MysqlConn.Close()
-        Catch ex As ArgumentOutOfRangeException
-            RadMessageBox.Show(Me, "No equipments to check.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
-        Finally
-            MysqlConn.Dispose()
+        '    Dim count As Integer
+        '    count = 0
 
-        End Try
+
+        '    While reader.Read
+        '        count += 1
+        '    End While
+
+        '    If count = 1 Then
+        '        RadMessageBox.Show(Me, "Item Not Available", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+        '    Else
+        '        RadMessageBox.Show(Me, "Item Available", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Info)
+        '    End If
+        '    MysqlConn.Close()
+        'Catch ex As ArgumentOutOfRangeException
+        '    RadMessageBox.Show(Me, "No equipments to check.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+        'Finally
+        '    MysqlConn.Dispose()
+
+        'End Try
+         Dim counter As Integer
+                    Dim rownumber As Integer = eq_rgv_addeq.Rows.Count
+                    counter = 0
+                    Dim errorcount As Boolean = False
+                    If rownumber > 0 Then
+                        While counter <> rownumber
+
+                            Dim equipmentnorgv As String = eq_rgv_addeq.Rows(counter).Cells(0).Value
+                            Dim equipmentrgv As String = eq_rgv_addeq.Rows(counter).Cells(1).Value
+                            Dim equipmentsnrgv As String = eq_rgv_addeq.Rows(counter).Cells(2).Value
+
+                            Try
+
+                                MysqlConn.Close()
+                                MysqlConn.Open()
+                                'Changed for the cancelled STATE
+                                query = "SELECT * FROM ceutltdscheduler.reservation natural join ceutltdscheduler.reservation_equipments WHERE equipment=@RE_equipment AND equipmentsn=@RE_equipmentsn AND equipmentno=@RE_equipmentno AND (('" & Format(CDate(rec_dtp_date.Value), "yyyy-MM-dd") & " " & Format(CDate(rec_dtp_starttime.Text), "HH:mm:01") & "' BETWEEN CONCAT(date,' ',starttime) AND CONCAT(date,' ',endtime)) OR ('" & Format(CDate(rec_dtp_date.Value), "yyyy-MM-dd") & " " & Format(CDate(rec_dtp_endtime.Text), "HH:mm:01") & "' BETWEEN CONCAT(date,' ',starttime) AND CONCAT (date,' ',endtime))) AND (res_status='Reserved' OR res_status='Released')"
+
+                                'Modified with params and nonparams
+                                'query = "SELECT * FROM ceutltdscheduler.reservation WHERE equipment=@RE_equipment AND equipmentsn=@RE_equipmentsn AND equipmentno=@RE_equipmentno AND (('" & Format(CDate(rec_dtp_date.Value), "yyyy-MM-dd") & " " & Format(CDate(rec_dtp_starttime.Text), "HH:mm:01") & "' BETWEEN CONCAT(date,' ',starttime) AND CONCAT(date,' ',endtime)) OR ('" & Format(CDate(rec_dtp_date.Value), "yyyy-MM-dd") & " " & Format(CDate(rec_dtp_endtime.Text), "HH:mm:01") & "' BETWEEN CONCAT(date,' ',starttime) AND CONCAT (date,' ',endtime))) "
+
+
+                                'Modified with Complete Params
+                                'query = "SELECT * FROM reservation WHERE (equipment=@RE_equipment OR equipmentsn=@RE_equipmentsn OR equipmentno=@RE_equipmentno) AND (('@RE_date @RE_starttime' BETWEEN CONCAT(date,'',starttime) AND CONCAT(date,'',endtime)) OR ('@RE_date @RE_endtime' BETWEEN CONCAT(date,' ',starttime) AND CONCAT (date,' ',endtime))) "
+
+                                'Original
+                                'query = "Select * from reservation where reservationno=@RE_reservationno And equipment=@RE_equipment And equipmentsn=@RE_equipmentsn And equipmentno=@RE_equipmentno And Date=@RE_date And starttime=@RE_starttime And endtime=@RE_endtime"
+                                comm = New MySqlCommand(query, MysqlConn)
+                                comm.Parameters.AddWithValue("RE_reservationno", rec_cb_reserveno.Text)
+                                comm.Parameters.AddWithValue("RE_equipment", equipmentrgv)
+                                comm.Parameters.AddWithValue("RE_equipmentsn", equipmentsnrgv)
+                                comm.Parameters.AddWithValue("RE_equipmentno", equipmentnorgv)
+                                comm.Parameters.AddWithValue("RE_date", Format(CDate(rec_dtp_date.Value), "yyyy-MM-dd"))
+                                comm.Parameters.AddWithValue("RE_starttime", Format(CDate(rec_dtp_starttime.Text), "HH:mm"))
+                                comm.Parameters.AddWithValue("RE_endtime", Format(CDate(rec_dtp_endtime.Text), "HH:mm"))
+
+                                READER = comm.ExecuteReader
+                                Dim count As Integer
+                                count = 0
+                                While READER.Read
+                                    count = count + 1
+                                    equipmentnorgv = READER.GetString("equipmentno")
+                                    equipmentrgv = READER.GetString("equipment")
+                                    equipmentsnrgv = READER.GetString("equipmentsn")
+                    End While
+                                If count > 0 Then
+                                    RadMessageBox.Show(Me, "The equipment " & equipmentrgv & " with serial number of " & equipmentsnrgv & " is already taken", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                                    errorcount = True
+                                    Exit While
+                                Else
+                                    RadMessageBox.Show(Me, "All the selected equipments available.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Info)
+                                End If
+                            Catch ex As Exception
+                                RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                            Finally
+                                MysqlConn.Dispose()
+                            End Try
+                            counter = counter + 1
+
+
+                        End While
+                        
+                        rowcounter = 0
+                    End If
+        
     End Sub
 
 
@@ -2268,8 +2352,8 @@ Public Class Main
                                 MysqlConn.Close()
                                 MysqlConn.Open()
 
-                                'Modified with params and nonparams
-                                query = "SELECT * FROM ceutltdscheduler.reservation WHERE equipment=@RE_equipment AND equipmentsn=@RE_equipmentsn AND equipmentno=@RE_equipmentno AND (('" & Format(CDate(rec_dtp_date.Value), "yyyy-MM-dd") & " " & Format(CDate(rec_dtp_starttime.Text), "HH:mm:01") & "' BETWEEN CONCAT(date,' ',starttime) AND CONCAT(date,' ',endtime)) OR ('" & Format(CDate(rec_dtp_date.Value), "yyyy-MM-dd") & " " & Format(CDate(rec_dtp_endtime.Text), "HH:mm:01") & "' BETWEEN CONCAT(date,' ',starttime) AND CONCAT (date,' ',endtime))) "
+                                'Changed for the cancelled STATE
+                                query = "SELECT * FROM ceutltdscheduler.reservation natural join ceutltdscheduler.reservation_equipments WHERE equipment=@RE_equipment AND equipmentsn=@RE_equipmentsn AND equipmentno=@RE_equipmentno AND (('" & Format(CDate(rec_dtp_date.Value), "yyyy-MM-dd") & " " & Format(CDate(rec_dtp_starttime.Text), "HH:mm:01") & "' BETWEEN CONCAT(date,' ',starttime) AND CONCAT(date,' ',endtime)) OR ('" & Format(CDate(rec_dtp_date.Value), "yyyy-MM-dd") & " " & Format(CDate(rec_dtp_endtime.Text), "HH:mm:01") & "' BETWEEN CONCAT(date,' ',starttime) AND CONCAT (date,' ',endtime))) AND (res_status='Reserved' OR res_status='Released')"
 
 
                                 'Modified with Complete Params
@@ -2355,20 +2439,20 @@ Public Class Main
             End If
             main_load_academicsonly()
             'main_load_schoolonly()
-            load_rec_table(False)
+            load_rec_table("NONE",True)
             reserved_load_table()
         End If
       End If
     End Sub
 
     'Showing All Data to Reservation Grid View
-    Private Sub rec_btn_showalldata_Click(sender As Object, e As EventArgs) Handles rec_btn_showalldata.Click
-        load_rec_table(True)
+    Private Sub rec_btn_showalldata_Click(sender As Object, e As EventArgs) 
+        load_rec_table("Radio_ShowAll",False)
     End Sub
 
     'SHowing all available equipments to Reservation Grid View
     'Currently Pending because of importance
-    Private Sub rec_btn_showavailequip_Click(sender As Object, e As EventArgs) Handles rec_btn_showavailequip.Click
+    Private Sub rec_btn_showavailequip_Click(sender As Object, e As EventArgs) 
         'MysqlConn = New MySqlConnection
         'MysqlConn.ConnectionString = connstring
 
@@ -2444,7 +2528,7 @@ Public Class Main
                 MysqlConn.Dispose()
             End Try
         End If
-        load_rec_table(False)
+        load_rec_table("NONE",True)
         main_load_academicsonly()
         'main_load_schoolonly()
     End Sub
@@ -2496,7 +2580,10 @@ Public Class Main
 
     'Loading of data in Reservation Page Grid
     Private Sub rec_dtp_date_ValueChanged(sender As Object, e As EventArgs) Handles rec_dtp_date.ValueChanged
-        load_rec_table(False)
+        load_rec_table("NONE",True)
+        'res_rdio_showall.ToggleState=Enumerations.ToggleState.Off
+        'res_rdio_cancelled.ToggleState=Enumerations.ToggleState.Off
+        'res_rdio_reserved.ToggleState=Enumerations.ToggleState.Off
     End Sub
 
     'Loading of data in Main Page Grid
@@ -2512,7 +2599,49 @@ Public Class Main
     End Sub
 
     'Double Click function in Reservation Tab Page
-    Private Sub reservation_rgv_recordeddata_CellDoubleClick(sender As Object, e As GridViewCellEventArgs) Handles reservation_rgv_recordeddata.CellDoubleClick
+    'Private Sub reservation_rgv_recordeddata_CellDoubleClick(sender As Object, e As GridViewCellEventArgs) Handles reservation_rgv_recordeddata.CellDoubleClick
+    '    If e.RowIndex >= 0 Then
+    '        Dim row As Telerik.WinControls.UI.GridViewRowInfo
+
+    '        row = Me.reservation_rgv_recordeddata.Rows(e.RowIndex)
+
+    '        rec_cb_reserveno.Text = row.Cells("Reservation Number").Value.ToString
+    '        rec_cb_idnum.Text = row.Cells("ID").Value.ToString
+    '        rec_cb_borrower.Text = row.Cells("Borrower").Value.ToString
+    '    End If
+
+    '    If MysqlConn.State = ConnectionState.Open Then
+    '        MysqlConn.Close()
+    '    End If
+    '    If e.RowIndex = -1
+
+    '    Else
+    '    deleteYN = RadMessageBox.Show(Me, "Are you sure you want to delete?", "CEU TLTD Reservation System", MessageBoxButtons.YesNo, RadMessageIcon.Question)
+    '    If deleteYN = MsgBoxResult.Yes Then
+    '        Try
+    '            MysqlConn.Open()
+    '            query = "DELETE FROM ceutltdscheduler.reservation WHERE (reservationno=@R_rec_cb_reserveno) AND (id=@R_rec_cb_idnum) AND (borrower=@R_rec_cb_borrower)"
+    '            comm = New MySqlCommand(query, MysqlConn)
+    '            comm.Parameters.AddWithValue("R_rec_cb_reserveno", rec_cb_reserveno.Text)
+    '            comm.Parameters.AddWithValue("R_rec_cb_idnum", rec_cb_idnum.Text)
+    '            comm.Parameters.AddWithValue("R_rec_cb_borrower", rec_cb_borrower.Text)
+    '            reader = comm.ExecuteReader
+
+
+    '            RadMessageBox.Show(Me, "Successfully Deleted!", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Info)
+    '            MysqlConn.Close()
+    '        Catch ex As Exception
+    '            RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+    '        Finally
+    '            MysqlConn.Dispose()
+    '            load_rec_table("DatePicker")
+    '        End Try
+    '    End If
+    '        End If
+    '    main_load_academicsonly()
+    '    'main_load_schoolonly()
+    'End Sub
+        Private Sub reservation_rgv_recordeddata_CellDoubleClick(sender As Object, e As GridViewCellEventArgs) Handles reservation_rgv_recordeddata.CellDoubleClick
         If e.RowIndex >= 0 Then
             Dim row As Telerik.WinControls.UI.GridViewRowInfo
 
@@ -2529,32 +2658,31 @@ Public Class Main
         If e.RowIndex = -1
 
         Else
-        deleteYN = RadMessageBox.Show(Me, "Are you sure you want to delete?", "CEU TLTD Reservation System", MessageBoxButtons.YesNo, RadMessageIcon.Question)
+        deleteYN = RadMessageBox.Show(Me, "Are you sure you want to cancel the reservation?", "CEU TLTD Reservation System", MessageBoxButtons.YesNo, RadMessageIcon.Question)
         If deleteYN = MsgBoxResult.Yes Then
             Try
                 MysqlConn.Open()
-                query = "DELETE FROM ceutltdscheduler.reservation WHERE (reservationno=@R_rec_cb_reserveno) AND (id=@R_rec_cb_idnum) AND (borrower=@R_rec_cb_borrower)"
+                query = "UPDATE ceutltdscheduler.reservation_equipments SET res_status='Cancelled' WHERE (reservationno=@R_rec_cb_reserveno)"
                 comm = New MySqlCommand(query, MysqlConn)
                 comm.Parameters.AddWithValue("R_rec_cb_reserveno", rec_cb_reserveno.Text)
-                comm.Parameters.AddWithValue("R_rec_cb_idnum", rec_cb_idnum.Text)
-                comm.Parameters.AddWithValue("R_rec_cb_borrower", rec_cb_borrower.Text)
+                'comm.Parameters.AddWithValue("R_rec_cb_idnum", rec_cb_idnum.Text)
+                'comm.Parameters.AddWithValue("R_rec_cb_borrower", rec_cb_borrower.Text)
                 reader = comm.ExecuteReader
 
 
-                RadMessageBox.Show(Me, "Successfully Deleted!", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Info)
+                RadMessageBox.Show(Me, "Successfully Cancelled!", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Info)
                 MysqlConn.Close()
             Catch ex As Exception
                 RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
             Finally
                 MysqlConn.Dispose()
-                load_rec_table(False)
+                load_rec_table("NONE",True)
             End Try
         End If
             End If
         main_load_academicsonly()
         'main_load_schoolonly()
     End Sub
-
 
     'Auto Generating of Reservation Number
     Private Sub btn_resetreservationno_Click(sender As Object, e As EventArgs) Handles btn_resetreservationno.Click
@@ -3150,6 +3278,24 @@ End Sub
         InstructionalMaterials.Show()
         Me.Hide()
 
+    End Sub
+
+    Private Sub res_rdio_showall_ToggleStateChanged(sender As Object, args As StateChangedEventArgs) Handles res_rdio_showall.ToggleStateChanged
+        res_rdio_cancelled.ToggleState=Enumerations.ToggleState.Indeterminate
+        res_rdio_reserved.ToggleState=Enumerations.ToggleState.Indeterminate
+        load_rec_table("Radio_ShowAll",False)
+    End Sub
+
+    Private Sub res_rdio_cancelled_ToggleStateChanged(sender As Object, args As StateChangedEventArgs) Handles res_rdio_cancelled.ToggleStateChanged
+        res_rdio_showall.ToggleState=Enumerations.ToggleState.Indeterminate
+        res_rdio_reserved.ToggleState=Enumerations.ToggleState.Indeterminate
+        load_rec_table("Radio_Cancelled",False)
+    End Sub
+
+    Private Sub res_rdio_reserved_ToggleStateChanged(sender As Object, args As StateChangedEventArgs) Handles res_rdio_reserved.ToggleStateChanged
+         res_rdio_showall.ToggleState=Enumerations.ToggleState.Indeterminate
+         res_rdio_cancelled.ToggleState=Enumerations.ToggleState.Indeterminate
+        load_rec_table("Radio_Reserved",False)
     End Sub
 
 
