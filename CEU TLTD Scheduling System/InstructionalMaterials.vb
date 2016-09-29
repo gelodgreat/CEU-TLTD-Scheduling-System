@@ -37,7 +37,7 @@ Public Class InstructionalMaterials
         hide_buttons_subtopics()
         imm_nv_dtp_acquisitiondate.Value = Date.Now
         nst_gb_st.Hide()
-
+        imr_dtp_date.Value = Date.Now
         'IMR CODES
         auto_generate_imr_reservationno()
         load_grid_imr_reservation_grid()
@@ -397,7 +397,7 @@ Public Class InstructionalMaterials
             MysqlConn.Close()
         End If
 
-        updateYN = RadMessageBox.Show(Me, "Are you sure you want to update this movie?", "CEU TLTD Reservation System" < MessageBoxButtons.YesNo, RadMessageIcon.Question)
+        updateYN = RadMessageBox.Show(Me, "Are you sure you want to update this movie?", "CEU TLTD Reservation System", MessageBoxButtons.YesNo, RadMessageIcon.Question)
         If updateYN = MsgBoxResult.Yes Then
             If (imm_nv_tb_vidid.Text = "") Or (imm_nv_cb_subject.Text = "") Or (imm_nv_tb_topic.Text = "") Or (imm_nv_cb_mediatype.Text = "") Or (imm_nv_dtp_duration.Text = "") Or (imm_nv_dtp_acquisitiondate.Text = "") Then
                 RadMessageBox.Show(Me, "Please complete the fields To update!", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -786,19 +786,20 @@ Public Class InstructionalMaterials
 
     'Loading Reservation Grid
     Public Sub load_grid_imr_reservation_grid()
+        MysqlConn = New MySqlConnection
+        MysqlConn.ConnectionString = connstring
         If MysqlConn.State = ConnectionState.Open Then
             MysqlConn.Close()
         End If
 
-        MysqlConn = New MySqlConnection
-        MysqlConn.ConnectionString = connstring
+
         Dim sda As New MySqlDataAdapter
         Dim dbdataset As New DataTable
         Dim bsource As New BindingSource
 
         Try
             MysqlConn.Open()
-            query = "SELECT movie_reservationno AS 'Reservation Number' , res_vid_id AS 'Video ID' , res_subject AS 'Subject' , res_topic AS 'Topic' , TIME_FORMAT(movie_starttime, '%H:%i') AS 'Start Time', TIME_FORMAT(movie_endtime, '%H:%i') AS 'End Time' ,  DATE_FORMAT(movie_date,'%M %d %Y') AS 'Date' FROM movie_reservation"
+            query = "SELECT movie_reservationno AS 'Reservation Number' , res_vid_id AS 'Video ID' , res_subject AS 'Subject' , res_topic AS 'Topic' , TIME_FORMAT(movie_starttime, '%H:%i') AS 'Start Time', TIME_FORMAT(movie_endtime, '%H:%i') AS 'End Time' ,  DATE_FORMAT(movie_date,'%M %d %Y') AS 'Date',res_status as 'Status' FROM movie_reservation WHERE movie_date='" & Format(CDate(imr_dtp_date.Value), "yyyy-MM-dd") & "'"
             comm = New MySqlCommand(query, MysqlConn)
             sda.SelectCommand = comm
             sda.Fill(dbdataset)
@@ -826,6 +827,15 @@ Public Class InstructionalMaterials
             imr_cb_subject.Text = row.Cells("Subject").Value.ToString
             imr_cb_topic.Text = row.Cells("Topic").Value.ToString
             imr_videoid.Text = row.Cells("Video ID").Value.ToString
+            imr_cb_status.Text = row.Cells("Status").Value.ToString
+            imr_cb_starttime.Text = row.Cells("Start Time").Value.ToString
+            imr_cb_endtime.Text = row.Cells("End Time").Value.ToString
+            imr_dtp_date.Text = row.Cells("Date").Value.ToString
+
+            imr_reservationno.Enabled = False
+            imr_cb_subject.Enabled = False
+            imr_cb_topic.Enabled = False
+            imr_videoid.Enabled = False
         End If
     End Sub
 
@@ -979,7 +989,7 @@ Public Class InstructionalMaterials
 
     'Button Functions here
 
-    Private Sub im_btn_save_Click(sender As Object, e As EventArgs) Handles im_btn_save.Click
+    Private Sub imr_btn_save_Click(sender As Object, e As EventArgs) Handles imr_btn_save.Click
 
         If (MysqlConn.State = ConnectionState.Open) Then
             MysqlConn.Close()
@@ -1083,7 +1093,7 @@ Public Class InstructionalMaterials
 
 
 
-    Private Sub im_btn_delete_Click(sender As Object, e As EventArgs) Handles im_btn_delete.Click
+    Private Sub imr_btn_delete_Click(sender As Object, e As EventArgs) Handles imr_btn_delete.Click
         If MysqlConn.State = ConnectionState.Open Then
             MysqlConn.Close()
         End If
@@ -1113,18 +1123,104 @@ Public Class InstructionalMaterials
 
     End Sub
 
-    Private Sub im_btn_clear_Click(sender As Object, e As EventArgs) Handles im_btn_clear.Click
+    Private Sub imr_btn_clear_Click(sender As Object, e As EventArgs) Handles imr_btn_clear.Click
         auto_generate_imr_reservationno()
-        imr_reservationno.Text = ""
         imr_videoid.Text = ""
         imr_cb_topic.Text = ""
-        imr_cb_status.Text = "Reserved"
+        imr_cb_status.Text = ""
         imr_cb_starttime.Text = ""
         imr_cb_endtime.Text = ""
+        imr_cb_subject.Text = ""
         imr_dtp_date.Value = Date.Now
+        imr_reservationno.Enabled = True
+        imr_cb_subject.Enabled = True
+        imr_cb_topic.Enabled = True
+        imr_videoid.Enabled = True
 
 
     End Sub
 
+    Private Sub imr_btn_update_Click(sender As Object, e As EventArgs) Handles imr_btn_update.Click
+        If (MysqlConn.State = ConnectionState.Open) Then
+            MysqlConn.Close()
+        End If
+        Dim errorcount As Boolean = False
 
+        updateYN = RadMessageBox.Show(Me, "Are you sure you want to UPDATE the status of this reservation?", "CEU TLTD Reservation System", MessageBoxButtons.YesNo, RadMessageIcon.Question)
+        If updateYN = MsgBoxResult.Yes Then
+            If (imr_cb_topic.Text = "") Or (imr_cb_subject.Text = "") Or (imr_cb_status.Text = "") Or (imr_cb_starttime.Text = "") Or (imr_cb_endtime.Text = "") Or (imr_dtp_date.Text = "") Then
+                RadMessageBox.Show(Me, "Please complete the fields", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+            Else
+                'ADD THE CHECKBOX TO PICK IF IT IS FROM ANOTHER DAY, ANOTHER DATE PICKER, BUT BY DEFAULT IT IS NOT CHECKED
+                Dim elapsedTime As TimeSpan = DateTime.Parse(Format(CDate(imr_dtp_date.Value), "yyyy-MM-dd") & " " & imr_cb_endtime.Text).Subtract(DateTime.Parse(DateTime.Parse(Format(CDate(imr_dtp_date.Value), "yyyy-MM-dd") & " " & imr_cb_starttime.Text)))
+                'ADD THE CHECKBOX TO PICK IF IT IS FROM ANOTHER DAY, ANOTHER DATE PICKER, BUT BY DEFAULT IT IS NOT CHECKED
+                If elapsedTime.CompareTo(TimeSpan.Zero) <= 0 Then
+                    RadMessageBox.Show(Me, "The Starting Time can't be the same or later on the Ending Time.", "Reservation", MessageBoxButtons.OK, RadMessageIcon.Error, MessageBoxDefaultButton.Button1)
+                Else
+                    Try
+                        MysqlConn.Close()
+                        MysqlConn.Open()
+                        query = "SELECT * FROM movie_reservation WHERE res_vid_id=@res_vidid AND movie_reservationno=@res_reservationno AND res_status=@res_status AND (('" & Format(CDate(imr_dtp_date.Value), "yyyy-MM-dd") & " " & Format(CDate(imr_cb_starttime.Text), "HH:mm:01") & "' BETWEEN CONCAT(movie_date,' ',movie_starttime) AND CONCAT(movie_date,' ',movie_endtime)) OR ('" & Format(CDate(imr_dtp_date.Value), "yyyy-MM-dd") & " " & Format(CDate(imr_cb_endtime.Text), "HH:mm:01") & "' BETWEEN CONCAT(movie_date,' ',movie_starttime) AND CONCAT (movie_date,' ',movie_endtime))) "
+
+                        comm = New MySqlCommand(query, MysqlConn)
+                        comm.Parameters.AddWithValue("res_vidid", imr_videoid.Text)
+                        comm.Parameters.AddWithValue("res_reservationno", imr_reservationno.Text)
+                        comm.Parameters.AddWithValue("res_status", imr_cb_status.Text)
+
+                        reader = comm.ExecuteReader
+                        Dim count As Integer
+                        count = 0
+
+                        While reader.Read
+                            count += 1
+                        End While
+
+                        If count > 0 Then
+                            RadMessageBox.Show(Me, "The movie " & imr_cb_topic.Text & " is already taken.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                            errorcount = True
+                        Else
+                            MysqlConn.Close()
+                            MysqlConn.Open()
+                            query = "UPDATE movie_reservation SET res_status=@res_status , movie_starttime=@m_starttime , movie_endtime=@m_endtime WHERE (movie_reservationno=@m_reservationno) AND (res_vid_id=@res_vidid) AND (res_subject=@res_subject)"
+                            comm = New MySqlCommand(query, MysqlConn)
+
+                            comm.Parameters.AddWithValue("res_status", imr_cb_status.Text)
+                            comm.Parameters.AddWithValue("m_starttime", Format(CDate(imr_cb_starttime.Text), "HH:mm"))
+                            comm.Parameters.AddWithValue("m_endtime", Format(CDate(imr_cb_endtime.Text), "HH:mm"))
+                            comm.Parameters.AddWithValue("m_reservationno", imr_reservationno.Text)
+                            comm.Parameters.AddWithValue("res_vidid", imr_videoid.Text)
+                            comm.Parameters.AddWithValue("res_subject", imr_cb_subject.Text)
+
+                            reader = comm.ExecuteReader
+                        End If
+
+                    Catch ex As Exception
+                        RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                    Finally
+                        MysqlConn.Dispose()
+                        load_grid_imr_reservation_grid()
+
+                        If errorcount = False Then
+                            RadMessageBox.Show(Me, "Movie Film Successfully Updated!", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Info)
+
+                        Else
+                            RadMessageBox.Show(Me, "Movie Film Failed to Update!", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+
+                        End If
+
+                    End Try
+                End If
+
+            End If
+        End If
+
+    End Sub
+
+    Private Sub imr_btn_resetreservationno_Click(sender As Object, e As EventArgs) Handles imr_btn_resetreservationno.Click
+        auto_generate_imr_reservationno()
+    End Sub
+
+    Private Sub imr_dtp_date_ValueChanged(sender As Object, e As EventArgs) Handles imr_dtp_date.ValueChanged
+        load_grid_imr_reservation_grid()
+    End Sub
 End Class
