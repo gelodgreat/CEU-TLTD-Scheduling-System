@@ -625,7 +625,7 @@ Public Class InstructionalMaterials
 
         addst = RadMessageBox.Show(Me, "Do you want to add Sub Topic for this Movie?", "CEU TLTD Reservation System", MessageBoxButtons.YesNo, RadMessageIcon.Question)
         If addst = MsgBoxResult.Yes Then
-
+            imm.SelectedPage = imm_rpv_subtopics
             nst_gb_st.Show()
         Else
             btn_clear_functions()
@@ -1355,5 +1355,9 @@ Public Class InstructionalMaterials
         load_grid_imr_reservation_grid()
     End Sub
 
-
+    Private Sub imm_SelectedPageChanged(sender As Object, e As EventArgs) Handles imm.SelectedPageChanged
+        If imm.SelectedPage Is imm_rpv_movielist Then
+            nst_gb_st.Hide()
+        End If
+    End Sub
 End Class

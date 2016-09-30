@@ -106,6 +106,12 @@
     <Import Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="About.Designer.vb">
+      <DependentUpon>About.vb</DependentUpon>
+    </Compile>
+    <Compile Include="About.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Actions.vb" />
     <Compile Include="App.vb" />
     <Compile Include="ConnectionSettings.Designer.vb">
@@ -162,6 +168,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="About.resx">
+      <DependentUpon>About.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ConnectionSettings.resx">
       <DependentUpon>ConnectionSettings.vb</DependentUpon>
     </EmbeddedResource>
@@ -204,10 +213,13 @@
     <Content Include="dll\MySql.Data.dll" />
     <Content Include="dll\MySqlBackup.dll" />
     <Content Include="Note 8.27.16.txt" />
+    <None Include="Resources\W.png" />
+    <None Include="Resources\U.png" />
+    <None Include="Resources\T.png" />
+    <None Include="Resources\H.png" />
+    <None Include="Resources\B.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Resources\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

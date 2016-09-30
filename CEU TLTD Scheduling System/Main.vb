@@ -97,7 +97,7 @@ Public Class Main
     End Sub
 
     Private Sub menuItem_About_Click(sender As Object, e As EventArgs) Handles menuItem_About.Click
-        MsgBox("ABOUT WINDOW HERE")
+        About.Show()
     End Sub
     'END!! Menu BAR
 
@@ -1603,7 +1603,7 @@ Public Class Main
             SDA.Update(dbdataset)
 
             MysqlConn.Close()
-
+            eq_rgv_showregequipment.Rows(eq_keepSelectedRowIndexAfterUpdate).IsCurrent = True  'WUTRY_1
         Catch ex As MySqlException
             RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
         Finally
@@ -1613,7 +1613,7 @@ Public Class Main
         Dim DV As New DataView(dbdataset)
         DV.RowFilter = String.Format("`Equipment Number` Like'%{0}%' and `Equipment Type` Like'%{1}%'", eq_filter_eqno.Text, eq_filter_eqtype.Text)
         eq_rgv_showregequipment.DataSource = DV
-        eq_rgv_showregequipment.Rows(eq_keepSelectedRowIndexAfterUpdate).IsCurrent = True  'WUTRY_1
+
         'eq_sn.Enabled = False 'WUTRY1
     End Sub
 
@@ -1878,6 +1878,11 @@ Public Class Main
         Dim DV As New DataView(dbdataset)
         DV.RowFilter = String.Format("`Equipment Number` Like'%{0}%' and `Equipment Type` Like'%{1}%'", eq_filter_eqno.Text, eq_filter_eqtype.Text)
         eq_rgv_showregequipment.DataSource = DV
+        If eq_rgv_showregequipment.Rows.Count -1 < eq_keepSelectedRowIndexAfterUpdate
+        eq_rgv_showregequipment.Rows(0).IsCurrent = True
+        Else
+        eq_rgv_showregequipment.Rows(eq_keepSelectedRowIndexAfterUpdate).IsCurrent = True  'WUTRY_1
+        End If
     End Sub
 
 
@@ -1937,6 +1942,11 @@ Public Class Main
         Dim DV As New DataView(dbdataset)
         DV.RowFilter = String.Format("`Equipment Number` Like'%{0}%' and `Equipment Type` Like'%{1}%'", eq_filter_eqno.Text, eq_filter_eqtype.Text)
         eq_rgv_showregequipment.DataSource = DV
+        If eq_rgv_showregequipment.Rows.Count -1 < eq_keepSelectedRowIndexAfterUpdate
+        eq_rgv_showregequipment.Rows(0).IsCurrent = True
+        Else
+        eq_rgv_showregequipment.Rows(eq_keepSelectedRowIndexAfterUpdate).IsCurrent = True  'WUTRY_1
+        End If
     End Sub
     
     Private Sub eq_clear_filter_Click_(sender As Object, e As EventArgs) Handles eq_clear_filter.Click
