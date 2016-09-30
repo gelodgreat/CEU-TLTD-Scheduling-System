@@ -22,6 +22,7 @@ Partial Class InstructionalMaterials
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Dim TableViewDefinition1 As Telerik.WinControls.UI.TableViewDefinition = New Telerik.WinControls.UI.TableViewDefinition()
         Dim TableViewDefinition2 As Telerik.WinControls.UI.TableViewDefinition = New Telerik.WinControls.UI.TableViewDefinition()
         Dim TableViewDefinition3 As Telerik.WinControls.UI.TableViewDefinition = New Telerik.WinControls.UI.TableViewDefinition()
@@ -178,6 +179,8 @@ Partial Class InstructionalMaterials
         Me.menuItem_SaveDB = New Telerik.WinControls.UI.RadMenuItem()
         Me.menuItem_Settings = New Telerik.WinControls.UI.RadMenuItem()
         Me.menuItem_About = New Telerik.WinControls.UI.RadMenuItem()
+        Me.imm_lu_subject_filter_delay = New System.Windows.Forms.Timer(Me.components)
+        Me.imm_lu_topic_filter_delay = New System.Windows.Forms.Timer(Me.components)
         CType(Me.RadPageView1,System.ComponentModel.ISupportInitialize).BeginInit
         Me.RadPageView1.SuspendLayout
         Me.im_rpvp_main.SuspendLayout
@@ -285,7 +288,7 @@ Partial Class InstructionalMaterials
         Me.RadPageView1.Controls.Add(Me.im_rpvp_imr)
         Me.RadPageView1.Location = New System.Drawing.Point(0, 26)
         Me.RadPageView1.Name = "RadPageView1"
-        Me.RadPageView1.SelectedPage = Me.im_rpvp_imm
+        Me.RadPageView1.SelectedPage = Me.im_rpvp_main
         Me.RadPageView1.Size = New System.Drawing.Size(1356, 557)
         Me.RadPageView1.TabIndex = 0
         Me.RadPageView1.Text = "im_rpv"
@@ -1639,5 +1642,7 @@ End Sub
     Friend WithEvents imr_cb_starttime As Telerik.WinControls.UI.RadDropDownList
     Friend WithEvents imm_lu_topic As Telerik.WinControls.UI.RadTextBoxControl
     Friend WithEvents imm_btn_refresh As Telerik.WinControls.UI.RadButton
+    Friend WithEvents imm_lu_subject_filter_delay As Timer
+    Friend WithEvents imm_lu_topic_filter_delay As Timer
 End Class
 

@@ -82,7 +82,7 @@ Public Class InstructionalMaterials
     End Sub
 
     Private Sub menuItem_About_Click(sender As Object, e As EventArgs) Handles menuItem_About.Click
-        MsgBox("ABOUT WINDOW HERE")
+        About.Show()
     End Sub
 
 
@@ -160,6 +160,13 @@ Public Class InstructionalMaterials
     End Sub
 
     Private Sub imm_lu_subject_SelectedIndexChanged(sender As Object, e As UI.Data.PositionChangedEventArgs) Handles imm_lu_subject.SelectedIndexChanged
+        imm_lu_subject_filter_delay.Interval = 500
+        imm_lu_subject_filter_delay.Stop()
+        imm_lu_subject_filter_delay.Start()
+    End Sub
+
+    Private Sub imm_lu_subject_filter_delay_Tick(sender As Object, e As EventArgs) Handles imm_lu_subject_filter_delay.Tick
+        imm_lu_subject_filter_delay.Stop()
         If Not immain_rgv_movielist.Columns.Count = 0 Then
             immain_rgv_movielist.Columns.Clear()
         End If
@@ -198,7 +205,13 @@ Public Class InstructionalMaterials
     End Sub
 
     Private Sub imm_lu_topic_TextChanged(sender As Object, e As EventArgs) Handles imm_lu_topic.TextChanged
+        imm_lu_topic_filter_delay.Interval = 500
+        imm_lu_topic_filter_delay.Stop()
+        imm_lu_topic_filter_delay.Start
+    End Sub
 
+     Private Sub imm_lu_topic_filter_delay_Tick(sender As Object, e As EventArgs) Handles imm_lu_topic_filter_delay.Tick
+        imm_lu_topic_filter_delay.Stop()
         If Not immain_rgv_movielist.Columns.Count = 0 Then
             immain_rgv_movielist.Columns.Clear()
         End If
@@ -234,7 +247,7 @@ Public Class InstructionalMaterials
         Dim DV As New DataView(imdbdataset)
         DV.RowFilter = String.Format("`Topic` Like'%{0}%' and `Subject` Like'%{1}%'", imm_lu_topic.Text, imm_lu_subject.Text)
         immain_rgv_movielist.DataSource = DV
-    End Sub
+     End Sub
 
 
     'Loading all movielist in Instructional Materials Page
