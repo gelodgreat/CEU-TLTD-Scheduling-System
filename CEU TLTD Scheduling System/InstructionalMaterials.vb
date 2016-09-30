@@ -92,6 +92,31 @@ Public Class InstructionalMaterials
 
     'MovieList Umali C1 
 
+    Private Sub immain_rgv_movielist_ViewCellFormatting(sender As Object, e As CellFormattingEventArgs) Handles immain_rgv_movielist.ViewCellFormatting
+        e.CellElement.TextAlignment = ContentAlignment.MiddleCenter
+        e.CellElement.TextWrap = True
+    End Sub
+
+    Public Sub imm_main_size()
+        Dim vidid = Me.immain_rgv_movielist.Columns("Video ID")
+        vidid.Width = 50
+
+        Dim duration = Me.immain_rgv_movielist.Columns("Duration")
+        duration.Width = 70
+
+        Dim subject = Me.immain_rgv_movielist.Columns("Subject")
+        subject.Width = 200
+
+        Dim mediatype = Me.immain_rgv_movielist.Columns("Media Type")
+        mediatype.Width = 50
+
+        Dim topic = Me.immain_rgv_movielist.Columns("Topic")
+        topic.Width = 900
+
+        Dim ac_date = Me.imm_rgv_im_movielists.Columns("Acquisition Date")
+        ac_date.Width = 120
+    End Sub
+
     Public Sub load_all_movielist_in_main()
         MysqlConn = New MySqlConnection
         MysqlConn.ConnectionString = connstring
@@ -121,34 +146,96 @@ Public Class InstructionalMaterials
             RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
         Finally
             MysqlConn.Dispose()
+            imm_main_size()
 
-            Dim vidid = Me.immain_rgv_movielist.Columns("Video ID")
-            vidid.TextAlignment = ContentAlignment.MiddleCenter
-            vidid.Width = 50
-
-            Dim duration = Me.immain_rgv_movielist.Columns("Duration")
-            duration.TextAlignment = ContentAlignment.MiddleCenter
-            duration.Width = 70
-
-            Dim subject = Me.immain_rgv_movielist.Columns("Subject")
-            subject.TextAlignment = ContentAlignment.MiddleCenter
-            subject.Width = 100
-
-            Dim mediatype = Me.immain_rgv_movielist.Columns("Media Type")
-            mediatype.TextAlignment = ContentAlignment.MiddleCenter
-            mediatype.Width = 50
-
-            Dim topic = Me.immain_rgv_movielist.Columns("Topic")
-            topic.WrapText = True
-            topic.TextAlignment = ContentAlignment.MiddleCenter
-            topic.Width = 300
-
-            Dim ac_date = Me.imm_rgv_im_movielists.Columns("Acquisition Date")
-            ac_date.TextAlignment = ContentAlignment.MiddleCenter
-            ac_date.Width = 60
         End Try
 
     End Sub
+
+
+    Private Sub imm_btn_refresh_Click(sender As Object, e As EventArgs) Handles imm_btn_refresh.Click
+        load_all_movielist_in_main()
+        imm_lu_topic.Text = ""
+        imm_lu_subject.Text = String.Empty
+    End Sub
+
+    Private Sub imm_lu_subject_SelectedIndexChanged(sender As Object, e As UI.Data.PositionChangedEventArgs) Handles imm_lu_subject.SelectedIndexChanged
+        If Not immain_rgv_movielist.Columns.Count = 0 Then
+            immain_rgv_movielist.Columns.Clear()
+        End If
+
+        MysqlConn = New MySqlConnection
+        MysqlConn.ConnectionString = connstring
+        Dim sda As New MySqlDataAdapter
+        Dim bsource As New BindingSource
+        Dim imdbdataset As New DataTable
+        Try
+            MysqlConn.Open()
+
+            query = "SELECT vid_id as 'Video ID', subject as 'Subject' , topic as 'Topic' , video_media_type as 'Media Type', duration as 'Duration',DATE_FORMAT(acquisition,'%M %d %Y') as 'Acquisition Date' FROM movielist ORDER BY subject ASC,vid_id ASC"
+
+            comm = New MySqlCommand(query, MysqlConn)
+            sda.SelectCommand = comm
+            sda.Fill(imdbdataset)
+            bsource.DataSource = imdbdataset
+            immain_rgv_movielist.DataSource = bsource
+            immain_rgv_movielist.ReadOnly = True
+            sda.Update(imdbdataset)
+
+            MysqlConn.Close()
+
+        Catch ex As Exception
+            RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+        Finally
+            MysqlConn.Dispose()
+            imm_main_size()
+
+        End Try
+
+        Dim DV As New DataView(imdbdataset)
+        DV.RowFilter = String.Format("`Topic` Like'%{0}%' and `Subject` Like'%{1}%'", imm_lu_topic.Text, imm_lu_subject.Text)
+        immain_rgv_movielist.DataSource = DV
+    End Sub
+
+    Private Sub imm_lu_topic_TextChanged(sender As Object, e As EventArgs) Handles imm_lu_topic.TextChanged
+
+        If Not immain_rgv_movielist.Columns.Count = 0 Then
+            immain_rgv_movielist.Columns.Clear()
+        End If
+
+        MysqlConn = New MySqlConnection
+        MysqlConn.ConnectionString = connstring
+        Dim sda As New MySqlDataAdapter
+        Dim bsource As New BindingSource
+        Dim imdbdataset As New DataTable
+        Try
+            MysqlConn.Open()
+
+            query = "SELECT vid_id as 'Video ID', subject as 'Subject' , topic as 'Topic' , video_media_type as 'Media Type', duration as 'Duration',DATE_FORMAT(acquisition,'%M %d %Y') as 'Acquisition Date' FROM movielist ORDER BY subject ASC,vid_id ASC"
+
+            comm = New MySqlCommand(query, MysqlConn)
+            sda.SelectCommand = comm
+            sda.Fill(imdbdataset)
+            bsource.DataSource = imdbdataset
+            immain_rgv_movielist.DataSource = bsource
+            immain_rgv_movielist.ReadOnly = True
+            sda.Update(imdbdataset)
+
+            MysqlConn.Close()
+
+        Catch ex As Exception
+            RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+        Finally
+            MysqlConn.Dispose()
+            imm_main_size()
+
+        End Try
+
+        Dim DV As New DataView(imdbdataset)
+        DV.RowFilter = String.Format("`Topic` Like'%{0}%' and `Subject` Like'%{1}%'", imm_lu_topic.Text, imm_lu_subject.Text)
+        immain_rgv_movielist.DataSource = DV
+    End Sub
+
 
     'Loading all movielist in Instructional Materials Page
     'MovieList Umali C2
@@ -208,6 +295,8 @@ Public Class InstructionalMaterials
             topic.TextAlignment = ContentAlignment.MiddleCenter
             topic.Width = 300
         End Try
+
+
 
     End Sub
 
@@ -853,7 +942,7 @@ Public Class InstructionalMaterials
             While reader.Read
 
                 imr_cb_subject.Items.Add(reader.GetString("subject"))
-
+                imm_lu_subject.Items.Add(reader.GetString("subject"))
             End While
             MysqlConn.Close()
         Catch ex As Exception
