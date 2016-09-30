@@ -40,6 +40,7 @@ Public Class Main
     Dim eq_keepSelectedRowIndexAfterUpdate As Integer 'WU_TRY1
     Dim acc_staff_keepSelectedRowIndexAfterUpdate As Integer
     Dim acc_prof_keepSelectedRowIndexAfterUpdate As Integer
+    Dim clear_eq As Boolean = False
 
     'WU_SETTINGS'
 
@@ -148,6 +149,7 @@ Public Class Main
         acc_staff_btn_delete.Hide()
         acc_prof_btn_delete.Hide()
         acc_prof_btn_update.Hide()
+        released_btn_release.Enabled=False
     End Sub
     Public Sub startup_disabled_textbox()
         'rel_tb_status.Enabled = False
@@ -590,17 +592,17 @@ Public Class Main
             If lu_ActivityType.Text = "School Activity" Then
                 query = "Select reservationno as 'Reservation Number' ,borrower as 'Borrower',id as 'ID', equipmentno as 'Equipment Number', equipment as 'Equipment', location as 'Location',
             DATE_FORMAT(date,'%M %d %Y') as 'Date',TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time',
-            activitytype as 'Activity Type',actname as 'Activity' from reservation where date ='" & Format(CDate(lu_date.Value), "yyyy-MM-dd") & "' and activitytype='School Activity' ORDER BY date DESC,starttime ASC"
+            activitytype as 'Activity Type',actname as 'Activity' FROM ceutltdscheduler.reservation natural join ceutltdscheduler.reservation_equipments where date ='" & Format(CDate(lu_date.Value), "yyyy-MM-dd") & "' and activitytype='School Activity' and NOT(res_status='Cancelled') ORDER BY date DESC,starttime DESC"
                 Cover = "School Activity"
             ElseIf lu_ActivityType.Text = "Academic" Then
                 query = "Select reservationno as 'Reservation Number' ,borrower as 'Borrower',id as 'ID', equipmentno as 'Equipment Number', equipment as 'Equipment', location as 'Location',
             DATE_FORMAT(date,'%M %d %Y') as 'Date',TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time',
-            activitytype as 'Activity Type' from reservation where date ='" & Format(CDate(lu_date.Value), "yyyy-MM-dd") & "' and activitytype='Academic' ORDER BY date DESC,starttime ASC"
+            activitytype as 'Activity Type' from ceutltdscheduler.reservation natural join ceutltdscheduler.reservation_equipments where date ='" & Format(CDate(lu_date.Value), "yyyy-MM-dd") & "' and activitytype='Academic' and NOT(res_status='Cancelled') ORDER BY date DESC,starttime DESC"
                 Cover = "Academic"
             ElseIf lu_ActivityType.Text = "All" Then
                 query = "Select reservationno as 'Reservation Number' ,borrower as 'Borrower',id as 'ID', equipmentno as 'Equipment Number', equipment as 'Equipment', location as 'Location',
             DATE_FORMAT(date,'%M %d %Y') as 'Date',TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time',
-            activitytype as 'Activity Type', actname as 'Activity' from reservation where date ='" & Format(CDate(lu_date.Value), "yyyy-MM-dd") & "' ORDER BY date DESC,starttime ASC"
+            activitytype as 'Activity Type', actname as 'Activity' from ceutltdscheduler.reservation natural join ceutltdscheduler.reservation_equipments where date ='" & Format(CDate(lu_date.Value), "yyyy-MM-dd") & "' and NOT(res_status='Cancelled') ORDER BY date DESC,starttime DESC"
                 Cover = ""
             End If
             main_rgv_recordedacademicsonly.Columns.Clear()
@@ -755,7 +757,7 @@ Public Class Main
                         comm.Parameters.AddWithValue("staffPassword", acc_sf_password.Text)
 
 
-                        svYN = RadMessageBox.Show(Me, "Are you sure you want To save this information? ", "CEU TLTD Reservation System", MessageBoxButtons.YesNo, RadMessageIcon.Question)
+                        svYN = RadMessageBox.Show(Me, "Are you sure you want to save a new staff's information? ", "CEU TLTD Reservation System", MessageBoxButtons.YesNo, RadMessageIcon.Question)
                         If svYN = MsgBoxResult.Yes Then
                             If (acc_sf_password.Text = acc_sf_retypepassword.Text) Then
                                 READER = comm.ExecuteReader
@@ -805,7 +807,7 @@ Public Class Main
     Private Sub acc_staff_list_CellDoubleClick(sender As Object, e As GridViewCellEventArgs) Handles acc_staff_list.CellDoubleClick
 
         If e.RowIndex >= 0 Then
-            updateYN = RadMessageBox.Show(Me, "Do you want to select this information?", "CEU TLTD Reservation System", MessageBoxButtons.YesNo, RadMessageIcon.Question)
+            updateYN = RadMessageBox.Show(Me, "Do you want to edit information on this staff?", "CEU TLTD Reservation System", MessageBoxButtons.YesNo, RadMessageIcon.Question)
             If updateYN = MsgBoxResult.Yes Then
                 acc_staff_keepSelectedRowIndexAfterUpdate = e.RowIndex
                 Dim row As Telerik.WinControls.UI.GridViewRowInfo
@@ -839,7 +841,7 @@ Public Class Main
             MysqlConn.Close()
         End If
 
-        updateYN = RadMessageBox.Show(Me, "Do you want to update the selected Information?", "CEU TLTD Reservation System", MessageBoxButtons.YesNo, RadMessageIcon.Question)
+        updateYN = RadMessageBox.Show(Me, "Are you sure to make changes on this staff's information?", "CEU TLTD Reservation System", MessageBoxButtons.YesNo, RadMessageIcon.Question)
         If updateYN = MsgBoxResult.Yes Then
             If (acc_sf_id.Text = "") Or (acc_sf_fname.Text = "") Or (acc_sf_mname.Text = " ") Or (acc_sf_lname.Text = " ") Or (acc_sf_usertype.Text = " ") Or (acc_sf_username.Text = " ") Then
                 RadMessageBox.Show(Me, "Please complete the fields to update!", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -883,7 +885,7 @@ Public Class Main
             MysqlConn.Close()
         End If
 
-        deleteYN = RadMessageBox.Show(Me, "Are you sure you want To Delete this information? ", "CEU TLTD Reservation System", MessageBoxButtons.YesNo, RadMessageIcon.Question)
+        deleteYN = RadMessageBox.Show(Me, "Are you sure you want To Delete the account of this staff? ", "CEU TLTD Reservation System", MessageBoxButtons.YesNo, RadMessageIcon.Question)
         If deleteYN = MsgBoxResult.Yes Then
             Try
                 MysqlConn.Open()
@@ -961,7 +963,7 @@ Public Class Main
                 comm.Parameters.AddWithValue("BorCollege", acc_pf_college.Text)
 
 
-                svYN = RadMessageBox.Show(Me, "Are you sure you want To save this information? ", "TLTD Schuling Management", MessageBoxButtons.YesNo, RadMessageIcon.Question)
+                svYN = RadMessageBox.Show(Me, "Are you sure you want to add a new borrower information? ", "TLTD Schuling Management", MessageBoxButtons.YesNo, RadMessageIcon.Question)
                 If svYN = MsgBoxResult.Yes Then
                     READER = comm.ExecuteReader
                     RadMessageBox.Show(Me, "Registration Complete!", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Info)
@@ -989,7 +991,7 @@ Public Class Main
     Private Sub acc_prof_list_CellDoubleClick(sender As Object, e As GridViewCellEventArgs) Handles acc_prof_list.CellDoubleClick
 
         If e.RowIndex >= 0 Then
-            updateYN = RadMessageBox.Show(Me, "Do you want to select this information?", "CEU TLTD Reservation System", MessageBoxButtons.YesNo, RadMessageIcon.Question)
+            updateYN = RadMessageBox.Show(Me, "Do you want to edit this borrower's information?", "CEU TLTD Reservation System", MessageBoxButtons.YesNo, RadMessageIcon.Question)
             If updateYN = MsgBoxResult.Yes Then
                 acc_prof_keepSelectedRowIndexAfterUpdate = e.RowIndex
                 Dim row As Telerik.WinControls.UI.GridViewRowInfo
@@ -1020,7 +1022,7 @@ Public Class Main
             MysqlConn.Close()
         End If
 
-        updateYN = RadMessageBox.Show(Me, "Do you want to update the selected Information?", "CEU TLTD Reservation System", MessageBoxButtons.YesNo, RadMessageIcon.Question)
+        updateYN = RadMessageBox.Show(Me, "Do you want to update the borrower's information?", "CEU TLTD Reservation System", MessageBoxButtons.YesNo, RadMessageIcon.Question)
         If updateYN = MsgBoxResult.Yes Then
             If (acc_pf_id.Text = "") Or (acc_pf_fname.Text = "") Or (acc_pf_mname.Text = " ") Or (acc_pf_lname.Text = " ") Or (acc_pf_college.Text = " ") Then
                 RadMessageBox.Show(Me, "Please complete the fields to update!", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -1061,7 +1063,7 @@ Public Class Main
             MysqlConn.Close()
         End If
 
-        deleteYN = RadMessageBox.Show(Me, "Are you sure you want To Delete this information? ", "CEU TLTD Reservation System", MessageBoxButtons.YesNo, RadMessageIcon.Question)
+        deleteYN = RadMessageBox.Show(Me, "Are you sure you want to Delete this borrower? ", "CEU TLTD Reservation System", MessageBoxButtons.YesNo, RadMessageIcon.Question)
         If deleteYN = MsgBoxResult.Yes Then
             Try
                 MysqlConn.Open()
@@ -1216,21 +1218,21 @@ Public Class Main
                         rel_tb_equipment.Text = ""
                         rel_tb_equipmentnum.Text = ""
                         show_hide_txt_lbl()
-                    End If
-
-
+                        rel_tb_id.Enabled=False
+                        load_released_list()
+                        load_released_list2()
+                        reserved_load_table()
+                        load_rec_table("NONE",True)
+                        color_coding()
+                        released_btn_release.Enabled=False
+                  End If
                 End If
                 MysqlConn.Close()
+                
             Catch ex As MySqlException
                 RadMessageBox.Show(ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
             Finally
                 MysqlConn.Dispose()
-                rel_tb_id.Enabled=False
-                load_released_list()
-                load_released_list2()
-                reserved_load_table()
-                load_rec_table("NONE",True)
-                color_coding()
             End Try
         End If
 
@@ -1294,7 +1296,7 @@ Public Class Main
 
     'Programmed by BRENZ 18th Point Cancel BTN at Releasing Management
     Private Sub released_btn_cancel_Click(sender As Object, e As EventArgs) Handles released_btn_cancel.Click
-        cancelYN = RadMessageBox.Show(Me, "Do you want to cancel returning? ", "CEU TLTD Reservation System", MessageBoxButtons.YesNo, RadMessageIcon.Question)
+        cancelYN = RadMessageBox.Show(Me, "Do you want to cancel releasing this equipment? ", "CEU TLTD Reservation System", MessageBoxButtons.YesNo, RadMessageIcon.Question)
         If cancelYN = MsgBoxResult.Yes Then
             rel_tb_borrower.Text = ""
             rel_tb_borrower.Text = ""
@@ -1310,7 +1312,7 @@ Public Class Main
             rel_tb_reservationnum.Hide()
             rel_tb_borrower.Hide()
             color_coding()
-            return_btn_returned.Enabled=False
+            released_btn_release.Enabled=False
 
 
         End If
@@ -1369,9 +1371,9 @@ Public Class Main
                 RadMessageBox.Show(Me, "The equipment is already released", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Exclamation)
             Else
 
-                updateYN = RadMessageBox.Show(Me, "Do you want to select this information?", "CEU TLTD Reservation System", MessageBoxButtons.YesNo, RadMessageIcon.Question)
+                updateYN = RadMessageBox.Show(Me, "Do you want to select this equipment?", "CEU TLTD Reservation System", MessageBoxButtons.YesNo, RadMessageIcon.Question)
                 If updateYN = MsgBoxResult.Yes Then
-
+                    released_btn_release.Enabled=True
                     If e.RowIndex >= 0 Then
                         Dim row2 As Telerik.WinControls.UI.GridViewRowInfo
 
@@ -1422,7 +1424,7 @@ Public Class Main
     Private Sub released_grid_list2_CellDoubleClick(sender As Object, e As GridViewCellEventArgs) Handles released_grid_list2.CellDoubleClick
 
         If e.RowIndex >= 0 Then
-            returnYN = RadMessageBox.Show(Me, "Do you want to select this information?", "CEU TLTD Reservation System", MessageBoxButtons.YesNo, RadMessageIcon.Question)
+            returnYN = RadMessageBox.Show(Me, "Do you want to select this equipment?", "CEU TLTD Reservation System", MessageBoxButtons.YesNo, RadMessageIcon.Question)
             If returnYN = MsgBoxResult.Yes Then
                 Dim row As Telerik.WinControls.UI.GridViewRowInfo
 
@@ -1936,8 +1938,13 @@ Public Class Main
         DV.RowFilter = String.Format("`Equipment Number` Like'%{0}%' and `Equipment Type` Like'%{1}%'", eq_filter_eqno.Text, eq_filter_eqtype.Text)
         eq_rgv_showregequipment.DataSource = DV
     End Sub
-
+    
     Private Sub eq_clear_filter_Click_(sender As Object, e As EventArgs) Handles eq_clear_filter.Click
+        If clear_eq Then
+            eq_rgv_showregequipment.Columns.Clear()
+            eq_rgv_showregequipment.TableElement.Text = "To Display Data, please choose an equipment or type an equipment number on the left pane."
+            clear_eq=False
+        End If
         eq_filter_eqno.Text=String.Empty
         eq_filter_eqtype.Text=String.Empty
     End Sub
@@ -1947,7 +1954,8 @@ Public Class Main
         If show_alleq_quest = DialogResult.Yes
             If NOT eq_filter_eqno.Text="" Or NOT eq_filter_eqtype.Text=""
                 RadMessageBox.Show(Me, "Please Clear the filters first.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
-            Else            
+            Else
+                clear_eq=True
                 load_eq_table()
             End If
         End If
@@ -2137,12 +2145,12 @@ Public Class Main
         End If
         MysqlConn.ConnectionString = connstring
 
-        If rec_eq_chooseno.Text = "" Then
-            RadMessageBox.Show(Me, "Choose Serial Number!", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
-        ElseIf rec_eq_type_choose.Text = "" Then
-            RadMessageBox.Show(Me, "Choose the Type of Equipment!", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+        If rec_eq_type_choose.Text = "" Then
+            RadMessageBox.Show(Me, "Please choose the type of equipment.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+        ElseIf rec_eq_chooseno.Text = "" Then
+            RadMessageBox.Show(Me, "Please choose an equipment number.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
         ElseIf rec_eq_chooseeq.Text = "" Then
-            RadMessageBox.Show(Me, "Choose the Equipment!", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+            RadMessageBox.Show(Me, "Please choose an equipment.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
         Else
             Try
                 MysqlConn.Open()
@@ -2512,18 +2520,27 @@ Public Class Main
 
     'Deletion of data in Reservation Page
     Private Sub rec_btn_delete_Click(sender As Object, e As EventArgs) Handles rec_btn_delete.Click
+         
+        Dim get_status As String = (reservation_rgv_recordeddata.SelectedRows(0).Cells("Status").Value)
+        
+        If get_status="Released"
+           RadMessageBox.Show(Me, "You can't delete this because the equipment is already released.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+        Else If get_status="Returned"
+           RadMessageBox.Show(Me, "You can't delete this because the equipment is already returned.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+        Else If get_status="Cancelled"
+           RadMessageBox.Show(Me, "You can't delete this because the equipment is already cancelled.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+        Else
         If MysqlConn.State = ConnectionState.Open Then
             MysqlConn.Close()
         End If
-
         deleteYN = RadMessageBox.Show(Me, "Are you sure you want to delete?", "CEU TLTD Reservation System", MessageBoxButtons.YesNo, RadMessageIcon.Question)
         If deleteYN = MsgBoxResult.Yes Then
             Try
                 MysqlConn.Open()
                 query = "DELETE FROM reservation WHERE (reservationno=@R_rec_cb_reserveno) AND (id=@R_rec_cb_idnum)"
                 comm = New MySqlCommand(query, MysqlConn)
-                comm.Parameters.AddWithValue("R_rec_cb_reserveno", rec_cb_reserveno.Text)
-                comm.Parameters.AddWithValue("R_rec_cb_idnum", rec_cb_idnum.Text)
+                comm.Parameters.AddWithValue("R_rec_cb_reserveno", reservation_rgv_recordeddata.SelectedRows(0).Cells("Reservation Number").Value)
+                comm.Parameters.AddWithValue("R_rec_cb_idnum", reservation_rgv_recordeddata.SelectedRows(0).Cells("ID").Value)
 
                 reader = comm.ExecuteReader
 
@@ -2538,7 +2555,9 @@ Public Class Main
         End If
         load_rec_table("NONE",True)
         main_load_academicsonly()
+        auto_generate_reservationno()
         'main_load_schoolonly()
+        End If
     End Sub
 
     'Combining (Fname,Lname) in Borrower Field in Reservation
@@ -2650,16 +2669,21 @@ Public Class Main
     '    'main_load_schoolonly()
     'End Sub
         Private Sub reservation_rgv_recordeddata_CellDoubleClick(sender As Object, e As GridViewCellEventArgs) Handles reservation_rgv_recordeddata.CellDoubleClick
+        Dim get_status As String
         If e.RowIndex >= 0 Then
             Dim row As Telerik.WinControls.UI.GridViewRowInfo
 
             row = Me.reservation_rgv_recordeddata.Rows(e.RowIndex)
 
-            rec_cb_reserveno.Text = row.Cells("Reservation Number").Value.ToString
-            rec_cb_idnum.Text = row.Cells("ID").Value.ToString
-            rec_cb_borrower.Text = row.Cells("Borrower").Value.ToString
-        End If
-
+            get_status = row.Cells("Status").Value.ToString
+        
+        If get_status="Released"
+           RadMessageBox.Show(Me, "You can't cancel this because the equipment is already released.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+        Else If get_status="Returned"
+           RadMessageBox.Show(Me, "You can't cancel this because the equipment is already returned.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+        Else If get_status="Cancelled"
+           RadMessageBox.Show(Me, "The equipment is already cancelled.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+        Else
         If MysqlConn.State = ConnectionState.Open Then
             MysqlConn.Close()
         End If
@@ -2672,9 +2696,9 @@ Public Class Main
                 MysqlConn.Open()
                 query = "UPDATE ceutltdscheduler.reservation_equipments SET res_status='Cancelled' WHERE (reservationno=@R_rec_cb_reserveno)"
                 comm = New MySqlCommand(query, MysqlConn)
-                comm.Parameters.AddWithValue("R_rec_cb_reserveno", rec_cb_reserveno.Text)
-                'comm.Parameters.AddWithValue("R_rec_cb_idnum", rec_cb_idnum.Text)
-                'comm.Parameters.AddWithValue("R_rec_cb_borrower", rec_cb_borrower.Text)
+                comm.Parameters.AddWithValue("R_rec_cb_reserveno", row.Cells("Reservation Number").Value.ToString)
+                comm.Parameters.AddWithValue("R_rec_cb_idnum", row.Cells("ID").Value.ToString)
+                comm.Parameters.AddWithValue("R_rec_cb_borrower", row.Cells("Borrower").Value.ToString)
                 reader = comm.ExecuteReader
 
 
@@ -2689,7 +2713,10 @@ Public Class Main
         End If
             End If
         main_load_academicsonly()
+        auto_generate_reservationno()
         'main_load_schoolonly()
+        End If
+            End If
     End Sub
 
     'Auto Generating of Reservation Number
@@ -2799,7 +2826,7 @@ Public Class Main
                     MysqlConn.Close()
 
                 Catch ex As MySqlException
-                    MessageBox.Show(ex.Message)
+                     RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error, MessageBoxDefaultButton.Button1)
                 Finally
                     MysqlConn.Dispose()
                     load_released_list2()

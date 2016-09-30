@@ -46,8 +46,8 @@ Public Class Actions
         savedb_dialog.Title = "Choose a Location to Save"
         Dim mysql_SAVE As New MySqlBackup(comm)
         mysql_SAVE.ExportInfo.AddCreateDatabase = True
-        'mysql_SAVE.ExportInfo.EnableEncryption = True
-        'mysql_SAVE.ExportInfo.EncryptionPassword="9Wy3Z3xTApDKUtPVN+TegRLTGR2mj8_M3*3ZJwSts83g9+pL?ZLEn?3xnuMR!2g"
+        mysql_SAVE.ExportInfo.EnableEncryption = True
+        mysql_SAVE.ExportInfo.EncryptionPassword="9Wy3Z3xTApDKUtPVN+TegRLTGR2mj8_M3*3ZJwSts83g9+pL?ZLEn?3xnuMR!2g"
         If savedb_dialog.ShowDialog() = DialogResult.OK Then
             Try
                 MySQLConn.ConnectionString = connstring

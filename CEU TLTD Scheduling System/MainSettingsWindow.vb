@@ -41,6 +41,7 @@ Public Class MainSettingsWindow
                 comm.ExecuteNonQuery()
                 MySQLConn.Close
                 RadMessageBox.Show(Me, "Sucessfully updated penalty settings.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Info, MessageBoxDefaultButton.Button1)
+                Me.Dispose()
             Catch ex As MySqlException
                 RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error, MessageBoxDefaultButton.Button1)
             End Try
@@ -64,5 +65,75 @@ Public Class MainSettingsWindow
 
     Private Sub btn_test_Click(sender As Object, e As EventArgs) 
         MsgBox(penalty_gp_hhmm.Value)
+    End Sub
+
+    Private Sub btn_ChP_Click(sender As Object, e As EventArgs) Handles btn_ChP.Click
+        Dim looper As Integer =0
+        If txt_NewPass.Text <> txt_NewPass_Confirm.Text
+            RadMessageBox.Show(Me, "Please double check your new password.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error, MessageBoxDefaultButton.Button1)
+            txt_NewPass.Select()
+        ElseIf txt_CurPass.Text="" Or txt_NewPass.Text="" Or txt_NewPass_Confirm.Text="" Then
+            txt_NewPass.SelectedText=True
+            RadMessageBox.Show(Me, "Please complete the fields.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error, MessageBoxDefaultButton.Button1)
+        Else
+        If MysqlConn.State = ConnectionState.Open Then
+        MysqlConn.Close()
+        End If
+            Try
+            MySQLConn.ConnectionString = connstring
+            mysqlconn.Open()
+            Dim q2 As String = "SELECT * FROM staff_reg WHERE staff_username=@proc_email_login and staff_password=sha2(@proc_OLDpassword, 512)"
+            comm = New MySqlCommand(q2, mysqlconn)
+            comm.Parameters.AddWithValue("@proc_email_login", username)
+            comm.Parameters.AddWithValue("@proc_OLDpassword", txt_CurPass.Text)
+            reader = comm.ExecuteReader
+            While reader.Read
+                looper +=1
+            End While
+            mysqlconn.Close()
+                Catch ex As MySqlException
+                    RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error, MessageBoxDefaultButton.Button1)
+            Finally
+                 mysqlconn.Dispose()
+                End Try
+                 If looper=1 Then
+                    Try
+                        If MysqlConn.State = ConnectionState.Open Then
+                            MysqlConn.Close()
+                        End If
+                    MysqlConn.Open()
+                    Dim Query As String = "UPDATE ceutltdscheduler.staff_reg SET staff_password=SHA2(@newpassword,512) WHERE staff_username=@currentusername"
+                    comm = New MySqlCommand(Query, MysqlConn)
+                    comm.Parameters.AddWithValue("@newpassword",txt_NewPass.Text)
+                    comm.Parameters.AddWithValue("@currentusername", username)
+                    comm.ExecuteNonQuery()
+                    MysqlConn.Close()
+                    RadMessageBox.Show(Me, "Password changed successfully.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Info, MessageBoxDefaultButton.Button1)
+                    Me.Dispose()
+                Catch ex As MySqlException
+                    RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error, MessageBoxDefaultButton.Button1)
+                Finally
+                    MysqlConn.Dispose()
+                    txt_CurPass.Text=String.Empty
+                    txt_NewPass.Text=String.Empty
+                    txt_NewPass_Confirm.Text=String.Empty 
+                    txt_CurPass.Select()
+                End Try
+                Else
+                    txt_CurPass.Text=String.Empty
+                    txt_NewPass.Text=String.Empty
+                    txt_NewPass_Confirm.Text=String.Empty
+                    RadMessageBox.Show(Me, "Wrong Password.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error, MessageBoxDefaultButton.Button1)
+                    txt_CurPass.Select()
+                End If
+            End If
+    End Sub
+
+    Private Sub PasswordChangeTextBoxes_GotFocus(sender As Object, e As EventArgs) Handles txt_CurPass.GotFocus, txt_NewPass.GotFocus, txt_NewPass_Confirm.GotFocus
+        AcceptButton=btn_ChP
+    End Sub
+
+    Private Sub PenaltyChangeGotFocus(sender As Object, e As EventArgs) Handles penalty_gp_day.GotFocus, penalty_gp_hhmm.GotFocus, penalty_ci_day.GotFocus,penalty_ci_hhmm.GotFocus,penalty_peso_amount.GotFocus
+        AcceptButton=btn_penalty_setting_save
     End Sub
 End Class

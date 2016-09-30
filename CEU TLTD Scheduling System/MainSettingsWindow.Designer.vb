@@ -34,6 +34,11 @@ Partial Class MainSettingsWindow
         Me.RadLabel3 = New Telerik.WinControls.UI.RadLabel()
         Me.RadLabel2 = New Telerik.WinControls.UI.RadLabel()
         Me.RadLabel1 = New Telerik.WinControls.UI.RadLabel()
+        Me.RadGroupBox2 = New Telerik.WinControls.UI.RadGroupBox()
+        Me.txt_CurPass = New Telerik.WinControls.UI.RadTextBox()
+        Me.txt_NewPass = New Telerik.WinControls.UI.RadTextBox()
+        Me.txt_NewPass_Confirm = New Telerik.WinControls.UI.RadTextBox()
+        Me.btn_ChP = New Telerik.WinControls.UI.RadButton()
         CType(Me.RadGroupBox1,System.ComponentModel.ISupportInitialize).BeginInit
         Me.RadGroupBox1.SuspendLayout
         CType(Me.btn_penalty_setting_save,System.ComponentModel.ISupportInitialize).BeginInit
@@ -47,6 +52,12 @@ Partial Class MainSettingsWindow
         CType(Me.RadLabel3,System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.RadLabel2,System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.RadLabel1,System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.RadGroupBox2,System.ComponentModel.ISupportInitialize).BeginInit
+        Me.RadGroupBox2.SuspendLayout
+        CType(Me.txt_CurPass,System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txt_NewPass,System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txt_NewPass_Confirm,System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.btn_ChP,System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me,System.ComponentModel.ISupportInitialize).BeginInit
         Me.SuspendLayout
         '
@@ -74,7 +85,7 @@ Partial Class MainSettingsWindow
         '
         'btn_penalty_setting_save
         '
-        Me.btn_penalty_setting_save.Location = New System.Drawing.Point(193, 151)
+        Me.btn_penalty_setting_save.Location = New System.Drawing.Point(193, 148)
         Me.btn_penalty_setting_save.Name = "btn_penalty_setting_save"
         Me.btn_penalty_setting_save.Size = New System.Drawing.Size(110, 24)
         Me.btn_penalty_setting_save.TabIndex = 5
@@ -129,7 +140,7 @@ Partial Class MainSettingsWindow
         '
         Me.penalty_ci_hhmm.RootElement.MinSize = New System.Drawing.Size(0, 24)
         Me.penalty_ci_hhmm.ShowUpDown = true
-        Me.penalty_ci_hhmm.Size = New System.Drawing.Size(161, 24)
+        Me.penalty_ci_hhmm.Size = New System.Drawing.Size(172, 24)
         Me.penalty_ci_hhmm.TabIndex = 3
         Me.penalty_ci_hhmm.TabStop = false
         Me.penalty_ci_hhmm.Text = "00 hour(s) and 00 minute(s)"
@@ -164,7 +175,7 @@ Partial Class MainSettingsWindow
         '
         Me.penalty_gp_hhmm.RootElement.MinSize = New System.Drawing.Size(0, 24)
         Me.penalty_gp_hhmm.ShowUpDown = true
-        Me.penalty_gp_hhmm.Size = New System.Drawing.Size(161, 24)
+        Me.penalty_gp_hhmm.Size = New System.Drawing.Size(172, 24)
         Me.penalty_gp_hhmm.TabIndex = 1
         Me.penalty_gp_hhmm.TabStop = false
         Me.penalty_gp_hhmm.Text = "00 hour(s) and 00 minute(s)"
@@ -215,11 +226,80 @@ Partial Class MainSettingsWindow
         Me.RadLabel1.Text = "Grace Period:"
         Me.RadLabel1.ThemeName = "VisualStudio2012Dark"
         '
+        'RadGroupBox2
+        '
+        Me.RadGroupBox2.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping
+        Me.RadGroupBox2.Controls.Add(Me.btn_ChP)
+        Me.RadGroupBox2.Controls.Add(Me.txt_NewPass_Confirm)
+        Me.RadGroupBox2.Controls.Add(Me.txt_NewPass)
+        Me.RadGroupBox2.Controls.Add(Me.txt_CurPass)
+        Me.RadGroupBox2.HeaderText = "Change Password"
+        Me.RadGroupBox2.Location = New System.Drawing.Point(82, 249)
+        Me.RadGroupBox2.Name = "RadGroupBox2"
+        Me.RadGroupBox2.Size = New System.Drawing.Size(379, 135)
+        Me.RadGroupBox2.TabIndex = 1
+        Me.RadGroupBox2.Text = "Change Password"
+        Me.RadGroupBox2.ThemeName = "VisualStudio2012Dark"
+        '
+        'txt_CurPass
+        '
+        Me.txt_CurPass.Location = New System.Drawing.Point(23, 30)
+        Me.txt_CurPass.MinimumSize = New System.Drawing.Size(0, 24)
+        Me.txt_CurPass.Name = "txt_CurPass"
+        Me.txt_CurPass.NullText = "Current Password"
+        Me.txt_CurPass.PasswordChar = Global.Microsoft.VisualBasic.ChrW(9679)
+        Me.txt_CurPass.Size = New System.Drawing.Size(154, 24)
+        Me.txt_CurPass.TabIndex = 0
+        Me.txt_CurPass.ThemeName = "VisualStudio2012Dark"
+        Me.txt_CurPass.UseSystemPasswordChar = true
+        '
+        'txt_NewPass
+        '
+        Me.txt_NewPass.Location = New System.Drawing.Point(23, 60)
+        Me.txt_NewPass.MinimumSize = New System.Drawing.Size(0, 24)
+        Me.txt_NewPass.Name = "txt_NewPass"
+        Me.txt_NewPass.NullText = "New Password"
+        Me.txt_NewPass.PasswordChar = Global.Microsoft.VisualBasic.ChrW(9679)
+        '
+        '
+        '
+        Me.txt_NewPass.RootElement.MinSize = New System.Drawing.Size(0, 24)
+        Me.txt_NewPass.Size = New System.Drawing.Size(154, 24)
+        Me.txt_NewPass.TabIndex = 1
+        Me.txt_NewPass.ThemeName = "VisualStudio2012Dark"
+        Me.txt_NewPass.UseSystemPasswordChar = true
+        '
+        'txt_NewPass_Confirm
+        '
+        Me.txt_NewPass_Confirm.Location = New System.Drawing.Point(23, 90)
+        Me.txt_NewPass_Confirm.MinimumSize = New System.Drawing.Size(0, 24)
+        Me.txt_NewPass_Confirm.Name = "txt_NewPass_Confirm"
+        Me.txt_NewPass_Confirm.NullText = "Confirm New Password"
+        Me.txt_NewPass_Confirm.PasswordChar = Global.Microsoft.VisualBasic.ChrW(9679)
+        '
+        '
+        '
+        Me.txt_NewPass_Confirm.RootElement.MinSize = New System.Drawing.Size(0, 24)
+        Me.txt_NewPass_Confirm.Size = New System.Drawing.Size(154, 24)
+        Me.txt_NewPass_Confirm.TabIndex = 2
+        Me.txt_NewPass_Confirm.ThemeName = "VisualStudio2012Dark"
+        Me.txt_NewPass_Confirm.UseSystemPasswordChar = true
+        '
+        'btn_ChP
+        '
+        Me.btn_ChP.Location = New System.Drawing.Point(213, 54)
+        Me.btn_ChP.Name = "btn_ChP"
+        Me.btn_ChP.Size = New System.Drawing.Size(132, 39)
+        Me.btn_ChP.TabIndex = 3
+        Me.btn_ChP.Text = "Change My Password"
+        Me.btn_ChP.ThemeName = "VisualStudio2012Dark"
+        '
         'MainSettingsWindow
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6!, 13!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(549, 243)
+        Me.ClientSize = New System.Drawing.Size(546, 411)
+        Me.Controls.Add(Me.RadGroupBox2)
         Me.Controls.Add(Me.RadGroupBox1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
         Me.MaximizeBox = false
@@ -249,6 +329,13 @@ Partial Class MainSettingsWindow
         CType(Me.RadLabel3,System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.RadLabel2,System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.RadLabel1,System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.RadGroupBox2,System.ComponentModel.ISupportInitialize).EndInit
+        Me.RadGroupBox2.ResumeLayout(false)
+        Me.RadGroupBox2.PerformLayout
+        CType(Me.txt_CurPass,System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txt_NewPass,System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txt_NewPass_Confirm,System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.btn_ChP,System.ComponentModel.ISupportInitialize).EndInit
         CType(Me,System.ComponentModel.ISupportInitialize).EndInit
         Me.ResumeLayout(false)
 
@@ -266,5 +353,10 @@ End Sub
     Friend WithEvents penalty_ci_hhmm As Telerik.WinControls.UI.RadDateTimePicker
     Friend WithEvents penalty_gp_day As Telerik.WinControls.UI.RadSpinEditor
     Friend WithEvents btn_penalty_setting_save As Telerik.WinControls.UI.RadButton
+    Friend WithEvents RadGroupBox2 As Telerik.WinControls.UI.RadGroupBox
+    Friend WithEvents btn_ChP As Telerik.WinControls.UI.RadButton
+    Friend WithEvents txt_NewPass_Confirm As Telerik.WinControls.UI.RadTextBox
+    Friend WithEvents txt_NewPass As Telerik.WinControls.UI.RadTextBox
+    Friend WithEvents txt_CurPass As Telerik.WinControls.UI.RadTextBox
 End Class
 

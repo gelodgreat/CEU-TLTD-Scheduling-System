@@ -40,7 +40,7 @@ Public Class Login
                         MysqlConn.Close()
                     End If
                 mysqlconn.Open()
-                Dim q2 As String = "SELECT * FROM staff_reg WHERE BINARY staff_username=@proc_email_login and staff_password=sha2(@proc_password_login, 512)"
+                Dim q2 As String = "SELECT * FROM staff_reg WHERE staff_username=@proc_email_login and staff_password=sha2(@proc_password_login, 512)"
                 comm = New MySqlCommand(q2, mysqlconn)
                 comm.Parameters.AddWithValue("@proc_email_login", log_username.Text)
                 comm.Parameters.AddWithValue("@proc_password_login", log_password.Text)
