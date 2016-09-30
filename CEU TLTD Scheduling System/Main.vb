@@ -2385,9 +2385,9 @@ Public Class Main
                                     count = count + 1
                                     equipmentnorgv = READER.GetString("equipmentno")
                                     equipmentrgv = READER.GetString("equipment")
-                                    equipmentsnrgv = READER.GetString("equipmentsn")
+                                        equipmentsnrgv = READER.GetString("equipmentsn")
 
-                                End While
+                                    End While
 
                                 If count > 0 Then
                                     RadMessageBox.Show(Me, "The equipment " & equipmentrgv & " with serial number of " & equipmentsnrgv & " is already taken", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)

@@ -853,7 +853,7 @@ Public Class InstructionalMaterials
             While reader.Read
 
                 imr_cb_subject.Items.Add(reader.GetString("subject"))
-                imlu_subject.Items.Add(reader.GetString("subject"))
+
             End While
             MysqlConn.Close()
         Catch ex As Exception
@@ -864,68 +864,110 @@ Public Class InstructionalMaterials
         End Try
     End Sub
 
-    Private Sub imlu_subject_SelectedIndexChanged(sender As Object, e As UI.Data.PositionChangedEventArgs) Handles imlu_subject.SelectedIndexChanged
-        imlu_topic.Items.Clear()
-        If MysqlConn.State = ConnectionState.Open Then
-            MysqlConn.Close()
-        End If
-        MysqlConn.ConnectionString = connstring
+    'Private Sub imlu_subject_SelectedIndexChanged(sender As Object, e As UI.Data.PositionChangedEventArgs) Handles imlu_subject.SelectedIndexChanged
 
-        Try
-            MysqlConn.Open()
-            query = "SELECT topic FROM movielist WHERE subject=@res_subject ORDER BY topic ASC"
-            comm = New MySqlCommand(query, MysqlConn)
-            comm.Parameters.AddWithValue("res_subject", imlu_subject.Text)
-            reader = comm.ExecuteReader
-            imlu_topic.Items.Clear()
+    '    imlu_topic.Items.Clear()
 
-            While reader.Read
-                imlu_topic.Items.Add(reader.GetString("topic"))
-            End While
+    '    If MysqlConn.State = ConnectionState.Open Then
+    '        MysqlConn.Close()
+    '    End If
+    '    MysqlConn.ConnectionString = connstring
 
-            MysqlConn.Close()
+    '    Try
+    '        MysqlConn.Open()
+    '        query = "SELECT topic FROM movielist WHERE subject=@res_subject ORDER BY topic ASC"
+    '        comm = New MySqlCommand(query, MysqlConn)
+    '        comm.Parameters.AddWithValue("res_subject", imlu_subject.Text)
+    '        reader = comm.ExecuteReader
+    '        imlu_topic.Items.Clear()
 
-        Catch ex As Exception
-            RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
-        Finally
-            MysqlConn.Dispose()
-        End Try
-    End Sub
+    '        While reader.Read
+    '            imlu_topic.Items.Add(reader.GetString("topic"))
+    '        End While
 
-    Private Sub imlu_topic_SelectedIndexChanged(sender As Object, e As UI.Data.PositionChangedEventArgs) Handles imlu_topic.SelectedIndexChanged
-        imlu_subtopics.Items.Clear()
-        If MysqlConn.State = ConnectionState.Open Then
-            MysqlConn.Close()
-        End If
-        MysqlConn.ConnectionString = connstring
+    '        MysqlConn.Close()
 
-        Try
-            MysqlConn.Open()
-            query = "SELECT subtopic FROM movielist_subtopics WHERE subject=@res_subject AND topic=@res_subtopic ORDER BY subtopic ASC"
-            comm = New MySqlCommand(query, MysqlConn)
-            comm.Parameters.AddWithValue("res_subject", imlu_subject.Text)
-            comm.Parameters.AddWithValue("res_subtopic", imlu_topic.Text)
-            reader = comm.ExecuteReader
-            imlu_subtopics.Items.Clear()
+    '    Catch ex As Exception
+    '        RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+    '    Finally
+    '        MysqlConn.Dispose()
 
-            While reader.Read
-                imlu_subtopics.Items.Add(reader.GetString("subtopic"))
-            End While
 
-            If imlu_subtopics.Items.Count = 0 Then
-                RadMessageBox.Show(Me, "No sub topics found in this topic!", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Info)
-            Else
-                RadMessageBox.Show(Me, "We found some sub topics for this topic!", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Info)
-            End If
+    '    End Try
 
-            MysqlConn.Close()
 
-        Catch ex As Exception
-            RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
-        Finally
-            MysqlConn.Dispose()
-        End Try
-    End Sub
+
+
+    'End Sub
+
+    'Private Sub imlu_topic_SelectedIndexChanged(sender As Object, e As UI.Data.PositionChangedEventArgs) Handles imlu_topic.SelectedIndexChanged
+    '    imlu_subtopics.Items.Clear()
+    '    If MysqlConn.State = ConnectionState.Open Then
+    '        MysqlConn.Close()
+    '    End If
+    '    MysqlConn.ConnectionString = connstring
+
+    '    Try
+    '        MysqlConn.Open()
+    '        query = "SELECT subtopic FROM movielist_subtopics WHERE subject=@res_subject AND topic=@res_subtopic ORDER BY subtopic ASC"
+    '        comm = New MySqlCommand(query, MysqlConn)
+    '        comm.Parameters.AddWithValue("res_subject", imlu_subject.Text)
+    '        comm.Parameters.AddWithValue("res_subtopic", imlu_topic.Text)
+    '        reader = comm.ExecuteReader
+    '        imlu_subtopics.Items.Clear()
+
+    '        While reader.Read
+    '            imlu_subtopics.Items.Add(reader.GetString("subtopic"))
+
+    '        End While
+
+    '        If imlu_subtopics.Items.Count = 0 Then
+    '            RadMessageBox.Show(Me, "No sub topics found in this topic!", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Info)
+    '            imlu_topic.SelectedValue = ""
+    '        Else
+    '            RadMessageBox.Show(Me, "We found some sub topics for this topic!", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Info)
+    '        End If
+
+    '        MysqlConn.Close()
+
+    '    Catch ex As Exception
+    '        RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+    '    End Try
+
+    '    Try
+    '        MysqlConn.Open()
+    '        query = "SELECT res_topic FROM movie_reservation WHERE (res_topic=@res_topic) AND (res_subject=@res_subject) AND (movie_date=@date) AND (res_status='Reserved') "
+    '        comm = New MySqlCommand(query, MysqlConn)
+    '        comm.Parameters.AddWithValue("res_subject", imlu_subject.Text)
+    '        comm.Parameters.AddWithValue("date", Format(CDate(imr_dtp_date.Value), "yyyy-MM-dd"))
+    '        comm.Parameters.AddWithValue("res_topic", imlu_topic.Text)
+    '        reader = comm.ExecuteReader
+
+    '        Dim count As Integer
+    '        count = 0
+
+    '        While reader.Read
+    '            count = count + 1
+    '            imlu_topic.Text = reader.GetString("res_topic")
+
+    '        End While
+
+    '        If count > 0 Then
+    '            RadMessageBox.Show(Me, "This movie is currently taken.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Info)
+    '        Else
+    '            RadMessageBox.Show(Me, "This movie is currently available.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Info)
+    '        End If
+
+    '    Catch ex As Exception
+    '        RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+
+    '    Finally
+    '        MysqlConn.Dispose()
+
+    '    End Try
+    'End Sub
+
+
 
     Private Sub imr_cb_subject_SelectedIndexChanged(sender As Object, e As UI.Data.PositionChangedEventArgs) Handles imr_cb_subject.SelectedIndexChanged
         imr_cb_topic.Items.Clear()
@@ -1223,4 +1265,6 @@ Public Class InstructionalMaterials
     Private Sub imr_dtp_date_ValueChanged(sender As Object, e As EventArgs) Handles imr_dtp_date.ValueChanged
         load_grid_imr_reservation_grid()
     End Sub
+
+
 End Class
