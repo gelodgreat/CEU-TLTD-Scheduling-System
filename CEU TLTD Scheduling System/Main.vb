@@ -112,7 +112,14 @@ Public Class Main
     End Sub
 
     Private Sub menuItem_Settings_Click(sender As Object, e As EventArgs) Handles menuItem_Settings.Click
+        refresh_main_rgv_recordedacademicsonly.Stop
+        refresh_released_grid_list.Stop
         MainSettingsWindow.ShowDialog()
+        If rpv1.SelectedPage Is rpvp1_main
+            refresh_main_rgv_recordedacademicsonly.Start()
+        Else If rel_gb_listinfos.SelectedPage Is rel_released_info
+            refresh_released_grid_list.Start()
+        End If
     End Sub
 
     Private Sub menuItem_About_Click(sender As Object, e As EventArgs) Handles menuItem_About.Click
@@ -562,14 +569,26 @@ Public Class Main
             End If
             looper += 1
         End While
-            Catch ex As MySqlException
+             Catch ex As MySqlException
+             If ex.Number  = 0 Or ex.Number = 1042
+                refresh_main_rgv_recordedacademicsonly.Stop()
+                refresh_released_grid_list.Stop()
+                RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                Login.log_lbl_dbstatus.Text = "Offline"
+                Login.log_lbl_dbstatus.ForeColor = Color.Red
+                Return
+            Else
+            RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+            End If
+        Catch ex As Exception
             RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
         Finally
         MysqlConn.Close()
-            End try
+        End try
     End Sub
 
     Public Sub load_rec_table(show_all_no_filter As String, UPDATE As Boolean)
+        Try
         If res_rdio_reserved.ToggleState=Enumerations.ToggleState.Off And res_rdio_cancelled.ToggleState=Enumerations.ToggleState.Off And res_rdio_showall.ToggleState=Enumerations.ToggleState.Off
             res_rdio_reserved.ToggleState=Enumerations.ToggleState.On
         End If
@@ -589,7 +608,6 @@ Public Class Main
             End If
         End If
 
-        Try
             MysqlConn.Open()
             'If show_all_no_filter = "DatePicker" Then
              '   query = "Select reservationno as 'Reservation Number' ,borrower as 'Borrower',id as 'ID', equipmentno as 'Equipment Number', equipment as 'Equipment', location as 'Location', DATE_FORMAT(date,'%M %d %Y') as 'Date',TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time',activitytype as 'Activity Type',actname as 'Activity',res_status as 'Status' from reservation natural join reservation_equipments where res_status='Reserved' and date ='" & Format(CDate(rec_dtp_date.Value), "yyyy-MM-dd") & "' ORDER by date DESC"
@@ -614,11 +632,21 @@ Public Class Main
             Else
                 reservation_rgv_recordeddata.Rows(Keepreservation_mainIndex).IsCurrent = True  'WUTRY_1
         End If
+            Catch ex As MySqlException
+             If ex.Number  = 0 Or ex.Number = 1042
+                refresh_main_rgv_recordedacademicsonly.Stop()
+                refresh_released_grid_list.Stop()
+                RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                Login.log_lbl_dbstatus.Text = "Offline"
+                Login.log_lbl_dbstatus.ForeColor = Color.Red
+                Return
+            Else
+            RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+            End If
         Catch ex As Exception
             RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
         Finally
             MysqlConn.Dispose()
-            
         End Try
     End Sub
 
@@ -631,6 +659,7 @@ Public Class Main
     End Sub
    
     Public Sub main_load_academicsonly()
+        Try
         If MysqlConn.State = ConnectionState.Open Then
             MysqlConn.Close()
         End If
@@ -640,7 +669,7 @@ Public Class Main
         Dim dbdataset As New DataTable
         Dim bsource As New BindingSource
         Dim Cover As String
-        Try
+        
             If lu_ActivityType.Text = "School Activity" Then
                 query = "Select reservationno as 'Reservation Number' ,borrower as 'Borrower',id as 'ID', equipmentno as 'Equipment Number', equipment as 'Equipment', location as 'Location',
             DATE_FORMAT(date,'%M %d %Y') as 'Date',TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time',
@@ -669,15 +698,27 @@ Public Class Main
             MysqlConn.Close()
             SetSizesofMainTable()
             Main_MaintainSelectedCell()
-        Catch ex As MySqlException
-            RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
-        Finally
-            MysqlConn.Dispose()
-        End Try
 
         Dim DV As New DataView(dbdataset)
         DV.RowFilter = String.Format("`Borrower` Like'%{0}%' and `Equipment` Like'%{1}%' and `Date` Like'%{2}%' and `Activity Type` Like'%{3}%'", lu_byname.Text, lu_byequipment.Text, lu_date.Value.ToString("MMMM dd yyyy"), Cover)
         main_rgv_recordedacademicsonly.DataSource = DV
+
+        Catch ex As MySqlException
+             If ex.Number  = 0 Or ex.Number = 1042
+                refresh_main_rgv_recordedacademicsonly.Stop()
+                refresh_released_grid_list.Stop()
+                RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                Login.log_lbl_dbstatus.Text = "Offline"
+                Login.log_lbl_dbstatus.ForeColor = Color.Red
+                Return
+            Else
+            RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+            End If
+        Catch ex As Exception
+            RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+        Finally
+            MysqlConn.Dispose()
+        End Try
     End Sub
 
         Private Sub main_rgv_recordedacademicsonly_CellClick(sender As Object, e As GridViewCellEventArgs) Handles main_rgv_recordedacademicsonly.CellClick
@@ -736,6 +777,7 @@ Public Class Main
     'Programmed by BRENZ STARTING POINT
 
     Public Sub load_main_acc()
+        Try
         MysqlConn = New MySqlConnection
         MysqlConn.ConnectionString = connstring
 
@@ -747,7 +789,7 @@ Public Class Main
             MysqlConn.Close()
         End If
 
-        Try
+        
             MysqlConn.Open()
             Dim query As String
             query = "Select staff_id as 'Staff ID' , staff_fname as 'First Name' , staff_mname as 'Middle Name' , staff_surname as 'Surname' , staff_username as 'Username' , staff_type as 'User Type' from staff_reg"
@@ -764,11 +806,21 @@ Public Class Main
             Else
                 acc_staff_list.Rows(acc_staff_keepSelectedRowIndexAfterUpdate).IsCurrent = True
             End If
+         Catch ex As MySqlException
+             If ex.Number  = 0 Or ex.Number = 1042
+                refresh_main_rgv_recordedacademicsonly.Stop()
+                refresh_released_grid_list.Stop()
+                RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                Login.log_lbl_dbstatus.Text = "Offline"
+                Login.log_lbl_dbstatus.ForeColor = Color.Red
+                Return
+            Else
+            RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+            End If
         Catch ex As Exception
             RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
         Finally
             MysqlConn.Dispose()
-
         End Try
     End Sub
 
@@ -782,6 +834,7 @@ Public Class Main
 
     'Programmed by BRENZ SECOND POINT
     Public Sub load_main_prof()
+        Try
         MysqlConn = New MySqlConnection
         MysqlConn.ConnectionString = connstring
 
@@ -793,7 +846,7 @@ Public Class Main
             MysqlConn.Close()
         End If
 
-        Try
+        
             MysqlConn.Open()
             Dim query As String
             query = "Select bor_id as 'Professor ID' , bor_fname as 'First Name' , bor_mname as 'Middle Name' , bor_surname as 'Surname' , bor_college as 'College/School'  from borrowers_reg"
@@ -810,14 +863,22 @@ Public Class Main
             Else
                 acc_prof_list.Rows(acc_prof_keepSelectedRowIndexAfterUpdate).IsCurrent = True
             End If
-
-        Catch ex As Exception
-            RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
-        Finally
+            Catch ex As MySqlException
+                If ex.Number  = 0 Or ex.Number = 1042
+                    refresh_main_rgv_recordedacademicsonly.Stop()
+                    refresh_released_grid_list.Stop()
+                    RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                    Login.log_lbl_dbstatus.Text = "Offline"
+                    Login.log_lbl_dbstatus.ForeColor = Color.Red
+                    Return
+               Else
+                    RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+               End If
+            Catch ex As Exception
+                RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+            Finally
             MysqlConn.Dispose()
-
         End Try
-
     End Sub
 
         Private Sub acc_prof_list_CellClick(sender As Object, e As GridViewCellEventArgs) Handles acc_prof_list.CellClick
@@ -831,6 +892,7 @@ Public Class Main
     'Programmed by BRENZ THIRD POINT SAVE BUTTON
 
     Private Sub acc_staff_btn_save_Click(sender As Object, e As EventArgs) Handles acc_staff_btn_save.Click
+        Try
         MysqlConn = New MySqlConnection
         MysqlConn.ConnectionString = connstring
         Dim READER As MySqlDataReader
@@ -839,7 +901,7 @@ Public Class Main
         Else
             If (Not acc_sf_username.Text.Length <= 11) Then
                 If acc_sf_username.Text.Contains("@ceu.edu.ph") Then
-                    Try
+                    
                         MysqlConn.Open()
                         Dim Query As String
                         Query = "insert into ceutltdscheduler.staff_reg (staff_id,staff_fname,staff_mname,staff_surname,staff_type,staff_username,staff_password) values (@staffid, @staffFname, @staffMname, @staffLname, @staffUsertype, @staffUsername, sha2(@staffPassword, 512))"
@@ -873,28 +935,34 @@ Public Class Main
                             End If
                         End If
                         MysqlConn.Close()
-                    Catch ex As MySqlException
-                        If ex.Number = 1062 Then
-                            RadMessageBox.Show(Me, "The ID# and the Username must be unique.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
-                        Else
-                            RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
-                        End If
-                    Finally
-                        MysqlConn.Dispose()
-                        load_main_acc()
-                        rpv_child_acctmgmt.SelectedPage = rpv_staff
-
-                    End Try
-
                 Else
                     RadMessageBox.Show(Me, "Please enter your username with the ""@ceu.edu.ph"" ", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Exclamation)
                 End If
             Else
                 RadMessageBox.Show(Me, "Please enter your username with the ""@ceu.edu.ph"" ", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Exclamation)
             End If
-
-
         End If
+                    Catch ex As MySqlException
+                        If ex.Number = 1062 Then
+                            RadMessageBox.Show(Me, "The ID# and the Username must be unique.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                        Else If ex.Number =0 Then
+                            refresh_main_rgv_recordedacademicsonly.Stop()
+                            refresh_released_grid_list.Stop()
+                            RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                            Login.log_lbl_dbstatus.Text = "Offline"
+                            Login.log_lbl_dbstatus.ForeColor = Color.Red
+                            Return
+                        Else
+                            RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                        End If
+                    Catch ex As Exception
+                        RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                    Finally
+                        MysqlConn.Dispose()
+                        load_main_acc()
+                        rpv_child_acctmgmt.SelectedPage = rpv_staff
+
+                    End Try   
     End Sub
 
 
@@ -932,6 +1000,7 @@ Public Class Main
 
     'Programmed by BRENZ 5th Point Update Button!
     Private Sub acc_staff_btn_update_Click(sender As Object, e As EventArgs) Handles acc_staff_btn_update.Click
+        Try
         If MysqlConn.State = ConnectionState.Open Then
             MysqlConn.Close()
         End If
@@ -940,8 +1009,7 @@ Public Class Main
         If updateYN = MsgBoxResult.Yes Then
             If (acc_sf_id.Text = "") Or (acc_sf_fname.Text = "") Or (acc_sf_mname.Text = " ") Or (acc_sf_lname.Text = " ") Or (acc_sf_usertype.Text = " ") Or (acc_sf_username.Text = " ") Then
                 RadMessageBox.Show(Me, "Please complete the fields to update!", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
-            Else
-                Try
+            Else      
                     MysqlConn.Open()
                     query = "UPDATE staff_reg set staff_id = '" & acc_sf_id.Text & "' , staff_fname = '" & acc_sf_fname.Text & "' , staff_mname = '" & acc_sf_mname.Text & "' , staff_surname = '" & acc_sf_lname.Text & "' , staff_type = '" & acc_sf_usertype.Text & "' , staff_username = '" & acc_sf_username.Text & "' where staff_id = '" & acc_sf_id.Text & "' "
                     comm = New MySqlCommand(query, MysqlConn)
@@ -949,10 +1017,22 @@ Public Class Main
 
                     RadMessageBox.Show(Me, "Update Success!", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Info)
                     MysqlConn.Close()
-
-
-                Catch ex As Exception
+            End If
+        End If
+        load_main_acc()
+            Catch ex As MySqlException
+                If ex.Number  = 0 Or ex.Number = 1042
+                    refresh_main_rgv_recordedacademicsonly.Stop()
+                    refresh_released_grid_list.Stop()
+                    RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                    Login.log_lbl_dbstatus.Text = "Offline"
+                    Login.log_lbl_dbstatus.ForeColor = Color.Red
+                    Return
+               Else
                     RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+               End If
+            Catch ex As Exception
+                RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
                 Finally
                     MysqlConn.Dispose()
                     acc_sf_id.Text = ""
@@ -969,20 +1049,18 @@ Public Class Main
 
                     rpv_child_acctmgmt.SelectedPage = rpv_staff
                 End Try
-            End If
-        End If
-        load_main_acc()
     End Sub
 
     'Programmed by BRENZ 6th Point Delete Button!
     Private Sub acc_staff_btn_delete_Click(sender As Object, e As EventArgs) Handles acc_staff_btn_delete.Click
+        Try
         If MysqlConn.State = ConnectionState.Open Then
             MysqlConn.Close()
         End If
 
         deleteYN = RadMessageBox.Show(Me, "Are you sure you want To Delete the account of this staff? ", "CEU TLTD Reservation System", MessageBoxButtons.YesNo, RadMessageIcon.Question)
         If deleteYN = MsgBoxResult.Yes Then
-            Try
+            
                 MysqlConn.Open()
                 Dim Query As String
                 Query = "delete from staff_reg where staff_id = '" & acc_sf_id.Text & "'"
@@ -991,8 +1069,20 @@ Public Class Main
 
                 RadMessageBox.Show(Me, "Account Deletion Successful!", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Info)
                 MysqlConn.Close()
+        End If
             Catch ex As MySqlException
-                MessageBox.Show(ex.Message)
+                If ex.Number  = 0 Or ex.Number = 1042
+                    refresh_main_rgv_recordedacademicsonly.Stop()
+                    refresh_released_grid_list.Stop()
+                    RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                    Login.log_lbl_dbstatus.Text = "Offline"
+                    Login.log_lbl_dbstatus.ForeColor = Color.Red
+                    Return
+               Else
+                    RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+               End If
+            Catch ex As Exception
+                RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
             Finally
                 MysqlConn.Dispose()
                 acc_staff_keepSelectedRowIndexAfterUpdate = 0
@@ -1011,8 +1101,6 @@ Public Class Main
                 acc_staff_btn_update.Hide()
                 acc_staff_btn_save.Show()
             End Try
-        End If
-
     End Sub
 
     'Programmed by Brenz 7th point Clear Button!
@@ -1040,13 +1128,14 @@ Public Class Main
 
     'Programmed by Brenz 8th point prof Save Button!
     Private Sub acc_prof_btn_save_Click(sender As Object, e As EventArgs) Handles acc_prof_btn_save.Click
+        Try
         MysqlConn = New MySqlConnection
         MysqlConn.ConnectionString = connstring
         Dim READER As MySqlDataReader
         If (acc_pf_id.Text = "") Or (acc_pf_fname.Text = "") Or (acc_pf_mname.Text = " ") Or (acc_pf_lname.Text = " ") Or (acc_pf_college.Text = " ") Then
             RadMessageBox.Show(Me, "Please complete the fields to Save!", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
         Else
-            Try
+            
                 MysqlConn.Open()
                 Dim Query As String
                 Query = "insert into `borrowers_reg`  values (@BorID, @BorFname, @BorMname, @BorLname, @BorCollege)"
@@ -1068,18 +1157,27 @@ Public Class Main
                     acc_pf_lname.Text = ""
                 End If
                 MysqlConn.Close()
+        End If
             Catch ex As MySqlException
                 If ex.Number = 1062 Then
                     RadMessageBox.Show(Me, "The ID exists already.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                Else If ex.Number  = 0 Or ex.Number = 1042
+                    refresh_main_rgv_recordedacademicsonly.Stop()
+                    refresh_released_grid_list.Stop()
+                    RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                    Login.log_lbl_dbstatus.Text = "Offline"
+                    Login.log_lbl_dbstatus.ForeColor = Color.Red
+                    Return
                 Else
                     RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
                 End If
+            Catch ex As Exception
+                RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
             Finally
                 MysqlConn.Dispose()
                 load_main_prof()
                 rpv_child_acctmgmt.SelectedPage = rpv_borrower
             End Try
-        End If
     End Sub
 
     'Programmed by Brenz 9th point Cell Double Click Prof List!
@@ -1112,6 +1210,7 @@ Public Class Main
 
     'Programmed by Brenz 10th Point Prof Update Button
     Private Sub acc_prof_btn_update_Click(sender As Object, e As EventArgs) Handles acc_prof_btn_update.Click
+        Try
         If MysqlConn.State = ConnectionState.Open Then
             MysqlConn.Close()
         End If
@@ -1121,7 +1220,7 @@ Public Class Main
             If (acc_pf_id.Text = "") Or (acc_pf_fname.Text = "") Or (acc_pf_mname.Text = " ") Or (acc_pf_lname.Text = " ") Or (acc_pf_college.Text = " ") Then
                 RadMessageBox.Show(Me, "Please complete the fields to update!", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
             Else
-                Try
+                
                     MysqlConn.Open()
                     query = "UPDATE borrowers_reg set bor_id = '" & acc_pf_id.Text & "' , bor_fname = '" & acc_pf_fname.Text & "' , bor_mname = '" & acc_pf_mname.Text & "' , bor_surname = '" & acc_pf_lname.Text & "' , bor_college = '" & acc_pf_college.Text & "' where bor_id = '" & acc_pf_id.Text & "' "
                     comm = New MySqlCommand(query, MysqlConn)
@@ -1129,8 +1228,20 @@ Public Class Main
 
                     RadMessageBox.Show(Me, "Update Success!", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Info)
                     MysqlConn.Close()
-
-
+            End If
+        End If
+                 load_main_prof()
+                Catch ex As MySqlException
+                    If ex.Number  = 0 Or ex.Number = 1042
+                        refresh_main_rgv_recordedacademicsonly.Stop()
+                        refresh_released_grid_list.Stop()
+                        RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                        Login.log_lbl_dbstatus.Text = "Offline"
+                        Login.log_lbl_dbstatus.ForeColor = Color.Red
+                        Return
+                   Else
+                        RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                   End If
                 Catch ex As Exception
                     RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
                 Finally
@@ -1146,20 +1257,17 @@ Public Class Main
                     acc_prof_btn_save.Show()
                     rpv_child_acctmgmt.SelectedPage = rpv_borrower
                 End Try
-            End If
-        End If
-        load_main_prof()
     End Sub
 
     'Programmed by Brenz 11th point prof Delete Button!
     Private Sub acc_prof_btn_delete_Click(sender As Object, e As EventArgs) Handles acc_prof_btn_delete.Click
+        Try
         If MysqlConn.State = ConnectionState.Open Then
             MysqlConn.Close()
         End If
-
         deleteYN = RadMessageBox.Show(Me, "Are you sure you want to Delete this borrower? ", "CEU TLTD Reservation System", MessageBoxButtons.YesNo, RadMessageIcon.Question)
         If deleteYN = MsgBoxResult.Yes Then
-            Try
+            
                 MysqlConn.Open()
                 Dim Query As String
                 Query = "delete from borrowers_reg where bor_id = '" & acc_pf_id.Text & "'"
@@ -1176,19 +1284,26 @@ Public Class Main
                 acc_prof_btn_delete.Hide()
                 acc_prof_btn_update.Hide()
                 acc_prof_btn_save.Show()
+        End If
 
             Catch ex As MySqlException
+                If ex.Number  = 0 Or ex.Number = 1042
+                    refresh_main_rgv_recordedacademicsonly.Stop()
+                    refresh_released_grid_list.Stop()
+                    RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                    Login.log_lbl_dbstatus.Text = "Offline"
+                    Login.log_lbl_dbstatus.ForeColor = Color.Red
+                    Return
+               Else
+                    RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+               End If
+            Catch ex As Exception
                 RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
             Finally
                 MysqlConn.Dispose()
                 acc_prof_keepSelectedRowIndexAfterUpdate = 0
                 load_main_prof()
-
             End Try
-        End If
-
-
-
     End Sub
 
     'Programmed by Brenz 12th Point Clear Button
@@ -1209,6 +1324,7 @@ Public Class Main
 
     'Programmed by BRENZ 13th POINT Load form grid RELEASED at Releasing Management!
     Public Sub load_released_list()
+        Try
         MysqlConn = New MySqlConnection
         MysqlConn.ConnectionString = connstring
 
@@ -1220,7 +1336,7 @@ Public Class Main
             MysqlConn.Close()
         End If
 
-        Try
+       
             MysqlConn.Open()
             Dim query As String
             query = "Select rel_reservation_no as 'Reservation Number', rel_id_passnum as 'Pass ID#' , rel_borrower as 'Borrower' , rel_equipment_no as 'Equipment Number', rel_equipment as 'Equipment',DATE_FORMAT(rel_assign_date,'%M %d %Y') as 'Date',TIME_FORMAT(rel_starttime, '%H:%i') as 'Start Time', TIME_FORMAT(rel_endtime, '%H:%i') as 'End Time'  , rel_status as 'Status' , rel_releasedby as 'Released By' from released_info where rel_status = 'Released' ORDER BY date DESC,rel_reservation_no ASC"
@@ -1239,8 +1355,19 @@ Public Class Main
                 released_grid_list.Rows(listofReleased_grid_list_KeepSelectedRowInDexAfterUpdate).IsCurrent = True
             End If
 
-        Catch ex As Exception
-            RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+            Catch ex As MySqlException
+                If ex.Number  = 0 Or ex.Number = 1042
+                    refresh_main_rgv_recordedacademicsonly.Stop()
+                    refresh_released_grid_list.Stop()
+                    RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                    Login.log_lbl_dbstatus.Text = "Offline"
+                    Login.log_lbl_dbstatus.ForeColor = Color.Red
+                    Return
+               Else
+                    RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+               End If
+            Catch ex As Exception
+                RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
         Finally
             MysqlConn.Dispose()
         End Try
@@ -1248,6 +1375,7 @@ Public Class Main
 
     'Programmed by BRENZ 14th POINT Load form grid RELEASED at returning Management!
     Public Sub load_released_list2()
+         Try
         MysqlConn = New MySqlConnection
         MysqlConn.ConnectionString = connstring
 
@@ -1259,7 +1387,7 @@ Public Class Main
             MysqlConn.Close()
         End If
 
-        Try
+       
             MysqlConn.Open()
             'released_grid_list2.Columns.Clear()
             Dim query As String
@@ -1278,8 +1406,19 @@ Public Class Main
             Else
                 released_grid_list2.Rows(releasedToReturn_gridlist_KeepSelectedRowInDexAfterUpdate).IsCurrent = True
             End If
-        Catch ex As Exception
-            RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+            Catch ex As MySqlException
+                If ex.Number  = 0 Or ex.Number = 1042
+                    refresh_main_rgv_recordedacademicsonly.Stop()
+                    refresh_released_grid_list.Stop()
+                    RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                    Login.log_lbl_dbstatus.Text = "Offline"
+                    Login.log_lbl_dbstatus.ForeColor = Color.Red
+                    Return
+               Else
+                    RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+               End If
+            Catch ex As Exception
+                RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
         Finally
             MysqlConn.Dispose()
         End Try
@@ -1287,14 +1426,14 @@ Public Class Main
 
     'Programmed by BRENZ 15th point RELEASE BTN at Releasing Management!
     Private Sub released_btn_release_Click(sender As Object, e As EventArgs) Handles released_btn_release.Click
-
+        Try
         MysqlConn = New MySqlConnection
         MysqlConn.ConnectionString = connstring
         Dim READER As MySqlDataReader
         If (rel_tb_reservationnum.Text = "") Or (rel_tb_borrower.Text = "") Or (rel_tb_equipmentnum.Text = "") Or (rel_tb_equipment.Text = "") Or (rel_tb_startdate.Text = " ") Or (rel_tb_starttime.Text = " ") Or (rel_tb_endtime.Text = " ") Then
             RadMessageBox.Show(Me, "Please double click an equipment to release!", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Exclamation)
         Else
-            Try
+            
                 MysqlConn.Open()
                 Dim Query As String
                 ' Dim Query2 As String
@@ -1320,7 +1459,7 @@ Public Class Main
                         rel_tb_starttime.Text = ""
                         rel_tb_endtime.Text = ""
                         rel_tb_status.Text = ""
-                        rel_tb_equipment.Text = ""
+                         rel_tb_equipment.Text = ""
                         rel_tb_equipmentnum.Text = ""
                         show_hide_txt_lbl()
                         rel_tb_id.Enabled=False
@@ -1333,29 +1472,38 @@ Public Class Main
                   End If
                 End If
                 MysqlConn.Close()
-                
+            End If
             Catch ex As MySqlException
-                RadMessageBox.Show(ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                If ex.Number  = 0 Or ex.Number = 1042
+                    refresh_main_rgv_recordedacademicsonly.Stop()
+                    refresh_released_grid_list.Stop()
+                    RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                    Login.log_lbl_dbstatus.Text = "Offline"
+                    Login.log_lbl_dbstatus.ForeColor = Color.Red
+                    Return
+               Else
+                    RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+               End If
+            Catch ex As Exception
+                RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
             Finally
                 MysqlConn.Dispose()
             End Try
-        End If
 
     End Sub
 
 
     'Programmed by BRENZ 16th Point UPDATE BTN at Releasing Management
     Private Sub released_btn_update_Click(sender As Object, e As EventArgs)
+        Try
         If MysqlConn.State = ConnectionState.Open Then
             MysqlConn.Close()
         End If
-
         updateYN = RadMessageBox.Show(Me, "Do you want to Update the Date/Time/Location of the Reserved Equipment?", "CEU TLTD Reservation System", MessageBoxButtons.YesNo, RadMessageIcon.Question)
         If updateYN = MsgBoxResult.Yes Then
             If (rel_tb_startdate.Text = "") Or (rel_tb_starttime.Text = " ") Or (rel_tb_endtime.Text = " ") Then
                 RadMessageBox.Show(Me, "Please complete the fields to update!", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
             Else
-                Try
                     MysqlConn.Open()
                     query = "UPDATE released_info set rel_assign_date = '" & rel_tb_starttime.Text & "'  , rel_starttime = '" & rel_tb_starttime.Text & "' , rel_endtime = '" & rel_tb_endtime.Text & "'  where rel_assign_date = '" & rel_tb_startdate.Text & "' "
                     comm = New MySqlCommand(query, MysqlConn)
@@ -1363,8 +1511,19 @@ Public Class Main
 
                     RadMessageBox.Show(Me, "Update Success!", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Info)
                     MysqlConn.Close()
-
-
+            End If
+        End If
+                Catch ex As MySqlException
+                    If ex.Number  = 0 Or ex.Number = 1042
+                        refresh_main_rgv_recordedacademicsonly.Stop()
+                        refresh_released_grid_list.Stop()
+                        RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                        Login.log_lbl_dbstatus.Text = "Offline"
+                        Login.log_lbl_dbstatus.ForeColor = Color.Red
+                        Return
+                   Else
+                        RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                   End If
                 Catch ex As Exception
                     RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
                 Finally
@@ -1372,9 +1531,6 @@ Public Class Main
                     load_released_list()
                     load_released_list2()
                 End Try
-            End If
-        End If
-
 
 
     End Sub
@@ -1430,6 +1586,7 @@ Public Class Main
     'Programmed by BRENZ 19th Point reserved records at releasing management
 
     Public Sub reserved_load_table()
+        Try
         MysqlConn = New MySqlConnection
         MysqlConn.ConnectionString = connstring
 
@@ -1441,7 +1598,6 @@ Public Class Main
             MysqlConn.Close()
         End If
 
-        Try
             MysqlConn.Open()
             Dim query As String
             query = "Select reservationno as 'Reservation Number' , borrower as 'Borrower', equipmentno as 'Equipment Number', equipment as 'Equipment', location as 'Location', DATE_FORMAT(date,'%M %d %Y') as 'Date',TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time',res_status as 'Status' from reservation natural join reservation_equipments where res_status = 'Reserved'  ORDER by date DESC, reservationno ASC"
@@ -1459,8 +1615,19 @@ Public Class Main
             Else
                 reserved_grid_list.Rows(reserved_grid_list_KeepSelectedRowInDexAfterUpdate).IsCurrent = True
             End If
-        Catch ex As Exception
-            RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+            Catch ex As MySqlException
+                If ex.Number  = 0 Or ex.Number = 1042
+                    refresh_main_rgv_recordedacademicsonly.Stop()
+                    refresh_released_grid_list.Stop()
+                    RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                    Login.log_lbl_dbstatus.Text = "Offline"
+                    Login.log_lbl_dbstatus.ForeColor = Color.Red
+                    Return
+               Else
+                    RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+               End If
+            Catch ex As Exception
+                RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
         Finally
             MysqlConn.Dispose()
         End Try
@@ -1705,6 +1872,7 @@ Public Class Main
     End Sub
 
     Private Sub lu_ActivityType_filter_delay_Tick(sender As Object, e As EventArgs) Handles lu_ActivityType_filter_delay.Tick
+       Try
         lu_ActivityType_filter_delay.Stop()
         If MysqlConn.State = ConnectionState.Open Then
             MysqlConn.Close()
@@ -1715,7 +1883,7 @@ Public Class Main
         Dim dbdataset As New DataTable
         Dim bsource As New BindingSource
         Dim Cover As String
-        Try
+       
             If lu_ActivityType.Text = "School Activity" Then
                 query = "Select reservationno as 'Reservation Number' ,borrower as 'Borrower',id as 'ID', equipmentno as 'Equipment Number', equipment as 'Equipment', location as 'Location',
             DATE_FORMAT(date,'%M %d %Y') as 'Date',TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time',
@@ -1744,19 +1912,31 @@ Public Class Main
             MysqlConn.Close()
             SetSizesofMainTable()
             Main_MaintainSelectedCell()
-        Catch ex As MySqlException
-            RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
-        Finally
-            MysqlConn.Dispose()
-        End Try
 
-        Dim DV As New DataView(dbdataset)
+             Dim DV As New DataView(dbdataset)
         DV.RowFilter = String.Format("`Borrower` Like'%{0}%' and `Equipment` Like'%{1}%' and `Date` Like'%{2}%' and `Activity Type` Like'%{3}%'", lu_byname.Text, lu_byequipment.Text, lu_date.Value.ToString("MMMM dd yyyy"), Cover)
         main_rgv_recordedacademicsonly.DataSource = DV
+            Catch ex As MySqlException
+                If ex.Number  = 0 Or ex.Number = 1042
+                    refresh_main_rgv_recordedacademicsonly.Stop()
+                    refresh_released_grid_list.Stop()
+                    RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                    Login.log_lbl_dbstatus.Text = "Offline"
+                    Login.log_lbl_dbstatus.ForeColor = Color.Red
+                    Return
+               Else
+                    RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+               End If
+            Catch ex As Exception
+                RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+        Finally
+            MysqlConn.Dispose()
+            End Try
     End Sub
 
     'Equipment Management Codes Umali E1 EQ_LOAD_EQ_TABLE
     Public Sub load_eq_table()  'WU_TRY1
+        Try
         If MysqlConn.State = ConnectionState.Open Then
             MysqlConn.Close()
         End If
@@ -1765,7 +1945,6 @@ Public Class Main
         Dim SDA As New MySqlDataAdapter
         Dim dbdataset As New DataTable
         Dim bsource As New BindingSource
-        Try
             MysqlConn.Open()
 
             query = "SELECT equipmentnumber AS 'Equipment Number', equipmentmodel as 'Equipment', equipmentserial AS 'Serial Number', equipmentname as 'Equipment Type', equipmentlocation AS 'Equipment Location', equipmentowner AS 'Owner', remarks AS 'Status' FROM ceutltdprevmaintenance.equipmentlist WHERE remarks LIKE '%Good Condition%'"
@@ -1779,21 +1958,32 @@ Public Class Main
 
             MysqlConn.Close()
             eq_rgv_showregequipment.Rows(eq_keepSelectedRowIndexAfterUpdate).IsCurrent = True  'WUTRY_1
-        Catch ex As MySqlException
-            RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
-        Finally
-            MysqlConn.Dispose()
-        End Try
 
-        Dim DV As New DataView(dbdataset)
-        DV.RowFilter = String.Format("`Equipment Number` Like'%{0}%' and `Equipment Type` Like'%{1}%'", eq_filter_eqno.Text, eq_filter_eqtype.Text)
-        eq_rgv_showregequipment.DataSource = DV
-
-        'eq_sn.Enabled = False 'WUTRY1
+            Dim DV As New DataView(dbdataset)
+            DV.RowFilter = String.Format("`Equipment Number` Like'%{0}%' and `Equipment Type` Like'%{1}%'", eq_filter_eqno.Text, eq_filter_eqtype.Text)
+            eq_rgv_showregequipment.DataSource = DV
+            Catch ex As MySqlException
+                If ex.Number  = 0 Or ex.Number = 1042
+                    refresh_main_rgv_recordedacademicsonly.Stop()
+                    refresh_released_grid_list.Stop()
+                    RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                    Login.log_lbl_dbstatus.Text = "Offline"
+                    Login.log_lbl_dbstatus.ForeColor = Color.Red
+                    Return
+               Else
+                    RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+               End If
+            Catch ex As Exception
+                RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+            End Try
     End Sub
 
     Private Sub eq_rgv_showregequipment_CellClick(sender As Object, e As GridViewCellEventArgs) Handles eq_rgv_showregequipment.CellClick
+        If e.RowIndex= -1
+            'DO NOTHING
+        Else
         eq_keepSelectedRowIndexAfterUpdate = e.RowIndex
+        End If
     End Sub
     'Public Sub load_eq_table()
     '    MysqlConn = New MySqlConnection
@@ -2019,6 +2209,7 @@ Public Class Main
     'Equipment Management Codes Umali E7 = SEARCH BY EQ_NO
 
     Private Sub eqno_filter_delay_Tick(sender As Object, e As EventArgs) Handles eqno_filter_delay.Tick
+        Try
         eqno_filter_delay.Stop()
         MysqlConn = New MySqlConnection
         MysqlConn.ConnectionString = connstring
@@ -2030,7 +2221,7 @@ Public Class Main
             MysqlConn.Close()
         End If
 
-        Try
+        
             MysqlConn.Open()
 
              query = "SELECT equipmentnumber AS 'Equipment Number', equipmentmodel as 'Equipment', equipmentserial AS 'Serial Number', equipmentname as 'Equipment Type', equipmentlocation AS 'Equipment Location', equipmentowner AS 'Owner', remarks AS 'Status' FROM ceutltdprevmaintenance.equipmentlist WHERE remarks LIKE '%Good Condition%'"
@@ -2041,14 +2232,7 @@ Public Class Main
             bsource.DataSource = dbdataset
             eq_rgv_showregequipment.DataSource = bsource
             SDA.Update(dbdataset)
-
             MysqlConn.Close()
-
-        Catch ex As MySqlException
-            RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
-        Finally
-            MysqlConn.Dispose()
-        End Try
 
         Dim DV As New DataView(dbdataset)
         DV.RowFilter = String.Format("`Equipment Number` Like'%{0}%' and `Equipment Type` Like'%{1}%'", eq_filter_eqno.Text, eq_filter_eqtype.Text)
@@ -2058,6 +2242,22 @@ Public Class Main
         Else
         eq_rgv_showregequipment.Rows(eq_keepSelectedRowIndexAfterUpdate).IsCurrent = True  'WUTRY_1
         End If
+            Catch ex As MySqlException
+                If ex.Number  = 0 Or ex.Number = 1042
+                    refresh_main_rgv_recordedacademicsonly.Stop()
+                    refresh_released_grid_list.Stop()
+                    RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                    Login.log_lbl_dbstatus.Text = "Offline"
+                    Login.log_lbl_dbstatus.ForeColor = Color.Red
+                    Return
+               Else
+                    RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+               End If
+            Catch ex As Exception
+                RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+        Finally
+            MysqlConn.Dispose()
+        End Try
     End Sub
 
 
@@ -2085,6 +2285,7 @@ Public Class Main
         End Sub
     'THIS IS TO DELAY THE FILTER WHEN the user types so that it won't be laggy
     Private Sub eqtype_filter_delay_Tick(sender As Object, e As EventArgs) Handles eqtype_filter_delay.Tick
+        Try
         eqtype_filter_delay.Stop()
         If MysqlConn.State = ConnectionState.Open Then
             MysqlConn.Close()
@@ -2094,7 +2295,6 @@ Public Class Main
         Dim SDA As New MySqlDataAdapter
         Dim dbdataset As New DataTable
         Dim bsource As New BindingSource
-        Try
             MysqlConn.Open()
 
             query = "SELECT equipmentnumber AS 'Equipment Number', equipmentmodel as 'Equipment', equipmentserial AS 'Serial Number', equipmentname as 'Equipment Type', equipmentlocation AS 'Equipment Location', equipmentowner AS 'Owner', remarks AS 'Status' FROM ceutltdprevmaintenance.equipmentlist WHERE remarks LIKE '%Good Condition%'"
@@ -2105,23 +2305,32 @@ Public Class Main
             bsource.DataSource = dbdataset
             eq_rgv_showregequipment.DataSource = bsource
             SDA.Update(dbdataset)
-
             MysqlConn.Close()
 
-        Catch ex As MySqlException
-            RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+            Dim DV As New DataView(dbdataset)
+            DV.RowFilter = String.Format("`Equipment Number` Like'%{0}%' and `Equipment Type` Like'%{1}%'", eq_filter_eqno.Text, eq_filter_eqtype.Text)
+            eq_rgv_showregequipment.DataSource = DV
+            If eq_rgv_showregequipment.Rows.Count -1 < eq_keepSelectedRowIndexAfterUpdate
+            eq_rgv_showregequipment.Rows(0).IsCurrent = True
+            Else
+            eq_rgv_showregequipment.Rows(eq_keepSelectedRowIndexAfterUpdate).IsCurrent = True  'WUTRY_1
+            End If
+            Catch ex As MySqlException
+                If ex.Number  = 0 Or ex.Number = 1042
+                    refresh_main_rgv_recordedacademicsonly.Stop()
+                    refresh_released_grid_list.Stop()
+                    RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                    Login.log_lbl_dbstatus.Text = "Offline"
+                    Login.log_lbl_dbstatus.ForeColor = Color.Red
+                    Return
+               Else
+                    RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+               End If
+            Catch ex As Exception
+                RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
         Finally
             MysqlConn.Dispose()
         End Try
-
-        Dim DV As New DataView(dbdataset)
-        DV.RowFilter = String.Format("`Equipment Number` Like'%{0}%' and `Equipment Type` Like'%{1}%'", eq_filter_eqno.Text, eq_filter_eqtype.Text)
-        eq_rgv_showregequipment.DataSource = DV
-        If eq_rgv_showregequipment.Rows.Count -1 < eq_keepSelectedRowIndexAfterUpdate
-        eq_rgv_showregequipment.Rows(0).IsCurrent = True
-        Else
-        eq_rgv_showregequipment.Rows(eq_keepSelectedRowIndexAfterUpdate).IsCurrent = True  'WUTRY_1
-        End If
     End Sub
     
     Private Sub eq_clear_filter_Click_(sender As Object, e As EventArgs) Handles eq_clear_filter.Click
@@ -2135,6 +2344,7 @@ Public Class Main
     End Sub
 
     Private Sub tb_show_all_equipments_Click(sender As Object, e As EventArgs) Handles tb_show_all_equipments.Click
+        Try
         Dim show_alleq_quest As DialogResult = RadMessageBox.Show(Me, "Are you sure you want to list all of the equipments?" & Environment.NewLine & "This might cause slowdown in the database due to the large amount of data to be loaded and will take some time.", "CEU TLTD Reservation System", MessageBoxButtons.YesNo, RadMessageIcon.Exclamation)
         If show_alleq_quest = DialogResult.Yes
             If NOT eq_filter_eqno.Text="" Or NOT eq_filter_eqtype.Text=""
@@ -2144,6 +2354,22 @@ Public Class Main
                 load_eq_table()
             End If
         End If
+            Catch ex As MySqlException
+                If ex.Number  = 0 Or ex.Number = 1042
+                    refresh_main_rgv_recordedacademicsonly.Stop()
+                    refresh_released_grid_list.Stop()
+                    RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                    Login.log_lbl_dbstatus.Text = "Offline"
+                    Login.log_lbl_dbstatus.ForeColor = Color.Red
+                    Return
+               Else
+                    RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+               End If
+            Catch ex As Exception
+                RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+            Finally
+            MysqlConn.Dispose()
+        End Try
     End Sub
 
     'Equipment Management Codes Umali E9 = SEARCH BY EQ_STATUS          ------>>>>>DEPRECIATED, NOT NEEDED SINCE Equipments with Good Condition are listed Here
@@ -2201,11 +2427,11 @@ Public Class Main
 
     'Equipment Management Codes Umali E11 = COUNTER CODE
     Public Sub counter_of_total_eq()
+        Try
         If MysqlConn.State = ConnectionState.Open Then
             MysqlConn.Close()
         End If
         MysqlConn.ConnectionString = connstring
-        Try
             MysqlConn.Open()
 
             Dim holder As String
@@ -2222,22 +2448,33 @@ Public Class Main
 
             MysqlConn.Close()
 
-        Catch ex As Exception
-            RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+            Catch ex As MySqlException
+                If ex.Number  = 0 Or ex.Number = 1042
+                    refresh_main_rgv_recordedacademicsonly.Stop()
+                    refresh_released_grid_list.Stop()
+                    RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                    Login.log_lbl_dbstatus.Text = "Offline"
+                    Login.log_lbl_dbstatus.ForeColor = Color.Red
+                    Return
+               Else
+                    RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+               End If
+            Catch ex As Exception
+                RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
         Finally
             MysqlConn.Dispose()
-
         End Try
     End Sub
 
 
     ' Reservation Management Code Umali R1 = LOADING DATA TO rec_eq_type_choose
     Public Sub rec_load_choices_eqtype()
+        Try
         If MysqlConn.State = ConnectionState.Open Then
             MysqlConn.Close()
         End If
         MysqlConn.ConnectionString = connstring
-        Try
+
             MysqlConn.Open()
             query = "SELECT DISTINCT(equipmentname) FROM ceutltdprevmaintenance.equipmentlist WHERE remarks LIKE '%Good Condition%' ORDER BY equipmentname ASC"
             comm = New MySqlCommand(query, MysqlConn)
@@ -2253,23 +2490,32 @@ Public Class Main
                 eq_counter_type.Items.Add(reader.GetString("equipmentname"))
             End While
             MysqlConn.Close()
-        Catch ex As Exception
-            RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+            Catch ex As MySqlException
+                If ex.Number  = 0 Or ex.Number = 1042
+                    refresh_main_rgv_recordedacademicsonly.Stop()
+                    refresh_released_grid_list.Stop()
+                    RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                    Login.log_lbl_dbstatus.Text = "Offline"
+                    Login.log_lbl_dbstatus.ForeColor = Color.Red
+                    Return
+               Else
+                    RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+               End If
+            Catch ex As Exception
+                RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
         Finally
             MysqlConn.Dispose()
-
         End Try
     End Sub
 
     ' Reservation Management Code Umali R2 = LOADING DATA TO rec_eq_choosesn 
     Private Sub rec_eq_type_choose_SelectedIndexChanged(sender As Object, e As UI.Data.PositionChangedEventArgs) Handles rec_eq_type_choose.SelectedIndexChanged
+        Try
         rec_eq_chooseno.Items.Clear()
         If MysqlConn.State = ConnectionState.Open Then
             MysqlConn.Close()
         End If
         MysqlConn.ConnectionString = connstring
-
-        Try
             MysqlConn.Open()
 
             query = "SELECT DISTINCT equipmentnumber FROM ceutltdprevmaintenance.equipmentlist WHERE remarks LIKE '%Good Condition%' and equipmentname=@rec_eq_type_choose"
@@ -2281,10 +2527,20 @@ Public Class Main
             While reader.Read
                 rec_eq_chooseno.Items.Add(reader.GetString("equipmentnumber"))
             End While
-
             MysqlConn.Close()
-        Catch ex As Exception
-            RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+            Catch ex As MySqlException
+                If ex.Number  = 0 Or ex.Number = 1042
+                    refresh_main_rgv_recordedacademicsonly.Stop()
+                    refresh_released_grid_list.Stop()
+                    RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                    Login.log_lbl_dbstatus.Text = "Offline"
+                    Login.log_lbl_dbstatus.ForeColor = Color.Red
+                    Return
+               Else
+                    RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+               End If
+            Catch ex As Exception
+                RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
         Finally
             MysqlConn.Dispose()
         End Try
@@ -2293,11 +2549,11 @@ Public Class Main
 
     ' Reservation Management Code Umali R2.5 = LOADING DATA TO rec_eq_chooseeq 
     Private Sub rec_eq_chooseno_SelectedIndexChanged(sender As Object, e As UI.Data.PositionChangedEventArgs) Handles rec_eq_chooseno.SelectedIndexChanged
+        Try
         If MysqlConn.State = ConnectionState.Open Then
             MysqlConn.Close()
         End If
         MysqlConn.ConnectionString = connstring
-        Try
             MysqlConn.Open()
             query = "SELECT equipmentmodel FROM ceutltdprevmaintenance.equipmentlist WHERE remarks LIKE '%Good Condition%' and equipmentname=@rec_eq_type_choose and equipmentnumber=@rec_eq_chooseno"
             comm = New MySqlCommand(query, MysqlConn)
@@ -2313,8 +2569,19 @@ Public Class Main
             End While
 
             MysqlConn.Close()
-        Catch ex As Exception
-            RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+            Catch ex As MySqlException
+                If ex.Number  = 0 Or ex.Number = 1042
+                    refresh_main_rgv_recordedacademicsonly.Stop()
+                    refresh_released_grid_list.Stop()
+                    RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                    Login.log_lbl_dbstatus.Text = "Offline"
+                    Login.log_lbl_dbstatus.ForeColor = Color.Red
+                    Return
+               Else
+                    RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+               End If
+            Catch ex As Exception
+                RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
         Finally
             MysqlConn.Dispose()
         End Try
@@ -2324,7 +2591,7 @@ Public Class Main
 
     'Reservation Management Code Umali R3 = Adding Data from combobox to eq_rgv_addeq RadDataGrid
     Private Sub rec_btn_add_eq_Click(sender As Object, e As EventArgs) Handles rec_btn_add_eq.Click
-
+        Try
         If MysqlConn.State = ConnectionState.Open Then
             MysqlConn.Close()
         End If
@@ -2337,7 +2604,6 @@ Public Class Main
         ElseIf rec_eq_chooseeq.Text = "" Then
             RadMessageBox.Show(Me, "Please choose an equipment.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
         Else
-            Try
                 MysqlConn.Open()
                 query = "SELECT equipmentserial as 'Serial Number', equipmentnumber as '#' from ceutltdprevmaintenance.equipmentlist where equipmentname=@rec_eq_type_choose and equipmentmodel=@rec_chooseeq and equipmentnumber=@rec_eq_chooseno"
                 comm = New MySqlCommand(query, MysqlConn)
@@ -2361,14 +2627,23 @@ Public Class Main
                 rowcounter += 1
 
                 MysqlConn.Close()
+        End If
+            Catch ex As MySqlException
+                If ex.Number  = 0 Or ex.Number = 1042
+                    refresh_main_rgv_recordedacademicsonly.Stop()
+                    refresh_released_grid_list.Stop()
+                    RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                    Login.log_lbl_dbstatus.Text = "Offline"
+                    Login.log_lbl_dbstatus.ForeColor = Color.Red
+                    Return
+               Else
+                    RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+               End If
             Catch ex As Exception
                 RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
             Finally
                 MysqlConn.Dispose()
             End Try
-
-        End If
-
     End Sub
 
     'Reservation Management Code Umali R4 = Removing data from eq_rgv_addeq RadDataGrid
@@ -2421,6 +2696,7 @@ Public Class Main
         '    MysqlConn.Dispose()
 
         'End Try
+        Try
         Dim elapsedTime As TimeSpan = DateTime.Parse(Format(CDate(rec_dtp_date.Value), "yyyy-MM-dd") & " " & rec_dtp_endtime.Text).Subtract(DateTime.Parse(DateTime.Parse(Format(CDate(rec_dtp_date.Value), "yyyy-MM-dd") & " " & rec_dtp_starttime.Text)))
         If rec_dtp_starttime.Text="" Or rec_dtp_endtime.Text=""
             RadMessageBox.Show(Me, "Please set the start time and the end time for checking of the availability of the equipment.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -2440,7 +2716,7 @@ Public Class Main
                             Dim equipmentrgv As String = eq_rgv_addeq.Rows(counter).Cells(1).Value
                             Dim equipmentsnrgv As String = eq_rgv_addeq.Rows(counter).Cells(2).Value
 
-                            Try
+                            
                                 MysqlConn.Close()
                                 MysqlConn.Open()
                                 'Changed for the cancelled STATE
@@ -2480,16 +2756,27 @@ Public Class Main
                                 Else
                                     RadMessageBox.Show(Me, "All the selected equipments available.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Info)
                                 End If
-                            Catch ex As Exception
-                                RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
-                            Finally
-                                MysqlConn.Dispose()
-                            End Try
                             counter = counter + 1
                         End While
                         rowcounter = 0
                     End If
             End If
+            Catch ex As MySqlException
+                If ex.Number  = 0 Or ex.Number = 1042
+                    refresh_main_rgv_recordedacademicsonly.Stop()
+                    refresh_released_grid_list.Stop()
+                    RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                    Login.log_lbl_dbstatus.Text = "Offline"
+                    Login.log_lbl_dbstatus.ForeColor = Color.Red
+                    Return
+               Else
+                    RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+               End If
+            Catch ex As Exception
+                RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+            Finally
+                MysqlConn.Dispose()
+            End Try
     End Sub
 
 
@@ -2499,6 +2786,7 @@ Public Class Main
     'Under observation because of bugs that can be found in the future ' as of 09.06.16 4:55pm'
 
     Private Sub rec_btn_save_Click(sender As Object, e As EventArgs) Handles rec_btn_save.Click
+        Try
         reserveYN = RadMessageBox.Show(Me, "Are you sure you want to reserve?", "CEU TLTD Reservation System", MessageBoxButtons.YesNo, RadMessageIcon.Question)
         If reserveYN = MsgBoxResult.Yes Then
 
@@ -2547,8 +2835,6 @@ Public Class Main
                             Dim equipmentnorgv As String = eq_rgv_addeq.Rows(counter).Cells(0).Value
                             Dim equipmentrgv As String = eq_rgv_addeq.Rows(counter).Cells(1).Value
                             Dim equipmentsnrgv As String = eq_rgv_addeq.Rows(counter).Cells(2).Value
-
-                            Try
 
                                 MysqlConn.Close()
                                 MysqlConn.Open()
@@ -2615,13 +2901,7 @@ Public Class Main
                                     MysqlConn.Close()
 
                                 End If
-                            Catch ex As Exception
-                                RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
-                            Finally
-                                MysqlConn.Dispose()
-                            End Try
                             counter = counter + 1
-
 
                         End While
                         
@@ -2644,6 +2924,22 @@ Public Class Main
             reserved_load_table()
         End If
       End If
+            Catch ex As MySqlException
+                If ex.Number  = 0 Or ex.Number = 1042
+                    refresh_main_rgv_recordedacademicsonly.Stop()
+                    refresh_released_grid_list.Stop()
+                    RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                    Login.log_lbl_dbstatus.Text = "Offline"
+                    Login.log_lbl_dbstatus.ForeColor = Color.Red
+                    Return
+               Else
+                    RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+               End If
+            Catch ex As Exception
+                RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+            Finally
+                MysqlConn.Dispose()
+            End Try
     End Sub
 
     'Showing All Data to Reservation Grid View
@@ -2705,7 +3001,7 @@ Public Class Main
 
     'Deletion of data in Reservation Page
     Private Sub rec_btn_delete_Click(sender As Object, e As EventArgs) Handles rec_btn_delete.Click
-         
+        Try
         Dim get_status As String = (reservation_rgv_recordeddata.SelectedRows(0).Cells("Status").Value)
         
         If get_status="Released"
@@ -2720,7 +3016,7 @@ Public Class Main
         End If
         deleteYN = RadMessageBox.Show(Me, "Are you sure you want to delete?", "CEU TLTD Reservation System", MessageBoxButtons.YesNo, RadMessageIcon.Question)
         If deleteYN = MsgBoxResult.Yes Then
-            Try
+
                 MysqlConn.Open()
                 query = "DELETE FROM reservation WHERE (reservationno=@R_rec_cb_reserveno) AND (id=@R_rec_cb_idnum)"
                 comm = New MySqlCommand(query, MysqlConn)
@@ -2734,25 +3030,34 @@ Public Class Main
                     load_rec_table("NONE",True)
                 RadMessageBox.Show(Me, "Successfully Deleted!", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Info)
                 MysqlConn.Close()
-            Catch ex As Exception
-                RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
-            Finally
-                MysqlConn.Dispose()
-            End Try
         End If
-        
-
         'main_load_schoolonly()
         End If
+            Catch ex As MySqlException
+                If ex.Number  = 0 Or ex.Number = 1042
+                    refresh_main_rgv_recordedacademicsonly.Stop()
+                    refresh_released_grid_list.Stop()
+                    RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                    Login.log_lbl_dbstatus.Text = "Offline"
+                    Login.log_lbl_dbstatus.ForeColor = Color.Red
+                    Return
+               Else
+                    RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+               End If
+            Catch ex As Exception
+                RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+        Finally
+            MysqlConn.Dispose()
+        End Try
     End Sub
 
     'Combining (Fname,Lname) in Borrower Field in Reservation
     Private Sub rec_cb_idnum_TextChanged(sender As Object, e As EventArgs) Handles rec_cb_idnum.TextChanged
+        Try
         If MysqlConn.State = ConnectionState.Open Then
             MysqlConn.Close()
         End If
         MysqlConn.ConnectionString = connstring
-        Try
             MysqlConn.Open()
             query = "SELECT CONCAT (bor_surname,', ',bor_fname) as 'Name' FROM borrowers_reg WHERE bor_id=@bor_idno"
             comm = New MySqlCommand(query, MysqlConn)
@@ -2765,8 +3070,19 @@ Public Class Main
             End While
 
             MysqlConn.Close()
-        Catch ex As Exception
-            RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+            Catch ex As MySqlException
+                If ex.Number  = 0 Or ex.Number = 1042
+                    refresh_main_rgv_recordedacademicsonly.Stop()
+                    refresh_released_grid_list.Stop()
+                    RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                    Login.log_lbl_dbstatus.Text = "Offline"
+                    Login.log_lbl_dbstatus.ForeColor = Color.Red
+                    Return
+               Else
+                    RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+               End If
+            Catch ex As Exception
+                RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
         Finally
             MysqlConn.Dispose()
         End Try
@@ -2856,6 +3172,7 @@ Public Class Main
     '    'main_load_schoolonly()
     'End Sub
         Private Sub reservation_rgv_recordeddata_CellDoubleClick(sender As Object, e As GridViewCellEventArgs) Handles reservation_rgv_recordeddata.CellDoubleClick
+        Try
         Dim get_status As String
         If e.RowIndex >= 0 Then
             Dim row As Telerik.WinControls.UI.GridViewRowInfo
@@ -2879,7 +3196,7 @@ Public Class Main
         Else
         deleteYN = RadMessageBox.Show(Me, "Are you sure you want to cancel the reservation?", "CEU TLTD Reservation System", MessageBoxButtons.YesNo, RadMessageIcon.Question)
         If deleteYN = MsgBoxResult.Yes Then
-            Try
+            
                 MysqlConn.Open()
                 query = "UPDATE ceutltdscheduler.reservation_equipments SET res_status='Cancelled' WHERE (reservationno=@R_rec_cb_reserveno)"
                 comm = New MySqlCommand(query, MysqlConn)
@@ -2895,17 +3212,28 @@ Public Class Main
                 main_load_academicsonly()
                 reserved_load_table()
                 auto_generate_reservationno()
+
+      End If
+      End If
+        'main_load_schoolonly()
+      End If
+      End If
+            Catch ex As MySqlException
+                If ex.Number  = 0 Or ex.Number = 1042
+                    refresh_main_rgv_recordedacademicsonly.Stop()
+                    refresh_released_grid_list.Stop()
+                    RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                    Login.log_lbl_dbstatus.Text = "Offline"
+                    Login.log_lbl_dbstatus.ForeColor = Color.Red
+                    Return
+               Else
+                    RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+               End If
             Catch ex As Exception
                 RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
             Finally
                 MysqlConn.Dispose()
-                
             End Try
-        End If
-            End If
-        'main_load_schoolonly()
-        End If
-            End If
     End Sub
 
     'Auto Generating of Reservation Number
@@ -2962,7 +3290,6 @@ Public Class Main
             rec_rrtc_actname.Enabled = False
             rec_rrtc_actname.Text = ""
         End If
-
     End Sub
 
     Private Sub return_btn_returned_Click(sender As Object, e As EventArgs) Handles return_btn_returned.Click
@@ -2981,7 +3308,18 @@ Public Class Main
                 End While
                 MysqlConn.Close()
             Catch ex As MySqlException
-                MessageBox.Show(ex.Message)
+                If ex.Number  = 0 Or ex.Number = 1042
+                    refresh_main_rgv_recordedacademicsonly.Stop()
+                    refresh_released_grid_list.Stop()
+                    RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                    Login.log_lbl_dbstatus.Text = "Offline"
+                    Login.log_lbl_dbstatus.ForeColor = Color.Red
+                    Return
+               Else
+                    RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+               End If
+            Catch ex As Exception
+                RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
             Finally
                 MysqlConn.Dispose()
             End Try
@@ -3015,7 +3353,18 @@ Public Class Main
                     MysqlConn.Close()
 
                 Catch ex As MySqlException
-                     RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error, MessageBoxDefaultButton.Button1)
+                If ex.Number  = 0 Or ex.Number = 1042
+                    refresh_main_rgv_recordedacademicsonly.Stop()
+                    refresh_released_grid_list.Stop()
+                    RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                    Login.log_lbl_dbstatus.Text = "Offline"
+                    Login.log_lbl_dbstatus.ForeColor = Color.Red
+                    Return
+               Else
+                    RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+               End If
+            Catch ex As Exception
+                RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
                 Finally
                     MysqlConn.Dispose()
                     load_released_list2()
@@ -3068,8 +3417,19 @@ Public Class Main
                     comm.ExecuteNonQuery()
                     MysqlConn.Close()
 
-                    Catch ex As MySqlException
-                       RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error, MessageBoxDefaultButton.Button1)
+            Catch ex As MySqlException
+                If ex.Number  = 0 Or ex.Number = 1042
+                    refresh_main_rgv_recordedacademicsonly.Stop()
+                    refresh_released_grid_list.Stop()
+                    RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                    Login.log_lbl_dbstatus.Text = "Offline"
+                    Login.log_lbl_dbstatus.ForeColor = Color.Red
+                    Return
+               Else
+                    RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+               End If
+            Catch ex As Exception
+                RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
                     Finally
                         MysqlConn.Dispose()
                         load_released_list2()
@@ -3110,8 +3470,19 @@ Public Class Main
 							comm.Parameters.AddWithValue("@remarks", ret_remarks.Text)
                             comm.ExecuteNonQuery()
                             MysqlConn.Close()
-                        Catch ex As MySqlException
-                            RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error, MessageBoxDefaultButton.Button1)
+                    Catch ex As MySqlException
+                        If ex.Number  = 0 Or ex.Number = 1042
+                            refresh_main_rgv_recordedacademicsonly.Stop()
+                            refresh_released_grid_list.Stop()
+                            RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                            Login.log_lbl_dbstatus.Text = "Offline"
+                            Login.log_lbl_dbstatus.ForeColor = Color.Red
+                            Return
+                       Else
+                            RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                       End If
+                    Catch ex As Exception
+                        RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
                         Finally
                             MysqlConn.Dispose()
                             load_penalty_list(pen_startDate.Value,pen_endDate.Value)
@@ -3152,8 +3523,19 @@ Public Class Main
 							comm.Parameters.AddWithValue("@remarks", ret_remarks.Text)
                             comm.ExecuteNonQuery()
                             MysqlConn.Close()
-                        Catch ex As MySqlException
-                            RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error, MessageBoxDefaultButton.Button1)
+                    Catch ex As MySqlException
+                        If ex.Number  = 0 Or ex.Number = 1042
+                            refresh_main_rgv_recordedacademicsonly.Stop()
+                            refresh_released_grid_list.Stop()
+                            RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                            Login.log_lbl_dbstatus.Text = "Offline"
+                            Login.log_lbl_dbstatus.ForeColor = Color.Red
+                            Return
+                       Else
+                            RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                       End If
+                    Catch ex As Exception
+                        RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
                         Finally
                             MysqlConn.Dispose()
                             load_penalty_list(pen_startDate.Value,pen_endDate.Value)
@@ -3181,6 +3563,7 @@ Public Class Main
 
      'Penalty GRIDVIEW Controls
     Public Sub load_penalty_list(Now1 As Date, Now2 As Date)
+        Try
         If Not penalty_grid_list.Columns.Count = 0 Then
             penalty_grid_list.Columns.Clear()
         End If
@@ -3194,7 +3577,6 @@ Public Class Main
             MysqlConn.Close()
         End If
 
-        Try
             MysqlConn.Open()
             Dim query As String
             'query = "Select rel_reservation_no as 'Reservation Number' , rel_id_passnum as 'Pass Number' , rel_borrower as 'Borrower' , rel_equipment_no as 'Equipment Number' , rel_equipment as 'Equipment' , DATE_FORMAT(rel_assign_date,'%M %d %Y') as 'Date',TIME_FORMAT(rel_starttime, '%H:%i') as 'Start Time', TIME_FORMAT(rel_endtime, '%H:%i') as 'End Time' , rel_status as 'Status' , rel_releasedby as 'Released By'  from released_info"
@@ -3210,8 +3592,19 @@ Public Class Main
             MysqlConn.Close()
             penalty_grid_list.Columns("Penalty ID").IsVisible = false 'HIDE LATER
             SetSizeofPenaltyTable()
-        Catch ex As Exception
-            RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+            Catch ex As MySqlException
+                If ex.Number  = 0 Or ex.Number = 1042
+                    refresh_main_rgv_recordedacademicsonly.Stop()
+                    refresh_released_grid_list.Stop()
+                    RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                    Login.log_lbl_dbstatus.Text = "Offline"
+                    Login.log_lbl_dbstatus.ForeColor = Color.Red
+                    Return
+               Else
+                    RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+               End If
+            Catch ex As Exception
+                RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
         Finally
             MysqlConn.Dispose()
         End Try
@@ -3219,27 +3612,38 @@ Public Class Main
 
 
     Private Sub penalty_grid_list_CellDoubleClick(sender As Object, e As GridViewCellEventArgs) Handles penalty_grid_list.CellDoubleClick
+        Try
         If e.RowIndex>=0 Then
         penaltiesDeleteYN = RadMessageBox.Show(Me, "Are you sure you want to delete the selected data?", "CEU TLTD Reservation System", MessageBoxButtons.YesNo, RadMessageIcon.Question)
         If penaltiesDeleteYN = MsgBoxResult.Yes Then
             Dim uniqueid As String
             Dim row As GridViewRowInfo = penalty_grid_list.Rows(e.RowIndex)
             uniqueid = row.Cells("Penalty ID").Value.ToString
-            Try
                 Dim query = "DELETE FROM ceutltdscheduler.penalties where pen_id=" & uniqueid
                 MysqlConn.Open()
                 comm = New MySqlCommand(query, MysqlConn)
                 comm.ExecuteNonQuery()
                 MysqlConn.Close()
                 RadMessageBox.Show(Me, "Selected penalty sucessfully deleted.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Info)
+        End If
+       End If
             Catch ex As MySqlException
+                If ex.Number  = 0 Or ex.Number = 1042
+                    refresh_main_rgv_recordedacademicsonly.Stop()
+                    refresh_released_grid_list.Stop()
+                    RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                    Login.log_lbl_dbstatus.Text = "Offline"
+                    Login.log_lbl_dbstatus.ForeColor = Color.Red
+                    Return
+               Else
+                    RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+               End If
+            Catch ex As Exception
                 RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
             Finally
                 MysqlConn.Dispose()
                 load_penalty_list(pen_startDate.Value,pen_endDate.Value)
             End Try
-        End If
-       End If
     End Sub
 
     Private Sub pen_btn_chg_filter_Click(sender As Object, e As EventArgs) Handles pen_btn_chg_filter.Click
@@ -3274,6 +3678,7 @@ End Sub
         End If
     End Sub
     Private Sub penalty_grid_list_DeleteRightClick(sender As Object, e As EventArgs)
+        Try
         penaltiesDeleteYN = RadMessageBox.Show(Me, "Are you sure you want to delete the selected data?", "CEU TLTD Reservation System", MessageBoxButtons.YesNo, RadMessageIcon.Question)
         If penaltiesDeleteYN = MsgBoxResult.Yes Then
             Dim ligaw As Integer = 0
@@ -3293,7 +3698,6 @@ End Sub
                 End If
                 ligaw += 1
             Next
-            Try
                 If morethanOneSelected Then
                     query = (query.Remove(query.Length - 11, 11))
                 Else
@@ -3303,16 +3707,28 @@ End Sub
                 comm.ExecuteNonQuery()
                 MysqlConn.Close()
                 RadMessageBox.Show(Me, "Selected penalties sucessfully deleted.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Info)
+                load_penalty_list(pen_startDate.Value,pen_endDate.Value)
+        End If
             Catch ex As MySqlException
+                If ex.Number  = 0 Or ex.Number = 1042
+                    refresh_main_rgv_recordedacademicsonly.Stop()
+                    refresh_released_grid_list.Stop()
+                    RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                    Login.log_lbl_dbstatus.Text = "Offline"
+                    Login.log_lbl_dbstatus.ForeColor = Color.Red
+                    Return
+               Else
+                    RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+               End If
+            Catch ex As Exception
                 RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
             Finally
                 MysqlConn.Dispose()
-                load_penalty_list(pen_startDate.Value,pen_endDate.Value)
             End Try
-        End If
     End Sub
     Private Sub penalty_grid_list_KeyPress(sender As Object, e As KeyEventArgs) Handles penalty_grid_list.KeyDown
-         If e.KeyCode = Keys.Delete Then
+        Try
+        If e.KeyCode = Keys.Delete Then
         penaltiesDeleteYN = RadMessageBox.Show(Me, "Are you sure you want to delete the selected data?", "CEU TLTD Reservation System", MessageBoxButtons.YesNo, RadMessageIcon.Question)
         If penaltiesDeleteYN = MsgBoxResult.Yes Then
             Dim ligaw As Integer = 0
@@ -3332,7 +3748,7 @@ End Sub
                 End If
                 ligaw += 1
             Next
-            Try
+
                 If morethanOneSelected Then
                     query = (query.Remove(query.Length - 11, 11))
                 Else
@@ -3342,20 +3758,31 @@ End Sub
                 comm.ExecuteNonQuery()
                 MysqlConn.Close()
                 RadMessageBox.Show(Me, "Selected penalties sucessfully deleted.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Info)
+        End If
+        End If
             Catch ex As MySqlException
+                If ex.Number  = 0 Or ex.Number = 1042
+                    refresh_main_rgv_recordedacademicsonly.Stop()
+                    refresh_released_grid_list.Stop()
+                    RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                    Login.log_lbl_dbstatus.Text = "Offline"
+                    Login.log_lbl_dbstatus.ForeColor = Color.Red
+                    Return
+               Else
+                    RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+               End If
+            Catch ex As Exception
                 RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
             Finally
                 MysqlConn.Dispose()
                 load_penalty_list(pen_startDate.Value,pen_endDate.Value)
             End Try
-
-        End If
-            End If
     End Sub
 
  
     'Returned Equipment GRIDVIEW Controls
     Public Sub load_returned_eq_list(Now1 As Date, Now2 As Date)
+        Try
         If Not returned_eq_list.Columns.Count = 0 Then
             returned_eq_list.Columns.Clear()
         End If
@@ -3370,7 +3797,6 @@ End Sub
             MysqlConn.Close()
         End If
 
-        Try
             MysqlConn.Open()
             Dim query As String
             'query = "Select rel_reservation_no as 'Reservation Number' , rel_id_passnum as 'Pass Number' , rel_borrower as 'Borrower' , rel_equipment_no as 'Equipment Number' , rel_equipment as 'Equipment' , DATE_FORMAT(rel_assign_date,'%M %d %Y') as 'Date',TIME_FORMAT(rel_starttime, '%H:%i') as 'Start Time', TIME_FORMAT(rel_endtime, '%H:%i') as 'End Time' , rel_status as 'Status' , rel_releasedby as 'Released By'  from released_info"
@@ -3385,8 +3811,19 @@ End Sub
             MysqlConn.Close()
             returned_eq_list.Columns("Return ID").IsVisible = false 'HIDE LATER
             SetSizeofReturnTable()
-        Catch ex As Exception
-            RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+            Catch ex As MySqlException
+                If ex.Number  = 0 Or ex.Number = 1042
+                    refresh_main_rgv_recordedacademicsonly.Stop()
+                    refresh_released_grid_list.Stop()
+                    RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                    Login.log_lbl_dbstatus.Text = "Offline"
+                    Login.log_lbl_dbstatus.ForeColor = Color.Red
+                    Return
+               Else
+                    RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+               End If
+            Catch ex As Exception
+                RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
         Finally
             MysqlConn.Dispose()
         End Try
@@ -3401,27 +3838,39 @@ End Sub
         End If
     End Sub
     Private Sub returned_eq_list_CellDoubleClick(sender As Object, e As GridViewCellEventArgs) Handles returned_eq_list.CellDoubleClick
+        Try
         If e.RowIndex>=0 Then
         returned_eqDeleteYN = RadMessageBox.Show(Me, "Are you sure you want to delete the selected log?", "CEU TLTD Reservation System", MessageBoxButtons.YesNo, RadMessageIcon.Question)
         If returned_eqDeleteYN = MsgBoxResult.Yes Then
             Dim uniqueid As String
             Dim row As GridViewRowInfo = returned_eq_list.Rows(e.RowIndex)
             uniqueid = row.Cells("Return ID").Value.ToString
-            Try
+            
                 Dim query = "DELETE FROM ceutltdscheduler.returned_info where ret_id=" & uniqueid
                 MysqlConn.Open()
                 comm = New MySqlCommand(query, MysqlConn)
                 comm.ExecuteNonQuery()
                 MysqlConn.Close()
                 RadMessageBox.Show(Me, "Selected log sucessfully deleted.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Info)
+        End If
+       End If
             Catch ex As MySqlException
+                If ex.Number  = 0 Or ex.Number = 1042
+                    refresh_main_rgv_recordedacademicsonly.Stop()
+                    refresh_released_grid_list.Stop()
+                    RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                    Login.log_lbl_dbstatus.Text = "Offline"
+                    Login.log_lbl_dbstatus.ForeColor = Color.Red
+                    Return
+               Else
+                    RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+               End If
+            Catch ex As Exception
                 RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
             Finally
                 MysqlConn.Dispose()
                 load_returned_eq_list(returned_startDate.Value,returned_endDate.Value)
             End Try
-        End If
-       End If
     End Sub
     Private Sub returned_eq_list_sort(sender as object, e as GridViewCollectionChangedEventArgs)  Handles returned_eq_list.SortChanged
         Dim sorts As RadSortExpressionCollection = returned_eq_list.MasterTemplate.SortDescriptors
@@ -3445,6 +3894,7 @@ End Sub
         End If
     End Sub
     Private Sub returned_eq_list_DeleteRightClick(sender As Object, e As EventArgs)
+        Try
         returned_eqDeleteYN = RadMessageBox.Show(Me, "Are you sure you want to delete the selected data?", "CEU TLTD Reservation System", MessageBoxButtons.YesNo, RadMessageIcon.Question)
         If returned_eqDeleteYN = MsgBoxResult.Yes Then
             Dim ligaw As Integer = 0
@@ -3464,7 +3914,7 @@ End Sub
                 End If
                 ligaw += 1
             Next
-            Try
+
                 If morethanOneSelected Then
                     query = (query.Remove(query.Length - 11, 11))
                 Else
@@ -3474,16 +3924,28 @@ End Sub
                 comm.ExecuteNonQuery()
                 MysqlConn.Close()
                 RadMessageBox.Show(Me, "Selected logs sucessfully deleted.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Info)
+                load_returned_eq_list(returned_startDate.Value,returned_endDate.Value)
+        End If
             Catch ex As MySqlException
+                If ex.Number  = 0 Or ex.Number = 1042
+                    refresh_main_rgv_recordedacademicsonly.Stop()
+                    refresh_released_grid_list.Stop()
+                    RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                    Login.log_lbl_dbstatus.Text = "Offline"
+                    Login.log_lbl_dbstatus.ForeColor = Color.Red
+                    Return
+               Else
+                    RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+               End If
+            Catch ex As Exception
                 RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
             Finally
                 MysqlConn.Dispose()
-                load_returned_eq_list(returned_startDate.Value,returned_endDate.Value)
             End Try
-        End If
     End Sub
     Private Sub returned_eq_list_KeyPress(sender As Object, e As KeyEventArgs) Handles returned_eq_list.KeyDown
-         If e.KeyCode = Keys.Delete Then
+        Try
+        If e.KeyCode = Keys.Delete Then
             returned_eqDeleteYN = RadMessageBox.Show(Me, "Are you sure you want to delete the selected data?", "CEU TLTD Reservation System", MessageBoxButtons.YesNo, RadMessageIcon.Question)
         If returned_eqDeleteYN = MsgBoxResult.Yes Then
             Dim ligaw As Integer = 0
@@ -3503,7 +3965,6 @@ End Sub
                 End If
                 ligaw += 1
             Next
-            Try
                 If morethanOneSelected Then
                     query = (query.Remove(query.Length - 11, 11))
                 Else
@@ -3513,14 +3974,25 @@ End Sub
                 comm.ExecuteNonQuery()
                 MysqlConn.Close()
                 RadMessageBox.Show(Me, "Selected logs sucessfully deleted.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Info)
+                load_returned_eq_list(returned_startDate.Value,returned_endDate.Value)
+        End If
+      End If
             Catch ex As MySqlException
+                If ex.Number  = 0 Or ex.Number = 1042
+                    refresh_main_rgv_recordedacademicsonly.Stop()
+                    refresh_released_grid_list.Stop()
+                    RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                    Login.log_lbl_dbstatus.Text = "Offline"
+                    Login.log_lbl_dbstatus.ForeColor = Color.Red
+                    Return
+               Else
+                    RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+               End If
+            Catch ex As Exception
                 RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
             Finally
                 MysqlConn.Dispose()
-                load_returned_eq_list(returned_startDate.Value,returned_endDate.Value)
             End Try
-        End If
-      End If
     End Sub
 
 

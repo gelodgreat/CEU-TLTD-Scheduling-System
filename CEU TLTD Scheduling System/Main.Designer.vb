@@ -860,7 +860,6 @@ Partial Class Main
         Me.rel_list_info2.Controls.Add(Me.ret_gb_remarks)
         Me.rel_list_info2.Controls.Add(Me.released_grid_list2)
         Me.rel_list_info2.Controls.Add(Me.ret_gb_details)
-        Me.rel_list_info2.ItemSize = New System.Drawing.SizeF(119!, 24!)
         Me.rel_list_info2.Location = New System.Drawing.Point(5, 30)
         Me.rel_list_info2.Name = "rel_list_info2"
         Me.rel_list_info2.Size = New System.Drawing.Size(1338, 487)
@@ -1429,7 +1428,6 @@ Partial Class Main
         Me.ret_penalties_info.Controls.Add(Me.pen_endDate)
         Me.ret_penalties_info.Controls.Add(Me.pen_startDate)
         Me.ret_penalties_info.Controls.Add(Me.penalty_grid_list)
-        Me.ret_penalties_info.ItemSize = New System.Drawing.SizeF(57!, 24!)
         Me.ret_penalties_info.Location = New System.Drawing.Point(5, 30)
         Me.ret_penalties_info.Name = "ret_penalties_info"
         Me.ret_penalties_info.Size = New System.Drawing.Size(1338, 487)
@@ -1550,7 +1548,6 @@ Partial Class Main
         Me.ret_eq_list.Controls.Add(Me.RadLabel19)
         Me.ret_eq_list.Controls.Add(Me.RadLabel22)
         Me.ret_eq_list.Controls.Add(Me.returned_startDate)
-        Me.ret_eq_list.ItemSize = New System.Drawing.SizeF(142!, 24!)
         Me.ret_eq_list.Location = New System.Drawing.Point(5, 30)
         Me.ret_eq_list.Name = "ret_eq_list"
         Me.ret_eq_list.Size = New System.Drawing.Size(1338, 487)
@@ -3951,7 +3948,7 @@ Partial Class Main
         Me.rpv1.DefaultPage = Me.rpvp1_main
         Me.rpv1.Location = New System.Drawing.Point(0, 26)
         Me.rpv1.Name = "rpv1"
-        Me.rpv1.SelectedPage = Me.rpvp_returning
+        Me.rpv1.SelectedPage = Me.rpvp_releasing
         Me.rpv1.Size = New System.Drawing.Size(1358, 557)
         Me.rpv1.TabIndex = 1
         Me.rpv1.Text = "Home"
