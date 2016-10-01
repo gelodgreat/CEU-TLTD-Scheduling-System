@@ -98,6 +98,9 @@ Public Class InstructionalMaterials
     End Sub
 
     Public Sub imm_main_size()
+        If immain_rgv_movielist.Columns.Count <= 0
+            'Quiet when there is no columns loaded
+        Else
         Dim vidid = Me.immain_rgv_movielist.Columns("Video ID")
         vidid.Width = 50
 
@@ -115,6 +118,7 @@ Public Class InstructionalMaterials
 
         Dim ac_date = Me.imm_rgv_im_movielists.Columns("Acquisition Date")
         ac_date.Width = 120
+        End If
     End Sub
 
     Public Sub load_all_movielist_in_main()

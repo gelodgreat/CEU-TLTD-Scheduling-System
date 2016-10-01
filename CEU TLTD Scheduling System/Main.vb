@@ -40,7 +40,12 @@ Public Class Main
     Dim eq_keepSelectedRowIndexAfterUpdate As Integer 'WU_TRY1
     Dim acc_staff_keepSelectedRowIndexAfterUpdate As Integer
     Dim acc_prof_keepSelectedRowIndexAfterUpdate As Integer
+    Dim main_window_keepSelectedRowIndexAfterUpdate As Integer
+    Dim reserved_grid_list_KeepSelectedRowInDexAfterUpdate As Integer
+    Dim listofReleased_grid_list_KeepSelectedRowInDexAfterUpdate As Integer
+    Dim releasedToReturn_gridlist_KeepSelectedRowInDexAfterUpdate As Integer
     Dim clear_eq As Boolean = False
+    Dim Keepreservation_mainIndex As Integer
 
     'WU_SETTINGS'
 
@@ -85,11 +90,25 @@ Public Class Main
     End Sub
     
     Private Sub menuItem_LoadDB_Click(sender As Object, e As EventArgs) Handles menuItem_LoadDB.Click
-        DBPasswordPrompt.Show()        
+        refresh_main_rgv_recordedacademicsonly.Stop
+        refresh_released_grid_list.Stop
+        DBPasswordPrompt.Show()
+        If rpv1.SelectedPage Is rpvp1_main
+            refresh_main_rgv_recordedacademicsonly.Start()
+        Else If rel_gb_listinfos.SelectedPage Is rel_released_info
+            refresh_released_grid_list.Start()
+        End If
     End Sub
 
     Private Sub menuItem_SaveDB_Click(sender As Object, e As EventArgs) Handles menuItem_SaveDB.Click
-      Actions.SaveDB()
+        refresh_main_rgv_recordedacademicsonly.Stop
+        refresh_released_grid_list.Stop
+        Actions.SaveDB()
+        If rpv1.SelectedPage Is rpvp1_main
+            refresh_main_rgv_recordedacademicsonly.Start()
+        Else If rel_gb_listinfos.SelectedPage Is rel_released_info
+            refresh_released_grid_list.Start()
+        End If
     End Sub
 
     Private Sub menuItem_Settings_Click(sender As Object, e As EventArgs) Handles menuItem_Settings.Click
@@ -138,6 +157,7 @@ Public Class Main
         
         Main_Timer.Enabled = True
         return_btn_returned.Enabled=false
+        refresh_main_rgv_recordedacademicsonly.Start()
         'load_cb_eq_type()     ----->>> DEPRECIATED
     End Sub
 
@@ -253,6 +273,9 @@ Public Class Main
    
 
    Private Sub SetSizesofMainTable()
+        If main_rgv_recordedacademicsonly.Columns.Count<=0 Then
+
+        Else
         If lu_ActivityType.Text = "Academic" Then
             Dim colsmain_resno = main_rgv_recordedacademicsonly.Columns("Reservation Number")
             colsmain_resno.Width = 119
@@ -318,6 +341,7 @@ Public Class Main
             Dim colsmain_att = main_rgv_recordedacademicsonly.Columns("Activity")
             colsmain_att.Width = 120
         End If
+        End If
     End Sub ' Main TAB Table
     
    Private Sub SetSizeofReservationTable()
@@ -363,6 +387,9 @@ Public Class Main
     End Sub 'ITO YUNG NAGPAPAERROR       'OK NA
 
    Private Sub SetSizeofReservedItemstobeReleased()
+        If reserved_grid_list.Columns.Count<=0
+
+        Else
         Dim col_rel_res_ReservationNum As GridViewDataColumn = reserved_grid_list.Columns("Reservation Number")
         col_rel_res_ReservationNum.Width = 115
         Dim col_rel_res_Bor as GridViewDataColumn = reserved_grid_list.Columns("Borrower")
@@ -381,9 +408,13 @@ Public Class Main
         col_rel_res_et.Width = 68
         Dim col_rel_res_stt As GridViewDataColumn = reserved_grid_list.Columns("Status")
         col_rel_res_stt.Width = 120
+      End If
     End Sub
 
    Private Sub SetSizeofReservedItemsReleased_Also_in_theTab_in_Returning(which_COL As Boolean)
+        If released_grid_list.Columns.Count<=0 Then
+
+        Else
         If which_COL= False
             Dim col_rel_rel_ReservationNum As GridViewDataColumn = released_grid_list.Columns("Reservation Number")
             col_rel_rel_ReservationNum.Width = 115
@@ -427,10 +458,13 @@ Public Class Main
             Dim col_rel_rel_rlby As GridViewDataColumn = released_grid_list2.Columns("Released By")
             col_rel_rel_rlby.Width = 119
         End If
-        
+        End If
     End Sub
 
    Private Sub SetSizeofPenaltyTable()
+        If penalty_grid_list.Columns.Count<=0
+
+        Else
         Dim ret_pen_resno = penalty_grid_list.Columns("Reservation Number")
         ret_pen_resno.Width=119
 
@@ -463,9 +497,13 @@ Public Class Main
 
         Dim ret_pen_retdate = penalty_grid_list.Columns("Return Date")
         ret_pen_retdate.Width=120
+       End If
     End Sub
 
     Private Sub SetSizeofReturnTable()
+        If returned_eq_list.Columns.Count<=0
+
+        Else
         Dim ret_resno = returned_eq_list.Columns("Reservation Number")
         ret_resno.Width=110
 
@@ -501,6 +539,7 @@ Public Class Main
 
         Dim ret_pen_retdate = returned_eq_list.Columns("Return Date")
         ret_pen_retdate.Width=130
+       End If
     End Sub
     'End Formatting of GridViews
 
@@ -561,7 +600,7 @@ Public Class Main
             Else If show_all_no_filter = "Radio_ShowAll"
                 query = "Select reservationno as 'Reservation Number' ,borrower as 'Borrower',id as 'ID', equipmentno as 'Equipment Number', equipment as 'Equipment', location as 'Location', DATE_FORMAT(date,'%M %d %Y') as 'Date',TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time',activitytype as 'Activity Type',actname as 'Activity',res_status as 'Status' from reservation natural join reservation_equipments WHERE date ='" & Format(CDate(rec_dtp_date.Value), "yyyy-MM-dd") & "' ORDER by date DESC"
             End If
-            reservation_rgv_recordeddata.Columns.Clear()
+            'reservation_rgv_recordeddata.Columns.Clear
             comm = New MySqlCommand(query, MysqlConn)
             sda.SelectCommand = comm
             sda.Fill(dbdataset)
@@ -570,12 +609,25 @@ Public Class Main
             sda.Update(dbdataset)
             MysqlConn.Close()
             SetSizeofReservationTable() 'METHOD CAUSES ERROR!!!!
+            If reservation_rgv_recordeddata.Rows.Count -1 < Keepreservation_mainIndex
+                'reservation_rgv_recordeddata.Rows(0).IsCurrent = True
+            Else
+                reservation_rgv_recordeddata.Rows(Keepreservation_mainIndex).IsCurrent = True  'WUTRY_1
+        End If
         Catch ex As Exception
             RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
         Finally
             MysqlConn.Dispose()
             
         End Try
+    End Sub
+
+     Private Sub reservation_rgv_recordeddata_CellClick(sender As Object, e As GridViewCellEventArgs) Handles reservation_rgv_recordeddata.CellClick
+        If e.RowIndex = -1
+            'SHUT IT
+        Else
+        Keepreservation_mainIndex =e.RowIndex
+        End If
     End Sub
    
     Public Sub main_load_academicsonly()
@@ -605,7 +657,7 @@ Public Class Main
             activitytype as 'Activity Type', actname as 'Activity' from ceutltdscheduler.reservation natural join ceutltdscheduler.reservation_equipments where date ='" & Format(CDate(lu_date.Value), "yyyy-MM-dd") & "' and NOT(res_status='Cancelled') ORDER BY date DESC,starttime DESC"
                 Cover = ""
             End If
-            main_rgv_recordedacademicsonly.Columns.Clear()
+            'main_rgv_recordedacademicsonly.Columns.Clear()
             MysqlConn.Open()
             comm = New MySqlCommand(query, MysqlConn)
             SDA.SelectCommand = comm
@@ -616,6 +668,7 @@ Public Class Main
 
             MysqlConn.Close()
             SetSizesofMainTable()
+            Main_MaintainSelectedCell()
         Catch ex As MySqlException
             RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
         Finally
@@ -623,9 +676,27 @@ Public Class Main
         End Try
 
         Dim DV As New DataView(dbdataset)
-        DV.RowFilter = String.Format("`Borrower` Like'%{0}%' and `Equipment` Like'%{1}%' and `Date` Like'%{2}%' and `Activity Type` Like'%{3}%'", lu_byname.Text, lu_byequipment.Text, lu_date.Value.ToString("MMMM d yyyy"), Cover)
+        DV.RowFilter = String.Format("`Borrower` Like'%{0}%' and `Equipment` Like'%{1}%' and `Date` Like'%{2}%' and `Activity Type` Like'%{3}%'", lu_byname.Text, lu_byequipment.Text, lu_date.Value.ToString("MMMM dd yyyy"), Cover)
         main_rgv_recordedacademicsonly.DataSource = DV
     End Sub
+
+        Private Sub main_rgv_recordedacademicsonly_CellClick(sender As Object, e As GridViewCellEventArgs) Handles main_rgv_recordedacademicsonly.CellClick
+            If e.RowIndex = -1
+                'DO NOTHING
+            Else
+            main_window_keepSelectedRowIndexAfterUpdate=e.RowIndex
+            End If
+        End Sub
+
+    Private Sub Main_MaintainSelectedCell()
+        If main_rgv_recordedacademicsonly.Rows.Count -1 < main_window_keepSelectedRowIndexAfterUpdate Then
+                    'DO NOTHING
+       Else
+          main_rgv_recordedacademicsonly.Rows(main_window_keepSelectedRowIndexAfterUpdate).IsCurrent = True
+       End If
+    End Sub
+
+
 
     'Public Sub main_load_schoolonly()
     '    MysqlConn = New MySqlConnection
@@ -688,13 +759,25 @@ Public Class Main
             acc_staff_list.ReadOnly = True
             sda.Update(dbdataset)
             MysqlConn.Close()
-            acc_staff_list.Rows(acc_staff_keepSelectedRowIndexAfterUpdate).IsCurrent = True
+
+            If acc_staff_list.Rows.Count -1 < acc_staff_keepSelectedRowIndexAfterUpdate Then
+            Else
+                acc_staff_list.Rows(acc_staff_keepSelectedRowIndexAfterUpdate).IsCurrent = True
+            End If
         Catch ex As Exception
             RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
         Finally
             MysqlConn.Dispose()
 
         End Try
+    End Sub
+
+        Private Sub acc_staff_list_CellClick(sender As Object, e As GridViewCellEventArgs) Handles acc_staff_list.CellClick
+        If e.RowIndex = -1
+            'DO NOTHING
+        Else
+        acc_staff_keepSelectedRowIndexAfterUpdate = e.RowIndex
+        End If
     End Sub
 
     'Programmed by BRENZ SECOND POINT
@@ -722,7 +805,12 @@ Public Class Main
             acc_prof_list.ReadOnly = True
             sda.Update(dbdataset)
             MysqlConn.Close()
-            acc_prof_list.Rows(acc_prof_keepSelectedRowIndexAfterUpdate).IsCurrent = True
+            If acc_prof_list.Rows.Count -1 < acc_prof_keepSelectedRowIndexAfterUpdate Then
+                'DO NOTHING
+            Else
+                acc_prof_list.Rows(acc_prof_keepSelectedRowIndexAfterUpdate).IsCurrent = True
+            End If
+
         Catch ex As Exception
             RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
         Finally
@@ -730,6 +818,14 @@ Public Class Main
 
         End Try
 
+    End Sub
+
+        Private Sub acc_prof_list_CellClick(sender As Object, e As GridViewCellEventArgs) Handles acc_prof_list.CellClick
+        If e.RowIndex < -1 Then
+            'DO NOTHING
+        Else
+        acc_prof_keepSelectedRowIndexAfterUpdate = e.RowIndex
+        End If
     End Sub
 
     'Programmed by BRENZ THIRD POINT SAVE BUTTON
@@ -809,7 +905,6 @@ Public Class Main
         If e.RowIndex >= 0 Then
             updateYN = RadMessageBox.Show(Me, "Do you want to edit information on this staff?", "CEU TLTD Reservation System", MessageBoxButtons.YesNo, RadMessageIcon.Question)
             If updateYN = MsgBoxResult.Yes Then
-                acc_staff_keepSelectedRowIndexAfterUpdate = e.RowIndex
                 Dim row As Telerik.WinControls.UI.GridViewRowInfo
 
                 row = Me.acc_staff_list.Rows(e.RowIndex)
@@ -993,7 +1088,6 @@ Public Class Main
         If e.RowIndex >= 0 Then
             updateYN = RadMessageBox.Show(Me, "Do you want to edit this borrower's information?", "CEU TLTD Reservation System", MessageBoxButtons.YesNo, RadMessageIcon.Question)
             If updateYN = MsgBoxResult.Yes Then
-                acc_prof_keepSelectedRowIndexAfterUpdate = e.RowIndex
                 Dim row As Telerik.WinControls.UI.GridViewRowInfo
 
                 row = Me.acc_prof_list.Rows(e.RowIndex)
@@ -1139,6 +1233,12 @@ Public Class Main
             sda.Update(dbdataset)
             MysqlConn.Close()
             SetSizeofReservedItemsReleased_Also_in_theTab_in_Returning(False)
+            If released_grid_list.Rows.Count -1 < listofReleased_grid_list_KeepSelectedRowInDexAfterUpdate Then
+                    'DO NOTHING
+            Else
+                released_grid_list.Rows(listofReleased_grid_list_KeepSelectedRowInDexAfterUpdate).IsCurrent = True
+            End If
+
         Catch ex As Exception
             RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
         Finally
@@ -1161,7 +1261,7 @@ Public Class Main
 
         Try
             MysqlConn.Open()
-            released_grid_list2.Columns.Clear()
+            'released_grid_list2.Columns.Clear()
             Dim query As String
             query = "Select rel_reservation_no as 'Reservation Number' , rel_id_passnum as 'Pass ID#' , rel_borrower as 'Borrower' , rel_equipment_no as 'Equipment Number' , rel_equipment as 'Equipment' , DATE_FORMAT(rel_assign_date,'%M %d %Y') as 'Date',TIME_FORMAT(rel_starttime, '%H:%i') as 'Start Time', TIME_FORMAT(rel_endtime, '%H:%i') as 'End Time' , rel_status as 'Status' , rel_releasedby as 'Released By'  from released_info where rel_status = 'Released' ORDER BY date DESC,rel_reservation_no ASC"
             comm = New MySqlCommand(query, MysqlConn)
@@ -1173,6 +1273,11 @@ Public Class Main
             sda.Update(dbdataset)
             MysqlConn.Close()
             SetSizeofReservedItemsReleased_Also_in_theTab_in_Returning(True)
+            If released_grid_list2.Rows.Count -1 < releasedToReturn_gridlist_KeepSelectedRowInDexAfterUpdate Then
+                    'DO NOTHING
+            Else
+                released_grid_list2.Rows(releasedToReturn_gridlist_KeepSelectedRowInDexAfterUpdate).IsCurrent = True
+            End If
         Catch ex As Exception
             RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
         Finally
@@ -1349,12 +1454,24 @@ Public Class Main
             sda.Update(dbdataset)
             MysqlConn.Close()
             SetSizeofReservedItemstobeReleased()
+             If reserved_grid_list.Rows.Count -1 < reserved_grid_list_KeepSelectedRowInDexAfterUpdate Then
+                    'DO NOTHING
+            Else
+                reserved_grid_list.Rows(reserved_grid_list_KeepSelectedRowInDexAfterUpdate).IsCurrent = True
+            End If
         Catch ex As Exception
             RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
         Finally
             MysqlConn.Dispose()
         End Try
+    End Sub
 
+    Private Sub reserved_grid_list_CellClick(sender As Object, e As GridViewCellEventArgs) Handles reserved_grid_list.CellClick
+        If e.RowIndex = -1
+        Else
+            reserved_grid_list_KeepSelectedRowInDexAfterUpdate = e.RowIndex
+        End If
+        
     End Sub
 
     'Programmed by BRENZ 20th Point reserved_grid_list cell double click at releasing management
@@ -1461,19 +1578,53 @@ Public Class Main
     'Programmed by BRENZ 23rd selectedpage @ returning management
     Private Sub returning_groupbox_info_SelectedPageChanged(sender As Object, e As EventArgs) Handles returning_groupbox_info.SelectedPageChanged
         If returning_groupbox_info.SelectedPage Is ret_eq_list Then
+            refresh_main_rgv_recordedacademicsonly.Stop()
+            'refresh_acc_prof_list.Stop()
+            'refresh_acc_staff_list.Stop()
+            'refresh_reservation_rgv_recordeddata.Stop()
+            'refresh_reserved_grid_list.Stop()
+            refresh_released_grid_list.Stop()
+            'refresh_released_grid_list2.Stop()
+            'refresh_penalty_grid_list.Stop()
+            'refresh_returned_eq_list.Stop()
+            'refresh_returned_eq_list.Interval=1000
+            'refresh_returned_eq_list.Start()
+            load_returned_eq_list(returned_startDate.Value,returned_endDate.Value)
             ret_gb_details.Hide()
             ret_gb_remarks.Hide()
             ret_gb_controls.Hide()
         ElseIf returning_groupbox_info.SelectedPage Is rel_list_info2 Then
+            refresh_main_rgv_recordedacademicsonly.Stop()
+            'refresh_acc_prof_list.Stop()
+            'refresh_acc_staff_list.Stop()
+            'refresh_reservation_rgv_recordeddata.Stop()
+            'refresh_reserved_grid_list.Stop()
+            refresh_released_grid_list.Stop()
+            'refresh_released_grid_list2.Stop()
+            'refresh_penalty_grid_list.Stop()
+            'refresh_returned_eq_list.Stop()
+            'refresh_released_grid_list2.Interval=1000
+            'refresh_released_grid_list2.Start()
+            load_released_list2()
             ret_gb_details.Show()
             ret_gb_remarks.Show()
             ret_gb_controls.Show()
         ElseIf returning_groupbox_info.SelectedPage Is ret_penalties_info Then
+            refresh_main_rgv_recordedacademicsonly.Stop()
+            'refresh_acc_prof_list.Stop()
+            'refresh_acc_staff_list.Stop()
+            'refresh_reservation_rgv_recordeddata.Stop()
+            'refresh_reserved_grid_list.Stop()
+            refresh_released_grid_list.Stop()
+            'refresh_released_grid_list2.Stop()
+            'refresh_penalty_grid_list.Stop()
+            'refresh_returned_eq_list.Stop()
+            'refresh_penalty_grid_list.Interval=1000
+            'refresh_penalty_grid_list.Start()
+            load_penalty_list(pen_startDate.Value,pen_endDate.Value)
             ret_gb_details.Hide()
             ret_gb_remarks.Hide()
             ret_gb_controls.Hide()
-
-
         End If
 
 
@@ -1482,9 +1633,32 @@ Public Class Main
 
     Private Sub rel_gb_listinfos_SelectedPageChanged(sender As Object, e As EventArgs) Handles rel_gb_listinfos.SelectedPageChanged
         If rel_gb_listinfos.SelectedPage Is res_reserved_info Then
+            refresh_main_rgv_recordedacademicsonly.Stop()
+            'refresh_acc_prof_list.Stop()
+            'refresh_acc_staff_list.Stop()
+            'refresh_reservation_rgv_recordeddata.Stop()
+            'refresh_reserved_grid_list.Stop()
+            refresh_released_grid_list.Stop()
+            'refresh_released_grid_list2.Stop()
+            'refresh_penalty_grid_list.Stop()
+            'refresh_returned_eq_list.Stop()
+            'refresh_reserved_grid_list.Interval=1000
+            'refresh_reserved_grid_list.Start()
+            reserved_load_table()
             gp_details.Show()
             gp_controls.Show()
         ElseIf rel_gb_listinfos.SelectedPage Is rel_released_info Then
+            refresh_main_rgv_recordedacademicsonly.Stop()
+            'refresh_acc_prof_list.Stop()
+            'refresh_acc_staff_list.Stop()
+            'refresh_reservation_rgv_recordeddata.Stop()
+            'refresh_reserved_grid_list.Stop()
+            refresh_released_grid_list.Stop()
+            'refresh_released_grid_list2.Stop()
+            'refresh_penalty_grid_list.Stop()
+            'refresh_returned_eq_list.Stop()
+            refresh_released_grid_list.Interval=1000
+            refresh_released_grid_list.Start()
             gp_details.Hide()
             gp_controls.Hide()
         End If
@@ -1545,17 +1719,17 @@ Public Class Main
             If lu_ActivityType.Text = "School Activity" Then
                 query = "Select reservationno as 'Reservation Number' ,borrower as 'Borrower',id as 'ID', equipmentno as 'Equipment Number', equipment as 'Equipment', location as 'Location',
             DATE_FORMAT(date,'%M %d %Y') as 'Date',TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time',
-            activitytype as 'Activity Type',actname as 'Activity' from reservation where date ='" & Format(CDate(lu_date.Value), "yyyy-MM-dd") & "' and activitytype='School Activity'"
+            activitytype as 'Activity Type',actname as 'Activity' from ceutltdscheduler.reservation natural join ceutltdscheduler.reservation_equipments where date ='" & Format(CDate(lu_date.Value), "yyyy-MM-dd") & "' and activitytype='School Activity  and NOT(res_status='Cancelled')'"
                 Cover = "School Activity"
             ElseIf lu_ActivityType.Text = "Academic" Then
                 query = "Select reservationno as 'Reservation Number' ,borrower as 'Borrower',id as 'ID', equipmentno as 'Equipment Number', equipment as 'Equipment', location as 'Location',
             DATE_FORMAT(date,'%M %d %Y') as 'Date',TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time',
-            activitytype as 'Activity Type' from reservation where date ='" & Format(CDate(lu_date.Value), "yyyy-MM-dd") & "' and activitytype='Academic'"
+            activitytype as 'Activity Type' from ceutltdscheduler.reservation natural join ceutltdscheduler.reservation_equipments where date ='" & Format(CDate(lu_date.Value), "yyyy-MM-dd") & "' and activitytype='Academic' and NOT(res_status='Cancelled')"
                 Cover = "Academic"
             ElseIf lu_ActivityType.Text = "All" Then
                 query = "Select reservationno as 'Reservation Number' ,borrower as 'Borrower',id as 'ID', equipmentno as 'Equipment Number', equipment as 'Equipment', location as 'Location',
             DATE_FORMAT(date,'%M %d %Y') as 'Date',TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time',
-            activitytype as 'Activity Type', actname as 'Activity' from reservation where date ='" & Format(CDate(lu_date.Value), "yyyy-MM-dd") & "'"
+            activitytype as 'Activity Type', actname as 'Activity' from ceutltdscheduler.reservation natural join ceutltdscheduler.reservation_equipments where date ='" & Format(CDate(lu_date.Value), "yyyy-MM-dd") & "' and NOT(res_status='Cancelled')"
                 Cover = ""
             End If
             main_rgv_recordedacademicsonly.Columns.Clear()
@@ -1569,6 +1743,7 @@ Public Class Main
 
             MysqlConn.Close()
             SetSizesofMainTable()
+            Main_MaintainSelectedCell()
         Catch ex As MySqlException
             RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
         Finally
@@ -1576,7 +1751,7 @@ Public Class Main
         End Try
 
         Dim DV As New DataView(dbdataset)
-        DV.RowFilter = String.Format("`Borrower` Like'%{0}%' and `Equipment` Like'%{1}%' and `Date` Like'%{2}%' and `Activity Type` Like'%{3}%'", lu_byname.Text, lu_byequipment.Text, lu_date.Value.ToString("MMMM d yyyy"), Cover)
+        DV.RowFilter = String.Format("`Borrower` Like'%{0}%' and `Equipment` Like'%{1}%' and `Date` Like'%{2}%' and `Activity Type` Like'%{3}%'", lu_byname.Text, lu_byequipment.Text, lu_date.Value.ToString("MMMM dd yyyy"), Cover)
         main_rgv_recordedacademicsonly.DataSource = DV
     End Sub
 
@@ -2553,8 +2728,10 @@ Public Class Main
                 comm.Parameters.AddWithValue("R_rec_cb_idnum", reservation_rgv_recordeddata.SelectedRows(0).Cells("ID").Value)
 
                 reader = comm.ExecuteReader
-
-
+                    reserved_load_table()
+                    main_load_academicsonly()
+                    auto_generate_reservationno()
+                    load_rec_table("NONE",True)
                 RadMessageBox.Show(Me, "Successfully Deleted!", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Info)
                 MysqlConn.Close()
             Catch ex As Exception
@@ -2563,9 +2740,8 @@ Public Class Main
                 MysqlConn.Dispose()
             End Try
         End If
-        load_rec_table("NONE",True)
-        main_load_academicsonly()
-        auto_generate_reservationno()
+        
+
         'main_load_schoolonly()
         End If
     End Sub
@@ -2627,6 +2803,7 @@ Public Class Main
     Private Sub lu_date_filter_delay_Tick(sender As Object, e As EventArgs) Handles lu_date_filter_delay.Tick
         lu_date_filter_delay.Stop()
         main_load_academicsonly()
+        Main_MaintainSelectedCell
     End Sub
 
     Private Sub lu_date_ValueChanged(sender As Object, e As EventArgs) Handles lu_date.ValueChanged
@@ -2714,16 +2891,18 @@ Public Class Main
 
                 RadMessageBox.Show(Me, "Successfully Cancelled!", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Info)
                 MysqlConn.Close()
+                load_rec_table("NONE",True)
+                main_load_academicsonly()
+                reserved_load_table()
+                auto_generate_reservationno()
             Catch ex As Exception
                 RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
             Finally
                 MysqlConn.Dispose()
-                load_rec_table("NONE",True)
+                
             End Try
         End If
             End If
-        main_load_academicsonly()
-        auto_generate_reservationno()
         'main_load_schoolonly()
         End If
             End If
@@ -3370,6 +3549,270 @@ End Sub
          res_rdio_cancelled.ToggleState=Enumerations.ToggleState.Indeterminate
         load_rec_table("Radio_Reserved",False)
     End Sub
+
+    Private Sub rpv1_SelectedPageChanged(sender As Object, e As EventArgs) Handles rpv1.SelectedPageChanged
+
+        If rpv1.SelectedPage Is rpvp1_main
+            refresh_main_rgv_recordedacademicsonly.Stop()
+            'refresh_acc_prof_list.Stop()
+            'refresh_acc_staff_list.Stop()
+            'refresh_reservation_rgv_recordeddata.Stop()
+            'refresh_reserved_grid_list.Stop()
+            refresh_released_grid_list.Stop()
+            'refresh_released_grid_list2.Stop()
+            'refresh_penalty_grid_list.Stop()
+            'refresh_returned_eq_list.Stop()
+            refresh_main_rgv_recordedacademicsonly.Interval=1000
+            refresh_main_rgv_recordedacademicsonly.Start()
+        Else If rpv1.SelectedPage Is rpvp_equipment
+            refresh_main_rgv_recordedacademicsonly.Stop()
+            'refresh_acc_prof_list.Stop()
+            'refresh_acc_staff_list.Stop()
+            'refresh_reservation_rgv_recordeddata.Stop()
+            'refresh_reserved_grid_list.Stop()
+            refresh_released_grid_list.Stop()
+            'refresh_released_grid_list2.Stop()
+            'refresh_penalty_grid_list.Stop()
+            'refresh_returned_eq_list.Stop()
+        Else If (rpv1.SelectedPage Is rpvp_account) and (rpv_child_acctmgmt.SelectedPage Is rpv_staff)
+            'rpv_child_acctmgmt.SelectedPage=rpv_child_acctmgmt.SelectedPage
+            refresh_main_rgv_recordedacademicsonly.Stop()
+            'refresh_acc_prof_list.Stop()
+            'refresh_acc_staff_list.Stop()
+            'refresh_reservation_rgv_recordeddata.Stop()
+            'refresh_reserved_grid_list.Stop()
+            refresh_released_grid_list.Stop()
+            'refresh_released_grid_list2.Stop()
+            'refresh_penalty_grid_list.Stop()
+            'refresh_returned_eq_list.Stop()
+            'refresh_acc_staff_list.Interval=5000
+            'refresh_acc_staff_list.Start()
+        Else If (rpv1.SelectedPage Is rpvp_account) and (rpv_child_acctmgmt.SelectedPage Is rpv_borrower)
+            'rpv_child_acctmgmt.SelectedPage=rpv_child_acctmgmt.SelectedPage
+            refresh_main_rgv_recordedacademicsonly.Stop()
+            'refresh_acc_prof_list.Stop()
+            'refresh_acc_staff_list.Stop()
+            'refresh_reservation_rgv_recordeddata.Stop()
+            'refresh_reserved_grid_list.Stop()
+            refresh_released_grid_list.Stop()
+            'refresh_released_grid_list2.Stop()
+            'refresh_penalty_grid_list.Stop()
+            'refresh_returned_eq_list.Stop()
+            'refresh_acc_prof_list.Interval=5000
+            'refresh_acc_prof_list.Start()
+        Else If rpv1.SelectedPage Is rpvp2_reservation
+            refresh_main_rgv_recordedacademicsonly.Stop()
+            'refresh_acc_prof_list.Stop()
+            'refresh_acc_staff_list.Stop()
+            'refresh_reservation_rgv_recordeddata.Stop()
+            'refresh_reserved_grid_list.Stop()
+            refresh_released_grid_list.Stop()
+            'refresh_released_grid_list2.Stop()
+            'refresh_penalty_grid_list.Stop()
+            'refresh_returned_eq_list.Stop()
+            'refresh_reservation_rgv_recordeddata.Interval=1000
+            'refresh_reservation_rgv_recordeddata.Start()
+            load_rec_table("NONE", True)
+        Else If rpv1.SelectedPage Is rpvp_releasing and (rel_gb_listinfos.SelectedPage Is res_reserved_info)
+            'rel_gb_listinfos.SelectedPage=rel_gb_listinfos.SelectedPage
+            refresh_main_rgv_recordedacademicsonly.Stop()
+            'refresh_acc_prof_list.Stop()
+            'refresh_acc_staff_list.Stop()
+            'refresh_reservation_rgv_recordeddata.Stop()
+            'refresh_reserved_grid_list.Stop()
+            refresh_released_grid_list.Stop()
+            'refresh_released_grid_list2.Stop()
+            'refresh_penalty_grid_list.Stop()
+            'refresh_returned_eq_list.Stop()
+            'refresh_reserved_grid_list.Interval=1000
+            'refresh_reserved_grid_list.Start()
+            reserved_load_table()
+        Else If rpv1.SelectedPage Is rpvp_releasing and (rel_gb_listinfos.SelectedPage Is rel_released_info)
+            'rel_gb_listinfos.SelectedPage=rel_gb_listinfos.SelectedPage
+            refresh_main_rgv_recordedacademicsonly.Stop()
+            'refresh_acc_prof_list.Stop()
+            'refresh_acc_staff_list.Stop()
+            'refresh_reservation_rgv_recordeddata.Stop()
+            'refresh_reserved_grid_list.Stop()
+            refresh_released_grid_list.Stop()
+            'refresh_released_grid_list2.Stop()
+            'refresh_penalty_grid_list.Stop()
+            'refresh_returned_eq_list.Stop()
+            refresh_released_grid_list.Interval=1000
+            refresh_released_grid_list.Start()
+        Else If rpv1.SelectedPage Is rpvp_returning and (returning_groupbox_info Is rel_list_info2)
+            'returning_groupbox_info.SelectedPage=returning_groupbox_info.SelectedPage
+            refresh_main_rgv_recordedacademicsonly.Stop()
+            'refresh_acc_prof_list.Stop()
+            'refresh_acc_staff_list.Stop()
+            'refresh_reservation_rgv_recordeddata.Stop()
+            'refresh_reserved_grid_list.Stop()
+            refresh_released_grid_list.Stop()
+            'refresh_released_grid_list2.Stop()
+            'refresh_penalty_grid_list.Stop()
+            'refresh_returned_eq_list.Stop()
+            'refresh_released_grid_list2.Interval=1000
+            'refresh_released_grid_list2.Start()
+            load_released_list2()
+        Else If rpv1.SelectedPage Is rpvp_returning and (returning_groupbox_info Is ret_penalties_info)
+            'returning_groupbox_info.SelectedPage=returning_groupbox_info.SelectedPage
+            refresh_main_rgv_recordedacademicsonly.Stop()
+            'refresh_acc_prof_list.Stop()
+            'refresh_acc_staff_list.Stop()
+            'refresh_reservation_rgv_recordeddata.Stop()
+            'refresh_reserved_grid_list.Stop()
+            refresh_released_grid_list.Stop()
+            'refresh_released_grid_list2.Stop()
+            'refresh_penalty_grid_list.Stop()
+            'refresh_returned_eq_list.Stop()
+            'refresh_penalty_grid_list.Interval=1000
+            'refresh_penalty_grid_list.Start()
+            load_penalty_list(pen_startDate.Value,pen_endDate.Value)
+        Else If rpv1.SelectedPage Is rpvp_returning and (returning_groupbox_info Is ret_eq_list)
+            'returning_groupbox_info.SelectedPage=returning_groupbox_info.SelectedPage
+            refresh_main_rgv_recordedacademicsonly.Stop()
+            'refresh_acc_prof_list.Stop()
+            'refresh_acc_staff_list.Stop()
+            'refresh_reservation_rgv_recordeddata.Stop()
+            'refresh_reserved_grid_list.Stop()
+            refresh_released_grid_list.Stop()
+            'refresh_released_grid_list2.Stop()
+            'refresh_penalty_grid_list.Stop()
+            'refresh_returned_eq_list.Stop()
+            'refresh_returned_eq_list.Interval=1000
+            'refresh_returned_eq_list.Start()
+            load_returned_eq_list(returned_startDate.Value,returned_endDate.Value)
+        End If
+
+    End Sub
+    
+    
+    'SAYANG TO
+    Private Sub rpv_child_acctmgmt_SelectedPageChanged(sender As Object, e As EventArgs) Handles rpv_child_acctmgmt.SelectedPageChanged
+       If rpv_child_acctmgmt.SelectedPage Is rpv_staff
+            load_main_acc()
+            'refresh_main_rgv_recordedacademicsonly.Stop()
+            'refresh_acc_prof_list.Stop()
+            'refresh_acc_staff_list.Stop()
+            'refresh_reservation_rgv_recordeddata.Stop()
+            'refresh_reserved_grid_list.Stop()
+            'refresh_released_grid_list.Stop()
+            'refresh_released_grid_list2.Stop()
+            'refresh_penalty_grid_list.Stop()
+            'refresh_returned_eq_list.Stop()
+            'refresh_acc_staff_list.Interval=5000
+            'refresh_acc_staff_list.Start()
+       Else If rpv_child_acctmgmt.SelectedPage Is rpv_borrower
+            load_main_prof()
+            'refresh_main_rgv_recordedacademicsonly.Stop()
+            'refresh_acc_prof_list.Stop()
+            'refresh_acc_staff_list.Stop()
+            'refresh_reservation_rgv_recordeddata.Stop()
+            'refresh_reserved_grid_list.Stop()
+            'refresh_released_grid_list.Stop()
+            'refresh_released_grid_list2.Stop()
+            'refresh_penalty_grid_list.Stop()
+            'refresh_returned_eq_list.Stop()
+            'refresh_acc_prof_list.Interval=5000
+            'refresh_acc_prof_list.Start()
+       End If
+    End Sub
+
+    Private Sub refresh_main_rgv_recordedacademicsonly_Tick(sender As Object, e As EventArgs) Handles refresh_main_rgv_recordedacademicsonly.Tick
+        Console.WriteLine("Main")
+        main_load_academicsonly()
+        Main_MaintainSelectedCell()
+    End Sub
+
+    'Private Sub refresh_acc_staff_list_Tick(sender As Object, e As EventArgs) Handles refresh_acc_staff_list.Tick
+    '    Console.WriteLine("Staff")
+    '    load_main_acc()
+    'End Sub
+
+    'Private Sub refresh_acc_prof_list_Tick(sender As Object, e As EventArgs) Handles refresh_acc_prof_list.Tick
+    '    Console.WriteLine("Account")
+    '    load_main_prof()
+    'End Sub
+
+    'Private Sub refresh_reservation_rgv_recordeddata_Tick(sender As Object, e As EventArgs) Handles refresh_reservation_rgv_recordeddata.Tick
+    '    Console.WriteLine("Recoorddeed")
+    '    load_rec_table("NONE", True)
+    'End Sub
+
+    'Private Sub refresh_reserved_grid_list_Tick(sender As Object, e As EventArgs) Handles refresh_reserved_grid_list.Tick
+    '    Console.WriteLine("Reserr")
+    '    reserved_load_table()
+    'End Sub
+
+    Private Sub refresh_released_grid_list_Tick(sender As Object, e As EventArgs) Handles refresh_released_grid_list.Tick
+        Console.WriteLine("Released")
+        load_released_list()
+    End Sub
+
+    'Private Sub refresh_released_grid_list2_Tick(sender As Object, e As EventArgs) Handles refresh_released_grid_list2.Tick
+    '    Console.WriteLine("To Return")
+    '    load_released_list2()
+    'End Sub
+
+    'Private Sub refresh_penalty_grid_list_Tick(sender As Object, e As EventArgs) Handles refresh_penalty_grid_list.Tick
+    '    Console.WriteLine("Penl")
+    '    load_penalty_list(pen_startDate.Value,pen_endDate.Value)
+    'End Sub
+
+    'Private Sub refresh_returned_eq_list_Tick(sender As Object, e As EventArgs) Handles refresh_returned_eq_list.Tick
+    '    Console.WriteLine("Returned")
+    '    load_returned_eq_list(returned_startDate.Value,returned_endDate.Value)
+    'End Sub
+
+    Private Sub ToRelease_MouseHover(sender As Object, e As EventArgs) Handles gp_details.MouseHover,gp_controls.MouseHover,released_btn_refresh.Click
+        reserved_load_table()
+    End Sub
+
+    Private Sub gp_reservation_equipments_MouseHover(sender As Object, e As EventArgs) Handles gp_reservation_equipments.MouseHover, gp_reservation_details.MouseHover
+        load_rec_table("NONE",True)
+    End Sub
+
+    Private Sub gb_staff_reg_MouseHover(sender As Object, e As EventArgs) Handles gb_staff_reg.MouseHover
+        load_main_acc()
+    End Sub
+
+    Private Sub gb_bor_reg_MouseHover(sender As Object, e As EventArgs) Handles gb_bor_reg.MouseHover
+        load_main_prof()
+    End Sub
+
+    Private Sub rec_btn_refresh_Click(sender As Object, e As EventArgs) Handles rec_btn_refresh.Click
+        load_rec_table("NONE",True)
+    End Sub
+
+    Private Sub ReleasedEquipmentsToReturn_MouseHover(sender As Object, e As EventArgs) Handles ret_gb_details.MouseHover,ret_gb_controls.MouseHover,ret_gb_details.MouseHover,return_btn_refresh.Click
+        load_released_list2()
+    End Sub
+
+    Private Sub released_grid_list_CellClick(sender As Object, e As GridViewCellEventArgs) Handles released_grid_list.CellClick
+        If e.RowIndex=-1
+        Else
+            listofReleased_grid_list_KeepSelectedRowInDexAfterUpdate=e.RowIndex
+        End If
+    End Sub
+
+    Private Sub released_grid_list2_CellClick(sender As Object, e As GridViewCellEventArgs) Handles released_grid_list2.CellClick
+        If e.RowIndex = -1
+        Else
+            releasedToReturn_gridlist_KeepSelectedRowInDexAfterUpdate=e.RowIndex
+        End If
+    End Sub
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

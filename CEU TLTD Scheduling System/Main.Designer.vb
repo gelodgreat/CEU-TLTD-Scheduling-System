@@ -321,6 +321,7 @@ Partial Class Main
         Me.returning_groupbox_info = New Telerik.WinControls.UI.RadPageView()
         Me.rel_list_info2 = New Telerik.WinControls.UI.RadPageViewPage()
         Me.ret_gb_controls = New Telerik.WinControls.UI.RadGroupBox()
+        Me.return_btn_refresh = New Telerik.WinControls.UI.RadButton()
         Me.return_btn_returned = New Telerik.WinControls.UI.RadButton()
         Me.return_btn_cancel = New Telerik.WinControls.UI.RadButton()
         Me.ret_gb_remarks = New Telerik.WinControls.UI.RadGroupBox()
@@ -369,6 +370,7 @@ Partial Class Main
         Me.rel_gb_listinfos = New Telerik.WinControls.UI.RadPageView()
         Me.res_reserved_info = New Telerik.WinControls.UI.RadPageViewPage()
         Me.gp_controls = New Telerik.WinControls.UI.RadGroupBox()
+        Me.released_btn_refresh = New Telerik.WinControls.UI.RadButton()
         Me.released_btn_release = New Telerik.WinControls.UI.RadButton()
         Me.released_btn_cancel = New Telerik.WinControls.UI.RadButton()
         Me.gp_details = New Telerik.WinControls.UI.RadGroupBox()
@@ -396,8 +398,9 @@ Partial Class Main
         Me.rel_released_info = New Telerik.WinControls.UI.RadPageViewPage()
         Me.released_grid_list = New Telerik.WinControls.UI.RadGridView()
         Me.rpvp2_reservation = New Telerik.WinControls.UI.RadPageViewPage()
-        Me.RadGroupBox4 = New Telerik.WinControls.UI.RadGroupBox()
+        Me.gp_reservation_details = New Telerik.WinControls.UI.RadGroupBox()
         Me.RadGroupBox6 = New Telerik.WinControls.UI.RadGroupBox()
+        Me.rec_btn_refresh = New Telerik.WinControls.UI.RadButton()
         Me.btn_resetreservationno = New Telerik.WinControls.UI.RadButton()
         Me.rec_btn_clear = New Telerik.WinControls.UI.RadButton()
         Me.rec_btn_delete = New Telerik.WinControls.UI.RadButton()
@@ -424,7 +427,7 @@ Partial Class Main
         Me.RadLabel3 = New Telerik.WinControls.UI.RadLabel()
         Me.RadLabel1 = New Telerik.WinControls.UI.RadLabel()
         Me.rec_dtp_date = New Telerik.WinControls.UI.RadDateTimePicker()
-        Me.RadGroupBox5 = New Telerik.WinControls.UI.RadGroupBox()
+        Me.gp_reservation_equipments = New Telerik.WinControls.UI.RadGroupBox()
         Me.res_rdio_reserved = New Telerik.WinControls.UI.RadRadioButton()
         Me.res_rdio_showall = New Telerik.WinControls.UI.RadRadioButton()
         Me.res_rdio_cancelled = New Telerik.WinControls.UI.RadRadioButton()
@@ -527,6 +530,15 @@ Partial Class Main
         Me.lu_ActivityType_filter_delay = New System.Windows.Forms.Timer(Me.components)
         Me.acct_mgmt_hover_delay_goingToBorrower = New System.Windows.Forms.Timer(Me.components)
         Me.acct_mgmt_hover_delay_goingToStaff = New System.Windows.Forms.Timer(Me.components)
+        Me.refresh_main_rgv_recordedacademicsonly = New System.Windows.Forms.Timer(Me.components)
+        Me.refresh_acc_staff_list = New System.Windows.Forms.Timer(Me.components)
+        Me.refresh_acc_prof_list = New System.Windows.Forms.Timer(Me.components)
+        Me.refresh_reservation_rgv_recordeddata = New System.Windows.Forms.Timer(Me.components)
+        Me.refresh_reserved_grid_list = New System.Windows.Forms.Timer(Me.components)
+        Me.refresh_released_grid_list = New System.Windows.Forms.Timer(Me.components)
+        Me.refresh_released_grid_list2 = New System.Windows.Forms.Timer(Me.components)
+        Me.refresh_penalty_grid_list = New System.Windows.Forms.Timer(Me.components)
+        Me.refresh_returned_eq_list = New System.Windows.Forms.Timer(Me.components)
         CType(Me.RadGroupBox16,System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.RadGroupBox13,System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.CeutltdschedulerDataSetBindingSource,System.ComponentModel.ISupportInitialize).BeginInit
@@ -536,6 +548,7 @@ Partial Class Main
         Me.rel_list_info2.SuspendLayout
         CType(Me.ret_gb_controls,System.ComponentModel.ISupportInitialize).BeginInit
         Me.ret_gb_controls.SuspendLayout
+        CType(Me.return_btn_refresh,System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.return_btn_returned,System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.return_btn_cancel,System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.ret_gb_remarks,System.ComponentModel.ISupportInitialize).BeginInit
@@ -591,6 +604,7 @@ Partial Class Main
         Me.res_reserved_info.SuspendLayout
         CType(Me.gp_controls,System.ComponentModel.ISupportInitialize).BeginInit
         Me.gp_controls.SuspendLayout
+        CType(Me.released_btn_refresh,System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.released_btn_release,System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.released_btn_cancel,System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.gp_details,System.ComponentModel.ISupportInitialize).BeginInit
@@ -621,10 +635,11 @@ Partial Class Main
         CType(Me.released_grid_list,System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.released_grid_list.MasterTemplate,System.ComponentModel.ISupportInitialize).BeginInit
         Me.rpvp2_reservation.SuspendLayout
-        CType(Me.RadGroupBox4,System.ComponentModel.ISupportInitialize).BeginInit
-        Me.RadGroupBox4.SuspendLayout
+        CType(Me.gp_reservation_details,System.ComponentModel.ISupportInitialize).BeginInit
+        Me.gp_reservation_details.SuspendLayout
         CType(Me.RadGroupBox6,System.ComponentModel.ISupportInitialize).BeginInit
         Me.RadGroupBox6.SuspendLayout
+        CType(Me.rec_btn_refresh,System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.btn_resetreservationno,System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.rec_btn_clear,System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.rec_btn_delete,System.ComponentModel.ISupportInitialize).BeginInit
@@ -651,8 +666,8 @@ Partial Class Main
         CType(Me.RadLabel3,System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.RadLabel1,System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.rec_dtp_date,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.RadGroupBox5,System.ComponentModel.ISupportInitialize).BeginInit
-        Me.RadGroupBox5.SuspendLayout
+        CType(Me.gp_reservation_equipments,System.ComponentModel.ISupportInitialize).BeginInit
+        Me.gp_reservation_equipments.SuspendLayout
         CType(Me.res_rdio_reserved,System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.res_rdio_showall,System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.res_rdio_cancelled,System.ComponentModel.ISupportInitialize).BeginInit
@@ -845,6 +860,7 @@ Partial Class Main
         Me.rel_list_info2.Controls.Add(Me.ret_gb_remarks)
         Me.rel_list_info2.Controls.Add(Me.released_grid_list2)
         Me.rel_list_info2.Controls.Add(Me.ret_gb_details)
+        Me.rel_list_info2.ItemSize = New System.Drawing.SizeF(119!, 24!)
         Me.rel_list_info2.Location = New System.Drawing.Point(5, 30)
         Me.rel_list_info2.Name = "rel_list_info2"
         Me.rel_list_info2.Size = New System.Drawing.Size(1338, 487)
@@ -854,6 +870,7 @@ Partial Class Main
         '
         Me.ret_gb_controls.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping
         Me.ret_gb_controls.Anchor = System.Windows.Forms.AnchorStyles.Bottom
+        Me.ret_gb_controls.Controls.Add(Me.return_btn_refresh)
         Me.ret_gb_controls.Controls.Add(Me.return_btn_returned)
         Me.ret_gb_controls.Controls.Add(Me.return_btn_cancel)
         Me.ret_gb_controls.HeaderText = "Controls"
@@ -864,10 +881,20 @@ Partial Class Main
         Me.ret_gb_controls.Text = "Controls"
         Me.ret_gb_controls.ThemeName = "VisualStudio2012Dark"
         '
+        'return_btn_refresh
+        '
+        Me.return_btn_refresh.Anchor = System.Windows.Forms.AnchorStyles.Bottom
+        Me.return_btn_refresh.Location = New System.Drawing.Point(357, 21)
+        Me.return_btn_refresh.Name = "return_btn_refresh"
+        Me.return_btn_refresh.Size = New System.Drawing.Size(110, 25)
+        Me.return_btn_refresh.TabIndex = 22
+        Me.return_btn_refresh.Text = "Refresh Data"
+        Me.return_btn_refresh.ThemeName = "VisualStudio2012Dark"
+        '
         'return_btn_returned
         '
         Me.return_btn_returned.Anchor = System.Windows.Forms.AnchorStyles.Bottom
-        Me.return_btn_returned.Location = New System.Drawing.Point(498, 21)
+        Me.return_btn_returned.Location = New System.Drawing.Point(589, 21)
         Me.return_btn_returned.Name = "return_btn_returned"
         Me.return_btn_returned.Size = New System.Drawing.Size(110, 25)
         Me.return_btn_returned.TabIndex = 23
@@ -877,7 +904,7 @@ Partial Class Main
         'return_btn_cancel
         '
         Me.return_btn_cancel.Anchor = System.Windows.Forms.AnchorStyles.Bottom
-        Me.return_btn_cancel.Location = New System.Drawing.Point(382, 21)
+        Me.return_btn_cancel.Location = New System.Drawing.Point(473, 21)
         Me.return_btn_cancel.Name = "return_btn_cancel"
         Me.return_btn_cancel.Size = New System.Drawing.Size(110, 25)
         Me.return_btn_cancel.TabIndex = 21
@@ -1402,6 +1429,7 @@ Partial Class Main
         Me.ret_penalties_info.Controls.Add(Me.pen_endDate)
         Me.ret_penalties_info.Controls.Add(Me.pen_startDate)
         Me.ret_penalties_info.Controls.Add(Me.penalty_grid_list)
+        Me.ret_penalties_info.ItemSize = New System.Drawing.SizeF(57!, 24!)
         Me.ret_penalties_info.Location = New System.Drawing.Point(5, 30)
         Me.ret_penalties_info.Name = "ret_penalties_info"
         Me.ret_penalties_info.Size = New System.Drawing.Size(1338, 487)
@@ -1424,9 +1452,9 @@ Partial Class Main
         Me.pen_btn_chg_filter.Anchor = System.Windows.Forms.AnchorStyles.Top
         Me.pen_btn_chg_filter.Location = New System.Drawing.Point(818, 1)
         Me.pen_btn_chg_filter.Name = "pen_btn_chg_filter"
-        Me.pen_btn_chg_filter.Size = New System.Drawing.Size(55, 24)
+        Me.pen_btn_chg_filter.Size = New System.Drawing.Size(104, 24)
         Me.pen_btn_chg_filter.TabIndex = 34
-        Me.pen_btn_chg_filter.Text = "Filter"
+        Me.pen_btn_chg_filter.Text = "Filter/Refresh Data"
         Me.pen_btn_chg_filter.ThemeName = "VisualStudio2012Dark"
         '
         'RadLabel12
@@ -1522,6 +1550,7 @@ Partial Class Main
         Me.ret_eq_list.Controls.Add(Me.RadLabel19)
         Me.ret_eq_list.Controls.Add(Me.RadLabel22)
         Me.ret_eq_list.Controls.Add(Me.returned_startDate)
+        Me.ret_eq_list.ItemSize = New System.Drawing.SizeF(142!, 24!)
         Me.ret_eq_list.Location = New System.Drawing.Point(5, 30)
         Me.ret_eq_list.Name = "ret_eq_list"
         Me.ret_eq_list.Size = New System.Drawing.Size(1338, 487)
@@ -1544,9 +1573,9 @@ Partial Class Main
         Me.ret_btn_chg_filter.Anchor = System.Windows.Forms.AnchorStyles.Top
         Me.ret_btn_chg_filter.Location = New System.Drawing.Point(818, 1)
         Me.ret_btn_chg_filter.Name = "ret_btn_chg_filter"
-        Me.ret_btn_chg_filter.Size = New System.Drawing.Size(55, 24)
+        Me.ret_btn_chg_filter.Size = New System.Drawing.Size(104, 24)
         Me.ret_btn_chg_filter.TabIndex = 40
-        Me.ret_btn_chg_filter.Text = "Filter"
+        Me.ret_btn_chg_filter.Text = "Filter/Refresh Data"
         Me.ret_btn_chg_filter.ThemeName = "VisualStudio2012Dark"
         '
         'returned_eq_list
@@ -1664,6 +1693,7 @@ Partial Class Main
         Me.res_reserved_info.Controls.Add(Me.gp_controls)
         Me.res_reserved_info.Controls.Add(Me.gp_details)
         Me.res_reserved_info.Controls.Add(Me.reserved_grid_list)
+        Me.res_reserved_info.ItemSize = New System.Drawing.SizeF(120!, 24!)
         Me.res_reserved_info.Location = New System.Drawing.Point(5, 30)
         Me.res_reserved_info.Name = "res_reserved_info"
         Me.res_reserved_info.Size = New System.Drawing.Size(1338, 487)
@@ -1673,6 +1703,7 @@ Partial Class Main
         '
         Me.gp_controls.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping
         Me.gp_controls.Anchor = System.Windows.Forms.AnchorStyles.Bottom
+        Me.gp_controls.Controls.Add(Me.released_btn_refresh)
         Me.gp_controls.Controls.Add(Me.released_btn_release)
         Me.gp_controls.Controls.Add(Me.released_btn_cancel)
         Me.gp_controls.HeaderText = "Controls"
@@ -1683,10 +1714,19 @@ Partial Class Main
         Me.gp_controls.Text = "Controls"
         Me.gp_controls.ThemeName = "VisualStudio2012Dark"
         '
+        'released_btn_refresh
+        '
+        Me.released_btn_refresh.Location = New System.Drawing.Point(316, 25)
+        Me.released_btn_refresh.Name = "released_btn_refresh"
+        Me.released_btn_refresh.Size = New System.Drawing.Size(110, 24)
+        Me.released_btn_refresh.TabIndex = 24
+        Me.released_btn_refresh.Text = "Refresh Data"
+        Me.released_btn_refresh.ThemeName = "VisualStudio2012Dark"
+        '
         'released_btn_release
         '
         Me.released_btn_release.Anchor = System.Windows.Forms.AnchorStyles.Bottom
-        Me.released_btn_release.Location = New System.Drawing.Point(507, 21)
+        Me.released_btn_release.Location = New System.Drawing.Point(550, 25)
         Me.released_btn_release.Name = "released_btn_release"
         Me.released_btn_release.Size = New System.Drawing.Size(110, 25)
         Me.released_btn_release.TabIndex = 23
@@ -1696,7 +1736,7 @@ Partial Class Main
         'released_btn_cancel
         '
         Me.released_btn_cancel.Anchor = System.Windows.Forms.AnchorStyles.Bottom
-        Me.released_btn_cancel.Location = New System.Drawing.Point(391, 21)
+        Me.released_btn_cancel.Location = New System.Drawing.Point(432, 25)
         Me.released_btn_cancel.Name = "released_btn_cancel"
         Me.released_btn_cancel.Size = New System.Drawing.Size(110, 25)
         Me.released_btn_cancel.TabIndex = 21
@@ -2162,6 +2202,7 @@ Partial Class Main
         'rel_released_info
         '
         Me.rel_released_info.Controls.Add(Me.released_grid_list)
+        Me.rel_released_info.ItemSize = New System.Drawing.SizeF(152!, 24!)
         Me.rel_released_info.Location = New System.Drawing.Point(5, 30)
         Me.rel_released_info.Name = "rel_released_info"
         Me.rel_released_info.Size = New System.Drawing.Size(1338, 487)
@@ -2191,8 +2232,8 @@ Partial Class Main
         '
         'rpvp2_reservation
         '
-        Me.rpvp2_reservation.Controls.Add(Me.RadGroupBox4)
-        Me.rpvp2_reservation.Controls.Add(Me.RadGroupBox5)
+        Me.rpvp2_reservation.Controls.Add(Me.gp_reservation_details)
+        Me.rpvp2_reservation.Controls.Add(Me.gp_reservation_equipments)
         Me.rpvp2_reservation.Controls.Add(Me.RadGroupBox3)
         Me.rpvp2_reservation.ItemSize = New System.Drawing.SizeF(140!, 24!)
         Me.rpvp2_reservation.Location = New System.Drawing.Point(5, 30)
@@ -2200,45 +2241,46 @@ Partial Class Main
         Me.rpvp2_reservation.Size = New System.Drawing.Size(1348, 522)
         Me.rpvp2_reservation.Text = "Reservation Management"
         '
-        'RadGroupBox4
+        'gp_reservation_details
         '
-        Me.RadGroupBox4.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping
-        Me.RadGroupBox4.Anchor = System.Windows.Forms.AnchorStyles.Bottom
-        Me.RadGroupBox4.Controls.Add(Me.RadGroupBox6)
-        Me.RadGroupBox4.Controls.Add(Me.lbl_nameofstaff_reserved)
-        Me.RadGroupBox4.Controls.Add(Me.rec_rrtc_actname)
-        Me.RadGroupBox4.Controls.Add(Me.rec_lbl_actname)
-        Me.RadGroupBox4.Controls.Add(Me.rec_cb_reserveno)
-        Me.RadGroupBox4.Controls.Add(Me.RadLabel2)
-        Me.RadGroupBox4.Controls.Add(Me.rec_cb_acttype)
-        Me.RadGroupBox4.Controls.Add(Me.RadLabel72)
-        Me.RadGroupBox4.Controls.Add(Me.RadLabel68)
-        Me.RadGroupBox4.Controls.Add(Me.rec_cb_college_school)
-        Me.RadGroupBox4.Controls.Add(Me.rec_cb_idnum)
-        Me.RadGroupBox4.Controls.Add(Me.RadLabel26)
-        Me.RadGroupBox4.Controls.Add(Me.RadLabel17)
-        Me.RadGroupBox4.Controls.Add(Me.rec_dtp_endtime)
-        Me.RadGroupBox4.Controls.Add(Me.rec_dtp_starttime)
-        Me.RadGroupBox4.Controls.Add(Me.RadLabel6)
-        Me.RadGroupBox4.Controls.Add(Me.rec_cb_location)
-        Me.RadGroupBox4.Controls.Add(Me.RadLabel5)
-        Me.RadGroupBox4.Controls.Add(Me.rec_cb_borrower)
-        Me.RadGroupBox4.Controls.Add(Me.RadLabel4)
-        Me.RadGroupBox4.Controls.Add(Me.RadLabel3)
-        Me.RadGroupBox4.Controls.Add(Me.RadLabel1)
-        Me.RadGroupBox4.Controls.Add(Me.rec_dtp_date)
-        Me.RadGroupBox4.HeaderText = "Details"
-        Me.RadGroupBox4.Location = New System.Drawing.Point(0, 253)
-        Me.RadGroupBox4.Name = "RadGroupBox4"
-        Me.RadGroupBox4.Size = New System.Drawing.Size(671, 266)
-        Me.RadGroupBox4.TabIndex = 1
-        Me.RadGroupBox4.Text = "Details"
-        Me.RadGroupBox4.ThemeName = "VisualStudio2012Dark"
+        Me.gp_reservation_details.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping
+        Me.gp_reservation_details.Anchor = System.Windows.Forms.AnchorStyles.Bottom
+        Me.gp_reservation_details.Controls.Add(Me.RadGroupBox6)
+        Me.gp_reservation_details.Controls.Add(Me.lbl_nameofstaff_reserved)
+        Me.gp_reservation_details.Controls.Add(Me.rec_rrtc_actname)
+        Me.gp_reservation_details.Controls.Add(Me.rec_lbl_actname)
+        Me.gp_reservation_details.Controls.Add(Me.rec_cb_reserveno)
+        Me.gp_reservation_details.Controls.Add(Me.RadLabel2)
+        Me.gp_reservation_details.Controls.Add(Me.rec_cb_acttype)
+        Me.gp_reservation_details.Controls.Add(Me.RadLabel72)
+        Me.gp_reservation_details.Controls.Add(Me.RadLabel68)
+        Me.gp_reservation_details.Controls.Add(Me.rec_cb_college_school)
+        Me.gp_reservation_details.Controls.Add(Me.rec_cb_idnum)
+        Me.gp_reservation_details.Controls.Add(Me.RadLabel26)
+        Me.gp_reservation_details.Controls.Add(Me.RadLabel17)
+        Me.gp_reservation_details.Controls.Add(Me.rec_dtp_endtime)
+        Me.gp_reservation_details.Controls.Add(Me.rec_dtp_starttime)
+        Me.gp_reservation_details.Controls.Add(Me.RadLabel6)
+        Me.gp_reservation_details.Controls.Add(Me.rec_cb_location)
+        Me.gp_reservation_details.Controls.Add(Me.RadLabel5)
+        Me.gp_reservation_details.Controls.Add(Me.rec_cb_borrower)
+        Me.gp_reservation_details.Controls.Add(Me.RadLabel4)
+        Me.gp_reservation_details.Controls.Add(Me.RadLabel3)
+        Me.gp_reservation_details.Controls.Add(Me.RadLabel1)
+        Me.gp_reservation_details.Controls.Add(Me.rec_dtp_date)
+        Me.gp_reservation_details.HeaderText = "Details"
+        Me.gp_reservation_details.Location = New System.Drawing.Point(0, 253)
+        Me.gp_reservation_details.Name = "gp_reservation_details"
+        Me.gp_reservation_details.Size = New System.Drawing.Size(671, 266)
+        Me.gp_reservation_details.TabIndex = 1
+        Me.gp_reservation_details.Text = "Details"
+        Me.gp_reservation_details.ThemeName = "VisualStudio2012Dark"
         '
         'RadGroupBox6
         '
         Me.RadGroupBox6.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping
         Me.RadGroupBox6.Anchor = System.Windows.Forms.AnchorStyles.Bottom
+        Me.RadGroupBox6.Controls.Add(Me.rec_btn_refresh)
         Me.RadGroupBox6.Controls.Add(Me.btn_resetreservationno)
         Me.RadGroupBox6.Controls.Add(Me.rec_btn_clear)
         Me.RadGroupBox6.Controls.Add(Me.rec_btn_delete)
@@ -2251,10 +2293,20 @@ Partial Class Main
         Me.RadGroupBox6.Text = "Controls"
         Me.RadGroupBox6.ThemeName = "VisualStudio2012Dark"
         '
+        'rec_btn_refresh
+        '
+        Me.rec_btn_refresh.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold)
+        Me.rec_btn_refresh.Location = New System.Drawing.Point(296, 24)
+        Me.rec_btn_refresh.Name = "rec_btn_refresh"
+        Me.rec_btn_refresh.Size = New System.Drawing.Size(110, 30)
+        Me.rec_btn_refresh.TabIndex = 23
+        Me.rec_btn_refresh.Text = "Refresh Data"
+        Me.rec_btn_refresh.ThemeName = "VisualStudio2012Dark"
+        '
         'btn_resetreservationno
         '
         Me.btn_resetreservationno.Anchor = System.Windows.Forms.AnchorStyles.Bottom
-        Me.btn_resetreservationno.Location = New System.Drawing.Point(153, 25)
+        Me.btn_resetreservationno.Location = New System.Drawing.Point(153, 24)
         Me.btn_resetreservationno.Name = "btn_resetreservationno"
         Me.btn_resetreservationno.Size = New System.Drawing.Size(138, 30)
         Me.btn_resetreservationno.TabIndex = 21
@@ -2264,7 +2316,7 @@ Partial Class Main
         'rec_btn_clear
         '
         Me.rec_btn_clear.Anchor = System.Windows.Forms.AnchorStyles.Bottom
-        Me.rec_btn_clear.Location = New System.Drawing.Point(47, 25)
+        Me.rec_btn_clear.Location = New System.Drawing.Point(47, 24)
         Me.rec_btn_clear.Name = "rec_btn_clear"
         Me.rec_btn_clear.Size = New System.Drawing.Size(100, 30)
         Me.rec_btn_clear.TabIndex = 20
@@ -2692,31 +2744,31 @@ Partial Class Main
         Me.rec_dtp_date.ThemeName = "VisualStudio2012Dark"
         Me.rec_dtp_date.Value = New Date(2016, 7, 25, 10, 55, 49, 565)
         '
-        'RadGroupBox5
+        'gp_reservation_equipments
         '
-        Me.RadGroupBox5.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping
-        Me.RadGroupBox5.Anchor = System.Windows.Forms.AnchorStyles.Bottom
-        Me.RadGroupBox5.Controls.Add(Me.res_rdio_reserved)
-        Me.RadGroupBox5.Controls.Add(Me.res_rdio_showall)
-        Me.RadGroupBox5.Controls.Add(Me.res_rdio_cancelled)
-        Me.RadGroupBox5.Controls.Add(Me.rec_eq_chooseeq)
-        Me.RadGroupBox5.Controls.Add(Me.rec_eq_chooseno)
-        Me.RadGroupBox5.Controls.Add(Me.rec_eq_type_choose)
-        Me.RadGroupBox5.Controls.Add(Me.RadLabel71)
-        Me.RadGroupBox5.Controls.Add(Me.rec_btn_check_availability)
-        Me.RadGroupBox5.Controls.Add(Me.rec_btn_add_eq)
-        Me.RadGroupBox5.Controls.Add(Me.rec_btn_eqclear)
-        Me.RadGroupBox5.Controls.Add(Me.RadLabel70)
-        Me.RadGroupBox5.Controls.Add(Me.RadLabel50)
-        Me.RadGroupBox5.Controls.Add(Me.rec_del_eq)
-        Me.RadGroupBox5.Controls.Add(Me.RadGroupBox17)
-        Me.RadGroupBox5.HeaderText = "Equipments"
-        Me.RadGroupBox5.Location = New System.Drawing.Point(677, 253)
-        Me.RadGroupBox5.Name = "RadGroupBox5"
-        Me.RadGroupBox5.Size = New System.Drawing.Size(668, 269)
-        Me.RadGroupBox5.TabIndex = 2
-        Me.RadGroupBox5.Text = "Equipments"
-        Me.RadGroupBox5.ThemeName = "VisualStudio2012Dark"
+        Me.gp_reservation_equipments.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping
+        Me.gp_reservation_equipments.Anchor = System.Windows.Forms.AnchorStyles.Bottom
+        Me.gp_reservation_equipments.Controls.Add(Me.res_rdio_reserved)
+        Me.gp_reservation_equipments.Controls.Add(Me.res_rdio_showall)
+        Me.gp_reservation_equipments.Controls.Add(Me.res_rdio_cancelled)
+        Me.gp_reservation_equipments.Controls.Add(Me.rec_eq_chooseeq)
+        Me.gp_reservation_equipments.Controls.Add(Me.rec_eq_chooseno)
+        Me.gp_reservation_equipments.Controls.Add(Me.rec_eq_type_choose)
+        Me.gp_reservation_equipments.Controls.Add(Me.RadLabel71)
+        Me.gp_reservation_equipments.Controls.Add(Me.rec_btn_check_availability)
+        Me.gp_reservation_equipments.Controls.Add(Me.rec_btn_add_eq)
+        Me.gp_reservation_equipments.Controls.Add(Me.rec_btn_eqclear)
+        Me.gp_reservation_equipments.Controls.Add(Me.RadLabel70)
+        Me.gp_reservation_equipments.Controls.Add(Me.RadLabel50)
+        Me.gp_reservation_equipments.Controls.Add(Me.rec_del_eq)
+        Me.gp_reservation_equipments.Controls.Add(Me.RadGroupBox17)
+        Me.gp_reservation_equipments.HeaderText = "Equipments"
+        Me.gp_reservation_equipments.Location = New System.Drawing.Point(677, 253)
+        Me.gp_reservation_equipments.Name = "gp_reservation_equipments"
+        Me.gp_reservation_equipments.Size = New System.Drawing.Size(668, 269)
+        Me.gp_reservation_equipments.TabIndex = 2
+        Me.gp_reservation_equipments.Text = "Equipments"
+        Me.gp_reservation_equipments.ThemeName = "VisualStudio2012Dark"
         '
         'res_rdio_reserved
         '
@@ -3899,7 +3951,7 @@ Partial Class Main
         Me.rpv1.DefaultPage = Me.rpvp1_main
         Me.rpv1.Location = New System.Drawing.Point(0, 26)
         Me.rpv1.Name = "rpv1"
-        Me.rpv1.SelectedPage = Me.rpvp1_main
+        Me.rpv1.SelectedPage = Me.rpvp_returning
         Me.rpv1.Size = New System.Drawing.Size(1358, 557)
         Me.rpv1.TabIndex = 1
         Me.rpv1.Text = "Home"
@@ -3971,6 +4023,12 @@ Partial Class Main
         'acct_mgmt_hover_delay_goingToStaff
         '
         '
+        'refresh_main_rgv_recordedacademicsonly
+        '
+        '
+        'refresh_released_grid_list
+        '
+        '
         'Main
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6!, 13!)
@@ -3980,6 +4038,7 @@ Partial Class Main
         Me.Controls.Add(Me.rpv1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Icon = CType(resources.GetObject("$this.Icon"),System.Drawing.Icon)
+        Me.KeyPreview = true
         Me.Name = "Main"
         '
         '
@@ -3998,6 +4057,7 @@ Partial Class Main
         Me.rel_list_info2.ResumeLayout(false)
         CType(Me.ret_gb_controls,System.ComponentModel.ISupportInitialize).EndInit
         Me.ret_gb_controls.ResumeLayout(false)
+        CType(Me.return_btn_refresh,System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.return_btn_returned,System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.return_btn_cancel,System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.ret_gb_remarks,System.ComponentModel.ISupportInitialize).EndInit
@@ -4056,6 +4116,7 @@ Partial Class Main
         Me.res_reserved_info.ResumeLayout(false)
         CType(Me.gp_controls,System.ComponentModel.ISupportInitialize).EndInit
         Me.gp_controls.ResumeLayout(false)
+        CType(Me.released_btn_refresh,System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.released_btn_release,System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.released_btn_cancel,System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.gp_details,System.ComponentModel.ISupportInitialize).EndInit
@@ -4087,11 +4148,12 @@ Partial Class Main
         CType(Me.released_grid_list.MasterTemplate,System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.released_grid_list,System.ComponentModel.ISupportInitialize).EndInit
         Me.rpvp2_reservation.ResumeLayout(false)
-        CType(Me.RadGroupBox4,System.ComponentModel.ISupportInitialize).EndInit
-        Me.RadGroupBox4.ResumeLayout(false)
-        Me.RadGroupBox4.PerformLayout
+        CType(Me.gp_reservation_details,System.ComponentModel.ISupportInitialize).EndInit
+        Me.gp_reservation_details.ResumeLayout(false)
+        Me.gp_reservation_details.PerformLayout
         CType(Me.RadGroupBox6,System.ComponentModel.ISupportInitialize).EndInit
         Me.RadGroupBox6.ResumeLayout(false)
+        CType(Me.rec_btn_refresh,System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.btn_resetreservationno,System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.rec_btn_clear,System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.rec_btn_delete,System.ComponentModel.ISupportInitialize).EndInit
@@ -4118,9 +4180,9 @@ Partial Class Main
         CType(Me.RadLabel3,System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.RadLabel1,System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.rec_dtp_date,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.RadGroupBox5,System.ComponentModel.ISupportInitialize).EndInit
-        Me.RadGroupBox5.ResumeLayout(false)
-        Me.RadGroupBox5.PerformLayout
+        CType(Me.gp_reservation_equipments,System.ComponentModel.ISupportInitialize).EndInit
+        Me.gp_reservation_equipments.ResumeLayout(false)
+        Me.gp_reservation_equipments.PerformLayout
         CType(Me.res_rdio_reserved,System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.res_rdio_showall,System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.res_rdio_cancelled,System.ComponentModel.ISupportInitialize).EndInit
@@ -4282,7 +4344,7 @@ End Sub
     Friend WithEvents rec_btn_clear As Telerik.WinControls.UI.RadButton
     Friend WithEvents rec_btn_delete As Telerik.WinControls.UI.RadButton
     Friend WithEvents rec_btn_save As Telerik.WinControls.UI.RadButton
-    Friend WithEvents RadGroupBox4 As Telerik.WinControls.UI.RadGroupBox
+    Friend WithEvents gp_reservation_details As Telerik.WinControls.UI.RadGroupBox
     Friend WithEvents lbl_nameofstaff_reserved As Telerik.WinControls.UI.RadLabel
     Friend WithEvents rec_rrtc_actname As Telerik.WinControls.UI.RadTextBox
     Friend WithEvents rec_lbl_actname As Telerik.WinControls.UI.RadLabel
@@ -4303,7 +4365,7 @@ End Sub
     Friend WithEvents RadLabel3 As Telerik.WinControls.UI.RadLabel
     Friend WithEvents RadLabel1 As Telerik.WinControls.UI.RadLabel
     Friend WithEvents rec_dtp_date As Telerik.WinControls.UI.RadDateTimePicker
-    Friend WithEvents RadGroupBox5 As Telerik.WinControls.UI.RadGroupBox
+    Friend WithEvents gp_reservation_equipments As Telerik.WinControls.UI.RadGroupBox
     Friend WithEvents rec_eq_chooseeq As Telerik.WinControls.UI.RadDropDownList
     Friend WithEvents rec_eq_chooseno As Telerik.WinControls.UI.RadDropDownList
     Friend WithEvents rec_eq_type_choose As Telerik.WinControls.UI.RadDropDownList
@@ -4474,5 +4536,17 @@ End Sub
     Friend WithEvents RadLabel19 As Telerik.WinControls.UI.RadLabel
     Friend WithEvents RadLabel22 As Telerik.WinControls.UI.RadLabel
     Friend WithEvents returned_startDate As Telerik.WinControls.UI.RadDateTimePicker
+    Friend WithEvents refresh_main_rgv_recordedacademicsonly As Timer
+    Friend WithEvents refresh_acc_staff_list As Timer
+    Friend WithEvents refresh_acc_prof_list As Timer
+    Friend WithEvents refresh_reservation_rgv_recordeddata As Timer
+    Friend WithEvents refresh_reserved_grid_list As Timer
+    Friend WithEvents refresh_released_grid_list As Timer
+    Friend WithEvents refresh_released_grid_list2 As Timer
+    Friend WithEvents refresh_penalty_grid_list As Timer
+    Friend WithEvents refresh_returned_eq_list As Timer
+    Friend WithEvents rec_btn_refresh As Telerik.WinControls.UI.RadButton
+    Friend WithEvents released_btn_refresh As Telerik.WinControls.UI.RadButton
+    Friend WithEvents return_btn_refresh As Telerik.WinControls.UI.RadButton
 End Class
 

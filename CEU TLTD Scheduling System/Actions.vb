@@ -41,6 +41,7 @@ Public Class Actions
     End Function
 
     Public Shared Sub SaveDB()
+        
         Dim savedb_dialog As New SaveFileDialog()
         savedb_dialog.Filter = "mySQL Database|*.sql"
         savedb_dialog.Title = "Choose a Location to Save"
@@ -62,5 +63,4 @@ Public Class Actions
             End Try
         End If
     End Sub
-
 End Class
