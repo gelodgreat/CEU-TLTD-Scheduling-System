@@ -4274,6 +4274,16 @@ End Sub
         End If
     End Sub
 
+    Private Sub main_rgv_recordedacademicsonly_KeyDown(sender As Object, e As KeyEventArgs) Handles main_rgv_recordedacademicsonly.KeyDown,main_rgv_recordedacademicsonly.KeyUp,main_rgv_recordedacademicsonly.KeyDown
+        If Keys.Up Or Keys.Down
+            If main_rgv_recordedacademicsonly.Rows(0).Index = -1
+                'DO NOTHING
+            Else
+                main_window_keepSelectedRowIndexAfterUpdate=main_rgv_recordedacademicsonly.SelectedRows(0).Index
+            End If
+        End If
+    End Sub
+
 
 
 
