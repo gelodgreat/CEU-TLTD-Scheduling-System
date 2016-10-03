@@ -570,7 +570,7 @@ Public Class Main
             looper += 1
         End While
              Catch ex As MySqlException
-             If ex.Number  = 0 Or ex.Number = 1042
+             If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed")))
                 refresh_main_rgv_recordedacademicsonly.Stop()
                 refresh_released_grid_list.Stop()
                 RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -633,7 +633,7 @@ Public Class Main
                 reservation_rgv_recordeddata.Rows(Keepreservation_mainIndex).IsCurrent = True  'WUTRY_1
         End If
             Catch ex As MySqlException
-             If ex.Number  = 0 Or ex.Number = 1042
+             If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed")))
                 refresh_main_rgv_recordedacademicsonly.Stop()
                 refresh_released_grid_list.Stop()
                 RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -704,7 +704,7 @@ Public Class Main
         main_rgv_recordedacademicsonly.DataSource = DV
 
         Catch ex As MySqlException
-             If ex.Number  = 0 Or ex.Number = 1042
+             If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed")))
                 refresh_main_rgv_recordedacademicsonly.Stop()
                 refresh_released_grid_list.Stop()
                 RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -807,7 +807,7 @@ Public Class Main
                 acc_staff_list.Rows(acc_staff_keepSelectedRowIndexAfterUpdate).IsCurrent = True
             End If
          Catch ex As MySqlException
-             If ex.Number  = 0 Or ex.Number = 1042
+             If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed")))
                 refresh_main_rgv_recordedacademicsonly.Stop()
                 refresh_released_grid_list.Stop()
                 RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -864,7 +864,7 @@ Public Class Main
                 acc_prof_list.Rows(acc_prof_keepSelectedRowIndexAfterUpdate).IsCurrent = True
             End If
             Catch ex As MySqlException
-                If ex.Number  = 0 Or ex.Number = 1042
+                If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed")))
                     refresh_main_rgv_recordedacademicsonly.Stop()
                     refresh_released_grid_list.Stop()
                     RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -1036,7 +1036,7 @@ Public Class Main
                     acc_staff_btn_save.Show
                     rpv_child_acctmgmt.SelectedPage = rpv_staff
             Catch ex As MySqlException
-                If ex.Number  = 0 Or ex.Number = 1042
+                If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed")))
                     refresh_main_rgv_recordedacademicsonly.Stop()
                     refresh_released_grid_list.Stop()
                     RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -1073,7 +1073,7 @@ Public Class Main
                 MysqlConn.Close()
         End If
             Catch ex As MySqlException
-                If ex.Number  = 0 Or ex.Number = 1042
+                If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed")))
                     refresh_main_rgv_recordedacademicsonly.Stop()
                     refresh_released_grid_list.Stop()
                     RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -1163,7 +1163,7 @@ Public Class Main
             Catch ex As MySqlException
                 If ex.Number = 1062 Then
                     RadMessageBox.Show(Me, "The ID exists already.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
-                Else If ex.Number  = 0 Or ex.Number = 1042
+                Else If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed")))
                     refresh_main_rgv_recordedacademicsonly.Stop()
                     refresh_released_grid_list.Stop()
                     RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -1234,7 +1234,7 @@ Public Class Main
         End If
                  load_main_prof()
                 Catch ex As MySqlException
-                    If ex.Number  = 0 Or ex.Number = 1042
+                    If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed")))
                         refresh_main_rgv_recordedacademicsonly.Stop()
                         refresh_released_grid_list.Stop()
                         RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -1289,7 +1289,7 @@ Public Class Main
         End If
 
             Catch ex As MySqlException
-                If ex.Number  = 0 Or ex.Number = 1042
+                If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed")))
                     refresh_main_rgv_recordedacademicsonly.Stop()
                     refresh_released_grid_list.Stop()
                     RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -1358,7 +1358,7 @@ Public Class Main
             End If
 
             Catch ex As MySqlException
-                If ex.Number  = 0 Or ex.Number = 1042
+                If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed")))
                     refresh_main_rgv_recordedacademicsonly.Stop()
                     refresh_released_grid_list.Stop()
                     RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -1409,7 +1409,7 @@ Public Class Main
                 released_grid_list2.Rows(releasedToReturn_gridlist_KeepSelectedRowInDexAfterUpdate).IsCurrent = True
             End If
             Catch ex As MySqlException
-                If ex.Number  = 0 Or ex.Number = 1042
+                If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed")))
                     refresh_main_rgv_recordedacademicsonly.Stop()
                     refresh_released_grid_list.Stop()
                     RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -1476,7 +1476,7 @@ Public Class Main
                 MysqlConn.Close()
             End If
             Catch ex As MySqlException
-                If ex.Number  = 0 Or ex.Number = 1042
+                If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed")))
                     refresh_main_rgv_recordedacademicsonly.Stop()
                     refresh_released_grid_list.Stop()
                     RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -1516,7 +1516,7 @@ Public Class Main
             End If
         End If
                 Catch ex As MySqlException
-                    If ex.Number  = 0 Or ex.Number = 1042
+                    If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed")))
                         refresh_main_rgv_recordedacademicsonly.Stop()
                         refresh_released_grid_list.Stop()
                         RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -1618,7 +1618,7 @@ Public Class Main
                 reserved_grid_list.Rows(reserved_grid_list_KeepSelectedRowInDexAfterUpdate).IsCurrent = True
             End If
             Catch ex As MySqlException
-                If ex.Number  = 0 Or ex.Number = 1042
+                If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed")))
                     refresh_main_rgv_recordedacademicsonly.Stop()
                     refresh_released_grid_list.Stop()
                     RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -1919,7 +1919,7 @@ Public Class Main
         DV.RowFilter = String.Format("`Borrower` Like'%{0}%' and `Equipment` Like'%{1}%' and `Date` Like'%{2}%' and `Activity Type` Like'%{3}%'", lu_byname.Text, lu_byequipment.Text, lu_date.Value.ToString("MMMM dd yyyy"), Cover)
         main_rgv_recordedacademicsonly.DataSource = DV
             Catch ex As MySqlException
-                If ex.Number  = 0 Or ex.Number = 1042
+                If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed")))
                     refresh_main_rgv_recordedacademicsonly.Stop()
                     refresh_released_grid_list.Stop()
                     RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -1965,7 +1965,7 @@ Public Class Main
             DV.RowFilter = String.Format("`Equipment Number` Like'%{0}%' and `Equipment Type` Like'%{1}%'", eq_filter_eqno.Text, eq_filter_eqtype.Text)
             eq_rgv_showregequipment.DataSource = DV
             Catch ex As MySqlException
-                If ex.Number  = 0 Or ex.Number = 1042
+                If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed")))
                     refresh_main_rgv_recordedacademicsonly.Stop()
                     refresh_released_grid_list.Stop()
                     RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -2245,7 +2245,7 @@ Public Class Main
         eq_rgv_showregequipment.Rows(eq_keepSelectedRowIndexAfterUpdate).IsCurrent = True  'WUTRY_1
         End If
             Catch ex As MySqlException
-                If ex.Number  = 0 Or ex.Number = 1042
+                If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed")))
                     refresh_main_rgv_recordedacademicsonly.Stop()
                     refresh_released_grid_list.Stop()
                     RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -2318,7 +2318,7 @@ Public Class Main
             eq_rgv_showregequipment.Rows(eq_keepSelectedRowIndexAfterUpdate).IsCurrent = True  'WUTRY_1
             End If
             Catch ex As MySqlException
-                If ex.Number  = 0 Or ex.Number = 1042
+                If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed")))
                     refresh_main_rgv_recordedacademicsonly.Stop()
                     refresh_released_grid_list.Stop()
                     RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -2357,7 +2357,7 @@ Public Class Main
             End If
         End If
             Catch ex As MySqlException
-                If ex.Number  = 0 Or ex.Number = 1042
+                If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed")))
                     refresh_main_rgv_recordedacademicsonly.Stop()
                     refresh_released_grid_list.Stop()
                     RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -2451,7 +2451,7 @@ Public Class Main
             MysqlConn.Close()
 
             Catch ex As MySqlException
-                If ex.Number  = 0 Or ex.Number = 1042
+                If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed")))
                     refresh_main_rgv_recordedacademicsonly.Stop()
                     refresh_released_grid_list.Stop()
                     RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -2493,7 +2493,7 @@ Public Class Main
             End While
             MysqlConn.Close()
             Catch ex As MySqlException
-                If ex.Number  = 0 Or ex.Number = 1042
+                If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed")))
                     refresh_main_rgv_recordedacademicsonly.Stop()
                     refresh_released_grid_list.Stop()
                     RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -2531,7 +2531,7 @@ Public Class Main
             End While
             MysqlConn.Close()
             Catch ex As MySqlException
-                If ex.Number  = 0 Or ex.Number = 1042
+                If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed")))
                     refresh_main_rgv_recordedacademicsonly.Stop()
                     refresh_released_grid_list.Stop()
                     RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -2572,7 +2572,7 @@ Public Class Main
 
             MysqlConn.Close()
             Catch ex As MySqlException
-                If ex.Number  = 0 Or ex.Number = 1042
+                If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed")))
                     refresh_main_rgv_recordedacademicsonly.Stop()
                     refresh_released_grid_list.Stop()
                     RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -2631,7 +2631,7 @@ Public Class Main
                 MysqlConn.Close()
         End If
             Catch ex As MySqlException
-                If ex.Number  = 0 Or ex.Number = 1042
+                If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed")))
                     refresh_main_rgv_recordedacademicsonly.Stop()
                     refresh_released_grid_list.Stop()
                     RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -2775,7 +2775,7 @@ Public Class Main
                     End If
             End If
             Catch ex As MySqlException
-                If ex.Number  = 0 Or ex.Number = 1042
+                If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed")))
                     refresh_main_rgv_recordedacademicsonly.Stop()
                     refresh_released_grid_list.Stop()
                     RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -2950,7 +2950,7 @@ Public Class Main
         End If
       End If
             Catch ex As MySqlException
-                If ex.Number  = 0 Or ex.Number = 1042
+                If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed")))
                     refresh_main_rgv_recordedacademicsonly.Stop()
                     refresh_released_grid_list.Stop()
                     RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -3059,7 +3059,7 @@ Public Class Main
         'main_load_schoolonly()
         End If
             Catch ex As MySqlException
-                If ex.Number  = 0 Or ex.Number = 1042
+                If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed")))
                     refresh_main_rgv_recordedacademicsonly.Stop()
                     refresh_released_grid_list.Stop()
                     RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -3096,7 +3096,7 @@ Public Class Main
 
             MysqlConn.Close()
             Catch ex As MySqlException
-                If ex.Number  = 0 Or ex.Number = 1042
+                If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed")))
                     refresh_main_rgv_recordedacademicsonly.Stop()
                     refresh_released_grid_list.Stop()
                     RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -3244,7 +3244,7 @@ Public Class Main
       End If
       End If
             Catch ex As MySqlException
-                If ex.Number  = 0 Or ex.Number = 1042
+                If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed")))
                     refresh_main_rgv_recordedacademicsonly.Stop()
                     refresh_released_grid_list.Stop()
                     RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -3333,7 +3333,7 @@ Public Class Main
                 End While
                 MysqlConn.Close()
             Catch ex As MySqlException
-                If ex.Number  = 0 Or ex.Number = 1042
+                If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed")))
                     refresh_main_rgv_recordedacademicsonly.Stop()
                     refresh_released_grid_list.Stop()
                     RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -3378,7 +3378,7 @@ Public Class Main
                     MysqlConn.Close()
 
                 Catch ex As MySqlException
-                If ex.Number  = 0 Or ex.Number = 1042
+                If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed")))
                     refresh_main_rgv_recordedacademicsonly.Stop()
                     refresh_released_grid_list.Stop()
                     RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -3443,7 +3443,7 @@ Public Class Main
                     MysqlConn.Close()
 
             Catch ex As MySqlException
-                If ex.Number  = 0 Or ex.Number = 1042
+                If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed")))
                     refresh_main_rgv_recordedacademicsonly.Stop()
                     refresh_released_grid_list.Stop()
                     RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -3496,7 +3496,7 @@ Public Class Main
                             comm.ExecuteNonQuery()
                             MysqlConn.Close()
                     Catch ex As MySqlException
-                        If ex.Number  = 0 Or ex.Number = 1042
+                        If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed")))
                             refresh_main_rgv_recordedacademicsonly.Stop()
                             refresh_released_grid_list.Stop()
                             RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -3549,7 +3549,7 @@ Public Class Main
                             comm.ExecuteNonQuery()
                             MysqlConn.Close()
                     Catch ex As MySqlException
-                        If ex.Number  = 0 Or ex.Number = 1042
+                        If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed")))
                             refresh_main_rgv_recordedacademicsonly.Stop()
                             refresh_released_grid_list.Stop()
                             RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -3618,7 +3618,7 @@ Public Class Main
             penalty_grid_list.Columns("Penalty ID").IsVisible = false 'HIDE LATER
             SetSizeofPenaltyTable()
             Catch ex As MySqlException
-                If ex.Number  = 0 Or ex.Number = 1042
+                If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed")))
                     refresh_main_rgv_recordedacademicsonly.Stop()
                     refresh_released_grid_list.Stop()
                     RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -3653,7 +3653,7 @@ Public Class Main
         End If
        End If
             Catch ex As MySqlException
-                If ex.Number  = 0 Or ex.Number = 1042
+                If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed")))
                     refresh_main_rgv_recordedacademicsonly.Stop()
                     refresh_released_grid_list.Stop()
                     RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -3735,7 +3735,7 @@ End Sub
                 load_penalty_list(pen_startDate.Value,pen_endDate.Value)
         End If
             Catch ex As MySqlException
-                If ex.Number  = 0 Or ex.Number = 1042
+                If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed")))
                     refresh_main_rgv_recordedacademicsonly.Stop()
                     refresh_released_grid_list.Stop()
                     RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -3786,7 +3786,7 @@ End Sub
         End If
         End If
             Catch ex As MySqlException
-                If ex.Number  = 0 Or ex.Number = 1042
+                If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed")))
                     refresh_main_rgv_recordedacademicsonly.Stop()
                     refresh_released_grid_list.Stop()
                     RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -3837,7 +3837,7 @@ End Sub
             returned_eq_list.Columns("Return ID").IsVisible = false 'HIDE LATER
             SetSizeofReturnTable()
             Catch ex As MySqlException
-                If ex.Number  = 0 Or ex.Number = 1042
+                If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed")))
                     refresh_main_rgv_recordedacademicsonly.Stop()
                     refresh_released_grid_list.Stop()
                     RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -3880,7 +3880,7 @@ End Sub
         End If
        End If
             Catch ex As MySqlException
-                If ex.Number  = 0 Or ex.Number = 1042
+                If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed")))
                     refresh_main_rgv_recordedacademicsonly.Stop()
                     refresh_released_grid_list.Stop()
                     RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -3952,7 +3952,7 @@ End Sub
                 load_returned_eq_list(returned_startDate.Value,returned_endDate.Value)
         End If
             Catch ex As MySqlException
-                If ex.Number  = 0 Or ex.Number = 1042
+                If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed")))
                     refresh_main_rgv_recordedacademicsonly.Stop()
                     refresh_released_grid_list.Stop()
                     RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -4003,7 +4003,7 @@ End Sub
         End If
       End If
             Catch ex As MySqlException
-                If ex.Number  = 0 Or ex.Number = 1042
+                If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed")))
                     refresh_main_rgv_recordedacademicsonly.Stop()
                     refresh_released_grid_list.Stop()
                     RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
