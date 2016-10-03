@@ -244,6 +244,10 @@ Public Class Main
     Private Sub main_rgv_recordedacademicsonly_ViewCellFormatting(sender As Object, e As CellFormattingEventArgs) Handles main_rgv_recordedacademicsonly.ViewCellFormatting
         e.CellElement.TextAlignment = ContentAlignment.MiddleCenter
         e.CellElement.TextWrap=True
+        Dim cell As GridDataCellElement = TryCast(e.CellElement, GridDataCellElement)
+        If cell IsNot Nothing Then
+	        cell.Font = New Font(New FontFamily("Segoe UI"), 12.00F)
+        End If
     End Sub
 
     'Private Sub main_rgv_recordedschoolonly_ViewCellFormatting(sender As Object, e As CellFormattingEventArgs) Handles main_rgv_recordedschoolonly.ViewCellFormatting
@@ -283,71 +287,72 @@ Public Class Main
         If main_rgv_recordedacademicsonly.Columns.Count<=0 Then
 
         Else
-        If lu_ActivityType.Text = "Academic" Then
-            Dim colsmain_resno = main_rgv_recordedacademicsonly.Columns("Reservation Number")
-            colsmain_resno.Width = 119
+            If lu_ActivityType.Text = "Academic" Then
+                Dim colsmain_resno = main_rgv_recordedacademicsonly.Columns("Reservation Number")
+                colsmain_resno.Width = 119
 
-            Dim colsmain_brr = main_rgv_recordedacademicsonly.Columns("Borrower")
-            colsmain_brr.Width = 119
+                Dim colsmain_brr = main_rgv_recordedacademicsonly.Columns("Borrower")
+                colsmain_brr.Width = 119
 
-            Dim colsmain_idid = main_rgv_recordedacademicsonly.Columns("ID")
-            colsmain_idid.Width = 71
+                Dim colsmain_idid = main_rgv_recordedacademicsonly.Columns("ID")
+                colsmain_idid.Width = 71
 
-            Dim colsmain_eqno = main_rgv_recordedacademicsonly.Columns("Equipment Number")
-            colsmain_eqno.Width = 138
+                Dim colsmain_eqno = main_rgv_recordedacademicsonly.Columns("Equipment Number")
+                colsmain_eqno.Width = 138
 
-            Dim colsmain_eqname = main_rgv_recordedacademicsonly.Columns("Equipment")
-            colsmain_eqname.Width = 359
+                Dim colsmain_eqname = main_rgv_recordedacademicsonly.Columns("Equipment")
+                colsmain_eqname.Width = 359
 
-            Dim colsmain_location = main_rgv_recordedacademicsonly.Columns("Location")
-            colsmain_location.Width = 100
+                Dim colsmain_location = main_rgv_recordedacademicsonly.Columns("Location")
+                colsmain_location.Width = 100
 
-            Dim colsmain_date = main_rgv_recordedacademicsonly.Columns("Date")
-            colsmain_date.Width = 114
+                Dim colsmain_date = main_rgv_recordedacademicsonly.Columns("Date")
+                colsmain_date.Width = 114
 
-            Dim colsmain_st = main_rgv_recordedacademicsonly.Columns("Start Time")
-            colsmain_st.Width = 68
+                Dim colsmain_st = main_rgv_recordedacademicsonly.Columns("Start Time")
+                colsmain_st.Width = 68
 
-            Dim colsmain_et = main_rgv_recordedacademicsonly.Columns("End Time")
-            colsmain_et.Width = 68
-            colsmain_et.WrapText = True
+                Dim colsmain_et = main_rgv_recordedacademicsonly.Columns("End Time")
+                colsmain_et.Width = 68
+                colsmain_et.WrapText = True
 
-            Dim colsmain_at = main_rgv_recordedacademicsonly.Columns("Activity Type")
-            colsmain_at.Width = 109
-        Else
-            Dim colsmain_resno = main_rgv_recordedacademicsonly.Columns("Reservation Number")
-            colsmain_resno.Width = 119
+                Dim colsmain_at = main_rgv_recordedacademicsonly.Columns("Activity Type")
+                colsmain_at.Width = 109
+            Else
+                Dim colsmain_resno = main_rgv_recordedacademicsonly.Columns("Reservation Number")
+                colsmain_resno.Width = 119
 
-            Dim colsmain_brr = main_rgv_recordedacademicsonly.Columns("Borrower")
-            colsmain_brr.Width = 119
+                Dim colsmain_brr = main_rgv_recordedacademicsonly.Columns("Borrower")
+                colsmain_brr.Width = 119
 
-            Dim colsmain_idid = main_rgv_recordedacademicsonly.Columns("ID")
-            colsmain_idid.Width = 71
+                Dim colsmain_idid = main_rgv_recordedacademicsonly.Columns("ID")
+                colsmain_idid.Width = 71
 
-            Dim colsmain_eqno = main_rgv_recordedacademicsonly.Columns("Equipment Number")
-            colsmain_eqno.Width = 138
+                Dim colsmain_eqno = main_rgv_recordedacademicsonly.Columns("Equipment Number")
+                colsmain_eqno.Width = 138
 
-            Dim colsmain_eqname = main_rgv_recordedacademicsonly.Columns("Equipment")
-            colsmain_eqname.Width = 239
+                Dim colsmain_eqname = main_rgv_recordedacademicsonly.Columns("Equipment")
+                colsmain_eqname.Width = 239
 
-            Dim colsmain_location = main_rgv_recordedacademicsonly.Columns("Location")
-            colsmain_location.Width = 100
+                Dim colsmain_location = main_rgv_recordedacademicsonly.Columns("Location")
+                colsmain_location.Width = 100
 
-            Dim colsmain_date = main_rgv_recordedacademicsonly.Columns("Date")
-            colsmain_date.Width = 114
+                Dim colsmain_date = main_rgv_recordedacademicsonly.Columns("Date")
+                colsmain_date.Width = 114
 
-            Dim colsmain_st = main_rgv_recordedacademicsonly.Columns("Start Time")
-            colsmain_st.Width = 68
+                Dim colsmain_st = main_rgv_recordedacademicsonly.Columns("Start Time")
+                colsmain_st.Width = 68
 
-            Dim colsmain_et = main_rgv_recordedacademicsonly.Columns("End Time")
-            colsmain_et.Width = 68
+                Dim colsmain_et = main_rgv_recordedacademicsonly.Columns("End Time")
+                colsmain_et.Width = 68
 
-            Dim colsmain_at = main_rgv_recordedacademicsonly.Columns("Activity Type")
-            colsmain_at.Width = 109
+                Dim colsmain_at = main_rgv_recordedacademicsonly.Columns("Activity Type")
+                colsmain_at.Width = 109
 
-            Dim colsmain_att = main_rgv_recordedacademicsonly.Columns("Activity")
-            colsmain_att.Width = 120
-        End If
+                Dim colsmain_att = main_rgv_recordedacademicsonly.Columns("Activity")
+                colsmain_att.Width = 120
+            End If
+ 
         End If
     End Sub ' Main TAB Table
     

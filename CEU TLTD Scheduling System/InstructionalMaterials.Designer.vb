@@ -146,8 +146,8 @@ Partial Class InstructionalMaterials
         Me.imm_nv_dtp_duration = New Telerik.WinControls.UI.RadDateTimePicker()
         Me.RadLabel1 = New Telerik.WinControls.UI.RadLabel()
         Me.imm_nv_cb_subject = New Telerik.WinControls.UI.RadDropDownList()
-        Me.imm_nv_btn_update = New Telerik.WinControls.UI.RadButton()
         Me.imm_nv_btn_save = New Telerik.WinControls.UI.RadButton()
+        Me.imm_nv_btn_update = New Telerik.WinControls.UI.RadButton()
         Me.im_rpvp_imr = New Telerik.WinControls.UI.RadPageViewPage()
         Me.RadGroupBox10 = New Telerik.WinControls.UI.RadGroupBox()
         Me.imr_cb_endtime = New Telerik.WinControls.UI.RadDropDownList()
@@ -181,6 +181,7 @@ Partial Class InstructionalMaterials
         Me.menuItem_About = New Telerik.WinControls.UI.RadMenuItem()
         Me.imm_lu_subject_filter_delay = New System.Windows.Forms.Timer(Me.components)
         Me.imm_lu_topic_filter_delay = New System.Windows.Forms.Timer(Me.components)
+        Me.imm_filter_topic_delay = New System.Windows.Forms.Timer(Me.components)
         CType(Me.RadPageView1,System.ComponentModel.ISupportInitialize).BeginInit
         Me.RadPageView1.SuspendLayout
         Me.im_rpvp_main.SuspendLayout
@@ -244,8 +245,8 @@ Partial Class InstructionalMaterials
         CType(Me.imm_nv_dtp_duration,System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.RadLabel1,System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.imm_nv_cb_subject,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.imm_nv_btn_update,System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.imm_nv_btn_save,System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.imm_nv_btn_update,System.ComponentModel.ISupportInitialize).BeginInit
         Me.im_rpvp_imr.SuspendLayout
         CType(Me.RadGroupBox10,System.ComponentModel.ISupportInitialize).BeginInit
         Me.RadGroupBox10.SuspendLayout
@@ -288,7 +289,7 @@ Partial Class InstructionalMaterials
         Me.RadPageView1.Controls.Add(Me.im_rpvp_imr)
         Me.RadPageView1.Location = New System.Drawing.Point(0, 26)
         Me.RadPageView1.Name = "RadPageView1"
-        Me.RadPageView1.SelectedPage = Me.im_rpvp_imm
+        Me.RadPageView1.SelectedPage = Me.im_rpvp_main
         Me.RadPageView1.Size = New System.Drawing.Size(1356, 557)
         Me.RadPageView1.TabIndex = 0
         Me.RadPageView1.Text = "im_rpv"
@@ -465,8 +466,8 @@ Partial Class InstructionalMaterials
         Me.imm.Controls.Add(Me.imm_rpv_subtopics)
         Me.imm.Location = New System.Drawing.Point(3, 3)
         Me.imm.Name = "imm"
-        Me.imm.SelectedPage = Me.imm_rpv_subtopics
-        Me.imm.Size = New System.Drawing.Size(1365, 299)
+        Me.imm.SelectedPage = Me.imm_rpv_movielist
+        Me.imm.Size = New System.Drawing.Size(1348, 299)
         Me.imm.TabIndex = 4
         Me.imm.Text = "RadPageView2"
         Me.imm.ThemeName = "VisualStudio2012Dark"
@@ -478,7 +479,7 @@ Partial Class InstructionalMaterials
         Me.imm_rpv_movielist.ItemSize = New System.Drawing.SizeF(63!, 24!)
         Me.imm_rpv_movielist.Location = New System.Drawing.Point(5, 30)
         Me.imm_rpv_movielist.Name = "imm_rpv_movielist"
-        Me.imm_rpv_movielist.Size = New System.Drawing.Size(1355, 264)
+        Me.imm_rpv_movielist.Size = New System.Drawing.Size(1338, 264)
         Me.imm_rpv_movielist.Text = "Movie List"
         '
         'imm_rgv_im_movielists
@@ -498,7 +499,7 @@ Partial Class InstructionalMaterials
         Me.imm_rgv_im_movielists.MasterTemplate.ViewDefinition = TableViewDefinition3
         Me.imm_rgv_im_movielists.Name = "imm_rgv_im_movielists"
         Me.imm_rgv_im_movielists.ReadOnly = true
-        Me.imm_rgv_im_movielists.Size = New System.Drawing.Size(1355, 264)
+        Me.imm_rgv_im_movielists.Size = New System.Drawing.Size(1338, 264)
         Me.imm_rgv_im_movielists.TabIndex = 1
         Me.imm_rgv_im_movielists.Text = "RadGridView3"
         Me.imm_rgv_im_movielists.ThemeName = "VisualStudio2012Dark"
@@ -509,7 +510,7 @@ Partial Class InstructionalMaterials
         Me.imm_rpv_subtopics.ItemSize = New System.Drawing.SizeF(66!, 24!)
         Me.imm_rpv_subtopics.Location = New System.Drawing.Point(5, 30)
         Me.imm_rpv_subtopics.Name = "imm_rpv_subtopics"
-        Me.imm_rpv_subtopics.Size = New System.Drawing.Size(1355, 264)
+        Me.imm_rpv_subtopics.Size = New System.Drawing.Size(1338, 264)
         Me.imm_rpv_subtopics.Text = "Sub Topics"
         '
         'imm_rgv_im_subtopics
@@ -529,7 +530,7 @@ Partial Class InstructionalMaterials
         Me.imm_rgv_im_subtopics.MasterTemplate.ViewDefinition = TableViewDefinition4
         Me.imm_rgv_im_subtopics.Name = "imm_rgv_im_subtopics"
         Me.imm_rgv_im_subtopics.ReadOnly = true
-        Me.imm_rgv_im_subtopics.Size = New System.Drawing.Size(1355, 264)
+        Me.imm_rgv_im_subtopics.Size = New System.Drawing.Size(1338, 264)
         Me.imm_rgv_im_subtopics.TabIndex = 2
         Me.imm_rgv_im_subtopics.Text = "RadGridView3"
         Me.imm_rgv_im_subtopics.ThemeName = "VisualStudio2012Dark"
@@ -936,16 +937,6 @@ Partial Class InstructionalMaterials
         Me.imm_nv_cb_subject.TabIndex = 0
         Me.imm_nv_cb_subject.ThemeName = "VisualStudio2012Dark"
         '
-        'imm_nv_btn_update
-        '
-        Me.imm_nv_btn_update.Anchor = System.Windows.Forms.AnchorStyles.Bottom
-        Me.imm_nv_btn_update.Location = New System.Drawing.Point(506, 176)
-        Me.imm_nv_btn_update.Name = "imm_nv_btn_update"
-        Me.imm_nv_btn_update.Size = New System.Drawing.Size(85, 24)
-        Me.imm_nv_btn_update.TabIndex = 15
-        Me.imm_nv_btn_update.Text = "Update"
-        Me.imm_nv_btn_update.ThemeName = "VisualStudio2012Dark"
-        '
         'imm_nv_btn_save
         '
         Me.imm_nv_btn_save.Anchor = System.Windows.Forms.AnchorStyles.Bottom
@@ -955,6 +946,16 @@ Partial Class InstructionalMaterials
         Me.imm_nv_btn_save.TabIndex = 14
         Me.imm_nv_btn_save.Text = "Save"
         Me.imm_nv_btn_save.ThemeName = "VisualStudio2012Dark"
+        '
+        'imm_nv_btn_update
+        '
+        Me.imm_nv_btn_update.Anchor = System.Windows.Forms.AnchorStyles.Bottom
+        Me.imm_nv_btn_update.Location = New System.Drawing.Point(506, 176)
+        Me.imm_nv_btn_update.Name = "imm_nv_btn_update"
+        Me.imm_nv_btn_update.Size = New System.Drawing.Size(85, 24)
+        Me.imm_nv_btn_update.TabIndex = 15
+        Me.imm_nv_btn_update.Text = "Update"
+        Me.imm_nv_btn_update.ThemeName = "VisualStudio2012Dark"
         '
         'im_rpvp_imr
         '
@@ -1453,6 +1454,9 @@ Partial Class InstructionalMaterials
         'imm_lu_topic_filter_delay
         '
         '
+        'imm_filter_topic_delay
+        '
+        '
         'InstructionalMaterials
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6!, 13!)
@@ -1537,8 +1541,8 @@ Partial Class InstructionalMaterials
         CType(Me.imm_nv_dtp_duration,System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.RadLabel1,System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.imm_nv_cb_subject,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.imm_nv_btn_update,System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.imm_nv_btn_save,System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.imm_nv_btn_update,System.ComponentModel.ISupportInitialize).EndInit
         Me.im_rpvp_imr.ResumeLayout(false)
         CType(Me.RadGroupBox10,System.ComponentModel.ISupportInitialize).EndInit
         Me.RadGroupBox10.ResumeLayout(false)
@@ -1662,5 +1666,6 @@ End Sub
     Friend WithEvents imm_btn_refresh As Telerik.WinControls.UI.RadButton
     Friend WithEvents imm_lu_subject_filter_delay As Timer
     Friend WithEvents imm_lu_topic_filter_delay As Timer
+    Friend WithEvents imm_filter_topic_delay As Timer
 End Class
 

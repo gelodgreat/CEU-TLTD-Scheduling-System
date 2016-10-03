@@ -95,6 +95,10 @@ Public Class InstructionalMaterials
     Private Sub immain_rgv_movielist_ViewCellFormatting(sender As Object, e As CellFormattingEventArgs) Handles immain_rgv_movielist.ViewCellFormatting
         e.CellElement.TextAlignment = ContentAlignment.MiddleCenter
         e.CellElement.TextWrap = True
+        Dim cell As GridCellElement = TryCast(e.CellElement, GridCellElement)
+        If cell IsNot Nothing Then
+	        cell.Font = New Font(New FontFamily("Segoe UI"), 12.25F)
+        End If
     End Sub
 
     Public Sub imm_main_size()
@@ -102,7 +106,7 @@ Public Class InstructionalMaterials
             'Quiet when there is no columns loaded
         Else
         Dim vidid = Me.immain_rgv_movielist.Columns("Video ID")
-        vidid.Width = 50
+        vidid.Width = 70
 
         Dim duration = Me.immain_rgv_movielist.Columns("Duration")
         duration.Width = 70
@@ -111,10 +115,10 @@ Public Class InstructionalMaterials
         subject.Width = 200
 
         Dim mediatype = Me.immain_rgv_movielist.Columns("Media Type")
-        mediatype.Width = 50
+        mediatype.Width = 120
 
         Dim topic = Me.immain_rgv_movielist.Columns("Topic")
-        topic.Width = 900
+        topic.Width = 600
 
         Dim ac_date = Me.imm_rgv_im_movielists.Columns("Acquisition Date")
         ac_date.Width = 120
@@ -122,6 +126,9 @@ Public Class InstructionalMaterials
     End Sub
 
     Public Sub load_all_movielist_in_main()
+        If Not immain_rgv_movielist.Columns.Count = 0 Then
+            immain_rgv_movielist.Columns.Clear()
+        End If
         MysqlConn = New MySqlConnection
         MysqlConn.ConnectionString = connstring
 
@@ -143,15 +150,13 @@ Public Class InstructionalMaterials
             immain_rgv_movielist.DataSource = bsource
             immain_rgv_movielist.ReadOnly = True
             sda.Update(imdbdataset)
-
+            imm_main_size()
             MysqlConn.Close()
 
         Catch ex As Exception
             RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
         Finally
             MysqlConn.Dispose()
-            imm_main_size()
-
         End Try
 
     End Sub
@@ -174,7 +179,6 @@ Public Class InstructionalMaterials
         If Not immain_rgv_movielist.Columns.Count = 0 Then
             immain_rgv_movielist.Columns.Clear()
         End If
-
         MysqlConn = New MySqlConnection
         MysqlConn.ConnectionString = connstring
         Dim sda As New MySqlDataAdapter
@@ -192,15 +196,13 @@ Public Class InstructionalMaterials
             immain_rgv_movielist.DataSource = bsource
             immain_rgv_movielist.ReadOnly = True
             sda.Update(imdbdataset)
-
+             imm_main_size()
             MysqlConn.Close()
 
         Catch ex As Exception
             RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
         Finally
             MysqlConn.Dispose()
-            imm_main_size()
-
         End Try
 
         Dim DV As New DataView(imdbdataset)
@@ -237,15 +239,13 @@ Public Class InstructionalMaterials
             immain_rgv_movielist.DataSource = bsource
             immain_rgv_movielist.ReadOnly = True
             sda.Update(imdbdataset)
-
+            imm_main_size()
             MysqlConn.Close()
 
         Catch ex As Exception
             RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
         Finally
             MysqlConn.Dispose()
-            imm_main_size()
-
         End Try
 
         Dim DV As New DataView(imdbdataset)
@@ -691,6 +691,7 @@ Public Class InstructionalMaterials
 
     Private Sub imm_nst_btn_clear_Click(sender As Object, e As EventArgs) Handles imm_nst_btn_clear.Click
         btn_clear_functions()
+        imm_nst_btn_save.Show
     End Sub
 
     Public Sub btn_clear_functions()
@@ -781,8 +782,9 @@ Public Class InstructionalMaterials
                 RadMessageBox.Show(Me, "Please complete the fields To update!", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
             Else
                 Try
+                    Dim get_prev_Subtopic_beforeUpdate As String = (imm_rgv_im_subtopics.SelectedRows(0).Cells("Sub Topic").Value)
                     MysqlConn.Open()
-                    query = "UPDATE `movielist_subtopics` SET subtopic=@nst_subtopic , duration=@nst_duration WHERE (vid_id=@nst_vid_id) AND (subject=@nst_subject) AND (topic=@nst_topic)"
+                    query = "UPDATE `movielist_subtopics` SET subtopic=@nst_subtopic , duration=@nst_duration WHERE (vid_id=@nst_vid_id) AND (subject=@nst_subject) AND (topic=@nst_topic) AND (subtopic=@prev_subtopic)"
                     comm = New MySqlCommand(query, MysqlConn)
 
                     comm.Parameters.AddWithValue("nst_vid_id", imm_nst_tb_vidid.Text)
@@ -790,6 +792,7 @@ Public Class InstructionalMaterials
                     comm.Parameters.AddWithValue("nst_topic", imm_nst_tb_topic.Text)
                     comm.Parameters.AddWithValue("nst_subtopic", imm_nst_tb_subtopic.Text)
                     comm.Parameters.AddWithValue("nst_duration", Format(CDate(imm_nst_dtp_duration.Value), "HH:mm:ss"))
+                    comm.Parameters.AddWithValue("@prev_subtopic",get_prev_Subtopic_beforeUpdate)
                     reader = comm.ExecuteReader
 
 
@@ -826,13 +829,14 @@ Public Class InstructionalMaterials
                     comm.Parameters.AddWithValue("nst_subtopic", imm_nst_tb_subtopic.Text)
 
                     reader = comm.ExecuteReader
+                    load_all_subtopics()
+                    load_all_subtopics_in_main()
+                    btn_clear_functions()
+                    imm_nst_btn_save.Show()
                 Catch ex As Exception
                     RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
                 Finally
                     MysqlConn.Dispose()
-                    load_all_subtopics()
-                    load_all_subtopics_in_main()
-                    btn_clear_functions()
                 End Try
             End If
         End If
@@ -840,7 +844,14 @@ Public Class InstructionalMaterials
     End Sub
 
     Private Sub imm_filter_topic_TextChanged(sender As Object, e As EventArgs) Handles imm_filter_topic.TextChanged
-        MysqlConn = New MySqlConnection
+        imm_filter_topic_delay.Interval = 700
+        imm_filter_topic_delay.Stop()
+        imm_filter_topic_delay.Start()
+    End Sub
+
+        Private Sub imm_filter_topic_delay_Tick(sender As Object, e As EventArgs) Handles imm_filter_topic_delay.Tick
+        imm_filter_topic_delay.Stop()
+                MysqlConn = New MySqlConnection
         MysqlConn.ConnectionString = connstring
         Dim SDA As New MySqlDataAdapter
         Dim dbdataset As New DataTable
@@ -868,7 +879,7 @@ Public Class InstructionalMaterials
         Dim DV As New DataView(dbdataset)
         DV.RowFilter = String.Format("`Topic` Like'%{0}%' ", imm_filter_topic.Text)
         imm_rgv_im_movielists.DataSource = DV
-    End Sub
+        End Sub
 
 
     'ayaw lumabas nung subtopics pag lumipat ng page
@@ -1384,4 +1395,5 @@ Public Class InstructionalMaterials
             nst_gb_st.Hide()
         End If
     End Sub
+
 End Class
