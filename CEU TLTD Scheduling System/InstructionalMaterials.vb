@@ -510,7 +510,7 @@ Public Class InstructionalMaterials
             Else
                 Try
                     MysqlConn.Open()
-                    query = "UPDATE movielist SET video_movie_type=@mvl_mediatype , duration=@mvl_duration , acquisition=@mvl_acquisition WHERE (vid_id=@mvl_vidid) AND (mvl_subject=@mvl_subject) AND (topic=@mvl_topic) "
+                    query = "UPDATE movielist SET video_media_type=@mvl_mediatype , duration=@mvl_duration , acquisition=@mvl_acquisition WHERE (vid_id=@mvl_vidid) AND (subject=@mvl_subject) AND (topic=@mvl_topic) "
 
                     comm = New MySqlCommand(query, MysqlConn)
 
@@ -521,14 +521,14 @@ Public Class InstructionalMaterials
                     comm.Parameters.AddWithValue("mvl_duration", Format(CDate(imm_nv_dtp_duration.Value), "HH:mm:ss"))
                     comm.Parameters.AddWithValue("mvl_acquisition", Format(CDate(imm_nv_dtp_acquisitiondate.Value), "yyyy-MM-dd"))
                     reader = comm.ExecuteReader
-
-
+                    load_all_movielist()
+                    load_all_movielist_in_main()
+                    RadMessageBox.Show(Me, "Movie updated successfully.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
                 Catch ex As Exception
                     RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
                 Finally
                     MysqlConn.Dispose()
-                    load_all_movielist()
-                    load_all_movielist_in_main()
+
                 End Try
             End If
         End If
@@ -630,7 +630,7 @@ Public Class InstructionalMaterials
 
         imm_nst_btn_delete.Hide()
         imm_nst_btn_update.Hide()
-        imm_nst_btn_save.Show()
+        imm_nst_btn_save.Hide()
 
         imm_nv_tb_vidid.Enabled = False
         imm_nv_cb_subject.Enabled = False
@@ -643,7 +643,13 @@ Public Class InstructionalMaterials
         addst = RadMessageBox.Show(Me, "Do you want to add Sub Topic for this Movie?", "CEU TLTD Reservation System", MessageBoxButtons.YesNo, RadMessageIcon.Question)
         If addst = MsgBoxResult.Yes Then
             imm.SelectedPage = imm_rpv_subtopics
+            imm_nst_tb_subtopic.Text = ""
+            imm_nst_dtp_duration.Text = "00:00:00"
+            imm_nst_tb_vidid.Enabled = False
+            imm_nst_cb_subject.Enabled = False
+            imm_nst_tb_topic.Enabled = False
             nst_gb_st.Show()
+            imm_nst_btn_save.Show()
         Else
             btn_clear_functions()
             nst_gb_st.Hide()
@@ -667,11 +673,11 @@ Public Class InstructionalMaterials
             imm_nst_dtp_duration.Text = row.Cells("Duration").Value.ToString
 
         End If
-        imm_nst_tb_vidid.Enabled = False
-        imm_nst_cb_subject.Enabled = False
-        imm_nst_tb_topic.Enabled = False
+        'imm_nst_tb_vidid.Enabled = False
+        'imm_nst_cb_subject.Enabled = False
+        'imm_nst_tb_topic.Enabled = False
 
-        imm_nst_btn_save.Show()
+        imm_nst_btn_save.Hide()
         imm_nst_btn_update.Show()
         imm_nst_btn_delete.Show()
     End Sub
@@ -689,6 +695,7 @@ Public Class InstructionalMaterials
 
     Public Sub btn_clear_functions()
         hide_buttons_subtopics()
+        imm_nst_btn_delete.Hide()
         'imm_nst_tb_vidid.Text = ""
         'imm_nst_cb_subject.Text = ""
         'imm_nst_tb_topic.Text = ""
@@ -763,40 +770,40 @@ Public Class InstructionalMaterials
     End Sub
 
     'PENDING UPDATE
-    'Private Sub imm_nst_btn_update_Click(sender As Object, e As EventArgs) Handles imm_nst_btn_update.Click
-    '    If (MysqlConn.State = ConnectionState.Open) Then
-    '        MysqlConn.Close()
-    '    End If
+    Private Sub imm_nst_btn_update_Click(sender As Object, e As EventArgs) Handles imm_nst_btn_update.Click
+        If (MysqlConn.State = ConnectionState.Open) Then
+            MysqlConn.Close()
+        End If
 
-    '    updateYN = RadMessageBox.Show(Me, "Are you sure you want to update this Sub Topic?", "CEU TLTD Reservation System", MessageBoxButtons.YesNo, RadMessageIcon.Question)
-    '    If updateYN = MsgBoxResult.Yes Then
-    '        If (imm_nst_tb_vidid.Text = "") Or (imm_nst_cb_subject.Text = "") Or (imm_nst_tb_topic.Text = "") Or (imm_nst_tb_subtopic.Text = "") Then
-    '            RadMessageBox.Show(Me, "Please complete the fields To update!", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
-    '        Else
-    '            Try
-    '                MysqlConn.Open()
-    '                query = "UPDATE `movielist_subtopics` SET subtopic=@nst_subtopic , duration=@nst_duration WHERE (vid_id=@nst_vid_id) AND (subject=@nst_subject) AND (topic=@nst_topic)"
-    '                comm = New MySqlCommand(query, MysqlConn)
+        updateYN = RadMessageBox.Show(Me, "Are you sure you want to update this Sub Topic?", "CEU TLTD Reservation System", MessageBoxButtons.YesNo, RadMessageIcon.Question)
+        If updateYN = MsgBoxResult.Yes Then
+            If (imm_nst_tb_vidid.Text = "") Or (imm_nst_cb_subject.Text = "") Or (imm_nst_tb_topic.Text = "") Or (imm_nst_tb_subtopic.Text = "") Then
+                RadMessageBox.Show(Me, "Please complete the fields To update!", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+            Else
+                Try
+                    MysqlConn.Open()
+                    query = "UPDATE `movielist_subtopics` SET subtopic=@nst_subtopic , duration=@nst_duration WHERE (vid_id=@nst_vid_id) AND (subject=@nst_subject) AND (topic=@nst_topic)"
+                    comm = New MySqlCommand(query, MysqlConn)
 
-    '                comm.Parameters.AddWithValue("nst_vid_id", imm_nst_tb_vidid.Text)
-    '                comm.Parameters.AddWithValue("nst_subject", imm_nst_cb_subject.Text)
-    '                comm.Parameters.AddWithValue("nst_topic", imm_nst_tb_topic.Text)
-    '                comm.Parameters.AddWithValue("nst_subtopic", imm_nst_tb_subtopic.Text)
-    '                comm.Parameters.AddWithValue("nst_duration", Format(CDate(imm_nst_dtp_duration.Value), "HH:mm:ss"))
-    '                reader = comm.ExecuteReader
+                    comm.Parameters.AddWithValue("nst_vid_id", imm_nst_tb_vidid.Text)
+                    comm.Parameters.AddWithValue("nst_subject", imm_nst_cb_subject.Text)
+                    comm.Parameters.AddWithValue("nst_topic", imm_nst_tb_topic.Text)
+                    comm.Parameters.AddWithValue("nst_subtopic", imm_nst_tb_subtopic.Text)
+                    comm.Parameters.AddWithValue("nst_duration", Format(CDate(imm_nst_dtp_duration.Value), "HH:mm:ss"))
+                    reader = comm.ExecuteReader
 
 
-    '            Catch ex As Exception
-    '                RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
-    '            Finally
-    '                MysqlConn.Dispose()
-    '                load_all_subtopics()
-    '                load_all_subtopics_in_main()
-    '            End Try
-    '        End If
-    '    End If
+                Catch ex As Exception
+                    RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                Finally
+                    MysqlConn.Dispose()
+                    load_all_subtopics()
+                    load_all_subtopics_in_main()
+                End Try
+            End If
+        End If
 
-    'End Sub
+    End Sub
 
     Private Sub imm_nst_btn_delete_Click(sender As Object, e As EventArgs) Handles imm_nst_btn_delete.Click
         If MysqlConn.State = ConnectionState.Open Then
@@ -804,7 +811,7 @@ Public Class InstructionalMaterials
 
         End If
 
-        deleteYN = RadMessageBox.Show(Me, "Are you sure you want to delete?", "CEU TLTD Reservation System", MessageBoxButtons.YesNo, RadMessageIcon.Question)
+        deleteYN = RadMessageBox.Show(Me, "Are you sure you want to delete this subtopic?", "CEU TLTD Reservation System", MessageBoxButtons.YesNo, RadMessageIcon.Question)
         If deleteYN = MsgBoxResult.Yes Then
             If (imm_nst_tb_vidid.Text = "") Or (imm_nst_cb_subject.Text = "") Or (imm_nst_tb_topic.Text = "") Or (imm_nst_tb_subtopic.Text = "") Then
                 RadMessageBox.Show(Me, "Please complete the fields To delete!", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)

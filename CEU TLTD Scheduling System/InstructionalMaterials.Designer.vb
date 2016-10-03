@@ -132,11 +132,9 @@ Partial Class InstructionalMaterials
         Me.RadLabel13 = New Telerik.WinControls.UI.RadLabel()
         Me.imm_nst_cb_subject = New Telerik.WinControls.UI.RadDropDownList()
         Me.RadGroupBox5 = New Telerik.WinControls.UI.RadGroupBox()
-        Me.imm_nv_btn_update = New Telerik.WinControls.UI.RadButton()
         Me.imm_nv_dtp_acquisitiondate = New Telerik.WinControls.UI.RadDateTimePicker()
         Me.imm_nv_btn_clear = New Telerik.WinControls.UI.RadButton()
         Me.imm_nv_btn_delete = New Telerik.WinControls.UI.RadButton()
-        Me.imm_nv_btn_save = New Telerik.WinControls.UI.RadButton()
         Me.imm_nv_tb_topic = New Telerik.WinControls.UI.RadTextBox()
         Me.imm_nv_tb_vidid = New Telerik.WinControls.UI.RadTextBox()
         Me.RadLabel6 = New Telerik.WinControls.UI.RadLabel()
@@ -148,6 +146,8 @@ Partial Class InstructionalMaterials
         Me.imm_nv_dtp_duration = New Telerik.WinControls.UI.RadDateTimePicker()
         Me.RadLabel1 = New Telerik.WinControls.UI.RadLabel()
         Me.imm_nv_cb_subject = New Telerik.WinControls.UI.RadDropDownList()
+        Me.imm_nv_btn_update = New Telerik.WinControls.UI.RadButton()
+        Me.imm_nv_btn_save = New Telerik.WinControls.UI.RadButton()
         Me.im_rpvp_imr = New Telerik.WinControls.UI.RadPageViewPage()
         Me.RadGroupBox10 = New Telerik.WinControls.UI.RadGroupBox()
         Me.imr_cb_endtime = New Telerik.WinControls.UI.RadDropDownList()
@@ -230,11 +230,9 @@ Partial Class InstructionalMaterials
         CType(Me.imm_nst_cb_subject,System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.RadGroupBox5,System.ComponentModel.ISupportInitialize).BeginInit
         Me.RadGroupBox5.SuspendLayout
-        CType(Me.imm_nv_btn_update,System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.imm_nv_dtp_acquisitiondate,System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.imm_nv_btn_clear,System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.imm_nv_btn_delete,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.imm_nv_btn_save,System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.imm_nv_tb_topic,System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.imm_nv_tb_vidid,System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.RadLabel6,System.ComponentModel.ISupportInitialize).BeginInit
@@ -246,6 +244,8 @@ Partial Class InstructionalMaterials
         CType(Me.imm_nv_dtp_duration,System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.RadLabel1,System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.imm_nv_cb_subject,System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.imm_nv_btn_update,System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.imm_nv_btn_save,System.ComponentModel.ISupportInitialize).BeginInit
         Me.im_rpvp_imr.SuspendLayout
         CType(Me.RadGroupBox10,System.ComponentModel.ISupportInitialize).BeginInit
         Me.RadGroupBox10.SuspendLayout
@@ -288,7 +288,7 @@ Partial Class InstructionalMaterials
         Me.RadPageView1.Controls.Add(Me.im_rpvp_imr)
         Me.RadPageView1.Location = New System.Drawing.Point(0, 26)
         Me.RadPageView1.Name = "RadPageView1"
-        Me.RadPageView1.SelectedPage = Me.im_rpvp_main
+        Me.RadPageView1.SelectedPage = Me.im_rpvp_imm
         Me.RadPageView1.Size = New System.Drawing.Size(1356, 557)
         Me.RadPageView1.TabIndex = 0
         Me.RadPageView1.Text = "im_rpv"
@@ -465,7 +465,7 @@ Partial Class InstructionalMaterials
         Me.imm.Controls.Add(Me.imm_rpv_subtopics)
         Me.imm.Location = New System.Drawing.Point(3, 3)
         Me.imm.Name = "imm"
-        Me.imm.SelectedPage = Me.imm_rpv_movielist
+        Me.imm.SelectedPage = Me.imm_rpv_subtopics
         Me.imm.Size = New System.Drawing.Size(1365, 299)
         Me.imm.TabIndex = 4
         Me.imm.Text = "RadPageView2"
@@ -558,6 +558,7 @@ Partial Class InstructionalMaterials
         '
         'RadLabel11
         '
+        Me.RadLabel11.BackColor = System.Drawing.Color.Transparent
         Me.RadLabel11.Location = New System.Drawing.Point(8, 32)
         Me.RadLabel11.Name = "RadLabel11"
         Me.RadLabel11.Size = New System.Drawing.Size(36, 18)
@@ -613,7 +614,7 @@ Partial Class InstructionalMaterials
         'imm_nst_btn_clear
         '
         Me.imm_nst_btn_clear.Anchor = System.Windows.Forms.AnchorStyles.Bottom
-        Me.imm_nst_btn_clear.Location = New System.Drawing.Point(4, 179)
+        Me.imm_nst_btn_clear.Location = New System.Drawing.Point(17, 179)
         Me.imm_nst_btn_clear.Name = "imm_nst_btn_clear"
         Me.imm_nst_btn_clear.Size = New System.Drawing.Size(85, 24)
         Me.imm_nst_btn_clear.TabIndex = 27
@@ -623,7 +624,7 @@ Partial Class InstructionalMaterials
         'imm_nst_btn_delete
         '
         Me.imm_nst_btn_delete.Anchor = System.Windows.Forms.AnchorStyles.Bottom
-        Me.imm_nst_btn_delete.Location = New System.Drawing.Point(215, 179)
+        Me.imm_nst_btn_delete.Location = New System.Drawing.Point(290, 179)
         Me.imm_nst_btn_delete.Name = "imm_nst_btn_delete"
         Me.imm_nst_btn_delete.Size = New System.Drawing.Size(85, 24)
         Me.imm_nst_btn_delete.TabIndex = 26
@@ -633,17 +634,17 @@ Partial Class InstructionalMaterials
         'imm_nst_btn_update
         '
         Me.imm_nst_btn_update.Anchor = System.Windows.Forms.AnchorStyles.Bottom
-        Me.imm_nst_btn_update.Location = New System.Drawing.Point(306, 179)
+        Me.imm_nst_btn_update.Location = New System.Drawing.Point(384, 179)
         Me.imm_nst_btn_update.Name = "imm_nst_btn_update"
         Me.imm_nst_btn_update.Size = New System.Drawing.Size(85, 24)
         Me.imm_nst_btn_update.TabIndex = 25
-        Me.imm_nst_btn_update.Text = "Pending Update"
+        Me.imm_nst_btn_update.Text = "Update"
         Me.imm_nst_btn_update.ThemeName = "VisualStudio2012Dark"
         '
         'imm_nst_btn_save
         '
         Me.imm_nst_btn_save.Anchor = System.Windows.Forms.AnchorStyles.Bottom
-        Me.imm_nst_btn_save.Location = New System.Drawing.Point(397, 179)
+        Me.imm_nst_btn_save.Location = New System.Drawing.Point(384, 179)
         Me.imm_nst_btn_save.Name = "imm_nst_btn_save"
         Me.imm_nst_btn_save.Size = New System.Drawing.Size(85, 24)
         Me.imm_nst_btn_save.TabIndex = 24
@@ -652,6 +653,7 @@ Partial Class InstructionalMaterials
         '
         'RadLabel15
         '
+        Me.RadLabel15.BackColor = System.Drawing.Color.Transparent
         Me.RadLabel15.Location = New System.Drawing.Point(323, 27)
         Me.RadLabel15.Name = "RadLabel15"
         Me.RadLabel15.Size = New System.Drawing.Size(52, 18)
@@ -674,6 +676,7 @@ Partial Class InstructionalMaterials
         '
         'RadLabel14
         '
+        Me.RadLabel14.BackColor = System.Drawing.Color.Transparent
         Me.RadLabel14.Location = New System.Drawing.Point(8, 122)
         Me.RadLabel14.Name = "RadLabel14"
         Me.RadLabel14.Size = New System.Drawing.Size(58, 18)
@@ -709,6 +712,7 @@ Partial Class InstructionalMaterials
         '
         'RadLabel9
         '
+        Me.RadLabel9.BackColor = System.Drawing.Color.Transparent
         Me.RadLabel9.Location = New System.Drawing.Point(17, 32)
         Me.RadLabel9.Name = "RadLabel9"
         Me.RadLabel9.Size = New System.Drawing.Size(52, 18)
@@ -718,6 +722,7 @@ Partial Class InstructionalMaterials
         '
         'RadLabel10
         '
+        Me.RadLabel10.BackColor = System.Drawing.Color.Transparent
         Me.RadLabel10.Location = New System.Drawing.Point(33, 92)
         Me.RadLabel10.Name = "RadLabel10"
         Me.RadLabel10.Size = New System.Drawing.Size(36, 18)
@@ -727,6 +732,7 @@ Partial Class InstructionalMaterials
         '
         'RadLabel13
         '
+        Me.RadLabel13.BackColor = System.Drawing.Color.Transparent
         Me.RadLabel13.Location = New System.Drawing.Point(21, 62)
         Me.RadLabel13.Name = "RadLabel13"
         Me.RadLabel13.Size = New System.Drawing.Size(45, 18)
@@ -746,11 +752,9 @@ Partial Class InstructionalMaterials
         '
         Me.RadGroupBox5.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping
         Me.RadGroupBox5.Anchor = System.Windows.Forms.AnchorStyles.Bottom
-        Me.RadGroupBox5.Controls.Add(Me.imm_nv_btn_update)
         Me.RadGroupBox5.Controls.Add(Me.imm_nv_dtp_acquisitiondate)
         Me.RadGroupBox5.Controls.Add(Me.imm_nv_btn_clear)
         Me.RadGroupBox5.Controls.Add(Me.imm_nv_btn_delete)
-        Me.RadGroupBox5.Controls.Add(Me.imm_nv_btn_save)
         Me.RadGroupBox5.Controls.Add(Me.imm_nv_tb_topic)
         Me.RadGroupBox5.Controls.Add(Me.imm_nv_tb_vidid)
         Me.RadGroupBox5.Controls.Add(Me.RadLabel6)
@@ -762,6 +766,8 @@ Partial Class InstructionalMaterials
         Me.RadGroupBox5.Controls.Add(Me.imm_nv_dtp_duration)
         Me.RadGroupBox5.Controls.Add(Me.RadLabel1)
         Me.RadGroupBox5.Controls.Add(Me.imm_nv_cb_subject)
+        Me.RadGroupBox5.Controls.Add(Me.imm_nv_btn_save)
+        Me.RadGroupBox5.Controls.Add(Me.imm_nv_btn_update)
         Me.RadGroupBox5.HeaderText = "New Video"
         Me.RadGroupBox5.Location = New System.Drawing.Point(228, 303)
         Me.RadGroupBox5.Name = "RadGroupBox5"
@@ -769,16 +775,6 @@ Partial Class InstructionalMaterials
         Me.RadGroupBox5.TabIndex = 1
         Me.RadGroupBox5.Text = "New Video"
         Me.RadGroupBox5.ThemeName = "VisualStudio2012Dark"
-        '
-        'imm_nv_btn_update
-        '
-        Me.imm_nv_btn_update.Anchor = System.Windows.Forms.AnchorStyles.Bottom
-        Me.imm_nv_btn_update.Location = New System.Drawing.Point(415, 179)
-        Me.imm_nv_btn_update.Name = "imm_nv_btn_update"
-        Me.imm_nv_btn_update.Size = New System.Drawing.Size(85, 24)
-        Me.imm_nv_btn_update.TabIndex = 15
-        Me.imm_nv_btn_update.Text = "Update"
-        Me.imm_nv_btn_update.ThemeName = "VisualStudio2012Dark"
         '
         'imm_nv_dtp_acquisitiondate
         '
@@ -819,16 +815,6 @@ Partial Class InstructionalMaterials
         Me.imm_nv_btn_delete.Text = "Delete"
         Me.imm_nv_btn_delete.ThemeName = "VisualStudio2012Dark"
         '
-        'imm_nv_btn_save
-        '
-        Me.imm_nv_btn_save.Anchor = System.Windows.Forms.AnchorStyles.Bottom
-        Me.imm_nv_btn_save.Location = New System.Drawing.Point(506, 179)
-        Me.imm_nv_btn_save.Name = "imm_nv_btn_save"
-        Me.imm_nv_btn_save.Size = New System.Drawing.Size(85, 24)
-        Me.imm_nv_btn_save.TabIndex = 14
-        Me.imm_nv_btn_save.Text = "Save"
-        Me.imm_nv_btn_save.ThemeName = "VisualStudio2012Dark"
-        '
         'imm_nv_tb_topic
         '
         Me.imm_nv_tb_topic.Location = New System.Drawing.Point(111, 81)
@@ -857,6 +843,7 @@ Partial Class InstructionalMaterials
         '
         'RadLabel6
         '
+        Me.RadLabel6.BackColor = System.Drawing.Color.Transparent
         Me.RadLabel6.Location = New System.Drawing.Point(386, 54)
         Me.RadLabel6.Name = "RadLabel6"
         Me.RadLabel6.Size = New System.Drawing.Size(99, 18)
@@ -866,6 +853,7 @@ Partial Class InstructionalMaterials
         '
         'RadLabel5
         '
+        Me.RadLabel5.BackColor = System.Drawing.Color.Transparent
         Me.RadLabel5.Location = New System.Drawing.Point(38, 117)
         Me.RadLabel5.Name = "RadLabel5"
         Me.RadLabel5.Size = New System.Drawing.Size(67, 18)
@@ -883,6 +871,7 @@ Partial Class InstructionalMaterials
         '
         'RadLabel4
         '
+        Me.RadLabel4.BackColor = System.Drawing.Color.Transparent
         Me.RadLabel4.Location = New System.Drawing.Point(56, 27)
         Me.RadLabel4.Name = "RadLabel4"
         Me.RadLabel4.Size = New System.Drawing.Size(52, 18)
@@ -892,6 +881,7 @@ Partial Class InstructionalMaterials
         '
         'RadLabel3
         '
+        Me.RadLabel3.BackColor = System.Drawing.Color.Transparent
         Me.RadLabel3.Location = New System.Drawing.Point(433, 27)
         Me.RadLabel3.Name = "RadLabel3"
         Me.RadLabel3.Size = New System.Drawing.Size(52, 18)
@@ -901,6 +891,7 @@ Partial Class InstructionalMaterials
         '
         'RadLabel2
         '
+        Me.RadLabel2.BackColor = System.Drawing.Color.Transparent
         Me.RadLabel2.Location = New System.Drawing.Point(72, 87)
         Me.RadLabel2.Name = "RadLabel2"
         Me.RadLabel2.Size = New System.Drawing.Size(36, 18)
@@ -929,6 +920,7 @@ Partial Class InstructionalMaterials
         '
         'RadLabel1
         '
+        Me.RadLabel1.BackColor = System.Drawing.Color.Transparent
         Me.RadLabel1.Location = New System.Drawing.Point(60, 57)
         Me.RadLabel1.Name = "RadLabel1"
         Me.RadLabel1.Size = New System.Drawing.Size(45, 18)
@@ -943,6 +935,26 @@ Partial Class InstructionalMaterials
         Me.imm_nv_cb_subject.Size = New System.Drawing.Size(198, 24)
         Me.imm_nv_cb_subject.TabIndex = 0
         Me.imm_nv_cb_subject.ThemeName = "VisualStudio2012Dark"
+        '
+        'imm_nv_btn_update
+        '
+        Me.imm_nv_btn_update.Anchor = System.Windows.Forms.AnchorStyles.Bottom
+        Me.imm_nv_btn_update.Location = New System.Drawing.Point(506, 176)
+        Me.imm_nv_btn_update.Name = "imm_nv_btn_update"
+        Me.imm_nv_btn_update.Size = New System.Drawing.Size(85, 24)
+        Me.imm_nv_btn_update.TabIndex = 15
+        Me.imm_nv_btn_update.Text = "Update"
+        Me.imm_nv_btn_update.ThemeName = "VisualStudio2012Dark"
+        '
+        'imm_nv_btn_save
+        '
+        Me.imm_nv_btn_save.Anchor = System.Windows.Forms.AnchorStyles.Bottom
+        Me.imm_nv_btn_save.Location = New System.Drawing.Point(506, 176)
+        Me.imm_nv_btn_save.Name = "imm_nv_btn_save"
+        Me.imm_nv_btn_save.Size = New System.Drawing.Size(85, 24)
+        Me.imm_nv_btn_save.TabIndex = 14
+        Me.imm_nv_btn_save.Text = "Save"
+        Me.imm_nv_btn_save.ThemeName = "VisualStudio2012Dark"
         '
         'im_rpvp_imr
         '
@@ -1435,6 +1447,12 @@ Partial Class InstructionalMaterials
         CType(Me.menuItem_About.GetChildAt(0),Telerik.WinControls.Primitives.FillPrimitive).BackColor = System.Drawing.Color.Transparent
         CType(Me.menuItem_About.GetChildAt(1),Telerik.WinControls.Primitives.BorderPrimitive).ForeColor = System.Drawing.Color.Transparent
         '
+        'imm_lu_subject_filter_delay
+        '
+        '
+        'imm_lu_topic_filter_delay
+        '
+        '
         'InstructionalMaterials
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6!, 13!)
@@ -1505,11 +1523,9 @@ Partial Class InstructionalMaterials
         CType(Me.RadGroupBox5,System.ComponentModel.ISupportInitialize).EndInit
         Me.RadGroupBox5.ResumeLayout(false)
         Me.RadGroupBox5.PerformLayout
-        CType(Me.imm_nv_btn_update,System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.imm_nv_dtp_acquisitiondate,System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.imm_nv_btn_clear,System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.imm_nv_btn_delete,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.imm_nv_btn_save,System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.imm_nv_tb_topic,System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.imm_nv_tb_vidid,System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.RadLabel6,System.ComponentModel.ISupportInitialize).EndInit
@@ -1521,6 +1537,8 @@ Partial Class InstructionalMaterials
         CType(Me.imm_nv_dtp_duration,System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.RadLabel1,System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.imm_nv_cb_subject,System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.imm_nv_btn_update,System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.imm_nv_btn_save,System.ComponentModel.ISupportInitialize).EndInit
         Me.im_rpvp_imr.ResumeLayout(false)
         CType(Me.RadGroupBox10,System.ComponentModel.ISupportInitialize).EndInit
         Me.RadGroupBox10.ResumeLayout(false)
