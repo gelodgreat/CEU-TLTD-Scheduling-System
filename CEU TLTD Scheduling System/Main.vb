@@ -2733,25 +2733,25 @@ Public Class Main
                         'query = "Select * from reservation where reservationno=@RE_reservationno And equipment=@RE_equipment And equipmentsn=@RE_equipmentsn And equipmentno=@RE_equipmentno And Date=@RE_date And starttime=@RE_starttime And endtime=@RE_endtime"
 
                         'BACKUP (Changed for the cancelled STATE)
-                                                         'query = "SELECT * FROM ceutltdscheduler.reservation natural join ceutltdscheduler.reservation_equipments WHERE equipment=@RE_equipment AND equipmentsn=@RE_equipmentsn AND equipmentno=@RE_equipmentno AND (('" & Format(CDate(rec_dtp_date.Value), "yyyy-MM-dd") & " " & Format(CDate(rec_dtp_starttime.Text), "HH:mm:01") & "' BETWEEN CONCAT(date,' ',starttime) AND CONCAT(date,' ',endtime)) OR ('" & Format(CDate(rec_dtp_date.Value), "yyyy-MM-dd") & " " & Format(CDate(rec_dtp_endtime.Text), "HH:mm:01") & "' BETWEEN CONCAT(date,' ',starttime) AND CONCAT (date,' ',endtime))) AND (res_status='Reserved' OR res_status='Released')"
-                                'comm = New MySqlCommand(query, MysqlConn)
-                                'comm.Parameters.AddWithValue("RE_reservationno", rec_cb_reserveno.Text)
-                                'comm.Parameters.AddWithValue("RE_equipment", equipmentrgv)
-                                'comm.Parameters.AddWithValue("RE_equipmentsn", equipmentsnrgv)
-                                'comm.Parameters.AddWithValue("RE_equipmentno", equipmentnorgv)
-                                'comm.Parameters.AddWithValue("RE_date", Format(CDate(rec_dtp_date.Value), "yyyy-MM-dd"))
-                                'comm.Parameters.AddWithValue("RE_starttime", Format(CDate(rec_dtp_starttime.Text), "HH:mm"))
-                                'comm.Parameters.AddWithValue("RE_endtime", Format(CDate(rec_dtp_endtime.Text), "HH:mm"))
+                        'query = "SELECT * FROM ceutltdscheduler.reservation natural join ceutltdscheduler.reservation_equipments WHERE equipment=@RE_equipment AND equipmentsn=@RE_equipmentsn AND equipmentno=@RE_equipmentno AND (('" & Format(CDate(rec_dtp_date.Value), "yyyy-MM-dd") & " " & Format(CDate(rec_dtp_starttime.Text), "HH:mm:01") & "' BETWEEN CONCAT(date,' ',starttime) AND CONCAT(date,' ',endtime)) OR ('" & Format(CDate(rec_dtp_date.Value), "yyyy-MM-dd") & " " & Format(CDate(rec_dtp_endtime.Text), "HH:mm:01") & "' BETWEEN CONCAT(date,' ',starttime) AND CONCAT (date,' ',endtime))) AND (res_status='Reserved' OR res_status='Released')"
+                        'comm = New MySqlCommand(query, MysqlConn)
+                        'comm.Parameters.AddWithValue("RE_reservationno", rec_cb_reserveno.Text)
+                        'comm.Parameters.AddWithValue("RE_equipment", equipmentrgv)
+                        'comm.Parameters.AddWithValue("RE_equipmentsn", equipmentsnrgv)
+                        'comm.Parameters.AddWithValue("RE_equipmentno", equipmentnorgv)
+                        'comm.Parameters.AddWithValue("RE_date", Format(CDate(rec_dtp_date.Value), "yyyy-MM-dd"))
+                        'comm.Parameters.AddWithValue("RE_starttime", Format(CDate(rec_dtp_starttime.Text), "HH:mm"))
+                        'comm.Parameters.AddWithValue("RE_endtime", Format(CDate(rec_dtp_endtime.Text), "HH:mm"))
                         'BACKUP
 
-                         'query = "SELECT * FROM ceutltdscheduler.reservation natural join ceutltdscheduler.reservation_equipments WHERE equipment='AB-1 NTSC' AND equipmentsn='AB006184' AND equipmentno='EC 01' AND ((DATE_FORMAT(@a,'%Y-%m-%d %H:%i:%s') <= CONCAT(date,' ',starttime)) OR (DATE_FORMAT(@b,'%Y-%m-%d %H:%i:%s') >= CONCAT(date,' ',endtime))) AND (res_status='Reserved' OR res_status='Released')"
-                                query="SELECT * FROM ceutltdscheduler.reservation natural join ceutltdscheduler.reservation_equipments WHERE equipment=@RE_equipment AND equipmentsn=@RE_equipmentsn AND equipmentno=@RE_equipmentno AND ((((@a) BETWEEN CONCAT(date,' ',starttime) AND CONCAT(date,' ',endtime)) AND (@b BETWEEN CONCAT(date,' ',starttime) AND CONCAT(date,' ',endtime))) OR ((DATE_FORMAT(@a,'%Y-%m-%d %H:%i:%s') <= CONCAT(date,' ',starttime)) AND (DATE_FORMAT(@b,'%Y-%m-%d %H:%i:%s') >= CONCAT(date,' ',endtime)))) AND (res_status='Reserved' OR res_status='Released')"
-                                comm = New MySqlCommand(query, MysqlConn)
+                        'query="SELECT * FROM ceutltdscheduler.reservation natural join ceutltdscheduler.reservation_equipments WHERE equipment=@RE_equipment AND equipmentsn=@RE_equipmentsn AND equipmentno=@RE_equipmentno AND ((((@a) BETWEEN CONCAT(date,' ',starttime) AND CONCAT(date,' ',endtime)) AND (@b BETWEEN CONCAT(date,' ',starttime) AND CONCAT(date,' ',endtime))) OR ((DATE_FORMAT(@a,'%Y-%m-%d %H:%i:%s') <= CONCAT(date,' ',starttime)) AND (DATE_FORMAT(@b,'%Y-%m-%d %H:%i:%s') >= CONCAT(date,' ',endtime)))) AND (res_status='Reserved' OR res_status='Released')"
+                        query="SELECT * FROM ceutltdscheduler.reservation natural join ceutltdscheduler.reservation_equipments WHERE equipment=@RE_equipment AND equipmentsn=@RE_equipmentsn AND equipmentno=@RE_equipmentno AND ((((@a) BETWEEN CONCAT(date,' ',starttime) AND CONCAT(date,' ',endtime)) OR (@b BETWEEN CONCAT(date,' ',starttime) AND CONCAT(date,' ',endtime))) OR ((DATE_FORMAT(@a,'%Y-%m-%d %H:%i:%s') <= CONCAT(date,' ',starttime)) AND (DATE_FORMAT(@b,'%Y-%m-%d %H:%i:%s') >= CONCAT(date,' ',endtime)) AND CONCAT(date,' ',endtime) >= DATE_FORMAT(@a,'%Y-%m-%d %H:%i:%s'))) AND (res_status='Reserved' OR res_status='Released')"
+                        comm = New MySqlCommand(query, MysqlConn)
                                 comm.Parameters.AddWithValue("RE_reservationno", rec_cb_reserveno.Text)
                                 comm.Parameters.AddWithValue("RE_equipment", equipmentrgv)
                                 comm.Parameters.AddWithValue("RE_equipmentsn", equipmentsnrgv)
                                 comm.Parameters.AddWithValue("RE_equipmentno", equipmentnorgv)
-                                comm.Parameters.AddWithValue("@a", Format(CDate(rec_dtp_date.Value), "yyyy-MM-dd") & " " & Format(CDate(rec_dtp_starttime.Text), "HH:mm"))
+                                comm.Parameters.AddWithValue("@a", Format(CDate(rec_dtp_date.Value), "yyyy-MM-dd") & " " & Format(CDate(rec_dtp_starttime.Text), "HH:mm:01"))
                                 comm.Parameters.AddWithValue("@b", Format(CDate(rec_dtp_date.Value), "yyyy-MM-dd") & " " & Format(CDate(rec_dtp_endtime.Text), "HH:mm"))
                                 READER = comm.ExecuteReader
                                 Dim count As Integer
@@ -2852,33 +2852,34 @@ Public Class Main
                                 MysqlConn.Close()
                                 MysqlConn.Open()
 
-                                'Modified with Complete Params
-                                'query = "SELECT * FROM reservation WHERE (equipment=@RE_equipment OR equipmentsn=@RE_equipmentsn OR equipmentno=@RE_equipmentno) AND (('@RE_date @RE_starttime' BETWEEN CONCAT(date,'',starttime) AND CONCAT(date,'',endtime)) OR ('@RE_date @RE_endtime' BETWEEN CONCAT(date,' ',starttime) AND CONCAT (date,' ',endtime))) "
+                                    'Modified with Complete Params
+                                    'query = "SELECT * FROM reservation WHERE (equipment=@RE_equipment OR equipmentsn=@RE_equipmentsn OR equipmentno=@RE_equipmentno) AND (('@RE_date @RE_starttime' BETWEEN CONCAT(date,'',starttime) AND CONCAT(date,'',endtime)) OR ('@RE_date @RE_endtime' BETWEEN CONCAT(date,' ',starttime) AND CONCAT (date,' ',endtime))) "
 
-                                'Original
-                                'query = "Select * from reservation where reservationno=@RE_reservationno And equipment=@RE_equipment And equipmentsn=@RE_equipmentsn And equipmentno=@RE_equipmentno And Date=@RE_date And starttime=@RE_starttime And endtime=@RE_endtime"
+                                    'Original
+                                    'query = "Select * from reservation where reservationno=@RE_reservationno And equipment=@RE_equipment And equipmentsn=@RE_equipmentsn And equipmentno=@RE_equipmentno And Date=@RE_date And starttime=@RE_starttime And endtime=@RE_endtime"
 
-                                
-                                'BACKUP (Changed for the cancelled STATE)
-                                'query = "SELECT * FROM ceutltdscheduler.reservation natural join ceutltdscheduler.reservation_equipments WHERE equipment=@RE_equipment AND equipmentsn=@RE_equipmentsn AND equipmentno=@RE_equipmentno AND (('" & Format(CDate(rec_dtp_date.Value), "yyyy-MM-dd") & " " & Format(CDate(rec_dtp_starttime.Text), "HH:mm:01") & "' BETWEEN CONCAT(date,' ',starttime) AND CONCAT(date,' ',endtime)) OR ('" & Format(CDate(rec_dtp_date.Value), "yyyy-MM-dd") & " " & Format(CDate(rec_dtp_endtime.Text), "HH:mm:01") & "' BETWEEN CONCAT(date,' ',starttime) AND CONCAT (date,' ',endtime))) AND (res_status='Reserved' OR res_status='Released')"
 
-                                'comm = New MySqlCommand(query, MysqlConn)
-                                'comm.Parameters.AddWithValue("RE_reservationno", rec_cb_reserveno.Text)
-                                'comm.Parameters.AddWithValue("RE_equipment", equipmentrgv)
-                                'comm.Parameters.AddWithValue("RE_equipmentsn", equipmentsnrgv)
-                                'comm.Parameters.AddWithValue("RE_equipmentno", equipmentnorgv)
-                                'comm.Parameters.AddWithValue("RE_date", Format(CDate(rec_dtp_date.Value), "yyyy-MM-dd"))
-                                'comm.Parameters.AddWithValue("RE_starttime", Format(CDate(rec_dtp_starttime.Text), "HH:mm"))
-                                'comm.Parameters.AddWithValue("RE_endtime", Format(CDate(rec_dtp_endtime.Text), "HH:mm"))
-                                'BACKUP
+                                    'BACKUP (Changed for the cancelled STATE)
+                                    'query = "SELECT * FROM ceutltdscheduler.reservation natural join ceutltdscheduler.reservation_equipments WHERE equipment=@RE_equipment AND equipmentsn=@RE_equipmentsn AND equipmentno=@RE_equipmentno AND (('" & Format(CDate(rec_dtp_date.Value), "yyyy-MM-dd") & " " & Format(CDate(rec_dtp_starttime.Text), "HH:mm:01") & "' BETWEEN CONCAT(date,' ',starttime) AND CONCAT(date,' ',endtime)) OR ('" & Format(CDate(rec_dtp_date.Value), "yyyy-MM-dd") & " " & Format(CDate(rec_dtp_endtime.Text), "HH:mm:01") & "' BETWEEN CONCAT(date,' ',starttime) AND CONCAT (date,' ',endtime))) AND (res_status='Reserved' OR res_status='Released')"
 
-                                query="SELECT * FROM ceutltdscheduler.reservation natural join ceutltdscheduler.reservation_equipments WHERE equipment=@RE_equipment AND equipmentsn=@RE_equipmentsn AND equipmentno=@RE_equipmentno AND ((((@a) BETWEEN CONCAT(date,' ',starttime) AND CONCAT(date,' ',endtime)) AND (@b BETWEEN CONCAT(date,' ',starttime) AND CONCAT(date,' ',endtime))) OR ((DATE_FORMAT(@a,'%Y-%m-%d %H:%i:%s') <= CONCAT(date,' ',starttime)) AND (DATE_FORMAT(@b,'%Y-%m-%d %H:%i:%s') >= CONCAT(date,' ',endtime)))) AND (res_status='Reserved' OR res_status='Released')"
+                                    'comm = New MySqlCommand(query, MysqlConn)
+                                    'comm.Parameters.AddWithValue("RE_reservationno", rec_cb_reserveno.Text)
+                                    'comm.Parameters.AddWithValue("RE_equipment", equipmentrgv)
+                                    'comm.Parameters.AddWithValue("RE_equipmentsn", equipmentsnrgv)
+                                    'comm.Parameters.AddWithValue("RE_equipmentno", equipmentnorgv)
+                                    'comm.Parameters.AddWithValue("RE_date", Format(CDate(rec_dtp_date.Value), "yyyy-MM-dd"))
+                                    'comm.Parameters.AddWithValue("RE_starttime", Format(CDate(rec_dtp_starttime.Text), "HH:mm"))
+                                    'comm.Parameters.AddWithValue("RE_endtime", Format(CDate(rec_dtp_endtime.Text), "HH:mm"))
+                                    'BACKUP
+
+                                    'query="SELECT * FROM ceutltdscheduler.reservation natural join ceutltdscheduler.reservation_equipments WHERE equipment=@RE_equipment AND equipmentsn=@RE_equipmentsn AND equipmentno=@RE_equipmentno AND ((((@a) BETWEEN CONCAT(date,' ',starttime) AND CONCAT(date,' ',endtime)) AND (@b BETWEEN CONCAT(date,' ',starttime) AND CONCAT(date,' ',endtime))) OR ((DATE_FORMAT(@a,'%Y-%m-%d %H:%i:%s') <= CONCAT(date,' ',starttime)) AND (DATE_FORMAT(@b,'%Y-%m-%d %H:%i:%s') >= CONCAT(date,' ',endtime)))) AND (res_status='Reserved' OR res_status='Released')"
+                                query="SELECT * FROM ceutltdscheduler.reservation natural join ceutltdscheduler.reservation_equipments WHERE equipment=@RE_equipment AND equipmentsn=@RE_equipmentsn AND equipmentno=@RE_equipmentno AND ((((@a) BETWEEN CONCAT(date,' ',starttime) AND CONCAT(date,' ',endtime)) OR (@b BETWEEN CONCAT(date,' ',starttime) AND CONCAT(date,' ',endtime))) OR ((DATE_FORMAT(@a,'%Y-%m-%d %H:%i:%s') <= CONCAT(date,' ',starttime)) AND (DATE_FORMAT(@b,'%Y-%m-%d %H:%i:%s') >= CONCAT(date,' ',endtime)) AND CONCAT(date,' ',endtime) >= DATE_FORMAT(@a,'%Y-%m-%d %H:%i:%s'))) AND (res_status='Reserved' OR res_status='Released')"
                                 comm = New MySqlCommand(query, MysqlConn)
                                 comm.Parameters.AddWithValue("RE_reservationno", rec_cb_reserveno.Text)
                                 comm.Parameters.AddWithValue("RE_equipment", equipmentrgv)
                                 comm.Parameters.AddWithValue("RE_equipmentsn", equipmentsnrgv)
                                 comm.Parameters.AddWithValue("RE_equipmentno", equipmentnorgv)
-                                comm.Parameters.AddWithValue("@a", Format(CDate(rec_dtp_date.Value), "yyyy-MM-dd") & " " & Format(CDate(rec_dtp_starttime.Text), "HH:mm"))
+                                comm.Parameters.AddWithValue("@a", Format(CDate(rec_dtp_date.Value), "yyyy-MM-dd") & " " & Format(CDate(rec_dtp_starttime.Text), "HH:mm:01"))
                                 comm.Parameters.AddWithValue("@b", Format(CDate(rec_dtp_date.Value), "yyyy-MM-dd") & " " & Format(CDate(rec_dtp_endtime.Text), "HH:mm"))
 
                                 READER = comm.ExecuteReader
