@@ -35,10 +35,19 @@ Partial Class MainSettingsWindow
         Me.RadLabel2 = New Telerik.WinControls.UI.RadLabel()
         Me.RadLabel1 = New Telerik.WinControls.UI.RadLabel()
         Me.RadGroupBox2 = New Telerik.WinControls.UI.RadGroupBox()
-        Me.txt_CurPass = New Telerik.WinControls.UI.RadTextBox()
-        Me.txt_NewPass = New Telerik.WinControls.UI.RadTextBox()
-        Me.txt_NewPass_Confirm = New Telerik.WinControls.UI.RadTextBox()
         Me.btn_ChP = New Telerik.WinControls.UI.RadButton()
+        Me.txt_NewPass_Confirm = New Telerik.WinControls.UI.RadTextBox()
+        Me.txt_NewPass = New Telerik.WinControls.UI.RadTextBox()
+        Me.txt_CurPass = New Telerik.WinControls.UI.RadTextBox()
+        Me.RadGroupBox3 = New Telerik.WinControls.UI.RadGroupBox()
+        Me.RadLabel10 = New Telerik.WinControls.UI.RadLabel()
+        Me.btn_delay_save = New Telerik.WinControls.UI.RadButton()
+        Me.RadLabel9 = New Telerik.WinControls.UI.RadLabel()
+        Me.RadLabel8 = New Telerik.WinControls.UI.RadLabel()
+        Me.rr_time = New Telerik.WinControls.UI.RadSpinEditor()
+        Me.sd_time = New Telerik.WinControls.UI.RadSpinEditor()
+        Me.RadLabel6 = New Telerik.WinControls.UI.RadLabel()
+        Me.RadLabel5 = New Telerik.WinControls.UI.RadLabel()
         CType(Me.RadGroupBox1,System.ComponentModel.ISupportInitialize).BeginInit
         Me.RadGroupBox1.SuspendLayout
         CType(Me.btn_penalty_setting_save,System.ComponentModel.ISupportInitialize).BeginInit
@@ -54,10 +63,20 @@ Partial Class MainSettingsWindow
         CType(Me.RadLabel1,System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.RadGroupBox2,System.ComponentModel.ISupportInitialize).BeginInit
         Me.RadGroupBox2.SuspendLayout
-        CType(Me.txt_CurPass,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.txt_NewPass,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.txt_NewPass_Confirm,System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.btn_ChP,System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txt_NewPass_Confirm,System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txt_NewPass,System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txt_CurPass,System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.RadGroupBox3,System.ComponentModel.ISupportInitialize).BeginInit
+        Me.RadGroupBox3.SuspendLayout
+        CType(Me.RadLabel10,System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.btn_delay_save,System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.RadLabel9,System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.RadLabel8,System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.rr_time,System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.sd_time,System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.RadLabel6,System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.RadLabel5,System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me,System.ComponentModel.ISupportInitialize).BeginInit
         Me.SuspendLayout
         '
@@ -87,9 +106,9 @@ Partial Class MainSettingsWindow
         '
         Me.btn_penalty_setting_save.Location = New System.Drawing.Point(193, 148)
         Me.btn_penalty_setting_save.Name = "btn_penalty_setting_save"
-        Me.btn_penalty_setting_save.Size = New System.Drawing.Size(110, 24)
+        Me.btn_penalty_setting_save.Size = New System.Drawing.Size(124, 24)
         Me.btn_penalty_setting_save.TabIndex = 5
-        Me.btn_penalty_setting_save.Text = "Save Settings"
+        Me.btn_penalty_setting_save.Text = "Save Penalty Settings"
         Me.btn_penalty_setting_save.ThemeName = "VisualStudio2012Dark"
         '
         'RadLabel7
@@ -234,40 +253,21 @@ Partial Class MainSettingsWindow
         Me.RadGroupBox2.Controls.Add(Me.txt_NewPass)
         Me.RadGroupBox2.Controls.Add(Me.txt_CurPass)
         Me.RadGroupBox2.HeaderText = "Change Password"
-        Me.RadGroupBox2.Location = New System.Drawing.Point(82, 249)
+        Me.RadGroupBox2.Location = New System.Drawing.Point(74, 248)
         Me.RadGroupBox2.Name = "RadGroupBox2"
         Me.RadGroupBox2.Size = New System.Drawing.Size(379, 135)
         Me.RadGroupBox2.TabIndex = 1
         Me.RadGroupBox2.Text = "Change Password"
         Me.RadGroupBox2.ThemeName = "VisualStudio2012Dark"
         '
-        'txt_CurPass
+        'btn_ChP
         '
-        Me.txt_CurPass.Location = New System.Drawing.Point(23, 30)
-        Me.txt_CurPass.MinimumSize = New System.Drawing.Size(0, 24)
-        Me.txt_CurPass.Name = "txt_CurPass"
-        Me.txt_CurPass.NullText = "Current Password"
-        Me.txt_CurPass.PasswordChar = Global.Microsoft.VisualBasic.ChrW(9679)
-        Me.txt_CurPass.Size = New System.Drawing.Size(154, 24)
-        Me.txt_CurPass.TabIndex = 0
-        Me.txt_CurPass.ThemeName = "VisualStudio2012Dark"
-        Me.txt_CurPass.UseSystemPasswordChar = true
-        '
-        'txt_NewPass
-        '
-        Me.txt_NewPass.Location = New System.Drawing.Point(23, 60)
-        Me.txt_NewPass.MinimumSize = New System.Drawing.Size(0, 24)
-        Me.txt_NewPass.Name = "txt_NewPass"
-        Me.txt_NewPass.NullText = "New Password"
-        Me.txt_NewPass.PasswordChar = Global.Microsoft.VisualBasic.ChrW(9679)
-        '
-        '
-        '
-        Me.txt_NewPass.RootElement.MinSize = New System.Drawing.Size(0, 24)
-        Me.txt_NewPass.Size = New System.Drawing.Size(154, 24)
-        Me.txt_NewPass.TabIndex = 1
-        Me.txt_NewPass.ThemeName = "VisualStudio2012Dark"
-        Me.txt_NewPass.UseSystemPasswordChar = true
+        Me.btn_ChP.Location = New System.Drawing.Point(213, 54)
+        Me.btn_ChP.Name = "btn_ChP"
+        Me.btn_ChP.Size = New System.Drawing.Size(132, 39)
+        Me.btn_ChP.TabIndex = 3
+        Me.btn_ChP.Text = "Change My Password"
+        Me.btn_ChP.ThemeName = "VisualStudio2012Dark"
         '
         'txt_NewPass_Confirm
         '
@@ -285,20 +285,160 @@ Partial Class MainSettingsWindow
         Me.txt_NewPass_Confirm.ThemeName = "VisualStudio2012Dark"
         Me.txt_NewPass_Confirm.UseSystemPasswordChar = true
         '
-        'btn_ChP
+        'txt_NewPass
         '
-        Me.btn_ChP.Location = New System.Drawing.Point(213, 54)
-        Me.btn_ChP.Name = "btn_ChP"
-        Me.btn_ChP.Size = New System.Drawing.Size(132, 39)
-        Me.btn_ChP.TabIndex = 3
-        Me.btn_ChP.Text = "Change My Password"
-        Me.btn_ChP.ThemeName = "VisualStudio2012Dark"
+        Me.txt_NewPass.Location = New System.Drawing.Point(23, 60)
+        Me.txt_NewPass.MinimumSize = New System.Drawing.Size(0, 24)
+        Me.txt_NewPass.Name = "txt_NewPass"
+        Me.txt_NewPass.NullText = "New Password"
+        Me.txt_NewPass.PasswordChar = Global.Microsoft.VisualBasic.ChrW(9679)
+        '
+        '
+        '
+        Me.txt_NewPass.RootElement.MinSize = New System.Drawing.Size(0, 24)
+        Me.txt_NewPass.Size = New System.Drawing.Size(154, 24)
+        Me.txt_NewPass.TabIndex = 1
+        Me.txt_NewPass.ThemeName = "VisualStudio2012Dark"
+        Me.txt_NewPass.UseSystemPasswordChar = true
+        '
+        'txt_CurPass
+        '
+        Me.txt_CurPass.Location = New System.Drawing.Point(23, 30)
+        Me.txt_CurPass.MinimumSize = New System.Drawing.Size(0, 24)
+        Me.txt_CurPass.Name = "txt_CurPass"
+        Me.txt_CurPass.NullText = "Current Password"
+        Me.txt_CurPass.PasswordChar = Global.Microsoft.VisualBasic.ChrW(9679)
+        '
+        '
+        '
+        Me.txt_CurPass.RootElement.MinSize = New System.Drawing.Size(0, 24)
+        Me.txt_CurPass.Size = New System.Drawing.Size(154, 24)
+        Me.txt_CurPass.TabIndex = 0
+        Me.txt_CurPass.ThemeName = "VisualStudio2012Dark"
+        Me.txt_CurPass.UseSystemPasswordChar = true
+        '
+        'RadGroupBox3
+        '
+        Me.RadGroupBox3.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping
+        Me.RadGroupBox3.Controls.Add(Me.RadLabel10)
+        Me.RadGroupBox3.Controls.Add(Me.btn_delay_save)
+        Me.RadGroupBox3.Controls.Add(Me.RadLabel9)
+        Me.RadGroupBox3.Controls.Add(Me.RadLabel5)
+        Me.RadGroupBox3.Controls.Add(Me.RadLabel8)
+        Me.RadGroupBox3.Controls.Add(Me.rr_time)
+        Me.RadGroupBox3.Controls.Add(Me.sd_time)
+        Me.RadGroupBox3.Controls.Add(Me.RadLabel6)
+        Me.RadGroupBox3.HeaderText = "Delays"
+        Me.RadGroupBox3.Location = New System.Drawing.Point(533, 93)
+        Me.RadGroupBox3.Name = "RadGroupBox3"
+        Me.RadGroupBox3.Size = New System.Drawing.Size(328, 241)
+        Me.RadGroupBox3.TabIndex = 4
+        Me.RadGroupBox3.Text = "Delays"
+        Me.RadGroupBox3.ThemeName = "VisualStudio2012Dark"
+        '
+        'RadLabel10
+        '
+        Me.RadLabel10.AutoSize = false
+        Me.RadLabel10.BackColor = System.Drawing.Color.Transparent
+        Me.RadLabel10.Location = New System.Drawing.Point(32, 35)
+        Me.RadLabel10.Name = "RadLabel10"
+        Me.RadLabel10.Size = New System.Drawing.Size(236, 34)
+        Me.RadLabel10.TabIndex = 1
+        Me.RadLabel10.Text = "Determines how often the system should refresh data."
+        Me.RadLabel10.ThemeName = "VisualStudio2012Dark"
+        '
+        'btn_delay_save
+        '
+        Me.btn_delay_save.Location = New System.Drawing.Point(98, 195)
+        Me.btn_delay_save.Name = "btn_delay_save"
+        Me.btn_delay_save.Size = New System.Drawing.Size(110, 24)
+        Me.btn_delay_save.TabIndex = 6
+        Me.btn_delay_save.Text = "Save"
+        Me.btn_delay_save.ThemeName = "VisualStudio2012Dark"
+        '
+        'RadLabel9
+        '
+        Me.RadLabel9.BackColor = System.Drawing.Color.Transparent
+        Me.RadLabel9.Location = New System.Drawing.Point(241, 141)
+        Me.RadLabel9.Name = "RadLabel9"
+        Me.RadLabel9.Size = New System.Drawing.Size(67, 18)
+        Me.RadLabel9.TabIndex = 5
+        Me.RadLabel9.Text = "milliseconds"
+        Me.RadLabel9.ThemeName = "VisualStudio2012Dark"
+        '
+        'RadLabel8
+        '
+        Me.RadLabel8.BackColor = System.Drawing.Color.Transparent
+        Me.RadLabel8.Location = New System.Drawing.Point(241, 95)
+        Me.RadLabel8.Name = "RadLabel8"
+        Me.RadLabel8.Size = New System.Drawing.Size(67, 18)
+        Me.RadLabel8.TabIndex = 4
+        Me.RadLabel8.Text = "milliseconds"
+        Me.RadLabel8.ThemeName = "VisualStudio2012Dark"
+        '
+        'rr_time
+        '
+        Me.rr_time.Location = New System.Drawing.Point(172, 138)
+        Me.rr_time.Maximum = New Decimal(New Integer() {60000, 0, 0, 0})
+        Me.rr_time.Minimum = New Decimal(New Integer() {1000, 0, 0, 0})
+        Me.rr_time.MinimumSize = New System.Drawing.Size(0, 24)
+        Me.rr_time.Name = "rr_time"
+        '
+        '
+        '
+        Me.rr_time.RootElement.MinSize = New System.Drawing.Size(0, 24)
+        Me.rr_time.Size = New System.Drawing.Size(63, 24)
+        Me.rr_time.TabIndex = 4
+        Me.rr_time.TabStop = false
+        Me.rr_time.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center
+        Me.rr_time.ThemeName = "VisualStudio2012Dark"
+        Me.rr_time.Value = New Decimal(New Integer() {1000, 0, 0, 0})
+        '
+        'sd_time
+        '
+        Me.sd_time.Location = New System.Drawing.Point(172, 93)
+        Me.sd_time.Maximum = New Decimal(New Integer() {10000, 0, 0, 0})
+        Me.sd_time.Minimum = New Decimal(New Integer() {500, 0, 0, 0})
+        Me.sd_time.MinimumSize = New System.Drawing.Size(0, 24)
+        Me.sd_time.Name = "sd_time"
+        '
+        '
+        '
+        Me.sd_time.RootElement.MinSize = New System.Drawing.Size(0, 24)
+        Me.sd_time.Size = New System.Drawing.Size(63, 24)
+        Me.sd_time.TabIndex = 3
+        Me.sd_time.TabStop = false
+        Me.sd_time.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center
+        Me.sd_time.ThemeName = "VisualStudio2012Dark"
+        Me.sd_time.Value = New Decimal(New Integer() {500, 0, 0, 0})
+        '
+        'RadLabel6
+        '
+        Me.RadLabel6.BackColor = System.Drawing.Color.Transparent
+        Me.RadLabel6.Location = New System.Drawing.Point(89, 141)
+        Me.RadLabel6.Name = "RadLabel6"
+        Me.RadLabel6.Size = New System.Drawing.Size(71, 18)
+        Me.RadLabel6.TabIndex = 4
+        Me.RadLabel6.Text = "Refresh Rate:"
+        Me.RadLabel6.ThemeName = "VisualStudio2012Dark"
+        '
+        'RadLabel5
+        '
+        Me.RadLabel5.BackColor = System.Drawing.Color.Transparent
+        Me.RadLabel5.Location = New System.Drawing.Point(13, 95)
+        Me.RadLabel5.Name = "RadLabel5"
+        Me.RadLabel5.Size = New System.Drawing.Size(148, 18)
+        Me.RadLabel5.TabIndex = 3
+        Me.RadLabel5.Text = "Search Delay (While Typing):"
+        Me.RadLabel5.TextAlignment = System.Drawing.ContentAlignment.MiddleRight
+        Me.RadLabel5.ThemeName = "VisualStudio2012Dark"
         '
         'MainSettingsWindow
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6!, 13!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(546, 411)
+        Me.ClientSize = New System.Drawing.Size(884, 411)
+        Me.Controls.Add(Me.RadGroupBox3)
         Me.Controls.Add(Me.RadGroupBox2)
         Me.Controls.Add(Me.RadGroupBox1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
@@ -332,10 +472,21 @@ Partial Class MainSettingsWindow
         CType(Me.RadGroupBox2,System.ComponentModel.ISupportInitialize).EndInit
         Me.RadGroupBox2.ResumeLayout(false)
         Me.RadGroupBox2.PerformLayout
-        CType(Me.txt_CurPass,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.txt_NewPass,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.txt_NewPass_Confirm,System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.btn_ChP,System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txt_NewPass_Confirm,System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txt_NewPass,System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txt_CurPass,System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.RadGroupBox3,System.ComponentModel.ISupportInitialize).EndInit
+        Me.RadGroupBox3.ResumeLayout(false)
+        Me.RadGroupBox3.PerformLayout
+        CType(Me.RadLabel10,System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.btn_delay_save,System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.RadLabel9,System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.RadLabel8,System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.rr_time,System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.sd_time,System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.RadLabel6,System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.RadLabel5,System.ComponentModel.ISupportInitialize).EndInit
         CType(Me,System.ComponentModel.ISupportInitialize).EndInit
         Me.ResumeLayout(false)
 
@@ -358,5 +509,14 @@ End Sub
     Friend WithEvents txt_NewPass_Confirm As Telerik.WinControls.UI.RadTextBox
     Friend WithEvents txt_NewPass As Telerik.WinControls.UI.RadTextBox
     Friend WithEvents txt_CurPass As Telerik.WinControls.UI.RadTextBox
+    Friend WithEvents RadGroupBox3 As Telerik.WinControls.UI.RadGroupBox
+    Friend WithEvents RadLabel10 As Telerik.WinControls.UI.RadLabel
+    Friend WithEvents btn_delay_save As Telerik.WinControls.UI.RadButton
+    Friend WithEvents RadLabel9 As Telerik.WinControls.UI.RadLabel
+    Friend WithEvents RadLabel8 As Telerik.WinControls.UI.RadLabel
+    Friend WithEvents rr_time As Telerik.WinControls.UI.RadSpinEditor
+    Friend WithEvents sd_time As Telerik.WinControls.UI.RadSpinEditor
+    Friend WithEvents RadLabel6 As Telerik.WinControls.UI.RadLabel
+    Friend WithEvents RadLabel5 As Telerik.WinControls.UI.RadLabel
 End Class
 

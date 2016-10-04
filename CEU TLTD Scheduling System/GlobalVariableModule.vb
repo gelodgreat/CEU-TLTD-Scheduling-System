@@ -18,8 +18,17 @@ Module GlobalVariableModule
     Public penalty_chargeinterval As String
     'PENALTY Settings
 
+    'Delay Settings
+    Public refresh_delay As Integer=My.Settings.refreshDelay
+    Public search_delay As Integer=My.Settings.searchDelay
+    'Delay Settings
     Public Sub applyconstringImmediately()
         connstring = "server=" & My.Settings.cons_server & ";port=" & My.Settings.cons_port & ";userid=" & Actions.ToInsecureString(Actions.DecryptString(My.Settings.cons_username)) & ";password=" & Actions.ToInsecureString(Actions.DecryptString(My.Settings.cons_password)) & ";database=" & My.Settings.cons_database
+    End Sub
+
+    Public Sub applydelaysImmediately()
+        refresh_delay=My.Settings.refreshDelay
+        search_delay=My.Settings.searchDelay
     End Sub
 
 End Module

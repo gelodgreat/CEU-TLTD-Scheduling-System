@@ -1831,7 +1831,7 @@ Public Class Main
             'refresh_released_grid_list2.Stop()
             'refresh_penalty_grid_list.Stop()
             'refresh_returned_eq_list.Stop()
-            refresh_released_grid_list.Interval=1000
+            refresh_released_grid_list.Interval=refresh_delay
             refresh_released_grid_list.Start()
             gp_details.Hide()
             gp_controls.Hide()
@@ -1850,7 +1850,7 @@ Public Class Main
 
     'Main Window Search Functions Umali C1
     Private Sub lu_byequipment_TextChanged(sender As Object, e As EventArgs) Handles lu_byequipment.TextChanged
-        lu_byequipment_filter_delay.Interval = 700
+        lu_byequipment_filter_delay.Interval = search_Delay
         lu_byequipment_filter_delay.Stop()
         lu_byequipment_filter_delay.Start()
     End Sub
@@ -1862,7 +1862,7 @@ Public Class Main
 
     'Search by Name in Main Tab
     Private Sub lu_byname_TextChanged(sender As Object, e As EventArgs) Handles lu_byname.TextChanged
-        lu_byname_filter_delay.Interval = 700
+        lu_byname_filter_delay.Interval = search_delay
         lu_byname_filter_delay.Stop()
         lu_byname_filter_delay.Start()
     End Sub
@@ -1873,7 +1873,7 @@ Public Class Main
     End Sub
 
     Private Sub lu_ActivityType_SelectedIndexChanged(sender As Object, e As UI.Data.PositionChangedEventArgs) Handles lu_ActivityType.SelectedIndexChanged
-        lu_ActivityType_filter_delay.Interval = 700
+        lu_ActivityType_filter_delay.Interval = search_delay
         lu_ActivityType_filter_delay.Stop()
         lu_ActivityType_filter_delay.Start()
     End Sub
@@ -2273,7 +2273,7 @@ Public Class Main
             eq_rgv_showregequipment.Columns.Clear()
             eq_rgv_showregequipment.TableElement.Text = "To Display Data, please choose an equipment or type an equipment number on the left pane."
         Else
-        eqno_filter_delay.Interval = 700
+        eqno_filter_delay.Interval = search_delay
         eqno_filter_delay.Stop()
         eqno_filter_delay.Start()
         End If
@@ -2285,7 +2285,7 @@ Public Class Main
             eq_rgv_showregequipment.Columns.Clear()
             eq_rgv_showregequipment.TableElement.Text = "To Display Data, please choose an equipment or type an equipment number on the left pane."
         Else
-            eqtype_filter_delay.Interval = 700
+            eqtype_filter_delay.Interval = search_delay
             eqtype_filter_delay.Stop()
             eqtype_filter_delay.Start()
         End If
@@ -3153,7 +3153,7 @@ Public Class Main
     End Sub
 
     Private Sub lu_date_ValueChanged(sender As Object, e As EventArgs) Handles lu_date.ValueChanged
-        lu_date_filter_delay.Interval = 500
+        lu_date_filter_delay.Interval = search_delay
         lu_date_filter_delay.Stop()
         lu_date_filter_delay.Start()
     End Sub
@@ -4064,7 +4064,7 @@ End Sub
             'refresh_released_grid_list2.Stop()
             'refresh_penalty_grid_list.Stop()
             'refresh_returned_eq_list.Stop()
-            refresh_main_rgv_recordedacademicsonly.Interval=1000
+            refresh_main_rgv_recordedacademicsonly.Interval=refresh_delay
             refresh_main_rgv_recordedacademicsonly.Start()
         Else If rpv1.SelectedPage Is rpvp_equipment
             refresh_main_rgv_recordedacademicsonly.Stop()
@@ -4140,7 +4140,7 @@ End Sub
             'refresh_released_grid_list2.Stop()
             'refresh_penalty_grid_list.Stop()
             'refresh_returned_eq_list.Stop()
-            refresh_released_grid_list.Interval=1000
+            refresh_released_grid_list.Interval=refresh_delay
             refresh_released_grid_list.Start()
         Else If rpv1.SelectedPage Is rpvp_returning and (returning_groupbox_info Is rel_list_info2)
             'returning_groupbox_info.SelectedPage=returning_groupbox_info.SelectedPage

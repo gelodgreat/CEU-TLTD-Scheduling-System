@@ -12,6 +12,8 @@ Public Class MainSettingsWindow
         penalty_gp_hhmm.Value = (Date.Parse(String.Format("{0:D2}:{1:D2}:00", DB_GP.Hours,DB_GP.Minutes)))
         penalty_ci_day.Value = DB_CI.Days
         penalty_ci_hhmm.Value = (Date.Parse(String.Format("{0:D2}:{1:D2}:00", DB_CI.Hours,DB_CI.Minutes)))
+        sd_time.Value=My.Settings.searchDelay.ToString
+        rr_time.Value=My.Settings.refreshDelay.ToString
     End Sub
 
     Private Sub btn_penalty_setting_save_Click(sender As Object, e As EventArgs) Handles btn_penalty_setting_save.Click
@@ -135,5 +137,19 @@ Public Class MainSettingsWindow
 
     Private Sub PenaltyChangeGotFocus(sender As Object, e As EventArgs) Handles penalty_gp_day.GotFocus, penalty_gp_hhmm.GotFocus, penalty_ci_day.GotFocus,penalty_ci_hhmm.GotFocus,penalty_peso_amount.GotFocus
         AcceptButton=btn_penalty_setting_save
+    End Sub
+
+    Private Sub DelaysGotFocus(sender As Object, e As EventArgs) Handles sd_time.GotFocus, rr_time.GotFocus
+        AcceptButton=btn_delay_save
+    End Sub
+    Private Sub btn_delay_save_Click(sender As Object, e As EventArgs) Handles btn_delay_save.Click
+        Dim delaysave As DialogResult = RadMessageBox.Show(Me, "Are you sure you want to save the changes?", "CEU TLTD Reservation System", MessageBoxButtons.YesNo, RadMessageIcon.Question,MessageBoxDefaultButton.Button1)
+        If delaysave = DialogResult.Yes
+        My.Settings.searchDelay=Convert.ToInt32(sd_time.Value)
+        My.Settings.refreshDelay=Convert.ToInt32(rr_time.Value)
+        My.Settings.Save()
+        applydelaysImmediately()
+        RadMessageBox.Show(Me, "Changes to the delay saved successfully.", "CEU TLTD Reservation System", MessageBoxButtons.OK,RadMessageIcon.Info,MessageBoxDefaultButton.Button1)
+        End If
     End Sub
 End Class

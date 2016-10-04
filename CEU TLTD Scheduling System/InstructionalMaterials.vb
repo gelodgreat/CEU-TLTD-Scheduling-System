@@ -169,7 +169,7 @@ Public Class InstructionalMaterials
     End Sub
 
     Private Sub imm_lu_subject_SelectedIndexChanged(sender As Object, e As UI.Data.PositionChangedEventArgs) Handles imm_lu_subject.SelectedIndexChanged
-        imm_lu_subject_filter_delay.Interval = 500
+        imm_lu_subject_filter_delay.Interval = search_delay
         imm_lu_subject_filter_delay.Stop()
         imm_lu_subject_filter_delay.Start()
     End Sub
@@ -211,7 +211,7 @@ Public Class InstructionalMaterials
     End Sub
 
     Private Sub imm_lu_topic_TextChanged(sender As Object, e As EventArgs) Handles imm_lu_topic.TextChanged
-        imm_lu_topic_filter_delay.Interval = 500
+        imm_lu_topic_filter_delay.Interval = search_delay
         imm_lu_topic_filter_delay.Stop()
         imm_lu_topic_filter_delay.Start
     End Sub
@@ -844,7 +844,7 @@ Public Class InstructionalMaterials
     End Sub
 
     Private Sub imm_filter_topic_TextChanged(sender As Object, e As EventArgs) Handles imm_filter_topic.TextChanged
-        imm_filter_topic_delay.Interval = 700
+        imm_filter_topic_delay.Interval = search_delay
         imm_filter_topic_delay.Stop()
         imm_filter_topic_delay.Start()
     End Sub
