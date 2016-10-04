@@ -316,7 +316,6 @@ Partial Class Main
         Me.try1 = New System.Windows.Forms.Timer(Me.components)
         Me.lu_byname_filter_delay = New System.Windows.Forms.Timer(Me.components)
         Me.lu_date_filter_delay = New System.Windows.Forms.Timer(Me.components)
-        Me.CeutltdschedulerDataSetBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.rpvp_returning = New Telerik.WinControls.UI.RadPageViewPage()
         Me.returning_groupbox_info = New Telerik.WinControls.UI.RadPageView()
         Me.rel_list_info2 = New Telerik.WinControls.UI.RadPageViewPage()
@@ -527,6 +526,7 @@ Partial Class Main
         Me.menuItem_SaveDB = New Telerik.WinControls.UI.RadMenuItem()
         Me.menuItem_Settings = New Telerik.WinControls.UI.RadMenuItem()
         Me.menuItem_About = New Telerik.WinControls.UI.RadMenuItem()
+        Me.menuItem_LF = New Telerik.WinControls.UI.RadMenuItem()
         Me.lu_ActivityType_filter_delay = New System.Windows.Forms.Timer(Me.components)
         Me.acct_mgmt_hover_delay_goingToBorrower = New System.Windows.Forms.Timer(Me.components)
         Me.acct_mgmt_hover_delay_goingToStaff = New System.Windows.Forms.Timer(Me.components)
@@ -539,9 +539,9 @@ Partial Class Main
         Me.refresh_released_grid_list2 = New System.Windows.Forms.Timer(Me.components)
         Me.refresh_penalty_grid_list = New System.Windows.Forms.Timer(Me.components)
         Me.refresh_returned_eq_list = New System.Windows.Forms.Timer(Me.components)
+        Me.CeutltdschedulerDataSetBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         CType(Me.RadGroupBox16,System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.RadGroupBox13,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.CeutltdschedulerDataSetBindingSource,System.ComponentModel.ISupportInitialize).BeginInit
         Me.rpvp_returning.SuspendLayout
         CType(Me.returning_groupbox_info,System.ComponentModel.ISupportInitialize).BeginInit
         Me.returning_groupbox_info.SuspendLayout
@@ -784,6 +784,7 @@ Partial Class Main
         CType(Me.rpv1,System.ComponentModel.ISupportInitialize).BeginInit
         Me.rpv1.SuspendLayout
         CType(Me.RadMenu1,System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.CeutltdschedulerDataSetBindingSource,System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me,System.ComponentModel.ISupportInitialize).BeginInit
         Me.SuspendLayout
         '
@@ -926,6 +927,7 @@ Partial Class Main
         'ret_remarks
         '
         Me.ret_remarks.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.ret_remarks.Enabled = false
         Me.ret_remarks.Location = New System.Drawing.Point(2, 18)
         Me.ret_remarks.Name = "ret_remarks"
         Me.ret_remarks.Size = New System.Drawing.Size(335, 144)
@@ -2931,10 +2933,10 @@ Partial Class Main
         GridViewTextBoxColumn1.Width = 48
         GridViewTextBoxColumn2.HeaderText = "Equipments"
         GridViewTextBoxColumn2.Name = "equipment_name"
-        GridViewTextBoxColumn2.Width = 150
+        GridViewTextBoxColumn2.Width = 149
         GridViewTextBoxColumn3.HeaderText = "Serial Number"
         GridViewTextBoxColumn3.Name = "equipment_sn"
-        GridViewTextBoxColumn3.Width = 149
+        GridViewTextBoxColumn3.Width = 147
         Me.eq_rgv_addeq.MasterTemplate.Columns.AddRange(New Telerik.WinControls.UI.GridViewDataColumn() {GridViewTextBoxColumn1, GridViewTextBoxColumn2, GridViewTextBoxColumn3})
         Me.eq_rgv_addeq.MasterTemplate.EnableGrouping = false
         Me.eq_rgv_addeq.MasterTemplate.MultiSelect = true
@@ -3958,7 +3960,7 @@ Partial Class Main
         '
         'RadMenu1
         '
-        Me.RadMenu1.Items.AddRange(New Telerik.WinControls.RadItem() {Me.menuItem_DBManage, Me.menuItem_Settings, Me.menuItem_About})
+        Me.RadMenu1.Items.AddRange(New Telerik.WinControls.RadItem() {Me.menuItem_DBManage, Me.menuItem_Settings, Me.menuItem_About, Me.menuItem_LF})
         Me.RadMenu1.Location = New System.Drawing.Point(0, 0)
         Me.RadMenu1.Name = "RadMenu1"
         Me.RadMenu1.Size = New System.Drawing.Size(1356, 20)
@@ -4009,6 +4011,15 @@ Partial Class Main
         CType(Me.menuItem_About.GetChildAt(0),Telerik.WinControls.Primitives.FillPrimitive).BackColor = System.Drawing.Color.Transparent
         CType(Me.menuItem_About.GetChildAt(1),Telerik.WinControls.Primitives.BorderPrimitive).ForeColor = System.Drawing.Color.Transparent
         '
+        'menuItem_LF
+        '
+        Me.menuItem_LF.BackColor = System.Drawing.Color.Transparent
+        Me.menuItem_LF.Name = "menuItem_LF"
+        Me.menuItem_LF.Padding = New System.Windows.Forms.Padding(5, 0, 5, 0)
+        Me.menuItem_LF.Text = "Leave Feedback"
+        CType(Me.menuItem_LF.GetChildAt(0),Telerik.WinControls.Primitives.FillPrimitive).BackColor = System.Drawing.Color.Transparent
+        CType(Me.menuItem_LF.GetChildAt(1),Telerik.WinControls.Primitives.BorderPrimitive).ForeColor = System.Drawing.Color.Transparent
+        '
         'lu_ActivityType_filter_delay
         '
         '
@@ -4045,7 +4056,6 @@ Partial Class Main
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         CType(Me.RadGroupBox16,System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.RadGroupBox13,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.CeutltdschedulerDataSetBindingSource,System.ComponentModel.ISupportInitialize).EndInit
         Me.rpvp_returning.ResumeLayout(false)
         CType(Me.returning_groupbox_info,System.ComponentModel.ISupportInitialize).EndInit
         Me.returning_groupbox_info.ResumeLayout(false)
@@ -4300,6 +4310,7 @@ Partial Class Main
         CType(Me.rpv1,System.ComponentModel.ISupportInitialize).EndInit
         Me.rpv1.ResumeLayout(false)
         CType(Me.RadMenu1,System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.CeutltdschedulerDataSetBindingSource,System.ComponentModel.ISupportInitialize).EndInit
         CType(Me,System.ComponentModel.ISupportInitialize).EndInit
         Me.ResumeLayout(false)
         Me.PerformLayout
@@ -4543,5 +4554,6 @@ End Sub
     Friend WithEvents rec_btn_refresh As Telerik.WinControls.UI.RadButton
     Friend WithEvents released_btn_refresh As Telerik.WinControls.UI.RadButton
     Friend WithEvents return_btn_refresh As Telerik.WinControls.UI.RadButton
+    Friend WithEvents menuItem_LF As Telerik.WinControls.UI.RadMenuItem
 End Class
 

@@ -75,13 +75,13 @@ Public Class Main
     'END! Groupbox Hover in Account Management
 
     'START! MENU Bar
-     Private Sub MenuBar_MouseLeave(sender As Object, e As EventArgs) Handles menuItem_DBManage.MouseLeave, menuItem_About.MouseLeave, menuItem_Settings.MouseLeave
+     Private Sub MenuBar_MouseLeave(sender As Object, e As EventArgs) Handles menuItem_DBManage.MouseLeave, menuItem_About.MouseLeave, menuItem_Settings.MouseLeave,menuItem_LF.MouseLeave
         If ThemeResolutionService.ApplicationThemeName = "VisualStudio2012Dark" Then
             Dim item As RadMenuItem = TryCast(sender, RadMenuItem)
 	        item.FillPrimitive.BackColor = Color.Transparent
       End If
     End Sub
-    Private Sub MenuBar_MouseEnter(sender As Object, e As EventArgs) Handles menuItem_DBManage.MouseEnter, menuItem_About.MouseEnter, menuItem_Settings.MouseEnter
+    Private Sub MenuBar_MouseEnter(sender As Object, e As EventArgs) Handles menuItem_DBManage.MouseEnter, menuItem_About.MouseEnter, menuItem_Settings.MouseEnter, menuItem_LF.MouseEnter
         If ThemeResolutionService.ApplicationThemeName = "VisualStudio2012Dark" Then
 	        Dim item As RadMenuItem = TryCast(sender, RadMenuItem)
 	        item.FillPrimitive.BackColor = Color.FromArgb(62, 62, 64)
@@ -125,8 +125,11 @@ Public Class Main
     Private Sub menuItem_About_Click(sender As Object, e As EventArgs) Handles menuItem_About.Click
         About.Show()
     End Sub
-    'END!! Menu BAR
 
+    Private Sub menuItem_LF_Click(sender As Object, e As EventArgs) Handles menuItem_LF.Click
+        FeedBack.ShowDialog()
+    End Sub
+    'END!! Menu BAR
 
     Private Sub Main_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         getFromDB_settings_penalty()
@@ -1744,6 +1747,7 @@ Public Class Main
                 load_released_list2()
                 'show_hide_txt_lbl()
                 color_coding()
+                ret_remarks.Enabled=True
             End If
 
         End If
@@ -3410,6 +3414,7 @@ Public Class Main
                     ret_tb_stime.Text = ""
                     ret_tb_etime.Text = ""
                     ret_remarks.Text=""
+                    ret_remarks.Enabled=False
                 End Try
                 RadMessageBox.Show(Me, "Congratulations!, The equipment is returned early.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Info, MessageBoxDefaultButton.Button1)
             Else
@@ -3475,6 +3480,7 @@ Public Class Main
                         ret_tb_stime.Text = ""
                         ret_tb_etime.Text = ""
                         ret_remarks.Text=""
+                        ret_remarks.Enabled=False
                     End Try
                     RadMessageBox.Show(Me, "Congratulations! The equipment is returned on time." & Environment.NewLine & String.Format("Exceeded Time: {0:%d} day(s) {1:%h} hour(s) {2:%m} minute(s)", elapsedTime,elapsedTime,elapsedTime), "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Exclamation, MessageBoxDefaultButton.Button1)
                 ElseIf charge > 0 Then
@@ -3529,6 +3535,7 @@ Public Class Main
                             ret_tb_stime.Text = ""
                             ret_tb_etime.Text = ""
                             ret_remarks.Text=""
+                            ret_remarks.Enabled=False
                         End Try
                         RadMessageBox.Show(Me,"Equipment successfully returned." & Environment.NewLine & "Time Exceeded!!" & Environment.NewLine & Environment.NewLine & String.Format("Exceeding Time: {0:%d} day(s)", elapsedTime) & String.Format(" {0:%h} hours(s) ", elapsedTime) & String.Format("{0:%m} minutes(s)", elapsedTime) & Environment.NewLine & "Charge is: " & String.Format("{0:0.00}",Convert.ToDouble(Math.Round (charge * penalty_price))) & " pesos.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error, MessageBoxDefaultButton.Button1)
                     Else
@@ -3581,6 +3588,7 @@ Public Class Main
                             ret_tb_stime.Text = ""
                             ret_tb_etime.Text = ""
                             ret_remarks.Text=""
+                            ret_remarks.Enabled=False
                         End Try
                         RadMessageBox.Show(Me, "Equipment successfully returned." & Environment.NewLine & "Time Exceeded!!" & Environment.NewLine & Environment.NewLine & String.Format("Exceeding Time: {0:%h} hours(s) ", elapsedTime) & String.Format("{0:%m} minutes(s)", elapsedTime) & Environment.NewLine & "Charge is: " & String.Format("{0:0.00}",Convert.ToDouble(Math.Round (charge * penalty_price))) & " pesos.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error, MessageBoxDefaultButton.Button1)
                     End If

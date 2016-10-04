@@ -164,6 +164,12 @@
     <Compile Include="DBPasswordPrompt.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="FeedBack.Designer.vb">
+      <DependentUpon>FeedBack.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FeedBack.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="GlobalVariableModule.vb" />
     <Compile Include="InstructionalMaterials.Designer.vb">
       <DependentUpon>InstructionalMaterials.vb</DependentUpon>
@@ -214,6 +220,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DBPasswordPrompt.resx">
       <DependentUpon>DBPasswordPrompt.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FeedBack.resx">
+      <DependentUpon>FeedBack.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="InstructionalMaterials.resx">
       <DependentUpon>InstructionalMaterials.vb</DependentUpon>

@@ -55,14 +55,14 @@ Public Class InstructionalMaterials
     End Sub
 
     'MENU BAR
-    Private Sub MenuBar_MouseLeave(sender As Object, e As EventArgs) Handles menuItem_Settings.MouseLeave, menuItem_DBManage.MouseLeave, menuItem_About.MouseLeave
+    Private Sub MenuBar_MouseLeave(sender As Object, e As EventArgs) Handles menuItem_Settings.MouseLeave, menuItem_DBManage.MouseLeave, menuItem_About.MouseLeave, menuItem_LF.MouseLeave
         If ThemeResolutionService.ApplicationThemeName = "VisualStudio2012Dark" Then
             Dim item As RadMenuItem = TryCast(sender, RadMenuItem)
             item.FillPrimitive.BackColor = Color.Transparent
         End If
     End Sub
 
-    Private Sub MenuBar_MouseEnter(sender As Object, e As EventArgs) Handles menuItem_Settings.MouseEnter, menuItem_DBManage.MouseEnter, menuItem_About.MouseEnter
+    Private Sub MenuBar_MouseEnter(sender As Object, e As EventArgs) Handles menuItem_Settings.MouseEnter, menuItem_DBManage.MouseEnter, menuItem_About.MouseEnter, menuItem_LF.MouseEnter
         If ThemeResolutionService.ApplicationThemeName = "VisualStudio2012Dark" Then
             Dim item As RadMenuItem = TryCast(sender, RadMenuItem)
             item.FillPrimitive.BackColor = Color.FromArgb(62, 62, 64)
@@ -85,6 +85,9 @@ Public Class InstructionalMaterials
         About.Show()
     End Sub
 
+    Private Sub menuItem_LF_Click(sender As Object, e As EventArgs) Handles menuItem_LF.Click
+        FeedBack.ShowDialog()
+    End Sub
 
     'STARTING HERE IS THE DEVELOPMENT OF Instructional Materals Management 
 
@@ -95,10 +98,34 @@ Public Class InstructionalMaterials
     Private Sub immain_rgv_movielist_ViewCellFormatting(sender As Object, e As CellFormattingEventArgs) Handles immain_rgv_movielist.ViewCellFormatting
         e.CellElement.TextAlignment = ContentAlignment.MiddleCenter
         e.CellElement.TextWrap = True
-        Dim cell As GridCellElement = TryCast(e.CellElement, GridCellElement)
+        Dim cell As GridDataCellElement = TryCast(e.CellElement, GridDataCellElement)
         If cell IsNot Nothing Then
-	        cell.Font = New Font(New FontFamily("Segoe UI"), 12.25F)
+	        cell.Font = New Font(New FontFamily("Segoe UI"), 12.00F)
         End If
+    End Sub
+
+    Private Sub immain_rgv_subtopic_ViewCellFormatting(sender As Object, e As CellFormattingEventArgs) Handles immain_rgv_subtopic.ViewCellFormatting
+        e.CellElement.TextAlignment = ContentAlignment.MiddleCenter
+        e.CellElement.TextWrap = True
+        Dim cell As GridDataCellElement = TryCast(e.CellElement, GridDataCellElement)
+        If cell IsNot Nothing Then
+	        cell.Font = New Font(New FontFamily("Segoe UI"), 12.00F)
+        End If
+    End Sub
+    
+    Private Sub imm_rgv_im_subtopics_ViewCellFormatting(sender As Object, e As CellFormattingEventArgs) Handles imm_rgv_im_subtopics.ViewCellFormatting
+        e.CellElement.TextAlignment = ContentAlignment.MiddleCenter
+        e.CellElement.TextWrap = True
+    End Sub
+    
+    Private Sub imm_rgv_im_movielists_ViewCellFormatting(sender As Object, e As CellFormattingEventArgs) Handles imm_rgv_im_movielists.ViewCellFormatting
+        e.CellElement.TextAlignment = ContentAlignment.MiddleCenter
+        e.CellElement.TextWrap = True
+    End Sub
+   
+    Private Sub imr_rgv_reservationgrid_ViewCellFormatting(sender As Object, e As CellFormattingEventArgs) Handles imr_rgv_reservationgrid.ViewCellFormatting
+        e.CellElement.TextAlignment = ContentAlignment.MiddleCenter
+        e.CellElement.TextWrap = True
     End Sub
 
     Public Sub imm_main_size()
@@ -109,10 +136,10 @@ Public Class InstructionalMaterials
         vidid.Width = 70
 
         Dim duration = Me.immain_rgv_movielist.Columns("Duration")
-        duration.Width = 70
+        duration.Width = 80
 
         Dim subject = Me.immain_rgv_movielist.Columns("Subject")
-        subject.Width = 200
+        subject.Width = 170
 
         Dim mediatype = Me.immain_rgv_movielist.Columns("Media Type")
         mediatype.Width = 120
@@ -120,8 +147,59 @@ Public Class InstructionalMaterials
         Dim topic = Me.immain_rgv_movielist.Columns("Topic")
         topic.Width = 600
 
-        Dim ac_date = Me.imm_rgv_im_movielists.Columns("Acquisition Date")
+        Dim ac_date = Me.immain_rgv_movielist.Columns("Acquisition Date")
         ac_date.Width = 120
+        End If
+    End Sub
+
+    Public Sub imm_main_Subtopics_size()
+        If immain_rgv_subtopic.Columns.Count <= 0
+            'Quiet when there is no columns loaded
+        Else
+        Dim vidid = Me.immain_rgv_subtopic.Columns("Video ID")
+        vidid.Width = 70
+
+        Dim subject = Me.immain_rgv_subtopic.Columns("Subject")
+        subject.Width = 170
+
+        Dim topic = Me.immain_rgv_subtopic.Columns("Topic")
+        topic.Width = 300
+
+        Dim subtopic = Me.immain_rgv_subtopic.Columns("Sub Topic")
+        subtopic.Width = 300
+
+        Dim duration = Me.immain_rgv_subtopic.Columns("Duration")
+        duration.Width = 80
+        End If
+    End Sub
+
+    Public Sub imr_Size()
+        If imr_rgv_reservationgrid.Columns.Count <= 0
+            'Quiet when there is no columns loaded
+        Else
+        Dim resno = Me.imr_rgv_reservationgrid.Columns("Reservation Number")
+        resno.Width = 119
+
+        Dim vidid = Me.imr_rgv_reservationgrid.Columns("Video ID")
+        vidid.Width = 70
+
+        Dim subject = Me.imr_rgv_reservationgrid.Columns("Subject")
+        subject.Width = 120
+
+        Dim topic = Me.imr_rgv_reservationgrid.Columns("Topic")
+        topic.Width = 600
+
+        Dim st = Me.imr_rgv_reservationgrid.Columns("Start Time")
+        st.Width = 68
+
+        Dim et = Me.imr_rgv_reservationgrid.Columns("End Time")
+        et.Width = 68
+
+        Dim resdate = Me.imr_rgv_reservationgrid.Columns("Date")
+        resdate.Width = 120
+
+        Dim stt = Me.imr_rgv_reservationgrid.Columns("Status")
+        stt.Width = 90
         End If
     End Sub
 
@@ -206,7 +284,7 @@ Public Class InstructionalMaterials
             immain_rgv_movielist.DataSource = bsource
             immain_rgv_movielist.ReadOnly = True
             sda.Update(imdbdataset)
-             imm_main_size()
+            imm_main_size()
             MysqlConn.Close()
 
             Dim DV As New DataView(imdbdataset)
@@ -439,7 +517,7 @@ Public Class InstructionalMaterials
             immain_rgv_subtopic.DataSource = bsource
             immain_rgv_subtopic.ReadOnly = True
             sda.Update(imdbdataset)
-
+            imm_main_Subtopics_size()
             MysqlConn.Close()
 
             Catch ex As MySqlException
@@ -1038,6 +1116,7 @@ Public Class InstructionalMaterials
             imr_rgv_reservationgrid.DataSource = bsource
             imr_rgv_reservationgrid.ReadOnly = True
             sda.Update(dbdataset)
+            imr_Size()
             MysqlConn.Close()
 
             Catch ex As MySqlException

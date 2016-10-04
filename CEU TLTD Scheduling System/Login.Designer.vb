@@ -35,7 +35,6 @@ Partial Class Login
         Me.log_timer = New System.Windows.Forms.Timer(Me.components)
         Me.log_lbl_date = New Telerik.WinControls.UI.RadLabel()
         Me.RadGroupBox1 = New Telerik.WinControls.UI.RadGroupBox()
-        Me.btn_bypass_log = New Telerik.WinControls.UI.RadButton()
         Me.RadGroupBox2 = New Telerik.WinControls.UI.RadGroupBox()
         Me.btn_w8 = New Telerik.WinControls.UI.RadButton()
         Me.btn_metroblue = New Telerik.WinControls.UI.RadButton()
@@ -58,7 +57,6 @@ Partial Class Login
         CType(Me.log_lbl_date,System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.RadGroupBox1,System.ComponentModel.ISupportInitialize).BeginInit
         Me.RadGroupBox1.SuspendLayout
-        CType(Me.btn_bypass_log,System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.RadGroupBox2,System.ComponentModel.ISupportInitialize).BeginInit
         Me.RadGroupBox2.SuspendLayout
         CType(Me.btn_w8,System.ComponentModel.ISupportInitialize).BeginInit
@@ -76,7 +74,7 @@ Partial Class Login
         Me.btn_login.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom)  _
             Or System.Windows.Forms.AnchorStyles.Left)  _
             Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
-        Me.btn_login.Location = New System.Drawing.Point(131, 181)
+        Me.btn_login.Location = New System.Drawing.Point(132, 174)
         Me.btn_login.Name = "btn_login"
         Me.btn_login.Size = New System.Drawing.Size(110, 24)
         Me.btn_login.TabIndex = 3
@@ -98,11 +96,11 @@ Partial Class Login
         '
         Me.RadLabel14.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom),System.Windows.Forms.AnchorStyles)
         Me.RadLabel14.BackColor = System.Drawing.Color.Transparent
-        Me.RadLabel14.Location = New System.Drawing.Point(56, 79)
+        Me.RadLabel14.Location = New System.Drawing.Point(78, 79)
         Me.RadLabel14.Name = "RadLabel14"
-        Me.RadLabel14.Size = New System.Drawing.Size(59, 18)
+        Me.RadLabel14.Size = New System.Drawing.Size(35, 18)
         Me.RadLabel14.TabIndex = 23
-        Me.RadLabel14.Text = "Username:"
+        Me.RadLabel14.Text = "Email:"
         Me.RadLabel14.ThemeName = "VisualStudio2012Dark"
         '
         'RadLabel1
@@ -180,7 +178,6 @@ Partial Class Login
         Me.RadGroupBox1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom)  _
             Or System.Windows.Forms.AnchorStyles.Left)  _
             Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
-        Me.RadGroupBox1.Controls.Add(Me.btn_bypass_log)
         Me.RadGroupBox1.Controls.Add(Me.btn_login)
         Me.RadGroupBox1.Controls.Add(Me.RadLabel14)
         Me.RadGroupBox1.Controls.Add(Me.log_password)
@@ -193,18 +190,6 @@ Partial Class Login
         Me.RadGroupBox1.TabIndex = 30
         Me.RadGroupBox1.Text = "Login"
         Me.RadGroupBox1.ThemeName = "VisualStudio2012Dark"
-        '
-        'btn_bypass_log
-        '
-        Me.btn_bypass_log.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom)  _
-            Or System.Windows.Forms.AnchorStyles.Left)  _
-            Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
-        Me.btn_bypass_log.Location = New System.Drawing.Point(131, 151)
-        Me.btn_bypass_log.Name = "btn_bypass_log"
-        Me.btn_bypass_log.Size = New System.Drawing.Size(110, 24)
-        Me.btn_bypass_log.TabIndex = 2
-        Me.btn_bypass_log.Text = "Bypass Login"
-        Me.btn_bypass_log.ThemeName = "VisualStudio2012Dark"
         '
         'RadGroupBox2
         '
@@ -337,7 +322,6 @@ Partial Class Login
         CType(Me.RadGroupBox1,System.ComponentModel.ISupportInitialize).EndInit
         Me.RadGroupBox1.ResumeLayout(false)
         Me.RadGroupBox1.PerformLayout
-        CType(Me.btn_bypass_log,System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.RadGroupBox2,System.ComponentModel.ISupportInitialize).EndInit
         Me.RadGroupBox2.ResumeLayout(false)
         CType(Me.btn_w8,System.ComponentModel.ISupportInitialize).EndInit
@@ -375,7 +359,6 @@ End Sub
     Friend WithEvents Windows8Theme1 As Telerik.WinControls.Themes.Windows8Theme
     Friend WithEvents TelerikMetroBlueTheme1 As Telerik.WinControls.Themes.TelerikMetroBlueTheme
     Friend WithEvents log_lbl_time As Telerik.WinControls.UI.RadLabel
-    Friend WithEvents btn_bypass_log As Telerik.WinControls.UI.RadButton
     Friend WithEvents settingButton As PictureBox
 End Class
 

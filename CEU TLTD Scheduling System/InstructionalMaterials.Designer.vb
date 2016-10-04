@@ -179,6 +179,7 @@ Partial Class InstructionalMaterials
         Me.menuItem_SaveDB = New Telerik.WinControls.UI.RadMenuItem()
         Me.menuItem_Settings = New Telerik.WinControls.UI.RadMenuItem()
         Me.menuItem_About = New Telerik.WinControls.UI.RadMenuItem()
+        Me.menuItem_LF = New Telerik.WinControls.UI.RadMenuItem()
         Me.imm_lu_subject_filter_delay = New System.Windows.Forms.Timer(Me.components)
         Me.imm_lu_topic_filter_delay = New System.Windows.Forms.Timer(Me.components)
         Me.imm_filter_topic_delay = New System.Windows.Forms.Timer(Me.components)
@@ -289,7 +290,7 @@ Partial Class InstructionalMaterials
         Me.RadPageView1.Controls.Add(Me.im_rpvp_imr)
         Me.RadPageView1.Location = New System.Drawing.Point(0, 26)
         Me.RadPageView1.Name = "RadPageView1"
-        Me.RadPageView1.SelectedPage = Me.im_rpvp_main
+        Me.RadPageView1.SelectedPage = Me.im_rpvp_imr
         Me.RadPageView1.Size = New System.Drawing.Size(1356, 557)
         Me.RadPageView1.TabIndex = 0
         Me.RadPageView1.Text = "im_rpv"
@@ -301,9 +302,9 @@ Partial Class InstructionalMaterials
         Me.im_rpvp_main.Controls.Add(Me.RadPageView3)
         Me.im_rpvp_main.Controls.Add(Me.RadGroupBox1)
         Me.im_rpvp_main.ItemSize = New System.Drawing.SizeF(151!, 24!)
-        Me.im_rpvp_main.Location = New System.Drawing.Point(5, 30)
+        Me.im_rpvp_main.Location = New System.Drawing.Point(10, 37)
         Me.im_rpvp_main.Name = "im_rpvp_main"
-        Me.im_rpvp_main.Size = New System.Drawing.Size(1346, 522)
+        Me.im_rpvp_main.Size = New System.Drawing.Size(1335, 509)
         Me.im_rpvp_main.Text = "Instructional Materials Main"
         '
         'RadPageView3
@@ -315,7 +316,7 @@ Partial Class InstructionalMaterials
         Me.RadPageView3.Controls.Add(Me.main_rpvp_st)
         Me.RadPageView3.Location = New System.Drawing.Point(209, 3)
         Me.RadPageView3.Name = "RadPageView3"
-        Me.RadPageView3.SelectedPage = Me.main_rpvp_mvl
+        Me.RadPageView3.SelectedPage = Me.main_rpvp_st
         Me.RadPageView3.Size = New System.Drawing.Size(1134, 524)
         Me.RadPageView3.TabIndex = 2
         Me.RadPageView3.Text = "RadPageView3"
@@ -326,9 +327,9 @@ Partial Class InstructionalMaterials
         '
         Me.main_rpvp_mvl.Controls.Add(Me.immain_rgv_movielist)
         Me.main_rpvp_mvl.ItemSize = New System.Drawing.SizeF(63!, 24!)
-        Me.main_rpvp_mvl.Location = New System.Drawing.Point(5, 30)
+        Me.main_rpvp_mvl.Location = New System.Drawing.Point(10, 37)
         Me.main_rpvp_mvl.Name = "main_rpvp_mvl"
-        Me.main_rpvp_mvl.Size = New System.Drawing.Size(1124, 489)
+        Me.main_rpvp_mvl.Size = New System.Drawing.Size(1113, 476)
         Me.main_rpvp_mvl.Text = "Movie List"
         '
         'immain_rgv_movielist
@@ -348,7 +349,7 @@ Partial Class InstructionalMaterials
         Me.immain_rgv_movielist.MasterTemplate.ViewDefinition = TableViewDefinition1
         Me.immain_rgv_movielist.Name = "immain_rgv_movielist"
         Me.immain_rgv_movielist.ReadOnly = true
-        Me.immain_rgv_movielist.Size = New System.Drawing.Size(1124, 489)
+        Me.immain_rgv_movielist.Size = New System.Drawing.Size(1113, 476)
         Me.immain_rgv_movielist.TabIndex = 5
         Me.immain_rgv_movielist.Text = "RadGridView2"
         Me.immain_rgv_movielist.ThemeName = "VisualStudio2012Dark"
@@ -452,9 +453,9 @@ Partial Class InstructionalMaterials
         Me.im_rpvp_imm.Controls.Add(Me.nst_gb_st)
         Me.im_rpvp_imm.Controls.Add(Me.RadGroupBox5)
         Me.im_rpvp_imm.ItemSize = New System.Drawing.SizeF(193!, 24!)
-        Me.im_rpvp_imm.Location = New System.Drawing.Point(5, 30)
+        Me.im_rpvp_imm.Location = New System.Drawing.Point(10, 37)
         Me.im_rpvp_imm.Name = "im_rpvp_imm"
-        Me.im_rpvp_imm.Size = New System.Drawing.Size(1346, 522)
+        Me.im_rpvp_imm.Size = New System.Drawing.Size(1335, 509)
         Me.im_rpvp_imm.Text = "Instructional Materials Management"
         '
         'imm
@@ -466,8 +467,8 @@ Partial Class InstructionalMaterials
         Me.imm.Controls.Add(Me.imm_rpv_subtopics)
         Me.imm.Location = New System.Drawing.Point(3, 3)
         Me.imm.Name = "imm"
-        Me.imm.SelectedPage = Me.imm_rpv_movielist
-        Me.imm.Size = New System.Drawing.Size(1348, 299)
+        Me.imm.SelectedPage = Me.imm_rpv_subtopics
+        Me.imm.Size = New System.Drawing.Size(1337, 286)
         Me.imm.TabIndex = 4
         Me.imm.Text = "RadPageView2"
         Me.imm.ThemeName = "VisualStudio2012Dark"
@@ -476,10 +477,9 @@ Partial Class InstructionalMaterials
         'imm_rpv_movielist
         '
         Me.imm_rpv_movielist.Controls.Add(Me.imm_rgv_im_movielists)
-        Me.imm_rpv_movielist.ItemSize = New System.Drawing.SizeF(63!, 24!)
-        Me.imm_rpv_movielist.Location = New System.Drawing.Point(5, 30)
+        Me.imm_rpv_movielist.Location = New System.Drawing.Point(10, 37)
         Me.imm_rpv_movielist.Name = "imm_rpv_movielist"
-        Me.imm_rpv_movielist.Size = New System.Drawing.Size(1338, 264)
+        Me.imm_rpv_movielist.Size = New System.Drawing.Size(1316, 238)
         Me.imm_rpv_movielist.Text = "Movie List"
         '
         'imm_rgv_im_movielists
@@ -499,7 +499,7 @@ Partial Class InstructionalMaterials
         Me.imm_rgv_im_movielists.MasterTemplate.ViewDefinition = TableViewDefinition3
         Me.imm_rgv_im_movielists.Name = "imm_rgv_im_movielists"
         Me.imm_rgv_im_movielists.ReadOnly = true
-        Me.imm_rgv_im_movielists.Size = New System.Drawing.Size(1338, 264)
+        Me.imm_rgv_im_movielists.Size = New System.Drawing.Size(1316, 238)
         Me.imm_rgv_im_movielists.TabIndex = 1
         Me.imm_rgv_im_movielists.Text = "RadGridView3"
         Me.imm_rgv_im_movielists.ThemeName = "VisualStudio2012Dark"
@@ -507,10 +507,9 @@ Partial Class InstructionalMaterials
         'imm_rpv_subtopics
         '
         Me.imm_rpv_subtopics.Controls.Add(Me.imm_rgv_im_subtopics)
-        Me.imm_rpv_subtopics.ItemSize = New System.Drawing.SizeF(66!, 24!)
-        Me.imm_rpv_subtopics.Location = New System.Drawing.Point(5, 30)
+        Me.imm_rpv_subtopics.Location = New System.Drawing.Point(10, 37)
         Me.imm_rpv_subtopics.Name = "imm_rpv_subtopics"
-        Me.imm_rpv_subtopics.Size = New System.Drawing.Size(1338, 264)
+        Me.imm_rpv_subtopics.Size = New System.Drawing.Size(1316, 238)
         Me.imm_rpv_subtopics.Text = "Sub Topics"
         '
         'imm_rgv_im_subtopics
@@ -530,7 +529,7 @@ Partial Class InstructionalMaterials
         Me.imm_rgv_im_subtopics.MasterTemplate.ViewDefinition = TableViewDefinition4
         Me.imm_rgv_im_subtopics.Name = "imm_rgv_im_subtopics"
         Me.imm_rgv_im_subtopics.ReadOnly = true
-        Me.imm_rgv_im_subtopics.Size = New System.Drawing.Size(1338, 264)
+        Me.imm_rgv_im_subtopics.Size = New System.Drawing.Size(1316, 238)
         Me.imm_rgv_im_subtopics.TabIndex = 2
         Me.imm_rgv_im_subtopics.Text = "RadGridView3"
         Me.imm_rgv_im_subtopics.ThemeName = "VisualStudio2012Dark"
@@ -542,7 +541,7 @@ Partial Class InstructionalMaterials
         Me.RadGroupBox6.Controls.Add(Me.imm_filter_topic)
         Me.RadGroupBox6.Controls.Add(Me.RadLabel11)
         Me.RadGroupBox6.HeaderText = "Filters"
-        Me.RadGroupBox6.Location = New System.Drawing.Point(7, 303)
+        Me.RadGroupBox6.Location = New System.Drawing.Point(1, 290)
         Me.RadGroupBox6.Name = "RadGroupBox6"
         Me.RadGroupBox6.Size = New System.Drawing.Size(206, 216)
         Me.RadGroupBox6.TabIndex = 3
@@ -586,7 +585,7 @@ Partial Class InstructionalMaterials
         Me.nst_gb_st.Controls.Add(Me.RadLabel13)
         Me.nst_gb_st.Controls.Add(Me.imm_nst_cb_subject)
         Me.nst_gb_st.HeaderText = "New Sub Topics"
-        Me.nst_gb_st.Location = New System.Drawing.Point(862, 303)
+        Me.nst_gb_st.Location = New System.Drawing.Point(856, 290)
         Me.nst_gb_st.Name = "nst_gb_st"
         Me.nst_gb_st.Size = New System.Drawing.Size(484, 216)
         Me.nst_gb_st.TabIndex = 1
@@ -745,7 +744,7 @@ Partial Class InstructionalMaterials
         '
         Me.imm_nst_cb_subject.Location = New System.Drawing.Point(72, 56)
         Me.imm_nst_cb_subject.Name = "imm_nst_cb_subject"
-        Me.imm_nst_cb_subject.Size = New System.Drawing.Size(198, 24)
+        Me.imm_nst_cb_subject.Size = New System.Drawing.Size(198, 20)
         Me.imm_nst_cb_subject.TabIndex = 14
         Me.imm_nst_cb_subject.ThemeName = "VisualStudio2012Dark"
         '
@@ -770,7 +769,7 @@ Partial Class InstructionalMaterials
         Me.RadGroupBox5.Controls.Add(Me.imm_nv_btn_save)
         Me.RadGroupBox5.Controls.Add(Me.imm_nv_btn_update)
         Me.RadGroupBox5.HeaderText = "New Video"
-        Me.RadGroupBox5.Location = New System.Drawing.Point(228, 303)
+        Me.RadGroupBox5.Location = New System.Drawing.Point(222, 290)
         Me.RadGroupBox5.Name = "RadGroupBox5"
         Me.RadGroupBox5.Size = New System.Drawing.Size(619, 216)
         Me.RadGroupBox5.TabIndex = 1
@@ -866,7 +865,7 @@ Partial Class InstructionalMaterials
         '
         Me.imm_nv_cb_mediatype.Location = New System.Drawing.Point(111, 111)
         Me.imm_nv_cb_mediatype.Name = "imm_nv_cb_mediatype"
-        Me.imm_nv_cb_mediatype.Size = New System.Drawing.Size(198, 24)
+        Me.imm_nv_cb_mediatype.Size = New System.Drawing.Size(198, 20)
         Me.imm_nv_cb_mediatype.TabIndex = 8
         Me.imm_nv_cb_mediatype.ThemeName = "VisualStudio2012Dark"
         '
@@ -933,7 +932,7 @@ Partial Class InstructionalMaterials
         '
         Me.imm_nv_cb_subject.Location = New System.Drawing.Point(111, 51)
         Me.imm_nv_cb_subject.Name = "imm_nv_cb_subject"
-        Me.imm_nv_cb_subject.Size = New System.Drawing.Size(198, 24)
+        Me.imm_nv_cb_subject.Size = New System.Drawing.Size(198, 20)
         Me.imm_nv_cb_subject.TabIndex = 0
         Me.imm_nv_cb_subject.ThemeName = "VisualStudio2012Dark"
         '
@@ -1369,7 +1368,7 @@ Partial Class InstructionalMaterials
         Me.RadGroupBox9.HeaderText = "Instructional Materials"
         Me.RadGroupBox9.Location = New System.Drawing.Point(7, 3)
         Me.RadGroupBox9.Name = "RadGroupBox9"
-        Me.RadGroupBox9.Size = New System.Drawing.Size(1354, 272)
+        Me.RadGroupBox9.Size = New System.Drawing.Size(1344, 272)
         Me.RadGroupBox9.TabIndex = 3
         Me.RadGroupBox9.Text = "Instructional Materials"
         Me.RadGroupBox9.ThemeName = "VisualStudio2012Dark"
@@ -1392,14 +1391,14 @@ Partial Class InstructionalMaterials
         Me.imr_rgv_reservationgrid.MasterTemplate.ViewDefinition = TableViewDefinition5
         Me.imr_rgv_reservationgrid.Name = "imr_rgv_reservationgrid"
         Me.imr_rgv_reservationgrid.ReadOnly = true
-        Me.imr_rgv_reservationgrid.Size = New System.Drawing.Size(1350, 252)
+        Me.imr_rgv_reservationgrid.Size = New System.Drawing.Size(1340, 252)
         Me.imr_rgv_reservationgrid.TabIndex = 0
         Me.imr_rgv_reservationgrid.Text = "RadGridView2"
         Me.imr_rgv_reservationgrid.ThemeName = "VisualStudio2012Dark"
         '
         'RadMenu1
         '
-        Me.RadMenu1.Items.AddRange(New Telerik.WinControls.RadItem() {Me.menuItem_DBManage, Me.menuItem_Settings, Me.menuItem_About})
+        Me.RadMenu1.Items.AddRange(New Telerik.WinControls.RadItem() {Me.menuItem_DBManage, Me.menuItem_Settings, Me.menuItem_About, Me.menuItem_LF})
         Me.RadMenu1.Location = New System.Drawing.Point(0, 0)
         Me.RadMenu1.Name = "RadMenu1"
         Me.RadMenu1.Size = New System.Drawing.Size(1356, 20)
@@ -1447,6 +1446,14 @@ Partial Class InstructionalMaterials
         Me.menuItem_About.Text = "About"
         CType(Me.menuItem_About.GetChildAt(0),Telerik.WinControls.Primitives.FillPrimitive).BackColor = System.Drawing.Color.Transparent
         CType(Me.menuItem_About.GetChildAt(1),Telerik.WinControls.Primitives.BorderPrimitive).ForeColor = System.Drawing.Color.Transparent
+        '
+        'menuItem_LF
+        '
+        Me.menuItem_LF.Name = "menuItem_LF"
+        Me.menuItem_LF.Padding = New System.Windows.Forms.Padding(5, 0, 5, 0)
+        Me.menuItem_LF.Text = "Leave Feedback"
+        CType(Me.menuItem_LF.GetChildAt(0),Telerik.WinControls.Primitives.FillPrimitive).BackColor = System.Drawing.Color.Transparent
+        CType(Me.menuItem_LF.GetChildAt(1),Telerik.WinControls.Primitives.BorderPrimitive).ForeColor = System.Drawing.Color.Transparent
         '
         'imm_lu_subject_filter_delay
         '
@@ -1667,5 +1674,6 @@ End Sub
     Friend WithEvents imm_lu_subject_filter_delay As Timer
     Friend WithEvents imm_lu_topic_filter_delay As Timer
     Friend WithEvents imm_filter_topic_delay As Timer
+    Friend WithEvents menuItem_LF As Telerik.WinControls.UI.RadMenuItem
 End Class
 

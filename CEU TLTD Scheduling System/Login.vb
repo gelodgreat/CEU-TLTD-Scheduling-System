@@ -146,7 +146,7 @@ Public Class Login
         My.Settings.Save()
     End Sub
 
-    Private Sub btn_bypass_log_Click(sender As Object, e As EventArgs) Handles btn_bypass_log.Click
+    Private Sub btn_bypass_log_Click(sender As Object, e As EventArgs) 
         Main.Show()
         Me.Hide()
     End Sub
