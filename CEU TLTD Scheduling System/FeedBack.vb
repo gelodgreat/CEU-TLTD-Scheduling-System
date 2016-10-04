@@ -33,4 +33,8 @@ Public Class FeedBack
             MySQLConn.Dispose()
         End Try
     End Sub
+
+    Private Sub message_GotFocus(sender As Object, e As EventArgs) Handles message.GotFocus
+        AcceptButton=btn_submit
+    End Sub
 End Class

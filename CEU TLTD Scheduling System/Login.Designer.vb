@@ -311,6 +311,7 @@ Partial Class Login
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Login"
         Me.ThemeName = "VisualStudio2012Dark"
+        Me.TopMost = true
         CType(Me.btn_login,System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.RadLabel17,System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.RadLabel14,System.ComponentModel.ISupportInitialize).EndInit

@@ -540,6 +540,7 @@ Partial Class Main
         Me.refresh_penalty_grid_list = New System.Windows.Forms.Timer(Me.components)
         Me.refresh_returned_eq_list = New System.Windows.Forms.Timer(Me.components)
         Me.CeutltdschedulerDataSetBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.RadLabel23 = New Telerik.WinControls.UI.RadLabel()
         CType(Me.RadGroupBox16,System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.RadGroupBox13,System.ComponentModel.ISupportInitialize).BeginInit
         Me.rpvp_returning.SuspendLayout
@@ -785,6 +786,7 @@ Partial Class Main
         Me.rpv1.SuspendLayout
         CType(Me.RadMenu1,System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.CeutltdschedulerDataSetBindingSource,System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.RadLabel23,System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me,System.ComponentModel.ISupportInitialize).BeginInit
         Me.SuspendLayout
         '
@@ -2988,6 +2990,7 @@ Partial Class Main
         '
         'rpvp_equipment
         '
+        Me.rpvp_equipment.Controls.Add(Me.RadLabel23)
         Me.rpvp_equipment.Controls.Add(Me.tb_show_all_equipments)
         Me.rpvp_equipment.Controls.Add(Me.RadGroupBox22)
         Me.rpvp_equipment.Controls.Add(Me.RadGroupBox21)
@@ -3000,7 +3003,7 @@ Partial Class Main
         '
         'tb_show_all_equipments
         '
-        Me.tb_show_all_equipments.Location = New System.Drawing.Point(29, 422)
+        Me.tb_show_all_equipments.Location = New System.Drawing.Point(29, 350)
         Me.tb_show_all_equipments.Name = "tb_show_all_equipments"
         Me.tb_show_all_equipments.Size = New System.Drawing.Size(124, 31)
         Me.tb_show_all_equipments.TabIndex = 4
@@ -3016,7 +3019,7 @@ Partial Class Main
         Me.RadGroupBox22.Controls.Add(Me.RadLabel57)
         Me.RadGroupBox22.Controls.Add(Me.eq_counter_type)
         Me.RadGroupBox22.HeaderText = "Equipment Compute"
-        Me.RadGroupBox22.Location = New System.Drawing.Point(3, 244)
+        Me.RadGroupBox22.Location = New System.Drawing.Point(3, 197)
         Me.RadGroupBox22.Name = "RadGroupBox22"
         Me.RadGroupBox22.Size = New System.Drawing.Size(176, 143)
         Me.RadGroupBox22.TabIndex = 3
@@ -3948,7 +3951,7 @@ Partial Class Main
         Me.rpv1.DefaultPage = Me.rpvp1_main
         Me.rpv1.Location = New System.Drawing.Point(0, 26)
         Me.rpv1.Name = "rpv1"
-        Me.rpv1.SelectedPage = Me.rpvp1_main
+        Me.rpv1.SelectedPage = Me.rpvp_equipment
         Me.rpv1.Size = New System.Drawing.Size(1358, 557)
         Me.rpv1.TabIndex = 1
         Me.rpv1.Text = "Home"
@@ -4035,6 +4038,20 @@ Partial Class Main
         'refresh_released_grid_list
         '
         '
+        'RadLabel23
+        '
+        Me.RadLabel23.Anchor = System.Windows.Forms.AnchorStyles.Top
+        Me.RadLabel23.AutoSize = false
+        Me.RadLabel23.BackColor = System.Drawing.Color.Transparent
+        Me.RadLabel23.Location = New System.Drawing.Point(7, 385)
+        Me.RadLabel23.Margin = New System.Windows.Forms.Padding(0)
+        Me.RadLabel23.Name = "RadLabel23"
+        Me.RadLabel23.Size = New System.Drawing.Size(167, 107)
+        Me.RadLabel23.TabIndex = 5
+        Me.RadLabel23.Text = resources.GetString("RadLabel23.Text")
+        Me.RadLabel23.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter
+        Me.RadLabel23.ThemeName = "VisualStudio2012Dark"
+        '
         'Main
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6!, 13!)
@@ -4051,8 +4068,9 @@ Partial Class Main
         '
         Me.RootElement.ApplyShapeToControl = true
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "TLTD Scheduling System"
+        Me.Text = "CEU TLTD Reservation System"
         Me.ThemeName = "VisualStudio2012Dark"
+        Me.TopMost = true
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         CType(Me.RadGroupBox16,System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.RadGroupBox13,System.ComponentModel.ISupportInitialize).EndInit
@@ -4311,6 +4329,7 @@ Partial Class Main
         Me.rpv1.ResumeLayout(false)
         CType(Me.RadMenu1,System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.CeutltdschedulerDataSetBindingSource,System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.RadLabel23,System.ComponentModel.ISupportInitialize).EndInit
         CType(Me,System.ComponentModel.ISupportInitialize).EndInit
         Me.ResumeLayout(false)
         Me.PerformLayout
@@ -4555,5 +4574,6 @@ End Sub
     Friend WithEvents released_btn_refresh As Telerik.WinControls.UI.RadButton
     Friend WithEvents return_btn_refresh As Telerik.WinControls.UI.RadButton
     Friend WithEvents menuItem_LF As Telerik.WinControls.UI.RadMenuItem
+    Friend WithEvents RadLabel23 As Telerik.WinControls.UI.RadLabel
 End Class
 

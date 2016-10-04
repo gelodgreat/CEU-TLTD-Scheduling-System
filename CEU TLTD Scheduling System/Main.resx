@@ -144,6 +144,9 @@
   <metadata name="lu_date_filter_delay.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>797, 56</value>
   </metadata>
+  <data name="RadLabel23.Text" xml:space="preserve">
+    <value>This tab only shows equipments that are marked as "Good Condition" which also reflects the equipments for reservation. Please make sure to include the word "Good Condition" in the Preventive Maintenance System</value>
+  </data>
   <metadata name="lu_ActivityType_filter_delay.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>

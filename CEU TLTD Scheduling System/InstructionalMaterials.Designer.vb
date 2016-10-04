@@ -1478,8 +1478,9 @@ Partial Class InstructionalMaterials
         '
         '
         Me.RootElement.ApplyShapeToControl = true
-        Me.Text = "Instructional Materials"
+        Me.Text = "CEU TLTD Reservation System (Instructional Materials)"
         Me.ThemeName = "VisualStudio2012Dark"
+        Me.TopMost = true
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         CType(Me.RadPageView1,System.ComponentModel.ISupportInitialize).EndInit
         Me.RadPageView1.ResumeLayout(false)
