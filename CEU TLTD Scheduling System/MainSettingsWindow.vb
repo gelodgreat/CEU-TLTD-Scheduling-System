@@ -150,6 +150,7 @@ Public Class MainSettingsWindow
         My.Settings.Save()
         applydelaysImmediately()
         RadMessageBox.Show(Me, "Changes to the delay saved successfully.", "CEU TLTD Reservation System", MessageBoxButtons.OK,RadMessageIcon.Info,MessageBoxDefaultButton.Button1)
+        Me.Dispose
         End If
     End Sub
 End Class

@@ -4304,14 +4304,17 @@ End Sub
         End If
     End Sub
 
-    Private Sub main_rgv_recordedacademicsonly_KeyDown(sender As Object, e As KeyEventArgs) Handles main_rgv_recordedacademicsonly.KeyDown, main_rgv_recordedacademicsonly.KeyUp, main_rgv_recordedacademicsonly.KeyDown
-        If Keys.Up Or Keys.Down Then
-
+    Private Sub main_rgv_recordedacademicsonly_KeyDown(sender As Object, e As KeyEventArgs) Handles main_rgv_recordedacademicsonly.KeyDown, main_rgv_recordedacademicsonly.KeyUp
+        If e.KeyCode=Keys.Down Or e.KeyCode=Keys.Up Then
+            Try
             If main_rgv_recordedacademicsonly.Rows(0).Index = -1 Then
                 'DO NOTHING
             Else
                 main_window_keepSelectedRowIndexAfterUpdate = main_rgv_recordedacademicsonly.SelectedRows(0).Index
             End If
+                Catch ex As ArgumentOutOfRangeException
+                'Manahimik ang error
+            End Try
         End If
     End Sub
 

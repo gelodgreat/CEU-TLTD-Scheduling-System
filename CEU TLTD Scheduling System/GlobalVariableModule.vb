@@ -29,6 +29,8 @@ Module GlobalVariableModule
     Public Sub applydelaysImmediately()
         refresh_delay=My.Settings.refreshDelay
         search_delay=My.Settings.searchDelay
+        Main.refresh_released_grid_list.Interval=refresh_delay
+        Main.refresh_main_rgv_recordedacademicsonly.Interval=refresh_delay
     End Sub
 
 End Module
