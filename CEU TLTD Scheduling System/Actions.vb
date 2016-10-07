@@ -89,12 +89,16 @@ Public Class Actions
 
         Select Case Icontype
             Case 1
+                My.Computer.Audio.PlaySystemSound(Media.SystemSounds.Asterisk)
                 form.MessageIcon = GetRadMessageIcon(RadMessageIcon.Question)
             Case 2
+                My.Computer.Audio.PlaySystemSound(Media.SystemSounds.Beep)
                 form.MessageIcon = GetRadMessageIcon(RadMessageIcon.Info)
             Case 3
+                 My.Computer.Audio.PlaySystemSound(Media.SystemSounds.Exclamation)
                 form.MessageIcon = GetRadMessageIcon(RadMessageIcon.Exclamation)
             Case 4
+                 My.Computer.Audio.PlaySystemSound(Media.SystemSounds.Hand)
                 form.MessageIcon = GetRadMessageIcon(RadMessageIcon.Error)
         End Select
         form.ButtonsConfiguration = MessageBoxButtons.OK

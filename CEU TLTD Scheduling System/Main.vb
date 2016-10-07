@@ -782,6 +782,42 @@ Public Class Main
     '    End Try
     'End Sub
 
+    Public Sub load_res_borrowerlist()
+       Try
+        If MysqlConn.State = ConnectionState.Open Then
+            MysqlConn.Close()
+        End If
+        MysqlConn.ConnectionString = connstring
+            MysqlConn.Open()
+            query = "SELECT CONCAT (bor_surname,', ',bor_fname) as 'Name' FROM ceutltdscheduler.borrowers_reg"
+            comm = New MySqlCommand(query, MysqlConn)
+
+            reader = comm.ExecuteReader
+
+            rec_cb_borrower.Items.Clear()
+            While reader.Read
+                rec_cb_borrower.Items.Add(reader.GetString("name"))
+            End While
+
+            MysqlConn.Close()
+            Catch ex As MySqlException
+                If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed")))
+                    refresh_main_rgv_recordedacademicsonly.Stop()
+                    refresh_released_grid_list.Stop()
+                    RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                    Login.log_lbl_dbstatus.Text = "Offline"
+                    Login.log_lbl_dbstatus.ForeColor = Color.Red
+                    Return
+               Else
+                    RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+               End If
+            Catch ex As Exception
+                RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+        Finally
+            MysqlConn.Dispose()
+        End Try
+    End Sub
+
     'Programmed by BRENZ STARTING POINT
 
     Public Sub load_main_acc()
@@ -1015,12 +1051,19 @@ Public Class Main
 
         updateYN = RadMessageBox.Show(Me, "Are you sure to make changes on this staff's information?", "CEU TLTD Reservation System", MessageBoxButtons.YesNo, RadMessageIcon.Question)
         If updateYN = MsgBoxResult.Yes Then
-            If (acc_sf_id.Text = "") Or (acc_sf_fname.Text = "") Or (acc_sf_mname.Text = " ") Or (acc_sf_lname.Text = " ") Or (acc_sf_usertype.Text = " ") Or (acc_sf_username.Text = " ") Then
-                RadMessageBox.Show(Me, "Please complete the fields to update!", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+            If (acc_sf_fname.Text = "") Or (acc_sf_mname.Text = "") Or (acc_sf_lname.Text = "") Or (acc_sf_usertype.Text = "") Or (acc_sf_username.Text = "") Then
+                RadMessageBox.Show(Me, "Please select a staff to update!", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
             Else      
                     MysqlConn.Open()
-                    query = "UPDATE staff_reg set staff_id = '" & acc_sf_id.Text & "' , staff_fname = '" & acc_sf_fname.Text & "' , staff_mname = '" & acc_sf_mname.Text & "' , staff_surname = '" & acc_sf_lname.Text & "' , staff_type = '" & acc_sf_usertype.Text & "' , staff_username = '" & acc_sf_username.Text & "' where staff_id = '" & acc_sf_id.Text & "' "
+                    'query = "UPDATE staff_reg set staff_id = '" & acc_sf_id.Text & "' , staff_fname = '" & acc_sf_fname.Text & "' , staff_mname = '" & acc_sf_mname.Text & "' , staff_surname = '" & acc_sf_lname.Text & "' , staff_type = '" & acc_sf_usertype.Text & "' , staff_username = '" & acc_sf_username.Text & "' where staff_id = '" & acc_sf_id.Text & "' "
+                    query = "UPDATE ceutltdscheduler.staff_reg SET staff_fname=@b, staff_mname=@c, staff_surname=@d, staff_type=@e WHERE staff_id=@a and staff_username=@f"
                     comm = New MySqlCommand(query, MysqlConn)
+                    comm.Parameters.AddWithValue("@a",acc_sf_id.Text)
+                    comm.Parameters.AddWithValue("@b",acc_sf_fname.Text)
+                    comm.Parameters.AddWithValue("@c",acc_sf_mname.Text)
+                    comm.Parameters.AddWithValue("@d",acc_sf_lname.Text)
+                    comm.Parameters.AddWithValue("@e",acc_sf_usertype.Text)
+                    comm.Parameters.AddWithValue("@f", acc_sf_username.Text)
                     reader = comm.ExecuteReader
 
                     RadMessageBox.Show(Me, "Update Success!", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Info)
@@ -1070,16 +1113,20 @@ Public Class Main
 
         deleteYN = RadMessageBox.Show(Me, "Are you sure you want To Delete the account of this staff? ", "CEU TLTD Reservation System", MessageBoxButtons.YesNo, RadMessageIcon.Question)
         If deleteYN = MsgBoxResult.Yes Then
-            
+            If acc_sf_username.Text="" Or acc_sf_fname.Text="" Or acc_sf_lname.Text=""
+                RadMessageBox.Show(Me, "Please select a staff to delete.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+            Else
                 MysqlConn.Open()
                 Dim Query As String
-                Query = "delete from staff_reg where staff_id = '" & acc_sf_id.Text & "'"
+                Query = "delete from ceutltdscheduler.staff_reg WHERE staff_id=@a"
                 comm = New MySqlCommand(Query, MysqlConn)
+                comm.Parameters.AddWithValue("@a",acc_sf_id.Text)
                 reader = comm.ExecuteReader
 
                 RadMessageBox.Show(Me, "Account Deletion Successful!", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Info)
                 MysqlConn.Close()
         End If
+    End If
             Catch ex As MySqlException
                 If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed")))
                     refresh_main_rgv_recordedacademicsonly.Stop()
@@ -1142,13 +1189,13 @@ Public Class Main
         MysqlConn = New MySqlConnection
         MysqlConn.ConnectionString = connstring
         Dim READER As MySqlDataReader
-        If (acc_pf_id.Text = "") Or (acc_pf_fname.Text = "") Or (acc_pf_mname.Text = " ") Or (acc_pf_lname.Text = " ") Or (acc_pf_college.Text = " ") Then
-            RadMessageBox.Show(Me, "Please complete the fields to Save!", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+        If (acc_pf_fname.Text = "") Or (acc_pf_mname.Text = " ") Or (acc_pf_lname.Text = " ") Or (acc_pf_college.Text = " ") Then
+            RadMessageBox.Show(Me, "Please complete the name to Save!", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
         Else
             
                 MysqlConn.Open()
                 Dim Query As String
-                Query = "insert into `borrowers_reg`  values (@BorID, @BorFname, @BorMname, @BorLname, @BorCollege)"
+                Query = "insert into ceutltdscheduler.borrowers_reg VALUES(@BorID, @BorFname, @BorMname, @BorLname, @BorCollege)"
                 comm = New MySqlCommand(Query, MysqlConn)
                 comm.Parameters.AddWithValue("BorID", acc_pf_id.Text)
                 comm.Parameters.AddWithValue("BorFname", acc_pf_fname.Text)
@@ -1170,7 +1217,7 @@ Public Class Main
         End If
             Catch ex As MySqlException
                 If ex.Number = 1062 Then
-                    RadMessageBox.Show(Me, "The ID exists already.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                    RadMessageBox.Show(Me, "The name exists already.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
                 Else If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed")))
                     refresh_main_rgv_recordedacademicsonly.Stop()
                     refresh_released_grid_list.Stop()
@@ -1189,7 +1236,9 @@ Public Class Main
                 rpv_child_acctmgmt.SelectedPage = rpv_borrower
             End Try
     End Sub
-
+    Dim temp_Prof_fname As String
+    Dim temp_Prof_mname As String
+    Dim temp_Prof_surname As String
     'Programmed by Brenz 9th point Cell Double Click Prof List!
     Private Sub acc_prof_list_CellDoubleClick(sender As Object, e As GridViewCellEventArgs) Handles acc_prof_list.CellDoubleClick
 
@@ -1206,7 +1255,11 @@ Public Class Main
                 acc_pf_lname.Text = row.Cells("Surname").Value.ToString
                 acc_pf_college.Text = row.Cells("College/School").Value.ToString
 
-                acc_pf_id.Enabled = False
+                temp_Prof_fname = row.Cells("First Name").Value.ToString
+                temp_Prof_mname = row.Cells("Middle Name").Value.ToString
+                temp_Prof_surname = row.Cells("Surname").Value.ToString
+
+                'acc_pf_id.Enabled = False
                 acc_prof_btn_update.Show()
                 acc_prof_btn_delete.Show()
                 acc_prof_btn_save.Hide()
@@ -1227,13 +1280,23 @@ Public Class Main
 
         updateYN = RadMessageBox.Show(Me, "Do you want to update the borrower's information?", "CEU TLTD Reservation System", MessageBoxButtons.YesNo, RadMessageIcon.Question)
         If updateYN = MsgBoxResult.Yes Then
-            If (acc_pf_id.Text = "") Or (acc_pf_fname.Text = "") Or (acc_pf_mname.Text = " ") Or (acc_pf_lname.Text = " ") Or (acc_pf_college.Text = " ") Then
-                RadMessageBox.Show(Me, "Please complete the fields to update!", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+            If (acc_pf_fname.Text = "") Or (acc_pf_mname.Text = "") Or (acc_pf_lname.Text = "") Or (acc_pf_college.Text = "") Then
+                RadMessageBox.Show(Me, "Please select a borrower to update!", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
             Else
                 
                     MysqlConn.Open()
-                    query = "UPDATE borrowers_reg set bor_id = '" & acc_pf_id.Text & "' , bor_fname = '" & acc_pf_fname.Text & "' , bor_mname = '" & acc_pf_mname.Text & "' , bor_surname = '" & acc_pf_lname.Text & "' , bor_college = '" & acc_pf_college.Text & "' where bor_id = '" & acc_pf_id.Text & "' "
+                    query = "UPDATE borrowers_reg set bor_id=@new_id, bor_fname=@new_fname, bor_mname=@new_mname, bor_surname=@new_surname, bor_college=@new_college WHERE bor_fname=@old_fname and bor_mname=@old_mname and bor_surname=@old_surname"
+                    'query = "UPDATE borrowers_reg set bor_id = '" & acc_pf_id.Text & "' , bor_fname = '" & acc_pf_fname.Text & "' , bor_mname = '" & acc_pf_mname.Text & "' , bor_surname = '" & acc_pf_lname.Text & "' , bor_college = '" & acc_pf_college.Text & "' where bor_id = '" & acc_pf_id.Text & "' "
                     comm = New MySqlCommand(query, MysqlConn)
+                    comm.Parameters.AddWithValue("@new_id",acc_pf_id.Text)
+                    comm.Parameters.AddWithValue("@new_fname",acc_pf_fname.Text)
+                    comm.Parameters.AddWithValue("@new_mname",acc_pf_mname.Text)
+                    comm.Parameters.AddWithValue("@new_surname",acc_pf_lname.Text)
+                    comm.Parameters.AddWithValue("@new_college",acc_pf_college.Text)
+
+                    comm.Parameters.AddWithValue("@old_fname",temp_Prof_fname)
+                    comm.Parameters.AddWithValue("@old_mname",temp_Prof_mname)
+                    comm.Parameters.AddWithValue("@old_surname",temp_Prof_surname)
                     reader = comm.ExecuteReader
 
                     RadMessageBox.Show(Me, "Update Success!", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Info)
@@ -1277,11 +1340,17 @@ Public Class Main
         End If
         deleteYN = RadMessageBox.Show(Me, "Are you sure you want to Delete this borrower? ", "CEU TLTD Reservation System", MessageBoxButtons.YesNo, RadMessageIcon.Question)
         If deleteYN = MsgBoxResult.Yes Then
-            
+            If (acc_pf_fname.Text = "") Or (acc_pf_mname.Text = "") Or (acc_pf_lname.Text = "") Or (acc_pf_college.Text = "") Then
+                RadMessageBox.Show(Me, "Please select a borrower to delete!", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+            Else
                 MysqlConn.Open()
                 Dim Query As String
-                Query = "delete from borrowers_reg where bor_id = '" & acc_pf_id.Text & "'"
+                'Query = "delete from borrowers_reg where bor_id = '" & acc_pf_id.Text & "'"
+                Query = "DELETE FROM ceutltdscheduler.borrowers_reg where bor_fname=@a and bor_mname=@b and bor_surname=@c"
                 comm = New MySqlCommand(Query, MysqlConn)
+                comm.Parameters.AddWithValue("@a", temp_Prof_fname)
+                comm.Parameters.AddWithValue("@b", temp_Prof_mname)
+                comm.Parameters.AddWithValue("@c", temp_Prof_surname)
                 reader = comm.ExecuteReader
                 MysqlConn.Close()
                 RadMessageBox.Show(Me, "Account deleted.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Info)
@@ -1290,12 +1359,12 @@ Public Class Main
                 acc_pf_mname.Text = ""
                 acc_pf_lname.Text = ""
                 acc_pf_college.Text = ""
-                acc_pf_id.Enabled = True
+                'acc_pf_id.Enabled = True
                 acc_prof_btn_delete.Hide()
                 acc_prof_btn_update.Hide()
                 acc_prof_btn_save.Show()
         End If
-
+        End If
             Catch ex As MySqlException
                 If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed")))
                     refresh_main_rgv_recordedacademicsonly.Stop()
@@ -2820,7 +2889,7 @@ Public Class Main
             Dim conflictequipment As String = ""
             Dim conflictequipmentsn As String = ""
 
-            If (rec_cb_reserveno.Text = "") Or (rec_cb_idnum.Text = "") Or (rec_cb_borrower.Text = "") Or (rec_dtp_date.Text = "") Or (rec_dtp_starttime.Text = "") Or (rec_dtp_endtime.Text = "") Or (rec_cb_college_school.Text = "") Or (rec_cb_location.Text = "") Or (rec_eq_chooseno.Text = "") Or (rec_eq_type_choose.Text = "") Or (eq_rgv_addeq.Rows.Count < 0) Or (rec_cb_acttype.Text = "") Then
+            If (rec_cb_reserveno.Text = "")  Or (rec_cb_borrower.Text = "") Or (rec_dtp_date.Text = "") Or (rec_dtp_starttime.Text = "") Or (rec_dtp_endtime.Text = "") Or (rec_cb_college_school.Text = "") Or (rec_cb_location.Text = "") Or (rec_eq_chooseno.Text = "") Or (rec_eq_type_choose.Text = "") Or (eq_rgv_addeq.Rows.Count < 0) Or (rec_cb_acttype.Text = "") Then
                 RadMessageBox.Show(Me, "Please complete the fields", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
             Else
                 Dim elapsedTime As TimeSpan = DateTime.Parse(Format(CDate(rec_dtp_date.Value), "yyyy-MM-dd") & " " & rec_dtp_endtime.Text).Subtract(DateTime.Parse(DateTime.Parse(Format(CDate(rec_dtp_date.Value), "yyyy-MM-dd") & " " & rec_dtp_starttime.Text)))
@@ -3085,42 +3154,43 @@ Public Class Main
         End Try
     End Sub
 
-    'Combining (Fname,Lname) in Borrower Field in Reservation
-    Private Sub rec_cb_idnum_TextChanged(sender As Object, e As EventArgs) Handles rec_cb_idnum.TextChanged
-        Try
-        If MysqlConn.State = ConnectionState.Open Then
-            MysqlConn.Close()
-        End If
-        MysqlConn.ConnectionString = connstring
-            MysqlConn.Open()
-            query = "SELECT CONCAT (bor_surname,', ',bor_fname) as 'Name' FROM borrowers_reg WHERE bor_id=@bor_idno"
-            comm = New MySqlCommand(query, MysqlConn)
-            comm.Parameters.AddWithValue("bor_idno", rec_cb_idnum.Text)
-            reader = comm.ExecuteReader
+    'Combining (Fname,Lname) in Borrower Field in Reservation (CLIENT ASKS NOT TO INCLUDE ID# in to make names appear in the DropDownList, it is in Main_Load method now)
 
-            rec_cb_borrower.Items.Clear()
-            While reader.Read
-                rec_cb_borrower.Items.Add(reader.GetString("name"))
-            End While
+    'Private Sub rec_cb_idnum_TextChanged(sender As Object, e As EventArgs) Handles rec_cb_idnum.TextChanged
+    '    Try
+    '    If MysqlConn.State = ConnectionState.Open Then
+    '        MysqlConn.Close()
+    '    End If
+    '    MysqlConn.ConnectionString = connstring
+    '        MysqlConn.Open()
+    '        query = "SELECT CONCAT (bor_surname,', ',bor_fname) as 'Name' FROM borrowers_reg WHERE bor_id=@bor_idno"
+    '        comm = New MySqlCommand(query, MysqlConn)
+    '        comm.Parameters.AddWithValue("bor_idno", rec_cb_idnum.Text)
+    '        reader = comm.ExecuteReader
 
-            MysqlConn.Close()
-            Catch ex As MySqlException
-                If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed")))
-                    refresh_main_rgv_recordedacademicsonly.Stop()
-                    refresh_released_grid_list.Stop()
-                    RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
-                    Login.log_lbl_dbstatus.Text = "Offline"
-                    Login.log_lbl_dbstatus.ForeColor = Color.Red
-                    Return
-               Else
-                    RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
-               End If
-            Catch ex As Exception
-                RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
-        Finally
-            MysqlConn.Dispose()
-        End Try
-    End Sub
+    '        rec_cb_borrower.Items.Clear()
+    '        While reader.Read
+    '            rec_cb_borrower.Items.Add(reader.GetString("name"))
+    '        End While
+
+    '        MysqlConn.Close()
+    '        Catch ex As MySqlException
+    '            If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed")))
+    '                refresh_main_rgv_recordedacademicsonly.Stop()
+    '                refresh_released_grid_list.Stop()
+    '                RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+    '                Login.log_lbl_dbstatus.Text = "Offline"
+    '                Login.log_lbl_dbstatus.ForeColor = Color.Red
+    '                Return
+    '           Else
+    '                RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+    '           End If
+    '        Catch ex As Exception
+    '            RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+    '    Finally
+    '        MysqlConn.Dispose()
+    '    End Try
+    'End Sub
 
 
     'Clearing of Fields in Reservation Page
@@ -4324,6 +4394,10 @@ End Sub
                 'Manahimik ang error
             End Try
         End If
+    End Sub
+
+    Private Sub rec_cb_borrower_GotFocus(sender As Object, e As EventArgs) Handles rec_cb_borrower.GotFocus
+        load_res_borrowerlist()
     End Sub
 
 
