@@ -22,9 +22,18 @@ Public Class DBPasswordPrompt
                 mysql_LOAD.ImportInfo.EncryptionPassword="9Wy3Z3xTApDKUtPVN+TegRLTGR2mj8_M3*3ZJwSts83g9+pL?ZLEn?3xnuMR!2g"
                 mysql_LOAD.ImportFromFile(loaddb_dialog.FileName.ToString)
                 MySQLConn.Close
-                RadMessageBox.Show(Me, "Database Successfully Imported.", "TLTD Scheduling System", MessageBoxButtons.OK, RadMessageIcon.Info)
-            Catch ex As MySqlException
-                RadMessageBox.Show(Me, "Error in Importing Database:" & Environment.NewLine & ex.Message, "TLTD Scheduling System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                    Actions.Wu_RadMessageBox(1,"Database Successfully Imported.")
+             Catch ex As MySqlException
+             If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed")))
+                Actions.Wu_RadMessageBox(4," The database probably went offline.")
+                Login.log_lbl_dbstatus.Text = "Offline"
+                Login.log_lbl_dbstatus.ForeColor = Color.Red
+                Return
+            Else
+            Actions.Wu_RadMessageBox(4,ex.Message)
+            End If
+        Catch ex As Exception
+            Actions.Wu_RadMessageBox(4,ex.Message)
            Finally
             Me.Dispose
            End Try
@@ -32,7 +41,8 @@ Public Class DBPasswordPrompt
         End If
             Else
             txt_DBPassword.Text=""
-            RadMessageBox.Show(Me, "Wrong Password!!", "TLTD Scheduling System", MessageBoxButtons.OK, RadMessageIcon.Error)
+            Actions.Wu_RadMessageBox(4,"Wrong Password!!")
+            'RadMessageBox.Show(Me, "Wrong Password!!", "TLTD Scheduling System", MessageBoxButtons.OK, RadMessageIcon.Error)
             Me.Dispose
             End If
     End Sub
