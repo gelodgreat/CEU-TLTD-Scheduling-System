@@ -364,16 +364,19 @@ Public Class Main
          'This is Used to shut up the object reference error
         Else
         Dim cols_res_resnum As GridViewDataColumn = reservation_rgv_recordeddata.Columns("Reservation Number")
-        cols_res_resnum.Width=115
+        cols_res_resnum.Width=119
 
         Dim cols_res_bor As GridViewDataColumn = reservation_rgv_recordeddata.Columns("Borrower")
         cols_res_bor.Width=119
 
         Dim cols_res_id  As GridViewDataColumn = reservation_rgv_recordeddata.Columns("ID")
         cols_res_id.Width=71
+        
+        Dim cols_res_eqty As GridViewDataColumn = reservation_rgv_recordeddata.Columns("Equipment Type")
+        cols_res_eqty.Width=119
 
         Dim cols_res_eqno As GridViewDataColumn = reservation_rgv_recordeddata.Columns("Equipment Number")
-        cols_res_eqno.Width=138
+        cols_res_eqno.Width=130
 
         Dim cols_res_eqname As GridViewDataColumn = reservation_rgv_recordeddata.Columns("Equipment")
         cols_res_eqname.Width=239
@@ -397,22 +400,23 @@ Public Class Main
         cols_res_att.Width = 120
 
         Dim cols_res_sta As GridViewDataColumn = reservation_rgv_recordeddata.Columns("Status")
-        cols_res_sta.Width = 120
+        cols_res_sta.Width = 115
         End If
     End Sub 'ITO YUNG NAGPAPAERROR       'OK NA
 
    Private Sub SetSizeofReservedItemstobeReleased()
         If reserved_grid_list.Columns.Count<=0
-
         Else
         Dim col_rel_res_ReservationNum As GridViewDataColumn = reserved_grid_list.Columns("Reservation Number")
-        col_rel_res_ReservationNum.Width = 115
+        col_rel_res_ReservationNum.Width = 120
         Dim col_rel_res_Bor as GridViewDataColumn = reserved_grid_list.Columns("Borrower")
         col_rel_res_Bor.Width = 119
+        Dim col_rel_res_eqtype as GridViewDataColumn = reserved_grid_list.Columns("Equipment Type")
+        col_rel_res_eqtype.Width = 119
         Dim col_rel_res_eqno As GridViewDataColumn = reserved_grid_list.Columns("Equipment Number")
-        col_rel_res_eqno.Width = 138
+        col_rel_res_eqno.Width = 120
         Dim col_rel_res_eqname As GridViewDataColumn = reserved_grid_list.Columns("Equipment")
-        col_rel_res_eqname.Width = 300
+        col_rel_res_eqname.Width = 310
         Dim col_rel_res_date As GridViewDataColumn = reserved_grid_list.Columns("Date")
         col_rel_res_date.Width = 114
         Dim col_rel_res_loc As GridViewDataColumn = reserved_grid_list.Columns("Location")
@@ -422,7 +426,7 @@ Public Class Main
         Dim col_rel_res_et As GridViewDataColumn = reserved_grid_list.Columns("End Time")
         col_rel_res_et.Width = 68
         Dim col_rel_res_stt As GridViewDataColumn = reserved_grid_list.Columns("Status")
-        col_rel_res_stt.Width = 120
+        col_rel_res_stt.Width = 115
       End If
     End Sub
 
@@ -620,11 +624,11 @@ Public Class Main
             'If show_all_no_filter = "DatePicker" Then
              '   query = "Select reservationno as 'Reservation Number' ,borrower as 'Borrower',id as 'ID', equipmentno as 'Equipment Number', equipment as 'Equipment', location as 'Location', DATE_FORMAT(date,'%M %d %Y') as 'Date',TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time',activitytype as 'Activity Type',actname as 'Activity',res_status as 'Status' from reservation natural join reservation_equipments where res_status='Reserved' and date ='" & Format(CDate(rec_dtp_date.Value), "yyyy-MM-dd") & "' ORDER by date DESC"
             If show_all_no_filter ="Radio_Cancelled"
-                query = "Select reservationno as 'Reservation Number' ,borrower as 'Borrower',id as 'ID', equipmentno as 'Equipment Number', equipment as 'Equipment', location as 'Location', DATE_FORMAT(date,'%M %d %Y') as 'Date',TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time',activitytype as 'Activity Type',actname as 'Activity',res_status as 'Status' from reservation natural join reservation_equipments where res_status='Cancelled' and date ='" & Format(CDate(rec_dtp_date.Value), "yyyy-MM-dd") & "' ORDER by date DESC"
+                query = "Select reservationno as 'Reservation Number' ,borrower as 'Borrower',id as 'ID', equipmenttype as 'Equipment Type', equipmentno as 'Equipment Number', equipment as 'Equipment', location as 'Location', DATE_FORMAT(date,'%M %d %Y') as 'Date',TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time',activitytype as 'Activity Type',actname as 'Activity',res_status as 'Status' from reservation natural join reservation_equipments where res_status='Cancelled' and date ='" & Format(CDate(rec_dtp_date.Value), "yyyy-MM-dd") & "' ORDER by date DESC"
             Else If show_all_no_filter = "Radio_Reserved"
-                query = "Select reservationno as 'Reservation Number' ,borrower as 'Borrower',id as 'ID', equipmentno as 'Equipment Number', equipment as 'Equipment', location as 'Location', DATE_FORMAT(date,'%M %d %Y') as 'Date',TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time',activitytype as 'Activity Type',actname as 'Activity',res_status as 'Status' from reservation natural join reservation_equipments where res_status='Reserved' and date ='" & Format(CDate(rec_dtp_date.Value), "yyyy-MM-dd") & "' ORDER by date DESC"
+                query = "Select reservationno as 'Reservation Number' ,borrower as 'Borrower',id as 'ID', equipmenttype as 'Equipment Type', equipmentno as 'Equipment Number', equipment as 'Equipment', location as 'Location', DATE_FORMAT(date,'%M %d %Y') as 'Date',TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time',activitytype as 'Activity Type',actname as 'Activity',res_status as 'Status' from reservation natural join reservation_equipments where res_status='Reserved' and date ='" & Format(CDate(rec_dtp_date.Value), "yyyy-MM-dd") & "' ORDER by date DESC"
             Else If show_all_no_filter = "Radio_ShowAll"
-                query = "Select reservationno as 'Reservation Number' ,borrower as 'Borrower',id as 'ID', equipmentno as 'Equipment Number', equipment as 'Equipment', location as 'Location', DATE_FORMAT(date,'%M %d %Y') as 'Date',TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time',activitytype as 'Activity Type',actname as 'Activity',res_status as 'Status' from reservation natural join reservation_equipments WHERE date ='" & Format(CDate(rec_dtp_date.Value), "yyyy-MM-dd") & "' ORDER by date DESC"
+                query = "Select reservationno as 'Reservation Number' ,borrower as 'Borrower',id as 'ID', equipmenttype as 'Equipment Type', equipmentno as 'Equipment Number', equipment as 'Equipment', location as 'Location', DATE_FORMAT(date,'%M %d %Y') as 'Date',TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time',activitytype as 'Activity Type',actname as 'Activity',res_status as 'Status' from reservation natural join reservation_equipments WHERE date ='" & Format(CDate(rec_dtp_date.Value), "yyyy-MM-dd") & "' ORDER by date DESC"
             End If
             'reservation_rgv_recordeddata.Columns.Clear
             comm = New MySqlCommand(query, MysqlConn)
@@ -1512,24 +1516,100 @@ Public Class Main
         If (rel_tb_reservationnum.Text = "") Or (rel_tb_borrower.Text = "") Or (rel_tb_equipmentnum.Text = "") Or (rel_tb_equipment.Text = "") Or (rel_tb_startdate.Text = " ") Or (rel_tb_starttime.Text = " ") Or (rel_tb_endtime.Text = " ") Then
             RadMessageBox.Show(Me, "Please double click an equipment to release!", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Exclamation)
         Else
-            
-                MysqlConn.Open()
-                Dim Query As String
-                ' Dim Query2 As String
-                Query = "insert into released_info (rel_id_passnum,rel_reservation_no,rel_borrower,rel_equipment_no,rel_equipment,rel_assign_date,rel_starttime,rel_endtime,rel_status,rel_releasedby) VALUES('" & rel_tb_id.Text & "','" & rel_tb_reservationnum.Text & "','" & rel_tb_borrower.Text & "','" & rel_tb_equipmentnum.Text & "','" & rel_tb_equipment.Text & "','" & Format(CDate(rel_tb_startdate.Value), "yyyy-MM-dd") & "','" & Format(CDate(rel_tb_starttime.Text), "HH:mm") & "','" & Format(CDate(rel_tb_endtime.Text), "HH:mm") & "','" & rel_tb_status.Text & "','" & rel_nameofstaff_release.Text & "'); update reservation_equipments set  res_status = '" & rel_tb_status.Text & "' where reservationno = '" & rel_tb_reservationnum.Text & "' and equipmentno='" & rel_tb_equipmentnum.Text & "' and equipment= '" & rel_tb_equipment.Text & "'"
-                'Query = "delete from reservation where  reservationno = '" & rel_tb_reservationnum.Text & "'"
-                comm = New MySqlCommand(Query, MysqlConn)
-                'comm.Parameters.AddWithValue("ID", rel_tb_id.Text)
-                'comm.Parameters.AddWithValue("ID", rel_tb_id.Text)
-                'comm.Parameters.AddWithValue("ID", rel_tb_id.Text)
-
-
                 svYN = RadMessageBox.Show(Me, "Are you sure you want to release this Equipment? ", "TLTD Reservation System", MessageBoxButtons.YesNo, RadMessageIcon.Question)
                 If svYN = MsgBoxResult.Yes Then
                     If rel_tb_status.Text = "Reserved" Then
                         RadMessageBox.Show("Please change the status to 'Released' for the confirmation of releasing this equipment.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Exclamation)
                     ElseIf rel_tb_status.Text = "Released" Then
-                        READER = comm.ExecuteReader
+                        If changedEquipment  'SHIEIEEEETTT new update
+                            Try
+                                Dim newserial As String
+                                If MysqlConn.State = ConnectionState.Open Then
+                                    MysqlConn.Close()
+                                End If
+                                MysqlConn.ConnectionString = connstring
+                                MysqlConn.Open()
+                                query = "SELECT equipmentserial from ceutltdprevmaintenance.equipmentlist where equipmentnumber=@a and equipmentmodel=@b and equipmentname=@c"
+                                comm = New MySqlCommand(query, MysqlConn)
+                                comm.Parameters.AddWithValue("@a", rel_tb_equipmentnum.Text)
+                                comm.Parameters.AddWithValue("@b", rel_tb_equipment.Text)
+                                comm.Parameters.AddWithValue("@c", oldEqtypSelected)
+                                reader = comm.ExecuteReader
+                                While reader.Read
+                                    newserial=(reader.GetString("equipmentserial"))
+                                End While
+                                MysqlConn.Close()
+
+                                MysqlConn.Open()
+                                query="UPDATE ceutltdscheduler.reservation SET equipmentsn=@new_sn WHERE reservationno=@resno and equipmenttype=@old_eqtype and equipment=@old_equipment and equipmentno=@old_equipmentnumber; UPDATE ceutltdscheduler.reservation SET equipment=(SELECT equipmentmodel FROM ceutltdprevmaintenance.equipmentlist where equipmentserial=@new_sn),equipmentno=(SELECT equipmentnumber FROM ceutltdprevmaintenance.equipmentlist where equipmentserial=@new_sn) WHERE reservationno=@resno and equipmenttype=@old_eqtype and equipment=@old_equipment and equipmentno=@old_equipmentnumber; UPDATE ceutltdscheduler.reservation_equipments SET equipmentsn=@new_sn, equipment=(SELECT equipmentmodel FROM ceutltdprevmaintenance.equipmentlist where equipmentserial=@new_sn), equipmentno=(SELECT equipmentnumber FROM ceutltdprevmaintenance.equipmentlist where equipmentserial=@new_sn), res_status='Released' WHERE reservationno=@resno; INSERT INTO ceutltdscheduler.released_info (rel_id_passnum,rel_reservation_no,rel_borrower,rel_equipment_no,rel_equipment,rel_assign_date,rel_starttime,rel_endtime,rel_status,rel_releasedby) VALUES(@i_a,@i_b,@i_c,@i_d,@i_e,@i_f,@i_g,@i_h,@i_i,@i_j)"
+                                comm = New MySqlCommand(query, MysqlConn)
+                                comm.Parameters.AddWithValue("@new_sn",newserial)
+                                comm.Parameters.AddWithValue("@resno",rel_tb_reservationnum.Text)
+                                comm.Parameters.AddWithValue("@old_eqtype",oldEqtypSelected)
+                                comm.Parameters.AddWithValue("@old_equipment",oldEqnameSelected)
+                                comm.Parameters.AddWithValue("@old_equipmentnumber", oldEqnumberSelected)
+                                'INSERTING TO RELEASED_INFO
+                                comm.Parameters.AddWithValue("@i_a",rel_tb_id.Text)
+                                comm.Parameters.AddWithValue("@i_b",rel_tb_reservationnum.Text)
+                                comm.Parameters.AddWithValue("@i_c",rel_tb_borrower.Text)
+                                comm.Parameters.AddWithValue("@i_d",rel_tb_equipmentnum.Text)
+                                comm.Parameters.AddWithValue("@i_e",rel_tb_equipment.Text)
+                                comm.Parameters.AddWithValue("@i_f",Format(CDate(rel_tb_startdate.Value), "yyyy-MM-dd"))
+                                comm.Parameters.AddWithValue("@i_g",Format(CDate(rel_tb_starttime.Text)))
+                                comm.Parameters.AddWithValue("@i_h",Format(CDate(rel_tb_endtime.Text)))
+                                comm.Parameters.AddWithValue("@i_i",rel_tb_status.Text)
+                                comm.Parameters.AddWithValue("@i_j",rel_nameofstaff_release.Text)
+                                comm.ExecuteNonQuery()
+                                MysqlConn.Close()
+                            Catch ex As MySqlException
+                                If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed")))
+                                    refresh_main_rgv_recordedacademicsonly.Stop()
+                                    refresh_released_grid_list.Stop()
+                                    RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                                    Login.log_lbl_dbstatus.Text = "Offline"
+                                    Login.log_lbl_dbstatus.ForeColor = Color.Red
+                                    Return
+                               Else
+                                    RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                               End If
+                            Catch ex As Exception
+                                RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                        Finally
+                            MysqlConn.Dispose()
+                        End Try
+                    'Query="SET @new_sn=(SELECT equipmentserial from ceutltdprevmaintenance.equipmentlist where equipmentnumber=@a and equipmentmodel=@b and equipmentname=@d); UPDATE ceutltdscheduler.reservation SET equipmentsn=@new_sn WHERE reservationno=@resno and equipmenttype=@old_eqtype and equipment=@old_equipment and equipmentno=@old_equipmentnumber; UPDATE ceutltdscheduler.reservation SET equipment=(SELECT equipmentmodel FROM ceutltdprevmaintenance.equipmentlist where equipmentserial=@new_sn),equipmentno=(SELECT equipmentnumber FROM ceutltdprevmaintenance.equipmentlist where equipmentserial=@new_sn) WHERE reservationno=@resno and equipmenttype=@old_eqtype and equipment=@old_equipment and equipmentno=@old_equipmentnumber; UPDATE cuetltdscheduler.reservation_equipments SET equipmentsn=@new_sn, equipment=(SELECT equipmentmodel FROM ceutltdprevmaintenance.equipmentlist where equipmentserial=@new_sn), equipmentno=(SELECT equipmentnumber FROM ceutltdprevmaintenance.equipmentlist where equipmentserial=@new_sn) WHERE reservationno=@resno; INSERT INTO ceutltdscheduler.released_info (rel_id_passnum,rel_reservation_no,rel_borrower,rel_equipment_no,rel_equipment,rel_assign_date,rel_starttime,rel_endtime,rel_status,rel_releasedby) VALUES('" & rel_tb_id.Text & "','" & rel_tb_reservationnum.Text & "','" & rel_tb_borrower.Text & "','" & rel_tb_equipmentnum.Text & "','" & rel_tb_equipment.Text & "','" & Format(CDate(rel_tb_startdate.Value), "yyyy-MM-dd") & "','" & Format(CDate(rel_tb_starttime.Text), "HH:mm") & "','" & Format(CDate(rel_tb_endtime.Text), "HH:mm") & "','" & rel_tb_status.Text & "','" & rel_nameofstaff_release.Text & "'); update reservation_equipments set  res_status = '" & rel_tb_status.Text & "' where reservationno = '" & rel_tb_reservationnum.Text & "' and equipmentno='" & rel_tb_equipmentnum.Text & "' and equipment= '" & rel_tb_equipment.Text & "'"
+                    'comm.Parameters.AddWithValue("@a",rel_tb_equipmentnum.Text)
+                    'comm.Parameters.AddWithValue("@b",rel_tb_equipment.Text)
+                    'comm.Parameters.AddWithValue("@d",oldEqtypSelected)
+                    'comm.Parameters.AddWithValue("@resno",rel_tb_reservationnum.Text)
+                    'comm.Parameters.AddWithValue("@old_eqtype",oldEqtypSelected)
+                    'comm.Parameters.AddWithValue("@old_equipment",oldEqnameSelected)
+                    'comm.Parameters.AddWithValue("@old_equipmentnumber", oldEqnumberSelected)
+ 
+                Else 'Usual
+                    MysqlConn.Open()
+                    Dim Query As String
+                    Query = "INSERT INTO ceutltdscheduler.released_info (rel_id_passnum,rel_reservation_no,rel_borrower,rel_equipment_no,rel_equipment,rel_assign_date,rel_starttime,rel_endtime,rel_status,rel_releasedby) VALUES(@i_a,@i_b,@i_c,@i_d,@i_e,@i_f,@i_g,@i_h,@i_i,@i_j); UPDATE ceutltdscheduler.reservation_equipments SET res_status=@i_i WHERE reservationno=@i_b and equipmentno=@i_d and equipment=@i_e"
+                    comm = New MySqlCommand(Query, MysqlConn)
+                    comm.Parameters.AddWithValue("@i_a",rel_tb_id.Text)
+                    comm.Parameters.AddWithValue("@i_b",rel_tb_reservationnum.Text)
+                    comm.Parameters.AddWithValue("@i_c",rel_tb_borrower.Text)
+                    comm.Parameters.AddWithValue("@i_d",rel_tb_equipmentnum.Text)
+                    comm.Parameters.AddWithValue("@i_e",rel_tb_equipment.Text)
+                    comm.Parameters.AddWithValue("@i_f",Format(CDate(rel_tb_startdate.Value), "yyyy-MM-dd"))
+                    comm.Parameters.AddWithValue("@i_g",Format(CDate(rel_tb_starttime.Text)))
+                    comm.Parameters.AddWithValue("@i_h",Format(CDate(rel_tb_endtime.Text)))
+                    comm.Parameters.AddWithValue("@i_i",rel_tb_status.Text)
+                    comm.Parameters.AddWithValue("@i_j",rel_nameofstaff_release.Text)
+                            
+                    READER = comm.ExecuteReader
+                    MysqlConn.Close()
+                End If
+                'Query = "delete from reservation where  reservationno = '" & rel_tb_reservationnum.Text & "'"
+                
+                'comm.Parameters.AddWithValue("ID", rel_tb_id.Text)
+                'comm.Parameters.AddWithValue("ID", rel_tb_id.Text)
+                'comm.Parameters.AddWithValue("ID", rel_tb_id.Text)
                         RadMessageBox.Show("Released!", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Info)
                         rel_tb_borrower.Text = ""
                         rel_tb_startdate.Text = "01/01/99"
@@ -1548,9 +1628,9 @@ Public Class Main
                         load_rec_table("NONE",True)
                         color_coding()
                         released_btn_release.Enabled=False
+                        changedEquipment = False
                   End If
                 End If
-                MysqlConn.Close()
             End If
             Catch ex As MySqlException
                 If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed")))
@@ -1568,7 +1648,6 @@ Public Class Main
             Finally
                 MysqlConn.Dispose()
             End Try
-
     End Sub
 
 
@@ -1679,7 +1758,7 @@ Public Class Main
 
             MysqlConn.Open()
             Dim query As String
-            query = "Select reservationno as 'Reservation Number' , borrower as 'Borrower', equipmentno as 'Equipment Number', equipment as 'Equipment', location as 'Location', DATE_FORMAT(date,'%M %d %Y') as 'Date',TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time',res_status as 'Status' from reservation natural join reservation_equipments where res_status = 'Reserved'  ORDER by date DESC, reservationno ASC"
+            query = "Select reservationno as 'Reservation Number', borrower as 'Borrower', equipmenttype as 'Equipment Type', equipmentno as 'Equipment Number', equipment as 'Equipment', location as 'Location', DATE_FORMAT(date,'%M %d %Y') as 'Date',TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time',res_status as 'Status' from reservation natural join reservation_equipments where res_status = 'Reserved'  ORDER by date DESC, reservationno ASC"
             comm = New MySqlCommand(query, MysqlConn)
             sda.SelectCommand = comm
             sda.Fill(dbdataset)
@@ -1719,7 +1798,10 @@ Public Class Main
         End If
         
     End Sub
-
+    Dim oldEqtypSelected As String
+    Dim oldEqnumberSelected As String
+    Dim oldEqnameSelected As String
+    Dim changedEquipment As Boolean
     'Programmed by BRENZ 20th Point reserved_grid_list cell double click at releasing management
     Private Sub reserved_grid_list_CellDoubleClick(sender As Object, e As GridViewCellEventArgs) Handles reserved_grid_list.CellDoubleClick
         Dim released As String
@@ -1730,6 +1812,11 @@ Public Class Main
             row = Me.reserved_grid_list.Rows(e.RowIndex)
             released = row.Cells("Status").Value.ToString
 
+            oldEqtypSelected=row.Cells("Equipment Type").Value.ToString
+            oldEqnumberSelected=row.Cells("Equipment Number").Value.ToString
+            oldEqnameSelected=row.Cells("Equipment").Value.ToString
+
+            load_other_available_equipments()
             If released = "Released" Then
                 RadMessageBox.Show(Me, "The equipment is already released", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Exclamation)
             Else
@@ -1768,6 +1855,82 @@ Public Class Main
         End If
     End Sub
 
+    Private Sub load_other_available_equipments()
+        Try
+        rel_tb_equipmentnum.Items.Clear()
+        If MysqlConn.State = ConnectionState.Open Then
+            MysqlConn.Close()
+        End If
+        MysqlConn.ConnectionString = connstring
+            MysqlConn.Open()
+
+            query = "SELECT DISTINCT equipmentnumber FROM ceutltdprevmaintenance.equipmentlist WHERE remarks LIKE '%Good Condition%' and equipmentname=@rec_eq_type_choose"
+            comm = New MySqlCommand(query, MysqlConn)
+            comm.Parameters.AddWithValue("rec_eq_type_choose", oldEqtypSelected)
+            reader = comm.ExecuteReader
+
+            rel_tb_equipment.Items.Clear()
+            While reader.Read
+                rel_tb_equipmentnum.Items.Add(reader.GetString("equipmentnumber"))
+            End While
+            MysqlConn.Close()
+            Catch ex As MySqlException
+                If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed")))
+                    refresh_main_rgv_recordedacademicsonly.Stop()
+                    refresh_released_grid_list.Stop()
+                    RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                    Login.log_lbl_dbstatus.Text = "Offline"
+                    Login.log_lbl_dbstatus.ForeColor = Color.Red
+                    Return
+               Else
+                    RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+               End If
+            Catch ex As Exception
+                RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+        Finally
+            MysqlConn.Dispose()
+        End Try
+    End Sub
+
+    Private Sub rel_tb_equipmentnum_SelectedIndexChanged(sender As Object, e As UI.Data.PositionChangedEventArgs) Handles rel_tb_equipmentnum.SelectedIndexChanged
+        Try
+            changedEquipment = True
+            rel_tb_equipment.Items.Clear
+        If MysqlConn.State = ConnectionState.Open Then
+            MysqlConn.Close()
+        End If
+        MysqlConn.ConnectionString = connstring
+            MysqlConn.Open()
+            query = "SELECT equipmentmodel FROM ceutltdprevmaintenance.equipmentlist WHERE remarks LIKE '%Good Condition%' and equipmentname=@rec_eq_type_choose and equipmentnumber=@rec_eq_chooseno"
+            comm = New MySqlCommand(query, MysqlConn)
+            comm.Parameters.AddWithValue("rec_eq_type_choose", oldEqtypSelected)
+            comm.Parameters.AddWithValue("rec_eq_chooseno", rel_tb_equipmentnum.Text)
+
+
+            reader = comm.ExecuteReader
+
+            While reader.Read
+                rel_tb_equipment.Items.Add(reader.GetString("equipmentmodel"))
+            End While
+
+            MysqlConn.Close()
+            Catch ex As MySqlException
+                If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed")))
+                    refresh_main_rgv_recordedacademicsonly.Stop()
+                    refresh_released_grid_list.Stop()
+                    RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                    Login.log_lbl_dbstatus.Text = "Offline"
+                    Login.log_lbl_dbstatus.ForeColor = Color.Red
+                    Return
+               Else
+                    RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+               End If
+            Catch ex As Exception
+                RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+        Finally
+            MysqlConn.Dispose()
+        End Try
+    End Sub
 
     'Programmed by BRENZ/wu 21st Point Closing button
     Private Sub Main_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
@@ -2980,9 +3143,10 @@ Public Class Main
                                     MysqlConn.Close()
                                     MysqlConn.Open()
                                     'query = "INSERT INTO `reservation` VALUES ('" & rec_cb_reserveno.Text & "','" & equipmentnorgv & "', '" & equipmentrgv & "', '" & equipmentsnrgv & "', '" & rec_cb_idnum.Text & "', '" & Format(CDate(rec_dtp_date.Value), "yyyy-MM-dd") & "','" & Format(CDate(rec_dtp_starttime.Text), "HH:mm") & "', '" & Format(CDate(rec_dtp_endtime.Text), "HH:mm") & "', '" & rec_cb_borrower.Text & "', '" & rec_cb_location.Text & "' , '" & lbl_nameofstaff_reserved.Text & "' ,'" & rec_cb_acttype.Text & "','" & rec_rrtc_actname.Text & "') ;INSERT INTO `reservation_equipments` VALUES ('" & rec_cb_reserveno.Text & "','" & equipmentnorgv & "', '" & equipmentrgv & "', '" & equipmentsnrgv & "','Reserved')"
-                                    query="INSERT INTO ceutltdscheduler.reservation VALUES(@a,@b,@c,@d,@e,@f,@g,@h,@i,@j,@k,@l,@m); INSERT INTO ceutltdscheduler.reservation_equipments VALUES(@n,@o,@p,@q,'Reserved')"
+                                    query="INSERT INTO ceutltdscheduler.reservation VALUES(@a,@r,@b,@c,@d,@e,@f,@g,@h,@i,@j,@k,@l,@m); INSERT INTO ceutltdscheduler.reservation_equipments VALUES(@n,@r,@o,@p,@q,'Reserved')"
                                     comm = New MySqlCommand(query, MysqlConn)
                                     comm.Parameters.AddWithValue("@a",rec_cb_reserveno.Text)
+                                    comm.Parameters.AddWithValue("@r",rec_eq_type_choose.Text)
                                     comm.Parameters.AddWithValue("@b",equipmentnorgv)
                                     comm.Parameters.AddWithValue("@c",equipmentrgv)
                                     comm.Parameters.AddWithValue("@d",equipmentsnrgv)
@@ -4399,6 +4563,8 @@ End Sub
     Private Sub rec_cb_borrower_GotFocus(sender As Object, e As EventArgs) Handles rec_cb_borrower.GotFocus
         load_res_borrowerlist()
     End Sub
+
+
 
 
 
