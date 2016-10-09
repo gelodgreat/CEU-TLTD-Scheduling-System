@@ -1732,6 +1732,7 @@ Public Class Main
             rel_tb_borrower.Hide()
             color_coding()
             released_btn_release.Enabled=False
+            changedEquipment=False
 
 
         End If
