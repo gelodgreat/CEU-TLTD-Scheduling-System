@@ -1555,8 +1555,8 @@ Public Class Main
                                 comm.Parameters.AddWithValue("@i_d",rel_tb_equipmentnum.Text)
                                 comm.Parameters.AddWithValue("@i_e",rel_tb_equipment.Text)
                                 comm.Parameters.AddWithValue("@i_f",Format(CDate(rel_tb_startdate.Value), "yyyy-MM-dd"))
-                                comm.Parameters.AddWithValue("@i_g",Format(CDate(rel_tb_starttime.Text)))
-                                comm.Parameters.AddWithValue("@i_h",Format(CDate(rel_tb_endtime.Text)))
+                                comm.Parameters.AddWithValue("@i_g", Format(CDate(rel_tb_starttime.Text), "HH:mm"))
+                                comm.Parameters.AddWithValue("@i_h", Format(CDate(rel_tb_endtime.Text), "HH:mm"))
                                 comm.Parameters.AddWithValue("@i_i",rel_tb_status.Text)
                                 comm.Parameters.AddWithValue("@i_j",rel_nameofstaff_release.Text)
                                 comm.ExecuteNonQuery()
@@ -1597,9 +1597,9 @@ Public Class Main
                     comm.Parameters.AddWithValue("@i_d",rel_tb_equipmentnum.Text)
                     comm.Parameters.AddWithValue("@i_e",rel_tb_equipment.Text)
                     comm.Parameters.AddWithValue("@i_f",Format(CDate(rel_tb_startdate.Value), "yyyy-MM-dd"))
-                    comm.Parameters.AddWithValue("@i_g",Format(CDate(rel_tb_starttime.Text)))
-                    comm.Parameters.AddWithValue("@i_h",Format(CDate(rel_tb_endtime.Text)))
-                    comm.Parameters.AddWithValue("@i_i",rel_tb_status.Text)
+                            comm.Parameters.AddWithValue("@i_g", Format(CDate(rel_tb_starttime.Text), "HH:mm"))
+                            comm.Parameters.AddWithValue("@i_h", Format(CDate(rel_tb_endtime.Text), "HH:mm"))
+                            comm.Parameters.AddWithValue("@i_i",rel_tb_status.Text)
                     comm.Parameters.AddWithValue("@i_j",rel_nameofstaff_release.Text)
                             
                     READER = comm.ExecuteReader
@@ -1806,10 +1806,9 @@ Public Class Main
     'Programmed by BRENZ 20th Point reserved_grid_list cell double click at releasing management
     Private Sub reserved_grid_list_CellDoubleClick(sender As Object, e As GridViewCellEventArgs) Handles reserved_grid_list.CellDoubleClick
         Dim released As String
-
         If e.RowIndex >= 0 Then
             Dim row As Telerik.WinControls.UI.GridViewRowInfo
-
+            changedEquipment = False
             row = Me.reserved_grid_list.Rows(e.RowIndex)
             released = row.Cells("Status").Value.ToString
 
