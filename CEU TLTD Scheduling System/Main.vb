@@ -533,6 +533,7 @@ Public Class Main
         If returned_eq_list.Columns.Count<=0
 
         Else
+        returned_eq_list.Columns("Return ID").IsVisible = false 'HIDE LATER
         Dim ret_resno = returned_eq_list.Columns("Reservation Number")
         ret_resno.Width=110
 
@@ -4101,7 +4102,6 @@ End Sub
             returned_eq_list.ReadOnly = True
             sda.Update(dbdataset)
             MysqlConn.Close()
-            returned_eq_list.Columns("Return ID").IsVisible = false 'HIDE LATER
             SetSizeofReturnTable()
             Catch ex As MySqlException
                 If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed")))
@@ -4166,18 +4166,18 @@ End Sub
     '            load_returned_eq_list(returned_startDate.Value,returned_endDate.Value)
     '        End Try
     'End Sub
-'    Private Sub returned_eq_list_sort(sender as object, e as GridViewCollectionChangedEventArgs)  Handles returned_eq_list.SortChanged
-'        Dim sorts As RadSortExpressionCollection = returned_eq_list.MasterTemplate.SortDescriptors
-'        If sorts.Count = 0
-'          bdsrc_returnedeq.Sort = ""
-'        Else
-'        Dim sort as string = sorts.ToString()
-'     
-'    if (sort <> Me.bdsrc_returnedeq.Sort)
-'        me.bdsrc_returnedeq.Sort = sort   
-'    End If 
-' End If
-'End Sub
+    Private Sub returned_eq_list_sort(sender as object, e as GridViewCollectionChangedEventArgs)  Handles returned_eq_list.SortChanged
+        Dim sorts As RadSortExpressionCollection = returned_eq_list.MasterTemplate.SortDescriptors
+        If sorts.Count = 0
+          bdsrc_returnedeq.Sort = ""
+        Else
+        Dim sort as string = sorts.ToString()
+     
+    if (sort <> Me.bdsrc_returnedeq.Sort)
+        me.bdsrc_returnedeq.Sort = sort   
+    End If 
+ End If
+End Sub
 '    Private Sub returned_eq_list_ContextMenuOpening(sender As Object, e As ContextMenuOpeningEventArgs) Handles returned_eq_list.ContextMenuOpening
 '        If TypeOf Me.returned_eq_list.CurrentRow Is GridViewDataRowInfo Then
 '            Dim menu As New RadDropDownMenu()
