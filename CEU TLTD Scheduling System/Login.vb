@@ -173,4 +173,12 @@ Public Class Login
             End If
         End If
     End Sub
+
+    Private Sub Login_FormClosed(sender As Object, e As FormClosedEventArgs) Handles Me.FormClosed
+        If (System.Windows.Forms.Application.MessageLoop) 
+        System.Windows.Forms.Application.Exit()
+        Else
+        System.Environment.Exit(1)
+        End If
+    End Sub
 End Class

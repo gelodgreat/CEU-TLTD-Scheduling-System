@@ -219,6 +219,7 @@ Public Class Main
         ret_tb_equipment.Hide()
         ret_tb_equipmentnum.Hide()
         ret_nameofstaff_release2.Hide()
+        ret_nameofstaff_recorder.Hide()
         RadLabel58.Hide()
         ret_tb_status.Hide()
         ret_tb_reservationnum.Hide()
@@ -458,6 +459,8 @@ Public Class Main
             col_rel_rel_et.Width = 68
             Dim col_rel_rel_stt As GridViewDataColumn = released_grid_list.Columns("Status")
             col_rel_rel_stt.Width = 120
+            Dim col_rel_rel_recby As GridViewDataColumn = released_grid_list.Columns("Recorded By")
+            col_rel_rel_recby.Width = 119
             Dim col_rel_rel_rlby As GridViewDataColumn = released_grid_list.Columns("Released By")
             col_rel_rel_rlby.Width = 119
         Else
@@ -479,6 +482,8 @@ Public Class Main
             col_rel_rel_et.Width = 68
             Dim col_rel_rel_stt As GridViewDataColumn = released_grid_list2.Columns("Status")
             col_rel_rel_stt.Width = 120
+            Dim col_rel_rel_recby As GridViewDataColumn = released_grid_list2.Columns("Recorded By")
+            col_rel_rel_recby.Width = 119
             Dim col_rel_rel_rlby As GridViewDataColumn = released_grid_list2.Columns("Released By")
             col_rel_rel_rlby.Width = 119
         End If
@@ -551,6 +556,9 @@ Public Class Main
 
         Dim ret_pen_et = returned_eq_list.Columns("End Time")
         ret_pen_et.Width=65
+
+        Dim ret_recby = returned_eq_list.Columns("Recorded By")
+        ret_recby.Width=95
 
         Dim ret_relby = returned_eq_list.Columns("Released By")
         ret_relby.Width=95
@@ -1427,7 +1435,7 @@ Public Class Main
        
             MysqlConn.Open()
             Dim query As String
-            query = "Select rel_reservation_no as 'Reservation Number', rel_id_passnum as 'Pass ID#' , rel_borrower as 'Borrower' , rel_equipment_no as 'Equipment No.', rel_equipment as 'Equipment',DATE_FORMAT(rel_assign_date,'%M %d %Y') as 'Date',TIME_FORMAT(rel_starttime, '%H:%i') as 'Start Time', TIME_FORMAT(rel_endtime, '%H:%i') as 'End Time'  , rel_status as 'Status' , rel_releasedby as 'Released By' from released_info where rel_status = 'Released' ORDER BY date DESC,rel_reservation_no ASC"
+            query = "Select rel_reservation_no as 'Reservation Number', rel_id_passnum as 'Pass ID#' , rel_borrower as 'Borrower' , rel_equipment_no as 'Equipment No.', rel_equipment as 'Equipment',DATE_FORMAT(rel_assign_date,'%M %d %Y') as 'Date',TIME_FORMAT(rel_starttime, '%H:%i') as 'Start Time', TIME_FORMAT(rel_endtime, '%H:%i') as 'End Time'  , rel_status as 'Status' , rel_reservedby as 'Recorded By', rel_releasedby as 'Released By' from released_info where rel_status = 'Released' ORDER BY date DESC,rel_reservation_no ASC"
             comm = New MySqlCommand(query, MysqlConn)
             sda.SelectCommand = comm
             sda.Fill(dbdataset)
@@ -1479,7 +1487,7 @@ Public Class Main
             MysqlConn.Open()
             'released_grid_list2.Columns.Clear()
             Dim query As String
-            query = "Select rel_reservation_no as 'Reservation Number' , rel_id_passnum as 'Pass ID#' , rel_borrower as 'Borrower' , rel_equipment_no as 'Equipment No.' , rel_equipment as 'Equipment' , DATE_FORMAT(rel_assign_date,'%M %d %Y') as 'Date',TIME_FORMAT(rel_starttime, '%H:%i') as 'Start Time', TIME_FORMAT(rel_endtime, '%H:%i') as 'End Time' , rel_status as 'Status' , rel_releasedby as 'Released By'  from released_info where rel_status = 'Released' ORDER BY date DESC,rel_reservation_no ASC"
+            query = "Select rel_reservation_no as 'Reservation Number' , rel_id_passnum as 'Pass ID#' , rel_borrower as 'Borrower' , rel_equipment_no as 'Equipment No.' , rel_equipment as 'Equipment' , DATE_FORMAT(rel_assign_date,'%M %d %Y') as 'Date',TIME_FORMAT(rel_starttime, '%H:%i') as 'Start Time', TIME_FORMAT(rel_endtime, '%H:%i') as 'End Time' , rel_status as 'Status' , rel_reservedby as 'Recorded By', rel_releasedby as 'Released By'  from released_info where rel_status = 'Released' ORDER BY date DESC,rel_reservation_no ASC"
             comm = New MySqlCommand(query, MysqlConn)
             sda.SelectCommand = comm
             sda.Fill(dbdataset)
@@ -1546,7 +1554,7 @@ Public Class Main
                                 MysqlConn.Close()
 
                                 MysqlConn.Open()
-                                query="UPDATE ceutltdscheduler.reservation SET equipmentsn=@new_sn WHERE reservationno=@resno and equipmenttype=@old_eqtype and equipment=@old_equipment and equipmentno=@old_equipmentnumber; UPDATE ceutltdscheduler.reservation SET equipment=(SELECT equipmentmodel FROM ceutltdprevmaintenance.equipmentlist where equipmentserial=@new_sn),equipmentno=(SELECT equipmentnumber FROM ceutltdprevmaintenance.equipmentlist where equipmentserial=@new_sn) WHERE reservationno=@resno and equipmenttype=@old_eqtype and equipment=@old_equipment and equipmentno=@old_equipmentnumber; UPDATE ceutltdscheduler.reservation_equipments SET equipmentsn=@new_sn, equipment=(SELECT equipmentmodel FROM ceutltdprevmaintenance.equipmentlist where equipmentserial=@new_sn), equipmentno=(SELECT equipmentnumber FROM ceutltdprevmaintenance.equipmentlist where equipmentserial=@new_sn), res_status='Released' WHERE reservationno=@resno; INSERT INTO ceutltdscheduler.released_info (rel_id_passnum,rel_reservation_no,rel_borrower,rel_equipment_no,rel_equipment,rel_assign_date,rel_starttime,rel_endtime,rel_status,rel_releasedby) VALUES(@i_a,@i_b,@i_c,@i_d,@i_e,@i_f,@i_g,@i_h,@i_i,@i_j)"
+                                query="UPDATE ceutltdscheduler.reservation SET equipmentsn=@new_sn WHERE reservationno=@resno and equipmenttype=@old_eqtype and equipment=@old_equipment and equipmentno=@old_equipmentnumber; UPDATE ceutltdscheduler.reservation SET equipment=(SELECT equipmentmodel FROM ceutltdprevmaintenance.equipmentlist where equipmentserial=@new_sn),equipmentno=(SELECT equipmentnumber FROM ceutltdprevmaintenance.equipmentlist where equipmentserial=@new_sn) WHERE reservationno=@resno and equipmenttype=@old_eqtype and equipment=@old_equipment and equipmentno=@old_equipmentnumber; UPDATE ceutltdscheduler.reservation_equipments SET equipmentsn=@new_sn, equipment=(SELECT equipmentmodel FROM ceutltdprevmaintenance.equipmentlist where equipmentserial=@new_sn), equipmentno=(SELECT equipmentnumber FROM ceutltdprevmaintenance.equipmentlist where equipmentserial=@new_sn), res_status='Released' WHERE reservationno=@resno; INSERT INTO ceutltdscheduler.released_info (rel_id_passnum,rel_reservation_no,rel_borrower,rel_equipment_no,rel_equipment,rel_assign_date,rel_starttime,rel_endtime,rel_status,rel_reservedby,rel_releasedby) VALUES(@i_a,@i_b,@i_c,@i_d,@i_e,@i_f,@i_g,@i_h,@i_i,@i_j,@i_k)"
                                 comm = New MySqlCommand(query, MysqlConn)
                                 comm.Parameters.AddWithValue("@new_sn",newserial)
                                 comm.Parameters.AddWithValue("@resno",rel_tb_reservationnum.Text)
@@ -1563,7 +1571,8 @@ Public Class Main
                                 comm.Parameters.AddWithValue("@i_g", Format(CDate(rel_tb_starttime.Text), "HH:mm"))
                                 comm.Parameters.AddWithValue("@i_h", Format(CDate(rel_tb_endtime.Text), "HH:mm"))
                                 comm.Parameters.AddWithValue("@i_i",rel_tb_status.Text)
-                                comm.Parameters.AddWithValue("@i_j",rel_nameofstaff_release.Text)
+                                comm.Parameters.AddWithValue("@i_j",rel_nameofstaff_recorder.Text)
+                                comm.Parameters.AddWithValue("@i_k",rel_nameofstaff_release.Text)
                                 comm.ExecuteNonQuery()
                                 MysqlConn.Close()
                             Catch ex As MySqlException
@@ -1594,7 +1603,7 @@ Public Class Main
                 Else 'Usual
                     MysqlConn.Open()
                     Dim Query As String
-                    Query = "INSERT INTO ceutltdscheduler.released_info (rel_id_passnum,rel_reservation_no,rel_borrower,rel_equipment_no,rel_equipment,rel_assign_date,rel_starttime,rel_endtime,rel_status,rel_releasedby) VALUES(@i_a,@i_b,@i_c,@i_d,@i_e,@i_f,@i_g,@i_h,@i_i,@i_j); UPDATE ceutltdscheduler.reservation_equipments SET res_status=@i_i WHERE reservationno=@i_b and equipmentno=@i_d and equipment=@i_e"
+                    Query = "INSERT INTO ceutltdscheduler.released_info (rel_id_passnum,rel_reservation_no,rel_borrower,rel_equipment_no,rel_equipment,rel_assign_date,rel_starttime,rel_endtime,rel_status,rel_reservedby,rel_releasedby) VALUES(@i_a,@i_b,@i_c,@i_d,@i_e,@i_f,@i_g,@i_h,@i_i,@i_j,@i_k); UPDATE ceutltdscheduler.reservation_equipments SET res_status=@i_i WHERE reservationno=@i_b and equipmentno=@i_d and equipment=@i_e"
                     comm = New MySqlCommand(Query, MysqlConn)
                     comm.Parameters.AddWithValue("@i_a",rel_tb_id.Text)
                     comm.Parameters.AddWithValue("@i_b",rel_tb_reservationnum.Text)
@@ -1602,10 +1611,11 @@ Public Class Main
                     comm.Parameters.AddWithValue("@i_d",rel_tb_equipmentnum.Text)
                     comm.Parameters.AddWithValue("@i_e",rel_tb_equipment.Text)
                     comm.Parameters.AddWithValue("@i_f",Format(CDate(rel_tb_startdate.Value), "yyyy-MM-dd"))
-                            comm.Parameters.AddWithValue("@i_g", Format(CDate(rel_tb_starttime.Text), "HH:mm"))
-                            comm.Parameters.AddWithValue("@i_h", Format(CDate(rel_tb_endtime.Text), "HH:mm"))
-                            comm.Parameters.AddWithValue("@i_i",rel_tb_status.Text)
-                    comm.Parameters.AddWithValue("@i_j",rel_nameofstaff_release.Text)
+                    comm.Parameters.AddWithValue("@i_g", Format(CDate(rel_tb_starttime.Text), "HH:mm"))
+                    comm.Parameters.AddWithValue("@i_h", Format(CDate(rel_tb_endtime.Text), "HH:mm"))
+                    comm.Parameters.AddWithValue("@i_i",rel_tb_status.Text)
+                    comm.Parameters.AddWithValue("@i_j",rel_nameofstaff_recorder.Text)
+                    comm.Parameters.AddWithValue("@i_k",rel_nameofstaff_release.Text)
                             
                     READER = comm.ExecuteReader
                     MysqlConn.Close()
@@ -1967,6 +1977,7 @@ Public Class Main
                 ret_tb_status.Text = row.Cells("Status").Value.ToString
                 ret_tb_equipmentnum.Text = row.Cells("Equipment No.").Value.ToString
                 ret_tb_equipment.Text = row.Cells("Equipment").Value.ToString
+                ret_nameofstaff_recorder.Text=row.Cells("Recorded By").Value.ToString
                 ret_nameofstaff_release2.Text = row.Cells("Released By").Value.ToString
 
                 lbl_ret_equipmentnum.Show()
@@ -1974,6 +1985,7 @@ Public Class Main
                 ret_tb_equipmentnum.Show()
                 ret_tb_equipment.Show()
                 lbl_ret_release.Show()
+                ret_nameofstaff_recorder.Show()
                 ret_nameofstaff_release2.Show()
                 ret_tb_reservationnum.Show()
                 ret_tb_id.Show()
@@ -3604,7 +3616,7 @@ Public Class Main
                         MysqlConn.Close()
                     End If
                     MysqlConn.Open()
-                    Dim Query As String = "INSERT INTO ceutltdscheduler.returned_info (ret_reservation_num,ret_id_passnum,ret_borrower,ret_equipment_no,ret_equipment,ret_assign_date,ret_starttime,ret_endtime,ret_status,ret_releasedby,ret_returnedto,ret_remarks,ret_date) VALUES(@resno,@borrowerid,@borrowername,@eqno,@eqname,@resdate,@stime,@etime,'Returned',@staff_releaser,@staff_returner,@remarks,DATE_FORMAT(now(), '%Y-%m-%d %H:%i')); UPDATE ceutltdscheduler.reservation_equipments SET res_status='Returned' WHERE (equipmentno=@eqno) AND (equipment=@eqname) AND (reservationno=@resno); DELETE FROM ceutltdscheduler.released_info WHERE rel_id_passnum=@borrowerid and rel_reservation_no=@resno and rel_borrower=@borrowername and rel_equipment_no=@eqno and rel_equipment=@eqname and rel_assign_date=@resdate and rel_starttime=@stime and rel_endtime=@etime and rel_releasedby=@staff_releaser"
+                    Dim Query As String = "INSERT INTO ceutltdscheduler.returned_info (ret_reservation_num,ret_id_passnum,ret_borrower,ret_equipment_no,ret_equipment,ret_assign_date,ret_starttime,ret_endtime,ret_status,ret_reservedby,ret_releasedby,ret_returnedto,ret_remarks,ret_date) VALUES(@resno,@borrowerid,@borrowername,@eqno,@eqname,@resdate,@stime,@etime,'Returned',@staff_recorder,@staff_releaser,@staff_returner,@remarks,DATE_FORMAT(now(), '%Y-%m-%d %H:%i')); UPDATE ceutltdscheduler.reservation_equipments SET res_status='Returned' WHERE (equipmentno=@eqno) AND (equipment=@eqname) AND (reservationno=@resno); DELETE FROM ceutltdscheduler.released_info WHERE rel_id_passnum=@borrowerid and rel_reservation_no=@resno and rel_borrower=@borrowername and rel_equipment_no=@eqno and rel_equipment=@eqname and rel_assign_date=@resdate and rel_starttime=@stime and rel_endtime=@etime and rel_reservedby=@staff_recorder and rel_releasedby=@staff_releaser"
                     comm = New MySqlCommand(Query, MysqlConn)
                     comm.Parameters.AddWithValue("@resno", ret_tb_reservationnum.Text)
                     comm.Parameters.AddWithValue("@borrowerid", ret_tb_id.Text)
@@ -3614,6 +3626,7 @@ Public Class Main
                     comm.Parameters.AddWithValue("@resdate", Format(CDate(ret_tb_sdate.Value), "yyyy-MM-dd"))
                     comm.Parameters.AddWithValue("@stime", ret_tb_stime.Text)
                     comm.Parameters.AddWithValue("@etime", ret_tb_etime.Text)
+                    comm.Parameters.AddWithValue("@staff_recorder",ret_nameofstaff_recorder.Text)
 					comm.Parameters.AddWithValue("@staff_releaser",ret_nameofstaff_release2.Text)
                     comm.Parameters.AddWithValue("@staff_returner", ret_nameofstaff_return.Text)
 					comm.Parameters.AddWithValue("@remarks", ret_remarks.Text)
@@ -3642,6 +3655,7 @@ Public Class Main
                     ret_tb_borrower.Hide()
                     ret_tb_equipment.Hide()
                     ret_tb_equipmentnum.Hide()
+                    ret_nameofstaff_recorder.Hide()
                     ret_nameofstaff_release2.Hide()
                     lbl_ret_release.Hide()
                     ret_tb_sdate.Text = "01/01/1999"
@@ -3670,7 +3684,7 @@ Public Class Main
                             MysqlConn.Close()
                         End If
                          MysqlConn.Open()
-                    Dim Query As String = "INSERT INTO ceutltdscheduler.returned_info (ret_reservation_num,ret_id_passnum,ret_borrower,ret_equipment_no,ret_equipment,ret_assign_date,ret_starttime,ret_endtime,ret_status,ret_releasedby,ret_returnedto,ret_remarks,ret_date) VALUES(@resno,@borrowerid,@borrowername,@eqno,@eqname,@resdate,@stime,@etime,'Returned',@staff_releaser,@staff_returner,@remarks,DATE_FORMAT(now(), '%Y-%m-%d %H:%i')); UPDATE ceutltdscheduler.reservation_equipments SET res_status='Returned' WHERE (equipmentno=@eqno) AND (equipment=@eqname) AND (reservationno=@resno); DELETE FROM ceutltdscheduler.released_info WHERE rel_id_passnum=@borrowerid and rel_reservation_no=@resno and rel_borrower=@borrowername and rel_equipment_no=@eqno and rel_equipment=@eqname and rel_assign_date=@resdate and rel_starttime=@stime and rel_endtime=@etime and rel_releasedby=@staff_releaser"
+                    Dim Query As String = "INSERT INTO ceutltdscheduler.returned_info (ret_reservation_num,ret_id_passnum,ret_borrower,ret_equipment_no,ret_equipment,ret_assign_date,ret_starttime,ret_endtime,ret_status,ret_reservedby,ret_releasedby,ret_returnedto,ret_remarks,ret_date) VALUES(@resno,@borrowerid,@borrowername,@eqno,@eqname,@resdate,@stime,@etime,'Returned',@staff_recorder,@staff_releaser,@staff_returner,@remarks,DATE_FORMAT(now(), '%Y-%m-%d %H:%i')); UPDATE ceutltdscheduler.reservation_equipments SET res_status='Returned' WHERE (equipmentno=@eqno) AND (equipment=@eqname) AND (reservationno=@resno); DELETE FROM ceutltdscheduler.released_info WHERE rel_id_passnum=@borrowerid and rel_reservation_no=@resno and rel_borrower=@borrowername and rel_equipment_no=@eqno and rel_equipment=@eqname and rel_assign_date=@resdate and rel_starttime=@stime and rel_endtime=@etime and rel_reservedby=@staff_recorder and rel_releasedby=@staff_releaser"
                     comm = New MySqlCommand(Query, MysqlConn)
                     comm.Parameters.AddWithValue("@resno", ret_tb_reservationnum.Text)
 					comm.Parameters.AddWithValue("@borrowerid", ret_tb_id.Text)
@@ -3680,6 +3694,7 @@ Public Class Main
                     comm.Parameters.AddWithValue("@resdate", Format(CDate(ret_tb_sdate.Value), "yyyy-MM-dd"))
                     comm.Parameters.AddWithValue("@stime", ret_tb_stime.Text)
                     comm.Parameters.AddWithValue("@etime", ret_tb_etime.Text)
+                    comm.Parameters.AddWithValue("@staff_recorder",ret_nameofstaff_recorder.Text)
 					comm.Parameters.AddWithValue("@staff_releaser",ret_nameofstaff_release2.Text)
                     comm.Parameters.AddWithValue("@staff_returner", ret_nameofstaff_return.Text)
 					comm.Parameters.AddWithValue("@remarks", ret_remarks.Text)
@@ -3708,6 +3723,7 @@ Public Class Main
                         ret_tb_borrower.Hide()
                         ret_tb_equipment.Hide()
                         ret_tb_equipmentnum.Hide()
+                        ret_nameofstaff_recorder.Hide()
                         ret_nameofstaff_release2.Hide()
                         lbl_ret_release.Hide()
                         ret_tb_sdate.Text = "01/01/1999"
@@ -3724,7 +3740,7 @@ Public Class Main
                                 MysqlConn.Close()
                             End If
                             MysqlConn.Open()
-                            Dim Query As String = "INSERT INTO ceutltdscheduler.penalties (bor_id,res_num,bor_name,eq_no,eq_name,res_date,st_time,ed_time,bor_price,ret_mark,ret_date) VALUES(@borrowerid,@resno,@borrowername,@eqno,@eqname,@resdate,@stime,@etime,@price,@staff_returner,DATE_FORMAT(now(), '%Y-%m-%d %H:%i'));INSERT INTO ceutltdscheduler.returned_info (ret_reservation_num,ret_id_passnum,ret_borrower,ret_equipment_no,ret_equipment,ret_assign_date,ret_starttime,ret_endtime,ret_status,ret_releasedby,ret_returnedto,ret_remarks,ret_date) VALUES(@resno,@borrowerid,@borrowername,@eqno,@eqname,@resdate,@stime,@etime,'Returned',@staff_releaser,@staff_returner,@remarks,DATE_FORMAT(now(), '%Y-%m-%d %H:%i'));  UPDATE ceutltdscheduler.reservation_equipments SET res_status='Returned' WHERE (equipmentno=@eqno) AND (equipment=@eqname) AND (reservationno=@resno); DELETE FROM ceutltdscheduler.released_info WHERE rel_id_passnum=@borrowerid and rel_reservation_no=@resno and rel_borrower=@borrowername and rel_equipment_no=@eqno and rel_equipment=@eqname and rel_assign_date=@resdate and rel_starttime=@stime and rel_endtime=@etime and rel_releasedby=@staff_releaser"
+                            Dim Query As String = "INSERT INTO ceutltdscheduler.penalties (bor_id,res_num,bor_name,eq_no,eq_name,res_date,st_time,ed_time,bor_price,ret_mark,ret_date) VALUES(@borrowerid,@resno,@borrowername,@eqno,@eqname,@resdate,@stime,@etime,@price,@staff_returner,DATE_FORMAT(now(), '%Y-%m-%d %H:%i'));INSERT INTO ceutltdscheduler.returned_info (ret_reservation_num,ret_id_passnum,ret_borrower,ret_equipment_no,ret_equipment,ret_assign_date,ret_starttime,ret_endtime,ret_status,ret_reservedby,ret_releasedby,ret_returnedto,ret_remarks,ret_date) VALUES(@resno,@borrowerid,@borrowername,@eqno,@eqname,@resdate,@stime,@etime,'Returned',@staff_recorder,@staff_releaser,@staff_returner,@remarks,DATE_FORMAT(now(), '%Y-%m-%d %H:%i'));  UPDATE ceutltdscheduler.reservation_equipments SET res_status='Returned' WHERE (equipmentno=@eqno) AND (equipment=@eqname) AND (reservationno=@resno); DELETE FROM ceutltdscheduler.released_info WHERE rel_id_passnum=@borrowerid and rel_reservation_no=@resno and rel_borrower=@borrowername and rel_equipment_no=@eqno and rel_equipment=@eqname and rel_assign_date=@resdate and rel_starttime=@stime and rel_endtime=@etime and rel_reservedby=@staff_recorder and rel_releasedby=@staff_releaser"
                             comm = New MySqlCommand(Query, MysqlConn)
 							comm.Parameters.AddWithValue("@resno", ret_tb_reservationnum.Text)
                             comm.Parameters.AddWithValue("@borrowerid", ret_tb_id.Text)
@@ -3735,7 +3751,8 @@ Public Class Main
                             comm.Parameters.AddWithValue("@stime", ret_tb_stime.Text)
                             comm.Parameters.AddWithValue("@etime", ret_tb_etime.Text)
                             comm.Parameters.AddWithValue("@price", Convert.ToDouble(charge * penalty_price).ToString)
-							comm.Parameters.AddWithValue("@staff_releaser",ret_nameofstaff_release2.Text)
+                            comm.Parameters.AddWithValue("@staff_recorder",ret_nameofstaff_recorder.Text)
+                            comm.Parameters.AddWithValue("@staff_releaser",ret_nameofstaff_release2.Text)
                             comm.Parameters.AddWithValue("@staff_returner", ret_nameofstaff_return.Text)
 							comm.Parameters.AddWithValue("@remarks", ret_remarks.Text)
                             comm.ExecuteNonQuery()
@@ -3763,6 +3780,7 @@ Public Class Main
                             ret_tb_borrower.Hide()
                             ret_tb_equipment.Hide()
                             ret_tb_equipmentnum.Hide()
+                            ret_nameofstaff_recorder.Hide()
                             ret_nameofstaff_release2.Hide()
                             lbl_ret_release.Hide()
                             ret_tb_sdate.Text = "01/01/1999"
@@ -3778,7 +3796,7 @@ Public Class Main
                                 MysqlConn.Close()
                             End If
                             MysqlConn.Open()
-                            Dim Query As String = "INSERT INTO ceutltdscheduler.penalties (bor_id,res_num,bor_name,eq_no,eq_name,res_date,st_time,ed_time,bor_price,ret_mark,ret_date) VALUES(@borrowerid,@resno,@borrowername,@eqno,@eqname,@resdate,@stime,@etime,@price,@staff_returner,DATE_FORMAT(now(), '%Y-%m-%d %H:%i'));INSERT INTO ceutltdscheduler.returned_info (ret_reservation_num,ret_id_passnum,ret_borrower,ret_equipment_no,ret_equipment,ret_assign_date,ret_starttime,ret_endtime,ret_status,ret_releasedby,ret_returnedto,ret_remarks,ret_date) VALUES(@resno,@borrowerid,@borrowername,@eqno,@eqname,@resdate,@stime,@etime,'Returned',@staff_releaser,@staff_returner,@remarks,DATE_FORMAT(now(), '%Y-%m-%d %H:%i'));  UPDATE ceutltdscheduler.reservation_equipments SET res_status='Returned' WHERE (equipmentno=@eqno) AND (equipment=@eqname) AND (reservationno=@resno); DELETE FROM ceutltdscheduler.released_info WHERE rel_id_passnum=@borrowerid and rel_reservation_no=@resno and rel_borrower=@borrowername and rel_equipment_no=@eqno and rel_equipment=@eqname and rel_assign_date=@resdate and rel_starttime=@stime and rel_endtime=@etime and rel_releasedby=@staff_releaser"
+                            Dim Query As String = "INSERT INTO ceutltdscheduler.penalties (bor_id,res_num,bor_name,eq_no,eq_name,res_date,st_time,ed_time,bor_price,ret_mark,ret_date) VALUES(@borrowerid,@resno,@borrowername,@eqno,@eqname,@resdate,@stime,@etime,@price,@staff_returner,DATE_FORMAT(now(), '%Y-%m-%d %H:%i'));INSERT INTO ceutltdscheduler.returned_info (ret_reservation_num,ret_id_passnum,ret_borrower,ret_equipment_no,ret_equipment,ret_assign_date,ret_starttime,ret_endtime,ret_status,ret_reservedby,ret_releasedby,ret_returnedto,ret_remarks,ret_date) VALUES(@resno,@borrowerid,@borrowername,@eqno,@eqname,@resdate,@stime,@etime,'Returned',@staff_recorder,@staff_releaser,@staff_returner,@remarks,DATE_FORMAT(now(), '%Y-%m-%d %H:%i'));  UPDATE ceutltdscheduler.reservation_equipments SET res_status='Returned' WHERE (equipmentno=@eqno) AND (equipment=@eqname) AND (reservationno=@resno); DELETE FROM ceutltdscheduler.released_info WHERE rel_id_passnum=@borrowerid and rel_reservation_no=@resno and rel_borrower=@borrowername and rel_equipment_no=@eqno and rel_equipment=@eqname and rel_assign_date=@resdate and rel_starttime=@stime and rel_endtime=@etime and rel_reservedby=@staff_recorder and rel_releasedby=@staff_releaser"
                             comm = New MySqlCommand(Query, MysqlConn)
 							comm.Parameters.AddWithValue("@resno", ret_tb_reservationnum.Text)
                             comm.Parameters.AddWithValue("@borrowerid", ret_tb_id.Text)
@@ -3789,6 +3807,7 @@ Public Class Main
                             comm.Parameters.AddWithValue("@stime", ret_tb_stime.Text)
                             comm.Parameters.AddWithValue("@etime", ret_tb_etime.Text)
                             comm.Parameters.AddWithValue("@price", Convert.ToDouble(charge * penalty_price).ToString)
+							comm.Parameters.AddWithValue("@staff_recorder",ret_nameofstaff_recorder.Text)
 							comm.Parameters.AddWithValue("@staff_releaser",ret_nameofstaff_release2.Text)
                             comm.Parameters.AddWithValue("@staff_returner", ret_nameofstaff_return.Text)
 							comm.Parameters.AddWithValue("@remarks", ret_remarks.Text)
@@ -3817,6 +3836,7 @@ Public Class Main
                             ret_tb_borrower.Hide()
                             ret_tb_equipment.Hide()
                             ret_tb_equipmentnum.Hide()
+                            ret_nameofstaff_recorder.Hide()
                             ret_nameofstaff_release2.Hide()
                             ret_tb_sdate.Text = "01/01/1999"
                             ret_tb_stime.Text = ""
@@ -4072,7 +4092,7 @@ End Sub
             MysqlConn.Open()
             Dim query As String
             'query = "Select rel_reservation_no as 'Reservation Number' , rel_id_passnum as 'Pass Number' , rel_borrower as 'Borrower' , rel_equipment_no as 'Equipment No.' , rel_equipment as 'Equipment' , DATE_FORMAT(rel_assign_date,'%M %d %Y') as 'Date',TIME_FORMAT(rel_starttime, '%H:%i') as 'Start Time', TIME_FORMAT(rel_endtime, '%H:%i') as 'End Time' , rel_status as 'Status' , rel_releasedby as 'Released By'  from released_info"
-            query = "SELECT ret_id as 'Return ID',ret_reservation_num as 'Reservation Number', ret_id_passnum as 'Pass ID#', ret_borrower as 'Borrower', ret_equipment_no as 'Equipment No.', ret_equipment as 'Equipment', DATE_FORMAT(ret_assign_date,'%M %d, %Y') as 'Reservation Date', TIME_FORMAT(ret_starttime, '%H:%i') as 'Start Time', TIME_FORMAT(ret_endtime, '%H:%i') as 'End Time', ret_releasedby as 'Released By', ret_returnedto as 'Returned To', ret_remarks as 'Remarks',DATE_FORMAT(ret_date, '%M %d %Y %H:%i') as 'Return Date' FROM ceutltdscheduler.returned_info WHERE (ret_date BETWEEN '"& Format(CDate(Now1), "yyyy-MM-dd") &"' AND '" & Format(CDate(Now2), "yyyy-MM-dd") & " 23:59')"
+            query = "SELECT ret_id as 'Return ID',ret_reservation_num as 'Reservation Number', ret_id_passnum as 'Pass ID#', ret_borrower as 'Borrower', ret_equipment_no as 'Equipment No.', ret_equipment as 'Equipment', DATE_FORMAT(ret_assign_date,'%M %d, %Y') as 'Reservation Date', TIME_FORMAT(ret_starttime, '%H:%i') as 'Start Time', TIME_FORMAT(ret_endtime, '%H:%i') as 'End Time', ret_reservedby as 'Recorded By', ret_releasedby as 'Released By', ret_returnedto as 'Returned To', ret_remarks as 'Remarks',DATE_FORMAT(ret_date, '%M %d %Y %H:%i') as 'Return Date' FROM ceutltdscheduler.returned_info WHERE (ret_date BETWEEN '"& Format(CDate(Now1), "yyyy-MM-dd") &"' AND '" & Format(CDate(Now2), "yyyy-MM-dd") & " 23:59')"
             comm = New MySqlCommand(query, MysqlConn)
             sda.SelectCommand = comm
             sda.Fill(dbdataset)
@@ -4109,163 +4129,165 @@ End Sub
         load_returned_eq_list(returned_startDate.Value,returned_endDate.Value)
         End If
     End Sub
-    Private Sub returned_eq_list_CellDoubleClick(sender As Object, e As GridViewCellEventArgs) Handles returned_eq_list.CellDoubleClick
-        Try
-        If e.RowIndex>=0 Then
-        returned_eqDeleteYN = RadMessageBox.Show(Me, "Are you sure you want to delete the selected log?", "CEU TLTD Reservation System", MessageBoxButtons.YesNo, RadMessageIcon.Question)
-        If returned_eqDeleteYN = MsgBoxResult.Yes Then
-            Dim uniqueid As String
-            Dim row As GridViewRowInfo = returned_eq_list.Rows(e.RowIndex)
-            uniqueid = row.Cells("Return ID").Value.ToString
-            
-                Dim query = "DELETE FROM ceutltdscheduler.returned_info where ret_id=" & uniqueid
-                MysqlConn.Open()
-                comm = New MySqlCommand(query, MysqlConn)
-                comm.ExecuteNonQuery()
-                MysqlConn.Close()
-                RadMessageBox.Show(Me, "Selected log sucessfully deleted.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Info)
-        End If
-       End If
-            Catch ex As MySqlException
-                If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed")))
-                    refresh_main_rgv_recordedacademicsonly.Stop()
-                    refresh_released_grid_list.Stop()
-                    RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
-                    Login.log_lbl_dbstatus.Text = "Offline"
-                    Login.log_lbl_dbstatus.ForeColor = Color.Red
-                    Return
-               Else
-                    RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
-               End If
-            Catch ex As Exception
-                RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
-            Finally
-                MysqlConn.Dispose()
-                load_returned_eq_list(returned_startDate.Value,returned_endDate.Value)
-            End Try
-    End Sub
-    Private Sub returned_eq_list_sort(sender as object, e as GridViewCollectionChangedEventArgs)  Handles returned_eq_list.SortChanged
-        Dim sorts As RadSortExpressionCollection = returned_eq_list.MasterTemplate.SortDescriptors
-        If sorts.Count = 0
-          bdsrc_returnedeq.Sort = ""
-        Else
-        Dim sort as string = sorts.ToString()
-     
-    if (sort <> Me.bdsrc_returnedeq.Sort)
-        me.bdsrc_returnedeq.Sort = sort   
-    End If 
- End If
-End Sub
-    Private Sub returned_eq_list_ContextMenuOpening(sender As Object, e As ContextMenuOpeningEventArgs) Handles returned_eq_list.ContextMenuOpening
-        If TypeOf Me.returned_eq_list.CurrentRow Is GridViewDataRowInfo Then
-            Dim menu As New RadDropDownMenu()
-            Dim DeleteMenu As New RadMenuItem("Delete Selected Data")
-            AddHandler DeleteMenu.Click, AddressOf returned_eq_list_DeleteRightClick
-            menu.Items.Add(DeleteMenu)
-            e.ContextMenu = menu
-        End If
-    End Sub
-    Private Sub returned_eq_list_DeleteRightClick(sender As Object, e As EventArgs)
-        Try
-        returned_eqDeleteYN = RadMessageBox.Show(Me, "Are you sure you want to delete the selected data?", "CEU TLTD Reservation System", MessageBoxButtons.YesNo, RadMessageIcon.Question)
-        If returned_eqDeleteYN = MsgBoxResult.Yes Then
-            Dim ligaw As Integer = 0
-            Dim uniqueid As String
-            Dim morethanOneSelected = False
-            Dim query = "DELETE FROM ceutltdscheduler.returned_info where ret_id="
-            For Each row As GridViewRowInfo In returned_eq_list.SelectedRows
-                row = returned_eq_list.Rows(returned_eq_list.SelectedRows(ligaw).Index)
-                uniqueid = row.Cells("Return ID").Value.ToString
-                If returned_eq_list.SelectedRows.Count > 1 Then
-                    query += uniqueid
-                    query += " or "
-                    query += "ret_id="
-                    morethanOneSelected = True
-                Else
-                    query += uniqueid
-                End If
-                ligaw += 1
-            Next
 
-                If morethanOneSelected Then
-                    query = (query.Remove(query.Length - 11, 11))
-                Else
-                End If
-                MysqlConn.Open()
-                comm = New MySqlCommand(query, MysqlConn)
-                comm.ExecuteNonQuery()
-                MysqlConn.Close()
-                RadMessageBox.Show(Me, "Selected logs sucessfully deleted.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Info)
-                load_returned_eq_list(returned_startDate.Value,returned_endDate.Value)
-        End If
-            Catch ex As MySqlException
-                If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed")))
-                    refresh_main_rgv_recordedacademicsonly.Stop()
-                    refresh_released_grid_list.Stop()
-                    RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
-                    Login.log_lbl_dbstatus.Text = "Offline"
-                    Login.log_lbl_dbstatus.ForeColor = Color.Red
-                    Return
-               Else
-                    RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
-               End If
-            Catch ex As Exception
-                RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
-            Finally
-                MysqlConn.Dispose()
-            End Try
-    End Sub
-    Private Sub returned_eq_list_KeyPress(sender As Object, e As KeyEventArgs) Handles returned_eq_list.KeyDown
-        Try
-        If e.KeyCode = Keys.Delete Then
-            returned_eqDeleteYN = RadMessageBox.Show(Me, "Are you sure you want to delete the selected data?", "CEU TLTD Reservation System", MessageBoxButtons.YesNo, RadMessageIcon.Question)
-        If returned_eqDeleteYN = MsgBoxResult.Yes Then
-            Dim ligaw As Integer = 0
-            Dim uniqueid As String
-            Dim morethanOneSelected = False
-            Dim query = "DELETE FROM ceutltdscheduler.returned_info where ret_id="
-            For Each row As GridViewRowInfo In returned_eq_list.SelectedRows
-                row = returned_eq_list.Rows(returned_eq_list.SelectedRows(ligaw).Index)
-                uniqueid = row.Cells("Return ID").Value.ToString
-                If returned_eq_list.SelectedRows.Count > 1 Then
-                    query += uniqueid
-                    query += " or "
-                    query += "ret_id="
-                    morethanOneSelected = True
-                Else
-                    query += uniqueid
-                End If
-                ligaw += 1
-            Next
-                If morethanOneSelected Then
-                    query = (query.Remove(query.Length - 11, 11))
-                Else
-                End If
-                MysqlConn.Open()
-                comm = New MySqlCommand(query, MysqlConn)
-                comm.ExecuteNonQuery()
-                MysqlConn.Close()
-                RadMessageBox.Show(Me, "Selected logs sucessfully deleted.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Info)
-                load_returned_eq_list(returned_startDate.Value,returned_endDate.Value)
-        End If
-      End If
-            Catch ex As MySqlException
-                If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed")))
-                    refresh_main_rgv_recordedacademicsonly.Stop()
-                    refresh_released_grid_list.Stop()
-                    RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
-                    Login.log_lbl_dbstatus.Text = "Offline"
-                    Login.log_lbl_dbstatus.ForeColor = Color.Red
-                    Return
-               Else
-                    RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
-               End If
-            Catch ex As Exception
-                RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
-            Finally
-                MysqlConn.Dispose()
-            End Try
-    End Sub
+    'DONT DELETE DELETE FUNCTION
+    'Private Sub returned_eq_list_CellDoubleClick(sender As Object, e As GridViewCellEventArgs) Handles returned_eq_list.CellDoubleClick
+    '    Try
+    '    If e.RowIndex>=0 Then
+    '    returned_eqDeleteYN = RadMessageBox.Show(Me, "Are you sure you want to delete the selected log?", "CEU TLTD Reservation System", MessageBoxButtons.YesNo, RadMessageIcon.Question)
+    '    If returned_eqDeleteYN = MsgBoxResult.Yes Then
+    '        Dim uniqueid As String
+    '        Dim row As GridViewRowInfo = returned_eq_list.Rows(e.RowIndex)
+    '        uniqueid = row.Cells("Return ID").Value.ToString
+    '        
+    '            Dim query = "DELETE FROM ceutltdscheduler.returned_info where ret_id=" & uniqueid
+    '            MysqlConn.Open()
+    '            comm = New MySqlCommand(query, MysqlConn)
+    '            comm.ExecuteNonQuery()
+    '            MysqlConn.Close()
+    '            RadMessageBox.Show(Me, "Selected log sucessfully deleted.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Info)
+    '    End If
+    '   End If
+    '        Catch ex As MySqlException
+    '            If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed")))
+    '                refresh_main_rgv_recordedacademicsonly.Stop()
+    '                refresh_released_grid_list.Stop()
+    '                RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+    '                Login.log_lbl_dbstatus.Text = "Offline"
+    '                Login.log_lbl_dbstatus.ForeColor = Color.Red
+    '                Return
+    '           Else
+    '                RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+    '           End If
+    '        Catch ex As Exception
+    '            RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+    '        Finally
+    '            MysqlConn.Dispose()
+    '            load_returned_eq_list(returned_startDate.Value,returned_endDate.Value)
+    '        End Try
+    'End Sub
+'    Private Sub returned_eq_list_sort(sender as object, e as GridViewCollectionChangedEventArgs)  Handles returned_eq_list.SortChanged
+'        Dim sorts As RadSortExpressionCollection = returned_eq_list.MasterTemplate.SortDescriptors
+'        If sorts.Count = 0
+'          bdsrc_returnedeq.Sort = ""
+'        Else
+'        Dim sort as string = sorts.ToString()
+'     
+'    if (sort <> Me.bdsrc_returnedeq.Sort)
+'        me.bdsrc_returnedeq.Sort = sort   
+'    End If 
+' End If
+'End Sub
+'    Private Sub returned_eq_list_ContextMenuOpening(sender As Object, e As ContextMenuOpeningEventArgs) Handles returned_eq_list.ContextMenuOpening
+'        If TypeOf Me.returned_eq_list.CurrentRow Is GridViewDataRowInfo Then
+'            Dim menu As New RadDropDownMenu()
+'            Dim DeleteMenu As New RadMenuItem("Delete Selected Data")
+'            AddHandler DeleteMenu.Click, AddressOf returned_eq_list_DeleteRightClick
+'            menu.Items.Add(DeleteMenu)
+'            e.ContextMenu = menu
+'        End If
+'    End Sub
+'    Private Sub returned_eq_list_DeleteRightClick(sender As Object, e As EventArgs)
+'        Try
+'        returned_eqDeleteYN = RadMessageBox.Show(Me, "Are you sure you want to delete the selected data?", "CEU TLTD Reservation System", MessageBoxButtons.YesNo, RadMessageIcon.Question)
+'        If returned_eqDeleteYN = MsgBoxResult.Yes Then
+'            Dim ligaw As Integer = 0
+'            Dim uniqueid As String
+'            Dim morethanOneSelected = False
+'            Dim query = "DELETE FROM ceutltdscheduler.returned_info where ret_id="
+'            For Each row As GridViewRowInfo In returned_eq_list.SelectedRows
+'                row = returned_eq_list.Rows(returned_eq_list.SelectedRows(ligaw).Index)
+'                uniqueid = row.Cells("Return ID").Value.ToString
+'                If returned_eq_list.SelectedRows.Count > 1 Then
+'                    query += uniqueid
+'                    query += " or "
+'                    query += "ret_id="
+'                    morethanOneSelected = True
+'                Else
+'                    query += uniqueid
+'                End If
+'                ligaw += 1
+'            Next
+
+'                If morethanOneSelected Then
+'                    query = (query.Remove(query.Length - 11, 11))
+'                Else
+'                End If
+'                MysqlConn.Open()
+'                comm = New MySqlCommand(query, MysqlConn)
+'                comm.ExecuteNonQuery()
+'                MysqlConn.Close()
+'                RadMessageBox.Show(Me, "Selected logs sucessfully deleted.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Info)
+'                load_returned_eq_list(returned_startDate.Value,returned_endDate.Value)
+'        End If
+'            Catch ex As MySqlException
+'                If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed")))
+'                    refresh_main_rgv_recordedacademicsonly.Stop()
+'                    refresh_released_grid_list.Stop()
+'                    RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+'                    Login.log_lbl_dbstatus.Text = "Offline"
+'                    Login.log_lbl_dbstatus.ForeColor = Color.Red
+'                    Return
+'               Else
+'                    RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+'               End If
+'            Catch ex As Exception
+'                RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+'            Finally
+'                MysqlConn.Dispose()
+'            End Try
+'    End Sub
+'    Private Sub returned_eq_list_KeyPress(sender As Object, e As KeyEventArgs) Handles returned_eq_list.KeyDown
+'        Try
+'        If e.KeyCode = Keys.Delete Then
+'            returned_eqDeleteYN = RadMessageBox.Show(Me, "Are you sure you want to delete the selected data?", "CEU TLTD Reservation System", MessageBoxButtons.YesNo, RadMessageIcon.Question)
+'        If returned_eqDeleteYN = MsgBoxResult.Yes Then
+'            Dim ligaw As Integer = 0
+'            Dim uniqueid As String
+'            Dim morethanOneSelected = False
+'            Dim query = "DELETE FROM ceutltdscheduler.returned_info where ret_id="
+'            For Each row As GridViewRowInfo In returned_eq_list.SelectedRows
+'                row = returned_eq_list.Rows(returned_eq_list.SelectedRows(ligaw).Index)
+'                uniqueid = row.Cells("Return ID").Value.ToString
+'                If returned_eq_list.SelectedRows.Count > 1 Then
+'                    query += uniqueid
+'                    query += " or "
+'                    query += "ret_id="
+'                    morethanOneSelected = True
+'                Else
+'                    query += uniqueid
+'                End If
+'                ligaw += 1
+'            Next
+'                If morethanOneSelected Then
+'                    query = (query.Remove(query.Length - 11, 11))
+'                Else
+'                End If
+'                MysqlConn.Open()
+'                comm = New MySqlCommand(query, MysqlConn)
+'                comm.ExecuteNonQuery()
+'                MysqlConn.Close()
+'                RadMessageBox.Show(Me, "Selected logs sucessfully deleted.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Info)
+'                load_returned_eq_list(returned_startDate.Value,returned_endDate.Value)
+'        End If
+'      End If
+'            Catch ex As MySqlException
+'                If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed")))
+'                    refresh_main_rgv_recordedacademicsonly.Stop()
+'                    refresh_released_grid_list.Stop()
+'                    RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+'                    Login.log_lbl_dbstatus.Text = "Offline"
+'                    Login.log_lbl_dbstatus.ForeColor = Color.Red
+'                    Return
+'               Else
+'                    RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+'               End If
+'            Catch ex As Exception
+'                RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+'            Finally
+'                MysqlConn.Dispose()
+'            End Try
+'    End Sub
 
 
 
