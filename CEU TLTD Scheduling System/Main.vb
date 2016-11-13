@@ -2880,7 +2880,7 @@ Public Class Main
                     tempno = reader.GetString("#")
                 End While
 
-                eq_rgv_addeq.Rows.Add(tempno, rec_eq_chooseeq.Text, tempsn)
+                eq_rgv_addeq.Rows.Add(tempno, rec_eq_chooseeq.Text, tempsn, rec_eq_type_choose.Text)
 
                 rowcounter += 1
 
@@ -3104,6 +3104,7 @@ Public Class Main
                             Dim equipmentnorgv As String = eq_rgv_addeq.Rows(counter).Cells(0).Value
                             Dim equipmentrgv As String = eq_rgv_addeq.Rows(counter).Cells(1).Value
                             Dim equipmentsnrgv As String = eq_rgv_addeq.Rows(counter).Cells(2).Value
+                            Dim equipmenttypergv As String = eq_rgv_addeq.Rows(counter).Cells(3).Value
 
                                 MysqlConn.Close()
                                 MysqlConn.Open()
@@ -3145,8 +3146,8 @@ Public Class Main
                                     count = count + 1
                                     equipmentnorgv = READER.GetString("equipmentno")
                                     equipmentrgv = READER.GetString("equipment")
-                                        equipmentsnrgv = READER.GetString("equipmentsn")
-
+                                    equipmentsnrgv = READER.GetString("equipmentsn")
+                                    
                                     End While
 
                                 If count > 0 Then
@@ -3161,7 +3162,8 @@ Public Class Main
                                     query="INSERT INTO ceutltdscheduler.reservation VALUES(@a,@r,@b,@c,@d,@e,@f,@g,@h,@i,@j,@k,@l,@m); INSERT INTO ceutltdscheduler.reservation_equipments VALUES(@n,@r,@o,@p,@q,'Reserved')"
                                     comm = New MySqlCommand(query, MysqlConn)
                                     comm.Parameters.AddWithValue("@a",rec_cb_reserveno.Text)
-                                    comm.Parameters.AddWithValue("@r",rec_eq_type_choose.Text)
+                                    'comm.Parameters.AddWithValue("@r",rec_eq_type_choose.Text)
+                                    comm.Parameters.AddWithValue("@r",equipmenttypergv)
                                     comm.Parameters.AddWithValue("@b",equipmentnorgv)
                                     comm.Parameters.AddWithValue("@c",equipmentrgv)
                                     comm.Parameters.AddWithValue("@d",equipmentsnrgv)
@@ -3193,7 +3195,7 @@ Public Class Main
                     If errorcount = False Then
                         RadMessageBox.Show(Me, "Succesfully reserved equipment(s)!", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Info)
                             eq_rgv_addeq.Rows.Clear()
-                             auto_generate_reservationno()
+                            auto_generate_reservationno()
                     Else
                         RadMessageBox.Show(Me, "Equipment(s) not successfully reserved!", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
 
