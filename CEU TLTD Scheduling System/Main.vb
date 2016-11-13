@@ -46,7 +46,6 @@ Public Class Main
     Dim releasedToReturn_gridlist_KeepSelectedRowInDexAfterUpdate As Integer
     Dim clear_eq As Boolean = False
     Dim Keepreservation_mainIndex As Integer
-
     'WU_SETTINGS'
 
     'Start! Groupbox Hover in Account Management
@@ -164,11 +163,11 @@ Public Class Main
         color_coding()
         'rec_rrtc_actname.Enabled = False
         lu_date.Value = Date.Now
-        
         Main_Timer.Enabled = True
         return_btn_returned.Enabled=false
         refresh_main_rgv_recordedacademicsonly.Start()
         'load_cb_eq_type()     ----->>> DEPRECIATED
+        eq_rgv_addeq.Columns(3).IsVisible = false 'Save Space in the temporary reservation table
     End Sub
 
 
