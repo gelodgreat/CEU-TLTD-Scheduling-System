@@ -1771,7 +1771,7 @@ Partial Class Main
         Me.rel_gb_listinfos.Dock = System.Windows.Forms.DockStyle.Fill
         Me.rel_gb_listinfos.Location = New System.Drawing.Point(0, 0)
         Me.rel_gb_listinfos.Name = "rel_gb_listinfos"
-        Me.rel_gb_listinfos.SelectedPage = Me.rel_released_info
+        Me.rel_gb_listinfos.SelectedPage = Me.res_reserved_info
         Me.rel_gb_listinfos.Size = New System.Drawing.Size(1348, 522)
         Me.rel_gb_listinfos.TabIndex = 5
         Me.rel_gb_listinfos.Text = "RadPageView2"
@@ -1783,6 +1783,7 @@ Partial Class Main
         Me.res_reserved_info.Controls.Add(Me.gp_controls)
         Me.res_reserved_info.Controls.Add(Me.gp_details)
         Me.res_reserved_info.Controls.Add(Me.reserved_grid_list)
+        Me.res_reserved_info.ItemSize = New System.Drawing.SizeF(120!, 24!)
         Me.res_reserved_info.Location = New System.Drawing.Point(5, 30)
         Me.res_reserved_info.Name = "res_reserved_info"
         Me.res_reserved_info.Size = New System.Drawing.Size(1338, 487)
@@ -2306,6 +2307,7 @@ Partial Class Main
         'rel_released_info
         '
         Me.rel_released_info.Controls.Add(Me.released_grid_list)
+        Me.rel_released_info.ItemSize = New System.Drawing.SizeF(152!, 24!)
         Me.rel_released_info.Location = New System.Drawing.Point(5, 30)
         Me.rel_released_info.Name = "rel_released_info"
         Me.rel_released_info.Size = New System.Drawing.Size(1338, 487)
@@ -4189,7 +4191,7 @@ Partial Class Main
         Me.rpv1.DefaultPage = Me.rpvp1_main
         Me.rpv1.Location = New System.Drawing.Point(0, 26)
         Me.rpv1.Name = "rpv1"
-        Me.rpv1.SelectedPage = Me.rpvp2_reservation
+        Me.rpv1.SelectedPage = Me.rpvp_releasing
         Me.rpv1.Size = New System.Drawing.Size(1358, 557)
         Me.rpv1.TabIndex = 1
         Me.rpv1.Text = "Home"
