@@ -3301,9 +3301,12 @@ Public Class Main
         If deleteYN = MsgBoxResult.Yes Then
 
                 MysqlConn.Open()
-                query = "DELETE FROM reservation WHERE (reservationno=@R_rec_cb_reserveno)"
+                query = "DELETE FROM reservation WHERE (reservationno=@R_rec_cb_reserveno and equipmenttype=@R_rec_eqtype and equipmentno=@R_rec_eqno and equipment=@R_rec_eqname)"
                 comm = New MySqlCommand(query, MysqlConn)
                 comm.Parameters.AddWithValue("R_rec_cb_reserveno", reservation_rgv_recordeddata.SelectedRows(0).Cells("Reservation Number").Value)
+                comm.Parameters.AddWithValue("R_rec_eqtype", reservation_rgv_recordeddata.SelectedRows(0).Cells("Equipment Type").Value)
+                comm.Parameters.AddWithValue("R_rec_eqno", reservation_rgv_recordeddata.SelectedRows(0).Cells("Equipment No.").Value)
+                comm.Parameters.AddWithValue("R_rec_eqname", reservation_rgv_recordeddata.SelectedRows(0).Cells("Equipment").Value)
                 'comm.Parameters.AddWithValue("R_rec_cb_idnum", reservation_rgv_recordeddata.SelectedRows(0).Cells("ID").Value)
 
                 reader = comm.ExecuteReader
@@ -3480,11 +3483,14 @@ Public Class Main
         If deleteYN = MsgBoxResult.Yes Then
             
                 MysqlConn.Open()
-                query = "UPDATE ceutltdscheduler.reservation_equipments SET res_status='Cancelled' WHERE (reservationno=@R_rec_cb_reserveno)"
+                query = "UPDATE ceutltdscheduler.reservation_equipments SET res_status='Cancelled' WHERE (reservationno=@R_rec_cb_reserveno and equipmenttype=@R_rec_eqtype and equipmentno=@R_rec_eqno and equipment=@R_rec_eqname)"
                 comm = New MySqlCommand(query, MysqlConn)
-                comm.Parameters.AddWithValue("R_rec_cb_reserveno", row.Cells("Reservation Number").Value.ToString)
+                comm.Parameters.AddWithValue("R_rec_cb_reserveno", reservation_rgv_recordeddata.SelectedRows(0).Cells("Reservation Number").Value)
+                comm.Parameters.AddWithValue("R_rec_eqtype", reservation_rgv_recordeddata.SelectedRows(0).Cells("Equipment Type").Value)
+                comm.Parameters.AddWithValue("R_rec_eqno", reservation_rgv_recordeddata.SelectedRows(0).Cells("Equipment No.").Value)
+                comm.Parameters.AddWithValue("R_rec_eqname", reservation_rgv_recordeddata.SelectedRows(0).Cells("Equipment").Value)
                 'comm.Parameters.AddWithValue("R_rec_cb_idnum", row.Cells("ID").Value.ToString)
-                comm.Parameters.AddWithValue("R_rec_cb_borrower", row.Cells("Borrower").Value.ToString)
+                'comm.Parameters.AddWithValue("R_rec_cb_borrower", row.Cells("Borrower").Value.ToString)
                 reader = comm.ExecuteReader
 
 
