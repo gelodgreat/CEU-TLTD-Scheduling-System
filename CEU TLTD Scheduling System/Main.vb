@@ -2233,7 +2233,7 @@ Public Class Main
             eq_rgv_showregequipment.Rows(eq_keepSelectedRowIndexAfterUpdate).IsCurrent = True  'WUTRY_1
 
             Dim DV As New DataView(dbdataset)
-            DV.RowFilter = String.Format("`Equipment Number` Like'%{0}%' and `Equipment Type` Like'%{1}%'", eq_filter_eqno.Text, eq_filter_eqtype.Text)
+            DV.RowFilter = String.Format("`Equipment No.` Like'%{0}%' and `Equipment Type` Like'%{1}%'", eq_filter_eqno.Text, eq_filter_eqtype.Text)
             eq_rgv_showregequipment.DataSource = DV
             Catch ex As MySqlException
                 If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed")))
@@ -2508,8 +2508,8 @@ Public Class Main
             MysqlConn.Close()
 
         Dim DV As New DataView(dbdataset)
-        DV.RowFilter = String.Format("`Equipment Number` Like'%{0}%' and `Equipment Type` Like'%{1}%'", eq_filter_eqno.Text, eq_filter_eqtype.Text)
-        eq_rgv_showregequipment.DataSource = DV
+            DV.RowFilter = String.Format("`Equipment No.` Like'%{0}%' and `Equipment Type` Like'%{1}%'", eq_filter_eqno.Text, eq_filter_eqtype.Text)
+            eq_rgv_showregequipment.DataSource = DV
         If eq_rgv_showregequipment.Rows.Count -1 < eq_keepSelectedRowIndexAfterUpdate
         eq_rgv_showregequipment.Rows(0).IsCurrent = True
         Else
@@ -2581,7 +2581,7 @@ Public Class Main
             MysqlConn.Close()
 
             Dim DV As New DataView(dbdataset)
-            DV.RowFilter = String.Format("`Equipment Number` Like'%{0}%' and `Equipment Type` Like'%{1}%'", eq_filter_eqno.Text, eq_filter_eqtype.Text)
+            DV.RowFilter = String.Format("`Equipment No.` Like'%{0}%' and `Equipment Type` Like'%{1}%'", eq_filter_eqno.Text, eq_filter_eqtype.Text)
             eq_rgv_showregequipment.DataSource = DV
             If eq_rgv_showregequipment.Rows.Count -1 < eq_keepSelectedRowIndexAfterUpdate
             eq_rgv_showregequipment.Rows(0).IsCurrent = True
@@ -2688,7 +2688,7 @@ Public Class Main
     '        End Try
 
     '        Dim DV As New DataView(dbdataset)
-    '        DV.RowFilter = String.Format("`Equipment Number` Like'%{0}%' and `Equipment Type` Like'%{1}%' and `Status` Like'%{2}%' ", eq_filter_eqno.Text, eq_filter_eqtype.Text, eq_filter_eqstatus.Text)
+    '        DV.RowFilter = String.Format("`Equipment No.` Like'%{0}%' and `Equipment Type` Like'%{1}%' and `Status` Like'%{2}%' ", eq_filter_eqno.Text, eq_filter_eqtype.Text, eq_filter_eqstatus.Text)
     '        eq_rgv_showregequipment.DataSource = DV
     '    End If
     'End Sub
@@ -3248,7 +3248,7 @@ Public Class Main
 
     'SHowing all available equipments to Reservation Grid View
     'Currently Pending because of importance
-    Private Sub rec_btn_showavailequip_Click(sender As Object, e As EventArgs) 
+    Private Sub rec_btn_showavailequip_Click(sender As Object, e As EventArgs)
         'MysqlConn = New MySqlConnection
         'MysqlConn.ConnectionString = connstring
 
@@ -3263,7 +3263,7 @@ Public Class Main
         'Try
         '    MysqlConn.Open()
         '    'Relacing on how to show the taken equipments
-        '    query = "SELECT equipmenttype AS 'Equipment Type',equipmentno AS 'Equipment Number.',equipment AS 'Equipment', equipmentsn AS 'Equipment Serial' FROM equipments  ORDER BY equipmenttype ASC"
+        '    query = "SELECT equipmenttype AS 'Equipment Type',equipmentno AS 'Equipment No.',equipment AS 'Equipment', equipmentsn AS 'Equipment Serial' FROM equipments  ORDER BY equipmenttype ASC"
 
         '    comm = New MySqlCommand(query, MysqlConn)
         '    sda.SelectCommand = comm
