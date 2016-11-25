@@ -1,4 +1,0 @@
-things to do
-- auto generate reservation no
-- update needs auto gerenerate reservation no
-- can add/delete on change equipment
