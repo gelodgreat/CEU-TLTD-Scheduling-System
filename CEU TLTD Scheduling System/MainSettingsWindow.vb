@@ -89,30 +89,30 @@ Public Class MainSettingsWindow
             txt_NewPass.SelectedText=True
             RadMessageBox.Show(Me, "Please complete the fields.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error, MessageBoxDefaultButton.Button1)
         Else
-        If MysqlConn.State = ConnectionState.Open Then
-        MysqlConn.Close()
-        End If
-            Try
-            MySQLConn.ConnectionString = connstring
-            mysqlconn.Open()
-            Dim q2 As String = "SELECT * FROM staff_reg WHERE staff_username=@proc_email_login and staff_password=sha2(@proc_OLDpassword, 512)"
-            comm = New MySqlCommand(q2, mysqlconn)
-            comm.Parameters.AddWithValue("@proc_email_login", username)
-            comm.Parameters.AddWithValue("@proc_OLDpassword", txt_CurPass.Text)
-            reader = comm.ExecuteReader
-            While reader.Read
-                looper +=1
-            End While
-            mysqlconn.Close()
-        Catch ex As MySqlException
-            If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") Or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") Or ex.Message.Contains("Reading from the stream has failed")))
-                RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
-                Login.log_lbl_dbstatus.Text = "Offline"
-                Login.log_lbl_dbstatus.ForeColor = Color.Red
-                Return
-            Else
-                RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+            If MysqlConn.State = ConnectionState.Open Then
+            MysqlConn.Close()
             End If
+            Try
+                MySQLConn.ConnectionString = connstring
+                mysqlconn.Open()
+                Dim q2 As String = "SELECT * FROM staff_reg WHERE staff_username=@proc_email_login and staff_password=sha2(@proc_OLDpassword, 512)"
+                comm = New MySqlCommand(q2, mysqlconn)
+                comm.Parameters.AddWithValue("@proc_email_login", username)
+                comm.Parameters.AddWithValue("@proc_OLDpassword", txt_CurPass.Text)
+                reader = comm.ExecuteReader
+                While reader.Read
+                    looper +=1
+                End While
+                mysqlconn.Close()
+            Catch ex As MySqlException
+                If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") Or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") Or ex.Message.Contains("Reading from the stream has failed")))
+                    RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                    Login.log_lbl_dbstatus.Text = "Offline"
+                    Login.log_lbl_dbstatus.ForeColor = Color.Red
+                    Return
+                Else
+                    RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                End If
         Catch ex As Exception
             RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
             Finally
@@ -121,9 +121,9 @@ Public Class MainSettingsWindow
                 Try
                 If looper=1 Then
                     
-                        If MysqlConn.State = ConnectionState.Open Then
-                            MysqlConn.Close()
-                        End If
+                    If MysqlConn.State = ConnectionState.Open Then
+                        MysqlConn.Close()
+                    End If
                     MysqlConn.Open()
                     Dim Query As String = "UPDATE ceutltdscheduler.staff_reg SET staff_password=SHA2(@newpassword,512) WHERE staff_username=@currentusername"
                     comm = New MySqlCommand(Query, MysqlConn)
