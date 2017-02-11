@@ -52,6 +52,7 @@ Partial Class MainSettingsWindow
         Me.rpv_penalty = New Telerik.WinControls.UI.RadPageViewPage()
         Me.rpv_chngpw = New Telerik.WinControls.UI.RadPageViewPage()
         Me.rpv_refreshrate = New Telerik.WinControls.UI.RadPageViewPage()
+        Me.RadLabel11 = New Telerik.WinControls.UI.RadLabel()
         CType(Me.RadGroupBox1,System.ComponentModel.ISupportInitialize).BeginInit
         Me.RadGroupBox1.SuspendLayout
         CType(Me.btn_penalty_setting_save,System.ComponentModel.ISupportInitialize).BeginInit
@@ -86,12 +87,14 @@ Partial Class MainSettingsWindow
         Me.rpv_penalty.SuspendLayout
         Me.rpv_chngpw.SuspendLayout
         Me.rpv_refreshrate.SuspendLayout
+        CType(Me.RadLabel11,System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me,System.ComponentModel.ISupportInitialize).BeginInit
         Me.SuspendLayout
         '
         'RadGroupBox1
         '
         Me.RadGroupBox1.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping
+        Me.RadGroupBox1.Controls.Add(Me.RadLabel11)
         Me.RadGroupBox1.Controls.Add(Me.btn_penalty_setting_save)
         Me.RadGroupBox1.Controls.Add(Me.RadLabel7)
         Me.RadGroupBox1.Controls.Add(Me.RadLabel4)
@@ -451,7 +454,7 @@ Partial Class MainSettingsWindow
         Me.RadPageView1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.RadPageView1.Location = New System.Drawing.Point(0, 0)
         Me.RadPageView1.Name = "RadPageView1"
-        Me.RadPageView1.SelectedPage = Me.rpv_penalty
+        Me.RadPageView1.SelectedPage = Me.rpv_chngpw
         Me.RadPageView1.Size = New System.Drawing.Size(503, 411)
         Me.RadPageView1.TabIndex = 5
         Me.RadPageView1.Text = "RadPageView1"
@@ -488,6 +491,19 @@ Partial Class MainSettingsWindow
         Me.rpv_refreshrate.Name = "rpv_refreshrate"
         Me.rpv_refreshrate.Size = New System.Drawing.Size(493, 376)
         Me.rpv_refreshrate.Text = "Data Refreshing"
+        '
+        'RadLabel11
+        '
+        Me.RadLabel11.AutoSize = false
+        Me.RadLabel11.BackColor = System.Drawing.Color.Transparent
+        Me.RadLabel11.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.RadLabel11.Location = New System.Drawing.Point(74, 30)
+        Me.RadLabel11.Name = "RadLabel11"
+        Me.RadLabel11.Size = New System.Drawing.Size(359, 61)
+        Me.RadLabel11.TabIndex = 24
+        Me.RadLabel11.Text = "Grace period is counted first before counting the penalty."&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"Penalty is added afte"& _ 
+    "r the grace period then adds another after a charge interval."
+        Me.RadLabel11.ThemeName = "VisualStudio2012Dark"
         '
         'MainSettingsWindow
         '
@@ -546,6 +562,7 @@ Partial Class MainSettingsWindow
         Me.rpv_penalty.ResumeLayout(false)
         Me.rpv_chngpw.ResumeLayout(false)
         Me.rpv_refreshrate.ResumeLayout(false)
+        CType(Me.RadLabel11,System.ComponentModel.ISupportInitialize).EndInit
         CType(Me,System.ComponentModel.ISupportInitialize).EndInit
         Me.ResumeLayout(false)
 
@@ -581,5 +598,6 @@ End Sub
     Friend WithEvents rpv_penalty As Telerik.WinControls.UI.RadPageViewPage
     Friend WithEvents rpv_chngpw As Telerik.WinControls.UI.RadPageViewPage
     Friend WithEvents rpv_refreshrate As Telerik.WinControls.UI.RadPageViewPage
+    Friend WithEvents RadLabel11 As Telerik.WinControls.UI.RadLabel
 End Class
 
