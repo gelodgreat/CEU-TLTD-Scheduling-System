@@ -183,4 +183,36 @@ Public Class MainSettingsWindow
         Me.Dispose
         End If
     End Sub
+
+    'Theme Changer
+    Private Sub btn_vslight_Click(sender As Object, e As EventArgs) Handles btn_vslight.Click
+        ThemeResolutionService.ApplicationThemeName = "VisualStudio2012Light"
+        SaveTheme()
+    End Sub
+
+    Private Sub btn_vsdark_Click(sender As Object, e As EventArgs) Handles btn_vsdark.Click
+        ThemeResolutionService.ApplicationThemeName = "VisualStudio2012Dark"
+        SaveTheme()
+    End Sub
+
+    Private Sub btn_metrotheme_Click(sender As Object, e As EventArgs) Handles btn_metrotheme.Click
+        ThemeResolutionService.ApplicationThemeName = "TelerikMetro"
+        SaveTheme()
+    End Sub
+
+    Private Sub btn_officelight_Click(sender As Object, e As EventArgs) Handles btn_metroblue.Click
+        ThemeResolutionService.ApplicationThemeName = "TelerikMetroBlue"
+        SaveTheme()
+    End Sub
+
+    Private Sub btn_aqua_Click(sender As Object, e As EventArgs)  Handles btn_w8.Click
+        ThemeResolutionService.ApplicationThemeName = "Windows8"
+        SaveTheme()
+    End Sub
+
+    Private Sub SaveTheme()
+        My.Settings.WindowTheme = ThemeResolutionService.ApplicationThemeName
+        My.Settings.Save()
+    End Sub
+
 End Class

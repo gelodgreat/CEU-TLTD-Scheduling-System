@@ -24,6 +24,7 @@ Partial Class Main
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim TableViewDefinition23 As Telerik.WinControls.UI.TableViewDefinition = New Telerik.WinControls.UI.TableViewDefinition()
+        Dim RadListDataItem276 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
         Dim RadListDataItem277 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
         Dim RadListDataItem278 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
         Dim RadListDataItem279 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
@@ -117,7 +118,6 @@ Partial Class Main
         Dim RadListDataItem367 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
         Dim RadListDataItem368 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
         Dim RadListDataItem369 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem370 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
         Dim TableViewDefinition24 As Telerik.WinControls.UI.TableViewDefinition = New Telerik.WinControls.UI.TableViewDefinition()
         Dim TableViewDefinition25 As Telerik.WinControls.UI.TableViewDefinition = New Telerik.WinControls.UI.TableViewDefinition()
         Dim RadListDataItem1 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
@@ -357,11 +357,10 @@ Partial Class Main
         Dim RadListDataItem223 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
         Dim RadListDataItem224 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
         Dim RadListDataItem225 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem226 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
         Dim TableViewDefinition33 As Telerik.WinControls.UI.TableViewDefinition = New Telerik.WinControls.UI.TableViewDefinition()
+        Dim RadListDataItem226 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
         Dim RadListDataItem227 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
         Dim RadListDataItem228 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
-        Dim RadListDataItem229 As Telerik.WinControls.UI.RadListDataItem = New Telerik.WinControls.UI.RadListDataItem()
         Me.RadGroupBox16 = New Telerik.WinControls.UI.RadGroupBox()
         Me.RadGroupBox13 = New Telerik.WinControls.UI.RadGroupBox()
         Me.VisualStudio2012DarkTheme1 = New Telerik.WinControls.Themes.VisualStudio2012DarkTheme()
@@ -551,8 +550,6 @@ Partial Class Main
         Me.acc_staff_btn_delete = New Telerik.WinControls.UI.RadButton()
         Me.acc_staff_btn_update = New Telerik.WinControls.UI.RadButton()
         Me.acc_staff_btn_save = New Telerik.WinControls.UI.RadButton()
-        Me.acc_sf_usertype = New Telerik.WinControls.UI.RadDropDownList()
-        Me.RadLabel39 = New Telerik.WinControls.UI.RadLabel()
         Me.acc_sf_retypepassword = New Telerik.WinControls.UI.RadTextBox()
         Me.acc_sf_password = New Telerik.WinControls.UI.RadTextBox()
         Me.acc_sf_username = New Telerik.WinControls.UI.RadTextBox()
@@ -814,8 +811,6 @@ Partial Class Main
         CType(Me.acc_staff_btn_delete,System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.acc_staff_btn_update,System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.acc_staff_btn_save,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.acc_sf_usertype,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.RadLabel39,System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.acc_sf_retypepassword,System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.acc_sf_password,System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.acc_sf_username,System.ComponentModel.ISupportInitialize).BeginInit
@@ -932,6 +927,7 @@ Partial Class Main
         Me.rel_list_info2.Controls.Add(Me.ret_gb_remarks)
         Me.rel_list_info2.Controls.Add(Me.released_grid_list2)
         Me.rel_list_info2.Controls.Add(Me.ret_gb_details)
+        Me.rel_list_info2.ItemSize = New System.Drawing.SizeF(119!, 24!)
         Me.rel_list_info2.Location = New System.Drawing.Point(5, 30)
         Me.rel_list_info2.Name = "rel_list_info2"
         Me.rel_list_info2.Size = New System.Drawing.Size(1338, 487)
@@ -1091,12 +1087,12 @@ Partial Class Main
         '
         Me.ret_nameofstaff_recorder.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.ret_nameofstaff_recorder.BackColor = System.Drawing.Color.Transparent
-        Me.ret_nameofstaff_recorder.ForeColor = System.Drawing.Color.White
         Me.ret_nameofstaff_recorder.Location = New System.Drawing.Point(123, 92)
         Me.ret_nameofstaff_recorder.Name = "ret_nameofstaff_recorder"
         Me.ret_nameofstaff_recorder.Size = New System.Drawing.Size(75, 18)
         Me.ret_nameofstaff_recorder.TabIndex = 38
         Me.ret_nameofstaff_recorder.Text = "Name of Staff"
+        Me.ret_nameofstaff_recorder.ThemeName = "VisualStudio2012Dark"
         '
         'RadLabel25
         '
@@ -1171,53 +1167,54 @@ Partial Class Main
         'ret_tb_stime
         '
         Me.ret_tb_stime.Anchor = System.Windows.Forms.AnchorStyles.None
-        RadListDataItem277.Text = "01:00"
-        RadListDataItem278.Text = "01:30"
-        RadListDataItem279.Text = "02:00"
-        RadListDataItem280.Text = "02:30"
-        RadListDataItem281.Text = "03:00"
-        RadListDataItem282.Text = "03:30"
-        RadListDataItem283.Text = "04:00"
-        RadListDataItem284.Text = "04:30"
-        RadListDataItem285.Text = "05:00"
-        RadListDataItem286.Text = "05:30"
-        RadListDataItem287.Text = "06:00"
-        RadListDataItem288.Text = "06:30"
-        RadListDataItem289.Text = "07:00"
-        RadListDataItem290.Text = "07:30"
-        RadListDataItem291.Text = "08:00"
-        RadListDataItem292.Text = "08:30"
-        RadListDataItem293.Text = "09:00"
-        RadListDataItem294.Text = "09:30"
-        RadListDataItem295.Text = "10:00"
-        RadListDataItem296.Text = "10:30"
-        RadListDataItem297.Text = "11:00"
-        RadListDataItem298.Text = "11:30"
-        RadListDataItem299.Text = "12:00"
-        RadListDataItem300.Text = "12:30"
-        RadListDataItem301.Text = "13:00"
-        RadListDataItem302.Text = "13:30"
-        RadListDataItem303.Text = "14:00"
-        RadListDataItem304.Text = "14:30"
-        RadListDataItem305.Text = "15:00"
-        RadListDataItem306.Text = "15:30"
-        RadListDataItem307.Text = "16:00"
-        RadListDataItem308.Text = "16:30"
-        RadListDataItem309.Text = "17:00"
-        RadListDataItem310.Text = "17:30"
-        RadListDataItem311.Text = "18:00"
-        RadListDataItem312.Text = "18:30"
-        RadListDataItem313.Text = "19:00"
-        RadListDataItem314.Text = "19:30"
-        RadListDataItem315.Text = "20:00"
-        RadListDataItem316.Text = "20:30"
-        RadListDataItem317.Text = "21:00"
-        RadListDataItem318.Text = "21:30"
-        RadListDataItem319.Text = "22:00"
-        RadListDataItem320.Text = "22:30"
-        RadListDataItem321.Text = "23:00"
-        RadListDataItem322.Text = "23:30"
-        RadListDataItem323.Text = "24:00"
+        RadListDataItem276.Text = "01:00"
+        RadListDataItem277.Text = "01:30"
+        RadListDataItem278.Text = "02:00"
+        RadListDataItem279.Text = "02:30"
+        RadListDataItem280.Text = "03:00"
+        RadListDataItem281.Text = "03:30"
+        RadListDataItem282.Text = "04:00"
+        RadListDataItem283.Text = "04:30"
+        RadListDataItem284.Text = "05:00"
+        RadListDataItem285.Text = "05:30"
+        RadListDataItem286.Text = "06:00"
+        RadListDataItem287.Text = "06:30"
+        RadListDataItem288.Text = "07:00"
+        RadListDataItem289.Text = "07:30"
+        RadListDataItem290.Text = "08:00"
+        RadListDataItem291.Text = "08:30"
+        RadListDataItem292.Text = "09:00"
+        RadListDataItem293.Text = "09:30"
+        RadListDataItem294.Text = "10:00"
+        RadListDataItem295.Text = "10:30"
+        RadListDataItem296.Text = "11:00"
+        RadListDataItem297.Text = "11:30"
+        RadListDataItem298.Text = "12:00"
+        RadListDataItem299.Text = "12:30"
+        RadListDataItem300.Text = "13:00"
+        RadListDataItem301.Text = "13:30"
+        RadListDataItem302.Text = "14:00"
+        RadListDataItem303.Text = "14:30"
+        RadListDataItem304.Text = "15:00"
+        RadListDataItem305.Text = "15:30"
+        RadListDataItem306.Text = "16:00"
+        RadListDataItem307.Text = "16:30"
+        RadListDataItem308.Text = "17:00"
+        RadListDataItem309.Text = "17:30"
+        RadListDataItem310.Text = "18:00"
+        RadListDataItem311.Text = "18:30"
+        RadListDataItem312.Text = "19:00"
+        RadListDataItem313.Text = "19:30"
+        RadListDataItem314.Text = "20:00"
+        RadListDataItem315.Text = "20:30"
+        RadListDataItem316.Text = "21:00"
+        RadListDataItem317.Text = "21:30"
+        RadListDataItem318.Text = "22:00"
+        RadListDataItem319.Text = "22:30"
+        RadListDataItem320.Text = "23:00"
+        RadListDataItem321.Text = "23:30"
+        RadListDataItem322.Text = "24:00"
+        Me.ret_tb_stime.Items.Add(RadListDataItem276)
         Me.ret_tb_stime.Items.Add(RadListDataItem277)
         Me.ret_tb_stime.Items.Add(RadListDataItem278)
         Me.ret_tb_stime.Items.Add(RadListDataItem279)
@@ -1264,7 +1261,6 @@ Partial Class Main
         Me.ret_tb_stime.Items.Add(RadListDataItem320)
         Me.ret_tb_stime.Items.Add(RadListDataItem321)
         Me.ret_tb_stime.Items.Add(RadListDataItem322)
-        Me.ret_tb_stime.Items.Add(RadListDataItem323)
         Me.ret_tb_stime.Location = New System.Drawing.Point(657, 62)
         Me.ret_tb_stime.Name = "ret_tb_stime"
         Me.ret_tb_stime.Size = New System.Drawing.Size(102, 24)
@@ -1320,23 +1316,23 @@ Partial Class Main
         '
         Me.ret_nameofstaff_return.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.ret_nameofstaff_return.BackColor = System.Drawing.Color.Transparent
-        Me.ret_nameofstaff_return.ForeColor = System.Drawing.Color.White
         Me.ret_nameofstaff_return.Location = New System.Drawing.Point(123, 139)
         Me.ret_nameofstaff_return.Name = "ret_nameofstaff_return"
         Me.ret_nameofstaff_return.Size = New System.Drawing.Size(75, 18)
         Me.ret_nameofstaff_return.TabIndex = 37
         Me.ret_nameofstaff_return.Text = "Name of Staff"
+        Me.ret_nameofstaff_return.ThemeName = "VisualStudio2012Dark"
         '
         'ret_nameofstaff_release2
         '
         Me.ret_nameofstaff_release2.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.ret_nameofstaff_release2.BackColor = System.Drawing.Color.Transparent
-        Me.ret_nameofstaff_release2.ForeColor = System.Drawing.Color.White
         Me.ret_nameofstaff_release2.Location = New System.Drawing.Point(123, 116)
         Me.ret_nameofstaff_release2.Name = "ret_nameofstaff_release2"
         Me.ret_nameofstaff_release2.Size = New System.Drawing.Size(75, 18)
         Me.ret_nameofstaff_release2.TabIndex = 37
         Me.ret_nameofstaff_release2.Text = "Name of Staff"
+        Me.ret_nameofstaff_release2.ThemeName = "VisualStudio2012Dark"
         '
         'RadLabel42
         '
@@ -1374,53 +1370,54 @@ Partial Class Main
         'ret_tb_etime
         '
         Me.ret_tb_etime.Anchor = System.Windows.Forms.AnchorStyles.None
-        RadListDataItem324.Text = "01:00"
-        RadListDataItem325.Text = "01:30"
-        RadListDataItem326.Text = "02:00"
-        RadListDataItem327.Text = "02:30"
-        RadListDataItem328.Text = "03:00"
-        RadListDataItem329.Text = "03:30"
-        RadListDataItem330.Text = "04:00"
-        RadListDataItem331.Text = "04:30"
-        RadListDataItem332.Text = "05:00"
-        RadListDataItem333.Text = "05:30"
-        RadListDataItem334.Text = "06:00"
-        RadListDataItem335.Text = "06:30"
-        RadListDataItem336.Text = "07:00"
-        RadListDataItem337.Text = "07:30"
-        RadListDataItem338.Text = "08:00"
-        RadListDataItem339.Text = "08:30"
-        RadListDataItem340.Text = "09:00"
-        RadListDataItem341.Text = "09:30"
-        RadListDataItem342.Text = "10:00"
-        RadListDataItem343.Text = "10:30"
-        RadListDataItem344.Text = "11:00"
-        RadListDataItem345.Text = "11:30"
-        RadListDataItem346.Text = "12:00"
-        RadListDataItem347.Text = "12:30"
-        RadListDataItem348.Text = "13:00"
-        RadListDataItem349.Text = "13:30"
-        RadListDataItem350.Text = "14:00"
-        RadListDataItem351.Text = "14:30"
-        RadListDataItem352.Text = "15:00"
-        RadListDataItem353.Text = "15:30"
-        RadListDataItem354.Text = "16:00"
-        RadListDataItem355.Text = "16:30"
-        RadListDataItem356.Text = "17:00"
-        RadListDataItem357.Text = "17:30"
-        RadListDataItem358.Text = "18:00"
-        RadListDataItem359.Text = "18:30"
-        RadListDataItem360.Text = "19:00"
-        RadListDataItem361.Text = "19:30"
-        RadListDataItem362.Text = "20:00"
-        RadListDataItem363.Text = "20:30"
-        RadListDataItem364.Text = "21:00"
-        RadListDataItem365.Text = "21:30"
-        RadListDataItem366.Text = "22:00"
-        RadListDataItem367.Text = "22:30"
-        RadListDataItem368.Text = "23:00"
-        RadListDataItem369.Text = "23:30"
-        RadListDataItem370.Text = "24:00"
+        RadListDataItem323.Text = "01:00"
+        RadListDataItem324.Text = "01:30"
+        RadListDataItem325.Text = "02:00"
+        RadListDataItem326.Text = "02:30"
+        RadListDataItem327.Text = "03:00"
+        RadListDataItem328.Text = "03:30"
+        RadListDataItem329.Text = "04:00"
+        RadListDataItem330.Text = "04:30"
+        RadListDataItem331.Text = "05:00"
+        RadListDataItem332.Text = "05:30"
+        RadListDataItem333.Text = "06:00"
+        RadListDataItem334.Text = "06:30"
+        RadListDataItem335.Text = "07:00"
+        RadListDataItem336.Text = "07:30"
+        RadListDataItem337.Text = "08:00"
+        RadListDataItem338.Text = "08:30"
+        RadListDataItem339.Text = "09:00"
+        RadListDataItem340.Text = "09:30"
+        RadListDataItem341.Text = "10:00"
+        RadListDataItem342.Text = "10:30"
+        RadListDataItem343.Text = "11:00"
+        RadListDataItem344.Text = "11:30"
+        RadListDataItem345.Text = "12:00"
+        RadListDataItem346.Text = "12:30"
+        RadListDataItem347.Text = "13:00"
+        RadListDataItem348.Text = "13:30"
+        RadListDataItem349.Text = "14:00"
+        RadListDataItem350.Text = "14:30"
+        RadListDataItem351.Text = "15:00"
+        RadListDataItem352.Text = "15:30"
+        RadListDataItem353.Text = "16:00"
+        RadListDataItem354.Text = "16:30"
+        RadListDataItem355.Text = "17:00"
+        RadListDataItem356.Text = "17:30"
+        RadListDataItem357.Text = "18:00"
+        RadListDataItem358.Text = "18:30"
+        RadListDataItem359.Text = "19:00"
+        RadListDataItem360.Text = "19:30"
+        RadListDataItem361.Text = "20:00"
+        RadListDataItem362.Text = "20:30"
+        RadListDataItem363.Text = "21:00"
+        RadListDataItem364.Text = "21:30"
+        RadListDataItem365.Text = "22:00"
+        RadListDataItem366.Text = "22:30"
+        RadListDataItem367.Text = "23:00"
+        RadListDataItem368.Text = "23:30"
+        RadListDataItem369.Text = "24:00"
+        Me.ret_tb_etime.Items.Add(RadListDataItem323)
         Me.ret_tb_etime.Items.Add(RadListDataItem324)
         Me.ret_tb_etime.Items.Add(RadListDataItem325)
         Me.ret_tb_etime.Items.Add(RadListDataItem326)
@@ -1467,7 +1464,6 @@ Partial Class Main
         Me.ret_tb_etime.Items.Add(RadListDataItem367)
         Me.ret_tb_etime.Items.Add(RadListDataItem368)
         Me.ret_tb_etime.Items.Add(RadListDataItem369)
-        Me.ret_tb_etime.Items.Add(RadListDataItem370)
         Me.ret_tb_etime.Location = New System.Drawing.Point(657, 91)
         Me.ret_tb_etime.Name = "ret_tb_etime"
         Me.ret_tb_etime.Size = New System.Drawing.Size(102, 24)
@@ -1549,6 +1545,7 @@ Partial Class Main
         Me.ret_penalties_info.Controls.Add(Me.pen_endDate)
         Me.ret_penalties_info.Controls.Add(Me.pen_startDate)
         Me.ret_penalties_info.Controls.Add(Me.penalty_grid_list)
+        Me.ret_penalties_info.ItemSize = New System.Drawing.SizeF(57!, 24!)
         Me.ret_penalties_info.Location = New System.Drawing.Point(5, 30)
         Me.ret_penalties_info.Name = "ret_penalties_info"
         Me.ret_penalties_info.Size = New System.Drawing.Size(1338, 487)
@@ -1669,6 +1666,7 @@ Partial Class Main
         Me.ret_eq_list.Controls.Add(Me.RadLabel19)
         Me.ret_eq_list.Controls.Add(Me.RadLabel22)
         Me.ret_eq_list.Controls.Add(Me.returned_startDate)
+        Me.ret_eq_list.ItemSize = New System.Drawing.SizeF(142!, 24!)
         Me.ret_eq_list.Location = New System.Drawing.Point(5, 30)
         Me.ret_eq_list.Name = "ret_eq_list"
         Me.ret_eq_list.Size = New System.Drawing.Size(1338, 487)
@@ -1811,6 +1809,7 @@ Partial Class Main
         Me.res_reserved_info.Controls.Add(Me.gp_controls)
         Me.res_reserved_info.Controls.Add(Me.gp_details)
         Me.res_reserved_info.Controls.Add(Me.reserved_grid_list)
+        Me.res_reserved_info.ItemSize = New System.Drawing.SizeF(120!, 24!)
         Me.res_reserved_info.Location = New System.Drawing.Point(5, 30)
         Me.res_reserved_info.Name = "res_reserved_info"
         Me.res_reserved_info.Size = New System.Drawing.Size(1338, 487)
@@ -1897,11 +1896,12 @@ Partial Class Main
         'rel_nameofstaff_recorder
         '
         Me.rel_nameofstaff_recorder.BackColor = System.Drawing.Color.Transparent
-        Me.rel_nameofstaff_recorder.ForeColor = System.Drawing.Color.White
         Me.rel_nameofstaff_recorder.Location = New System.Drawing.Point(141, 115)
         Me.rel_nameofstaff_recorder.Name = "rel_nameofstaff_recorder"
-        Me.rel_nameofstaff_recorder.Size = New System.Drawing.Size(2, 2)
+        Me.rel_nameofstaff_recorder.Size = New System.Drawing.Size(75, 18)
         Me.rel_nameofstaff_recorder.TabIndex = 39
+        Me.rel_nameofstaff_recorder.Text = "Name of Staff"
+        Me.rel_nameofstaff_recorder.ThemeName = "VisualStudio2012Dark"
         '
         'RadLabel24
         '
@@ -1998,12 +1998,12 @@ Partial Class Main
         'rel_nameofstaff_release
         '
         Me.rel_nameofstaff_release.BackColor = System.Drawing.Color.Transparent
-        Me.rel_nameofstaff_release.ForeColor = System.Drawing.Color.White
         Me.rel_nameofstaff_release.Location = New System.Drawing.Point(140, 143)
         Me.rel_nameofstaff_release.Name = "rel_nameofstaff_release"
         Me.rel_nameofstaff_release.Size = New System.Drawing.Size(75, 18)
         Me.rel_nameofstaff_release.TabIndex = 38
         Me.rel_nameofstaff_release.Text = "Name of Staff"
+        Me.rel_nameofstaff_release.ThemeName = "VisualStudio2012Dark"
         '
         'lbl_equipmentnum
         '
@@ -2334,6 +2334,7 @@ Partial Class Main
         'rel_released_info
         '
         Me.rel_released_info.Controls.Add(Me.released_grid_list)
+        Me.rel_released_info.ItemSize = New System.Drawing.SizeF(152!, 24!)
         Me.rel_released_info.Location = New System.Drawing.Point(5, 30)
         Me.rel_released_info.Name = "rel_released_info"
         Me.rel_released_info.Size = New System.Drawing.Size(1338, 487)
@@ -2476,14 +2477,15 @@ Partial Class Main
         '
         'lbl_nameofstaff_reserved
         '
+        Me.lbl_nameofstaff_reserved.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom),System.Windows.Forms.AnchorStyles)
         Me.lbl_nameofstaff_reserved.AutoSize = false
         Me.lbl_nameofstaff_reserved.BackColor = System.Drawing.Color.Transparent
-        Me.lbl_nameofstaff_reserved.ForeColor = System.Drawing.Color.White
         Me.lbl_nameofstaff_reserved.Location = New System.Drawing.Point(541, 162)
         Me.lbl_nameofstaff_reserved.Name = "lbl_nameofstaff_reserved"
         Me.lbl_nameofstaff_reserved.Size = New System.Drawing.Size(125, 33)
         Me.lbl_nameofstaff_reserved.TabIndex = 36
         Me.lbl_nameofstaff_reserved.Text = "Name of Staff"
+        Me.lbl_nameofstaff_reserved.ThemeName = "VisualStudio2012Dark"
         '
         'rec_rrtc_actname
         '
@@ -3440,7 +3442,6 @@ Partial Class Main
         'rpv_staff
         '
         Me.rpv_staff.Controls.Add(Me.acc_staff_list)
-        Me.rpv_staff.ItemSize = New System.Drawing.SizeF(78!, 24!)
         Me.rpv_staff.Location = New System.Drawing.Point(5, 30)
         Me.rpv_staff.Name = "rpv_staff"
         Me.rpv_staff.Size = New System.Drawing.Size(1343, 244)
@@ -3470,7 +3471,6 @@ Partial Class Main
         'rpv_borrower
         '
         Me.rpv_borrower.Controls.Add(Me.acc_prof_list)
-        Me.rpv_borrower.ItemSize = New System.Drawing.SizeF(101!, 24!)
         Me.rpv_borrower.Location = New System.Drawing.Point(5, 30)
         Me.rpv_borrower.Name = "rpv_borrower"
         Me.rpv_borrower.Size = New System.Drawing.Size(1343, 244)
@@ -3721,8 +3721,6 @@ Partial Class Main
         Me.gb_staff_reg.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping
         Me.gb_staff_reg.Anchor = System.Windows.Forms.AnchorStyles.Bottom
         Me.gb_staff_reg.Controls.Add(Me.RadGroupBox28)
-        Me.gb_staff_reg.Controls.Add(Me.acc_sf_usertype)
-        Me.gb_staff_reg.Controls.Add(Me.RadLabel39)
         Me.gb_staff_reg.Controls.Add(Me.acc_sf_retypepassword)
         Me.gb_staff_reg.Controls.Add(Me.acc_sf_password)
         Me.gb_staff_reg.Controls.Add(Me.acc_sf_username)
@@ -3801,32 +3799,9 @@ Partial Class Main
         Me.acc_staff_btn_save.Text = "Save"
         Me.acc_staff_btn_save.ThemeName = "VisualStudio2012Dark"
         '
-        'acc_sf_usertype
-        '
-        Me.acc_sf_usertype.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
-        Me.acc_sf_usertype.DropDownStyle = Telerik.WinControls.RadDropDownStyle.DropDownList
-        RadListDataItem226.Text = "Staff"
-        Me.acc_sf_usertype.Items.Add(RadListDataItem226)
-        Me.acc_sf_usertype.Location = New System.Drawing.Point(449, 25)
-        Me.acc_sf_usertype.Name = "acc_sf_usertype"
-        Me.acc_sf_usertype.Size = New System.Drawing.Size(201, 27)
-        Me.acc_sf_usertype.TabIndex = 4
-        Me.acc_sf_usertype.ThemeName = "VisualStudio2012Dark"
-        CType(Me.acc_sf_usertype.GetChildAt(0),Telerik.WinControls.UI.RadDropDownListElement).DropDownStyle = Telerik.WinControls.RadDropDownStyle.DropDownList
-        '
-        'RadLabel39
-        '
-        Me.RadLabel39.BackColor = System.Drawing.Color.Transparent
-        Me.RadLabel39.Location = New System.Drawing.Point(385, 31)
-        Me.RadLabel39.Name = "RadLabel39"
-        Me.RadLabel39.Size = New System.Drawing.Size(58, 18)
-        Me.RadLabel39.TabIndex = 21
-        Me.RadLabel39.Text = "User Type:"
-        Me.RadLabel39.ThemeName = "VisualStudio2012Dark"
-        '
         'acc_sf_retypepassword
         '
-        Me.acc_sf_retypepassword.Location = New System.Drawing.Point(449, 120)
+        Me.acc_sf_retypepassword.Location = New System.Drawing.Point(449, 90)
         Me.acc_sf_retypepassword.MinimumSize = New System.Drawing.Size(0, 24)
         Me.acc_sf_retypepassword.Name = "acc_sf_retypepassword"
         Me.acc_sf_retypepassword.PasswordChar = Global.Microsoft.VisualBasic.ChrW(9679)
@@ -3841,7 +3816,7 @@ Partial Class Main
         '
         'acc_sf_password
         '
-        Me.acc_sf_password.Location = New System.Drawing.Point(449, 89)
+        Me.acc_sf_password.Location = New System.Drawing.Point(449, 59)
         Me.acc_sf_password.MinimumSize = New System.Drawing.Size(0, 24)
         Me.acc_sf_password.Name = "acc_sf_password"
         Me.acc_sf_password.PasswordChar = Global.Microsoft.VisualBasic.ChrW(9679)
@@ -3856,7 +3831,7 @@ Partial Class Main
         '
         'acc_sf_username
         '
-        Me.acc_sf_username.Location = New System.Drawing.Point(449, 58)
+        Me.acc_sf_username.Location = New System.Drawing.Point(449, 28)
         Me.acc_sf_username.MinimumSize = New System.Drawing.Size(0, 24)
         Me.acc_sf_username.Name = "acc_sf_username"
         '
@@ -3870,7 +3845,7 @@ Partial Class Main
         'RadLabel31
         '
         Me.RadLabel31.BackColor = System.Drawing.Color.Transparent
-        Me.RadLabel31.Location = New System.Drawing.Point(387, 92)
+        Me.RadLabel31.Location = New System.Drawing.Point(387, 62)
         Me.RadLabel31.Name = "RadLabel31"
         Me.RadLabel31.Size = New System.Drawing.Size(56, 18)
         Me.RadLabel31.TabIndex = 16
@@ -3880,7 +3855,7 @@ Partial Class Main
         'RadLabel32
         '
         Me.RadLabel32.BackColor = System.Drawing.Color.Transparent
-        Me.RadLabel32.Location = New System.Drawing.Point(343, 122)
+        Me.RadLabel32.Location = New System.Drawing.Point(343, 92)
         Me.RadLabel32.Name = "RadLabel32"
         Me.RadLabel32.Size = New System.Drawing.Size(100, 18)
         Me.RadLabel32.TabIndex = 15
@@ -3890,7 +3865,7 @@ Partial Class Main
         'RadLabel33
         '
         Me.RadLabel33.BackColor = System.Drawing.Color.Transparent
-        Me.RadLabel33.Location = New System.Drawing.Point(384, 61)
+        Me.RadLabel33.Location = New System.Drawing.Point(384, 31)
         Me.RadLabel33.Name = "RadLabel33"
         Me.RadLabel33.Size = New System.Drawing.Size(59, 18)
         Me.RadLabel33.TabIndex = 14
@@ -4093,12 +4068,12 @@ Partial Class Main
         'lu_ActivityType
         '
         Me.lu_ActivityType.DropDownStyle = Telerik.WinControls.RadDropDownStyle.DropDownList
-        RadListDataItem227.Text = "All"
-        RadListDataItem228.Text = "Academic"
-        RadListDataItem229.Text = "School Activity"
+        RadListDataItem226.Text = "All"
+        RadListDataItem227.Text = "Academic"
+        RadListDataItem228.Text = "School Activity"
+        Me.lu_ActivityType.Items.Add(RadListDataItem226)
         Me.lu_ActivityType.Items.Add(RadListDataItem227)
         Me.lu_ActivityType.Items.Add(RadListDataItem228)
-        Me.lu_ActivityType.Items.Add(RadListDataItem229)
         Me.lu_ActivityType.Location = New System.Drawing.Point(17, 51)
         Me.lu_ActivityType.Name = "lu_ActivityType"
         Me.lu_ActivityType.Size = New System.Drawing.Size(129, 24)
@@ -4219,7 +4194,7 @@ Partial Class Main
         Me.rpv1.DefaultPage = Me.rpvp1_main
         Me.rpv1.Location = New System.Drawing.Point(0, 26)
         Me.rpv1.Name = "rpv1"
-        Me.rpv1.SelectedPage = Me.rpvp_account
+        Me.rpv1.SelectedPage = Me.rpvp_releasing
         Me.rpv1.Size = New System.Drawing.Size(1358, 557)
         Me.rpv1.TabIndex = 1
         Me.rpv1.Text = "Home"
@@ -4546,8 +4521,6 @@ Partial Class Main
         CType(Me.acc_staff_btn_delete,System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.acc_staff_btn_update,System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.acc_staff_btn_save,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.acc_sf_usertype,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.RadLabel39,System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.acc_sf_retypepassword,System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.acc_sf_password,System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.acc_sf_username,System.ComponentModel.ISupportInitialize).EndInit
@@ -4704,8 +4677,6 @@ End Sub
     Friend WithEvents RadLabel37 As Telerik.WinControls.UI.RadLabel
     Friend WithEvents RadLabel38 As Telerik.WinControls.UI.RadLabel
     Friend WithEvents gb_staff_reg As Telerik.WinControls.UI.RadGroupBox
-    Friend WithEvents acc_sf_usertype As Telerik.WinControls.UI.RadDropDownList
-    Friend WithEvents RadLabel39 As Telerik.WinControls.UI.RadLabel
     Friend WithEvents acc_sf_retypepassword As Telerik.WinControls.UI.RadTextBox
     Friend WithEvents acc_sf_password As Telerik.WinControls.UI.RadTextBox
     Friend WithEvents acc_sf_username As Telerik.WinControls.UI.RadTextBox

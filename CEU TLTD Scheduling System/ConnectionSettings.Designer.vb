@@ -34,72 +34,72 @@ Partial Class ConnectionWindow
         Me.txt_cons_database = New Telerik.WinControls.UI.RadTextBox()
         Me.txt_cons_server = New Telerik.WinControls.UI.RadTextBox()
         Me.btn_cons_save = New Telerik.WinControls.UI.RadButton()
-        CType(Me.RadLabel1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RadLabel2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RadLabel3, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RadLabel4, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RadGroupBox1, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.RadGroupBox1.SuspendLayout()
-        CType(Me.txt_cons_port, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RadLabel5, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txt_cons_password, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txt_cons_username, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txt_cons_database, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txt_cons_server, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.btn_cons_save, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.SuspendLayout()
+        CType(Me.RadLabel1,System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.RadLabel2,System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.RadLabel3,System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.RadLabel4,System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.RadGroupBox1,System.ComponentModel.ISupportInitialize).BeginInit
+        Me.RadGroupBox1.SuspendLayout
+        CType(Me.txt_cons_port,System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.RadLabel5,System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txt_cons_password,System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txt_cons_username,System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txt_cons_database,System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txt_cons_server,System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.btn_cons_save,System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me,System.ComponentModel.ISupportInitialize).BeginInit
+        Me.SuspendLayout
         '
         'RadLabel1
         '
         Me.RadLabel1.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.RadLabel1.BackColor = System.Drawing.Color.Transparent
-        Me.RadLabel1.ForeColor = System.Drawing.Color.White
         Me.RadLabel1.Location = New System.Drawing.Point(35, 39)
         Me.RadLabel1.Name = "RadLabel1"
         Me.RadLabel1.Size = New System.Drawing.Size(40, 18)
         Me.RadLabel1.TabIndex = 0
         Me.RadLabel1.Text = "Server:"
+        Me.RadLabel1.ThemeName = "VisualStudio2012Dark"
         '
         'RadLabel2
         '
         Me.RadLabel2.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.RadLabel2.BackColor = System.Drawing.Color.Transparent
-        Me.RadLabel2.ForeColor = System.Drawing.Color.White
         Me.RadLabel2.Location = New System.Drawing.Point(17, 115)
         Me.RadLabel2.Name = "RadLabel2"
         Me.RadLabel2.Size = New System.Drawing.Size(55, 18)
         Me.RadLabel2.TabIndex = 1
         Me.RadLabel2.Text = "Database:"
+        Me.RadLabel2.ThemeName = "VisualStudio2012Dark"
         '
         'RadLabel3
         '
         Me.RadLabel3.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.RadLabel3.BackColor = System.Drawing.Color.Transparent
-        Me.RadLabel3.ForeColor = System.Drawing.Color.White
         Me.RadLabel3.Location = New System.Drawing.Point(16, 154)
         Me.RadLabel3.Name = "RadLabel3"
         Me.RadLabel3.Size = New System.Drawing.Size(59, 18)
         Me.RadLabel3.TabIndex = 1
         Me.RadLabel3.Text = "Username:"
+        Me.RadLabel3.ThemeName = "VisualStudio2012Dark"
         '
         'RadLabel4
         '
         Me.RadLabel4.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.RadLabel4.BackColor = System.Drawing.Color.Transparent
-        Me.RadLabel4.ForeColor = System.Drawing.Color.White
         Me.RadLabel4.Location = New System.Drawing.Point(19, 194)
         Me.RadLabel4.Name = "RadLabel4"
         Me.RadLabel4.Size = New System.Drawing.Size(56, 18)
         Me.RadLabel4.TabIndex = 2
         Me.RadLabel4.Text = "Password:"
+        Me.RadLabel4.ThemeName = "VisualStudio2012Dark"
         '
         'RadGroupBox1
         '
         Me.RadGroupBox1.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping
-        Me.RadGroupBox1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.RadGroupBox1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom)  _
+            Or System.Windows.Forms.AnchorStyles.Left)  _
+            Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
         Me.RadGroupBox1.Controls.Add(Me.txt_cons_port)
         Me.RadGroupBox1.Controls.Add(Me.RadLabel5)
         Me.RadGroupBox1.Controls.Add(Me.txt_cons_password)
@@ -115,7 +115,7 @@ Partial Class ConnectionWindow
         Me.RadGroupBox1.Name = "RadGroupBox1"
         Me.RadGroupBox1.Size = New System.Drawing.Size(268, 230)
         Me.RadGroupBox1.TabIndex = 0
-        Me.RadGroupBox1.TabStop = False
+        Me.RadGroupBox1.TabStop = false
         Me.RadGroupBox1.Text = "Datebase Settings"
         Me.RadGroupBox1.ThemeName = "VisualStudio2012Dark"
         '
@@ -137,12 +137,12 @@ Partial Class ConnectionWindow
         '
         Me.RadLabel5.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.RadLabel5.BackColor = System.Drawing.Color.Transparent
-        Me.RadLabel5.ForeColor = System.Drawing.Color.White
         Me.RadLabel5.Location = New System.Drawing.Point(46, 77)
         Me.RadLabel5.Name = "RadLabel5"
         Me.RadLabel5.Size = New System.Drawing.Size(29, 18)
         Me.RadLabel5.TabIndex = 2
         Me.RadLabel5.Text = "Port:"
+        Me.RadLabel5.ThemeName = "VisualStudio2012Dark"
         '
         'txt_cons_password
         '
@@ -217,42 +217,42 @@ Partial Class ConnectionWindow
         'ConnectionWindow
         '
         Me.AcceptButton = Me.btn_cons_save
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6!, 13!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(274, 291)
         Me.Controls.Add(Me.btn_cons_save)
         Me.Controls.Add(Me.RadGroupBox1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
-        Me.MaximizeBox = False
-        Me.MinimizeBox = False
+        Me.MaximizeBox = false
+        Me.MinimizeBox = false
         Me.Name = "ConnectionWindow"
         '
         '
         '
-        Me.RootElement.ApplyShapeToControl = True
-        Me.ShowIcon = False
+        Me.RootElement.ApplyShapeToControl = true
+        Me.ShowIcon = false
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Connection"
         Me.ThemeName = "VisualStudio2012Dark"
-        Me.TopMost = True
-        CType(Me.RadLabel1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RadLabel2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RadLabel3, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RadLabel4, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RadGroupBox1, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.RadGroupBox1.ResumeLayout(False)
-        Me.RadGroupBox1.PerformLayout()
-        CType(Me.txt_cons_port, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RadLabel5, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txt_cons_password, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txt_cons_username, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txt_cons_database, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txt_cons_server, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.btn_cons_save, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.ResumeLayout(False)
+        Me.TopMost = true
+        CType(Me.RadLabel1,System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.RadLabel2,System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.RadLabel3,System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.RadLabel4,System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.RadGroupBox1,System.ComponentModel.ISupportInitialize).EndInit
+        Me.RadGroupBox1.ResumeLayout(false)
+        Me.RadGroupBox1.PerformLayout
+        CType(Me.txt_cons_port,System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.RadLabel5,System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txt_cons_password,System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txt_cons_username,System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txt_cons_database,System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txt_cons_server,System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.btn_cons_save,System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me,System.ComponentModel.ISupportInitialize).EndInit
+        Me.ResumeLayout(false)
 
-    End Sub
+End Sub
 
     Friend WithEvents RadLabel1 As Telerik.WinControls.UI.RadLabel
     Friend WithEvents RadLabel2 As Telerik.WinControls.UI.RadLabel

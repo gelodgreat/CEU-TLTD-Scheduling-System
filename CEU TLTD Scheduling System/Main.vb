@@ -136,7 +136,7 @@ Public Class Main
         'reservation_rgv_recordeddata.Show()
         'reservations_rgv_showavailableitems.Hide()
         lu_ActivityType.SelectedValue="Academic"
-        acc_sf_usertype.SelectedValue="Staff"
+        'acc_sf_usertype.SelectedValue="Staff"
         'main_load_academicsonly() 'HANDLED by the Event of SelectedIndexChanged in "lu_ActivityType"
         'main_load_schoolonly() 'Now using single gridview, depreciated
         returning_groupbox_info.SelectedPage = rel_list_info2
@@ -167,6 +167,7 @@ Public Class Main
         return_btn_returned.Enabled=false
         refresh_main_rgv_recordedacademicsonly.Start()
         'load_cb_eq_type()     ----->>> DEPRECIATED
+        rel_nameofstaff_recorder.Text=""
         eq_rgv_addeq.Columns(3).IsVisible = false 'Save Space in the temporary reservation table
     End Sub
 
@@ -865,7 +866,8 @@ Public Class Main
         
             MysqlConn.Open()
             Dim query As String
-            query = "Select staff_id as 'Staff ID' , staff_fname as 'First Name' , staff_mname as 'Middle Name' , staff_surname as 'Surname' , staff_username as 'Username' , staff_type as 'User Type' from staff_reg"
+            query = "Select staff_id as 'Staff ID' , staff_fname as 'First Name' , staff_mname as 'Middle Name' , staff_surname as 'Surname' , staff_username as 'Username' from staff_reg"
+            'REMOVAL OF STAFF TYPE query = "Select staff_id as 'Staff ID' , staff_fname as 'First Name' , staff_mname as 'Middle Name' , staff_surname as 'Surname' , staff_username as 'Username' , staff_type as 'User Type' from staff_reg"
             comm = New MySqlCommand(query, MysqlConn)
             sda.SelectCommand = comm
             sda.Fill(dbdataset)
@@ -969,7 +971,7 @@ Public Class Main
         MysqlConn = New MySqlConnection
         MysqlConn.ConnectionString = connstring
         Dim READER As MySqlDataReader
-        If (acc_sf_id.Text = "") Or (acc_sf_fname.Text = "") Or (acc_sf_mname.Text = "") Or (acc_sf_lname.Text = "") Or (acc_sf_usertype.Text = "") Or (acc_sf_username.Text = "") Then
+        If (acc_sf_id.Text = "") Or (acc_sf_fname.Text = "") Or (acc_sf_mname.Text = "") Or (acc_sf_lname.Text = "") Or (acc_sf_username.Text = "") Then '(acc_sf_usertype.Text = "")
             RadMessageBox.Show(Me, "Please complete the fields to Save!", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Exclamation)
         Else
             If (Not acc_sf_username.Text.Length <= 11) Then
@@ -977,13 +979,14 @@ Public Class Main
                     
                         MysqlConn.Open()
                         Dim Query As String
-                        Query = "insert into ceutltdscheduler.staff_reg (staff_id,staff_fname,staff_mname,staff_surname,staff_type,staff_username,staff_password) values (@staffid, @staffFname, @staffMname, @staffLname, @staffUsertype, @staffUsername, sha2(@staffPassword, 512))"
+                        'REMOVAL OF STAFF Query = "insert into ceutltdscheduler.staff_reg (staff_id,staff_fname,staff_mname,staff_surname,staff_type,staff_username,staff_password) values (@staffid, @staffFname, @staffMname, @staffLname, @staffUsertype, @staffUsername, sha2(@staffPassword, 512))"
+                        Query = "insert into ceutltdscheduler.staff_reg (staff_id,staff_fname,staff_mname,staff_surname,staff_username,staff_password) values (@staffid, @staffFname, @staffMname, @staffLname, @staffUsername, sha2(@staffPassword, 512))"
                         comm = New MySqlCommand(Query, MysqlConn)
                         comm.Parameters.AddWithValue("staffid", acc_sf_id.Text)
                         comm.Parameters.AddWithValue("staffFname", acc_sf_fname.Text)
                         comm.Parameters.AddWithValue("staffMname", acc_sf_mname.Text)
                         comm.Parameters.AddWithValue("staffLname", acc_sf_lname.Text)
-                        comm.Parameters.AddWithValue("staffUsertype", acc_sf_usertype.Text)
+                        'comm.Parameters.AddWithValue("staffUsertype", acc_sf_usertype.Text)
                         comm.Parameters.AddWithValue("staffUsername", acc_sf_username.Text)
                         comm.Parameters.AddWithValue("staffPassword", acc_sf_password.Text)
 
@@ -1054,7 +1057,7 @@ Public Class Main
                 acc_sf_fname.Text = row.Cells("First Name").Value.ToString
                 acc_sf_mname.Text = row.Cells("Middle Name").Value.ToString
                 acc_sf_lname.Text = row.Cells("Surname").Value.ToString
-                acc_sf_usertype.Text = row.Cells("User Type").Value.ToString
+                'acc_sf_usertype.Text = row.Cells("User Type").Value.ToString
                 acc_sf_username.Text = row.Cells("Username").Value.ToString
 
                 acc_sf_id.Enabled = False
@@ -1090,21 +1093,22 @@ Public Class Main
         End If
         updateYN = RadMessageBox.Show(Me, "Are you sure to make changes on this staff's information?", "CEU TLTD Reservation System", MessageBoxButtons.YesNo, RadMessageIcon.Question)
         If updateYN = MsgBoxResult.Yes Then
-            If Not ((acc_sf_fname.Text = "" Or acc_sf_mname.Text = "" Or acc_sf_lname.Text = "" Or acc_sf_usertype.Text = "" Or acc_sf_username.Text = "") or (acc_sf_password.Enabled=True And acc_sf_retypepassword.Enabled=True) And NOT (acc_sf_password.Text="" And acc_sf_retypepassword.Text=""))  Then
+            If Not ((acc_sf_fname.Text = "" Or acc_sf_mname.Text = "" Or acc_sf_lname.Text = "" Or acc_sf_username.Text = "") or (acc_sf_password.Enabled=True And acc_sf_retypepassword.Enabled=True) And NOT (acc_sf_password.Text="" And acc_sf_retypepassword.Text=""))  Then 'acc_sf_usertype.Text = "" 
                     MysqlConn.Open()
-                    query = "UPDATE ceutltdscheduler.staff_reg SET staff_fname=@b, staff_mname=@c, staff_surname=@d, staff_type=@e WHERE staff_id=@a and staff_username=@f"
+                    'STAFF USER TYPE REMOVAL query = "UPDATE ceutltdscheduler.staff_reg SET staff_fname=@b, staff_mname=@c, staff_surname=@d, staff_type=@e WHERE staff_id=@a and staff_username=@f"
+                    query = "UPDATE ceutltdscheduler.staff_reg SET staff_fname=@b, staff_mname=@c, staff_surname=@d WHERE staff_id=@a and staff_username=@f"
                     comm = New MySqlCommand(query, MysqlConn)
                     comm.Parameters.AddWithValue("@a",acc_sf_id.Text)
                     comm.Parameters.AddWithValue("@b",acc_sf_fname.Text)
                     comm.Parameters.AddWithValue("@c",acc_sf_mname.Text)
                     comm.Parameters.AddWithValue("@d",acc_sf_lname.Text)
-                    comm.Parameters.AddWithValue("@e",acc_sf_usertype.Text)
+                    'comm.Parameters.AddWithValue("@e",acc_sf_usertype.Text)
                     comm.Parameters.AddWithValue("@f", acc_sf_username.Text)
                     reader = comm.ExecuteReader
                     RadMessageBox.Show(Me, "Account information updated successfully!", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Info)
                     MysqlConn.Close()
                     Staff_Reg_UpdateSuccessful()
-            ElseIf Not ((acc_sf_fname.Text = "") Or (acc_sf_mname.Text = "") Or (acc_sf_lname.Text = "") Or (acc_sf_usertype.Text = "") Or (acc_sf_username.Text = "") Or (acc_sf_password.Text= "") Or (acc_sf_retypepassword.Text = "") Or (acc_sf_password.Enabled=False And acc_sf_retypepassword.Enabled=False))
+            ElseIf Not ((acc_sf_fname.Text = "") Or (acc_sf_mname.Text = "") Or (acc_sf_lname.Text = "") Or (acc_sf_username.Text = "") Or (acc_sf_password.Text= "") Or (acc_sf_retypepassword.Text = "") Or (acc_sf_password.Enabled=False And acc_sf_retypepassword.Enabled=False)) '(acc_sf_usertype.Text = "")
                     If acc_sf_password.Text <> acc_sf_retypepassword.Text Then
                         acc_sf_password.Text=""
                         acc_sf_retypepassword.Text=""
@@ -1112,13 +1116,14 @@ Public Class Main
                         RadMessageBox.Show(Me, "Please confirm your new password.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
                     Else
                         MysqlConn.Open()
-                        query = "UPDATE ceutltdscheduler.staff_reg SET staff_fname=@b, staff_mname=@c, staff_surname=@d, staff_type=@e, staff_password=sha2(@g, 512) WHERE staff_id=@a and staff_username=@f"
+                        'STAFF USERTYPE REMOVAL query = "UPDATE ceutltdscheduler.staff_reg SET staff_fname=@b, staff_mname=@c, staff_surname=@d, staff_type=@e, staff_password=sha2(@g, 512) WHERE staff_id=@a and staff_username=@f"
+                        query = "UPDATE ceutltdscheduler.staff_reg SET staff_fname=@b, staff_mname=@c, staff_surname=@d, staff_password=sha2(@g, 512) WHERE staff_id=@a and staff_username=@f"
                         comm = New MySqlCommand(query, MysqlConn)
                         comm.Parameters.AddWithValue("@a",acc_sf_id.Text)
                         comm.Parameters.AddWithValue("@b",acc_sf_fname.Text)
                         comm.Parameters.AddWithValue("@c",acc_sf_mname.Text)
                         comm.Parameters.AddWithValue("@d",acc_sf_lname.Text)
-                        comm.Parameters.AddWithValue("@e",acc_sf_usertype.Text)
+                        'comm.Parameters.AddWithValue("@e",acc_sf_usertype.Text)
                         comm.Parameters.AddWithValue("@f",acc_sf_username.Text)
                         comm.Parameters.AddWithValue("@g",acc_sf_password.Text)
                         reader = comm.ExecuteReader
@@ -1185,9 +1190,10 @@ Public Class Main
             Else
                 MysqlConn.Open()
                 Dim Query As String
-                Query = "delete from ceutltdscheduler.staff_reg WHERE staff_id=@a"
+                Query = "delete from ceutltdscheduler.staff_reg WHERE staff_id=@a and staff_username=@b"
                 comm = New MySqlCommand(Query, MysqlConn)
                 comm.Parameters.AddWithValue("@a",acc_sf_id.Text)
+                comm.Parameters.AddWithValue("@b",acc_sf_username.Text)
                 reader = comm.ExecuteReader
 
                 RadMessageBox.Show(Me, "Account Deletion Successful!", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Info)
@@ -1235,7 +1241,7 @@ Public Class Main
             acc_sf_fname.Text = ""
             acc_sf_mname.Text = ""
             acc_sf_lname.Text = ""
-            acc_sf_usertype.SelectedValue = "Staff"
+            'acc_sf_usertype.SelectedValue = "Staff"
             acc_sf_username.Text = ""
             acc_sf_password.Text = ""
             acc_sf_retypepassword.Text = ""
