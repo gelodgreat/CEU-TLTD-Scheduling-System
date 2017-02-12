@@ -863,7 +863,6 @@ Public Class Main
             MysqlConn.Close()
         End If
 
-        
             MysqlConn.Open()
             Dim query As String
             query = "Select staff_id as 'Staff ID' , staff_fname as 'First Name' , staff_mname as 'Middle Name' , staff_surname as 'Surname' , staff_username as 'Username' from staff_reg"
@@ -903,7 +902,7 @@ Public Class Main
         If e.RowIndex = -1
             'DO NOTHING
         Else
-        acc_staff_keepSelectedRowIndexAfterUpdate = e.RowIndex
+            acc_staff_keepSelectedRowIndexAfterUpdate = e.RowIndex
         End If
     End Sub
 
@@ -1068,9 +1067,11 @@ Public Class Main
                     acc_sf_retypepassword.Enabled = True
                     acc_sf_password.NullText="No changes if left blank"
                     acc_sf_retypepassword.NullText="No changes if left blank"
+                    acc_staff_btn_delete.Enabled=False
                 Else
                     acc_sf_password.Enabled = False
                     acc_sf_retypepassword.Enabled = False
+                    acc_staff_btn_delete.Enabled=True
                     acc_sf_password.NullText=""
                     acc_sf_retypepassword.NullText=""
                 End If
@@ -1170,6 +1171,7 @@ Public Class Main
         acc_sf_username.Enabled = True
         acc_sf_password.Enabled = True
         acc_sf_retypepassword.Enabled = True
+        acc_staff_btn_delete.Enabled=True
         acc_staff_btn_delete.Hide
         acc_staff_btn_update.Hide
         acc_staff_btn_save.Show
@@ -1249,6 +1251,8 @@ Public Class Main
             acc_sf_retypepassword.Enabled = True
             acc_sf_id.Enabled = True
             acc_sf_username.Enabled = True
+            acc_sf_password.NullText=""
+            acc_sf_retypepassword.NullText=""
             acc_staff_btn_save.Show()
             acc_staff_btn_update.Hide()
             acc_staff_btn_delete.Hide()
@@ -4660,8 +4664,42 @@ End Sub
         load_res_borrowerlist()
     End Sub
 
+    
+    Private Sub acc_staff_list_RowFormatting(sender As Object, e As RowFormattingEventArgs) Handles acc_staff_list.RowFormatting
+	    If e.RowElement.RowInfo.Tag = "Selected" And e.RowElement.IsCurrent Then
+		    'e.RowElement.BackColor = Color.FromArgb(&HDC, &H1B, &H1B)
+            e.RowElement.GradientStyle=GradientStyles.Solid
+		    'e.RowElement.DrawFill = True
+	    Else
+		    'e.RowElement.ResetValue(LightVisualElement.BackColorProperty, ValueResetFlags.Local)
+		    e.RowElement.ResetValue(LightVisualElement.DrawFillProperty, ValueResetFlags.Local)
+	    End If
+    End Sub
 
+    Private Sub acc_staff_list_CurrentRowChanged(sender As Object, e As CurrentRowChangedEventArgs) Handles acc_staff_list.CurrentRowChanged
+	    If e.CurrentRow.Cells("Username").Value.ToString.Equals("wu@ceu.edu.ph") Then
+            e.CurrentRow.Tag="Selected"
+        Else
+            e.CurrentRow.Tag="No FLAG"
+       End If
+    End Sub
 
+    Private Sub acc_staff_list_CellFormatting(sender As Object, e As CellFormattingEventArgs) Handles acc_staff_list.CellFormatting
+        If e.CellElement.RowElement.RowInfo.Tag = "Selected" And e.CellElement.RowElement.IsCurrent Then
+            e.CellElement.BorderColor = Color.FromArgb(&H83, &H2A, &H2A)
+            e.CellElement.GradientStyle=GradientStyles.Solid
+            e.CellElement.BorderBoxStyle = BorderBoxStyle.SingleBorder
+            e.CellElement.BorderGradientStyle = GradientStyles.Solid
+            e.CellElement.BackColor=Color.FromArgb(228,38,58)
+            e.CellElement.DrawFill = True
+        Else
+            e.CellElement.ResetValue(LightVisualElement.BorderColorProperty, ValueResetFlags.Local)
+            e.CellElement.ResetValue(LightVisualElement.BackColorProperty, ValueResetFlags.Local)
+            e.CellElement.ResetValue(LightVisualElement.BorderBoxStyleProperty, ValueResetFlags.Local)
+            e.CellElement.ResetValue(LightVisualElement.BorderGradientStyleProperty, ValueResetFlags.Local)
+            e.CellElement.ResetValue(LightVisualElement.DrawFillProperty, ValueResetFlags.Local)
+        End If
+    End Sub
 
 
 
