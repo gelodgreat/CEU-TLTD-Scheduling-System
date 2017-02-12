@@ -44,12 +44,18 @@ Public Class Login
                 comm = New MySqlCommand(q2, mysqlconn)
                 comm.Parameters.AddWithValue("@proc_email_login", log_username.Text)
                 comm.Parameters.AddWithValue("@proc_password_login", log_password.Text)
+                Dim accountstate As Boolean
                 reader = comm.ExecuteReader
                 While reader.Read
                     looper += 1
                     username = reader.GetString("staff_username")
                     activeuserfname = reader.GetString("staff_fname")
                     activeuserlname = reader.GetString("staff_surname")
+                    If reader.GetString("staff_isactive").Equals("0") Then
+                        accountstate=False
+                    ElseIf reader.GetString("staff_isactive").Equals("1") Then
+                        accountstate=True
+                    End If
                     Main.lbl_nameofstaff_reserved.Text = activeuserlname + ", " + activeuserfname
                     Main.rel_nameofstaff_release.Text = activeuserlname + ", " + activeuserfname
                     Main.ret_nameofstaff_return.Text = activeuserlname + ", " + activeuserfname
@@ -59,9 +65,11 @@ Public Class Login
                 log_password.Text = String.Empty
                 log_username.Select()
 
-                    If looper = 1 Then
+                    If looper = 1 And accountstate Then
                         Me.Hide()
                         Main.Show()
+                    ElseIf looper = 1 And Not accountstate Then
+                        RadMessageBox.Show(Me, "Your account is not active please inform the staff about the state of your account.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error, MessageBoxDefaultButton.Button1)
                     Else
                         RadMessageBox.Show(Me, "Incorrect Username or Password.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error, MessageBoxDefaultButton.Button1)
                     End If

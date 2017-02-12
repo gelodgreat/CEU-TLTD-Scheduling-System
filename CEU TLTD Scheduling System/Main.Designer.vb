@@ -507,13 +507,10 @@ Partial Class Main
         Me.RadGroupBox3 = New Telerik.WinControls.UI.RadGroupBox()
         Me.reservation_rgv_recordeddata = New Telerik.WinControls.UI.RadGridView()
         Me.rpvp_equipment = New Telerik.WinControls.UI.RadPageViewPage()
-        Me.RadLabel23 = New Telerik.WinControls.UI.RadLabel()
-        Me.tb_show_all_equipments = New Telerik.WinControls.UI.RadButton()
-        Me.RadGroupBox22 = New Telerik.WinControls.UI.RadGroupBox()
         Me.eq_total_units = New Telerik.WinControls.UI.RadLabel()
+        Me.RadLabel23 = New Telerik.WinControls.UI.RadLabel()
         Me.RadLabel43 = New Telerik.WinControls.UI.RadLabel()
-        Me.RadLabel57 = New Telerik.WinControls.UI.RadLabel()
-        Me.eq_counter_type = New Telerik.WinControls.UI.RadDropDownList()
+        Me.tb_show_all_equipments = New Telerik.WinControls.UI.RadButton()
         Me.RadGroupBox21 = New Telerik.WinControls.UI.RadGroupBox()
         Me.eq_clear_filter = New Telerik.WinControls.UI.RadButton()
         Me.RadLabel55 = New Telerik.WinControls.UI.RadLabel()
@@ -545,6 +542,9 @@ Partial Class Main
         Me.RadLabel37 = New Telerik.WinControls.UI.RadLabel()
         Me.RadLabel38 = New Telerik.WinControls.UI.RadLabel()
         Me.gb_staff_reg = New Telerik.WinControls.UI.RadGroupBox()
+        Me.RadLabel39 = New Telerik.WinControls.UI.RadLabel()
+        Me.acc_staff_rdio_inactive = New Telerik.WinControls.UI.RadRadioButton()
+        Me.acc_staff_rdio_active = New Telerik.WinControls.UI.RadRadioButton()
         Me.RadGroupBox28 = New Telerik.WinControls.UI.RadGroupBox()
         Me.acc_staff_btn_clear = New Telerik.WinControls.UI.RadButton()
         Me.acc_staff_btn_delete = New Telerik.WinControls.UI.RadButton()
@@ -757,14 +757,10 @@ Partial Class Main
         CType(Me.reservation_rgv_recordeddata,System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.reservation_rgv_recordeddata.MasterTemplate,System.ComponentModel.ISupportInitialize).BeginInit
         Me.rpvp_equipment.SuspendLayout
-        CType(Me.RadLabel23,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.tb_show_all_equipments,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.RadGroupBox22,System.ComponentModel.ISupportInitialize).BeginInit
-        Me.RadGroupBox22.SuspendLayout
         CType(Me.eq_total_units,System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.RadLabel23,System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.RadLabel43,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.RadLabel57,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.eq_counter_type,System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.tb_show_all_equipments,System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.RadGroupBox21,System.ComponentModel.ISupportInitialize).BeginInit
         Me.RadGroupBox21.SuspendLayout
         CType(Me.eq_clear_filter,System.ComponentModel.ISupportInitialize).BeginInit
@@ -805,6 +801,9 @@ Partial Class Main
         CType(Me.RadLabel38,System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.gb_staff_reg,System.ComponentModel.ISupportInitialize).BeginInit
         Me.gb_staff_reg.SuspendLayout
+        CType(Me.RadLabel39,System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.acc_staff_rdio_inactive,System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.acc_staff_rdio_active,System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.RadGroupBox28,System.ComponentModel.ISupportInitialize).BeginInit
         Me.RadGroupBox28.SuspendLayout
         CType(Me.acc_staff_btn_clear,System.ComponentModel.ISupportInitialize).BeginInit
@@ -3214,7 +3213,6 @@ Partial Class Main
         '
         Me.rpvp_equipment.Controls.Add(Me.RadLabel23)
         Me.rpvp_equipment.Controls.Add(Me.tb_show_all_equipments)
-        Me.rpvp_equipment.Controls.Add(Me.RadGroupBox22)
         Me.rpvp_equipment.Controls.Add(Me.RadGroupBox21)
         Me.rpvp_equipment.Controls.Add(Me.RadGroupBox14)
         Me.rpvp_equipment.ItemSize = New System.Drawing.SizeF(71!, 24!)
@@ -3223,11 +3221,21 @@ Partial Class Main
         Me.rpvp_equipment.Size = New System.Drawing.Size(1348, 522)
         Me.rpvp_equipment.Text = "Equipments"
         '
+        'eq_total_units
+        '
+        Me.eq_total_units.BackColor = System.Drawing.Color.Transparent
+        Me.eq_total_units.Location = New System.Drawing.Point(111, 191)
+        Me.eq_total_units.Name = "eq_total_units"
+        Me.eq_total_units.Size = New System.Drawing.Size(12, 18)
+        Me.eq_total_units.TabIndex = 28
+        Me.eq_total_units.Text = "0"
+        Me.eq_total_units.ThemeName = "VisualStudio2012Dark"
+        '
         'RadLabel23
         '
         Me.RadLabel23.AutoSize = false
         Me.RadLabel23.BackColor = System.Drawing.Color.Transparent
-        Me.RadLabel23.Location = New System.Drawing.Point(7, 385)
+        Me.RadLabel23.Location = New System.Drawing.Point(8, 307)
         Me.RadLabel23.Margin = New System.Windows.Forms.Padding(0)
         Me.RadLabel23.Name = "RadLabel23"
         Me.RadLabel23.Size = New System.Drawing.Size(167, 107)
@@ -3236,9 +3244,19 @@ Partial Class Main
         Me.RadLabel23.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter
         Me.RadLabel23.ThemeName = "VisualStudio2012Dark"
         '
+        'RadLabel43
+        '
+        Me.RadLabel43.BackColor = System.Drawing.Color.Transparent
+        Me.RadLabel43.Location = New System.Drawing.Point(43, 191)
+        Me.RadLabel43.Name = "RadLabel43"
+        Me.RadLabel43.Size = New System.Drawing.Size(62, 18)
+        Me.RadLabel43.TabIndex = 27
+        Me.RadLabel43.Text = "Total Units:"
+        Me.RadLabel43.ThemeName = "VisualStudio2012Dark"
+        '
         'tb_show_all_equipments
         '
-        Me.tb_show_all_equipments.Location = New System.Drawing.Point(29, 350)
+        Me.tb_show_all_equipments.Location = New System.Drawing.Point(30, 259)
         Me.tb_show_all_equipments.Name = "tb_show_all_equipments"
         Me.tb_show_all_equipments.Size = New System.Drawing.Size(124, 31)
         Me.tb_show_all_equipments.TabIndex = 4
@@ -3246,79 +3264,27 @@ Partial Class Main
         Me.tb_show_all_equipments.TextWrap = true
         Me.tb_show_all_equipments.ThemeName = "VisualStudio2012Dark"
         '
-        'RadGroupBox22
-        '
-        Me.RadGroupBox22.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping
-        Me.RadGroupBox22.Controls.Add(Me.eq_total_units)
-        Me.RadGroupBox22.Controls.Add(Me.RadLabel43)
-        Me.RadGroupBox22.Controls.Add(Me.RadLabel57)
-        Me.RadGroupBox22.Controls.Add(Me.eq_counter_type)
-        Me.RadGroupBox22.HeaderText = "Equipment Compute"
-        Me.RadGroupBox22.Location = New System.Drawing.Point(3, 197)
-        Me.RadGroupBox22.Name = "RadGroupBox22"
-        Me.RadGroupBox22.Size = New System.Drawing.Size(176, 143)
-        Me.RadGroupBox22.TabIndex = 3
-        Me.RadGroupBox22.Text = "Equipment Compute"
-        Me.RadGroupBox22.ThemeName = "VisualStudio2012Dark"
-        '
-        'eq_total_units
-        '
-        Me.eq_total_units.BackColor = System.Drawing.Color.Transparent
-        Me.eq_total_units.Location = New System.Drawing.Point(143, 104)
-        Me.eq_total_units.Name = "eq_total_units"
-        Me.eq_total_units.Size = New System.Drawing.Size(12, 18)
-        Me.eq_total_units.TabIndex = 28
-        Me.eq_total_units.Text = "0"
-        Me.eq_total_units.ThemeName = "VisualStudio2012Dark"
-        '
-        'RadLabel43
-        '
-        Me.RadLabel43.BackColor = System.Drawing.Color.Transparent
-        Me.RadLabel43.Location = New System.Drawing.Point(75, 104)
-        Me.RadLabel43.Name = "RadLabel43"
-        Me.RadLabel43.Size = New System.Drawing.Size(62, 18)
-        Me.RadLabel43.TabIndex = 27
-        Me.RadLabel43.Text = "Total Units:"
-        Me.RadLabel43.ThemeName = "VisualStudio2012Dark"
-        '
-        'RadLabel57
-        '
-        Me.RadLabel57.BackColor = System.Drawing.Color.Transparent
-        Me.RadLabel57.Location = New System.Drawing.Point(11, 38)
-        Me.RadLabel57.Name = "RadLabel57"
-        Me.RadLabel57.Size = New System.Drawing.Size(90, 18)
-        Me.RadLabel57.TabIndex = 26
-        Me.RadLabel57.Text = "Equipment Type:"
-        Me.RadLabel57.ThemeName = "VisualStudio2012Dark"
-        '
-        'eq_counter_type
-        '
-        Me.eq_counter_type.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
-        Me.eq_counter_type.Location = New System.Drawing.Point(11, 62)
-        Me.eq_counter_type.Name = "eq_counter_type"
-        Me.eq_counter_type.Size = New System.Drawing.Size(155, 27)
-        Me.eq_counter_type.TabIndex = 25
-        Me.eq_counter_type.ThemeName = "VisualStudio2012Dark"
-        '
         'RadGroupBox21
         '
         Me.RadGroupBox21.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping
+        Me.RadGroupBox21.Controls.Add(Me.eq_total_units)
         Me.RadGroupBox21.Controls.Add(Me.eq_clear_filter)
         Me.RadGroupBox21.Controls.Add(Me.RadLabel55)
         Me.RadGroupBox21.Controls.Add(Me.eq_filter_eqtype)
         Me.RadGroupBox21.Controls.Add(Me.RadLabel54)
+        Me.RadGroupBox21.Controls.Add(Me.RadLabel43)
         Me.RadGroupBox21.Controls.Add(Me.eq_filter_eqno)
         Me.RadGroupBox21.HeaderText = "Filters"
         Me.RadGroupBox21.Location = New System.Drawing.Point(3, 3)
         Me.RadGroupBox21.Name = "RadGroupBox21"
-        Me.RadGroupBox21.Size = New System.Drawing.Size(176, 204)
+        Me.RadGroupBox21.Size = New System.Drawing.Size(176, 217)
         Me.RadGroupBox21.TabIndex = 2
         Me.RadGroupBox21.Text = "Filters"
         Me.RadGroupBox21.ThemeName = "VisualStudio2012Dark"
         '
         'eq_clear_filter
         '
-        Me.eq_clear_filter.Location = New System.Drawing.Point(31, 159)
+        Me.eq_clear_filter.Location = New System.Drawing.Point(33, 151)
         Me.eq_clear_filter.Name = "eq_clear_filter"
         Me.eq_clear_filter.Size = New System.Drawing.Size(110, 24)
         Me.eq_clear_filter.TabIndex = 25
@@ -3328,7 +3294,7 @@ Partial Class Main
         'RadLabel55
         '
         Me.RadLabel55.BackColor = System.Drawing.Color.Transparent
-        Me.RadLabel55.Location = New System.Drawing.Point(11, 32)
+        Me.RadLabel55.Location = New System.Drawing.Point(13, 24)
         Me.RadLabel55.Name = "RadLabel55"
         Me.RadLabel55.Size = New System.Drawing.Size(90, 18)
         Me.RadLabel55.TabIndex = 24
@@ -3339,7 +3305,7 @@ Partial Class Main
         '
         Me.eq_filter_eqtype.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest
         Me.eq_filter_eqtype.DropDownStyle = Telerik.WinControls.RadDropDownStyle.DropDownList
-        Me.eq_filter_eqtype.Location = New System.Drawing.Point(9, 56)
+        Me.eq_filter_eqtype.Location = New System.Drawing.Point(11, 48)
         Me.eq_filter_eqtype.Name = "eq_filter_eqtype"
         Me.eq_filter_eqtype.Size = New System.Drawing.Size(157, 27)
         Me.eq_filter_eqtype.TabIndex = 23
@@ -3348,7 +3314,7 @@ Partial Class Main
         'RadLabel54
         '
         Me.RadLabel54.BackColor = System.Drawing.Color.Transparent
-        Me.RadLabel54.Location = New System.Drawing.Point(11, 93)
+        Me.RadLabel54.Location = New System.Drawing.Point(13, 85)
         Me.RadLabel54.Name = "RadLabel54"
         Me.RadLabel54.Size = New System.Drawing.Size(107, 18)
         Me.RadLabel54.TabIndex = 14
@@ -3357,7 +3323,7 @@ Partial Class Main
         '
         'eq_filter_eqno
         '
-        Me.eq_filter_eqno.Location = New System.Drawing.Point(11, 117)
+        Me.eq_filter_eqno.Location = New System.Drawing.Point(13, 109)
         Me.eq_filter_eqno.MinimumSize = New System.Drawing.Size(0, 24)
         Me.eq_filter_eqno.Name = "eq_filter_eqno"
         '
@@ -3437,7 +3403,6 @@ Partial Class Main
         'rpv_staff
         '
         Me.rpv_staff.Controls.Add(Me.acc_staff_list)
-        Me.rpv_staff.ItemSize = New System.Drawing.SizeF(78!, 24!)
         Me.rpv_staff.Location = New System.Drawing.Point(5, 30)
         Me.rpv_staff.Name = "rpv_staff"
         Me.rpv_staff.Size = New System.Drawing.Size(1343, 238)
@@ -3467,7 +3432,6 @@ Partial Class Main
         'rpv_borrower
         '
         Me.rpv_borrower.Controls.Add(Me.acc_prof_list)
-        Me.rpv_borrower.ItemSize = New System.Drawing.SizeF(101!, 24!)
         Me.rpv_borrower.Location = New System.Drawing.Point(5, 30)
         Me.rpv_borrower.Name = "rpv_borrower"
         Me.rpv_borrower.Size = New System.Drawing.Size(1343, 244)
@@ -3717,6 +3681,9 @@ Partial Class Main
         '
         Me.gb_staff_reg.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping
         Me.gb_staff_reg.Anchor = System.Windows.Forms.AnchorStyles.Bottom
+        Me.gb_staff_reg.Controls.Add(Me.RadLabel39)
+        Me.gb_staff_reg.Controls.Add(Me.acc_staff_rdio_inactive)
+        Me.gb_staff_reg.Controls.Add(Me.acc_staff_rdio_active)
         Me.gb_staff_reg.Controls.Add(Me.RadGroupBox28)
         Me.gb_staff_reg.Controls.Add(Me.acc_sf_retypepassword)
         Me.gb_staff_reg.Controls.Add(Me.acc_sf_password)
@@ -3739,6 +3706,38 @@ Partial Class Main
         Me.gb_staff_reg.TabIndex = 100
         Me.gb_staff_reg.Text = "Staff Registration"
         Me.gb_staff_reg.ThemeName = "VisualStudio2012Dark"
+        '
+        'RadLabel39
+        '
+        Me.RadLabel39.BackColor = System.Drawing.Color.Transparent
+        Me.RadLabel39.Location = New System.Drawing.Point(3, 152)
+        Me.RadLabel39.Name = "RadLabel39"
+        Me.RadLabel39.Size = New System.Drawing.Size(83, 18)
+        Me.RadLabel39.TabIndex = 10
+        Me.RadLabel39.Text = "Account Status:"
+        Me.RadLabel39.ThemeName = "VisualStudio2012Dark"
+        '
+        'acc_staff_rdio_inactive
+        '
+        Me.acc_staff_rdio_inactive.BackColor = System.Drawing.Color.Transparent
+        Me.acc_staff_rdio_inactive.Location = New System.Drawing.Point(195, 152)
+        Me.acc_staff_rdio_inactive.Name = "acc_staff_rdio_inactive"
+        Me.acc_staff_rdio_inactive.Size = New System.Drawing.Size(62, 18)
+        Me.acc_staff_rdio_inactive.TabIndex = 102
+        Me.acc_staff_rdio_inactive.TabStop = false
+        Me.acc_staff_rdio_inactive.Text = "Inactive"
+        Me.acc_staff_rdio_inactive.ThemeName = "VisualStudio2012Dark"
+        '
+        'acc_staff_rdio_active
+        '
+        Me.acc_staff_rdio_active.BackColor = System.Drawing.Color.Transparent
+        Me.acc_staff_rdio_active.Location = New System.Drawing.Point(114, 152)
+        Me.acc_staff_rdio_active.Name = "acc_staff_rdio_active"
+        Me.acc_staff_rdio_active.Size = New System.Drawing.Size(54, 18)
+        Me.acc_staff_rdio_active.TabIndex = 101
+        Me.acc_staff_rdio_active.TabStop = false
+        Me.acc_staff_rdio_active.Text = "Active"
+        Me.acc_staff_rdio_active.ThemeName = "VisualStudio2012Dark"
         '
         'RadGroupBox28
         '
@@ -4191,7 +4190,7 @@ Partial Class Main
         Me.rpv1.DefaultPage = Me.rpvp1_main
         Me.rpv1.Location = New System.Drawing.Point(0, 26)
         Me.rpv1.Name = "rpv1"
-        Me.rpv1.SelectedPage = Me.rpvp_account
+        Me.rpv1.SelectedPage = Me.rpvp_equipment
         Me.rpv1.Size = New System.Drawing.Size(1358, 557)
         Me.rpv1.TabIndex = 1
         Me.rpv1.Text = "Home"
@@ -4460,15 +4459,10 @@ Partial Class Main
         CType(Me.reservation_rgv_recordeddata.MasterTemplate,System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.reservation_rgv_recordeddata,System.ComponentModel.ISupportInitialize).EndInit
         Me.rpvp_equipment.ResumeLayout(false)
-        CType(Me.RadLabel23,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.tb_show_all_equipments,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.RadGroupBox22,System.ComponentModel.ISupportInitialize).EndInit
-        Me.RadGroupBox22.ResumeLayout(false)
-        Me.RadGroupBox22.PerformLayout
         CType(Me.eq_total_units,System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.RadLabel23,System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.RadLabel43,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.RadLabel57,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.eq_counter_type,System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.tb_show_all_equipments,System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.RadGroupBox21,System.ComponentModel.ISupportInitialize).EndInit
         Me.RadGroupBox21.ResumeLayout(false)
         Me.RadGroupBox21.PerformLayout
@@ -4512,6 +4506,9 @@ Partial Class Main
         CType(Me.gb_staff_reg,System.ComponentModel.ISupportInitialize).EndInit
         Me.gb_staff_reg.ResumeLayout(false)
         Me.gb_staff_reg.PerformLayout
+        CType(Me.RadLabel39,System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.acc_staff_rdio_inactive,System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.acc_staff_rdio_active,System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.RadGroupBox28,System.ComponentModel.ISupportInitialize).EndInit
         Me.RadGroupBox28.ResumeLayout(false)
         CType(Me.acc_staff_btn_clear,System.ComponentModel.ISupportInitialize).EndInit
@@ -4635,11 +4632,8 @@ End Sub
     Friend WithEvents eq_rgv_addeq As Telerik.WinControls.UI.RadGridView
     Friend WithEvents RadGroupBox3 As Telerik.WinControls.UI.RadGroupBox
     Friend WithEvents rpvp_equipment As Telerik.WinControls.UI.RadPageViewPage
-    Friend WithEvents RadGroupBox22 As Telerik.WinControls.UI.RadGroupBox
     Friend WithEvents eq_total_units As Telerik.WinControls.UI.RadLabel
     Friend WithEvents RadLabel43 As Telerik.WinControls.UI.RadLabel
-    Friend WithEvents RadLabel57 As Telerik.WinControls.UI.RadLabel
-    Friend WithEvents eq_counter_type As Telerik.WinControls.UI.RadDropDownList
     Friend WithEvents RadGroupBox21 As Telerik.WinControls.UI.RadGroupBox
     Friend WithEvents RadLabel55 As Telerik.WinControls.UI.RadLabel
     Friend WithEvents eq_filter_eqtype As Telerik.WinControls.UI.RadDropDownList
@@ -4809,5 +4803,8 @@ End Sub
     Friend WithEvents acc_pf_college As Telerik.WinControls.UI.RadDropDownList
     Friend WithEvents RadLabel44 As Telerik.WinControls.UI.RadLabel
     Friend WithEvents ret_tb_eqtype As Telerik.WinControls.UI.RadLabel
+    Friend WithEvents RadLabel39 As Telerik.WinControls.UI.RadLabel
+    Friend WithEvents acc_staff_rdio_inactive As Telerik.WinControls.UI.RadRadioButton
+    Friend WithEvents acc_staff_rdio_active As Telerik.WinControls.UI.RadRadioButton
 End Class
 

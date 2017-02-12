@@ -169,6 +169,9 @@ Public Class Main
         'load_cb_eq_type()     ----->>> DEPRECIATED
         rel_nameofstaff_recorder.Text=""
         eq_rgv_addeq.Columns(3).IsVisible = false 'Save Space in the temporary reservation table
+        acc_staff_list.Columns(5).IsVisible=False 'Save Space in the Staff table
+        acc_staff_rdio_active.ButtonElement.ToolTipText="Blue highlight when the account is active."
+        acc_staff_rdio_inactive.ButtonElement.ToolTipText="Red highlight when the account is inactive."
     End Sub
 
 
@@ -865,7 +868,7 @@ Public Class Main
 
             MysqlConn.Open()
             Dim query As String
-            query = "Select staff_id as 'Staff ID' , staff_fname as 'First Name' , staff_mname as 'Middle Name' , staff_surname as 'Surname' , staff_username as 'Username' from staff_reg"
+            query = "Select staff_id as 'Staff ID' , staff_fname as 'First Name' , staff_mname as 'Middle Name' , staff_surname as 'Surname' , staff_username as 'Username', staff_isactive as 'User State' from staff_reg"
             'REMOVAL OF STAFF TYPE query = "Select staff_id as 'Staff ID' , staff_fname as 'First Name' , staff_mname as 'Middle Name' , staff_surname as 'Surname' , staff_username as 'Username' , staff_type as 'User Type' from staff_reg"
             comm = New MySqlCommand(query, MysqlConn)
             sda.SelectCommand = comm
@@ -970,16 +973,17 @@ Public Class Main
         MysqlConn = New MySqlConnection
         MysqlConn.ConnectionString = connstring
         Dim READER As MySqlDataReader
-        If (acc_sf_id.Text = "") Or (acc_sf_fname.Text = "") Or (acc_sf_mname.Text = "") Or (acc_sf_lname.Text = "") Or (acc_sf_username.Text = "") Then '(acc_sf_usertype.Text = "")
-            RadMessageBox.Show(Me, "Please complete the fields to Save!", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Exclamation)
+        If (acc_sf_id.Text = "") Or (acc_sf_fname.Text = "") Or (acc_sf_mname.Text = "") Or (acc_sf_lname.Text = "") Or (acc_sf_username.Text = "") Or (acc_staff_rdio_active.ToggleState=Enumerations.ToggleState.Off And acc_staff_rdio_inactive.ToggleState=Enumerations.ToggleState.Off) Then '(acc_sf_usertype.Text = "")
+            RadMessageBox.Show(Me, "Please complete all the details.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Exclamation)
         Else
             If (Not acc_sf_username.Text.Length <= 11) Then
                 If acc_sf_username.Text.Contains("@ceu.edu.ph") Then
                     
                         MysqlConn.Open()
                         Dim Query As String
+      
                         'REMOVAL OF STAFF Query = "insert into ceutltdscheduler.staff_reg (staff_id,staff_fname,staff_mname,staff_surname,staff_type,staff_username,staff_password) values (@staffid, @staffFname, @staffMname, @staffLname, @staffUsertype, @staffUsername, sha2(@staffPassword, 512))"
-                        Query = "insert into ceutltdscheduler.staff_reg (staff_id,staff_fname,staff_mname,staff_surname,staff_username,staff_password) values (@staffid, @staffFname, @staffMname, @staffLname, @staffUsername, sha2(@staffPassword, 512))"
+                        Query = "insert into ceutltdscheduler.staff_reg (staff_id,staff_fname,staff_mname,staff_surname,staff_username,staff_password,staff_isactive) values (@staffid, @staffFname, @staffMname, @staffLname, @staffUsername, sha2(@staffPassword, 512), @staffIsActive)"
                         comm = New MySqlCommand(Query, MysqlConn)
                         comm.Parameters.AddWithValue("staffid", acc_sf_id.Text)
                         comm.Parameters.AddWithValue("staffFname", acc_sf_fname.Text)
@@ -988,6 +992,13 @@ Public Class Main
                         'comm.Parameters.AddWithValue("staffUsertype", acc_sf_usertype.Text)
                         comm.Parameters.AddWithValue("staffUsername", acc_sf_username.Text)
                         comm.Parameters.AddWithValue("staffPassword", acc_sf_password.Text)
+
+                        If acc_staff_rdio_active.ToggleState=Enumerations.ToggleState.On Then
+                            comm.Parameters.AddWithValue("staffIsActive", "1")
+                        ElseIf acc_staff_rdio_inactive.ToggleState=Enumerations.ToggleState.On Then
+                            comm.Parameters.AddWithValue("staffIsActive", "0")
+                        End If
+                                
 
 
                         svYN = RadMessageBox.Show(Me, "Are you sure you want to save a new staff's information? ", "CEU TLTD Reservation System", MessageBoxButtons.YesNo, RadMessageIcon.Question)
@@ -1005,6 +1016,8 @@ Public Class Main
                                 acc_staff_btn_delete.Hide()
                                 acc_staff_btn_update.Hide()
                                 acc_staff_btn_save.Show()
+                                acc_staff_rdio_active.ToggleState=Enumerations.ToggleState.Off
+                                acc_staff_rdio_inactive.ToggleState=Enumerations.ToggleState.Off
                             Else
                                 RadMessageBox.Show(Me, "Please confirm your password.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Exclamation)
                             End If
@@ -1058,9 +1071,17 @@ Public Class Main
                 acc_sf_lname.Text = row.Cells("Surname").Value.ToString
                 'acc_sf_usertype.Text = row.Cells("User Type").Value.ToString
                 acc_sf_username.Text = row.Cells("Username").Value.ToString
-
                 acc_sf_id.Enabled = False
                 acc_sf_username.Enabled = False
+                
+                'SET RADIO BUTTON CONDITION
+                If row.Cells("User State").Value.ToString.Equals("0") Then
+                    acc_staff_rdio_inactive.ToggleState=Enumerations.ToggleState.on
+                ElseIf row.Cells("User State").Value.ToString.Equals("1") 
+                    acc_staff_rdio_active.ToggleState=Enumerations.ToggleState.On
+                End If
+                'SET RADIO BUTTON CONDITION
+                
                 'CHECK IF ITS THE OWNER
                 If acc_sf_username.Text=username
                     acc_sf_password.Enabled = True
@@ -1068,12 +1089,17 @@ Public Class Main
                     acc_sf_password.NullText="No changes if left blank"
                     acc_sf_retypepassword.NullText="No changes if left blank"
                     acc_staff_btn_delete.Enabled=False
+                    acc_staff_rdio_active.Enabled=False
+                    acc_staff_rdio_inactive.Enabled=False
                 Else
                     acc_sf_password.Enabled = False
                     acc_sf_retypepassword.Enabled = False
                     acc_staff_btn_delete.Enabled=True
                     acc_sf_password.NullText=""
                     acc_sf_retypepassword.NullText=""
+                    acc_staff_rdio_active.Enabled=True
+                    acc_staff_rdio_inactive.Enabled=True
+                    'acc_staff_rdio_active=Toggle
                 End If
 
                 acc_staff_btn_update.Show()
@@ -1097,7 +1123,7 @@ Public Class Main
             If Not ((acc_sf_fname.Text = "" Or acc_sf_mname.Text = "" Or acc_sf_lname.Text = "" Or acc_sf_username.Text = "") or (acc_sf_password.Enabled=True And acc_sf_retypepassword.Enabled=True) And NOT (acc_sf_password.Text="" And acc_sf_retypepassword.Text=""))  Then 'acc_sf_usertype.Text = "" 
                     MysqlConn.Open()
                     'STAFF USER TYPE REMOVAL query = "UPDATE ceutltdscheduler.staff_reg SET staff_fname=@b, staff_mname=@c, staff_surname=@d, staff_type=@e WHERE staff_id=@a and staff_username=@f"
-                    query = "UPDATE ceutltdscheduler.staff_reg SET staff_fname=@b, staff_mname=@c, staff_surname=@d WHERE staff_id=@a and staff_username=@f"
+                    query = "UPDATE ceutltdscheduler.staff_reg SET staff_fname=@b, staff_mname=@c, staff_surname=@d, staff_isactive=@g WHERE staff_id=@a and staff_username=@f"
                     comm = New MySqlCommand(query, MysqlConn)
                     comm.Parameters.AddWithValue("@a",acc_sf_id.Text)
                     comm.Parameters.AddWithValue("@b",acc_sf_fname.Text)
@@ -1105,6 +1131,11 @@ Public Class Main
                     comm.Parameters.AddWithValue("@d",acc_sf_lname.Text)
                     'comm.Parameters.AddWithValue("@e",acc_sf_usertype.Text)
                     comm.Parameters.AddWithValue("@f", acc_sf_username.Text)
+                    If acc_staff_rdio_active.ToggleState=Enumerations.ToggleState.On Then
+                        comm.Parameters.AddWithValue("@g", "1")
+                    ElseIf acc_staff_rdio_inactive.ToggleState=Enumerations.ToggleState.On Then
+                        comm.Parameters.AddWithValue("@g", "0")
+                    End If
                     reader = comm.ExecuteReader
                     RadMessageBox.Show(Me, "Account information updated successfully!", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Info)
                     MysqlConn.Close()
@@ -1118,7 +1149,7 @@ Public Class Main
                     Else
                         MysqlConn.Open()
                         'STAFF USERTYPE REMOVAL query = "UPDATE ceutltdscheduler.staff_reg SET staff_fname=@b, staff_mname=@c, staff_surname=@d, staff_type=@e, staff_password=sha2(@g, 512) WHERE staff_id=@a and staff_username=@f"
-                        query = "UPDATE ceutltdscheduler.staff_reg SET staff_fname=@b, staff_mname=@c, staff_surname=@d, staff_password=sha2(@g, 512) WHERE staff_id=@a and staff_username=@f"
+                        query = "UPDATE ceutltdscheduler.staff_reg SET staff_fname=@b, staff_mname=@c, staff_surname=@d, staff_password=sha2(@g, 512), staff_isactive=@h WHERE staff_id=@a and staff_username=@f"
                         comm = New MySqlCommand(query, MysqlConn)
                         comm.Parameters.AddWithValue("@a",acc_sf_id.Text)
                         comm.Parameters.AddWithValue("@b",acc_sf_fname.Text)
@@ -1127,6 +1158,11 @@ Public Class Main
                         'comm.Parameters.AddWithValue("@e",acc_sf_usertype.Text)
                         comm.Parameters.AddWithValue("@f",acc_sf_username.Text)
                         comm.Parameters.AddWithValue("@g",acc_sf_password.Text)
+                        If acc_staff_rdio_active.ToggleState=Enumerations.ToggleState.On Then
+                            comm.Parameters.AddWithValue("@h", "1")
+                        ElseIf acc_staff_rdio_inactive.ToggleState=Enumerations.ToggleState.On Then
+                            comm.Parameters.AddWithValue("@h", "0")
+                        End If
                         reader = comm.ExecuteReader
                         RadMessageBox.Show(Me, "Account information updated successfully!", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Info)
                         MysqlConn.Close()
@@ -1135,6 +1171,8 @@ Public Class Main
                         acc_sf_password.NullText=""
                         acc_sf_retypepassword.Text=""
                         acc_sf_retypepassword.NullText=""
+                        acc_staff_rdio_active.Enabled=True
+                        acc_staff_rdio_inactive.Enabled=True
                     End If
             Else
                     RadMessageBox.Show(Me, "Please select a staff to update!", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -1158,7 +1196,7 @@ Public Class Main
                 End Try
     End Sub
 
-    Private Sub Staff_Reg_UpdateSuccessful()
+    Private Sub Staff_Reg_UpdateSuccessful() 'For the passwordbox
         load_main_acc()
         acc_sf_id.Text = ""
         acc_sf_fname.Text = ""
@@ -1176,6 +1214,8 @@ Public Class Main
         acc_staff_btn_update.Hide
         acc_staff_btn_save.Show
         rpv_child_acctmgmt.SelectedPage = rpv_staff
+        acc_staff_rdio_active.ToggleState=Enumerations.ToggleState.Off
+        acc_staff_rdio_inactive.ToggleState=Enumerations.ToggleState.Off
     End Sub
 
     'Programmed by BRENZ 6th Point Delete Button!
@@ -1197,9 +1237,9 @@ Public Class Main
                 comm.Parameters.AddWithValue("@a",acc_sf_id.Text)
                 comm.Parameters.AddWithValue("@b",acc_sf_username.Text)
                 reader = comm.ExecuteReader
-
-                RadMessageBox.Show(Me, "Account Deletion Successful!", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Info)
                 MysqlConn.Close()
+                RadMessageBox.Show(Me, "Account Deletion Successful!", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Info)
+                
         End If
     End If
             Catch ex As MySqlException
@@ -1232,6 +1272,8 @@ Public Class Main
                 acc_staff_btn_delete.Hide()
                 acc_staff_btn_update.Hide()
                 acc_staff_btn_save.Show()
+                acc_staff_rdio_active.ToggleState=Enumerations.ToggleState.Off
+                acc_staff_rdio_inactive.ToggleState=Enumerations.ToggleState.Off
             End Try
     End Sub
 
@@ -1256,9 +1298,58 @@ Public Class Main
             acc_staff_btn_save.Show()
             acc_staff_btn_update.Hide()
             acc_staff_btn_delete.Hide()
+            acc_staff_rdio_active.ToggleState=Enumerations.ToggleState.Off
+            acc_staff_rdio_inactive.ToggleState=Enumerations.ToggleState.Off
+            acc_staff_rdio_active.Enabled=True
+            acc_staff_rdio_inactive.Enabled=True
         End If
-
     End Sub
+    'Radio for Active and Inactive
+    Private Sub acc_staff_rdio_active_ToggleStateChanged(sender As Object, args As StateChangedEventArgs) Handles acc_staff_rdio_active.ToggleStateChanged
+        acc_staff_rdio_inactive.ToggleState=Enumerations.ToggleState.Indeterminate
+    End Sub
+
+    Private Sub acc_staff_rdio_inactive_ToggleStateChanged(sender As Object, args As StateChangedEventArgs) Handles acc_staff_rdio_inactive.ToggleStateChanged
+        acc_staff_rdio_active.ToggleState=Enumerations.ToggleState.Indeterminate
+    End Sub
+
+    'Indications for Inactive Account
+    Private Sub acc_staff_list_RowFormatting(sender As Object, e As RowFormattingEventArgs) Handles acc_staff_list.RowFormatting
+	    If e.RowElement.RowInfo.Tag = "Selected" And e.RowElement.IsCurrent Then
+		    'e.RowElement.BackColor = Color.FromArgb(&HDC, &H1B, &H1B)
+            e.RowElement.GradientStyle=GradientStyles.Solid
+		    'e.RowElement.DrawFill = True
+	    Else
+		    'e.RowElement.ResetValue(LightVisualElement.BackColorProperty, ValueResetFlags.Local)
+		    e.RowElement.ResetValue(LightVisualElement.DrawFillProperty, ValueResetFlags.Local)
+	    End If
+    End Sub
+
+    Private Sub acc_staff_list_CurrentRowChanged(sender As Object, e As CurrentRowChangedEventArgs) Handles acc_staff_list.CurrentRowChanged
+	    If e.CurrentRow.Cells("User State").Value.ToString.Equals("0") Then
+            e.CurrentRow.Tag="Selected"
+        Else
+            e.CurrentRow.Tag="No FLAG"
+       End If
+    End Sub
+    'Indications for Inactive Account
+    Private Sub acc_staff_list_CellFormatting(sender As Object, e As CellFormattingEventArgs) Handles acc_staff_list.CellFormatting
+        If e.CellElement.RowElement.RowInfo.Tag = "Selected" And e.CellElement.RowElement.IsCurrent Then
+            e.CellElement.BorderColor = Color.FromArgb(&H83, &H2A, &H2A)
+            e.CellElement.GradientStyle=GradientStyles.Solid
+            e.CellElement.BorderBoxStyle = BorderBoxStyle.SingleBorder
+            e.CellElement.BorderGradientStyle = GradientStyles.Solid
+            e.CellElement.BackColor=Color.FromArgb(228,38,58)
+            e.CellElement.DrawFill = True
+        Else
+            e.CellElement.ResetValue(LightVisualElement.BorderColorProperty, ValueResetFlags.Local)
+            e.CellElement.ResetValue(LightVisualElement.BackColorProperty, ValueResetFlags.Local)
+            e.CellElement.ResetValue(LightVisualElement.BorderBoxStyleProperty, ValueResetFlags.Local)
+            e.CellElement.ResetValue(LightVisualElement.BorderGradientStyleProperty, ValueResetFlags.Local)
+            e.CellElement.ResetValue(LightVisualElement.DrawFillProperty, ValueResetFlags.Local)
+        End If
+    End Sub
+    'Indications for Inactive Account
 
     'Programmed by Brenz 8th point prof Save Button!
     Private Sub acc_prof_btn_save_Click(sender As Object, e As EventArgs) Handles acc_prof_btn_save.Click
@@ -2558,10 +2649,10 @@ Public Class Main
         Dim DV As New DataView(dbdataset)
             DV.RowFilter = String.Format("`Equipment No.` Like'%{0}%' and `Equipment Type` Like'%{1}%'", eq_filter_eqno.Text, eq_filter_eqtype.Text)
             eq_rgv_showregequipment.DataSource = DV
-        If eq_rgv_showregequipment.Rows.Count -1 < eq_keepSelectedRowIndexAfterUpdate
-        eq_rgv_showregequipment.Rows(0).IsCurrent = True
-        Else
-        eq_rgv_showregequipment.Rows(eq_keepSelectedRowIndexAfterUpdate).IsCurrent = True  'WUTRY_1
+        If (eq_rgv_showregequipment.Rows.Count -1  < eq_keepSelectedRowIndexAfterUpdate) And eq_rgv_showregequipment.Rows.Count > 0
+            eq_rgv_showregequipment.Rows(0).IsCurrent = True
+        ElseIf eq_rgv_showregequipment.Rows.Count > 0
+            eq_rgv_showregequipment.Rows(eq_keepSelectedRowIndexAfterUpdate).IsCurrent = True  'WUTRY_1
         End If
             Catch ex As MySqlException
                 If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed")))
@@ -2627,7 +2718,7 @@ Public Class Main
             eq_rgv_showregequipment.DataSource = bsource
             SDA.Update(dbdataset)
             MysqlConn.Close()
-
+            counter_of_total_eq()
             Dim DV As New DataView(dbdataset)
             DV.RowFilter = String.Format("`Equipment No.` Like'%{0}%' and `Equipment Type` Like'%{1}%'", eq_filter_eqno.Text, eq_filter_eqtype.Text)
             eq_rgv_showregequipment.DataSource = DV
@@ -2655,13 +2746,15 @@ Public Class Main
     End Sub
     
     Private Sub eq_clear_filter_Click_(sender As Object, e As EventArgs) Handles eq_clear_filter.Click
-        If clear_eq Then
-            eq_rgv_showregequipment.Columns.Clear()
-            eq_rgv_showregequipment.TableElement.Text = "To Display Data, please choose an equipment or type an equipment number on the left pane."
-            clear_eq=False
-        End If
+        RemoveHandler eq_filter_eqtype.TextChanged, AddressOf eq_filter_eqtype_TextChanged
+        RemoveHandler eq_filter_eqno.TextChanged, AddressOf eq_filter_eqno_TextChanged
+        eq_rgv_showregequipment.Columns.Clear()
+        eq_rgv_showregequipment.TableElement.Text = "To Display Data, please choose an equipment or type an equipment number on the left pane."
         eq_filter_eqno.Text=String.Empty
         eq_filter_eqtype.Text=String.Empty
+        eq_total_units.Text="0"
+        AddHandler eq_filter_eqtype.TextChanged, AddressOf eq_filter_eqtype_TextChanged
+        AddHandler eq_filter_eqno.TextChanged, AddressOf eq_filter_eqno_TextChanged
     End Sub
 
     Private Sub tb_show_all_equipments_Click(sender As Object, e As EventArgs) Handles tb_show_all_equipments.Click
@@ -2671,7 +2764,6 @@ Public Class Main
             If NOT eq_filter_eqno.Text="" Or NOT eq_filter_eqtype.Text=""
                 RadMessageBox.Show(Me, "Please Clear the filters first.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
             Else
-                clear_eq=True
                 load_eq_table()
             End If
         End If
@@ -2742,9 +2834,6 @@ Public Class Main
     'End Sub
 
     'Equipment Management Codes Umali E10 = COUNTER
-    Private Sub eq_counter_type_SelectedIndexChanged_1(sender As Object, e As UI.Data.PositionChangedEventArgs) Handles eq_counter_type.SelectedIndexChanged
-        counter_of_total_eq()
-    End Sub
 
     'Equipment Management Codes Umali E11 = COUNTER CODE
     Public Sub counter_of_total_eq()
@@ -2759,7 +2848,7 @@ Public Class Main
 
             query = "SELECT COUNT(equipmentname) AS 'total' FROM ceutltdprevmaintenance.equipmentlist WHERE remarks LIKE '%Good Condition%' and equipmentname=@eq_countertype"
             comm = New MySqlCommand(query, MysqlConn)
-            comm.Parameters.AddWithValue("eq_countertype", eq_counter_type.Text)
+            comm.Parameters.AddWithValue("eq_countertype", eq_filter_eqtype.Text)
 
             reader = comm.ExecuteReader
             While reader.Read
@@ -2803,12 +2892,12 @@ Public Class Main
 
             eq_filter_eqtype.Items.Clear()
             rec_eq_type_choose.Items.Clear()
-            eq_counter_type.Items.Clear()
+            'eq_counter_type.Items.Clear()
 
             While reader.Read
                 eq_filter_eqtype.Items.Add(reader.GetString("equipmentname"))
                 rec_eq_type_choose.Items.Add(reader.GetString("equipmentname"))
-                eq_counter_type.Items.Add(reader.GetString("equipmentname"))
+                'eq_counter_type.Items.Add(reader.GetString("equipmentname"))
             End While
             MysqlConn.Close()
             Catch ex As MySqlException
@@ -4664,42 +4753,7 @@ End Sub
         load_res_borrowerlist()
     End Sub
 
-    
-    Private Sub acc_staff_list_RowFormatting(sender As Object, e As RowFormattingEventArgs) Handles acc_staff_list.RowFormatting
-	    If e.RowElement.RowInfo.Tag = "Selected" And e.RowElement.IsCurrent Then
-		    'e.RowElement.BackColor = Color.FromArgb(&HDC, &H1B, &H1B)
-            e.RowElement.GradientStyle=GradientStyles.Solid
-		    'e.RowElement.DrawFill = True
-	    Else
-		    'e.RowElement.ResetValue(LightVisualElement.BackColorProperty, ValueResetFlags.Local)
-		    e.RowElement.ResetValue(LightVisualElement.DrawFillProperty, ValueResetFlags.Local)
-	    End If
-    End Sub
 
-    Private Sub acc_staff_list_CurrentRowChanged(sender As Object, e As CurrentRowChangedEventArgs) Handles acc_staff_list.CurrentRowChanged
-	    If e.CurrentRow.Cells("Username").Value.ToString.Equals("wu@ceu.edu.ph") Then
-            e.CurrentRow.Tag="Selected"
-        Else
-            e.CurrentRow.Tag="No FLAG"
-       End If
-    End Sub
-
-    Private Sub acc_staff_list_CellFormatting(sender As Object, e As CellFormattingEventArgs) Handles acc_staff_list.CellFormatting
-        If e.CellElement.RowElement.RowInfo.Tag = "Selected" And e.CellElement.RowElement.IsCurrent Then
-            e.CellElement.BorderColor = Color.FromArgb(&H83, &H2A, &H2A)
-            e.CellElement.GradientStyle=GradientStyles.Solid
-            e.CellElement.BorderBoxStyle = BorderBoxStyle.SingleBorder
-            e.CellElement.BorderGradientStyle = GradientStyles.Solid
-            e.CellElement.BackColor=Color.FromArgb(228,38,58)
-            e.CellElement.DrawFill = True
-        Else
-            e.CellElement.ResetValue(LightVisualElement.BorderColorProperty, ValueResetFlags.Local)
-            e.CellElement.ResetValue(LightVisualElement.BackColorProperty, ValueResetFlags.Local)
-            e.CellElement.ResetValue(LightVisualElement.BorderBoxStyleProperty, ValueResetFlags.Local)
-            e.CellElement.ResetValue(LightVisualElement.BorderGradientStyleProperty, ValueResetFlags.Local)
-            e.CellElement.ResetValue(LightVisualElement.DrawFillProperty, ValueResetFlags.Local)
-        End If
-    End Sub
 
 
 
