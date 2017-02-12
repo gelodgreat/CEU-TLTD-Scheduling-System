@@ -32,5 +32,4 @@ Module GlobalVariableModule
         Main.refresh_released_grid_list.Interval=refresh_delay
         Main.refresh_main_rgv_recordedacademicsonly.Interval=refresh_delay
     End Sub
-
 End Module

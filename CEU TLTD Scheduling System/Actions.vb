@@ -77,6 +77,25 @@ Public Class Actions
         End If
     End Sub
 
+    Public Shared Function CheckValueIllegalChars(value As String) As String
+	Dim sb As New System.Text.StringBuilder(value.Length)
+	For i As Integer = 0 To value.Length - 1
+		Dim c As Char = value(i)
+		Select Case c
+			Case "]"C, "["C, "%"C, "*"C
+				sb.Append("[").Append(c).Append("]")
+				Exit Select
+			Case "'"C
+				sb.Append("''")
+				Exit Select
+			Case Else
+				sb.Append(c)
+				Exit Select
+		End Select
+	    Next
+	    Return sb.ToString()
+    End Function
+
     Public Shared Sub Wu_RadMessageBox(Icontype As Integer, messageContent As String)
 
         Dim form As RadMessageBoxForm = New RadMessageBoxForm()
@@ -139,4 +158,6 @@ Public Class Actions
         End Select
         Return Nothing
     End Function
+
+
 End Class

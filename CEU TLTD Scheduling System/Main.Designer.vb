@@ -507,15 +507,15 @@ Partial Class Main
         Me.RadGroupBox3 = New Telerik.WinControls.UI.RadGroupBox()
         Me.reservation_rgv_recordeddata = New Telerik.WinControls.UI.RadGridView()
         Me.rpvp_equipment = New Telerik.WinControls.UI.RadPageViewPage()
-        Me.eq_total_units = New Telerik.WinControls.UI.RadLabel()
         Me.RadLabel23 = New Telerik.WinControls.UI.RadLabel()
-        Me.RadLabel43 = New Telerik.WinControls.UI.RadLabel()
         Me.tb_show_all_equipments = New Telerik.WinControls.UI.RadButton()
         Me.RadGroupBox21 = New Telerik.WinControls.UI.RadGroupBox()
+        Me.eq_total_units = New Telerik.WinControls.UI.RadLabel()
         Me.eq_clear_filter = New Telerik.WinControls.UI.RadButton()
         Me.RadLabel55 = New Telerik.WinControls.UI.RadLabel()
         Me.eq_filter_eqtype = New Telerik.WinControls.UI.RadDropDownList()
         Me.RadLabel54 = New Telerik.WinControls.UI.RadLabel()
+        Me.RadLabel43 = New Telerik.WinControls.UI.RadLabel()
         Me.eq_filter_eqno = New Telerik.WinControls.UI.RadTextBox()
         Me.RadGroupBox14 = New Telerik.WinControls.UI.RadGroupBox()
         Me.eq_rgv_showregequipment = New Telerik.WinControls.UI.RadGridView()
@@ -757,16 +757,16 @@ Partial Class Main
         CType(Me.reservation_rgv_recordeddata,System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.reservation_rgv_recordeddata.MasterTemplate,System.ComponentModel.ISupportInitialize).BeginInit
         Me.rpvp_equipment.SuspendLayout
-        CType(Me.eq_total_units,System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.RadLabel23,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.RadLabel43,System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.tb_show_all_equipments,System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.RadGroupBox21,System.ComponentModel.ISupportInitialize).BeginInit
         Me.RadGroupBox21.SuspendLayout
+        CType(Me.eq_total_units,System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.eq_clear_filter,System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.RadLabel55,System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.eq_filter_eqtype,System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.RadLabel54,System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.RadLabel43,System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.eq_filter_eqno,System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.RadGroupBox14,System.ComponentModel.ISupportInitialize).BeginInit
         Me.RadGroupBox14.SuspendLayout
@@ -3221,16 +3221,6 @@ Partial Class Main
         Me.rpvp_equipment.Size = New System.Drawing.Size(1348, 522)
         Me.rpvp_equipment.Text = "Equipments"
         '
-        'eq_total_units
-        '
-        Me.eq_total_units.BackColor = System.Drawing.Color.Transparent
-        Me.eq_total_units.Location = New System.Drawing.Point(111, 191)
-        Me.eq_total_units.Name = "eq_total_units"
-        Me.eq_total_units.Size = New System.Drawing.Size(12, 18)
-        Me.eq_total_units.TabIndex = 28
-        Me.eq_total_units.Text = "0"
-        Me.eq_total_units.ThemeName = "VisualStudio2012Dark"
-        '
         'RadLabel23
         '
         Me.RadLabel23.AutoSize = false
@@ -3243,16 +3233,6 @@ Partial Class Main
         Me.RadLabel23.Text = resources.GetString("RadLabel23.Text")
         Me.RadLabel23.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter
         Me.RadLabel23.ThemeName = "VisualStudio2012Dark"
-        '
-        'RadLabel43
-        '
-        Me.RadLabel43.BackColor = System.Drawing.Color.Transparent
-        Me.RadLabel43.Location = New System.Drawing.Point(43, 191)
-        Me.RadLabel43.Name = "RadLabel43"
-        Me.RadLabel43.Size = New System.Drawing.Size(62, 18)
-        Me.RadLabel43.TabIndex = 27
-        Me.RadLabel43.Text = "Total Units:"
-        Me.RadLabel43.ThemeName = "VisualStudio2012Dark"
         '
         'tb_show_all_equipments
         '
@@ -3281,6 +3261,16 @@ Partial Class Main
         Me.RadGroupBox21.TabIndex = 2
         Me.RadGroupBox21.Text = "Filters"
         Me.RadGroupBox21.ThemeName = "VisualStudio2012Dark"
+        '
+        'eq_total_units
+        '
+        Me.eq_total_units.BackColor = System.Drawing.Color.Transparent
+        Me.eq_total_units.Location = New System.Drawing.Point(111, 191)
+        Me.eq_total_units.Name = "eq_total_units"
+        Me.eq_total_units.Size = New System.Drawing.Size(12, 18)
+        Me.eq_total_units.TabIndex = 28
+        Me.eq_total_units.Text = "0"
+        Me.eq_total_units.ThemeName = "VisualStudio2012Dark"
         '
         'eq_clear_filter
         '
@@ -3320,6 +3310,16 @@ Partial Class Main
         Me.RadLabel54.TabIndex = 14
         Me.RadLabel54.Text = "Equipment Number:"
         Me.RadLabel54.ThemeName = "VisualStudio2012Dark"
+        '
+        'RadLabel43
+        '
+        Me.RadLabel43.BackColor = System.Drawing.Color.Transparent
+        Me.RadLabel43.Location = New System.Drawing.Point(43, 191)
+        Me.RadLabel43.Name = "RadLabel43"
+        Me.RadLabel43.Size = New System.Drawing.Size(62, 18)
+        Me.RadLabel43.TabIndex = 27
+        Me.RadLabel43.Text = "Total Units:"
+        Me.RadLabel43.ThemeName = "VisualStudio2012Dark"
         '
         'eq_filter_eqno
         '
@@ -4459,17 +4459,17 @@ Partial Class Main
         CType(Me.reservation_rgv_recordeddata.MasterTemplate,System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.reservation_rgv_recordeddata,System.ComponentModel.ISupportInitialize).EndInit
         Me.rpvp_equipment.ResumeLayout(false)
-        CType(Me.eq_total_units,System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.RadLabel23,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.RadLabel43,System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.tb_show_all_equipments,System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.RadGroupBox21,System.ComponentModel.ISupportInitialize).EndInit
         Me.RadGroupBox21.ResumeLayout(false)
         Me.RadGroupBox21.PerformLayout
+        CType(Me.eq_total_units,System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.eq_clear_filter,System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.RadLabel55,System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.eq_filter_eqtype,System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.RadLabel54,System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.RadLabel43,System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.eq_filter_eqno,System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.RadGroupBox14,System.ComponentModel.ISupportInitialize).EndInit
         Me.RadGroupBox14.ResumeLayout(false)

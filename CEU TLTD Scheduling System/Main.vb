@@ -2369,10 +2369,11 @@ Public Class Main
             SDA.Update(dbdataset)
 
             MysqlConn.Close()
+            counter_of_total_eq()
             eq_rgv_showregequipment.Rows(eq_keepSelectedRowIndexAfterUpdate).IsCurrent = True  'WUTRY_1
 
             Dim DV As New DataView(dbdataset)
-            DV.RowFilter = String.Format("`Equipment No.` Like'%{0}%' and `Equipment Type` Like'%{1}%'", eq_filter_eqno.Text, eq_filter_eqtype.Text)
+            DV.RowFilter = String.Format("`Equipment No.` Like'%{0}%' and `Equipment Type` Like'%{1}%'", Actions.CheckValueIllegalChars(eq_filter_eqno.Text), Actions.CheckValueIllegalChars(eq_filter_eqtype.Text))
             eq_rgv_showregequipment.DataSource = DV
             Catch ex As MySqlException
                 If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed")))
@@ -2636,18 +2637,20 @@ Public Class Main
         
             MysqlConn.Open()
 
-             query = "SELECT equipmentnumber AS 'Equipment No.', equipmentmodel as 'Equipment', equipmentserial AS 'Serial Number', equipmentname as 'Equipment Type', equipmentlocation AS 'Equipment Location', equipmentowner AS 'Owner', remarks AS 'Status' FROM ceutltdprevmaintenance.equipmentlist WHERE remarks LIKE '%Good Condition%'"
+            query = "SELECT equipmentnumber AS 'Equipment No.', equipmentmodel as 'Equipment', equipmentserial AS 'Serial Number', equipmentname as 'Equipment Type', equipmentlocation AS 'Equipment Location', equipmentowner AS 'Owner', remarks AS 'Status' FROM ceutltdprevmaintenance.equipmentlist WHERE remarks LIKE '%Good Condition%' and equipmentname LIKE @eq_filter_type and equipmentnumber LIKE @eq_filter_number"
 
             comm = New MySqlCommand(query, MysqlConn)
+            comm.Parameters.AddWithValue("@eq_filter_type", "%" & eq_filter_eqtype.Text & "%")
+            comm.Parameters.AddWithValue("@eq_filter_number", "%" & eq_filter_eqno.Text & "%")
             SDA.SelectCommand = comm
             SDA.Fill(dbdataset)
             bsource.DataSource = dbdataset
             eq_rgv_showregequipment.DataSource = bsource
             SDA.Update(dbdataset)
             MysqlConn.Close()
-
+            counter_of_total_eq()
         Dim DV As New DataView(dbdataset)
-            DV.RowFilter = String.Format("`Equipment No.` Like'%{0}%' and `Equipment Type` Like'%{1}%'", eq_filter_eqno.Text, eq_filter_eqtype.Text)
+            DV.RowFilter = String.Format("`Equipment No.` Like'%{0}%' and `Equipment Type` Like'%{1}%'", Actions.CheckValueIllegalChars(eq_filter_eqno.Text), Actions.CheckValueIllegalChars(eq_filter_eqtype.Text))
             eq_rgv_showregequipment.DataSource = DV
         If (eq_rgv_showregequipment.Rows.Count -1  < eq_keepSelectedRowIndexAfterUpdate) And eq_rgv_showregequipment.Rows.Count > 0
             eq_rgv_showregequipment.Rows(0).IsCurrent = True
@@ -2674,7 +2677,7 @@ Public Class Main
 
 
     Private Sub eq_filter_eqno_TextChanged(sender As Object, e As EventArgs) Handles eq_filter_eqno.TextChanged
-        If eq_filter_eqno.Text=String.Empty And eq_filter_eqtype.Text=String.Empty Then
+        If String.IsNullOrEmpty(eq_filter_eqno.Text) And String.IsNullOrEmpty(eq_filter_eqtype.Text) Then
             eq_rgv_showregequipment.Columns.Clear()
             eq_rgv_showregequipment.TableElement.Text = "To Display Data, please choose an equipment or type an equipment number on the left pane."
         Else
@@ -2686,7 +2689,7 @@ Public Class Main
 
     'Equipment Management Codes Umali E8 = SEARCH BY EQ_TYPE
     Private Sub eq_filter_eqtype_TextChanged(sender As Object, e As EventArgs) Handles eq_filter_eqtype.TextChanged
-          If eq_filter_eqno.Text=String.Empty And eq_filter_eqtype.Text=String.Empty Then
+          If String.IsNullOrEmpty(eq_filter_eqno.Text) And String.IsNullOrEmpty(eq_filter_eqtype.Text) Then
             eq_rgv_showregequipment.Columns.Clear()
             eq_rgv_showregequipment.TableElement.Text = "To Display Data, please choose an equipment or type an equipment number on the left pane."
         Else
@@ -2709,9 +2712,12 @@ Public Class Main
         Dim bsource As New BindingSource
             MysqlConn.Open()
 
-            query = "SELECT equipmentnumber AS 'Equipment No.', equipmentmodel as 'Equipment', equipmentserial AS 'Serial Number', equipmentname as 'Equipment Type', equipmentlocation AS 'Equipment Location', equipmentowner AS 'Owner', remarks AS 'Status' FROM ceutltdprevmaintenance.equipmentlist WHERE remarks LIKE '%Good Condition%'"
+            query = "SELECT equipmentnumber AS 'Equipment No.', equipmentmodel as 'Equipment', equipmentserial AS 'Serial Number', equipmentname as 'Equipment Type', equipmentlocation AS 'Equipment Location', equipmentowner AS 'Owner', remarks AS 'Status' FROM ceutltdprevmaintenance.equipmentlist WHERE remarks LIKE '%Good Condition%' and equipmentname LIKE @eq_filter_type and equipmentnumber LIKE @eq_filter_number"
 
             comm = New MySqlCommand(query, MysqlConn)
+
+            comm.Parameters.AddWithValue("@eq_filter_type", "%" & eq_filter_eqtype.Text & "%")
+            comm.Parameters.AddWithValue("@eq_filter_number", "%" & eq_filter_eqno.Text & "%")
             SDA.SelectCommand = comm
             SDA.Fill(dbdataset)
             bsource.DataSource = dbdataset
@@ -2720,7 +2726,7 @@ Public Class Main
             MysqlConn.Close()
             counter_of_total_eq()
             Dim DV As New DataView(dbdataset)
-            DV.RowFilter = String.Format("`Equipment No.` Like'%{0}%' and `Equipment Type` Like'%{1}%'", eq_filter_eqno.Text, eq_filter_eqtype.Text)
+            DV.RowFilter = String.Format("`Equipment No.` Like'%{0}%' and `Equipment Type` Like'%{1}%'", Actions.CheckValueIllegalChars(eq_filter_eqno.Text), Actions.CheckValueIllegalChars(eq_filter_eqtype.Text))
             eq_rgv_showregequipment.DataSource = DV
             If eq_rgv_showregequipment.Rows.Count -1 < eq_keepSelectedRowIndexAfterUpdate
             eq_rgv_showregequipment.Rows(0).IsCurrent = True
@@ -2844,17 +2850,14 @@ Public Class Main
         MysqlConn.ConnectionString = connstring
             MysqlConn.Open()
 
-            Dim holder As String
-
-            query = "SELECT COUNT(equipmentname) AS 'total' FROM ceutltdprevmaintenance.equipmentlist WHERE remarks LIKE '%Good Condition%' and equipmentname=@eq_countertype"
+            query = "SELECT COUNT(equipmentname) AS 'total' FROM ceutltdprevmaintenance.equipmentlist WHERE remarks LIKE '%Good Condition%' and equipmentname LIKE @eq_counter_type and equipmentnumber LIKE @eq_counter_number"
             comm = New MySqlCommand(query, MysqlConn)
-            comm.Parameters.AddWithValue("eq_countertype", eq_filter_eqtype.Text)
-
+            comm.Parameters.AddWithValue("@eq_counter_type", "%" & eq_filter_eqtype.Text & "%")
+            comm.Parameters.AddWithValue("@eq_counter_number", "%" & eq_filter_eqno.Text & "%")
             reader = comm.ExecuteReader
             While reader.Read
-                holder = reader.GetString("total")
+                eq_total_units.Text = reader.GetString("total")
             End While
-            eq_total_units.Text = holder
 
             MysqlConn.Close()
 
