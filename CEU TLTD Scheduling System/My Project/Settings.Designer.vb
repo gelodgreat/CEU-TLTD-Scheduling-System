@@ -149,6 +149,18 @@ Namespace My
                 Me("searchDelay") = value
             End Set
         End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+        Public Property gsmIsOn() As Boolean
+            Get
+                Return CType(Me("gsmIsOn"),Boolean)
+            End Get
+            Set
+                Me("gsmIsOn") = value
+            End Set
+        End Property
     End Class
 End Namespace
 

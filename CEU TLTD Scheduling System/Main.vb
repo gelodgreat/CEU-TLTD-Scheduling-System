@@ -2681,9 +2681,9 @@ Public Class Main
             eq_rgv_showregequipment.Columns.Clear()
             eq_rgv_showregequipment.TableElement.Text = "To Display Data, please choose an equipment or type an equipment number on the left pane."
         Else
-        eqno_filter_delay.Interval = search_delay
-        eqno_filter_delay.Stop()
-        eqno_filter_delay.Start()
+            eqno_filter_delay.Interval = search_delay
+            eqno_filter_delay.Stop()
+            eqno_filter_delay.Start()
         End If
     End Sub
 

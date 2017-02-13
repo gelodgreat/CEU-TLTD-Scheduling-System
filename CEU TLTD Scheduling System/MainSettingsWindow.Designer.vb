@@ -49,7 +49,7 @@ Partial Class MainSettingsWindow
         Me.rr_time = New Telerik.WinControls.UI.RadSpinEditor()
         Me.sd_time = New Telerik.WinControls.UI.RadSpinEditor()
         Me.RadLabel6 = New Telerik.WinControls.UI.RadLabel()
-        Me.RadPageView1 = New Telerik.WinControls.UI.RadPageView()
+        Me.rpv_settings = New Telerik.WinControls.UI.RadPageView()
         Me.rp_penalty = New Telerik.WinControls.UI.RadPageViewPage()
         Me.rp_chngpw = New Telerik.WinControls.UI.RadPageViewPage()
         Me.rp_refreshrate = New Telerik.WinControls.UI.RadPageViewPage()
@@ -61,52 +61,65 @@ Partial Class MainSettingsWindow
         Me.btn_metrotheme = New Telerik.WinControls.UI.RadButton()
         Me.btn_vsdark = New Telerik.WinControls.UI.RadButton()
         Me.btn_vslight = New Telerik.WinControls.UI.RadButton()
-        CType(Me.RadGroupBox1,System.ComponentModel.ISupportInitialize).BeginInit
-        Me.RadGroupBox1.SuspendLayout
-        CType(Me.RadLabel11,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.btn_penalty_setting_save,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.RadLabel7,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.RadLabel4,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.penalty_ci_day,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.penalty_ci_hhmm,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.penalty_gp_day,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.penalty_gp_hhmm,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.penalty_peso_amount,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.RadLabel3,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.RadLabel2,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.RadLabel1,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.RadGroupBox2,System.ComponentModel.ISupportInitialize).BeginInit
-        Me.RadGroupBox2.SuspendLayout
-        CType(Me.btn_ChP,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.txt_NewPass_Confirm,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.txt_NewPass,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.txt_CurPass,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.RadGroupBox3,System.ComponentModel.ISupportInitialize).BeginInit
-        Me.RadGroupBox3.SuspendLayout
-        CType(Me.RadLabel10,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.btn_delay_save,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.RadLabel9,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.RadLabel5,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.RadLabel8,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.rr_time,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.sd_time,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.RadLabel6,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.RadPageView1,System.ComponentModel.ISupportInitialize).BeginInit
-        Me.RadPageView1.SuspendLayout
-        Me.rp_penalty.SuspendLayout
-        Me.rp_chngpw.SuspendLayout
-        Me.rp_refreshrate.SuspendLayout
-        Me.rp_themes.SuspendLayout
-        CType(Me.RadGroupBox4,System.ComponentModel.ISupportInitialize).BeginInit
-        Me.RadGroupBox4.SuspendLayout
-        CType(Me.RadLabel12,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.btn_w8,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.btn_metroblue,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.btn_metrotheme,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.btn_vsdark,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.btn_vslight,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me,System.ComponentModel.ISupportInitialize).BeginInit
-        Me.SuspendLayout
+        Me.rp_sms = New Telerik.WinControls.UI.RadPageViewPage()
+        Me.RadGroupBox5 = New Telerik.WinControls.UI.RadGroupBox()
+        Me.btn_SMS_save = New Telerik.WinControls.UI.RadButton()
+        Me.lbl_sms_plsSelDev = New System.Windows.Forms.Label()
+        Me.ddl_deviceList = New Telerik.WinControls.UI.RadDropDownList()
+        Me.setting_gsm_toggleswitch = New Telerik.WinControls.UI.RadToggleSwitch()
+        Me.Label1 = New System.Windows.Forms.Label()
+        CType(Me.RadGroupBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.RadGroupBox1.SuspendLayout()
+        CType(Me.RadLabel11, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.btn_penalty_setting_save, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RadLabel7, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RadLabel4, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.penalty_ci_day, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.penalty_ci_hhmm, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.penalty_gp_day, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.penalty_gp_hhmm, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.penalty_peso_amount, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RadLabel3, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RadLabel2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RadLabel1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RadGroupBox2, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.RadGroupBox2.SuspendLayout()
+        CType(Me.btn_ChP, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txt_NewPass_Confirm, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txt_NewPass, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txt_CurPass, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RadGroupBox3, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.RadGroupBox3.SuspendLayout()
+        CType(Me.RadLabel10, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.btn_delay_save, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RadLabel9, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RadLabel5, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RadLabel8, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.rr_time, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.sd_time, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RadLabel6, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.rpv_settings, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.rpv_settings.SuspendLayout()
+        Me.rp_penalty.SuspendLayout()
+        Me.rp_chngpw.SuspendLayout()
+        Me.rp_refreshrate.SuspendLayout()
+        Me.rp_themes.SuspendLayout()
+        CType(Me.RadGroupBox4, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.RadGroupBox4.SuspendLayout()
+        CType(Me.RadLabel12, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.btn_w8, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.btn_metroblue, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.btn_metrotheme, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.btn_vsdark, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.btn_vslight, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.rp_sms.SuspendLayout()
+        CType(Me.RadGroupBox5, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.RadGroupBox5.SuspendLayout()
+        CType(Me.btn_SMS_save, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ddl_deviceList, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.setting_gsm_toggleswitch, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.SuspendLayout()
         '
         'RadGroupBox1
         '
@@ -133,20 +146,20 @@ Partial Class MainSettingsWindow
         '
         'RadLabel11
         '
-        Me.RadLabel11.AutoSize = false
+        Me.RadLabel11.AutoSize = False
         Me.RadLabel11.BackColor = System.Drawing.Color.Transparent
-        Me.RadLabel11.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.RadLabel11.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.RadLabel11.Location = New System.Drawing.Point(74, 30)
         Me.RadLabel11.Name = "RadLabel11"
         Me.RadLabel11.Size = New System.Drawing.Size(359, 61)
         Me.RadLabel11.TabIndex = 24
-        Me.RadLabel11.Text = "Grace period is counted first before counting the penalty."&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"Penalty is added afte"& _ 
+        Me.RadLabel11.Text = "Grace period is counted first before counting the penalty." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Penalty is added afte" &
     "r the grace period then adds another after a charge interval."
         Me.RadLabel11.ThemeName = "VisualStudio2012Dark"
         '
         'btn_penalty_setting_save
         '
-        Me.btn_penalty_setting_save.Location = New System.Drawing.Point(194, 284)
+        Me.btn_penalty_setting_save.Location = New System.Drawing.Point(193, 280)
         Me.btn_penalty_setting_save.Name = "btn_penalty_setting_save"
         Me.btn_penalty_setting_save.Size = New System.Drawing.Size(124, 24)
         Me.btn_penalty_setting_save.TabIndex = 5
@@ -185,7 +198,7 @@ Partial Class MainSettingsWindow
         Me.penalty_ci_day.RootElement.MinSize = New System.Drawing.Size(0, 24)
         Me.penalty_ci_day.Size = New System.Drawing.Size(46, 24)
         Me.penalty_ci_day.TabIndex = 2
-        Me.penalty_ci_day.TabStop = false
+        Me.penalty_ci_day.TabStop = False
         Me.penalty_ci_day.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center
         Me.penalty_ci_day.ThemeName = "VisualStudio2012Dark"
         '
@@ -200,10 +213,10 @@ Partial Class MainSettingsWindow
         '
         '
         Me.penalty_ci_hhmm.RootElement.MinSize = New System.Drawing.Size(0, 24)
-        Me.penalty_ci_hhmm.ShowUpDown = true
+        Me.penalty_ci_hhmm.ShowUpDown = True
         Me.penalty_ci_hhmm.Size = New System.Drawing.Size(172, 24)
         Me.penalty_ci_hhmm.TabIndex = 3
-        Me.penalty_ci_hhmm.TabStop = false
+        Me.penalty_ci_hhmm.TabStop = False
         Me.penalty_ci_hhmm.Text = "00 hour(s) and 00 minute(s)"
         Me.penalty_ci_hhmm.ThemeName = "VisualStudio2012Dark"
         Me.penalty_ci_hhmm.Value = New Date(2016, 9, 23, 0, 0, 0, 0)
@@ -220,7 +233,7 @@ Partial Class MainSettingsWindow
         Me.penalty_gp_day.RootElement.MinSize = New System.Drawing.Size(0, 24)
         Me.penalty_gp_day.Size = New System.Drawing.Size(46, 24)
         Me.penalty_gp_day.TabIndex = 0
-        Me.penalty_gp_day.TabStop = false
+        Me.penalty_gp_day.TabStop = False
         Me.penalty_gp_day.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center
         Me.penalty_gp_day.ThemeName = "VisualStudio2012Dark"
         '
@@ -235,10 +248,10 @@ Partial Class MainSettingsWindow
         '
         '
         Me.penalty_gp_hhmm.RootElement.MinSize = New System.Drawing.Size(0, 24)
-        Me.penalty_gp_hhmm.ShowUpDown = true
+        Me.penalty_gp_hhmm.ShowUpDown = True
         Me.penalty_gp_hhmm.Size = New System.Drawing.Size(172, 24)
         Me.penalty_gp_hhmm.TabIndex = 1
-        Me.penalty_gp_hhmm.TabStop = false
+        Me.penalty_gp_hhmm.TabStop = False
         Me.penalty_gp_hhmm.Text = "00 hour(s) and 00 minute(s)"
         Me.penalty_gp_hhmm.ThemeName = "VisualStudio2012Dark"
         Me.penalty_gp_hhmm.Value = New Date(2016, 9, 23, 0, 0, 0, 0)
@@ -325,7 +338,7 @@ Partial Class MainSettingsWindow
         Me.txt_NewPass_Confirm.Size = New System.Drawing.Size(154, 24)
         Me.txt_NewPass_Confirm.TabIndex = 2
         Me.txt_NewPass_Confirm.ThemeName = "VisualStudio2012Dark"
-        Me.txt_NewPass_Confirm.UseSystemPasswordChar = true
+        Me.txt_NewPass_Confirm.UseSystemPasswordChar = True
         '
         'txt_NewPass
         '
@@ -341,7 +354,7 @@ Partial Class MainSettingsWindow
         Me.txt_NewPass.Size = New System.Drawing.Size(154, 24)
         Me.txt_NewPass.TabIndex = 1
         Me.txt_NewPass.ThemeName = "VisualStudio2012Dark"
-        Me.txt_NewPass.UseSystemPasswordChar = true
+        Me.txt_NewPass.UseSystemPasswordChar = True
         '
         'txt_CurPass
         '
@@ -357,7 +370,7 @@ Partial Class MainSettingsWindow
         Me.txt_CurPass.Size = New System.Drawing.Size(154, 24)
         Me.txt_CurPass.TabIndex = 0
         Me.txt_CurPass.ThemeName = "VisualStudio2012Dark"
-        Me.txt_CurPass.UseSystemPasswordChar = true
+        Me.txt_CurPass.UseSystemPasswordChar = True
         '
         'RadGroupBox3
         '
@@ -380,9 +393,9 @@ Partial Class MainSettingsWindow
         '
         'RadLabel10
         '
-        Me.RadLabel10.AutoSize = false
+        Me.RadLabel10.AutoSize = False
         Me.RadLabel10.BackColor = System.Drawing.Color.Transparent
-        Me.RadLabel10.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.RadLabel10.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.RadLabel10.Location = New System.Drawing.Point(81, 40)
         Me.RadLabel10.Name = "RadLabel10"
         Me.RadLabel10.Size = New System.Drawing.Size(343, 34)
@@ -392,7 +405,7 @@ Partial Class MainSettingsWindow
         '
         'btn_delay_save
         '
-        Me.btn_delay_save.Location = New System.Drawing.Point(186, 258)
+        Me.btn_delay_save.Location = New System.Drawing.Point(193, 280)
         Me.btn_delay_save.Name = "btn_delay_save"
         Me.btn_delay_save.Size = New System.Drawing.Size(110, 24)
         Me.btn_delay_save.TabIndex = 6
@@ -443,7 +456,7 @@ Partial Class MainSettingsWindow
         Me.rr_time.RootElement.MinSize = New System.Drawing.Size(0, 24)
         Me.rr_time.Size = New System.Drawing.Size(63, 24)
         Me.rr_time.TabIndex = 4
-        Me.rr_time.TabStop = false
+        Me.rr_time.TabStop = False
         Me.rr_time.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center
         Me.rr_time.ThemeName = "VisualStudio2012Dark"
         Me.rr_time.Value = New Decimal(New Integer() {1000, 0, 0, 0})
@@ -461,7 +474,7 @@ Partial Class MainSettingsWindow
         Me.sd_time.RootElement.MinSize = New System.Drawing.Size(0, 24)
         Me.sd_time.Size = New System.Drawing.Size(63, 24)
         Me.sd_time.TabIndex = 3
-        Me.sd_time.TabStop = false
+        Me.sd_time.TabStop = False
         Me.sd_time.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center
         Me.sd_time.ThemeName = "VisualStudio2012Dark"
         Me.sd_time.Value = New Decimal(New Integer() {500, 0, 0, 0})
@@ -476,30 +489,30 @@ Partial Class MainSettingsWindow
         Me.RadLabel6.Text = "Refresh Rate:"
         Me.RadLabel6.ThemeName = "VisualStudio2012Dark"
         '
-        'RadPageView1
+        'rpv_settings
         '
-        Me.RadPageView1.Controls.Add(Me.rp_penalty)
-        Me.RadPageView1.Controls.Add(Me.rp_chngpw)
-        Me.RadPageView1.Controls.Add(Me.rp_refreshrate)
-        Me.RadPageView1.Controls.Add(Me.rp_themes)
-        Me.RadPageView1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.RadPageView1.Location = New System.Drawing.Point(0, 0)
-        Me.RadPageView1.Name = "RadPageView1"
-        Me.RadPageView1.SelectedPage = Me.rp_themes
-        Me.RadPageView1.Size = New System.Drawing.Size(503, 411)
-        Me.RadPageView1.TabIndex = 5
-        Me.RadPageView1.Text = "RadPageView1"
-        Me.RadPageView1.ThemeName = "VisualStudio2012Dark"
-        CType(Me.RadPageView1.GetChildAt(0),Telerik.WinControls.UI.RadPageViewStripElement).ShowItemPinButton = false
-        CType(Me.RadPageView1.GetChildAt(0),Telerik.WinControls.UI.RadPageViewStripElement).StripButtons = Telerik.WinControls.UI.StripViewButtons.None
-        CType(Me.RadPageView1.GetChildAt(0),Telerik.WinControls.UI.RadPageViewStripElement).ItemAlignment = Telerik.WinControls.UI.StripViewItemAlignment.Near
-        CType(Me.RadPageView1.GetChildAt(0),Telerik.WinControls.UI.RadPageViewStripElement).StripAlignment = Telerik.WinControls.UI.StripViewAlignment.Top
-        CType(Me.RadPageView1.GetChildAt(0),Telerik.WinControls.UI.RadPageViewStripElement).ShowItemCloseButton = false
+        Me.rpv_settings.Controls.Add(Me.rp_penalty)
+        Me.rpv_settings.Controls.Add(Me.rp_chngpw)
+        Me.rpv_settings.Controls.Add(Me.rp_refreshrate)
+        Me.rpv_settings.Controls.Add(Me.rp_themes)
+        Me.rpv_settings.Controls.Add(Me.rp_sms)
+        Me.rpv_settings.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.rpv_settings.Location = New System.Drawing.Point(0, 0)
+        Me.rpv_settings.Name = "rpv_settings"
+        Me.rpv_settings.SelectedPage = Me.rp_sms
+        Me.rpv_settings.Size = New System.Drawing.Size(503, 411)
+        Me.rpv_settings.TabIndex = 5
+        Me.rpv_settings.ThemeName = "VisualStudio2012Dark"
+        CType(Me.rpv_settings.GetChildAt(0), Telerik.WinControls.UI.RadPageViewStripElement).ShowItemPinButton = False
+        CType(Me.rpv_settings.GetChildAt(0), Telerik.WinControls.UI.RadPageViewStripElement).StripButtons = Telerik.WinControls.UI.StripViewButtons.None
+        CType(Me.rpv_settings.GetChildAt(0), Telerik.WinControls.UI.RadPageViewStripElement).ItemAlignment = Telerik.WinControls.UI.StripViewItemAlignment.Near
+        CType(Me.rpv_settings.GetChildAt(0), Telerik.WinControls.UI.RadPageViewStripElement).StripAlignment = Telerik.WinControls.UI.StripViewAlignment.Top
+        CType(Me.rpv_settings.GetChildAt(0), Telerik.WinControls.UI.RadPageViewStripElement).ShowItemCloseButton = False
         '
         'rp_penalty
         '
         Me.rp_penalty.Controls.Add(Me.RadGroupBox1)
-        Me.rp_penalty.ItemSize = New System.Drawing.SizeF(97!, 24!)
+        Me.rp_penalty.ItemSize = New System.Drawing.SizeF(97.0!, 24.0!)
         Me.rp_penalty.Location = New System.Drawing.Point(5, 30)
         Me.rp_penalty.Name = "rp_penalty"
         Me.rp_penalty.Size = New System.Drawing.Size(493, 376)
@@ -508,7 +521,7 @@ Partial Class MainSettingsWindow
         'rp_chngpw
         '
         Me.rp_chngpw.Controls.Add(Me.RadGroupBox2)
-        Me.rp_chngpw.ItemSize = New System.Drawing.SizeF(101!, 24!)
+        Me.rp_chngpw.ItemSize = New System.Drawing.SizeF(101.0!, 24.0!)
         Me.rp_chngpw.Location = New System.Drawing.Point(5, 30)
         Me.rp_chngpw.Name = "rp_chngpw"
         Me.rp_chngpw.Size = New System.Drawing.Size(493, 376)
@@ -517,7 +530,7 @@ Partial Class MainSettingsWindow
         'rp_refreshrate
         '
         Me.rp_refreshrate.Controls.Add(Me.RadGroupBox3)
-        Me.rp_refreshrate.ItemSize = New System.Drawing.SizeF(92!, 24!)
+        Me.rp_refreshrate.ItemSize = New System.Drawing.SizeF(92.0!, 24.0!)
         Me.rp_refreshrate.Location = New System.Drawing.Point(5, 30)
         Me.rp_refreshrate.Name = "rp_refreshrate"
         Me.rp_refreshrate.Size = New System.Drawing.Size(493, 376)
@@ -526,7 +539,7 @@ Partial Class MainSettingsWindow
         'rp_themes
         '
         Me.rp_themes.Controls.Add(Me.RadGroupBox4)
-        Me.rp_themes.ItemSize = New System.Drawing.SizeF(46!, 24!)
+        Me.rp_themes.ItemSize = New System.Drawing.SizeF(46.0!, 24.0!)
         Me.rp_themes.Location = New System.Drawing.Point(5, 30)
         Me.rp_themes.Name = "rp_themes"
         Me.rp_themes.Size = New System.Drawing.Size(493, 376)
@@ -551,9 +564,9 @@ Partial Class MainSettingsWindow
         '
         'RadLabel12
         '
-        Me.RadLabel12.AutoSize = false
+        Me.RadLabel12.AutoSize = False
         Me.RadLabel12.BackColor = System.Drawing.Color.Transparent
-        Me.RadLabel12.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.RadLabel12.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.RadLabel12.Location = New System.Drawing.Point(150, 39)
         Me.RadLabel12.Name = "RadLabel12"
         Me.RadLabel12.Size = New System.Drawing.Size(209, 34)
@@ -611,77 +624,157 @@ Partial Class MainSettingsWindow
         Me.btn_vslight.Text = "VS2012 Light"
         Me.btn_vslight.ThemeName = "VisualStudio2012Dark"
         '
+        'rp_sms
+        '
+        Me.rp_sms.Controls.Add(Me.RadGroupBox5)
+        Me.rp_sms.ItemSize = New System.Drawing.SizeF(106.0!, 24.0!)
+        Me.rp_sms.Location = New System.Drawing.Point(5, 30)
+        Me.rp_sms.Name = "rp_sms"
+        Me.rp_sms.Size = New System.Drawing.Size(493, 376)
+        Me.rp_sms.Text = "SMS Configuration"
+        '
+        'RadGroupBox5
+        '
+        Me.RadGroupBox5.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping
+        Me.RadGroupBox5.Controls.Add(Me.btn_SMS_save)
+        Me.RadGroupBox5.Controls.Add(Me.lbl_sms_plsSelDev)
+        Me.RadGroupBox5.Controls.Add(Me.ddl_deviceList)
+        Me.RadGroupBox5.Controls.Add(Me.setting_gsm_toggleswitch)
+        Me.RadGroupBox5.Controls.Add(Me.Label1)
+        Me.RadGroupBox5.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.RadGroupBox5.HeaderText = ""
+        Me.RadGroupBox5.Location = New System.Drawing.Point(0, 0)
+        Me.RadGroupBox5.Name = "RadGroupBox5"
+        Me.RadGroupBox5.Size = New System.Drawing.Size(493, 376)
+        Me.RadGroupBox5.TabIndex = 0
+        Me.RadGroupBox5.ThemeName = "VisualStudio2012Dark"
+        '
+        'btn_SMS_save
+        '
+        Me.btn_SMS_save.Location = New System.Drawing.Point(193, 280)
+        Me.btn_SMS_save.Name = "btn_SMS_save"
+        Me.btn_SMS_save.Size = New System.Drawing.Size(110, 24)
+        Me.btn_SMS_save.TabIndex = 6
+        Me.btn_SMS_save.Text = "Save Configuration"
+        Me.btn_SMS_save.ThemeName = "VisualStudio2012Dark"
+        '
+        'lbl_sms_plsSelDev
+        '
+        Me.lbl_sms_plsSelDev.AutoSize = True
+        Me.lbl_sms_plsSelDev.BackColor = System.Drawing.Color.Transparent
+        Me.lbl_sms_plsSelDev.Location = New System.Drawing.Point(185, 128)
+        Me.lbl_sms_plsSelDev.Name = "lbl_sms_plsSelDev"
+        Me.lbl_sms_plsSelDev.Size = New System.Drawing.Size(118, 13)
+        Me.lbl_sms_plsSelDev.TabIndex = 5
+        Me.lbl_sms_plsSelDev.Text = "Please select a device:"
+        '
+        'ddl_deviceList
+        '
+        Me.ddl_deviceList.DropDownStyle = Telerik.WinControls.RadDropDownStyle.DropDownList
+        Me.ddl_deviceList.Location = New System.Drawing.Point(144, 160)
+        Me.ddl_deviceList.Name = "ddl_deviceList"
+        Me.ddl_deviceList.Size = New System.Drawing.Size(205, 24)
+        Me.ddl_deviceList.TabIndex = 4
+        Me.ddl_deviceList.ThemeName = "VisualStudio2012Dark"
+        '
+        'setting_gsm_toggleswitch
+        '
+        Me.setting_gsm_toggleswitch.Location = New System.Drawing.Point(264, 67)
+        Me.setting_gsm_toggleswitch.Name = "setting_gsm_toggleswitch"
+        Me.setting_gsm_toggleswitch.Size = New System.Drawing.Size(50, 20)
+        Me.setting_gsm_toggleswitch.TabIndex = 3
+        Me.setting_gsm_toggleswitch.ThemeName = "VisualStudio2012Dark"
+        Me.setting_gsm_toggleswitch.ThumbTickness = 15
+        Me.setting_gsm_toggleswitch.Value = False
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.BackColor = System.Drawing.Color.Transparent
+        Me.Label1.Location = New System.Drawing.Point(174, 70)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(77, 13)
+        Me.Label1.TabIndex = 0
+        Me.Label1.Text = "GSM Module:"
+        '
         'MainSettingsWindow
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6!, 13!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(503, 411)
-        Me.Controls.Add(Me.RadPageView1)
+        Me.Controls.Add(Me.rpv_settings)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
-        Me.MaximizeBox = false
-        Me.MinimizeBox = false
+        Me.MaximizeBox = False
+        Me.MinimizeBox = False
         Me.Name = "MainSettingsWindow"
         '
         '
         '
-        Me.RootElement.ApplyShapeToControl = true
-        Me.ShowIcon = false
-        Me.ShowInTaskbar = false
+        Me.RootElement.ApplyShapeToControl = True
+        Me.ShowIcon = False
+        Me.ShowInTaskbar = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "Settings"
         Me.ThemeName = "VisualStudio2012Dark"
-        Me.TopMost = true
-        CType(Me.RadGroupBox1,System.ComponentModel.ISupportInitialize).EndInit
-        Me.RadGroupBox1.ResumeLayout(false)
-        Me.RadGroupBox1.PerformLayout
-        CType(Me.RadLabel11,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.btn_penalty_setting_save,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.RadLabel7,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.RadLabel4,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.penalty_ci_day,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.penalty_ci_hhmm,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.penalty_gp_day,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.penalty_gp_hhmm,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.penalty_peso_amount,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.RadLabel3,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.RadLabel2,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.RadLabel1,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.RadGroupBox2,System.ComponentModel.ISupportInitialize).EndInit
-        Me.RadGroupBox2.ResumeLayout(false)
-        Me.RadGroupBox2.PerformLayout
-        CType(Me.btn_ChP,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.txt_NewPass_Confirm,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.txt_NewPass,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.txt_CurPass,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.RadGroupBox3,System.ComponentModel.ISupportInitialize).EndInit
-        Me.RadGroupBox3.ResumeLayout(false)
-        Me.RadGroupBox3.PerformLayout
-        CType(Me.RadLabel10,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.btn_delay_save,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.RadLabel9,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.RadLabel5,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.RadLabel8,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.rr_time,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.sd_time,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.RadLabel6,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.RadPageView1,System.ComponentModel.ISupportInitialize).EndInit
-        Me.RadPageView1.ResumeLayout(false)
-        Me.rp_penalty.ResumeLayout(false)
-        Me.rp_chngpw.ResumeLayout(false)
-        Me.rp_refreshrate.ResumeLayout(false)
-        Me.rp_themes.ResumeLayout(false)
-        CType(Me.RadGroupBox4,System.ComponentModel.ISupportInitialize).EndInit
-        Me.RadGroupBox4.ResumeLayout(false)
-        CType(Me.RadLabel12,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.btn_w8,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.btn_metroblue,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.btn_metrotheme,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.btn_vsdark,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.btn_vslight,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me,System.ComponentModel.ISupportInitialize).EndInit
-        Me.ResumeLayout(false)
+        Me.TopMost = True
+        CType(Me.RadGroupBox1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.RadGroupBox1.ResumeLayout(False)
+        Me.RadGroupBox1.PerformLayout()
+        CType(Me.RadLabel11, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.btn_penalty_setting_save, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RadLabel7, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RadLabel4, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.penalty_ci_day, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.penalty_ci_hhmm, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.penalty_gp_day, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.penalty_gp_hhmm, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.penalty_peso_amount, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RadLabel3, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RadLabel2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RadLabel1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RadGroupBox2, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.RadGroupBox2.ResumeLayout(False)
+        Me.RadGroupBox2.PerformLayout()
+        CType(Me.btn_ChP, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txt_NewPass_Confirm, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txt_NewPass, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txt_CurPass, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RadGroupBox3, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.RadGroupBox3.ResumeLayout(False)
+        Me.RadGroupBox3.PerformLayout()
+        CType(Me.RadLabel10, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.btn_delay_save, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RadLabel9, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RadLabel5, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RadLabel8, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.rr_time, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.sd_time, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RadLabel6, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.rpv_settings, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.rpv_settings.ResumeLayout(False)
+        Me.rp_penalty.ResumeLayout(False)
+        Me.rp_chngpw.ResumeLayout(False)
+        Me.rp_refreshrate.ResumeLayout(False)
+        Me.rp_themes.ResumeLayout(False)
+        CType(Me.RadGroupBox4, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.RadGroupBox4.ResumeLayout(False)
+        CType(Me.RadLabel12, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.btn_w8, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.btn_metroblue, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.btn_metrotheme, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.btn_vsdark, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.btn_vslight, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.rp_sms.ResumeLayout(False)
+        CType(Me.RadGroupBox5, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.RadGroupBox5.ResumeLayout(False)
+        Me.RadGroupBox5.PerformLayout()
+        CType(Me.btn_SMS_save, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ddl_deviceList, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.setting_gsm_toggleswitch, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.ResumeLayout(False)
 
-End Sub
+    End Sub
 
     Friend WithEvents RadGroupBox1 As Telerik.WinControls.UI.RadGroupBox
     Friend WithEvents penalty_gp_hhmm As Telerik.WinControls.UI.RadDateTimePicker
@@ -709,7 +802,7 @@ End Sub
     Friend WithEvents sd_time As Telerik.WinControls.UI.RadSpinEditor
     Friend WithEvents RadLabel6 As Telerik.WinControls.UI.RadLabel
     Friend WithEvents RadLabel5 As Telerik.WinControls.UI.RadLabel
-    Friend WithEvents RadPageView1 As Telerik.WinControls.UI.RadPageView
+    Friend WithEvents rpv_settings As Telerik.WinControls.UI.RadPageView
     Friend WithEvents rp_penalty As Telerik.WinControls.UI.RadPageViewPage
     Friend WithEvents rp_chngpw As Telerik.WinControls.UI.RadPageViewPage
     Friend WithEvents rp_refreshrate As Telerik.WinControls.UI.RadPageViewPage
@@ -722,5 +815,12 @@ End Sub
     Friend WithEvents btn_vsdark As Telerik.WinControls.UI.RadButton
     Friend WithEvents btn_vslight As Telerik.WinControls.UI.RadButton
     Friend WithEvents RadLabel12 As Telerik.WinControls.UI.RadLabel
+    Friend WithEvents rp_sms As Telerik.WinControls.UI.RadPageViewPage
+    Friend WithEvents RadGroupBox5 As Telerik.WinControls.UI.RadGroupBox
+    Friend WithEvents Label1 As Label
+    Friend WithEvents setting_gsm_toggleswitch As Telerik.WinControls.UI.RadToggleSwitch
+    Friend WithEvents btn_SMS_save As Telerik.WinControls.UI.RadButton
+    Friend WithEvents lbl_sms_plsSelDev As Label
+    Friend WithEvents ddl_deviceList As Telerik.WinControls.UI.RadDropDownList
 End Class
 
