@@ -1081,16 +1081,18 @@ Public Class Main
                     acc_staff_rdio_active.ToggleState=Enumerations.ToggleState.On
                 End If
                 'SET RADIO BUTTON CONDITION
-                
+
                 'CHECK IF ITS THE OWNER
-                If acc_sf_username.Text=username
+                If acc_sf_username.Text = username Then
                     acc_sf_password.Enabled = True
                     acc_sf_retypepassword.Enabled = True
-                    acc_sf_password.NullText="No changes if left blank"
-                    acc_sf_retypepassword.NullText="No changes if left blank"
-                    acc_staff_btn_delete.Enabled=False
-                    acc_staff_rdio_active.Enabled=False
-                    acc_staff_rdio_inactive.Enabled=False
+                    acc_sf_password.NullText = "No changes if left blank"
+                    acc_sf_retypepassword.NullText = "No changes if left blank"
+                    acc_staff_btn_delete.Enabled = False
+                    acc_staff_rdio_active.Enabled = False
+                    acc_staff_rdio_inactive.Enabled = False
+                    acc_sf_oldpassword.Show()
+                    lbl_oldPassword.Show()
                 Else
                     acc_sf_password.Enabled = False
                     acc_sf_retypepassword.Enabled = False
@@ -1098,7 +1100,9 @@ Public Class Main
                     acc_sf_password.NullText=""
                     acc_sf_retypepassword.NullText=""
                     acc_staff_rdio_active.Enabled=True
-                    acc_staff_rdio_inactive.Enabled=True
+                    acc_staff_rdio_inactive.Enabled = True
+                    acc_sf_oldpassword.Hide()
+                    lbl_oldPassword.Hide()
                     'acc_staff_rdio_active=Toggle
                 End If
 
@@ -1115,84 +1119,122 @@ Public Class Main
     'Programmed by BRENZ 5th Point Update Button!
     Private Sub acc_staff_btn_update_Click(sender As Object, e As EventArgs) Handles acc_staff_btn_update.Click
         Try
-        If MysqlConn.State = ConnectionState.Open Then
-            MysqlConn.Close()
-        End If
-        updateYN = RadMessageBox.Show(Me, "Are you sure to make changes on this staff's information?", "CEU TLTD Reservation System", MessageBoxButtons.YesNo, RadMessageIcon.Question)
-        If updateYN = MsgBoxResult.Yes Then
-            If Not ((acc_sf_fname.Text = "" Or acc_sf_mname.Text = "" Or acc_sf_lname.Text = "" Or acc_sf_username.Text = "") or (acc_sf_password.Enabled=True And acc_sf_retypepassword.Enabled=True) And NOT (acc_sf_password.Text="" And acc_sf_retypepassword.Text=""))  Then 'acc_sf_usertype.Text = "" 
+            Dim looper As Integer
+            If MysqlConn.State = ConnectionState.Open Then
+                MysqlConn.Close()
+            End If
+            updateYN = RadMessageBox.Show(Me, "Are you sure to make changes on this staff's information?", "CEU TLTD Reservation System", MessageBoxButtons.YesNo, RadMessageIcon.Question)
+            If updateYN = MsgBoxResult.Yes Then
+                'If Not ((acc_sf_fname.Text = "" Or acc_sf_mname.Text = "" Or acc_sf_lname.Text = "" Or acc_sf_username.Text = "") Or (acc_sf_password.Enabled = True And acc_sf_retypepassword.Enabled = True And acc_sf_oldpassword.Visible = True) And Not (acc_sf_password.Text = "" And acc_sf_retypepassword.Text = "" And acc_sf_oldpassword.Text = "")) Then 'acc_sf_usertype.Text = "" 
+                If (((Not acc_sf_fname.Text = "" Or acc_sf_mname.Text = "" Or acc_sf_lname.Text = "" Or acc_sf_username.Text = "") And (acc_sf_password.Enabled = False And acc_sf_retypepassword.Enabled = False And acc_sf_oldpassword.Visible = False)) Or (acc_sf_password.Text = "" And acc_sf_retypepassword.Text = "" And acc_sf_oldpassword.Text = "")) Then
                     MysqlConn.Open()
                     'STAFF USER TYPE REMOVAL query = "UPDATE ceutltdscheduler.staff_reg SET staff_fname=@b, staff_mname=@c, staff_surname=@d, staff_type=@e WHERE staff_id=@a and staff_username=@f"
                     query = "UPDATE ceutltdscheduler.staff_reg SET staff_fname=@b, staff_mname=@c, staff_surname=@d, staff_isactive=@g WHERE staff_id=@a and staff_username=@f"
                     comm = New MySqlCommand(query, MysqlConn)
-                    comm.Parameters.AddWithValue("@a",acc_sf_id.Text)
-                    comm.Parameters.AddWithValue("@b",acc_sf_fname.Text)
-                    comm.Parameters.AddWithValue("@c",acc_sf_mname.Text)
-                    comm.Parameters.AddWithValue("@d",acc_sf_lname.Text)
+                    comm.Parameters.AddWithValue("@a", acc_sf_id.Text)
+                    comm.Parameters.AddWithValue("@b", acc_sf_fname.Text)
+                    comm.Parameters.AddWithValue("@c", acc_sf_mname.Text)
+                    comm.Parameters.AddWithValue("@d", acc_sf_lname.Text)
                     'comm.Parameters.AddWithValue("@e",acc_sf_usertype.Text)
                     comm.Parameters.AddWithValue("@f", acc_sf_username.Text)
-                    If acc_staff_rdio_active.ToggleState=Enumerations.ToggleState.On Then
+                    If acc_staff_rdio_active.ToggleState = Enumerations.ToggleState.On Then
                         comm.Parameters.AddWithValue("@g", "1")
-                    ElseIf acc_staff_rdio_inactive.ToggleState=Enumerations.ToggleState.On Then
+                    ElseIf acc_staff_rdio_inactive.ToggleState = Enumerations.ToggleState.On Then
                         comm.Parameters.AddWithValue("@g", "0")
                     End If
                     reader = comm.ExecuteReader
-                    RadMessageBox.Show(Me, "Account information updated successfully!", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Info)
                     MysqlConn.Close()
-                    Staff_Reg_UpdateSuccessful()
-            ElseIf Not ((acc_sf_fname.Text = "") Or (acc_sf_mname.Text = "") Or (acc_sf_lname.Text = "") Or (acc_sf_username.Text = "") Or (acc_sf_password.Text= "") Or (acc_sf_retypepassword.Text = "") Or (acc_sf_password.Enabled=False And acc_sf_retypepassword.Enabled=False)) '(acc_sf_usertype.Text = "")
-                    If acc_sf_password.Text <> acc_sf_retypepassword.Text Then
-                        acc_sf_password.Text=""
-                        acc_sf_retypepassword.Text=""
-                        acc_sf_password.Focus
-                        RadMessageBox.Show(Me, "Please confirm your new password.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
-                    Else
-                        MysqlConn.Open()
-                        'STAFF USERTYPE REMOVAL query = "UPDATE ceutltdscheduler.staff_reg SET staff_fname=@b, staff_mname=@c, staff_surname=@d, staff_type=@e, staff_password=sha2(@g, 512) WHERE staff_id=@a and staff_username=@f"
-                        query = "UPDATE ceutltdscheduler.staff_reg SET staff_fname=@b, staff_mname=@c, staff_surname=@d, staff_password=sha2(@g, 512), staff_isactive=@h WHERE staff_id=@a and staff_username=@f"
-                        comm = New MySqlCommand(query, MysqlConn)
-                        comm.Parameters.AddWithValue("@a",acc_sf_id.Text)
-                        comm.Parameters.AddWithValue("@b",acc_sf_fname.Text)
-                        comm.Parameters.AddWithValue("@c",acc_sf_mname.Text)
-                        comm.Parameters.AddWithValue("@d",acc_sf_lname.Text)
-                        'comm.Parameters.AddWithValue("@e",acc_sf_usertype.Text)
-                        comm.Parameters.AddWithValue("@f",acc_sf_username.Text)
-                        comm.Parameters.AddWithValue("@g",acc_sf_password.Text)
-                        If acc_staff_rdio_active.ToggleState=Enumerations.ToggleState.On Then
-                            comm.Parameters.AddWithValue("@h", "1")
-                        ElseIf acc_staff_rdio_inactive.ToggleState=Enumerations.ToggleState.On Then
-                            comm.Parameters.AddWithValue("@h", "0")
-                        End If
-                        reader = comm.ExecuteReader
-                        RadMessageBox.Show(Me, "Account information updated successfully!", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Info)
-                        MysqlConn.Close()
-                        Staff_Reg_UpdateSuccessful()
-                        acc_sf_password.Text=""
-                        acc_sf_password.NullText=""
-                        acc_sf_retypepassword.Text=""
-                        acc_sf_retypepassword.NullText=""
-                        acc_staff_rdio_active.Enabled=True
-                        acc_staff_rdio_inactive.Enabled=True
+                    If (acc_sf_password.Text = "" And acc_sf_retypepassword.Text = "" And acc_sf_oldpassword.Text = "") Then
+                        acc_sf_oldpassword.Hide()
+                        lbl_oldPassword.Hide()
+                        acc_sf_password.NullText = ""
+                        acc_sf_retypepassword.NullText = ""
+                        acc_staff_rdio_active.Enabled = True
+                        acc_staff_rdio_inactive.Enabled = True
                     End If
-            Else
+                    Staff_Reg_UpdateSuccessful()
+                    RadMessageBox.Show(Me, "Account information updated successfully!", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Info)
+                    'ElseIf Not ((acc_sf_fname.Text = "") Or (acc_sf_mname.Text = "") Or (acc_sf_lname.Text = "") Or (acc_sf_username.Text = "") Or (acc_sf_password.Text = "") Or (acc_sf_retypepassword.Text = "") Or (acc_sf_oldpassword.Text = "") Or (acc_sf_password.Enabled = False And acc_sf_retypepassword.Enabled = False And acc_sf_oldpassword.Visible = False)) Then '(acc_sf_usertype.Text = "")
+                ElseIf Not ((acc_sf_fname.Text = "" Or acc_sf_mname.Text = "" Or acc_sf_lname.Text = "" Or acc_sf_username.Text = "") And (acc_sf_password.Enabled = False And acc_sf_retypepassword.Enabled = False And acc_sf_oldpassword.Visible = False)) Then '(acc_sf_usertype.Text = "")
+                    If acc_sf_password.Text <> acc_sf_retypepassword.Text Then
+                        acc_sf_password.Text = ""
+                        acc_sf_retypepassword.Text = ""
+                        acc_sf_oldpassword.Text = ""
+                        acc_sf_password.Focus()
+                        RadMessageBox.Show(Me, "Please confirm your new password.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                    ElseIf (acc_sf_password.Text = "" And acc_sf_retypepassword.Text = "") And Not (acc_sf_oldpassword.Text = "") Then
+                        acc_sf_oldpassword.Text = ""
+                        RadMessageBox.Show(Me, "Filling up the old password is needed only when you need to change your password.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Exclamation)
+                    ElseIf acc_sf_password.Text = acc_sf_retypepassword.Text And Not (acc_sf_password.Text = "" And acc_sf_retypepassword.Text = "" And acc_sf_oldpassword.Text = "") Then
+                        MysqlConn.ConnectionString = connstring
+                        MysqlConn.Open()
+                        Dim q2 As String = "SELECT * FROM staff_reg WHERE staff_username=@proc_email_login and staff_password=sha2(@proc_OLDpassword, 512)"
+                        comm = New MySqlCommand(q2, MysqlConn)
+                        comm.Parameters.AddWithValue("@proc_email_login", username)
+                        comm.Parameters.AddWithValue("@proc_OLDpassword", acc_sf_oldpassword.Text)
+                        reader = comm.ExecuteReader
+                        While reader.Read
+                            looper += 1
+                        End While
+                        MysqlConn.Close()
+                        'Else
+                        If looper = 1 Then
+                            MysqlConn.Open()
+                            'STAFF USERTYPE REMOVAL query = "UPDATE ceutltdscheduler.staff_reg SET staff_fname=@b, staff_mname=@c, staff_surname=@d, staff_type=@e, staff_password=sha2(@g, 512) WHERE staff_id=@a and staff_username=@f"
+                            query = "UPDATE ceutltdscheduler.staff_reg SET staff_fname=@b, staff_mname=@c, staff_surname=@d, staff_password=sha2(@g, 512), staff_isactive=@h WHERE staff_id=@a and staff_username=@f"
+                            comm = New MySqlCommand(query, MysqlConn)
+                            comm.Parameters.AddWithValue("@a", acc_sf_id.Text)
+                            comm.Parameters.AddWithValue("@b", acc_sf_fname.Text)
+                            comm.Parameters.AddWithValue("@c", acc_sf_mname.Text)
+                            comm.Parameters.AddWithValue("@d", acc_sf_lname.Text)
+                            'comm.Parameters.AddWithValue("@e",acc_sf_usertype.Text)
+                            comm.Parameters.AddWithValue("@f", acc_sf_username.Text)
+                            comm.Parameters.AddWithValue("@g", acc_sf_password.Text)
+                            If acc_staff_rdio_active.ToggleState = Enumerations.ToggleState.On Then
+                                comm.Parameters.AddWithValue("@h", "1")
+                            ElseIf acc_staff_rdio_inactive.ToggleState = Enumerations.ToggleState.On Then
+                                comm.Parameters.AddWithValue("@h", "0")
+                            End If
+                            reader = comm.ExecuteReader
+                            MysqlConn.Close()
+                            RadMessageBox.Show(Me, "Account information updated successfully!", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Info)
+                            Staff_Reg_UpdateSuccessful()
+                            acc_sf_password.Text = ""
+                            acc_sf_password.NullText = ""
+                            acc_sf_retypepassword.Text = ""
+                            acc_sf_retypepassword.NullText = ""
+                            acc_staff_rdio_active.Enabled = True
+                            acc_staff_rdio_inactive.Enabled = True
+                            acc_sf_oldpassword.Text = ""
+                            acc_sf_oldpassword.Hide()
+                            lbl_oldPassword.Hide()
+                        Else
+                            acc_sf_password.Text = ""
+                            acc_sf_retypepassword.Text = ""
+                            acc_sf_oldpassword.Text = ""
+                            acc_sf_password.Focus()
+                            RadMessageBox.Show(Me, "Your old account password is incorrect.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                        End If
+                    End If
+                Else
                     RadMessageBox.Show(Me, "Please select a staff to update!", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
-            End If
-        End If
-            Catch ex As MySqlException
-                If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed")))
-                    refresh_main_rgv_recordedacademicsonly.Stop()
-                    refresh_released_grid_list.Stop()
-                    RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
-                    Login.log_lbl_dbstatus.Text = "Offline"
-                    Login.log_lbl_dbstatus.ForeColor = Color.Red
-                    Return
-               Else
-                    RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
-               End If
-            Catch ex As Exception
+                    End If
+                End If
+        Catch ex As MySqlException
+            If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") Or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") Or ex.Message.Contains("Reading from the stream has failed"))) Then
+                refresh_main_rgv_recordedacademicsonly.Stop()
+                refresh_released_grid_list.Stop()
+                RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                Login.log_lbl_dbstatus.Text = "Offline"
+                Login.log_lbl_dbstatus.ForeColor = Color.Red
+                Return
+            Else
                 RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
-                Finally
-                    MysqlConn.Dispose()
+            End If
+        Catch ex As Exception
+            RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+        Finally
+            MysqlConn.Dispose()
                 End Try
     End Sub
 
@@ -1301,7 +1343,9 @@ Public Class Main
             acc_staff_rdio_active.ToggleState=Enumerations.ToggleState.Off
             acc_staff_rdio_inactive.ToggleState=Enumerations.ToggleState.Off
             acc_staff_rdio_active.Enabled=True
-            acc_staff_rdio_inactive.Enabled=True
+            acc_staff_rdio_inactive.Enabled = True
+            acc_sf_oldpassword.Hide()
+            lbl_oldPassword.Hide()
         End If
     End Sub
     'Radio for Active and Inactive

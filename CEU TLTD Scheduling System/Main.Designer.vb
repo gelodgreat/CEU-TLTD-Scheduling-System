@@ -601,6 +601,8 @@ Partial Class Main
         Me.refresh_penalty_grid_list = New System.Windows.Forms.Timer(Me.components)
         Me.refresh_returned_eq_list = New System.Windows.Forms.Timer(Me.components)
         Me.CeutltdschedulerDataSetBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.lbl_oldPassword = New Telerik.WinControls.UI.RadLabel()
+        Me.acc_sf_oldpassword = New Telerik.WinControls.UI.RadTextBox()
         CType(Me.RadGroupBox16, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RadGroupBox13, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.rpvp_returning.SuspendLayout()
@@ -850,6 +852,8 @@ Partial Class Main
         Me.rpv1.SuspendLayout()
         CType(Me.RadMenu1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.CeutltdschedulerDataSetBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.lbl_oldPassword, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.acc_sf_oldpassword, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -3403,6 +3407,7 @@ Partial Class Main
         'rpv_staff
         '
         Me.rpv_staff.Controls.Add(Me.acc_staff_list)
+        Me.rpv_staff.ItemSize = New System.Drawing.SizeF(78.0!, 24.0!)
         Me.rpv_staff.Location = New System.Drawing.Point(5, 30)
         Me.rpv_staff.Name = "rpv_staff"
         Me.rpv_staff.Size = New System.Drawing.Size(1343, 238)
@@ -3432,6 +3437,7 @@ Partial Class Main
         'rpv_borrower
         '
         Me.rpv_borrower.Controls.Add(Me.acc_prof_list)
+        Me.rpv_borrower.ItemSize = New System.Drawing.SizeF(101.0!, 24.0!)
         Me.rpv_borrower.Location = New System.Drawing.Point(5, 30)
         Me.rpv_borrower.Name = "rpv_borrower"
         Me.rpv_borrower.Size = New System.Drawing.Size(1343, 244)
@@ -3681,6 +3687,8 @@ Partial Class Main
         '
         Me.gb_staff_reg.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping
         Me.gb_staff_reg.Anchor = System.Windows.Forms.AnchorStyles.Bottom
+        Me.gb_staff_reg.Controls.Add(Me.acc_sf_oldpassword)
+        Me.gb_staff_reg.Controls.Add(Me.lbl_oldPassword)
         Me.gb_staff_reg.Controls.Add(Me.RadLabel39)
         Me.gb_staff_reg.Controls.Add(Me.acc_staff_rdio_inactive)
         Me.gb_staff_reg.Controls.Add(Me.acc_staff_rdio_active)
@@ -3853,9 +3861,9 @@ Partial Class Main
         Me.RadLabel32.BackColor = System.Drawing.Color.Transparent
         Me.RadLabel32.Location = New System.Drawing.Point(343, 92)
         Me.RadLabel32.Name = "RadLabel32"
-        Me.RadLabel32.Size = New System.Drawing.Size(100, 18)
+        Me.RadLabel32.Size = New System.Drawing.Size(99, 18)
         Me.RadLabel32.TabIndex = 15
-        Me.RadLabel32.Text = "Re-Type Password:"
+        Me.RadLabel32.Text = "Confirm Password:"
         Me.RadLabel32.ThemeName = "VisualStudio2012Dark"
         '
         'RadLabel33
@@ -4190,7 +4198,7 @@ Partial Class Main
         Me.rpv1.DefaultPage = Me.rpvp1_main
         Me.rpv1.Location = New System.Drawing.Point(0, 26)
         Me.rpv1.Name = "rpv1"
-        Me.rpv1.SelectedPage = Me.rpvp_equipment
+        Me.rpv1.SelectedPage = Me.rpvp_account
         Me.rpv1.Size = New System.Drawing.Size(1358, 557)
         Me.rpv1.TabIndex = 1
         Me.rpv1.Text = "Home"
@@ -4276,6 +4284,33 @@ Partial Class Main
         '
         'refresh_released_grid_list
         '
+        '
+        'lbl_oldPassword
+        '
+        Me.lbl_oldPassword.BackColor = System.Drawing.Color.Transparent
+        Me.lbl_oldPassword.Location = New System.Drawing.Point(365, 123)
+        Me.lbl_oldPassword.Name = "lbl_oldPassword"
+        Me.lbl_oldPassword.Size = New System.Drawing.Size(77, 18)
+        Me.lbl_oldPassword.TabIndex = 16
+        Me.lbl_oldPassword.Text = "Old Password:"
+        Me.lbl_oldPassword.ThemeName = "VisualStudio2012Dark"
+        Me.lbl_oldPassword.Visible = False
+        '
+        'acc_sf_oldpassword
+        '
+        Me.acc_sf_oldpassword.Location = New System.Drawing.Point(449, 121)
+        Me.acc_sf_oldpassword.MinimumSize = New System.Drawing.Size(0, 24)
+        Me.acc_sf_oldpassword.Name = "acc_sf_oldpassword"
+        Me.acc_sf_oldpassword.PasswordChar = Global.Microsoft.VisualBasic.ChrW(9679)
+        '
+        '
+        '
+        Me.acc_sf_oldpassword.RootElement.MinSize = New System.Drawing.Size(0, 24)
+        Me.acc_sf_oldpassword.Size = New System.Drawing.Size(201, 24)
+        Me.acc_sf_oldpassword.TabIndex = 8
+        Me.acc_sf_oldpassword.ThemeName = "VisualStudio2012Dark"
+        Me.acc_sf_oldpassword.UseSystemPasswordChar = True
+        Me.acc_sf_oldpassword.Visible = False
         '
         'Main
         '
@@ -4557,6 +4592,8 @@ Partial Class Main
         Me.rpv1.ResumeLayout(False)
         CType(Me.RadMenu1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.CeutltdschedulerDataSetBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.lbl_oldPassword, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.acc_sf_oldpassword, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
@@ -4806,5 +4843,7 @@ Partial Class Main
     Friend WithEvents RadLabel39 As Telerik.WinControls.UI.RadLabel
     Friend WithEvents acc_staff_rdio_inactive As Telerik.WinControls.UI.RadRadioButton
     Friend WithEvents acc_staff_rdio_active As Telerik.WinControls.UI.RadRadioButton
+    Friend WithEvents acc_sf_oldpassword As Telerik.WinControls.UI.RadTextBox
+    Friend WithEvents lbl_oldPassword As Telerik.WinControls.UI.RadLabel
 End Class
 

@@ -499,7 +499,7 @@ Partial Class MainSettingsWindow
         Me.rpv_settings.Dock = System.Windows.Forms.DockStyle.Fill
         Me.rpv_settings.Location = New System.Drawing.Point(0, 0)
         Me.rpv_settings.Name = "rpv_settings"
-        Me.rpv_settings.SelectedPage = Me.rp_sms
+        Me.rpv_settings.SelectedPage = Me.rp_chngpw
         Me.rpv_settings.Size = New System.Drawing.Size(503, 411)
         Me.rpv_settings.TabIndex = 5
         Me.rpv_settings.ThemeName = "VisualStudio2012Dark"
