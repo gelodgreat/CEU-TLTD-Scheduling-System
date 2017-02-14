@@ -614,7 +614,7 @@ Public Class Main
              If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed")))
                 refresh_main_rgv_recordedacademicsonly.Stop()
                 refresh_released_grid_list.Stop()
-                RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                RadMessageBox.Show(Me, "The server probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
                 Login.log_lbl_dbstatus.Text = "Offline"
                 Login.log_lbl_dbstatus.ForeColor = Color.Red
                 Return
@@ -677,7 +677,7 @@ Public Class Main
              If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed")))
                 refresh_main_rgv_recordedacademicsonly.Stop()
                 refresh_released_grid_list.Stop()
-                RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                RadMessageBox.Show(Me, "The server probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
                 Login.log_lbl_dbstatus.Text = "Offline"
                 Login.log_lbl_dbstatus.ForeColor = Color.Red
                 Return
@@ -748,7 +748,7 @@ Public Class Main
              If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed")))
                 refresh_main_rgv_recordedacademicsonly.Stop()
                 refresh_released_grid_list.Stop()
-                RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                RadMessageBox.Show(Me, "The server probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
                 Login.log_lbl_dbstatus.Text = "Offline"
                 Login.log_lbl_dbstatus.ForeColor = Color.Red
                 Return
@@ -837,7 +837,7 @@ Public Class Main
                 If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed")))
                     refresh_main_rgv_recordedacademicsonly.Stop()
                     refresh_released_grid_list.Stop()
-                    RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                    RadMessageBox.Show(Me, "The server probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
                     Login.log_lbl_dbstatus.Text = "Offline"
                     Login.log_lbl_dbstatus.ForeColor = Color.Red
                     Return
@@ -887,7 +887,7 @@ Public Class Main
              If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed")))
                 refresh_main_rgv_recordedacademicsonly.Stop()
                 refresh_released_grid_list.Stop()
-                RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                RadMessageBox.Show(Me, "The server probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
                 Login.log_lbl_dbstatus.Text = "Offline"
                 Login.log_lbl_dbstatus.ForeColor = Color.Red
                 Return
@@ -944,7 +944,7 @@ Public Class Main
                 If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed")))
                     refresh_main_rgv_recordedacademicsonly.Stop()
                     refresh_released_grid_list.Stop()
-                    RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                    RadMessageBox.Show(Me, "The server probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
                     Login.log_lbl_dbstatus.Text = "Offline"
                     Login.log_lbl_dbstatus.ForeColor = Color.Red
                     Return
@@ -1036,7 +1036,7 @@ Public Class Main
                         Else If ex.Number =0 Then
                             refresh_main_rgv_recordedacademicsonly.Stop()
                             refresh_released_grid_list.Stop()
-                            RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                            RadMessageBox.Show(Me, "The server probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
                             Login.log_lbl_dbstatus.Text = "Offline"
                             Login.log_lbl_dbstatus.ForeColor = Color.Red
                             Return
@@ -1224,7 +1224,7 @@ Public Class Main
             If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") Or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") Or ex.Message.Contains("Reading from the stream has failed"))) Then
                 refresh_main_rgv_recordedacademicsonly.Stop()
                 refresh_released_grid_list.Stop()
-                RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                RadMessageBox.Show(Me, "The server probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
                 Login.log_lbl_dbstatus.Text = "Offline"
                 Login.log_lbl_dbstatus.ForeColor = Color.Red
                 Return
@@ -1288,7 +1288,7 @@ Public Class Main
                 If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed")))
                     refresh_main_rgv_recordedacademicsonly.Stop()
                     refresh_released_grid_list.Stop()
-                    RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                    RadMessageBox.Show(Me, "The server probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
                     Login.log_lbl_dbstatus.Text = "Offline"
                     Login.log_lbl_dbstatus.ForeColor = Color.Red
                     Return
@@ -1433,7 +1433,7 @@ Public Class Main
                 Else If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed")))
                     refresh_main_rgv_recordedacademicsonly.Stop()
                     refresh_released_grid_list.Stop()
-                    RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                    RadMessageBox.Show(Me, "The server probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
                     Login.log_lbl_dbstatus.Text = "Offline"
                     Login.log_lbl_dbstatus.ForeColor = Color.Red
                     Return
@@ -1520,7 +1520,7 @@ Public Class Main
                     If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed")))
                         refresh_main_rgv_recordedacademicsonly.Stop()
                         refresh_released_grid_list.Stop()
-                        RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                        RadMessageBox.Show(Me, "The server probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
                         Login.log_lbl_dbstatus.Text = "Offline"
                         Login.log_lbl_dbstatus.ForeColor = Color.Red
                         Return
@@ -1581,7 +1581,7 @@ Public Class Main
                 If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed")))
                     refresh_main_rgv_recordedacademicsonly.Stop()
                     refresh_released_grid_list.Stop()
-                    RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                    RadMessageBox.Show(Me, "The server probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
                     Login.log_lbl_dbstatus.Text = "Offline"
                     Login.log_lbl_dbstatus.ForeColor = Color.Red
                     Return
@@ -1650,7 +1650,7 @@ Public Class Main
                 If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed")))
                     refresh_main_rgv_recordedacademicsonly.Stop()
                     refresh_released_grid_list.Stop()
-                    RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                    RadMessageBox.Show(Me, "The server probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
                     Login.log_lbl_dbstatus.Text = "Offline"
                     Login.log_lbl_dbstatus.ForeColor = Color.Red
                     Return
@@ -1701,7 +1701,7 @@ Public Class Main
                 If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed")))
                     refresh_main_rgv_recordedacademicsonly.Stop()
                     refresh_released_grid_list.Stop()
-                    RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                    RadMessageBox.Show(Me, "The server probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
                     Login.log_lbl_dbstatus.Text = "Offline"
                     Login.log_lbl_dbstatus.ForeColor = Color.Red
                     Return
@@ -1774,7 +1774,7 @@ Public Class Main
                                 If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed")))
                                     refresh_main_rgv_recordedacademicsonly.Stop()
                                     refresh_released_grid_list.Stop()
-                                    RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                                    RadMessageBox.Show(Me, "The server probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
                                     Login.log_lbl_dbstatus.Text = "Offline"
                                     Login.log_lbl_dbstatus.ForeColor = Color.Red
                                     Return
@@ -1848,7 +1848,7 @@ Public Class Main
                 If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed")))
                     refresh_main_rgv_recordedacademicsonly.Stop()
                     refresh_released_grid_list.Stop()
-                    RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                    RadMessageBox.Show(Me, "The server probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
                     Login.log_lbl_dbstatus.Text = "Offline"
                     Login.log_lbl_dbstatus.ForeColor = Color.Red
                     Return
@@ -1887,7 +1887,7 @@ Public Class Main
                     If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed")))
                         refresh_main_rgv_recordedacademicsonly.Stop()
                         refresh_released_grid_list.Stop()
-                        RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                        RadMessageBox.Show(Me, "The server probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
                         Login.log_lbl_dbstatus.Text = "Offline"
                         Login.log_lbl_dbstatus.ForeColor = Color.Red
                         Return
@@ -1986,7 +1986,7 @@ Public Class Main
                 If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed")))
                     refresh_main_rgv_recordedacademicsonly.Stop()
                     refresh_released_grid_list.Stop()
-                    RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                    RadMessageBox.Show(Me, "The server probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
                     Login.log_lbl_dbstatus.Text = "Offline"
                     Login.log_lbl_dbstatus.ForeColor = Color.Red
                     Return
@@ -2087,7 +2087,7 @@ Public Class Main
                 If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed")))
                     refresh_main_rgv_recordedacademicsonly.Stop()
                     refresh_released_grid_list.Stop()
-                    RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                    RadMessageBox.Show(Me, "The server probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
                     Login.log_lbl_dbstatus.Text = "Offline"
                     Login.log_lbl_dbstatus.ForeColor = Color.Red
                     Return
@@ -2127,7 +2127,7 @@ Public Class Main
                 If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed")))
                     refresh_main_rgv_recordedacademicsonly.Stop()
                     refresh_released_grid_list.Stop()
-                    RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                    RadMessageBox.Show(Me, "The server probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
                     Login.log_lbl_dbstatus.Text = "Offline"
                     Login.log_lbl_dbstatus.ForeColor = Color.Red
                     Return
@@ -2376,7 +2376,7 @@ Public Class Main
                 If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed")))
                     refresh_main_rgv_recordedacademicsonly.Stop()
                     refresh_released_grid_list.Stop()
-                    RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                    RadMessageBox.Show(Me, "The server probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
                     Login.log_lbl_dbstatus.Text = "Offline"
                     Login.log_lbl_dbstatus.ForeColor = Color.Red
                     Return
@@ -2423,7 +2423,7 @@ Public Class Main
                 If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed")))
                     refresh_main_rgv_recordedacademicsonly.Stop()
                     refresh_released_grid_list.Stop()
-                    RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                    RadMessageBox.Show(Me, "The server probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
                     Login.log_lbl_dbstatus.Text = "Offline"
                     Login.log_lbl_dbstatus.ForeColor = Color.Red
                     Return
@@ -2705,7 +2705,7 @@ Public Class Main
                 If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed")))
                     refresh_main_rgv_recordedacademicsonly.Stop()
                     refresh_released_grid_list.Stop()
-                    RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                    RadMessageBox.Show(Me, "The server probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
                     Login.log_lbl_dbstatus.Text = "Offline"
                     Login.log_lbl_dbstatus.ForeColor = Color.Red
                     Return
@@ -2781,7 +2781,7 @@ Public Class Main
                 If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed")))
                     refresh_main_rgv_recordedacademicsonly.Stop()
                     refresh_released_grid_list.Stop()
-                    RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                    RadMessageBox.Show(Me, "The server probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
                     Login.log_lbl_dbstatus.Text = "Offline"
                     Login.log_lbl_dbstatus.ForeColor = Color.Red
                     Return
@@ -2821,7 +2821,7 @@ Public Class Main
                 If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed")))
                     refresh_main_rgv_recordedacademicsonly.Stop()
                     refresh_released_grid_list.Stop()
-                    RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                    RadMessageBox.Show(Me, "The server probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
                     Login.log_lbl_dbstatus.Text = "Offline"
                     Login.log_lbl_dbstatus.ForeColor = Color.Red
                     Return
@@ -2909,7 +2909,7 @@ Public Class Main
                 If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed")))
                     refresh_main_rgv_recordedacademicsonly.Stop()
                     refresh_released_grid_list.Stop()
-                    RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                    RadMessageBox.Show(Me, "The server probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
                     Login.log_lbl_dbstatus.Text = "Offline"
                     Login.log_lbl_dbstatus.ForeColor = Color.Red
                     Return
@@ -2951,7 +2951,7 @@ Public Class Main
                 If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed")))
                     refresh_main_rgv_recordedacademicsonly.Stop()
                     refresh_released_grid_list.Stop()
-                    RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                    RadMessageBox.Show(Me, "The server probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
                     Login.log_lbl_dbstatus.Text = "Offline"
                     Login.log_lbl_dbstatus.ForeColor = Color.Red
                     Return
@@ -2989,7 +2989,7 @@ Public Class Main
                 If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed")))
                     refresh_main_rgv_recordedacademicsonly.Stop()
                     refresh_released_grid_list.Stop()
-                    RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                    RadMessageBox.Show(Me, "The server probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
                     Login.log_lbl_dbstatus.Text = "Offline"
                     Login.log_lbl_dbstatus.ForeColor = Color.Red
                     Return
@@ -3030,7 +3030,7 @@ Public Class Main
                 If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed")))
                     refresh_main_rgv_recordedacademicsonly.Stop()
                     refresh_released_grid_list.Stop()
-                    RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                    RadMessageBox.Show(Me, "The server probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
                     Login.log_lbl_dbstatus.Text = "Offline"
                     Login.log_lbl_dbstatus.ForeColor = Color.Red
                     Return
@@ -3089,7 +3089,7 @@ Public Class Main
                 If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed")))
                     refresh_main_rgv_recordedacademicsonly.Stop()
                     refresh_released_grid_list.Stop()
-                    RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                    RadMessageBox.Show(Me, "The server probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
                     Login.log_lbl_dbstatus.Text = "Offline"
                     Login.log_lbl_dbstatus.ForeColor = Color.Red
                     Return
@@ -3233,7 +3233,7 @@ Public Class Main
                 If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed")))
                     refresh_main_rgv_recordedacademicsonly.Stop()
                     refresh_released_grid_list.Stop()
-                    RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                    RadMessageBox.Show(Me, "The server probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
                     Login.log_lbl_dbstatus.Text = "Offline"
                     Login.log_lbl_dbstatus.ForeColor = Color.Red
                     Return
@@ -3411,7 +3411,7 @@ Public Class Main
                 If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed")))
                     refresh_main_rgv_recordedacademicsonly.Stop()
                     refresh_released_grid_list.Stop()
-                    RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                    RadMessageBox.Show(Me, "The server probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
                     Login.log_lbl_dbstatus.Text = "Offline"
                     Login.log_lbl_dbstatus.ForeColor = Color.Red
                     Return
@@ -3523,7 +3523,7 @@ Public Class Main
                 If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed")))
                     refresh_main_rgv_recordedacademicsonly.Stop()
                     refresh_released_grid_list.Stop()
-                    RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                    RadMessageBox.Show(Me, "The server probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
                     Login.log_lbl_dbstatus.Text = "Offline"
                     Login.log_lbl_dbstatus.ForeColor = Color.Red
                     Return
@@ -3561,7 +3561,7 @@ Public Class Main
     '            If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed")))
     '                refresh_main_rgv_recordedacademicsonly.Stop()
     '                refresh_released_grid_list.Stop()
-    '                RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+    '                RadMessageBox.Show(Me, "The server probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
     '                Login.log_lbl_dbstatus.Text = "Offline"
     '                Login.log_lbl_dbstatus.ForeColor = Color.Red
     '                Return
@@ -3710,7 +3710,7 @@ Public Class Main
                 If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed")))
                     refresh_main_rgv_recordedacademicsonly.Stop()
                     refresh_released_grid_list.Stop()
-                    RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                    RadMessageBox.Show(Me, "The server probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
                     Login.log_lbl_dbstatus.Text = "Offline"
                     Login.log_lbl_dbstatus.ForeColor = Color.Red
                     Return
@@ -3799,7 +3799,7 @@ Public Class Main
                 If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed")))
                     refresh_main_rgv_recordedacademicsonly.Stop()
                     refresh_released_grid_list.Stop()
-                    RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                    RadMessageBox.Show(Me, "The server probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
                     Login.log_lbl_dbstatus.Text = "Offline"
                     Login.log_lbl_dbstatus.ForeColor = Color.Red
                     Return
@@ -3846,7 +3846,7 @@ Public Class Main
                 If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed")))
                     refresh_main_rgv_recordedacademicsonly.Stop()
                     refresh_released_grid_list.Stop()
-                    RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                    RadMessageBox.Show(Me, "The server probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
                     Login.log_lbl_dbstatus.Text = "Offline"
                     Login.log_lbl_dbstatus.ForeColor = Color.Red
                     Return
@@ -3916,7 +3916,7 @@ Public Class Main
                 If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed")))
                     refresh_main_rgv_recordedacademicsonly.Stop()
                     refresh_released_grid_list.Stop()
-                    RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                    RadMessageBox.Show(Me, "The server probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
                     Login.log_lbl_dbstatus.Text = "Offline"
                     Login.log_lbl_dbstatus.ForeColor = Color.Red
                     Return
@@ -3974,7 +3974,7 @@ Public Class Main
                         If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed")))
                             refresh_main_rgv_recordedacademicsonly.Stop()
                             refresh_released_grid_list.Stop()
-                            RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                            RadMessageBox.Show(Me, "The server probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
                             Login.log_lbl_dbstatus.Text = "Offline"
                             Login.log_lbl_dbstatus.ForeColor = Color.Red
                             Return
@@ -4032,7 +4032,7 @@ Public Class Main
                         If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed")))
                             refresh_main_rgv_recordedacademicsonly.Stop()
                             refresh_released_grid_list.Stop()
-                            RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                            RadMessageBox.Show(Me, "The server probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
                             Login.log_lbl_dbstatus.Text = "Offline"
                             Login.log_lbl_dbstatus.ForeColor = Color.Red
                             Return
@@ -4103,7 +4103,7 @@ Public Class Main
                 If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed")))
                     refresh_main_rgv_recordedacademicsonly.Stop()
                     refresh_released_grid_list.Stop()
-                    RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                    RadMessageBox.Show(Me, "The server probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
                     Login.log_lbl_dbstatus.Text = "Offline"
                     Login.log_lbl_dbstatus.ForeColor = Color.Red
                     Return
@@ -4138,7 +4138,7 @@ Public Class Main
                 If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed")))
                     refresh_main_rgv_recordedacademicsonly.Stop()
                     refresh_released_grid_list.Stop()
-                    RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                    RadMessageBox.Show(Me, "The server probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
                     Login.log_lbl_dbstatus.Text = "Offline"
                     Login.log_lbl_dbstatus.ForeColor = Color.Red
                     Return
@@ -4220,7 +4220,7 @@ End Sub
                 If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed")))
                     refresh_main_rgv_recordedacademicsonly.Stop()
                     refresh_released_grid_list.Stop()
-                    RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                    RadMessageBox.Show(Me, "The server probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
                     Login.log_lbl_dbstatus.Text = "Offline"
                     Login.log_lbl_dbstatus.ForeColor = Color.Red
                     Return
@@ -4271,7 +4271,7 @@ End Sub
                 If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed")))
                     refresh_main_rgv_recordedacademicsonly.Stop()
                     refresh_released_grid_list.Stop()
-                    RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                    RadMessageBox.Show(Me, "The server probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
                     Login.log_lbl_dbstatus.Text = "Offline"
                     Login.log_lbl_dbstatus.ForeColor = Color.Red
                     Return
@@ -4321,7 +4321,7 @@ End Sub
                 If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed")))
                     refresh_main_rgv_recordedacademicsonly.Stop()
                     refresh_released_grid_list.Stop()
-                    RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                    RadMessageBox.Show(Me, "The server probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
                     Login.log_lbl_dbstatus.Text = "Offline"
                     Login.log_lbl_dbstatus.ForeColor = Color.Red
                     Return
@@ -4366,7 +4366,7 @@ End Sub
     '            If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed")))
     '                refresh_main_rgv_recordedacademicsonly.Stop()
     '                refresh_released_grid_list.Stop()
-    '                RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+    '                RadMessageBox.Show(Me, "The server probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
     '                Login.log_lbl_dbstatus.Text = "Offline"
     '                Login.log_lbl_dbstatus.ForeColor = Color.Red
     '                Return
@@ -4438,7 +4438,7 @@ End Sub
 '                If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed")))
 '                    refresh_main_rgv_recordedacademicsonly.Stop()
 '                    refresh_released_grid_list.Stop()
-'                    RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+'                    RadMessageBox.Show(Me, "The server probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
 '                    Login.log_lbl_dbstatus.Text = "Offline"
 '                    Login.log_lbl_dbstatus.ForeColor = Color.Red
 '                    Return
@@ -4489,7 +4489,7 @@ End Sub
 '                If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed")))
 '                    refresh_main_rgv_recordedacademicsonly.Stop()
 '                    refresh_released_grid_list.Stop()
-'                    RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+'                    RadMessageBox.Show(Me, "The server probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
 '                    Login.log_lbl_dbstatus.Text = "Offline"
 '                    Login.log_lbl_dbstatus.ForeColor = Color.Red
 '                    Return
