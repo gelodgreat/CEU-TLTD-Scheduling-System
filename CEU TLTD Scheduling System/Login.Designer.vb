@@ -149,7 +149,7 @@ Partial Class Login
             Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
         Me.log_lbl_date.AutoSize = false
         Me.log_lbl_date.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.log_lbl_date.Location = New System.Drawing.Point(177, -1)
+        Me.log_lbl_date.Location = New System.Drawing.Point(170, -1)
         Me.log_lbl_date.Name = "log_lbl_date"
         Me.log_lbl_date.Size = New System.Drawing.Size(178, 21)
         Me.log_lbl_date.TabIndex = 29
@@ -180,7 +180,7 @@ Partial Class Login
             Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
         Me.log_lbl_time.AutoSize = false
         Me.log_lbl_time.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.log_lbl_time.Location = New System.Drawing.Point(177, 24)
+        Me.log_lbl_time.Location = New System.Drawing.Point(170, 25)
         Me.log_lbl_time.Name = "log_lbl_time"
         Me.log_lbl_time.Size = New System.Drawing.Size(178, 21)
         Me.log_lbl_time.TabIndex = 32

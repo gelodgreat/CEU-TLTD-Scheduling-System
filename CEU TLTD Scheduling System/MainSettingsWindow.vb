@@ -90,90 +90,7 @@ Public Class MainSettingsWindow
     End Sub
     'END of Penalty TAB
 
-    Private Sub btn_ChP_Click(sender As Object, e As EventArgs) Handles btn_ChP.Click
-        Dim looper As Integer = 0
-        If txt_NewPass.Text <> txt_NewPass_Confirm.Text Then
-            RadMessageBox.Show(Me, "Please double check your new password.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error, MessageBoxDefaultButton.Button1)
-            txt_NewPass.Select()
-        ElseIf txt_CurPass.Text = "" Or txt_NewPass.Text = "" Or txt_NewPass_Confirm.Text = "" Then
-            txt_NewPass.SelectedText = True
-            RadMessageBox.Show(Me, "Please complete the fields.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error, MessageBoxDefaultButton.Button1)
-        Else
-            If MySQLConn.State = ConnectionState.Open Then
-                MySQLConn.Close()
-            End If
-            Try
-                MySQLConn.ConnectionString = connstring
-                MySQLConn.Open()
-                Dim q2 As String = "SELECT * FROM staff_reg WHERE staff_username=@proc_email_login and staff_password=sha2(@proc_OLDpassword, 512)"
-                comm = New MySqlCommand(q2, MySQLConn)
-                comm.Parameters.AddWithValue("@proc_email_login", username)
-                comm.Parameters.AddWithValue("@proc_OLDpassword", txt_CurPass.Text)
-                reader = comm.ExecuteReader
-                While reader.Read
-                    looper += 1
-                End While
-                MySQLConn.Close()
-            Catch ex As MySqlException
-                If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") Or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") Or ex.Message.Contains("Reading from the stream has failed"))) Then
-                    RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
-                    Login.log_lbl_dbstatus.Text = "Offline"
-                    Login.log_lbl_dbstatus.ForeColor = Color.Red
-                    Return
-                Else
-                    RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
-                End If
-            Catch ex As Exception
-                RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
-            Finally
-                MySQLConn.Dispose()
-            End Try
-            Try
-                If looper = 1 Then
 
-                    If MySQLConn.State = ConnectionState.Open Then
-                        MySQLConn.Close()
-                    End If
-                    MySQLConn.Open()
-                    Dim Query As String = "UPDATE ceutltdscheduler.staff_reg SET staff_password=SHA2(@newpassword,512) WHERE staff_username=@currentusername"
-                    comm = New MySqlCommand(Query, MySQLConn)
-                    comm.Parameters.AddWithValue("@newpassword", txt_NewPass.Text)
-                    comm.Parameters.AddWithValue("@currentusername", username)
-                    comm.ExecuteNonQuery()
-                    MySQLConn.Close()
-                    RadMessageBox.Show(Me, "Password changed successfully.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Info, MessageBoxDefaultButton.Button1)
-                    txt_CurPass.Text = String.Empty
-                    txt_NewPass.Text = String.Empty
-                    txt_NewPass_Confirm.Text = String.Empty
-                    txt_CurPass.Select()
-                    Me.Dispose()
-                Else
-                    txt_CurPass.Text = String.Empty
-                    txt_NewPass.Text = String.Empty
-                    txt_NewPass_Confirm.Text = String.Empty
-                    RadMessageBox.Show(Me, "Wrong Password.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error, MessageBoxDefaultButton.Button1)
-                    txt_CurPass.Select()
-                End If
-            Catch ex As MySqlException
-                If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") Or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") Or ex.Message.Contains("Reading from the stream has failed"))) Then
-                    RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
-                    Login.log_lbl_dbstatus.Text = "Offline"
-                    Login.log_lbl_dbstatus.ForeColor = Color.Red
-                    Return
-                Else
-                    RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
-                End If
-            Catch ex As Exception
-                RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
-            Finally
-                MySQLConn.Dispose()
-            End Try
-        End If
-    End Sub
-
-    Private Sub PasswordChangeTextBoxes_GotFocus(sender As Object, e As EventArgs) Handles txt_CurPass.GotFocus, txt_NewPass.GotFocus, txt_NewPass_Confirm.GotFocus
-        AcceptButton = btn_ChP
-    End Sub
     'START Delays Tab
     Private Sub DelaysGotFocus(sender As Object, e As EventArgs) Handles sd_time.GotFocus, rr_time.GotFocus
         AcceptButton = btn_delay_save
@@ -252,3 +169,90 @@ Public Class MainSettingsWindow
         End Try
     End Sub
 End Class
+
+
+
+    'Private Sub btn_ChP_Click(sender As Object, e As EventArgs) Handles btn_ChP.Click
+    '    Dim looper As Integer = 0
+    '    If txt_NewPass.Text <> txt_NewPass_Confirm.Text Then
+    '        RadMessageBox.Show(Me, "Please double check your new password.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error, MessageBoxDefaultButton.Button1)
+    '        txt_NewPass.Select()
+    '    ElseIf txt_CurPass.Text = "" Or txt_NewPass.Text = "" Or txt_NewPass_Confirm.Text = "" Then
+    '        txt_NewPass.SelectedText = True
+    '        RadMessageBox.Show(Me, "Please complete the fields.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error, MessageBoxDefaultButton.Button1)
+    '    Else
+    '        If MySQLConn.State = ConnectionState.Open Then
+    '            MySQLConn.Close()
+    '        End If
+    '        Try
+    '            MySQLConn.ConnectionString = connstring
+    '            MySQLConn.Open()
+    '            Dim q2 As String = "SELECT * FROM staff_reg WHERE staff_username=@proc_email_login and staff_password=sha2(@proc_OLDpassword, 512)"
+    '            comm = New MySqlCommand(q2, MySQLConn)
+    '            comm.Parameters.AddWithValue("@proc_email_login", username)
+    '            comm.Parameters.AddWithValue("@proc_OLDpassword", txt_CurPass.Text)
+    '            reader = comm.ExecuteReader
+    '            While reader.Read
+    '                looper += 1
+    '            End While
+    '            MySQLConn.Close()
+    '        Catch ex As MySqlException
+    '            If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") Or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") Or ex.Message.Contains("Reading from the stream has failed"))) Then
+    '                RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+    '                Login.log_lbl_dbstatus.Text = "Offline"
+    '                Login.log_lbl_dbstatus.ForeColor = Color.Red
+    '                Return
+    '            Else
+    '                RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+    '            End If
+    '        Catch ex As Exception
+    '            RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+    '        Finally
+    '            MySQLConn.Dispose()
+    '        End Try
+    '        Try
+    '            If looper = 1 Then
+
+    '                If MySQLConn.State = ConnectionState.Open Then
+    '                    MySQLConn.Close()
+    '                End If
+    '                MySQLConn.Open()
+    '                Dim Query As String = "UPDATE ceutltdscheduler.staff_reg SET staff_password=SHA2(@newpassword,512) WHERE staff_username=@currentusername"
+    '                comm = New MySqlCommand(Query, MySQLConn)
+    '                comm.Parameters.AddWithValue("@newpassword", txt_NewPass.Text)
+    '                comm.Parameters.AddWithValue("@currentusername", username)
+    '                comm.ExecuteNonQuery()
+    '                MySQLConn.Close()
+    '                RadMessageBox.Show(Me, "Password changed successfully.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Info, MessageBoxDefaultButton.Button1)
+    '                txt_CurPass.Text = String.Empty
+    '                txt_NewPass.Text = String.Empty
+    '                txt_NewPass_Confirm.Text = String.Empty
+    '                txt_CurPass.Select()
+    '                Me.Dispose()
+    '            Else
+    '                txt_CurPass.Text = String.Empty
+    '                txt_NewPass.Text = String.Empty
+    '                txt_NewPass_Confirm.Text = String.Empty
+    '                RadMessageBox.Show(Me, "Wrong Password.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error, MessageBoxDefaultButton.Button1)
+    '                txt_CurPass.Select()
+    '            End If
+    '        Catch ex As MySqlException
+    '            If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") Or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") Or ex.Message.Contains("Reading from the stream has failed"))) Then
+    '                RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+    '                Login.log_lbl_dbstatus.Text = "Offline"
+    '                Login.log_lbl_dbstatus.ForeColor = Color.Red
+    '                Return
+    '            Else
+    '                RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+    '            End If
+    '        Catch ex As Exception
+    '            RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+    '        Finally
+    '            MySQLConn.Dispose()
+    '        End Try
+    '    End If
+    'End Sub
+
+    'Private Sub PasswordChangeTextBoxes_GotFocus(sender As Object, e As EventArgs) Handles txt_CurPass.GotFocus, txt_NewPass.GotFocus, txt_NewPass_Confirm.GotFocus
+    '    AcceptButton = btn_ChP
+    'End Sub
