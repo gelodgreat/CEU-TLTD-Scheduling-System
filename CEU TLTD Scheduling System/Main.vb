@@ -1003,7 +1003,7 @@ Public Class Main
 
                         svYN = RadMessageBox.Show(Me, "Are you sure you want to save a new staff's information? ", system_Name, MessageBoxButtons.YesNo, RadMessageIcon.Question)
                         If svYN = MsgBoxResult.Yes Then
-                            If (acc_sf_password.Text = acc_sf_retypepassword.Text) Then
+                            If (acc_sf_password.Text = acc_sf_retypepassword.Text) And acc_sf_id.Text.Length = 6 Then
                                 READER = comm.ExecuteReader
                                 RadMessageBox.Show(Me, "Registration Complete!", system_Name, MessageBoxButtons.OK, RadMessageIcon.Info)
                                 acc_sf_id.Text = ""
@@ -1018,6 +1018,8 @@ Public Class Main
                                 acc_staff_btn_save.Show()
                                 acc_staff_rdio_active.ToggleState=Enumerations.ToggleState.Off
                                 acc_staff_rdio_inactive.ToggleState=Enumerations.ToggleState.Off
+                            ElseIf acc_sf_id.Text.Length < 6 Then
+                                RadMessageBox.Show(Me, "Please complete your ID format.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Exclamation)
                             Else
                                 RadMessageBox.Show(Me, "Please confirm your password.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Exclamation)
                             End If
@@ -1026,9 +1028,6 @@ Public Class Main
                 Else
                     RadMessageBox.Show(Me, "Please enter your username with the ""@ceu.edu.ph"" ", system_Name, MessageBoxButtons.OK, RadMessageIcon.Exclamation)
                 End If
-            ElseIf acc_sf_id.Text.Length < 6 Then
-                    RadMessageBox.Show(Me, "Please enter the proper ID format.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Exclamation)
-                 
             Else
                 RadMessageBox.Show(Me, "Please enter your username with the ""@ceu.edu.ph"" ", system_Name, MessageBoxButtons.OK, RadMessageIcon.Exclamation)
             End If
