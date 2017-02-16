@@ -32,14 +32,14 @@ Public Class MainSettingsWindow
     'Penalty TAB
     Private Sub btn_penalty_setting_save_Click(sender As Object, e As EventArgs) Handles btn_penalty_setting_save.Click
         If penalty_peso_amount.Text.Length = 0 Then
-            RadMessageBox.Show(Me, "Please enter peso amount.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error, MessageBoxDefaultButton.Button1)
+            RadMessageBox.Show(Me, "Please enter peso amount.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error, MessageBoxDefaultButton.Button1)
         Else
             Dim c As Char = penalty_peso_amount.Text(penalty_peso_amount.Text.Length - 1)
             If c = "." Then
-                RadMessageBox.Show(Me, "Please fix the formatting of the peso amount.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error, MessageBoxDefaultButton.Button1)
+                RadMessageBox.Show(Me, "Please fix the formatting of the peso amount.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error, MessageBoxDefaultButton.Button1)
             Else
 
-                Dim confirmChange As DialogResult = RadMessageBox.Show(Me, "Are you sure save the changes? This will change the charges to everyone who starts returning the equipment after clicking ""Yes"".", "CEU TLTD Reservation System", MessageBoxButtons.YesNo, RadMessageIcon.Exclamation, MessageBoxDefaultButton.Button2)
+                Dim confirmChange As DialogResult = RadMessageBox.Show(Me, "Are you sure save the changes? This will change the charges to everyone who starts returning the equipment after clicking ""Yes"".", system_Name, MessageBoxButtons.YesNo, RadMessageIcon.Exclamation, MessageBoxDefaultButton.Button2)
                 If confirmChange = DialogResult.Yes Then
                     Dim ts_gp As TimeSpan = TimeSpan.Parse(penalty_gp_day.Value.ToString & "." & penalty_gp_hhmm.Value.ToString("HH:mm"))
                     Dim ts_ci As TimeSpan = TimeSpan.Parse(penalty_ci_day.Value.ToString & "." & penalty_ci_hhmm.Value.ToString("HH:mm"))
@@ -56,19 +56,19 @@ Public Class MainSettingsWindow
                         comm.Parameters.AddWithValue("@c", penalty_peso_amount.Text)
                         comm.ExecuteNonQuery()
                         MySQLConn.Close()
-                        RadMessageBox.Show(Me, "Penalty settings sucessfully updated.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Info, MessageBoxDefaultButton.Button1)
+                        RadMessageBox.Show(Me, "Penalty settings sucessfully updated.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Info, MessageBoxDefaultButton.Button1)
                         Me.Dispose()
                     Catch ex As MySqlException
                         If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") Or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") Or ex.Message.Contains("Reading from the stream has failed"))) Then
-                            RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                            RadMessageBox.Show(Me, "The database probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                             Login.log_lbl_dbstatus.Text = "Offline"
                             Login.log_lbl_dbstatus.ForeColor = Color.Red
                             Return
                         Else
-                            RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                            RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                         End If
                     Catch ex As Exception
-                        RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                        RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                     Finally
                         MySQLConn.Dispose()
                     End Try
@@ -96,13 +96,13 @@ Public Class MainSettingsWindow
         AcceptButton = btn_delay_save
     End Sub
     Private Sub btn_delay_save_Click(sender As Object, e As EventArgs) Handles btn_delay_save.Click
-        Dim delaysave As DialogResult = RadMessageBox.Show(Me, "Are you sure you want to save the changes?", "CEU TLTD Reservation System", MessageBoxButtons.YesNo, RadMessageIcon.Question, MessageBoxDefaultButton.Button1)
+        Dim delaysave As DialogResult = RadMessageBox.Show(Me, "Are you sure you want to save the changes?", system_Name, MessageBoxButtons.YesNo, RadMessageIcon.Question, MessageBoxDefaultButton.Button1)
         If delaysave = DialogResult.Yes Then
             My.Settings.searchDelay = Convert.ToInt32(sd_time.Value)
             My.Settings.refreshDelay = Convert.ToInt32(rr_time.Value)
             My.Settings.Save()
             applydelaysImmediately()
-            RadMessageBox.Show(Me, "Changes to the delay saved successfully.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Info, MessageBoxDefaultButton.Button1)
+            RadMessageBox.Show(Me, "Changes to the delay saved successfully.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Info, MessageBoxDefaultButton.Button1)
             Me.Dispose()
         End If
     End Sub
@@ -154,7 +154,7 @@ Public Class MainSettingsWindow
         Try 'ALL MESSAGE BOXES ARE TO BE REPLACED WITH CODES FOR THE GSM MODULE
             If setting_gsm_toggleswitch.Value = True And ddl_deviceList.Visible = True Then
                 If ddl_deviceList.Text = "" Then
-                    RadMessageBox.Show(Me, "Please select a device." & vbNewLine & vbNewLine & "If there is no device listed, please double check if the GSM module is plugged in properly.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Exclamation)
+                    RadMessageBox.Show(Me, "Please select a device." & vbNewLine & vbNewLine & "If there is no device listed, please double check if the GSM module is plugged in properly.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Exclamation)
                 Else
                     MsgBox("ADD BENDO CODES HERE - SMS Activation Thread")
                     Save_SMS_Settings()
@@ -165,7 +165,7 @@ Public Class MainSettingsWindow
                 MsgBox("Unhandled condition.")
             End If
         Catch ex As Exception
-            RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+            RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
         End Try
     End Sub
 End Class
@@ -175,11 +175,11 @@ End Class
     'Private Sub btn_ChP_Click(sender As Object, e As EventArgs) Handles btn_ChP.Click
     '    Dim looper As Integer = 0
     '    If txt_NewPass.Text <> txt_NewPass_Confirm.Text Then
-    '        RadMessageBox.Show(Me, "Please double check your new password.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error, MessageBoxDefaultButton.Button1)
+    '        RadMessageBox.Show(Me, "Please double check your new password.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error, MessageBoxDefaultButton.Button1)
     '        txt_NewPass.Select()
     '    ElseIf txt_CurPass.Text = "" Or txt_NewPass.Text = "" Or txt_NewPass_Confirm.Text = "" Then
     '        txt_NewPass.SelectedText = True
-    '        RadMessageBox.Show(Me, "Please complete the fields.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error, MessageBoxDefaultButton.Button1)
+    '        RadMessageBox.Show(Me, "Please complete the fields.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error, MessageBoxDefaultButton.Button1)
     '    Else
     '        If MySQLConn.State = ConnectionState.Open Then
     '            MySQLConn.Close()
@@ -198,15 +198,15 @@ End Class
     '            MySQLConn.Close()
     '        Catch ex As MySqlException
     '            If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") Or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") Or ex.Message.Contains("Reading from the stream has failed"))) Then
-    '                RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+    '                RadMessageBox.Show(Me, "The database probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
     '                Login.log_lbl_dbstatus.Text = "Offline"
     '                Login.log_lbl_dbstatus.ForeColor = Color.Red
     '                Return
     '            Else
-    '                RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+    '                RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
     '            End If
     '        Catch ex As Exception
-    '            RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+    '            RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
     '        Finally
     '            MySQLConn.Dispose()
     '        End Try
@@ -223,7 +223,7 @@ End Class
     '                comm.Parameters.AddWithValue("@currentusername", username)
     '                comm.ExecuteNonQuery()
     '                MySQLConn.Close()
-    '                RadMessageBox.Show(Me, "Password changed successfully.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Info, MessageBoxDefaultButton.Button1)
+    '                RadMessageBox.Show(Me, "Password changed successfully.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Info, MessageBoxDefaultButton.Button1)
     '                txt_CurPass.Text = String.Empty
     '                txt_NewPass.Text = String.Empty
     '                txt_NewPass_Confirm.Text = String.Empty
@@ -233,20 +233,20 @@ End Class
     '                txt_CurPass.Text = String.Empty
     '                txt_NewPass.Text = String.Empty
     '                txt_NewPass_Confirm.Text = String.Empty
-    '                RadMessageBox.Show(Me, "Wrong Password.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error, MessageBoxDefaultButton.Button1)
+    '                RadMessageBox.Show(Me, "Wrong Password.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error, MessageBoxDefaultButton.Button1)
     '                txt_CurPass.Select()
     '            End If
     '        Catch ex As MySqlException
     '            If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") Or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") Or ex.Message.Contains("Reading from the stream has failed"))) Then
-    '                RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+    '                RadMessageBox.Show(Me, "The database probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
     '                Login.log_lbl_dbstatus.Text = "Offline"
     '                Login.log_lbl_dbstatus.ForeColor = Color.Red
     '                Return
     '            Else
-    '                RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+    '                RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
     '            End If
     '        Catch ex As Exception
-    '            RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+    '            RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
     '        Finally
     '            MySQLConn.Dispose()
     '        End Try

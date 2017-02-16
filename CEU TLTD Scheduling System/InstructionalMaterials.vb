@@ -233,15 +233,15 @@ Public Class InstructionalMaterials
 
             Catch ex As MySqlException
                 If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed")))
-                    RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                    RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                     Login.log_lbl_dbstatus.Text = "Offline"
                     Login.log_lbl_dbstatus.ForeColor = Color.Red
                     Return
                Else
-                    RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                    RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                End If
             Catch ex As Exception
-                RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
         Finally
             MysqlConn.Dispose()
         End Try
@@ -292,15 +292,15 @@ Public Class InstructionalMaterials
             immain_rgv_movielist.DataSource = DV
             Catch ex As MySqlException
                 If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed")))
-                    RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                    RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                     Login.log_lbl_dbstatus.Text = "Offline"
                     Login.log_lbl_dbstatus.ForeColor = Color.Red
                     Return
                Else
-                    RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                    RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                End If
             Catch ex As Exception
-                RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
         Finally
             MysqlConn.Dispose()
         End Try
@@ -344,15 +344,15 @@ Public Class InstructionalMaterials
             immain_rgv_movielist.DataSource = DV
             Catch ex As MySqlException
                 If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed")))
-                    RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                    RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                     Login.log_lbl_dbstatus.Text = "Offline"
                     Login.log_lbl_dbstatus.ForeColor = Color.Red
                     Return
                Else
-                    RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                    RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                End If
             Catch ex As Exception
-                RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
         Finally
             MysqlConn.Dispose()
         End Try
@@ -388,15 +388,15 @@ Public Class InstructionalMaterials
 
             Catch ex As MySqlException
                 If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed")))
-                    RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                    RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                     Login.log_lbl_dbstatus.Text = "Offline"
                     Login.log_lbl_dbstatus.ForeColor = Color.Red
                     Return
                Else
-                    RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                    RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                End If
             Catch ex As Exception
-                RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
         Finally
             MysqlConn.Dispose()
 
@@ -459,15 +459,15 @@ Public Class InstructionalMaterials
 
             Catch ex As MySqlException
                 If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed")))
-                    RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                    RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                     Login.log_lbl_dbstatus.Text = "Offline"
                     Login.log_lbl_dbstatus.ForeColor = Color.Red
                     Return
                Else
-                    RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                    RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                End If
             Catch ex As Exception
-                RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
         Finally
             MysqlConn.Dispose()
 
@@ -522,15 +522,15 @@ Public Class InstructionalMaterials
 
             Catch ex As MySqlException
                 If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed")))
-                    RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                    RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                     Login.log_lbl_dbstatus.Text = "Offline"
                     Login.log_lbl_dbstatus.ForeColor = Color.Red
                     Return
                Else
-                    RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                    RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                End If
             Catch ex As Exception
-                RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
         Finally
             MysqlConn.Dispose()
 
@@ -569,7 +569,7 @@ Public Class InstructionalMaterials
         End If
 
         If (imm_nv_cb_subject.Text = "") Or (imm_nv_cb_mediatype.Text = "") Or (imm_nv_dtp_acquisitiondate.Text = "") Or (imm_nv_dtp_duration.Text = "") Or (imm_nv_tb_topic.Text = "") Or (imm_nv_tb_vidid.Text = "") Then
-            RadMessageBox.Show(Me, "Please complete the fields to save the movie!", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+            RadMessageBox.Show(Me, "Please complete the fields to save the movie!", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
 
         Else
 
@@ -590,14 +590,14 @@ Public Class InstructionalMaterials
                 End While
 
                 If count = 1 Then
-                    RadMessageBox.Show(Me, "The Movie Number " & imm_nv_tb_vidid.Text & " with the subject of " & imm_nv_cb_subject.Text & " and topic of " & imm_nv_tb_topic.Text & " is already taken.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                    RadMessageBox.Show(Me, "The Movie Number " & imm_nv_tb_vidid.Text & " with the subject of " & imm_nv_cb_subject.Text & " and topic of " & imm_nv_tb_topic.Text & " is already taken.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
 
                 Else
 
                     MysqlConn.Close()
                     MysqlConn.Open()
 
-                    addYN = RadMessageBox.Show(Me, "Are you sure you want to add this movie?", "CEU TLTD Reservation System", MessageBoxButtons.YesNo, RadMessageIcon.Question)
+                    addYN = RadMessageBox.Show(Me, "Are you sure you want to add this movie?", system_Name, MessageBoxButtons.YesNo, RadMessageIcon.Question)
                     If addYN = MsgBoxResult.Yes Then
                         query = "INSERT INTO `movielist` VALUES  (@mvl_vidid , @mvl_subject , @mvl_topic , @mvl_mediatype , @mvl_duration , @mvl_acquisition)"
                         comm = New MySqlCommand(query, MysqlConn)
@@ -610,22 +610,22 @@ Public Class InstructionalMaterials
                         comm.Parameters.AddWithValue("mvl_acquisition", Format(CDate(imm_nv_dtp_acquisitiondate.Value), "yyyy-MM-dd"))
 
                         reader = comm.ExecuteReader
-                        RadMessageBox.Show(Me, "Movie Registered Successfully!", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Info)
+                        RadMessageBox.Show(Me, "Movie Registered Successfully!", system_Name, MessageBoxButtons.OK, RadMessageIcon.Info)
                         MysqlConn.Close()
                     End If
                 End If
         End If
             Catch ex As MySqlException
                 If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed")))
-                    RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                    RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                     Login.log_lbl_dbstatus.Text = "Offline"
                     Login.log_lbl_dbstatus.ForeColor = Color.Red
                     Return
                Else
-                    RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                    RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                End If
             Catch ex As Exception
-                RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
             Finally
                 MysqlConn.Dispose()
                 load_all_movielist()
@@ -640,10 +640,10 @@ Public Class InstructionalMaterials
             MysqlConn.Close()
         End If
 
-        updateYN = RadMessageBox.Show(Me, "Are you sure you want to update this movie?", "CEU TLTD Reservation System", MessageBoxButtons.YesNo, RadMessageIcon.Question)
+        updateYN = RadMessageBox.Show(Me, "Are you sure you want to update this movie?", system_Name, MessageBoxButtons.YesNo, RadMessageIcon.Question)
         If updateYN = MsgBoxResult.Yes Then
             If (imm_nv_tb_vidid.Text = "") Or (imm_nv_cb_subject.Text = "") Or (imm_nv_tb_topic.Text = "") Or (imm_nv_cb_mediatype.Text = "") Or (imm_nv_dtp_duration.Text = "") Or (imm_nv_dtp_acquisitiondate.Text = "") Then
-                RadMessageBox.Show(Me, "Please complete the fields To update!", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                RadMessageBox.Show(Me, "Please complete the fields To update!", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
             Else
 
                     MysqlConn.Open()
@@ -660,20 +660,20 @@ Public Class InstructionalMaterials
                     reader = comm.ExecuteReader
                     load_all_movielist()
                     load_all_movielist_in_main()
-                    RadMessageBox.Show(Me, "Movie updated successfully.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                    RadMessageBox.Show(Me, "Movie updated successfully.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
             End If
         End If
             Catch ex As MySqlException
                 If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed")))
-                    RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                    RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                     Login.log_lbl_dbstatus.Text = "Offline"
                     Login.log_lbl_dbstatus.ForeColor = Color.Red
                     Return
                Else
-                    RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                    RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                End If
             Catch ex As Exception
-                RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                 Finally
                     MysqlConn.Dispose()
          End Try
@@ -687,10 +687,10 @@ Public Class InstructionalMaterials
 
         End If
 
-        deleteYN = RadMessageBox.Show(Me, "Are you sure you want to delete?", "CEU TLTD Reservation System", MessageBoxButtons.YesNo, RadMessageIcon.Question)
+        deleteYN = RadMessageBox.Show(Me, "Are you sure you want to delete?", system_Name, MessageBoxButtons.YesNo, RadMessageIcon.Question)
         If deleteYN = MsgBoxResult.Yes Then
             If (imm_nv_tb_vidid.Text = "") Or (imm_nv_cb_subject.Text = "") Or (imm_nv_tb_topic.Text = "") Or (imm_nv_cb_mediatype.Text = "") Or (imm_nv_dtp_duration.Text = "") Or (imm_nv_dtp_acquisitiondate.Text = "") Then
-                RadMessageBox.Show(Me, "Please complete the fields To delete!", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                RadMessageBox.Show(Me, "Please complete the fields To delete!", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
             Else
 
 
@@ -703,7 +703,7 @@ Public Class InstructionalMaterials
                     reader = comm.ExecuteReader
 
 
-                    RadMessageBox.Show(Me, "Successfully Deleted!", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Info)
+                    RadMessageBox.Show(Me, "Successfully Deleted!", system_Name, MessageBoxButtons.OK, RadMessageIcon.Info)
                     MysqlConn.Close()
             End If
         End If
@@ -717,15 +717,15 @@ Public Class InstructionalMaterials
 
             Catch ex As MySqlException
                 If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed")))
-                    RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                    RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                     Login.log_lbl_dbstatus.Text = "Offline"
                     Login.log_lbl_dbstatus.ForeColor = Color.Red
                     Return
                Else
-                    RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                    RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                End If
             Catch ex As Exception
-                RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
              Finally
                     MysqlConn.Dispose()
 
@@ -794,7 +794,7 @@ Public Class InstructionalMaterials
             MysqlConn.Close()
         End If
 
-        addst = RadMessageBox.Show(Me, "Do you want to add Sub Topic for this Movie?", "CEU TLTD Reservation System", MessageBoxButtons.YesNo, RadMessageIcon.Question)
+        addst = RadMessageBox.Show(Me, "Do you want to add Sub Topic for this Movie?", system_Name, MessageBoxButtons.YesNo, RadMessageIcon.Question)
         If addst = MsgBoxResult.Yes Then
             imm.SelectedPage = imm_rpv_subtopics
             imm_nst_tb_subtopic.Text = ""
@@ -869,7 +869,7 @@ Public Class InstructionalMaterials
         End If
 
         If (imm_nst_tb_vidid.Text = "") Or (imm_nst_cb_subject.Text = "") Or (imm_nst_tb_topic.Text = "") Or (imm_nst_tb_subtopic.Text = "") Then
-            RadMessageBox.Show(Me, "Please complete the fields to save the Sub Topics!", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+            RadMessageBox.Show(Me, "Please complete the fields to save the Sub Topics!", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
 
         Else
                 MysqlConn.Open()
@@ -889,13 +889,13 @@ Public Class InstructionalMaterials
                 End While
 
                 If count = 1 Then
-                    RadMessageBox.Show(Me, "The Sub Topic " & imm_nst_tb_subtopic.Text & " is already taken.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                    RadMessageBox.Show(Me, "The Sub Topic " & imm_nst_tb_subtopic.Text & " is already taken.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
 
                 Else
                     MysqlConn.Close()
                     MysqlConn.Open()
 
-                    addYN = RadMessageBox.Show(Me, "Are you sure you want to add this movie?", "CEU TLTD Reservation System", MessageBoxButtons.YesNo, RadMessageIcon.Question)
+                    addYN = RadMessageBox.Show(Me, "Are you sure you want to add this movie?", system_Name, MessageBoxButtons.YesNo, RadMessageIcon.Question)
                     If addYN = MsgBoxResult.Yes Then
                         query = "INSERT INTO `movielist_subtopics` VALUES (@nst_vid_id , @nst_subject ,@nst_topic , @nst_subtopic ,  @nst_duration)"
                         comm = New MySqlCommand(query, MysqlConn)
@@ -907,22 +907,22 @@ Public Class InstructionalMaterials
                         comm.Parameters.AddWithValue("nst_duration", Format(CDate(imm_nst_dtp_duration.Value), "HH:mm:ss"))
 
                         reader = comm.ExecuteReader
-                        RadMessageBox.Show(Me, "Sub Topic Successfully!", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Info)
+                        RadMessageBox.Show(Me, "Sub Topic Successfully!", system_Name, MessageBoxButtons.OK, RadMessageIcon.Info)
                         MysqlConn.Close()
                     End If
                 End If
           End If
             Catch ex As MySqlException
                 If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed")))
-                    RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                    RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                     Login.log_lbl_dbstatus.Text = "Offline"
                     Login.log_lbl_dbstatus.ForeColor = Color.Red
                     Return
                Else
-                    RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                    RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                End If
             Catch ex As Exception
-                RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
             Finally
                 MysqlConn.Dispose()
                 load_all_subtopics()
@@ -937,10 +937,10 @@ Public Class InstructionalMaterials
             MysqlConn.Close()
         End If
 
-        updateYN = RadMessageBox.Show(Me, "Are you sure you want to update this Sub Topic?", "CEU TLTD Reservation System", MessageBoxButtons.YesNo, RadMessageIcon.Question)
+        updateYN = RadMessageBox.Show(Me, "Are you sure you want to update this Sub Topic?", system_Name, MessageBoxButtons.YesNo, RadMessageIcon.Question)
         If updateYN = MsgBoxResult.Yes Then
             If (imm_nst_tb_vidid.Text = "") Or (imm_nst_cb_subject.Text = "") Or (imm_nst_tb_topic.Text = "") Or (imm_nst_tb_subtopic.Text = "") Then
-                RadMessageBox.Show(Me, "Please complete the fields To update!", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                RadMessageBox.Show(Me, "Please complete the fields To update!", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
             Else
 
                     Dim get_prev_Subtopic_beforeUpdate As String = (imm_rgv_im_subtopics.SelectedRows(0).Cells("Sub Topic").Value)
@@ -960,15 +960,15 @@ Public Class InstructionalMaterials
         End If
             Catch ex As MySqlException
                 If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed")))
-                    RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                    RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                     Login.log_lbl_dbstatus.Text = "Offline"
                     Login.log_lbl_dbstatus.ForeColor = Color.Red
                     Return
                Else
-                    RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                    RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                End If
             Catch ex As Exception
-                RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                 Finally
                     MysqlConn.Dispose()
                     load_all_subtopics()
@@ -983,10 +983,10 @@ Public Class InstructionalMaterials
 
         End If
 
-        deleteYN = RadMessageBox.Show(Me, "Are you sure you want to delete this subtopic?", "CEU TLTD Reservation System", MessageBoxButtons.YesNo, RadMessageIcon.Question)
+        deleteYN = RadMessageBox.Show(Me, "Are you sure you want to delete this subtopic?", system_Name, MessageBoxButtons.YesNo, RadMessageIcon.Question)
         If deleteYN = MsgBoxResult.Yes Then
             If (imm_nst_tb_vidid.Text = "") Or (imm_nst_cb_subject.Text = "") Or (imm_nst_tb_topic.Text = "") Or (imm_nst_tb_subtopic.Text = "") Then
-                RadMessageBox.Show(Me, "Please complete the fields To delete!", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                RadMessageBox.Show(Me, "Please complete the fields To delete!", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
             Else
                     MysqlConn.Open()
                     query = "DELETE FROM `movielist_subtopics` WHERE (vid_id=@nst_vid_id) AND (subject=@nst_subject) AND (topic=@nst_topic) AND (subtopic=@nst_subtopic)"
@@ -1005,15 +1005,15 @@ Public Class InstructionalMaterials
         End If
             Catch ex As MySqlException
                 If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed")))
-                    RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                    RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                     Login.log_lbl_dbstatus.Text = "Offline"
                     Login.log_lbl_dbstatus.ForeColor = Color.Red
                     Return
                Else
-                    RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                    RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                End If
             Catch ex As Exception
-                RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                 Finally
                     MysqlConn.Dispose()
                 End Try
@@ -1052,15 +1052,15 @@ Public Class InstructionalMaterials
 
             Catch ex As MySqlException
                 If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed")))
-                    RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                    RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                     Login.log_lbl_dbstatus.Text = "Offline"
                     Login.log_lbl_dbstatus.ForeColor = Color.Red
                     Return
                Else
-                    RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                    RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                End If
             Catch ex As Exception
-                RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
         Finally
             MysqlConn.Dispose()
         End Try
@@ -1121,15 +1121,15 @@ Public Class InstructionalMaterials
 
             Catch ex As MySqlException
                 If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed")))
-                    RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                    RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                     Login.log_lbl_dbstatus.Text = "Offline"
                     Login.log_lbl_dbstatus.ForeColor = Color.Red
                     Return
                Else
-                    RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                    RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                End If
             Catch ex As Exception
-                RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
         Finally
             MysqlConn.Dispose()
         End Try
@@ -1176,15 +1176,15 @@ Public Class InstructionalMaterials
             MysqlConn.Close()
             Catch ex As MySqlException
                 If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed")))
-                    RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                    RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                     Login.log_lbl_dbstatus.Text = "Offline"
                     Login.log_lbl_dbstatus.ForeColor = Color.Red
                     Return
                Else
-                    RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                    RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                End If
             Catch ex As Exception
-                RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
         Finally
             MysqlConn.Dispose()
 
@@ -1215,7 +1215,7 @@ Public Class InstructionalMaterials
     '        MysqlConn.Close()
 
     '    Catch ex As Exception
-    '        RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+    '        RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
     '    Finally
     '        MysqlConn.Dispose()
 
@@ -1249,16 +1249,16 @@ Public Class InstructionalMaterials
     '        End While
 
     '        If imlu_subtopics.Items.Count = 0 Then
-    '            RadMessageBox.Show(Me, "No sub topics found in this topic!", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Info)
+    '            RadMessageBox.Show(Me, "No sub topics found in this topic!", system_Name, MessageBoxButtons.OK, RadMessageIcon.Info)
     '            imlu_topic.SelectedValue = ""
     '        Else
-    '            RadMessageBox.Show(Me, "We found some sub topics for this topic!", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Info)
+    '            RadMessageBox.Show(Me, "We found some sub topics for this topic!", system_Name, MessageBoxButtons.OK, RadMessageIcon.Info)
     '        End If
 
     '        MysqlConn.Close()
 
     '    Catch ex As Exception
-    '        RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+    '        RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
     '    End Try
 
     '    Try
@@ -1280,13 +1280,13 @@ Public Class InstructionalMaterials
     '        End While
 
     '        If count > 0 Then
-    '            RadMessageBox.Show(Me, "This movie is currently taken.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Info)
+    '            RadMessageBox.Show(Me, "This movie is currently taken.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Info)
     '        Else
-    '            RadMessageBox.Show(Me, "This movie is currently available.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Info)
+    '            RadMessageBox.Show(Me, "This movie is currently available.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Info)
     '        End If
 
     '    Catch ex As Exception
-    '        RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+    '        RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
 
     '    Finally
     '        MysqlConn.Dispose()
@@ -1318,15 +1318,15 @@ Public Class InstructionalMaterials
 
             Catch ex As MySqlException
                 If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed")))
-                    RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                    RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                     Login.log_lbl_dbstatus.Text = "Offline"
                     Login.log_lbl_dbstatus.ForeColor = Color.Red
                     Return
                Else
-                    RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                    RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                End If
             Catch ex As Exception
-                RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
         Finally
             MysqlConn.Dispose()
         End Try
@@ -1358,15 +1358,15 @@ Public Class InstructionalMaterials
 
             Catch ex As MySqlException
                 If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed")))
-                    RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                    RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                     Login.log_lbl_dbstatus.Text = "Offline"
                     Login.log_lbl_dbstatus.ForeColor = Color.Red
                     Return
                Else
-                    RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                    RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                End If
             Catch ex As Exception
-                RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
         Finally
             MysqlConn.Dispose()
         End Try
@@ -1382,7 +1382,7 @@ Public Class InstructionalMaterials
 
         End If
 
-        reserveYN = RadMessageBox.Show(Me, "Are you sure you want to reserve?", "CEU TLTD Reservation System", MessageBoxButtons.YesNo, RadMessageIcon.Question)
+        reserveYN = RadMessageBox.Show(Me, "Are you sure you want to reserve?", system_Name, MessageBoxButtons.YesNo, RadMessageIcon.Question)
         If reserveYN = MsgBoxResult.Yes Then
 
 
@@ -1394,7 +1394,7 @@ Public Class InstructionalMaterials
 
 
             If (imr_cb_topic.Text = "") Or (imr_cb_subject.Text = "") Or (imr_cb_status.Text = "") Or (imr_cb_starttime.Text = "") Or (imr_cb_endtime.Text = "") Or (imr_dtp_date.Text = "") Then
-                RadMessageBox.Show(Me, "Please complete the fields", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                RadMessageBox.Show(Me, "Please complete the fields", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
             Else
                 Dim elapsedTime As TimeSpan = DateTime.Parse(Format(CDate(imr_dtp_date.Value), "yyyy-MM-dd") & " " & imr_cb_endtime.Text).Subtract(DateTime.Parse(DateTime.Parse(Format(CDate(imr_dtp_date.Value), "yyyy-MM-dd") & " " & imr_cb_starttime.Text)))
                 If elapsedTime.CompareTo(TimeSpan.Zero) <= 0 Then
@@ -1430,7 +1430,7 @@ Public Class InstructionalMaterials
                         End While
 
                         If count > 0 Then
-                            RadMessageBox.Show(Me, "The movie " & imr_cb_topic.Text & " is already taken.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                            RadMessageBox.Show(Me, "The movie " & imr_cb_topic.Text & " is already taken.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                             errorcount = True
                         Else
                             MysqlConn.Close()
@@ -1453,24 +1453,24 @@ Public Class InstructionalMaterials
 
                     Catch ex As MySqlException
                         If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed")))
-                            RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                            RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                             Login.log_lbl_dbstatus.Text = "Offline"
                             Login.log_lbl_dbstatus.ForeColor = Color.Red
                             Return
                        Else
-                            RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                            RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                        End If
                     Catch ex As Exception
-                        RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                        RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                     Finally
                         MysqlConn.Dispose()
                         load_grid_imr_reservation_grid()
 
                         If errorcount = False Then
-                            RadMessageBox.Show(Me, "Movie Film Successfully Reserved!", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Info)
+                            RadMessageBox.Show(Me, "Movie Film Successfully Reserved!", system_Name, MessageBoxButtons.OK, RadMessageIcon.Info)
                             auto_generate_imr_reservationno()
                         Else
-                            RadMessageBox.Show(Me, "Movie Film Failed to Reserved!", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                            RadMessageBox.Show(Me, "Movie Film Failed to Reserved!", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
 
                         End If
                     End Try
@@ -1488,7 +1488,7 @@ Public Class InstructionalMaterials
             MysqlConn.Close()
         End If
 
-        deleteYN = RadMessageBox.Show(Me, "Are you sure you want to delete?", "CEU TLTD Reservation System", MessageBoxButtons.YesNo, RadMessageIcon.Question)
+        deleteYN = RadMessageBox.Show(Me, "Are you sure you want to delete?", system_Name, MessageBoxButtons.YesNo, RadMessageIcon.Question)
         If deleteYN = MsgBoxResult.Yes Then
            
                 MysqlConn.Open()
@@ -1501,20 +1501,20 @@ Public Class InstructionalMaterials
                 reader = comm.ExecuteReader
 
 
-                RadMessageBox.Show(Me, "Successfully Deleted!", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Info)
+                RadMessageBox.Show(Me, "Successfully Deleted!", system_Name, MessageBoxButtons.OK, RadMessageIcon.Info)
                 MysqlConn.Close()
         End If
             Catch ex As MySqlException
                 If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed")))
-                    RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                    RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                     Login.log_lbl_dbstatus.Text = "Offline"
                     Login.log_lbl_dbstatus.ForeColor = Color.Red
                     Return
                Else
-                    RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                    RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                End If
             Catch ex As Exception
-                RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
             Finally
                 MysqlConn.Dispose()
                 load_grid_imr_reservation_grid()
@@ -1544,10 +1544,10 @@ Public Class InstructionalMaterials
         End If
         Dim errorcount As Boolean = False
 
-        updateYN = RadMessageBox.Show(Me, "Are you sure you want to UPDATE the status of this reservation?", "CEU TLTD Reservation System", MessageBoxButtons.YesNo, RadMessageIcon.Question)
+        updateYN = RadMessageBox.Show(Me, "Are you sure you want to UPDATE the status of this reservation?", system_Name, MessageBoxButtons.YesNo, RadMessageIcon.Question)
         If updateYN = MsgBoxResult.Yes Then
             If (imr_cb_topic.Text = "") Or (imr_cb_subject.Text = "") Or (imr_cb_status.Text = "") Or (imr_cb_starttime.Text = "") Or (imr_cb_endtime.Text = "") Or (imr_dtp_date.Text = "") Then
-                RadMessageBox.Show(Me, "Please complete the fields", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                RadMessageBox.Show(Me, "Please complete the fields", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
             Else
                 Dim elapsedTime As TimeSpan = DateTime.Parse(Format(CDate(imr_dtp_date.Value), "yyyy-MM-dd") & " " & imr_cb_endtime.Text).Subtract(DateTime.Parse(DateTime.Parse(Format(CDate(imr_dtp_date.Value), "yyyy-MM-dd") & " " & imr_cb_starttime.Text)))
                 If elapsedTime.CompareTo(TimeSpan.Zero) <= 0 Then
@@ -1572,7 +1572,7 @@ Public Class InstructionalMaterials
                         End While
 
                         If count > 0 Then
-                            RadMessageBox.Show(Me, "The movie " & imr_cb_topic.Text & " is already taken.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                            RadMessageBox.Show(Me, "The movie " & imr_cb_topic.Text & " is already taken.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                             errorcount = True
                         Else
                             MysqlConn.Close()
@@ -1592,24 +1592,24 @@ Public Class InstructionalMaterials
 
                     Catch ex As MySqlException
                         If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed")))
-                            RadMessageBox.Show(Me, "The database probably went offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                            RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                             Login.log_lbl_dbstatus.Text = "Offline"
                             Login.log_lbl_dbstatus.ForeColor = Color.Red
                             Return
                        Else
-                            RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                            RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                        End If
                     Catch ex As Exception
-                        RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                        RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                     Finally
                         MysqlConn.Dispose()
                         load_grid_imr_reservation_grid()
 
                         If errorcount = False Then
-                            RadMessageBox.Show(Me, "Movie Film Successfully Updated!", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Info)
+                            RadMessageBox.Show(Me, "Movie Film Successfully Updated!", system_Name, MessageBoxButtons.OK, RadMessageIcon.Info)
 
                         Else
-                            RadMessageBox.Show(Me, "Movie Film Failed to Update!", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error)
+                            RadMessageBox.Show(Me, "Movie Film Failed to Update!", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
 
                         End If
 

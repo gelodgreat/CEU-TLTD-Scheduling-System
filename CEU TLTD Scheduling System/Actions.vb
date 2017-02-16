@@ -102,7 +102,7 @@ Public Class Actions
 
         form.DialogResult = DialogResult.OK
         'form.RightToLeft = RightToLeft.No
-        form.Text="CEU TLTD Reservation System"
+        form.Text=system_Name
         form.MessageText = messageContent
         form.StartPosition = FormStartPosition.CenterScreen
 

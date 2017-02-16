@@ -2,7 +2,7 @@
 
 Public Class ConnectionWindow
     Private Sub btn_cons_save_Click(sender As Object, e As EventArgs) Handles btn_cons_save.Click
-        Dim DBSettingchange As DialogResult = RadMessageBox.Show(Me, "Are you sure you want to apply the new settings?" & Environment.NewLine & Environment.NewLine & "If you are not the network administrator it is advisable to choose ""NO.""", "Database Settings", MessageBoxButtons.YesNo, RadMessageIcon.Exclamation, MessageBoxDefaultButton.Button2)
+        Dim DBSettingchange As DialogResult = RadMessageBox.Show(Me, "Are you sure you want to apply the new settings?" & Environment.NewLine & Environment.NewLine & "If you are not the network administrator it is advisable to choose ""NO.""", system_Name, MessageBoxButtons.YesNo, RadMessageIcon.Exclamation, MessageBoxDefaultButton.Button2)
         If DBSettingchange=DialogResult.Yes
             My.Settings.cons_server = txt_cons_server.Text
             My.Settings.cons_port = txt_cons_port.Text

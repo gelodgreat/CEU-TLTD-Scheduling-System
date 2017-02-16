@@ -18,13 +18,17 @@ Public Class Login
 
     'Login Button Codes
     Private Sub btn_login_Click(sender As Object, e As EventArgs) Handles btn_login.Click
+        Dim q2 As String
         Try
             If String.IsNullOrEmpty(log_username.Text) Or String.IsNullOrEmpty(log_password.Text) Then
-                RadMessageBox.Show(Me, "Please enter username and password.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error, MessageBoxDefaultButton.Button1)
-
+                RadMessageBox.Show(Me, "Please enter username and password.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error, MessageBoxDefaultButton.Button1)
             Else
                 If log_username.Text.Contains("@ceu.edu.ph") Then
+                    q2 = "SELECT * FROM staff_reg WHERE staff_username=@proc_email_login and staff_password=sha2(@proc_password_login, 512)"
+                Else If log_username.Text LIKE "####-#"
+                    q2 = "SELECT * FROM staff_reg WHERE staff_id=@proc_email_login and staff_password=sha2(@proc_password_login, 512)"
                 Else log_username.Text = log_username.Text + "@ceu.edu.ph"
+                    q2 = "SELECT * FROM staff_reg WHERE staff_username=@proc_email_login and staff_password=sha2(@proc_password_login, 512)"
                 End If
                 If a = False Then
                 DB_DeadCounter()
@@ -34,7 +38,6 @@ Public Class Login
                         MysqlConn.Close()
                     End If
                     mysqlconn.Open()
-                    Dim q2 As String = "SELECT * FROM staff_reg WHERE staff_username=@proc_email_login and staff_password=sha2(@proc_password_login, 512)"
                     comm = New MySqlCommand(q2, mysqlconn)
                     comm.Parameters.AddWithValue("@proc_email_login", log_username.Text)
                     comm.Parameters.AddWithValue("@proc_password_login", log_password.Text)
@@ -63,9 +66,9 @@ Public Class Login
                         Me.Hide()
                         Main.Show()
                     ElseIf looper = 1 And Not accountstate Then
-                        RadMessageBox.Show(Me, "Your account is not active please inform the staff about the state of your account.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error, MessageBoxDefaultButton.Button1)
+                        RadMessageBox.Show(Me, "Your account is not active please inform the staff about the state of your account.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error, MessageBoxDefaultButton.Button1)
                     Else
-                        RadMessageBox.Show(Me, "Incorrect Username or Password.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error, MessageBoxDefaultButton.Button1)
+                        RadMessageBox.Show(Me, "Incorrect Username or Password.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error, MessageBoxDefaultButton.Button1)
                     End If
                  End If
                 End If
@@ -73,7 +76,7 @@ Public Class Login
                 log_lbl_dbstatus.Text = "Offline"
                 log_lbl_dbstatus.ForeColor = Color.Red
                 a=False
-                RadMessageBox.Show(Me, ex.Message, "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error, MessageBoxDefaultButton.Button1)
+                RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error, MessageBoxDefaultButton.Button1)
             End Try    
     End Sub
 
@@ -109,15 +112,15 @@ Public Class Login
 
     Private Sub DB_DeadCounter()
         If db_is_deadCount>=3 Then
-            RadMessageBox.Show(Me, "The server is still Offline." & Environment.NewLine & "Please check the connection settings by clicking the gear icon on the top right and ask the database administrator to input the required details.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error, MessageBoxDefaultButton.Button1)
+            RadMessageBox.Show(Me, "The server is still Offline." & Environment.NewLine & "Please check the connection settings by clicking the gear icon on the top right and ask the database administrator to input the required details.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error, MessageBoxDefaultButton.Button1)
         Else
-            RadMessageBox.Show(Me, "The server is offline.", "CEU TLTD Reservation System", MessageBoxButtons.OK, RadMessageIcon.Error,MessageBoxDefaultButton.Button1)
+            RadMessageBox.Show(Me, "The server is offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error,MessageBoxDefaultButton.Button1)
             db_is_deadCount +=1
         End If
     End Sub
     Private Sub log_lbl_dbstatus_MouseHover(sender As Object, e As EventArgs) Handles log_lbl_dbstatus.MouseHover
         If a=False
-            Dim aa As DialogResult = RadMessageBox.Show(Me, "The server is offline. Would you like to check again?", "CEU TLTD Reservation System", MessageBoxButtons.YesNo, RadMessageIcon.Question)
+            Dim aa As DialogResult = RadMessageBox.Show(Me, "The server is offline. Would you like to check again?", system_Name, MessageBoxButtons.YesNo, RadMessageIcon.Question)
             If aa=DialogResult.Yes
                 CheckDBStatus()
                 If a=True
