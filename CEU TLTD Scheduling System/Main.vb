@@ -2,6 +2,8 @@
 Imports Telerik.WinControls
 Imports Telerik.WinControls.UI
 Imports Telerik.WinControls.UI.Data
+Imports System.Threading
+
 
 Public Class Main
 
@@ -49,8 +51,44 @@ Public Class Main
     'WU_SETTINGS'
 
 
+
+
     'BENDO TIME
     Dim bendo As New DataTable
+    Dim smsList As New List(Of PendingSms)
+    Dim reservationThread As New Thread(Sub() Me.reservationChecking())
+
+    Private Sub reservationChecking()
+
+
+        For Each sms As PendingSms In smsList
+
+            Dim smsId As String = sms.getReservationId
+            Dim isFound As Boolean = False
+
+            ''another for loop for checking from datatable
+            For Each bendoRow As DataRow In bendo.Rows
+
+                Dim bendoId As String = bendoRow(0).ToString
+
+                If smsId = bendoId Then
+                    isFound = True
+                    Exit For
+                End If
+
+            Next
+
+            If isFound = False Then
+                sms.endPendingSms()
+                smsList.Remove(sms)
+            End If
+
+        Next
+
+    End Sub
+    'END BENDO TIME
+
+
 
     'Start! Groupbox Hover in Account Management
     Private Sub gb_staff_reg_MouseEnter(sender As Object, e As EventArgs) Handles gb_staff_reg.MouseEnter
