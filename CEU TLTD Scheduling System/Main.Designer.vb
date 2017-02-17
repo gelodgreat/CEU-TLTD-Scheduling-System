@@ -550,8 +550,8 @@ Partial Class Main
         Me.RadGroupBox28 = New Telerik.WinControls.UI.RadGroupBox()
         Me.acc_staff_btn_clear = New Telerik.WinControls.UI.RadButton()
         Me.acc_staff_btn_delete = New Telerik.WinControls.UI.RadButton()
-        Me.acc_staff_btn_save = New Telerik.WinControls.UI.RadButton()
         Me.acc_staff_btn_update = New Telerik.WinControls.UI.RadButton()
+        Me.acc_staff_btn_save = New Telerik.WinControls.UI.RadButton()
         Me.acc_sf_retypepassword = New Telerik.WinControls.UI.RadTextBox()
         Me.acc_sf_password = New Telerik.WinControls.UI.RadTextBox()
         Me.acc_sf_username = New Telerik.WinControls.UI.RadTextBox()
@@ -812,8 +812,8 @@ Partial Class Main
         Me.RadGroupBox28.SuspendLayout()
         CType(Me.acc_staff_btn_clear, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.acc_staff_btn_delete, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.acc_staff_btn_save, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.acc_staff_btn_update, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.acc_staff_btn_save, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.acc_sf_retypepassword, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.acc_sf_password, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.acc_sf_username, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -1809,6 +1809,7 @@ Partial Class Main
         Me.res_reserved_info.Controls.Add(Me.gp_controls)
         Me.res_reserved_info.Controls.Add(Me.gp_details)
         Me.res_reserved_info.Controls.Add(Me.reserved_grid_list)
+        Me.res_reserved_info.ItemSize = New System.Drawing.SizeF(120.0!, 24.0!)
         Me.res_reserved_info.Location = New System.Drawing.Point(5, 30)
         Me.res_reserved_info.Name = "res_reserved_info"
         Me.res_reserved_info.Size = New System.Drawing.Size(1338, 487)
@@ -2333,6 +2334,7 @@ Partial Class Main
         'rel_released_info
         '
         Me.rel_released_info.Controls.Add(Me.released_grid_list)
+        Me.rel_released_info.ItemSize = New System.Drawing.SizeF(152.0!, 24.0!)
         Me.rel_released_info.Location = New System.Drawing.Point(5, 30)
         Me.rel_released_info.Name = "rel_released_info"
         Me.rel_released_info.Size = New System.Drawing.Size(1338, 487)
@@ -3812,16 +3814,6 @@ Partial Class Main
         Me.acc_staff_btn_delete.Text = "Delete"
         Me.acc_staff_btn_delete.ThemeName = "VisualStudio2012Dark"
         '
-        'acc_staff_btn_save
-        '
-        Me.acc_staff_btn_save.Anchor = System.Windows.Forms.AnchorStyles.Bottom
-        Me.acc_staff_btn_save.Location = New System.Drawing.Point(560, 28)
-        Me.acc_staff_btn_save.Name = "acc_staff_btn_save"
-        Me.acc_staff_btn_save.Size = New System.Drawing.Size(85, 24)
-        Me.acc_staff_btn_save.TabIndex = 10
-        Me.acc_staff_btn_save.Text = "Save"
-        Me.acc_staff_btn_save.ThemeName = "VisualStudio2012Dark"
-        '
         'acc_staff_btn_update
         '
         Me.acc_staff_btn_update.Anchor = System.Windows.Forms.AnchorStyles.Bottom
@@ -3831,6 +3823,16 @@ Partial Class Main
         Me.acc_staff_btn_update.TabIndex = 10
         Me.acc_staff_btn_update.Text = "Update"
         Me.acc_staff_btn_update.ThemeName = "VisualStudio2012Dark"
+        '
+        'acc_staff_btn_save
+        '
+        Me.acc_staff_btn_save.Anchor = System.Windows.Forms.AnchorStyles.Bottom
+        Me.acc_staff_btn_save.Location = New System.Drawing.Point(560, 28)
+        Me.acc_staff_btn_save.Name = "acc_staff_btn_save"
+        Me.acc_staff_btn_save.Size = New System.Drawing.Size(85, 24)
+        Me.acc_staff_btn_save.TabIndex = 10
+        Me.acc_staff_btn_save.Text = "Save"
+        Me.acc_staff_btn_save.ThemeName = "VisualStudio2012Dark"
         '
         'acc_sf_retypepassword
         '
@@ -4552,8 +4554,8 @@ Partial Class Main
         Me.RadGroupBox28.ResumeLayout(False)
         CType(Me.acc_staff_btn_clear, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.acc_staff_btn_delete, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.acc_staff_btn_save, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.acc_staff_btn_update, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.acc_staff_btn_save, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.acc_sf_retypepassword, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.acc_sf_password, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.acc_sf_username, System.ComponentModel.ISupportInitialize).EndInit()
