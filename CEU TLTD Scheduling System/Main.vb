@@ -48,6 +48,10 @@ Public Class Main
     Dim Keepreservation_mainIndex As Integer
     'WU_SETTINGS'
 
+
+    'BENDO TIME
+    Dim bendo As New DataTable
+
     'Start! Groupbox Hover in Account Management
     Private Sub gb_staff_reg_MouseEnter(sender As Object, e As EventArgs) Handles gb_staff_reg.MouseEnter
         acct_mgmt_hover_delay_goingToStaff.Interval = 500
@@ -740,9 +744,19 @@ Public Class Main
             SetSizesofMainTable()
             Main_MaintainSelectedCell()
 
-        Dim DV As New DataView(dbdataset)
+            Dim DV As New DataView(dbdataset)
         DV.RowFilter = String.Format("`Borrower` Like'%{0}%' and `Equipment` Like'%{1}%' and `Date` Like'%{2}%' and `Activity Type` Like'%{3}%'", lu_byname.Text, lu_byequipment.Text, lu_date.Value.ToString("MMMM dd yyyy"), Cover)
         main_rgv_recordedacademicsonly.DataSource = DV
+
+            bendo.Clear()
+            MysqlConn.Open()
+            query = "Select reservationno as 'Reservation Number', TIME_FORMAT(endtime, '%H:%i') as 'End Time' from ceutltdscheduler.reservation natural join ceutltdscheduler.reservation_equipments where date ='" & Format(CDate(lu_date.Value), "yyyy-MM-dd") & "' and NOT(res_status='Cancelled') ORDER BY date DESC,starttime DESC"
+            comm = New MySqlCommand(query, MysqlConn)
+            SDA.SelectCommand = comm
+            SDA.Fill(bendo)
+            DataGridView1.DataSource = bendo
+            MysqlConn.Close()
+
 
         Catch ex As MySqlException
              If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed")))

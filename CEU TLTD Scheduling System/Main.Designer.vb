@@ -603,6 +603,7 @@ Partial Class Main
         Me.refresh_penalty_grid_list = New System.Windows.Forms.Timer(Me.components)
         Me.refresh_returned_eq_list = New System.Windows.Forms.Timer(Me.components)
         Me.CeutltdschedulerDataSetBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
         CType(Me.RadGroupBox16, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RadGroupBox13, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.rpvp_returning.SuspendLayout()
@@ -833,6 +834,7 @@ Partial Class Main
         Me.RadGroupBox10.SuspendLayout()
         CType(Me.main_rgv_recordedacademicsonly, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.main_rgv_recordedacademicsonly.MasterTemplate, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.main_rgv_recordedacademicsonly.SuspendLayout()
         CType(Me.RadGroupBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.RadGroupBox2.SuspendLayout()
         CType(Me.RadGroupBox7, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -854,6 +856,7 @@ Partial Class Main
         Me.rpv1.SuspendLayout()
         CType(Me.RadMenu1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.CeutltdschedulerDataSetBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -4028,6 +4031,7 @@ Partial Class Main
         'main_rgv_recordedacademicsonly
         '
         Me.main_rgv_recordedacademicsonly.AutoSizeRows = True
+        Me.main_rgv_recordedacademicsonly.Controls.Add(Me.DataGridView1)
         Me.main_rgv_recordedacademicsonly.Dock = System.Windows.Forms.DockStyle.Fill
         Me.main_rgv_recordedacademicsonly.Location = New System.Drawing.Point(2, 18)
         '
@@ -4229,7 +4233,7 @@ Partial Class Main
         Me.rpv1.DefaultPage = Me.rpvp1_main
         Me.rpv1.Location = New System.Drawing.Point(0, 26)
         Me.rpv1.Name = "rpv1"
-        Me.rpv1.SelectedPage = Me.rpvp2_reservation
+        Me.rpv1.SelectedPage = Me.rpvp1_main
         Me.rpv1.Size = New System.Drawing.Size(1358, 557)
         Me.rpv1.TabIndex = 1
         Me.rpv1.Text = "Home"
@@ -4315,6 +4319,14 @@ Partial Class Main
         '
         'refresh_released_grid_list
         '
+        '
+        'DataGridView1
+        '
+        Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DataGridView1.Location = New System.Drawing.Point(58, 37)
+        Me.DataGridView1.Name = "DataGridView1"
+        Me.DataGridView1.Size = New System.Drawing.Size(573, 199)
+        Me.DataGridView1.TabIndex = 1
         '
         'Main
         '
@@ -4575,6 +4587,8 @@ Partial Class Main
         Me.RadGroupBox10.ResumeLayout(False)
         CType(Me.main_rgv_recordedacademicsonly.MasterTemplate, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.main_rgv_recordedacademicsonly, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.main_rgv_recordedacademicsonly.ResumeLayout(False)
+        Me.main_rgv_recordedacademicsonly.PerformLayout()
         CType(Me.RadGroupBox2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.RadGroupBox2.ResumeLayout(False)
         CType(Me.RadGroupBox7, System.ComponentModel.ISupportInitialize).EndInit()
@@ -4598,6 +4612,7 @@ Partial Class Main
         Me.rpv1.ResumeLayout(False)
         CType(Me.RadMenu1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.CeutltdschedulerDataSetBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
@@ -4849,5 +4864,6 @@ Partial Class Main
     Friend WithEvents acc_staff_rdio_active As Telerik.WinControls.UI.RadRadioButton
     Friend WithEvents acc_sf_oldpassword As Telerik.WinControls.UI.RadTextBox
     Friend WithEvents lbl_oldPassword As Telerik.WinControls.UI.RadLabel
+    Friend WithEvents DataGridView1 As DataGridView
 End Class
 
