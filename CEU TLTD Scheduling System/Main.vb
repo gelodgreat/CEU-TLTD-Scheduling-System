@@ -53,40 +53,167 @@ Public Class Main
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     'BENDO TIME
     Dim bendo As New DataTable
     Dim smsList As New List(Of PendingSms)
-    Dim reservationThread As New Thread(Sub() Me.reservationChecking())
+    Dim smsListDone As New List(Of String)
+    Dim reservationThread As New Thread(Sub() thread1Loop())
+    Dim newReservationThread As New Thread(Sub() thread2Loop())
+    Dim bendoTimer As New System.Windows.Forms.Timer
 
+    Private Function isThisDone(ByVal id As String)
+
+        For Each doneId As String In smsListDone
+            If id = doneId Then
+                Return True
+            End If
+        Next
+
+        Return False
+    End Function
+
+    'this function create new instance of a pendingSms
+    Private Sub newPendingSms(ByVal id As String, ByVal endTime As String)
+        Dim newSms As New PendingSms(id, endTime, bendo, bendoTimer)
+        smsList.Add(newSms)
+
+    End Sub
+
+
+    'this function removes the sms instance from pending sms pool if the borrowed item is returned
     Private Sub reservationChecking()
+        Try
+            For Each sms As PendingSms In smsList
+
+                Dim smsId As String = sms.getReservationId
+                Dim isFound As Boolean = False
+
+                ''another for loop for checking from datatable
+                ''cut#1
+                Debug.WriteLine(isStillPending(sms).ToString)
+                If isStillPending(sms) = False Then
+                    sms.endPendingSms()
+                    smsList.Remove(sms)
+
+                End If
 
 
-        For Each sms As PendingSms In smsList
+            Next
+        Catch ex As Exception
 
-            Dim smsId As String = sms.getReservationId
-            Dim isFound As Boolean = False
+        End Try
 
-            ''another for loop for checking from datatable
-            For Each bendoRow As DataRow In bendo.Rows
+    End Sub
 
-                Dim bendoId As String = bendoRow(0).ToString
 
-                If smsId = bendoId Then
-                    isFound = True
-                    Exit For
+    Private Function isStillPending(ByVal sms As PendingSms)
+
+        For Each dr As DataRow In bendo.Rows
+
+            If dr(0).ToString = sms.getReservationId Then
+                Return True
+                Exit For
+                Exit Function
+            End If
+        Next
+
+        Return True
+    End Function
+
+
+    'This add a new pendingSms instance to pendingSms pool if there's a new pending reservation
+    Private Sub newReservationChecking()
+        Thread.Sleep(200)
+        Try
+
+            For Each dr As DataRow In bendo.Rows
+
+                If isNotYetPending(dr(0).ToString) = False And isThisDone(dr(0).ToString) = False Then
+                    'add new sms pending here
+                    Dim res_id As String = dr(0).ToString
+                    Dim res_end_time As String = dr(1).ToString
+
+                    newPendingSms(res_id, res_end_time)
+                    smsListDone.Add(res_id)
+                    Debug.WriteLine("new sms dito")
+
                 End If
 
             Next
+        Catch ex As Exception
 
-            If isFound = False Then
-                sms.endPendingSms()
-                smsList.Remove(sms)
+        End Try
+    End Sub
+
+    Private Function isNotYetPending(ByVal id As String)
+
+        For Each sms As PendingSms In smsList
+            If sms.getReservationId = id Then
+
+                Return True
             End If
-
+            Debug.WriteLine(sms.getReservationId & " " & id)
         Next
 
+        If isThisDone(id) = True Then
+            Return True
+        End If
+        Return False
+    End Function
+
+    Private Sub thread1Loop()
+        While 1 <> 0
+            reservationChecking()
+
+            Thread.Sleep(10)
+        End While
     End Sub
+
+    Private Sub thread2Loop()
+        While 1 <> 0
+            newReservationChecking()
+
+            Thread.Sleep(1000)
+        End While
+    End Sub
+
+
+
+
     'END BENDO TIME
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -213,7 +340,14 @@ Public Class Main
         eq_rgv_addeq.Columns(3).IsVisible = false 'Save Space in the temporary reservation table
         acc_staff_list.Columns(5).IsVisible=False 'Save Space in the Staff table
         acc_staff_rdio_active.ButtonElement.ToolTipText="Blue highlight when the account is active."
-        acc_staff_rdio_inactive.ButtonElement.ToolTipText="Red highlight when the account is inactive."
+        acc_staff_rdio_inactive.ButtonElement.ToolTipText = "Red highlight when the account is inactive."
+
+
+        ''lancebendo's
+        bendoTimer.Start()
+        reservationThread.Start()
+        newReservationThread.Start()
+        ''end lancebendo's
     End Sub
 
 
@@ -786,13 +920,15 @@ Public Class Main
         DV.RowFilter = String.Format("`Borrower` Like'%{0}%' and `Equipment` Like'%{1}%' and `Date` Like'%{2}%' and `Activity Type` Like'%{3}%'", lu_byname.Text, lu_byequipment.Text, lu_date.Value.ToString("MMMM dd yyyy"), Cover)
         main_rgv_recordedacademicsonly.DataSource = DV
 
-            bendo.Clear()
+            ''lancebendo edit
+            Dim tempdt As New DataTable
             MysqlConn.Open()
             query = "Select reservationno as 'Reservation Number', TIME_FORMAT(endtime, '%H:%i') as 'End Time' from ceutltdscheduler.reservation natural join ceutltdscheduler.reservation_equipments where date ='" & Format(CDate(lu_date.Value), "yyyy-MM-dd") & "' and NOT(res_status='Cancelled') ORDER BY date DESC,starttime DESC"
             comm = New MySqlCommand(query, MysqlConn)
             SDA.SelectCommand = comm
-            SDA.Fill(bendo)
-            DataGridView1.DataSource = bendo
+            SDA.Fill(tempdt)
+            'DataGridView1.DataSource = tempdt
+            bendo = tempdt
             MysqlConn.Close()
 
 
@@ -4866,6 +5002,13 @@ End Sub
 
     Private Sub rec_cb_borrower_GotFocus(sender As Object, e As EventArgs) Handles rec_cb_borrower.GotFocus
         load_res_borrowerlist()
+    End Sub
+
+    Private Sub Main_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
+        ''lancebendo's
+        newReservationThread.Abort()
+        reservationThread.Abort()
+        ''end lancebendo's
     End Sub
 
 
