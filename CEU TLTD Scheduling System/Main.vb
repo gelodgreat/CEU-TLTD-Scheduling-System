@@ -978,7 +978,7 @@ Public Class Main
         
             MysqlConn.Open()
             Dim query As String
-            query = "Select bor_id as 'Professor ID' , bor_fname as 'First Name' , bor_mname as 'Middle Name' , bor_surname as 'Surname' , bor_college as 'College/School'  from borrowers_reg"
+            query = "Select bor_id as 'Professor ID' , bor_fname as 'First Name' , bor_mname as 'Middle Name' , bor_surname as 'Surname' , bor_college as 'College/School', bor_mobileno as 'Mobile Number' from ceutltdscheduler.borrowers_reg"
             comm = New MySqlCommand(query, MysqlConn)
             sda.SelectCommand = comm
             sda.Fill(dbdataset)
@@ -1462,19 +1462,21 @@ Public Class Main
         MysqlConn = New MySqlConnection
         MysqlConn.ConnectionString = connstring
         Dim READER As MySqlDataReader
-        If (acc_pf_fname.Text = "") Or (acc_pf_mname.Text = " ") Or (acc_pf_lname.Text = " ") Or (acc_pf_college.Text = " ") Then
-            RadMessageBox.Show(Me, "Please complete the name to Save!", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
-        Else
-            
+            If ((acc_pf_fname.Text = "") Or (acc_pf_mname.Text = " ") Or (acc_pf_lname.Text = " ") Or (acc_pf_college.Text = " ")) Then
+                RadMessageBox.Show(Me, "Please complete the name to Save!", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
+            ElseIf (acc_pf_mobnum.Text.Length < 11 Or acc_pf_mobnum.Text = "") Then
+                RadMessageBox.Show(Me, "Please complete you SMS number.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
+            Else
                 MysqlConn.Open()
                 Dim Query As String
-                Query = "insert into ceutltdscheduler.borrowers_reg VALUES(@BorID, @BorFname, @BorMname, @BorLname, @BorCollege)"
+                Query = "insert into ceutltdscheduler.borrowers_reg (bor_id,bor_fname,bor_mname,bor_surname,bor_college,bor_mobileno) VALUES(@BorID, @BorFname, @BorMname, @BorLname, @BorCollege, @BorMobileNo)"
                 comm = New MySqlCommand(Query, MysqlConn)
                 comm.Parameters.AddWithValue("BorID", acc_pf_id.Text)
                 comm.Parameters.AddWithValue("BorFname", acc_pf_fname.Text)
                 comm.Parameters.AddWithValue("BorMname", acc_pf_mname.Text)
                 comm.Parameters.AddWithValue("BorLname", acc_pf_lname.Text)
                 comm.Parameters.AddWithValue("BorCollege", acc_pf_college.Text)
+                comm.Parameters.AddWithValue("BorMobileNo", acc_pf_mobnum.Text)
 
 
                 svYN = RadMessageBox.Show(Me, "Are you sure you want to add a new borrower information? ", "TLTD Schuling Management", MessageBoxButtons.YesNo, RadMessageIcon.Question)
@@ -1527,10 +1529,12 @@ Public Class Main
                 acc_pf_mname.Text = row.Cells("Middle Name").Value.ToString
                 acc_pf_lname.Text = row.Cells("Surname").Value.ToString
                 acc_pf_college.Text = row.Cells("College/School").Value.ToString
+                acc_pf_mobnum.Text = row.Cells("Mobile Number").Value.ToString
 
                 temp_Prof_fname = row.Cells("First Name").Value.ToString
                 temp_Prof_mname = row.Cells("Middle Name").Value.ToString
                 temp_Prof_surname = row.Cells("Surname").Value.ToString
+
 
                 'acc_pf_id.Enabled = False
                 acc_prof_btn_update.Show()
@@ -1552,32 +1556,43 @@ Public Class Main
         End If
 
         updateYN = RadMessageBox.Show(Me, "Do you want to update the borrower's information?", system_Name, MessageBoxButtons.YesNo, RadMessageIcon.Question)
-        If updateYN = MsgBoxResult.Yes Then
-            If (acc_pf_fname.Text = "") Or (acc_pf_mname.Text = "") Or (acc_pf_lname.Text = "") Or (acc_pf_college.Text = "") Then
-                RadMessageBox.Show(Me, "Please select a borrower to update!", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
-            Else
-                
+            If updateYN = MsgBoxResult.Yes Then
+                If (acc_pf_fname.Text = "") Or (acc_pf_mname.Text = "") Or (acc_pf_lname.Text = "") Or (acc_pf_college.Text = "") Then
+                    RadMessageBox.Show(Me, "Please select a borrower to update!", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
+                Else
                     MysqlConn.Open()
-                    query = "UPDATE borrowers_reg set bor_id=@new_id, bor_fname=@new_fname, bor_mname=@new_mname, bor_surname=@new_surname, bor_college=@new_college WHERE bor_fname=@old_fname and bor_mname=@old_mname and bor_surname=@old_surname"
+                    query = "UPDATE borrowers_reg set bor_id=@new_id, bor_fname=@new_fname, bor_mname=@new_mname, bor_surname=@new_surname, bor_college=@new_college, bor_mobileno=@new_mobileno WHERE bor_fname=@old_fname and bor_mname=@old_mname and bor_surname=@old_surname"
                     'query = "UPDATE borrowers_reg set bor_id = '" & acc_pf_id.Text & "' , bor_fname = '" & acc_pf_fname.Text & "' , bor_mname = '" & acc_pf_mname.Text & "' , bor_surname = '" & acc_pf_lname.Text & "' , bor_college = '" & acc_pf_college.Text & "' where bor_id = '" & acc_pf_id.Text & "' "
                     comm = New MySqlCommand(query, MysqlConn)
-                    comm.Parameters.AddWithValue("@new_id",acc_pf_id.Text)
-                    comm.Parameters.AddWithValue("@new_fname",acc_pf_fname.Text)
-                    comm.Parameters.AddWithValue("@new_mname",acc_pf_mname.Text)
-                    comm.Parameters.AddWithValue("@new_surname",acc_pf_lname.Text)
-                    comm.Parameters.AddWithValue("@new_college",acc_pf_college.Text)
+                    comm.Parameters.AddWithValue("@new_id", acc_pf_id.Text)
+                    comm.Parameters.AddWithValue("@new_fname", acc_pf_fname.Text)
+                    comm.Parameters.AddWithValue("@new_mname", acc_pf_mname.Text)
+                    comm.Parameters.AddWithValue("@new_surname", acc_pf_lname.Text)
+                    comm.Parameters.AddWithValue("@new_college", acc_pf_college.Text)
+                    comm.Parameters.AddWithValue("@new_mobileno", acc_pf_mobnum.Text)
 
-                    comm.Parameters.AddWithValue("@old_fname",temp_Prof_fname)
-                    comm.Parameters.AddWithValue("@old_mname",temp_Prof_mname)
-                    comm.Parameters.AddWithValue("@old_surname",temp_Prof_surname)
+                    comm.Parameters.AddWithValue("@old_fname", temp_Prof_fname)
+                    comm.Parameters.AddWithValue("@old_mname", temp_Prof_mname)
+                    comm.Parameters.AddWithValue("@old_surname", temp_Prof_surname)
                     reader = comm.ExecuteReader
 
                     RadMessageBox.Show(Me, "Update Success!", system_Name, MessageBoxButtons.OK, RadMessageIcon.Info)
                     MysqlConn.Close()
+                End If
             End If
-        End If
-                 load_main_prof()
-                Catch ex As MySqlException
+            acc_pf_id.Text = ""
+            acc_pf_college.Text = ""
+            acc_pf_fname.Text = ""
+            acc_pf_mname.Text = ""
+            acc_pf_lname.Text = ""
+            acc_pf_mobnum.Text = ""
+            acc_pf_id.Enabled = True
+            acc_prof_btn_delete.Hide()
+            acc_prof_btn_update.Hide()
+            acc_prof_btn_save.Show()
+            rpv_child_acctmgmt.SelectedPage = rpv_borrower
+            load_main_prof()
+        Catch ex As MySqlException
                     If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed")))
                         refresh_main_rgv_recordedacademicsonly.Stop()
                         refresh_released_grid_list.Stop()
@@ -1591,18 +1606,8 @@ Public Class Main
                 Catch ex As Exception
                     RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                 Finally
-                    MysqlConn.Dispose()
-                    acc_pf_id.Text = ""
-                    acc_pf_college.Text = ""
-                    acc_pf_fname.Text = ""
-                    acc_pf_mname.Text = ""
-                    acc_pf_lname.Text = ""
-                    acc_pf_id.Enabled = True
-                    acc_prof_btn_delete.Hide()
-                    acc_prof_btn_update.Hide()
-                    acc_prof_btn_save.Show()
-                    rpv_child_acctmgmt.SelectedPage = rpv_borrower
-                End Try
+            MysqlConn.Dispose()
+        End Try
     End Sub
 
     'Programmed by Brenz 11th point prof Delete Button!
@@ -1631,9 +1636,10 @@ Public Class Main
                 acc_pf_fname.Text = ""
                 acc_pf_mname.Text = ""
                 acc_pf_lname.Text = ""
-                acc_pf_college.Text = ""
-                'acc_pf_id.Enabled = True
-                acc_prof_btn_delete.Hide()
+                    acc_pf_college.Text = ""
+                    acc_pf_mobnum.Text = ""
+                    'acc_pf_id.Enabled = True
+                    acc_prof_btn_delete.Hide()
                 acc_prof_btn_update.Hide()
                 acc_prof_btn_save.Show()
         End If
@@ -1667,6 +1673,7 @@ Public Class Main
             acc_pf_mname.Text = ""
             acc_pf_lname.Text = ""
             acc_pf_college.Text = ""
+            acc_pf_mobnum.Text = ""
             acc_pf_id.Enabled = True
             acc_prof_btn_delete.Hide()
             acc_prof_btn_update.Hide()
