@@ -1,7 +1,21 @@
 ﻿Imports MySql.Data.MySqlClient
 Imports Telerik.WinControls
+Imports Telerik.WinControls.UI
 
 Public Class MainSettingsWindow
+
+    Dim question As DialogResult
+    Dim query As String
+
+    Public txtven As String
+    Public txtschool As String
+
+    Public id_ven As String
+    Public id_school As String
+
+    Public random As System.Random = New System.Random
+
+
     Private Sub MainSettingsWindow_FormClosed(sender As Object, e As FormClosedEventArgs) Handles Me.FormClosed
         Me.Dispose()
     End Sub
@@ -11,6 +25,10 @@ Public Class MainSettingsWindow
         Me.FormElement.TitleBar.TitlePrimitive.StretchHorizontally = True
         Me.FormElement.TitleBar.TitlePrimitive.TextAlignment = ContentAlignment.MiddleCenter
         rpv_settings_SelectedPageChanged(Me, New EventArgs()) 'TRIGGER EVENT SO THAT IT WILL LOAD WHAT IS NEEDED DEPENDING ON THE SELECTED TAB
+
+        auto_generate_id()
+        load_col()
+        load_ven()
     End Sub
     Private Sub rpv_settings_SelectedPageChanged(sender As Object, e As EventArgs) Handles rpv_settings.SelectedPageChanged
         If rpv_settings.SelectedPage Is rp_penalty Then
@@ -168,91 +186,379 @@ Public Class MainSettingsWindow
             RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
         End Try
     End Sub
+
+
+
+    Private Sub btn_setcollege_Click(sender As Object, e As EventArgs) Handles btn_setcollege.Click
+        gb_school.Show()
+        gb_input_college.Show()
+
+        gb_venue.Hide()
+        gb_input_venue.Hide()
+    End Sub
+
+    Private Sub btn_setvenue_Click(sender As Object, e As EventArgs) Handles btn_setvenue.Click
+        gb_venue.Show()
+        gb_input_venue.Show()
+
+        gb_school.Hide()
+        gb_input_college.Hide()
+    End Sub
+
+    Public Sub auto_generate_id()
+
+        id_ven = Now.ToString("mmddyyy" + "-")
+        id_ven = id_ven + random.Next(1, 100000).ToString
+
+        id_school = Now.ToString("mmddyyy" + "-")
+        id_school = id_school + random.Next(1, 100000).ToString
+
+        txtschool = id_school
+        txtven = id_ven
+
+    End Sub
+
+    Public Sub load_col()
+        Try
+
+            If MySQLConn.State = ConnectionState.Open Then
+                MySQLConn.Close()
+            End If
+
+            MySQLConn.ConnectionString = connstring
+
+            Dim SDA As New MySqlDataAdapter
+            Dim bsource As New BindingSource
+            Dim dbdataset As New DataTable
+
+            MySQLConn.Open()
+            query = "SELECT list_idschool as 'ID',list_school as 'School' FROM listschool"
+            comm = New MySqlCommand(query, MySQLConn)
+            SDA.SelectCommand = comm
+            SDA.Fill(dbdataset)
+            bsource.DataSource = dbdataset
+            gv_school.DataSource = bsource
+            SDA.Update(dbdataset)
+
+            MySQLConn.Close()
+        Catch ex As Exception
+            RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
+
+        Finally
+            MySQLConn.Dispose()
+        End Try
+    End Sub
+
+    Public Sub load_ven()
+        Try
+
+            If MySQLConn.State = ConnectionState.Open Then
+                MySQLConn.Close()
+            End If
+
+            MySQLConn.ConnectionString = connstring
+
+            Dim SDA As New MySqlDataAdapter
+            Dim bsource As New BindingSource
+            Dim dbdataset As New DataTable
+
+            MySQLConn.Open()
+            query = "SELECT list_venue as 'Venue' FROM listvenue"
+            comm = New MySqlCommand(query, MySQLConn)
+            SDA.SelectCommand = comm
+            SDA.Fill(dbdataset)
+            bsource.DataSource = dbdataset
+            gv_venue.DataSource = bsource
+            SDA.Update(dbdataset)
+
+            MySQLConn.Close()
+        Catch ex As Exception
+            RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
+
+        Finally
+            MySQLConn.Dispose()
+        End Try
+    End Sub
+
+    Private Sub gv_school_CellClick(sender As Object, e As GridViewCellEventArgs) Handles gv_school.CellClick
+        If e.RowIndex >= 0 Then
+            Dim row As Telerik.WinControls.UI.GridViewRowInfo
+
+            row = Me.gv_school.Rows(e.RowIndex)
+            txtschool = row.Cells("ID").Value.ToString
+            col_tb_college.Text = row.Cells("School").Value.ToString
+        End If
+    End Sub
+
+    Private Sub col_btn_add_Click(sender As Object, e As EventArgs) Handles col_btn_add.Click
+        Try
+
+            If MySQLConn.State = ConnectionState.Open Then
+                MySQLConn.Close()
+            End If
+
+            MySQLConn.ConnectionString = connstring
+
+            If (col_tb_college.Text = "") Then
+                RadMessageBox.Show(Me, "Please fill fields", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
+
+            Else
+
+                question = RadMessageBox.Show(Me, "Are you sure you want to add this?", system_Name, MessageBoxButtons.YesNo, RadMessageIcon.Question)
+
+                If (question = DialogResult.Yes) Then
+                    MySQLConn.Open()
+                    query = "SELECT * FROM listschool WHERE list_school=@list_school"
+                    comm = New MySqlCommand(query, MySQLConn)
+                    comm.Parameters.AddWithValue("list_school", col_tb_college.Text)
+                    reader = comm.ExecuteReader
+
+                    Dim count As Integer
+                    count = 0
+
+                    While reader.Read
+                        count += 1
+                    End While
+
+                    If count >= 1 Then
+                        RadMessageBox.Show(Me, "College: " & col_tb_college.Text & " is already registered.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Exclamation)
+
+                    Else
+                        MySQLConn.Close()
+                        MySQLConn.Open()
+
+                        query = "INSERT INTO listschool VALUES (@list_idschool,@list_school)"
+                        comm = New MySqlCommand(query, MySQLConn)
+                        comm.Parameters.AddWithValue("list_idschool", txtschool)
+                        comm.Parameters.AddWithValue("list_school", col_tb_college.Text)
+                        reader = comm.ExecuteReader
+                        MySQLConn.Close()
+
+                        RadMessageBox.Show(Me, "Successfully Saved!", system_Name, MessageBoxButtons.OK, RadMessageIcon.Info)
+                        col_tb_college.Focus()
+                        col_tb_college.Clear()
+                    End If
+                End If
+
+            End If
+
+        Catch ex As Exception
+            RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
+        Finally
+            load_col()
+            auto_generate_id()
+            MySQLConn.Dispose()
+        End Try
+    End Sub
+
+    Private Sub col_btn_update_Click(sender As Object, e As EventArgs) Handles col_btn_update.Click
+        Try
+
+
+            If MySQLConn.State = ConnectionState.Open Then
+                MySQLConn.Close()
+            End If
+            MySQLConn.ConnectionString = connstring
+
+            If (col_tb_college.Text = "") Then
+                RadMessageBox.Show(Me, "Please  select from  the school above.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
+            Else
+                question = RadMessageBox.Show(Me, "Are you sure you want to update this?", system_Name, MessageBoxButtons.YesNo, RadMessageIcon.Question)
+
+                If (question = DialogResult.Yes) Then
+                    MySQLConn.Open()
+
+
+                    query = "SELECT * FROM listschool WHERE list_school=@list_school"
+                    comm = New MySqlCommand(query, MySQLConn)
+                    comm.Parameters.AddWithValue("list_school", col_tb_college.Text)
+                    reader = comm.ExecuteReader
+
+                    Dim count As Integer
+                    count = 0
+
+                    While reader.Read
+                        count += 1
+                    End While
+
+                    If count >= 1 Then
+                        RadMessageBox.Show(Me, "College: " & col_tb_college.Text & " is already registered.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Exclamation)
+                    Else
+                        MySQLConn.Close()
+                        MySQLConn.Open()
+
+                        query = "UPDATE listschool SET list_school=@list_school WHERE list_idschool=@list_idschool"
+                        comm = New MySqlCommand(query, MySQLConn)
+                        comm.Parameters.AddWithValue("list_school", col_tb_college.Text)
+                        comm.Parameters.AddWithValue("list_idschool", txtschool)
+                        reader = comm.ExecuteReader
+                        MySQLConn.Close()
+
+                        RadMessageBox.Show(Me, "Successfully Updated!", system_Name, MessageBoxButtons.OK, RadMessageIcon.Info)
+                        col_tb_college.Focus()
+                        col_tb_college.Clear()
+                    End If
+
+                End If
+
+            End If
+        Catch ex As Exception
+            RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
+        Finally
+            load_col()
+            auto_generate_id()
+            MySQLConn.Dispose()
+        End Try
+
+
+    End Sub
+
+    Private Sub col_btn_delete_Click(sender As Object, e As EventArgs) Handles col_btn_delete.Click
+        Try
+
+            If MySQLConn.State = ConnectionState.Open Then
+                MySQLConn.Close()
+            End If
+            MySQLConn.ConnectionString = connstring
+
+
+            If (col_tb_college.Text = "") Then
+                RadMessageBox.Show(Me, "Please select from  the school above.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
+            Else
+                question = RadMessageBox.Show(Me, "Are you sure you want to delete this?", system_Name, MessageBoxButtons.YesNo, RadMessageIcon.Question)
+
+                If (question = DialogResult.Yes) Then
+
+                    MySQLConn.Open()
+
+                    query = "DELETE FROm listschool WHERE list_idschool=@list_idschool"
+                    comm = New MySqlCommand(query, MySQLConn)
+                    comm.Parameters.AddWithValue("list_school", col_tb_college.Text)
+                    comm.Parameters.AddWithValue("list_idschool", txtschool)
+                    reader = comm.ExecuteReader
+                    MySQLConn.Close()
+                    RadMessageBox.Show(Me, "Successfully Deleted!", system_Name, MessageBoxButtons.OK, RadMessageIcon.Info)
+                    col_tb_college.Focus()
+                    col_tb_college.Clear()
+                End If
+
+            End If
+        Catch ex As Exception
+            RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
+        Finally
+            load_col()
+            auto_generate_id()
+            MySQLConn.Dispose()
+        End Try
+    End Sub
+
+    Private Sub col_btn_clear_Click(sender As Object, e As EventArgs) Handles col_btn_clear.Click
+        col_tb_college.Clear()
+        auto_generate_id()
+    End Sub
+
+    Private Sub ven_btn_add_Click(sender As Object, e As EventArgs) Handles ven_btn_add.Click
+
+    End Sub
+
+    Private Sub ven_btn_update_Click(sender As Object, e As EventArgs) Handles ven_btn_update.Click
+
+    End Sub
+
+    Private Sub ven_btn_delete_Click(sender As Object, e As EventArgs) Handles ven_btn_delete.Click
+
+    End Sub
+
+    Private Sub ven_btn_clear_Click(sender As Object, e As EventArgs) Handles ven_btn_clear.Click
+
+    End Sub
+
+
 End Class
 
 
 
-    'Private Sub btn_ChP_Click(sender As Object, e As EventArgs) Handles btn_ChP.Click
-    '    Dim looper As Integer = 0
-    '    If txt_NewPass.Text <> txt_NewPass_Confirm.Text Then
-    '        RadMessageBox.Show(Me, "Please double check your new password.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error, MessageBoxDefaultButton.Button1)
-    '        txt_NewPass.Select()
-    '    ElseIf txt_CurPass.Text = "" Or txt_NewPass.Text = "" Or txt_NewPass_Confirm.Text = "" Then
-    '        txt_NewPass.SelectedText = True
-    '        RadMessageBox.Show(Me, "Please complete the fields.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error, MessageBoxDefaultButton.Button1)
-    '    Else
-    '        If MySQLConn.State = ConnectionState.Open Then
-    '            MySQLConn.Close()
-    '        End If
-    '        Try
-    '            MySQLConn.ConnectionString = connstring
-    '            MySQLConn.Open()
-    '            Dim q2 As String = "SELECT * FROM staff_reg WHERE staff_username=@proc_email_login and staff_password=sha2(@proc_OLDpassword, 512)"
-    '            comm = New MySqlCommand(q2, MySQLConn)
-    '            comm.Parameters.AddWithValue("@proc_email_login", username)
-    '            comm.Parameters.AddWithValue("@proc_OLDpassword", txt_CurPass.Text)
-    '            reader = comm.ExecuteReader
-    '            While reader.Read
-    '                looper += 1
-    '            End While
-    '            MySQLConn.Close()
-    '        Catch ex As MySqlException
-    '            If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") Or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") Or ex.Message.Contains("Reading from the stream has failed"))) Then
-    '                RadMessageBox.Show(Me, "The database probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
-    '                Login.log_lbl_dbstatus.Text = "Offline"
-    '                Login.log_lbl_dbstatus.ForeColor = Color.Red
-    '                Return
-    '            Else
-    '                RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
-    '            End If
-    '        Catch ex As Exception
-    '            RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
-    '        Finally
-    '            MySQLConn.Dispose()
-    '        End Try
-    '        Try
-    '            If looper = 1 Then
+'Private Sub btn_ChP_Click(sender As Object, e As EventArgs) Handles btn_ChP.Click
+'    Dim looper As Integer = 0
+'    If txt_NewPass.Text <> txt_NewPass_Confirm.Text Then
+'        RadMessageBox.Show(Me, "Please double check your new password.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error, MessageBoxDefaultButton.Button1)
+'        txt_NewPass.Select()
+'    ElseIf txt_CurPass.Text = "" Or txt_NewPass.Text = "" Or txt_NewPass_Confirm.Text = "" Then
+'        txt_NewPass.SelectedText = True
+'        RadMessageBox.Show(Me, "Please complete the fields.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error, MessageBoxDefaultButton.Button1)
+'    Else
+'        If MySQLConn.State = ConnectionState.Open Then
+'            MySQLConn.Close()
+'        End If
+'        Try
+'            MySQLConn.ConnectionString = connstring
+'            MySQLConn.Open()
+'            Dim q2 As String = "SELECT * FROM staff_reg WHERE staff_username=@proc_email_login and staff_password=sha2(@proc_OLDpassword, 512)"
+'            comm = New MySqlCommand(q2, MySQLConn)
+'            comm.Parameters.AddWithValue("@proc_email_login", username)
+'            comm.Parameters.AddWithValue("@proc_OLDpassword", txt_CurPass.Text)
+'            reader = comm.ExecuteReader
+'            While reader.Read
+'                looper += 1
+'            End While
+'            MySQLConn.Close()
+'        Catch ex As MySqlException
+'            If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") Or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") Or ex.Message.Contains("Reading from the stream has failed"))) Then
+'                RadMessageBox.Show(Me, "The database probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
+'                Login.log_lbl_dbstatus.Text = "Offline"
+'                Login.log_lbl_dbstatus.ForeColor = Color.Red
+'                Return
+'            Else
+'                RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
+'            End If
+'        Catch ex As Exception
+'            RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
+'        Finally
+'            MySQLConn.Dispose()
+'        End Try
+'        Try
+'            If looper = 1 Then
 
-    '                If MySQLConn.State = ConnectionState.Open Then
-    '                    MySQLConn.Close()
-    '                End If
-    '                MySQLConn.Open()
-    '                Dim Query As String = "UPDATE ceutltdscheduler.staff_reg SET staff_password=SHA2(@newpassword,512) WHERE staff_username=@currentusername"
-    '                comm = New MySqlCommand(Query, MySQLConn)
-    '                comm.Parameters.AddWithValue("@newpassword", txt_NewPass.Text)
-    '                comm.Parameters.AddWithValue("@currentusername", username)
-    '                comm.ExecuteNonQuery()
-    '                MySQLConn.Close()
-    '                RadMessageBox.Show(Me, "Password changed successfully.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Info, MessageBoxDefaultButton.Button1)
-    '                txt_CurPass.Text = String.Empty
-    '                txt_NewPass.Text = String.Empty
-    '                txt_NewPass_Confirm.Text = String.Empty
-    '                txt_CurPass.Select()
-    '                Me.Dispose()
-    '            Else
-    '                txt_CurPass.Text = String.Empty
-    '                txt_NewPass.Text = String.Empty
-    '                txt_NewPass_Confirm.Text = String.Empty
-    '                RadMessageBox.Show(Me, "Wrong Password.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error, MessageBoxDefaultButton.Button1)
-    '                txt_CurPass.Select()
-    '            End If
-    '        Catch ex As MySqlException
-    '            If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") Or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") Or ex.Message.Contains("Reading from the stream has failed"))) Then
-    '                RadMessageBox.Show(Me, "The database probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
-    '                Login.log_lbl_dbstatus.Text = "Offline"
-    '                Login.log_lbl_dbstatus.ForeColor = Color.Red
-    '                Return
-    '            Else
-    '                RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
-    '            End If
-    '        Catch ex As Exception
-    '            RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
-    '        Finally
-    '            MySQLConn.Dispose()
-    '        End Try
-    '    End If
-    'End Sub
+'                If MySQLConn.State = ConnectionState.Open Then
+'                    MySQLConn.Close()
+'                End If
+'                MySQLConn.Open()
+'                Dim Query As String = "UPDATE ceutltdscheduler.staff_reg SET staff_password=SHA2(@newpassword,512) WHERE staff_username=@currentusername"
+'                comm = New MySqlCommand(Query, MySQLConn)
+'                comm.Parameters.AddWithValue("@newpassword", txt_NewPass.Text)
+'                comm.Parameters.AddWithValue("@currentusername", username)
+'                comm.ExecuteNonQuery()
+'                MySQLConn.Close()
+'                RadMessageBox.Show(Me, "Password changed successfully.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Info, MessageBoxDefaultButton.Button1)
+'                txt_CurPass.Text = String.Empty
+'                txt_NewPass.Text = String.Empty
+'                txt_NewPass_Confirm.Text = String.Empty
+'                txt_CurPass.Select()
+'                Me.Dispose()
+'            Else
+'                txt_CurPass.Text = String.Empty
+'                txt_NewPass.Text = String.Empty
+'                txt_NewPass_Confirm.Text = String.Empty
+'                RadMessageBox.Show(Me, "Wrong Password.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error, MessageBoxDefaultButton.Button1)
+'                txt_CurPass.Select()
+'            End If
+'        Catch ex As MySqlException
+'            If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") Or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") Or ex.Message.Contains("Reading from the stream has failed"))) Then
+'                RadMessageBox.Show(Me, "The database probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
+'                Login.log_lbl_dbstatus.Text = "Offline"
+'                Login.log_lbl_dbstatus.ForeColor = Color.Red
+'                Return
+'            Else
+'                RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
+'            End If
+'        Catch ex As Exception
+'            RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
+'        Finally
+'            MySQLConn.Dispose()
+'        End Try
+'    End If
+'End Sub
 
-    'Private Sub PasswordChangeTextBoxes_GotFocus(sender As Object, e As EventArgs) Handles txt_CurPass.GotFocus, txt_NewPass.GotFocus, txt_NewPass_Confirm.GotFocus
-    '    AcceptButton = btn_ChP
-    'End Sub
+'Private Sub PasswordChangeTextBoxes_GotFocus(sender As Object, e As EventArgs) Handles txt_CurPass.GotFocus, txt_NewPass.GotFocus, txt_NewPass_Confirm.GotFocus
+'    AcceptButton = btn_ChP
+'End Sub
