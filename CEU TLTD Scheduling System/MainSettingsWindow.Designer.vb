@@ -247,7 +247,6 @@ Partial Class MainSettingsWindow
         Me.gv_venue.MasterTemplate.AllowEditRow = False
         Me.gv_venue.MasterTemplate.AutoSizeColumnsMode = Telerik.WinControls.UI.GridViewAutoSizeColumnsMode.Fill
         Me.gv_venue.MasterTemplate.EnableGrouping = False
-        Me.gv_venue.MasterTemplate.ShowColumnHeaders = False
         Me.gv_venue.MasterTemplate.ShowRowHeaderColumn = False
         Me.gv_venue.MasterTemplate.ViewDefinition = TableViewDefinition2
         Me.gv_venue.Name = "gv_venue"

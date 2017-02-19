@@ -263,7 +263,7 @@ Public Class MainSettingsWindow
             Dim dbdataset As New DataTable
 
             MySQLConn.Open()
-            query = "SELECT list_venue as 'Venue' FROM listvenue"
+            query = "SELECT list_idvenue as 'ID',list_venue as 'Venue' FROM listvenue"
             comm = New MySqlCommand(query, MySQLConn)
             SDA.SelectCommand = comm
             SDA.Fill(dbdataset)
@@ -287,6 +287,16 @@ Public Class MainSettingsWindow
             row = Me.gv_school.Rows(e.RowIndex)
             txtschool = row.Cells("ID").Value.ToString
             col_tb_college.Text = row.Cells("School").Value.ToString
+        End If
+    End Sub
+
+    Private Sub gv_venue_CellClick(sender As Object, e As GridViewCellEventArgs) Handles gv_venue.CellClick
+        If e.RowIndex >= 0 Then
+            Dim row As Telerik.WinControls.UI.GridViewRowInfo
+
+            row = Me.gv_venue.Rows(e.RowIndex)
+            txtven = row.Cells("ID").Value.ToString
+            ven_tb_venue.Text = row.Cells("Venue").Value.ToString
         End If
     End Sub
 
@@ -433,7 +443,6 @@ Public Class MainSettingsWindow
 
                     query = "DELETE FROm listschool WHERE list_idschool=@list_idschool"
                     comm = New MySqlCommand(query, MySQLConn)
-                    comm.Parameters.AddWithValue("list_school", col_tb_college.Text)
                     comm.Parameters.AddWithValue("list_idschool", txtschool)
                     reader = comm.ExecuteReader
                     MySQLConn.Close()
@@ -458,19 +467,167 @@ Public Class MainSettingsWindow
     End Sub
 
     Private Sub ven_btn_add_Click(sender As Object, e As EventArgs) Handles ven_btn_add.Click
+        Try
 
+            If MySQLConn.State = ConnectionState.Open Then
+                MySQLConn.Close()
+            End If
+
+            MySQLConn.ConnectionString = connstring
+
+            If (ven_tb_venue.Text = "") Then
+                RadMessageBox.Show(Me, "Please fill fields", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
+
+            Else
+
+                question = RadMessageBox.Show(Me, "Are you sure you want to add this?", system_Name, MessageBoxButtons.YesNo, RadMessageIcon.Question)
+
+                If (question = DialogResult.Yes) Then
+                    MySQLConn.Open()
+                    query = "SELECT * FROM listvenue WHERE list_venue=@list_venue"
+                    comm = New MySqlCommand(query, MySQLConn)
+                    comm.Parameters.AddWithValue("list_venue", ven_tb_venue.Text)
+                    reader = comm.ExecuteReader
+
+                    Dim count As Integer
+                    count = 0
+
+                    While reader.Read
+                        count += 1
+                    End While
+
+                    If count >= 1 Then
+                        RadMessageBox.Show(Me, "Venue: " & ven_tb_venue.Text & " is already registered.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Exclamation)
+
+                    Else
+                        MySQLConn.Close()
+                        MySQLConn.Open()
+
+                        query = "INSERT INTO listvenue VALUES (@list_idvenue,@list_venue)"
+                        comm = New MySqlCommand(query, MySQLConn)
+                        comm.Parameters.AddWithValue("list_idvenue", txtven)
+                        comm.Parameters.AddWithValue("list_venue", ven_tb_venue.Text)
+                        reader = comm.ExecuteReader
+                        MySQLConn.Close()
+
+                        RadMessageBox.Show(Me, "Successfully Saved!", system_Name, MessageBoxButtons.OK, RadMessageIcon.Info)
+                        ven_tb_venue.Focus()
+                        ven_tb_venue.Clear()
+                    End If
+                End If
+
+            End If
+
+        Catch ex As Exception
+            RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
+        Finally
+            load_ven()
+            auto_generate_id()
+            MySQLConn.Dispose()
+        End Try
     End Sub
 
     Private Sub ven_btn_update_Click(sender As Object, e As EventArgs) Handles ven_btn_update.Click
+        Try
 
+
+            If MySQLConn.State = ConnectionState.Open Then
+                MySQLConn.Close()
+            End If
+            MySQLConn.ConnectionString = connstring
+
+            If (ven_tb_venue.Text = "") Then
+                RadMessageBox.Show(Me, "Please  select from  the venue above.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
+            Else
+                question = RadMessageBox.Show(Me, "Are you sure you want to update this?", system_Name, MessageBoxButtons.YesNo, RadMessageIcon.Question)
+
+                If (question = DialogResult.Yes) Then
+                    MySQLConn.Open()
+
+
+                    query = "SELECT * FROM listvenue WHERE list_venue=@list_venue"
+                    comm = New MySqlCommand(query, MySQLConn)
+                    comm.Parameters.AddWithValue("list_venue", ven_tb_venue.Text)
+                    reader = comm.ExecuteReader
+
+                    Dim count As Integer
+                    count = 0
+
+                    While reader.Read
+                        count += 1
+                    End While
+
+                    If count >= 1 Then
+                        RadMessageBox.Show(Me, "Venue: " & ven_tb_venue.Text & " is already registered.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Exclamation)
+                    Else
+                        MySQLConn.Close()
+                        MySQLConn.Open()
+
+                        query = "UPDATE listvenue SET list_venue=@list_venue WHERE list_idvenue=@list_idvenue"
+                        comm = New MySqlCommand(query, MySQLConn)
+                        comm.Parameters.AddWithValue("list_venue", ven_tb_venue.Text)
+                        comm.Parameters.AddWithValue("list_idvenue", txtven)
+                        reader = comm.ExecuteReader
+                        MySQLConn.Close()
+
+                        RadMessageBox.Show(Me, "Successfully Updated!", system_Name, MessageBoxButtons.OK, RadMessageIcon.Info)
+                        ven_tb_venue.Focus()
+                        ven_tb_venue.Clear()
+                    End If
+
+                End If
+
+            End If
+        Catch ex As Exception
+            RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
+        Finally
+            load_ven()
+            auto_generate_id()
+            MySQLConn.Dispose()
+        End Try
     End Sub
 
     Private Sub ven_btn_delete_Click(sender As Object, e As EventArgs) Handles ven_btn_delete.Click
+        Try
 
+            If MySQLConn.State = ConnectionState.Open Then
+                MySQLConn.Close()
+            End If
+            MySQLConn.ConnectionString = connstring
+
+
+            If (ven_tb_venue.Text = "") Then
+                RadMessageBox.Show(Me, "Please select from  the venue above.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
+            Else
+                question = RadMessageBox.Show(Me, "Are you sure you want to delete this?", system_Name, MessageBoxButtons.YesNo, RadMessageIcon.Question)
+
+                If (question = DialogResult.Yes) Then
+
+                    MySQLConn.Open()
+
+                    query = "DELETE FROm listvenue WHERE list_idvenue=@list_idvenue"
+                    comm = New MySqlCommand(query, MySQLConn)
+                    comm.Parameters.AddWithValue("list_idvenue", txtven)
+                    reader = comm.ExecuteReader
+                    MySQLConn.Close()
+                    RadMessageBox.Show(Me, "Successfully Deleted!", system_Name, MessageBoxButtons.OK, RadMessageIcon.Info)
+                    ven_tb_venue.Focus()
+                    ven_tb_venue.Clear()
+                End If
+
+            End If
+        Catch ex As Exception
+            RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
+        Finally
+            load_ven()
+            auto_generate_id()
+            MySQLConn.Dispose()
+        End Try
     End Sub
 
     Private Sub ven_btn_clear_Click(sender As Object, e As EventArgs) Handles ven_btn_clear.Click
-
+        ven_tb_venue.Clear()
+        auto_generate_id()
     End Sub
 
 
