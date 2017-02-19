@@ -3,10 +3,8 @@ Imports Telerik.WinControls
 Imports Telerik.WinControls.UI
 
 Public Class MainSettingsWindow
-
     Dim question As DialogResult
     Dim query As String
-
     Public txtven As String
     Public txtschool As String
 
@@ -25,10 +23,6 @@ Public Class MainSettingsWindow
         Me.FormElement.TitleBar.TitlePrimitive.StretchHorizontally = True
         Me.FormElement.TitleBar.TitlePrimitive.TextAlignment = ContentAlignment.MiddleCenter
         rpv_settings_SelectedPageChanged(Me, New EventArgs()) 'TRIGGER EVENT SO THAT IT WILL LOAD WHAT IS NEEDED DEPENDING ON THE SELECTED TAB
-
-        auto_generate_id()
-        load_col()
-        load_ven()
     End Sub
     Private Sub rpv_settings_SelectedPageChanged(sender As Object, e As EventArgs) Handles rpv_settings.SelectedPageChanged
         If rpv_settings.SelectedPage Is rp_penalty Then
@@ -45,6 +39,10 @@ Public Class MainSettingsWindow
             rr_time.Value = My.Settings.refreshDelay.ToString
         ElseIf rpv_settings.SelectedPage Is rp_sms Then
             setting_gsm_toggleswitch.Value = My.Settings.gsmIsOn
+        ElseIf rpv_settings.SelectedPage Is rp_listcolven
+            auto_generate_id()
+            load_col()
+            load_ven()
         End If
     End Sub
     'Penalty TAB
@@ -158,6 +156,7 @@ Public Class MainSettingsWindow
     End Sub
     'End Theme SETTINGS TAB
 
+    'Start SMS Tab
     Private Sub setting_gsm_toggleswitch_ValueChanged(sender As Object, e As EventArgs) Handles setting_gsm_toggleswitch.ValueChanged
         If setting_gsm_toggleswitch.Value = True Then
             lbl_sms_plsSelDev.Show()
@@ -186,9 +185,9 @@ Public Class MainSettingsWindow
             RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
         End Try
     End Sub
+    'Start SMS Tab
 
-
-
+    'Start School/College Tab
     Private Sub btn_setcollege_Click(sender As Object, e As EventArgs) Handles btn_setcollege.Click
         gb_school.Show()
         gb_input_college.Show()
@@ -217,7 +216,7 @@ Public Class MainSettingsWindow
         txtven = id_ven
 
     End Sub
-
+    'School/College Tab
     Public Sub load_col()
         Try
 
@@ -248,7 +247,7 @@ Public Class MainSettingsWindow
             MySQLConn.Dispose()
         End Try
     End Sub
-
+    'School/College Tab
     Public Sub load_ven()
         Try
 
@@ -299,10 +298,10 @@ Public Class MainSettingsWindow
             ven_tb_venue.Text = row.Cells("Venue").Value.ToString
         End If
     End Sub
-
+    'School/College Tab
     Private Sub col_btn_add_Click(sender As Object, e As EventArgs) Handles col_btn_add.Click
         Try
-
+            auto_generate_id()
             If MySQLConn.State = ConnectionState.Open Then
                 MySQLConn.Close()
             End If
@@ -360,7 +359,7 @@ Public Class MainSettingsWindow
             MySQLConn.Dispose()
         End Try
     End Sub
-
+    'School/College Tab
     Private Sub col_btn_update_Click(sender As Object, e As EventArgs) Handles col_btn_update.Click
         Try
 
@@ -422,7 +421,7 @@ Public Class MainSettingsWindow
 
 
     End Sub
-
+    'School/College Tab
     Private Sub col_btn_delete_Click(sender As Object, e As EventArgs) Handles col_btn_delete.Click
         Try
 
@@ -468,7 +467,7 @@ Public Class MainSettingsWindow
 
     Private Sub ven_btn_add_Click(sender As Object, e As EventArgs) Handles ven_btn_add.Click
         Try
-
+            auto_generate_id()
             If MySQLConn.State = ConnectionState.Open Then
                 MySQLConn.Close()
             End If
@@ -526,11 +525,9 @@ Public Class MainSettingsWindow
             MySQLConn.Dispose()
         End Try
     End Sub
-
+    'School/College Tab
     Private Sub ven_btn_update_Click(sender As Object, e As EventArgs) Handles ven_btn_update.Click
         Try
-
-
             If MySQLConn.State = ConnectionState.Open Then
                 MySQLConn.Close()
             End If
@@ -597,7 +594,7 @@ Public Class MainSettingsWindow
 
 
             If (ven_tb_venue.Text = "") Then
-                RadMessageBox.Show(Me, "Please select from  the venue above.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
+                RadMessageBox.Show(Me, "Please select from the venue above.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
             Else
                 question = RadMessageBox.Show(Me, "Are you sure you want to delete this?", system_Name, MessageBoxButtons.YesNo, RadMessageIcon.Question)
 
