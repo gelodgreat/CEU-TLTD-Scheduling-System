@@ -345,7 +345,10 @@ Public Class MainSettingsWindow
 
                         RadMessageBox.Show(Me, "Successfully Saved!", system_Name, MessageBoxButtons.OK, RadMessageIcon.Info)
                         col_tb_college.Focus()
+                        load_col()
+                        auto_generate_id()
                         col_tb_college.Clear()
+                        Main.load_colleges()
                     End If
                 End If
 
@@ -354,23 +357,20 @@ Public Class MainSettingsWindow
         Catch ex As Exception
             RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
         Finally
-            load_col()
-            auto_generate_id()
+
             MySQLConn.Dispose()
         End Try
     End Sub
     'School/College Tab
     Private Sub col_btn_update_Click(sender As Object, e As EventArgs) Handles col_btn_update.Click
         Try
-
-
             If MySQLConn.State = ConnectionState.Open Then
                 MySQLConn.Close()
             End If
             MySQLConn.ConnectionString = connstring
 
             If (col_tb_college.Text = "") Then
-                RadMessageBox.Show(Me, "Please  select from  the school above.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
+                RadMessageBox.Show(Me, "Please select from  the school above.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
             Else
                 question = RadMessageBox.Show(Me, "Are you sure you want to update this?", system_Name, MessageBoxButtons.YesNo, RadMessageIcon.Question)
 
@@ -406,6 +406,9 @@ Public Class MainSettingsWindow
                         RadMessageBox.Show(Me, "Successfully Updated!", system_Name, MessageBoxButtons.OK, RadMessageIcon.Info)
                         col_tb_college.Focus()
                         col_tb_college.Clear()
+                        load_col()
+                        auto_generate_id()
+                        Main.load_colleges()
                     End If
 
                 End If
@@ -414,8 +417,6 @@ Public Class MainSettingsWindow
         Catch ex As Exception
             RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
         Finally
-            load_col()
-            auto_generate_id()
             MySQLConn.Dispose()
         End Try
 
@@ -448,14 +449,15 @@ Public Class MainSettingsWindow
                     RadMessageBox.Show(Me, "Successfully Deleted!", system_Name, MessageBoxButtons.OK, RadMessageIcon.Info)
                     col_tb_college.Focus()
                     col_tb_college.Clear()
+                    load_col()
+                    auto_generate_id()
+                    Main.load_colleges()
                 End If
 
             End If
         Catch ex As Exception
             RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
         Finally
-            load_col()
-            auto_generate_id()
             MySQLConn.Dispose()
         End Try
     End Sub
@@ -512,6 +514,9 @@ Public Class MainSettingsWindow
                         RadMessageBox.Show(Me, "Successfully Saved!", system_Name, MessageBoxButtons.OK, RadMessageIcon.Info)
                         ven_tb_venue.Focus()
                         ven_tb_venue.Clear()
+                        load_ven()
+                        auto_generate_id()
+                        Main.load_venues()
                     End If
                 End If
 
@@ -520,8 +525,6 @@ Public Class MainSettingsWindow
         Catch ex As Exception
             RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
         Finally
-            load_ven()
-            auto_generate_id()
             MySQLConn.Dispose()
         End Try
     End Sub
@@ -570,6 +573,9 @@ Public Class MainSettingsWindow
                         RadMessageBox.Show(Me, "Successfully Updated!", system_Name, MessageBoxButtons.OK, RadMessageIcon.Info)
                         ven_tb_venue.Focus()
                         ven_tb_venue.Clear()
+                        load_ven()
+                        auto_generate_id()
+                        Main.load_venues()
                     End If
 
                 End If
@@ -578,8 +584,6 @@ Public Class MainSettingsWindow
         Catch ex As Exception
             RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
         Finally
-            load_ven()
-            auto_generate_id()
             MySQLConn.Dispose()
         End Try
     End Sub
@@ -610,6 +614,7 @@ Public Class MainSettingsWindow
                     RadMessageBox.Show(Me, "Successfully Deleted!", system_Name, MessageBoxButtons.OK, RadMessageIcon.Info)
                     ven_tb_venue.Focus()
                     ven_tb_venue.Clear()
+                    Main.load_venues()
                 End If
 
             End If

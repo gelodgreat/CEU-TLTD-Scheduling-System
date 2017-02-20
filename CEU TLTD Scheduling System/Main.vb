@@ -328,6 +328,8 @@ Public Class Main
         eq_rgv_showregequipment.TableElement.Text = "To Display Data, please choose an equipment or type an equipment number on the left pane."
         load_main_acc()
         load_main_prof()
+        load_colleges
+        load_venues
         startup_disabled_buttons()
         load_released_list()
         load_released_list2()
@@ -1057,7 +1059,77 @@ Public Class Main
         End Try
     End Sub
 
+    Public Sub load_colleges()
+        Try
+            If MysqlConn.State = ConnectionState.Open Then
+                MysqlConn.Close()
+            End If
+            MysqlConn.ConnectionString = connstring
+            MysqlConn.Open()
+            query = "SELECT list_school as 'School' FROM ceutltdscheduler.listschool"
+            comm = New MySqlCommand(query, MysqlConn)
 
+            reader = comm.ExecuteReader
+
+            acc_pf_college.Items.Clear()
+            rec_cb_college_school.Items.Clear()
+            While reader.Read
+                acc_pf_college.Items.Add(reader.GetString("School"))
+                rec_cb_college_school.Items.Add(reader.GetString("School"))
+            End While
+            MysqlConn.Close
+         Catch ex As MySqlException
+            If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") Or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") Or ex.Message.Contains("Reading from the stream has failed"))) Then
+                refresh_main_rgv_recordedacademicsonly.Stop()
+                refresh_released_grid_list.Stop()
+                RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
+                Login.log_lbl_dbstatus.Text = "Offline"
+                Login.log_lbl_dbstatus.ForeColor = Color.Red
+                Return
+            Else
+                RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
+            End If
+        Catch ex As Exception
+            RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
+        Finally
+            MysqlConn.Dispose()
+        End Try
+    End Sub
+
+    Public Sub load_venues()
+        Try
+            If MysqlConn.State = ConnectionState.Open Then
+                MysqlConn.Close()
+            End If
+            MysqlConn.ConnectionString = connstring
+            MysqlConn.Open()
+            query = "SELECT list_venue as 'Venue' FROM ceutltdscheduler.listvenue"
+            comm = New MySqlCommand(query, MysqlConn)
+
+            reader = comm.ExecuteReader
+
+            rec_cb_location.Items.Clear()
+            While reader.Read
+                rec_cb_location.Items.Add(reader.GetString("Venue"))
+            End While
+            MysqlConn.Close
+         Catch ex As MySqlException
+            If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") Or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") Or ex.Message.Contains("Reading from the stream has failed"))) Then
+                refresh_main_rgv_recordedacademicsonly.Stop()
+                refresh_released_grid_list.Stop()
+                RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
+                Login.log_lbl_dbstatus.Text = "Offline"
+                Login.log_lbl_dbstatus.ForeColor = Color.Red
+                Return
+            Else
+                RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
+            End If
+        Catch ex As Exception
+            RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
+        Finally
+            MysqlConn.Dispose()
+        End Try
+    End Sub
     'Programmed by BRENZ STARTING POINT
 
     Public Sub load_main_acc()
