@@ -427,6 +427,7 @@ Partial Class Main
         Me.rpvp_releasing = New Telerik.WinControls.UI.RadPageViewPage()
         Me.rel_gb_listinfos = New Telerik.WinControls.UI.RadPageView()
         Me.res_reserved_info = New Telerik.WinControls.UI.RadPageViewPage()
+        Me.lbl_MobileNo = New Telerik.WinControls.UI.RadLabel()
         Me.gp_controls = New Telerik.WinControls.UI.RadGroupBox()
         Me.released_btn_refresh = New Telerik.WinControls.UI.RadButton()
         Me.released_btn_release = New Telerik.WinControls.UI.RadButton()
@@ -485,8 +486,8 @@ Partial Class Main
         Me.RadLabel1 = New Telerik.WinControls.UI.RadLabel()
         Me.rec_dtp_date = New Telerik.WinControls.UI.RadDateTimePicker()
         Me.gp_reservation_equipments = New Telerik.WinControls.UI.RadGroupBox()
-        Me.res_rdio_reserved = New Telerik.WinControls.UI.RadRadioButton()
         Me.rec_btn_save = New Telerik.WinControls.UI.RadButton()
+        Me.res_rdio_reserved = New Telerik.WinControls.UI.RadRadioButton()
         Me.res_rdio_showall = New Telerik.WinControls.UI.RadRadioButton()
         Me.res_rdio_cancelled = New Telerik.WinControls.UI.RadRadioButton()
         Me.rec_eq_chooseeq = New Telerik.WinControls.UI.RadDropDownList()
@@ -602,7 +603,7 @@ Partial Class Main
         Me.refresh_penalty_grid_list = New System.Windows.Forms.Timer(Me.components)
         Me.refresh_returned_eq_list = New System.Windows.Forms.Timer(Me.components)
         Me.CeutltdschedulerDataSetBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.lbl_MobileNo = New Telerik.WinControls.UI.RadLabel()
+        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
         CType(Me.RadGroupBox16, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RadGroupBox13, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.rpvp_returning.SuspendLayout()
@@ -669,6 +670,7 @@ Partial Class Main
         CType(Me.rel_gb_listinfos, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.rel_gb_listinfos.SuspendLayout()
         Me.res_reserved_info.SuspendLayout()
+        CType(Me.lbl_MobileNo, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.gp_controls, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.gp_controls.SuspendLayout()
         CType(Me.released_btn_refresh, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -734,8 +736,8 @@ Partial Class Main
         CType(Me.rec_dtp_date, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.gp_reservation_equipments, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.gp_reservation_equipments.SuspendLayout()
-        CType(Me.res_rdio_reserved, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.rec_btn_save, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.res_rdio_reserved, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.res_rdio_showall, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.res_rdio_cancelled, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.rec_eq_chooseeq, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -833,6 +835,7 @@ Partial Class Main
         Me.RadGroupBox10.SuspendLayout()
         CType(Me.main_rgv_recordedacademicsonly, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.main_rgv_recordedacademicsonly.MasterTemplate, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.main_rgv_recordedacademicsonly.SuspendLayout()
         CType(Me.RadGroupBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.RadGroupBox2.SuspendLayout()
         CType(Me.RadGroupBox7, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -854,7 +857,7 @@ Partial Class Main
         Me.rpv1.SuspendLayout()
         CType(Me.RadMenu1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.CeutltdschedulerDataSetBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.lbl_MobileNo, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -1811,11 +1814,18 @@ Partial Class Main
         Me.res_reserved_info.Controls.Add(Me.gp_controls)
         Me.res_reserved_info.Controls.Add(Me.gp_details)
         Me.res_reserved_info.Controls.Add(Me.reserved_grid_list)
-        Me.res_reserved_info.ItemSize = New System.Drawing.SizeF(120.0!, 24.0!)
         Me.res_reserved_info.Location = New System.Drawing.Point(5, 30)
         Me.res_reserved_info.Name = "res_reserved_info"
         Me.res_reserved_info.Size = New System.Drawing.Size(1338, 487)
         Me.res_reserved_info.Text = "Reserved Equipments"
+        '
+        'lbl_MobileNo
+        '
+        Me.lbl_MobileNo.Location = New System.Drawing.Point(1110, 335)
+        Me.lbl_MobileNo.Name = "lbl_MobileNo"
+        Me.lbl_MobileNo.Size = New System.Drawing.Size(2, 2)
+        Me.lbl_MobileNo.TabIndex = 5
+        Me.lbl_MobileNo.Visible = False
         '
         'gp_controls
         '
@@ -2314,7 +2324,6 @@ Partial Class Main
         'rel_released_info
         '
         Me.rel_released_info.Controls.Add(Me.released_grid_list)
-        Me.rel_released_info.ItemSize = New System.Drawing.SizeF(152.0!, 24.0!)
         Me.rel_released_info.Location = New System.Drawing.Point(5, 30)
         Me.rel_released_info.Name = "rel_released_info"
         Me.rel_released_info.Size = New System.Drawing.Size(1338, 487)
@@ -2963,6 +2972,16 @@ Partial Class Main
         Me.gp_reservation_equipments.Text = "Equipments"
         Me.gp_reservation_equipments.ThemeName = "VisualStudio2012Dark"
         '
+        'rec_btn_save
+        '
+        Me.rec_btn_save.Anchor = System.Windows.Forms.AnchorStyles.Bottom
+        Me.rec_btn_save.Location = New System.Drawing.Point(317, 228)
+        Me.rec_btn_save.Name = "rec_btn_save"
+        Me.rec_btn_save.Size = New System.Drawing.Size(124, 30)
+        Me.rec_btn_save.TabIndex = 19
+        Me.rec_btn_save.Text = "Reserve Equipments"
+        Me.rec_btn_save.ThemeName = "VisualStudio2012Dark"
+        '
         'res_rdio_reserved
         '
         Me.res_rdio_reserved.BackColor = System.Drawing.Color.Transparent
@@ -2973,16 +2992,6 @@ Partial Class Main
         Me.res_rdio_reserved.TabStop = False
         Me.res_rdio_reserved.Text = "Show Reserved"
         Me.res_rdio_reserved.ThemeName = "VisualStudio2012Dark"
-        '
-        'rec_btn_save
-        '
-        Me.rec_btn_save.Anchor = System.Windows.Forms.AnchorStyles.Bottom
-        Me.rec_btn_save.Location = New System.Drawing.Point(317, 228)
-        Me.rec_btn_save.Name = "rec_btn_save"
-        Me.rec_btn_save.Size = New System.Drawing.Size(124, 30)
-        Me.rec_btn_save.TabIndex = 19
-        Me.rec_btn_save.Text = "Reserve Equipments"
-        Me.rec_btn_save.ThemeName = "VisualStudio2012Dark"
         '
         'res_rdio_showall
         '
@@ -4032,6 +4041,7 @@ Partial Class Main
         'main_rgv_recordedacademicsonly
         '
         Me.main_rgv_recordedacademicsonly.AutoSizeRows = True
+        Me.main_rgv_recordedacademicsonly.Controls.Add(Me.DataGridView1)
         Me.main_rgv_recordedacademicsonly.Dock = System.Windows.Forms.DockStyle.Fill
         Me.main_rgv_recordedacademicsonly.Location = New System.Drawing.Point(2, 18)
         '
@@ -4233,7 +4243,7 @@ Partial Class Main
         Me.rpv1.DefaultPage = Me.rpvp1_main
         Me.rpv1.Location = New System.Drawing.Point(0, 26)
         Me.rpv1.Name = "rpv1"
-        Me.rpv1.SelectedPage = Me.rpvp_releasing
+        Me.rpv1.SelectedPage = Me.rpvp1_main
         Me.rpv1.Size = New System.Drawing.Size(1358, 557)
         Me.rpv1.TabIndex = 1
         Me.rpv1.Text = "Home"
@@ -4320,13 +4330,13 @@ Partial Class Main
         'refresh_released_grid_list
         '
         '
-        'lbl_MobileNo
+        'DataGridView1
         '
-        Me.lbl_MobileNo.Location = New System.Drawing.Point(1110, 335)
-        Me.lbl_MobileNo.Name = "lbl_MobileNo"
-        Me.lbl_MobileNo.Size = New System.Drawing.Size(2, 2)
-        Me.lbl_MobileNo.TabIndex = 5
-        Me.lbl_MobileNo.Visible = False
+        Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DataGridView1.Location = New System.Drawing.Point(34, 24)
+        Me.DataGridView1.Name = "DataGridView1"
+        Me.DataGridView1.Size = New System.Drawing.Size(506, 150)
+        Me.DataGridView1.TabIndex = 1
         '
         'Main
         '
@@ -4417,6 +4427,7 @@ Partial Class Main
         Me.rel_gb_listinfos.ResumeLayout(False)
         Me.res_reserved_info.ResumeLayout(False)
         Me.res_reserved_info.PerformLayout()
+        CType(Me.lbl_MobileNo, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.gp_controls, System.ComponentModel.ISupportInitialize).EndInit()
         Me.gp_controls.ResumeLayout(False)
         CType(Me.released_btn_refresh, System.ComponentModel.ISupportInitialize).EndInit()
@@ -4485,8 +4496,8 @@ Partial Class Main
         CType(Me.gp_reservation_equipments, System.ComponentModel.ISupportInitialize).EndInit()
         Me.gp_reservation_equipments.ResumeLayout(False)
         Me.gp_reservation_equipments.PerformLayout()
-        CType(Me.res_rdio_reserved, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.rec_btn_save, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.res_rdio_reserved, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.res_rdio_showall, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.res_rdio_cancelled, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.rec_eq_chooseeq, System.ComponentModel.ISupportInitialize).EndInit()
@@ -4587,6 +4598,8 @@ Partial Class Main
         Me.RadGroupBox10.ResumeLayout(False)
         CType(Me.main_rgv_recordedacademicsonly.MasterTemplate, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.main_rgv_recordedacademicsonly, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.main_rgv_recordedacademicsonly.ResumeLayout(False)
+        Me.main_rgv_recordedacademicsonly.PerformLayout()
         CType(Me.RadGroupBox2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.RadGroupBox2.ResumeLayout(False)
         CType(Me.RadGroupBox7, System.ComponentModel.ISupportInitialize).EndInit()
@@ -4610,7 +4623,7 @@ Partial Class Main
         Me.rpv1.ResumeLayout(False)
         CType(Me.RadMenu1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.CeutltdschedulerDataSetBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.lbl_MobileNo, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
@@ -4863,5 +4876,6 @@ Partial Class Main
     Friend WithEvents RadLabel40 As Telerik.WinControls.UI.RadLabel
     Friend WithEvents acc_pf_mobnum As Telerik.WinControls.UI.RadTextBox
     Friend WithEvents lbl_MobileNo As Telerik.WinControls.UI.RadLabel
+    Friend WithEvents DataGridView1 As DataGridView
 End Class
 

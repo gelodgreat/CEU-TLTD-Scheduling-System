@@ -57,7 +57,7 @@ Public Class Main
 
 
     'BENDO TIME
-    Dim bendo As New DataTable
+    Dim release_info_sms As New DataTable
     Dim smsList As New List(Of PendingSms)
     Dim smsListDone As New List(Of String)
     Dim reservationThread As New Thread(Sub() thread1Loop())
@@ -75,12 +75,36 @@ Public Class Main
         Return False
     End Function
 
+
+
+    ''UNDER CONSTRUCTION
+    'Private Function getFinalTable(ByVal dt As DataTable, ByVal con As MySqlConnection, ByVal comm As MySqlCommand)
+
+    '    For Each row As DataRow In dt.Rows
+
+    '        For Each doneId As String In smsListDone
+
+    '            If doneId = row(0).ToString Then    'if sms is already sent
+    '                Dim qry As String = "update ceutltdscheduler.released_info set rel_isSMS_Sent = '1' where rel_reservation_no = '" & row(0).ToString & "';"
+    '                comm = New MySqlCommand(qry, con)
+    '                smsListDone.Remove(doneId)
+    '                dt.Rows.Remove(row)
+    '            End If
+    '        Next
+
+    '    Next
+
+    '    Return dt
+    'End Function
+
+
     'this function create new instance of a pendingSms
     Private Sub newPendingSms(ByVal id As String, ByVal endTime As String)
-        Dim newSms As New PendingSms(id, endTime, bendo, bendoTimer)
+        Dim newSms As New PendingSms(id, endTime, release_info_sms, bendoTimer)
         smsList.Add(newSms)
 
     End Sub
+
 
 
     'this function removes the sms instance from pending sms pool if the borrowed item is returned
@@ -111,7 +135,7 @@ Public Class Main
 
     Private Function isStillPending(ByVal sms As PendingSms)
 
-        For Each dr As DataRow In bendo.Rows
+        For Each dr As DataRow In release_info_sms.Rows
 
             If dr(0).ToString = sms.getReservationId Then
                 Return True
@@ -129,7 +153,7 @@ Public Class Main
         Thread.Sleep(200)
         Try
 
-            For Each dr As DataRow In bendo.Rows
+            For Each dr As DataRow In release_info_sms.Rows
 
                 If isNotYetPending(dr(0).ToString) = False And isThisDone(dr(0).ToString) = False Then
                     'add new sms pending here
@@ -912,17 +936,22 @@ Public Class Main
             ''lancebendo edit
             Dim tempdt As New DataTable
             MysqlConn.Open()
-            query = "Select reservationno as 'Reservation Number', TIME_FORMAT(endtime, '%H:%i') as 'End Time' from ceutltdscheduler.reservation natural join ceutltdscheduler.reservation_equipments where date ='" & Format(CDate(lu_date.Value), "yyyy-MM-dd") & "' and NOT(res_status='Cancelled') ORDER BY date DESC,starttime DESC"
+            query = "Select rel_reservation_no as 'Reservation Number', TIME_FORMAT(rel_endtime, '%H:%i') as 'End Time', rel_isSMS_Sent from ceutltdscheduler.released_info WHERE rel_isSMS_Sent='1' and rel_assign_date='" & Format(CDate(lu_date.Value), "yyyy-MM-dd") & "'"
             comm = New MySqlCommand(query, MysqlConn)
             SDA.SelectCommand = comm
             SDA.Fill(tempdt)
             'DataGridView1.DataSource = tempdt
-            bendo = tempdt
+
+            ''back
+            'release_info_sms = getFinalTable(tempdt, MysqlConn, comm)
+            release_info_sms = tempdt
             MysqlConn.Close()
+            'checkthis()
+
 
 
         Catch ex As MySqlException
-            If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") Or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") Or ex.Message.Contains("Reading from the stream has failed"))) Then
+            If (ex.Number = 0 And (ex.Message.Contains("Unable To connect To any Of the specified MySQL hosts") Or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable To connect To any Of the specified MySQL hosts") Or ex.Message.Contains("Reading from the stream has failed"))) Then
                 refresh_main_rgv_recordedacademicsonly.Stop()
                 refresh_released_grid_list.Stop()
                 RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -972,7 +1001,7 @@ Public Class Main
 
     '    Try
     '        MysqlConn.Open()
-    '        query = "Select reservationno as 'Reservation Number' ,borrower as 'Borrower',id as 'ID', equipmentno as 'Equipment No.', equipment as 'Equipment', DATE_FORMAT(date,'%M %d %Y') as 'Date',TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time',activitytype as 'Activiity Type',actname as 'Activity' from reservation where date ='" & Format(CDate(lu_date.Value), "yyyy-MM-dd") & "'and activitytype='School Activity' ORDER by date ASC"
+    '        query = "Select reservationno As 'Reservation Number' ,borrower as 'Borrower',id as 'ID', equipmentno as 'Equipment No.', equipment as 'Equipment', DATE_FORMAT(date,'%M %d %Y') as 'Date',TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time',activitytype as 'Activiity Type',actname as 'Activity' from reservation where date ='" & Format(CDate(lu_date.Value), "yyyy-MM-dd") & "'and activitytype='School Activity' ORDER by date ASC"
     '        ' PROBLEM: ID and Reservation is missing. THE NEXT COMMENT shows the old query
     '        'query = "SELECT TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time',borrower as 'Borrower', equipment as 'Equipment', equipmentno as 'Equipment No.' ,DATE_FORMAT(date,'%M %d %Y') as 'Date', activitytype as 'Activiity Type',actname as 'Activity' from reservation where date='" & Format(CDate(lu_date.Value), "yyyy-MM-dd") & "'ORDER BY starttime ASC"
     '        comm = New MySqlCommand(query, MysqlConn)
@@ -5038,6 +5067,9 @@ End Sub
         ''end lancebendo's
     End Sub
 
+    Private Sub checkthis()
+        DataGridView1.DataSource = release_info_sms
+    End Sub
 
 
 

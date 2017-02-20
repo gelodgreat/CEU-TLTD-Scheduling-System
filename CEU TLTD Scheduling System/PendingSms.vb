@@ -52,6 +52,12 @@ Public Class PendingSms
     End Function
 
     Public Function getIsDone()
+
+
+
+
+
+
         Return Me.isDone
     End Function
 
@@ -68,6 +74,10 @@ Public Class PendingSms
 
             ''INSERT SEND SMS FUNCTION HERE
             'test code lang
+
+            ''create a list for pending sms to be sent to avoid choking of sending
+
+
             Debug.WriteLine("MSG SENT!")
 
             Dim dr As DataRow = dt.Select("[" & dt.Columns(0).ColumnName & "] = '" & Me.getReservationId & "'")(0)
