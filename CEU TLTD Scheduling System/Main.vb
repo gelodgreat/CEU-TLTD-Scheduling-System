@@ -56,17 +56,6 @@ Public Class Main
 
 
 
-
-
-
-
-
-
-
-
-
-
-
     'BENDO TIME
     Dim bendo As New DataTable
     Dim smsList As New List(Of PendingSms)
@@ -329,7 +318,7 @@ Public Class Main
         reserved_load_table()
         startup_disabled_textbox()
         show_hide_txt_lbl()
-        color_coding()
+        'color_coding()
         'rec_rrtc_actname.Enabled = False
         lu_date.Value = Date.Now
         Main_Timer.Enabled = True
@@ -337,8 +326,9 @@ Public Class Main
         refresh_main_rgv_recordedacademicsonly.Start()
         'load_cb_eq_type()     ----->>> DEPRECIATED
         rel_nameofstaff_recorder.Text=""
-        eq_rgv_addeq.Columns(3).IsVisible = false 'Save Space in the temporary reservation table
-        acc_staff_list.Columns(5).IsVisible=False 'Save Space in the Staff table
+        eq_rgv_addeq.Columns(3).IsVisible = False 'Save Space in the temporary reservation table
+        acc_staff_list.Columns(5).IsVisible = False 'Save Space in the Staff table
+        reserved_grid_list.Columns(11).IsVisible = False
         acc_staff_rdio_active.ButtonElement.ToolTipText="Blue highlight when the account is active."
         acc_staff_rdio_inactive.ButtonElement.ToolTipText = "Red highlight when the account is inactive."
 
@@ -380,18 +370,17 @@ Public Class Main
         'ret_tb_id.Enabled = False
         rel_tb_id.Enabled=False
     End Sub
-    Public Sub color_coding()
-        If (rel_tb_status.Text = "Reserved") Then
-            rel_tb_status.BackColor = Color.Blue
-        ElseIf (rel_tb_status.Text = "Released") Then
-            rel_tb_status.BackColor = Color.Red
-        ElseIf (rel_tb_status.Text = "Returned") Then
-            rel_tb_status.BackColor = Color.Green
-        ElseIf (rel_tb_status.Text = "") Then
-            rel_tb_status.BackColor = Color.Gray
-        End If
-
-    End Sub
+    'Public Sub color_coding()
+    '    If (rel_tb_status2.Text = "Reserved") Then
+    '        rel_tb_status2.BackColor = Color.Blue
+    '    ElseIf (rel_tb_status2.Text = "Released") Then
+    '        rel_tb_status2.BackColor = Color.Red
+    '    ElseIf (rel_tb_status2.Text = "Returned") Then
+    '        rel_tb_status2.BackColor = Color.Green
+    '    ElseIf (rel_tb_status2.Text = "") Then
+    '        rel_tb_status2.BackColor = Color.Gray
+    '    End If
+    'End Sub
     Public Sub show_hide_txt_lbl()
         rel_tb_equipmentnum.Hide()
         rel_tb_equipment.Hide()
@@ -413,24 +402,24 @@ Public Class Main
 
     Private Sub acc_staff_list_ViewCellFormatting(sender As Object, e As CellFormattingEventArgs) Handles acc_staff_list.ViewCellFormatting
         e.CellElement.TextAlignment = ContentAlignment.MiddleCenter
-        e.CellElement.TextWrap=True
+        e.CellElement.TextWrap = True
     End Sub
 
     Private Sub acc_prof_list_ViewCellFormatting(sender As Object, e As CellFormattingEventArgs) Handles acc_prof_list.ViewCellFormatting
         e.CellElement.TextAlignment = ContentAlignment.MiddleCenter
-        e.CellElement.TextWrap=True
+        e.CellElement.TextWrap = True
     End Sub
     Private Sub eq_rgv_showregequipment_ViewCellFormatting(sender As Object, e As CellFormattingEventArgs) Handles eq_rgv_showregequipment.ViewCellFormatting
         e.CellElement.TextAlignment = ContentAlignment.MiddleCenter
-        e.CellElement.TextWrap=True
+        e.CellElement.TextWrap = True
     End Sub
 
     Private Sub main_rgv_recordedacademicsonly_ViewCellFormatting(sender As Object, e As CellFormattingEventArgs) Handles main_rgv_recordedacademicsonly.ViewCellFormatting
         e.CellElement.TextAlignment = ContentAlignment.MiddleCenter
-        e.CellElement.TextWrap=True
+        e.CellElement.TextWrap = True
         Dim cell As GridDataCellElement = TryCast(e.CellElement, GridDataCellElement)
         If cell IsNot Nothing Then
-	        cell.Font = New Font(New FontFamily("Segoe UI"), 12.00F)
+            cell.Font = New Font(New FontFamily("Segoe UI"), 12.0F)
         End If
     End Sub
 
@@ -440,35 +429,35 @@ Public Class Main
 
     Private Sub reservation_rgv_recordeddata_ViewCellFormatting(sender As Object, e As CellFormattingEventArgs) Handles reservation_rgv_recordeddata.ViewCellFormatting
         e.CellElement.TextAlignment = ContentAlignment.MiddleCenter
-        e.CellElement.TextWrap=True
+        e.CellElement.TextWrap = True
     End Sub
     Private Sub reserved_grid_list_ViewCellFormatting(sender As Object, e As CellFormattingEventArgs) Handles reserved_grid_list.ViewCellFormatting
         e.CellElement.TextAlignment = ContentAlignment.MiddleCenter
-        e.CellElement.TextWrap=True
+        e.CellElement.TextWrap = True
     End Sub
 
     Private Sub released_grid_list_ViewCellFormatting(sender As Object, e As CellFormattingEventArgs) Handles released_grid_list.ViewCellFormatting
         e.CellElement.TextAlignment = ContentAlignment.MiddleCenter
-        e.CellElement.TextWrap=True
+        e.CellElement.TextWrap = True
     End Sub
 
     Private Sub released_grid_list2_ViewCellFormatting(sender As Object, e As CellFormattingEventArgs) Handles released_grid_list2.ViewCellFormatting
         e.CellElement.TextAlignment = ContentAlignment.MiddleCenter
-        e.CellElement.TextWrap=True
+        e.CellElement.TextWrap = True
     End Sub
 
     Private Sub penalty_grid_list_ViewCellFormatting(sender As Object, e As CellFormattingEventArgs) Handles penalty_grid_list.ViewCellFormatting
         e.CellElement.TextAlignment = ContentAlignment.MiddleCenter
-        e.CellElement.TextWrap=True
+        e.CellElement.TextWrap = True
     End Sub
     Private Sub returned_eq_list_ViewCellFormatting(sender As Object, e As CellFormattingEventArgs) Handles returned_eq_list.ViewCellFormatting
         e.CellElement.TextAlignment = ContentAlignment.MiddleCenter
-        e.CellElement.TextWrap=True
+        e.CellElement.TextWrap = True
     End Sub
-   
 
-   Private Sub SetSizesofMainTable()
-        If main_rgv_recordedacademicsonly.Columns.Count<=0 Then
+
+    Private Sub SetSizesofMainTable()
+        If main_rgv_recordedacademicsonly.Columns.Count <= 0 Then
 
         Else
             If lu_ActivityType.Text = "Academic" Then
@@ -536,258 +525,258 @@ Public Class Main
                 Dim colsmain_att = main_rgv_recordedacademicsonly.Columns("Activity")
                 colsmain_att.Width = 120
             End If
- 
+
         End If
     End Sub ' Main TAB Table
-    
-   Private Sub SetSizeofReservationTable()
-        If reservation_rgv_recordeddata.Columns("Reservation Number") Is Nothing
-         'This is Used to shut up the object reference error
+
+    Private Sub SetSizeofReservationTable()
+        If reservation_rgv_recordeddata.Columns("Reservation Number") Is Nothing Then
+            'This is Used to shut up the object reference error
         Else
-        Dim cols_res_resnum As GridViewDataColumn = reservation_rgv_recordeddata.Columns("Reservation Number")
-        cols_res_resnum.Width=125
+            Dim cols_res_resnum As GridViewDataColumn = reservation_rgv_recordeddata.Columns("Reservation Number")
+            cols_res_resnum.Width = 125
 
-        Dim cols_res_bor As GridViewDataColumn = reservation_rgv_recordeddata.Columns("Borrower")
-        cols_res_bor.Width=119
+            Dim cols_res_bor As GridViewDataColumn = reservation_rgv_recordeddata.Columns("Borrower")
+            cols_res_bor.Width = 119
 
-        'Dim cols_res_id  As GridViewDataColumn = reservation_rgv_recordeddata.Columns("ID")
-        'cols_res_id.Width=71
-        
-        Dim cols_res_eqty As GridViewDataColumn = reservation_rgv_recordeddata.Columns("Equipment Type")
-        cols_res_eqty.Width=115
+            'Dim cols_res_id  As GridViewDataColumn = reservation_rgv_recordeddata.Columns("ID")
+            'cols_res_id.Width=71
 
-        Dim cols_res_eqno As GridViewDataColumn = reservation_rgv_recordeddata.Columns("Equipment No.")
-        cols_res_eqno.Width=115
+            Dim cols_res_eqty As GridViewDataColumn = reservation_rgv_recordeddata.Columns("Equipment Type")
+            cols_res_eqty.Width = 115
 
-        Dim cols_res_eqname As GridViewDataColumn = reservation_rgv_recordeddata.Columns("Equipment")
-        cols_res_eqname.Width=230
+            Dim cols_res_eqno As GridViewDataColumn = reservation_rgv_recordeddata.Columns("Equipment No.")
+            cols_res_eqno.Width = 115
 
-        Dim cols_res_loc As GridViewDataColumn = reservation_rgv_recordeddata.Columns("Location")
-        cols_res_loc.Width=90
+            Dim cols_res_eqname As GridViewDataColumn = reservation_rgv_recordeddata.Columns("Equipment")
+            cols_res_eqname.Width = 230
 
-        Dim cols_res_date As GridViewDataColumn = reservation_rgv_recordeddata.Columns("Date")
-        cols_res_date.Width = 114
+            Dim cols_res_loc As GridViewDataColumn = reservation_rgv_recordeddata.Columns("Location")
+            cols_res_loc.Width = 90
 
-        Dim cols_res_st As GridViewDataColumn = reservation_rgv_recordeddata.Columns("Start Time")
-        cols_res_st.Width = 68
+            Dim cols_res_date As GridViewDataColumn = reservation_rgv_recordeddata.Columns("Date")
+            cols_res_date.Width = 114
 
-        Dim cols_res_et As GridViewDataColumn = reservation_rgv_recordeddata.Columns("End Time")
-        cols_res_et.Width = 68
-        
-        Dim cols_res_at As GridViewDataColumn = reservation_rgv_recordeddata.Columns("Activity Type")
-        cols_res_at.Width = 109
+            Dim cols_res_st As GridViewDataColumn = reservation_rgv_recordeddata.Columns("Start Time")
+            cols_res_st.Width = 68
 
-        Dim cols_res_att As GridViewDataColumn = reservation_rgv_recordeddata.Columns("Activity")
-        cols_res_att.Width = 120
+            Dim cols_res_et As GridViewDataColumn = reservation_rgv_recordeddata.Columns("End Time")
+            cols_res_et.Width = 68
 
-        Dim cols_res_sta As GridViewDataColumn = reservation_rgv_recordeddata.Columns("Status")
-        cols_res_sta.Width = 115
+            Dim cols_res_at As GridViewDataColumn = reservation_rgv_recordeddata.Columns("Activity Type")
+            cols_res_at.Width = 109
 
-        Dim cols_res_rec_by As GridViewDataColumn = reservation_rgv_recordeddata.Columns("Recorded By")
-        cols_res_rec_by.Width = 119
+            Dim cols_res_att As GridViewDataColumn = reservation_rgv_recordeddata.Columns("Activity")
+            cols_res_att.Width = 120
+
+            Dim cols_res_sta As GridViewDataColumn = reservation_rgv_recordeddata.Columns("Status")
+            cols_res_sta.Width = 115
+
+            Dim cols_res_rec_by As GridViewDataColumn = reservation_rgv_recordeddata.Columns("Recorded By")
+            cols_res_rec_by.Width = 119
         End If
     End Sub 'ITO YUNG NAGPAPAERROR       'OK NA
 
-   Private Sub SetSizeofReservedItemstobeReleased()
-        If reserved_grid_list.Columns.Count<=0
+    Private Sub SetSizeofReservedItemstobeReleased()
+        If reserved_grid_list.Columns.Count <= 0 Then
         Else
-        Dim col_rel_res_ReservationNum As GridViewDataColumn = reserved_grid_list.Columns("Reservation Number")
-        col_rel_res_ReservationNum.Width = 120
-        Dim col_rel_res_Bor as GridViewDataColumn = reserved_grid_list.Columns("Borrower")
-        col_rel_res_Bor.Width = 119
-        Dim col_rel_res_eqtype as GridViewDataColumn = reserved_grid_list.Columns("Equipment Type")
-        col_rel_res_eqtype.Width = 119
-        Dim col_rel_res_eqno As GridViewDataColumn = reserved_grid_list.Columns("Equipment No.")
-        col_rel_res_eqno.Width = 120
-        Dim col_rel_res_eqname As GridViewDataColumn = reserved_grid_list.Columns("Equipment")
-        col_rel_res_eqname.Width = 310
-        Dim col_rel_res_date As GridViewDataColumn = reserved_grid_list.Columns("Date")
-        col_rel_res_date.Width = 114
-        Dim col_rel_res_loc As GridViewDataColumn = reserved_grid_list.Columns("Location")
-        col_rel_res_loc.Width = 100
-        Dim col_rel_res_st As GridViewDataColumn = reserved_grid_list.Columns("Start Time")
-        col_rel_res_st.Width = 68
-        Dim col_rel_res_et As GridViewDataColumn = reserved_grid_list.Columns("End Time")
-        col_rel_res_et.Width = 68
-        Dim col_rel_res_stt As GridViewDataColumn = reserved_grid_list.Columns("Status")
-        col_rel_res_stt.Width = 115
-        Dim col_rel_res_resby As GridViewDataColumn = reserved_grid_list.Columns("Recorded By")
-        col_rel_res_resby.Width = 115
-      End If
-    End Sub
-
-   Private Sub SetSizeofReservedItemsReleased_Also_in_theTab_in_Returning(which_COL As Boolean)
-        If released_grid_list.Columns.Count<=0 Then
-
-        Else
-        If which_COL= False
-            Dim col_rel_rel_ReservationNum As GridViewDataColumn = released_grid_list.Columns("Reservation Number")
-            col_rel_rel_ReservationNum.Width = 115
-            Dim col_rel_rel_pID as GridViewDataColumn = released_grid_list.Columns("Pass ID#")
-            col_rel_rel_pID.Width = 60
-            Dim col_rel_rel_Bor As GridViewDataColumn = released_grid_list.Columns("Borrower")
-            col_rel_rel_Bor.Width = 119
-            Dim col_rel_rel_eqtype As GridViewDataColumn = released_grid_list.Columns("Equipment Type")
-            col_rel_rel_eqtype.Width = 115
-            Dim col_rel_rel_eqno As GridViewDataColumn = released_grid_list.Columns("Equipment No.")
-            col_rel_rel_eqno.Width = 138
-            Dim col_rel_rel_eqname As GridViewDataColumn = released_grid_list.Columns("Equipment")
-            col_rel_rel_eqname.Width = 239
-            Dim col_rel_rel_date As GridViewDataColumn = released_grid_list.Columns("Date")
-            col_rel_rel_date.Width = 114
-            Dim col_rel_rel_st As GridViewDataColumn = released_grid_list.Columns("Start Time")
-            col_rel_rel_st.Width = 68
-            Dim col_rel_rel_et As GridViewDataColumn = released_grid_list.Columns("End Time")
-            col_rel_rel_et.Width = 68
-            Dim col_rel_rel_stt As GridViewDataColumn = released_grid_list.Columns("Status")
-            col_rel_rel_stt.Width = 120
-            Dim col_rel_rel_recby As GridViewDataColumn = released_grid_list.Columns("Recorded By")
-            col_rel_rel_recby.Width = 119
-            Dim col_rel_rel_rlby As GridViewDataColumn = released_grid_list.Columns("Released By")
-            col_rel_rel_rlby.Width = 119
-        Else
-            Dim col_rel_rel_ReservationNum As GridViewDataColumn = released_grid_list2.Columns("Reservation Number")
-            col_rel_rel_ReservationNum.Width = 115
-            Dim col_rel_rel_pID as GridViewDataColumn = released_grid_list2.Columns("Pass ID#")
-            col_rel_rel_pID.Width = 60
-            Dim col_rel_rel_Bor As GridViewDataColumn = released_grid_list2.Columns("Borrower")
-            col_rel_rel_Bor.Width = 119
-            Dim col_rel_rel_eqtype As GridViewDataColumn = released_grid_list2.Columns("Equipment Type")
-            col_rel_rel_eqtype.Width = 115
-            Dim col_rel_rel_eqno As GridViewDataColumn = released_grid_list2.Columns("Equipment No.")
-            col_rel_rel_eqno.Width = 138
-            Dim col_rel_rel_eqname As GridViewDataColumn = released_grid_list2.Columns("Equipment")
-            col_rel_rel_eqname.Width = 239
-            Dim col_rel_rel_date As GridViewDataColumn = released_grid_list2.Columns("Date")
-            col_rel_rel_date.Width = 114
-            Dim col_rel_rel_st As GridViewDataColumn = released_grid_list2.Columns("Start Time")
-            col_rel_rel_st.Width = 68
-            Dim col_rel_rel_et As GridViewDataColumn = released_grid_list2.Columns("End Time")
-            col_rel_rel_et.Width = 68
-            Dim col_rel_rel_stt As GridViewDataColumn = released_grid_list2.Columns("Status")
-            col_rel_rel_stt.Width = 120
-            Dim col_rel_rel_recby As GridViewDataColumn = released_grid_list2.Columns("Recorded By")
-            col_rel_rel_recby.Width = 119
-            Dim col_rel_rel_rlby As GridViewDataColumn = released_grid_list2.Columns("Released By")
-            col_rel_rel_rlby.Width = 119
-        End If
+            Dim col_rel_res_ReservationNum As GridViewDataColumn = reserved_grid_list.Columns("Reservation Number")
+            col_rel_res_ReservationNum.Width = 120
+            Dim col_rel_res_Bor As GridViewDataColumn = reserved_grid_list.Columns("Borrower")
+            col_rel_res_Bor.Width = 119
+            Dim col_rel_res_eqtype As GridViewDataColumn = reserved_grid_list.Columns("Equipment Type")
+            col_rel_res_eqtype.Width = 119
+            Dim col_rel_res_eqno As GridViewDataColumn = reserved_grid_list.Columns("Equipment No.")
+            col_rel_res_eqno.Width = 120
+            Dim col_rel_res_eqname As GridViewDataColumn = reserved_grid_list.Columns("Equipment")
+            col_rel_res_eqname.Width = 310
+            Dim col_rel_res_date As GridViewDataColumn = reserved_grid_list.Columns("Date")
+            col_rel_res_date.Width = 114
+            Dim col_rel_res_loc As GridViewDataColumn = reserved_grid_list.Columns("Location")
+            col_rel_res_loc.Width = 100
+            Dim col_rel_res_st As GridViewDataColumn = reserved_grid_list.Columns("Start Time")
+            col_rel_res_st.Width = 68
+            Dim col_rel_res_et As GridViewDataColumn = reserved_grid_list.Columns("End Time")
+            col_rel_res_et.Width = 68
+            Dim col_rel_res_stt As GridViewDataColumn = reserved_grid_list.Columns("Status")
+            col_rel_res_stt.Width = 115
+            Dim col_rel_res_resby As GridViewDataColumn = reserved_grid_list.Columns("Recorded By")
+            col_rel_res_resby.Width = 115
         End If
     End Sub
 
-   Private Sub SetSizeofPenaltyTable()
-        If penalty_grid_list.Columns.Count<=0
+    Private Sub SetSizeofReservedItemsReleased_Also_in_theTab_in_Returning(which_COL As Boolean)
+        If released_grid_list.Columns.Count <= 0 Then
 
         Else
-        penalty_grid_list.Columns("Penalty ID").IsVisible = false 'HIDE LATER
-        Dim ret_pen_resno = penalty_grid_list.Columns("Reservation Number")
-        ret_pen_resno.Width=125
+            If which_COL = False Then
+                Dim col_rel_rel_ReservationNum As GridViewDataColumn = released_grid_list.Columns("Reservation Number")
+                col_rel_rel_ReservationNum.Width = 115
+                Dim col_rel_rel_pID As GridViewDataColumn = released_grid_list.Columns("Pass ID#")
+                col_rel_rel_pID.Width = 60
+                Dim col_rel_rel_Bor As GridViewDataColumn = released_grid_list.Columns("Borrower")
+                col_rel_rel_Bor.Width = 119
+                Dim col_rel_rel_eqtype As GridViewDataColumn = released_grid_list.Columns("Equipment Type")
+                col_rel_rel_eqtype.Width = 115
+                Dim col_rel_rel_eqno As GridViewDataColumn = released_grid_list.Columns("Equipment No.")
+                col_rel_rel_eqno.Width = 138
+                Dim col_rel_rel_eqname As GridViewDataColumn = released_grid_list.Columns("Equipment")
+                col_rel_rel_eqname.Width = 239
+                Dim col_rel_rel_date As GridViewDataColumn = released_grid_list.Columns("Date")
+                col_rel_rel_date.Width = 114
+                Dim col_rel_rel_st As GridViewDataColumn = released_grid_list.Columns("Start Time")
+                col_rel_rel_st.Width = 68
+                Dim col_rel_rel_et As GridViewDataColumn = released_grid_list.Columns("End Time")
+                col_rel_rel_et.Width = 68
+                Dim col_rel_rel_stt As GridViewDataColumn = released_grid_list.Columns("Status")
+                col_rel_rel_stt.Width = 120
+                Dim col_rel_rel_recby As GridViewDataColumn = released_grid_list.Columns("Recorded By")
+                col_rel_rel_recby.Width = 119
+                Dim col_rel_rel_rlby As GridViewDataColumn = released_grid_list.Columns("Released By")
+                col_rel_rel_rlby.Width = 119
+            Else
+                Dim col_rel_rel_ReservationNum As GridViewDataColumn = released_grid_list2.Columns("Reservation Number")
+                col_rel_rel_ReservationNum.Width = 115
+                Dim col_rel_rel_pID As GridViewDataColumn = released_grid_list2.Columns("Pass ID#")
+                col_rel_rel_pID.Width = 60
+                Dim col_rel_rel_Bor As GridViewDataColumn = released_grid_list2.Columns("Borrower")
+                col_rel_rel_Bor.Width = 119
+                Dim col_rel_rel_eqtype As GridViewDataColumn = released_grid_list2.Columns("Equipment Type")
+                col_rel_rel_eqtype.Width = 115
+                Dim col_rel_rel_eqno As GridViewDataColumn = released_grid_list2.Columns("Equipment No.")
+                col_rel_rel_eqno.Width = 138
+                Dim col_rel_rel_eqname As GridViewDataColumn = released_grid_list2.Columns("Equipment")
+                col_rel_rel_eqname.Width = 239
+                Dim col_rel_rel_date As GridViewDataColumn = released_grid_list2.Columns("Date")
+                col_rel_rel_date.Width = 114
+                Dim col_rel_rel_st As GridViewDataColumn = released_grid_list2.Columns("Start Time")
+                col_rel_rel_st.Width = 68
+                Dim col_rel_rel_et As GridViewDataColumn = released_grid_list2.Columns("End Time")
+                col_rel_rel_et.Width = 68
+                Dim col_rel_rel_stt As GridViewDataColumn = released_grid_list2.Columns("Status")
+                col_rel_rel_stt.Width = 120
+                Dim col_rel_rel_recby As GridViewDataColumn = released_grid_list2.Columns("Recorded By")
+                col_rel_rel_recby.Width = 119
+                Dim col_rel_rel_rlby As GridViewDataColumn = released_grid_list2.Columns("Released By")
+                col_rel_rel_rlby.Width = 119
+            End If
+        End If
+    End Sub
 
-        Dim ret_pen_pID = penalty_grid_list.Columns("Pass ID#")
-        ret_pen_pID.Width = 60
+    Private Sub SetSizeofPenaltyTable()
+        If penalty_grid_list.Columns.Count <= 0 Then
 
-        Dim ret_pen_Bor = penalty_grid_list.Columns("Borrower")
-        ret_pen_Bor.Width= 90
+        Else
+            penalty_grid_list.Columns("Penalty ID").IsVisible = False 'HIDE LATER
+            Dim ret_pen_resno = penalty_grid_list.Columns("Reservation Number")
+            ret_pen_resno.Width = 125
 
-        Dim ret_pen_eqtype = penalty_grid_list.Columns("Equipment Type")
-        ret_pen_eqtype.Width=110
+            Dim ret_pen_pID = penalty_grid_list.Columns("Pass ID#")
+            ret_pen_pID.Width = 60
 
-        Dim ret_pen_eqno = penalty_grid_list.Columns("Equipment No.")
-        ret_pen_eqno.Width=120
+            Dim ret_pen_Bor = penalty_grid_list.Columns("Borrower")
+            ret_pen_Bor.Width = 90
 
-        Dim ret_pen_eqname = penalty_grid_list.Columns("Equipment")
-        ret_pen_eqname.Width=250
+            Dim ret_pen_eqtype = penalty_grid_list.Columns("Equipment Type")
+            ret_pen_eqtype.Width = 110
 
-        Dim ret_pen_date = penalty_grid_list.Columns("Reservation Date")
-        ret_pen_date.Width=120
+            Dim ret_pen_eqno = penalty_grid_list.Columns("Equipment No.")
+            ret_pen_eqno.Width = 120
 
-        Dim ret_pen_st = penalty_grid_list.Columns("Start Time")
-        ret_pen_st.Width=68
+            Dim ret_pen_eqname = penalty_grid_list.Columns("Equipment")
+            ret_pen_eqname.Width = 250
 
-        Dim ret_pen_et = penalty_grid_list.Columns("End Time")
-        ret_pen_et.Width=68
+            Dim ret_pen_date = penalty_grid_list.Columns("Reservation Date")
+            ret_pen_date.Width = 120
 
-        Dim ret_pen_p = penalty_grid_list.Columns("Price")
-        ret_pen_p.Width=68
+            Dim ret_pen_st = penalty_grid_list.Columns("Start Time")
+            ret_pen_st.Width = 68
 
-        Dim ret_pen_markret = penalty_grid_list.Columns("Marked Returned By")
-        ret_pen_markret.Width=110
+            Dim ret_pen_et = penalty_grid_list.Columns("End Time")
+            ret_pen_et.Width = 68
 
-        Dim ret_pen_retdate = penalty_grid_list.Columns("Return Date")
-        ret_pen_retdate.Width=120
-       End If
+            Dim ret_pen_p = penalty_grid_list.Columns("Price")
+            ret_pen_p.Width = 68
+
+            Dim ret_pen_markret = penalty_grid_list.Columns("Marked Returned By")
+            ret_pen_markret.Width = 110
+
+            Dim ret_pen_retdate = penalty_grid_list.Columns("Return Date")
+            ret_pen_retdate.Width = 120
+        End If
     End Sub
 
     Private Sub SetSizeofReturnTable()
-        If returned_eq_list.Columns.Count<=0
+        If returned_eq_list.Columns.Count <= 0 Then
 
         Else
-        returned_eq_list.Columns("Return ID").IsVisible = false 'HIDE LATER
-        Dim ret_resno = returned_eq_list.Columns("Reservation Number")
-        ret_resno.Width=125
+            returned_eq_list.Columns("Return ID").IsVisible = False 'HIDE LATER
+            Dim ret_resno = returned_eq_list.Columns("Reservation Number")
+            ret_resno.Width = 125
 
-        Dim ret_pID = returned_eq_list.Columns("Pass ID#")
-        ret_pID.Width = 55
+            Dim ret_pID = returned_eq_list.Columns("Pass ID#")
+            ret_pID.Width = 55
 
-        Dim ret_Bor = returned_eq_list.Columns("Borrower")
-        ret_Bor.Width= 100
+            Dim ret_Bor = returned_eq_list.Columns("Borrower")
+            ret_Bor.Width = 100
 
-        Dim ret_eqtype = returned_eq_list.Columns("Equipment Type")
-        ret_eqtype.Width=115
+            Dim ret_eqtype = returned_eq_list.Columns("Equipment Type")
+            ret_eqtype.Width = 115
 
-        Dim ret_eqno = returned_eq_list.Columns("Equipment No.")
-        ret_eqno.Width=115
+            Dim ret_eqno = returned_eq_list.Columns("Equipment No.")
+            ret_eqno.Width = 115
 
-        Dim ret_eqname = returned_eq_list.Columns("Equipment")
-        ret_eqname.Width=240
+            Dim ret_eqname = returned_eq_list.Columns("Equipment")
+            ret_eqname.Width = 240
 
-        Dim ret_date = returned_eq_list.Columns("Reservation Date")
-        ret_date.Width=105
+            Dim ret_date = returned_eq_list.Columns("Reservation Date")
+            ret_date.Width = 105
 
-        Dim ret_pen_st = returned_eq_list.Columns("Start Time")
-        ret_pen_st.Width=65
+            Dim ret_pen_st = returned_eq_list.Columns("Start Time")
+            ret_pen_st.Width = 65
 
-        Dim ret_pen_et = returned_eq_list.Columns("End Time")
-        ret_pen_et.Width=65
+            Dim ret_pen_et = returned_eq_list.Columns("End Time")
+            ret_pen_et.Width = 65
 
-        Dim ret_recby = returned_eq_list.Columns("Recorded By")
-        ret_recby.Width=95
+            Dim ret_recby = returned_eq_list.Columns("Recorded By")
+            ret_recby.Width = 95
 
-        Dim ret_relby = returned_eq_list.Columns("Released By")
-        ret_relby.Width=95
+            Dim ret_relby = returned_eq_list.Columns("Released By")
+            ret_relby.Width = 95
 
-        Dim ret_retto = returned_eq_list.Columns("Returned To")
-        ret_retto.Width=95
+            Dim ret_retto = returned_eq_list.Columns("Returned To")
+            ret_retto.Width = 95
 
-        Dim ret_retrem = returned_eq_list.Columns("Remarks")
-        ret_retrem.Width=100
+            Dim ret_retrem = returned_eq_list.Columns("Remarks")
+            ret_retrem.Width = 100
 
-        Dim ret_pen_retdate = returned_eq_list.Columns("Return Date")
-        ret_pen_retdate.Width=130
-       End If
+            Dim ret_pen_retdate = returned_eq_list.Columns("Return Date")
+            ret_pen_retdate.Width = 130
+        End If
     End Sub
     'End Formatting of GridViews
 
     Public Sub getFromDB_settings_penalty()
         Try
-        MysqlConn = New MySqlConnection
-        MysqlConn.ConnectionString = connstring
-        MysqlConn.Open()
-        Dim looper As Integer = 0
-        Dim q2 As String = "SELECT value FROM ceutltdscheduler.settings"
-        comm = New MySqlCommand(q2, MysqlConn)
-        reader = comm.ExecuteReader
-        While reader.Read
-            If looper = 0 Then
-                penalty_price = reader.GetString("value")
-            ElseIf looper = 1 Then
-                penalty_graceperiod = reader.GetString("value")
-            ElseIf looper = 2 Then
-                penalty_chargeinterval = reader.GetString("value")
-            End If
-            looper += 1
-        End While
-             Catch ex As MySqlException
-             If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed")))
+            MysqlConn = New MySqlConnection
+            MysqlConn.ConnectionString = connstring
+            MysqlConn.Open()
+            Dim looper As Integer = 0
+            Dim q2 As String = "SELECT value FROM ceutltdscheduler.settings"
+            comm = New MySqlCommand(q2, MysqlConn)
+            reader = comm.ExecuteReader
+            While reader.Read
+                If looper = 0 Then
+                    penalty_price = reader.GetString("value")
+                ElseIf looper = 1 Then
+                    penalty_graceperiod = reader.GetString("value")
+                ElseIf looper = 2 Then
+                    penalty_chargeinterval = reader.GetString("value")
+                End If
+                looper += 1
+            End While
+        Catch ex As MySqlException
+            If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") Or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") Or ex.Message.Contains("Reading from the stream has failed"))) Then
                 refresh_main_rgv_recordedacademicsonly.Stop()
                 refresh_released_grid_list.Stop()
                 RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -795,44 +784,44 @@ Public Class Main
                 Login.log_lbl_dbstatus.ForeColor = Color.Red
                 Return
             Else
-            RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
+                RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
             End If
         Catch ex As Exception
             RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
         Finally
-        MysqlConn.Close()
-        End try
+            MysqlConn.Close()
+        End Try
     End Sub
 
     Public Sub load_rec_table(show_all_no_filter As String, UPDATE As Boolean)
         Try
-        If res_rdio_reserved.ToggleState=Enumerations.ToggleState.Off And res_rdio_cancelled.ToggleState=Enumerations.ToggleState.Off And res_rdio_showall.ToggleState=Enumerations.ToggleState.Off
-            res_rdio_reserved.ToggleState=Enumerations.ToggleState.On
-        End If
-
-        MysqlConn = New MySqlConnection
-        MysqlConn.ConnectionString = connstring
-        Dim sda As New MySqlDataAdapter
-        Dim bsource As New BindingSource
-        Dim dbdataset As New DataTable
-        If UPDATE  And show_all_no_filter="NONE" Then
-            If res_rdio_cancelled.ToggleState=Enumerations.ToggleState.On
-                show_all_no_filter = "Radio_Cancelled"
-            Else If res_rdio_reserved.ToggleState=Enumerations.ToggleState.On
-                show_all_no_filter = "Radio_Reserved"
-            Else If res_rdio_showall.ToggleState=Enumerations.ToggleState.On
-                show_all_no_filter = "Radio_ShowAll"
+            If res_rdio_reserved.ToggleState = Enumerations.ToggleState.Off And res_rdio_cancelled.ToggleState = Enumerations.ToggleState.Off And res_rdio_showall.ToggleState = Enumerations.ToggleState.Off Then
+                res_rdio_reserved.ToggleState = Enumerations.ToggleState.On
             End If
-        End If
+
+            MysqlConn = New MySqlConnection
+            MysqlConn.ConnectionString = connstring
+            Dim sda As New MySqlDataAdapter
+            Dim bsource As New BindingSource
+            Dim dbdataset As New DataTable
+            If UPDATE And show_all_no_filter = "NONE" Then
+                If res_rdio_cancelled.ToggleState = Enumerations.ToggleState.On Then
+                    show_all_no_filter = "Radio_Cancelled"
+                ElseIf res_rdio_reserved.ToggleState = Enumerations.ToggleState.On Then
+                    show_all_no_filter = "Radio_Reserved"
+                ElseIf res_rdio_showall.ToggleState = Enumerations.ToggleState.On Then
+                    show_all_no_filter = "Radio_ShowAll"
+                End If
+            End If
 
             MysqlConn.Open()
             'If show_all_no_filter = "DatePicker" Then
-             '   query = "Select reservationno as 'Reservation Number' ,borrower as 'Borrower',id as 'ID', equipmentno as 'Equipment No.', equipment as 'Equipment', location as 'Location', DATE_FORMAT(date,'%M %d %Y') as 'Date',TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time',activitytype as 'Activity Type',actname as 'Activity',res_status as 'Status' from reservation natural join reservation_equipments where res_status='Reserved' and date ='" & Format(CDate(rec_dtp_date.Value), "yyyy-MM-dd") & "' ORDER by date DESC"
-            If show_all_no_filter ="Radio_Cancelled"
+            '   query = "Select reservationno as 'Reservation Number' ,borrower as 'Borrower',id as 'ID', equipmentno as 'Equipment No.', equipment as 'Equipment', location as 'Location', DATE_FORMAT(date,'%M %d %Y') as 'Date',TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time',activitytype as 'Activity Type',actname as 'Activity',res_status as 'Status' from reservation natural join reservation_equipments where res_status='Reserved' and date ='" & Format(CDate(rec_dtp_date.Value), "yyyy-MM-dd") & "' ORDER by date DESC"
+            If show_all_no_filter = "Radio_Cancelled" Then
                 query = "Select reservationno as 'Reservation Number' ,borrower as 'Borrower', equipmenttype as 'Equipment Type', equipmentno as 'Equipment No.', equipment as 'Equipment', location as 'Location', DATE_FORMAT(date,'%M %d %Y') as 'Date',TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time',activitytype as 'Activity Type',actname as 'Activity',res_status as 'Status', reservedby as 'Recorded By' from reservation natural join reservation_equipments where res_status='Cancelled' and date ='" & Format(CDate(rec_dtp_date.Value), "yyyy-MM-dd") & "' ORDER by date DESC"
-            Else If show_all_no_filter = "Radio_Reserved"
+            ElseIf show_all_no_filter = "Radio_Reserved" Then
                 query = "Select reservationno as 'Reservation Number' ,borrower as 'Borrower', equipmenttype as 'Equipment Type', equipmentno as 'Equipment No.', equipment as 'Equipment', location as 'Location', DATE_FORMAT(date,'%M %d %Y') as 'Date',TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time',activitytype as 'Activity Type',actname as 'Activity',res_status as 'Status', reservedby as 'Recorded By' from reservation natural join reservation_equipments where res_status='Reserved' and date ='" & Format(CDate(rec_dtp_date.Value), "yyyy-MM-dd") & "' ORDER by date DESC"
-            Else If show_all_no_filter = "Radio_ShowAll"
+            ElseIf show_all_no_filter = "Radio_ShowAll" Then
                 query = "Select reservationno as 'Reservation Number' ,borrower as 'Borrower', equipmenttype as 'Equipment Type', equipmentno as 'Equipment No.', equipment as 'Equipment', location as 'Location', DATE_FORMAT(date,'%M %d %Y') as 'Date',TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time',activitytype as 'Activity Type',actname as 'Activity',res_status as 'Status', reservedby as 'Recorded By' from reservation natural join reservation_equipments WHERE date ='" & Format(CDate(rec_dtp_date.Value), "yyyy-MM-dd") & "' ORDER by date DESC"
             End If
             'reservation_rgv_recordeddata.Columns.Clear
@@ -844,13 +833,13 @@ Public Class Main
             sda.Update(dbdataset)
             MysqlConn.Close()
             SetSizeofReservationTable() 'METHOD CAUSES ERROR!!!!
-            If reservation_rgv_recordeddata.Rows.Count -1 < Keepreservation_mainIndex
+            If reservation_rgv_recordeddata.Rows.Count - 1 < Keepreservation_mainIndex Then
                 'reservation_rgv_recordeddata.Rows(0).IsCurrent = True
             Else
                 reservation_rgv_recordeddata.Rows(Keepreservation_mainIndex).IsCurrent = True  'WUTRY_1
-        End If
-            Catch ex As MySqlException
-             If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed")))
+            End If
+        Catch ex As MySqlException
+            If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") Or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") Or ex.Message.Contains("Reading from the stream has failed"))) Then
                 refresh_main_rgv_recordedacademicsonly.Stop()
                 refresh_released_grid_list.Stop()
                 RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -858,7 +847,7 @@ Public Class Main
                 Login.log_lbl_dbstatus.ForeColor = Color.Red
                 Return
             Else
-            RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
+                RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
             End If
         Catch ex As Exception
             RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -867,26 +856,26 @@ Public Class Main
         End Try
     End Sub
 
-     Private Sub reservation_rgv_recordeddata_CellClick(sender As Object, e As GridViewCellEventArgs) Handles reservation_rgv_recordeddata.CellClick
-        If e.RowIndex = -1
+    Private Sub reservation_rgv_recordeddata_CellClick(sender As Object, e As GridViewCellEventArgs) Handles reservation_rgv_recordeddata.CellClick
+        If e.RowIndex = -1 Then
             'SHUT IT
         Else
-        Keepreservation_mainIndex =e.RowIndex
+            Keepreservation_mainIndex = e.RowIndex
         End If
     End Sub
-   
+
     Public Sub main_load_academicsonly()
         Try
-        If MysqlConn.State = ConnectionState.Open Then
-            MysqlConn.Close()
-        End If
-        MysqlConn = New MySqlConnection
-        MysqlConn.ConnectionString = connstring
-        Dim SDA As New MySqlDataAdapter
-        Dim dbdataset As New DataTable
-        Dim bsource As New BindingSource
-        Dim Cover As String
-        
+            If MysqlConn.State = ConnectionState.Open Then
+                MysqlConn.Close()
+            End If
+            MysqlConn = New MySqlConnection
+            MysqlConn.ConnectionString = connstring
+            Dim SDA As New MySqlDataAdapter
+            Dim dbdataset As New DataTable
+            Dim bsource As New BindingSource
+            Dim Cover As String
+
             If lu_ActivityType.Text = "School Activity" Then
                 query = "Select reservationno as 'Reservation Number', borrower as 'Borrower', equipmentno as 'Equipment No.', equipment as 'Equipment', location as 'Location',
             DATE_FORMAT(date,'%M %d %Y') as 'Date',TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time',
@@ -917,8 +906,8 @@ Public Class Main
             Main_MaintainSelectedCell()
 
             Dim DV As New DataView(dbdataset)
-        DV.RowFilter = String.Format("`Borrower` Like'%{0}%' and `Equipment` Like'%{1}%' and `Date` Like'%{2}%' and `Activity Type` Like'%{3}%'", lu_byname.Text, lu_byequipment.Text, lu_date.Value.ToString("MMMM dd yyyy"), Cover)
-        main_rgv_recordedacademicsonly.DataSource = DV
+            DV.RowFilter = String.Format("`Borrower` Like'%{0}%' and `Equipment` Like'%{1}%' and `Date` Like'%{2}%' and `Activity Type` Like'%{3}%'", lu_byname.Text, lu_byequipment.Text, lu_date.Value.ToString("MMMM dd yyyy"), Cover)
+            main_rgv_recordedacademicsonly.DataSource = DV
 
             ''lancebendo edit
             Dim tempdt As New DataTable
@@ -933,7 +922,7 @@ Public Class Main
 
 
         Catch ex As MySqlException
-             If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed")))
+            If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") Or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") Or ex.Message.Contains("Reading from the stream has failed"))) Then
                 refresh_main_rgv_recordedacademicsonly.Stop()
                 refresh_released_grid_list.Stop()
                 RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -941,7 +930,7 @@ Public Class Main
                 Login.log_lbl_dbstatus.ForeColor = Color.Red
                 Return
             Else
-            RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
+                RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
             End If
         Catch ex As Exception
             RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -950,20 +939,20 @@ Public Class Main
         End Try
     End Sub
 
-        Private Sub main_rgv_recordedacademicsonly_CellClick(sender As Object, e As GridViewCellEventArgs) Handles main_rgv_recordedacademicsonly.CellClick
-            If e.RowIndex = -1
-                'DO NOTHING
-            Else
-            main_window_keepSelectedRowIndexAfterUpdate=e.RowIndex
-            End If
-        End Sub
+    Private Sub main_rgv_recordedacademicsonly_CellClick(sender As Object, e As GridViewCellEventArgs) Handles main_rgv_recordedacademicsonly.CellClick
+        If e.RowIndex = -1 Then
+            'DO NOTHING
+        Else
+            main_window_keepSelectedRowIndexAfterUpdate = e.RowIndex
+        End If
+    End Sub
 
     Private Sub Main_MaintainSelectedCell()
-        If main_rgv_recordedacademicsonly.Rows.Count -1 < main_window_keepSelectedRowIndexAfterUpdate Then
-                    'DO NOTHING
-       Else
-          main_rgv_recordedacademicsonly.Rows(main_window_keepSelectedRowIndexAfterUpdate).IsCurrent = True
-       End If
+        If main_rgv_recordedacademicsonly.Rows.Count - 1 < main_window_keepSelectedRowIndexAfterUpdate Then
+            'DO NOTHING
+        Else
+            main_rgv_recordedacademicsonly.Rows(main_window_keepSelectedRowIndexAfterUpdate).IsCurrent = True
+        End If
     End Sub
 
 
@@ -1004,11 +993,11 @@ Public Class Main
     'End Sub
 
     Public Sub load_res_borrowerlist()
-       Try
-        If MysqlConn.State = ConnectionState.Open Then
-            MysqlConn.Close()
-        End If
-        MysqlConn.ConnectionString = connstring
+        Try
+            If MysqlConn.State = ConnectionState.Open Then
+                MysqlConn.Close()
+            End If
+            MysqlConn.ConnectionString = connstring
             MysqlConn.Open()
             query = "SELECT CONCAT (bor_surname,', ',bor_fname) as 'Name' FROM ceutltdscheduler.borrowers_reg"
             comm = New MySqlCommand(query, MysqlConn)
@@ -1017,42 +1006,43 @@ Public Class Main
 
             rec_cb_borrower.Items.Clear()
             While reader.Read
-                rec_cb_borrower.Items.Add(reader.GetString("name"))
+                rec_cb_borrower.Items.Add(reader.GetString("Name"))
             End While
 
             MysqlConn.Close()
-            Catch ex As MySqlException
-                If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed")))
-                    refresh_main_rgv_recordedacademicsonly.Stop()
-                    refresh_released_grid_list.Stop()
-                    RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
-                    Login.log_lbl_dbstatus.Text = "Offline"
-                    Login.log_lbl_dbstatus.ForeColor = Color.Red
-                    Return
-               Else
-                    RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
-               End If
-            Catch ex As Exception
+        Catch ex As MySqlException
+            If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") Or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") Or ex.Message.Contains("Reading from the stream has failed"))) Then
+                refresh_main_rgv_recordedacademicsonly.Stop()
+                refresh_released_grid_list.Stop()
+                RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
+                Login.log_lbl_dbstatus.Text = "Offline"
+                Login.log_lbl_dbstatus.ForeColor = Color.Red
+                Return
+            Else
                 RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
+            End If
+        Catch ex As Exception
+            RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
         Finally
             MysqlConn.Dispose()
         End Try
     End Sub
 
+
     'Programmed by BRENZ STARTING POINT
 
     Public Sub load_main_acc()
         Try
-        MysqlConn = New MySqlConnection
-        MysqlConn.ConnectionString = connstring
+            MysqlConn = New MySqlConnection
+            MysqlConn.ConnectionString = connstring
 
-        Dim sda As New MySqlDataAdapter
-        Dim dbdataset As New DataTable
-        Dim bsource As New BindingSource
+            Dim sda As New MySqlDataAdapter
+            Dim dbdataset As New DataTable
+            Dim bsource As New BindingSource
 
-        If MysqlConn.State = ConnectionState.Open Then
-            MysqlConn.Close()
-        End If
+            If MysqlConn.State = ConnectionState.Open Then
+                MysqlConn.Close()
+            End If
 
             MysqlConn.Open()
             Dim query As String
@@ -1067,12 +1057,12 @@ Public Class Main
             sda.Update(dbdataset)
             MysqlConn.Close()
 
-            If acc_staff_list.Rows.Count -1 < acc_staff_keepSelectedRowIndexAfterUpdate Then
+            If acc_staff_list.Rows.Count - 1 < acc_staff_keepSelectedRowIndexAfterUpdate Then
             Else
                 acc_staff_list.Rows(acc_staff_keepSelectedRowIndexAfterUpdate).IsCurrent = True
             End If
-         Catch ex As MySqlException
-             If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed")))
+        Catch ex As MySqlException
+            If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") Or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") Or ex.Message.Contains("Reading from the stream has failed"))) Then
                 refresh_main_rgv_recordedacademicsonly.Stop()
                 refresh_released_grid_list.Stop()
                 RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -1080,7 +1070,7 @@ Public Class Main
                 Login.log_lbl_dbstatus.ForeColor = Color.Red
                 Return
             Else
-            RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
+                RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
             End If
         Catch ex As Exception
             RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -1089,8 +1079,8 @@ Public Class Main
         End Try
     End Sub
 
-        Private Sub acc_staff_list_CellClick(sender As Object, e As GridViewCellEventArgs) Handles acc_staff_list.CellClick
-        If e.RowIndex = -1
+    Private Sub acc_staff_list_CellClick(sender As Object, e As GridViewCellEventArgs) Handles acc_staff_list.CellClick
+        If e.RowIndex = -1 Then
             'DO NOTHING
         Else
             acc_staff_keepSelectedRowIndexAfterUpdate = e.RowIndex
@@ -1100,18 +1090,18 @@ Public Class Main
     'Programmed by BRENZ SECOND POINT
     Public Sub load_main_prof()
         Try
-        MysqlConn = New MySqlConnection
-        MysqlConn.ConnectionString = connstring
+            MysqlConn = New MySqlConnection
+            MysqlConn.ConnectionString = connstring
 
-        Dim sda As New MySqlDataAdapter
-        Dim dbdataset As New DataTable
-        Dim bsource As New BindingSource
+            Dim sda As New MySqlDataAdapter
+            Dim dbdataset As New DataTable
+            Dim bsource As New BindingSource
 
-        If MysqlConn.State = ConnectionState.Open Then
-            MysqlConn.Close()
-        End If
+            If MysqlConn.State = ConnectionState.Open Then
+                MysqlConn.Close()
+            End If
 
-        
+
             MysqlConn.Open()
             Dim query As String
             query = "Select bor_id as 'Professor ID' , bor_fname as 'First Name' , bor_mname as 'Middle Name' , bor_surname as 'Surname' , bor_college as 'College/School', bor_mobileno as 'Mobile Number' from ceutltdscheduler.borrowers_reg"
@@ -1123,34 +1113,34 @@ Public Class Main
             acc_prof_list.ReadOnly = True
             sda.Update(dbdataset)
             MysqlConn.Close()
-            If acc_prof_list.Rows.Count -1 < acc_prof_keepSelectedRowIndexAfterUpdate Then
+            If acc_prof_list.Rows.Count - 1 < acc_prof_keepSelectedRowIndexAfterUpdate Then
                 'DO NOTHING
             Else
                 acc_prof_list.Rows(acc_prof_keepSelectedRowIndexAfterUpdate).IsCurrent = True
             End If
-            Catch ex As MySqlException
-                If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed")))
-                    refresh_main_rgv_recordedacademicsonly.Stop()
-                    refresh_released_grid_list.Stop()
-                    RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
-                    Login.log_lbl_dbstatus.Text = "Offline"
-                    Login.log_lbl_dbstatus.ForeColor = Color.Red
-                    Return
-               Else
-                    RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
-               End If
-            Catch ex As Exception
+        Catch ex As MySqlException
+            If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") Or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") Or ex.Message.Contains("Reading from the stream has failed"))) Then
+                refresh_main_rgv_recordedacademicsonly.Stop()
+                refresh_released_grid_list.Stop()
+                RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
+                Login.log_lbl_dbstatus.Text = "Offline"
+                Login.log_lbl_dbstatus.ForeColor = Color.Red
+                Return
+            Else
                 RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
-            Finally
+            End If
+        Catch ex As Exception
+            RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
+        Finally
             MysqlConn.Dispose()
         End Try
     End Sub
 
-        Private Sub acc_prof_list_CellClick(sender As Object, e As GridViewCellEventArgs) Handles acc_prof_list.CellClick
+    Private Sub acc_prof_list_CellClick(sender As Object, e As GridViewCellEventArgs) Handles acc_prof_list.CellClick
         If e.RowIndex < -1 Then
             'DO NOTHING
         Else
-        acc_prof_keepSelectedRowIndexAfterUpdate = e.RowIndex
+            acc_prof_keepSelectedRowIndexAfterUpdate = e.RowIndex
         End If
     End Sub
 
@@ -1158,18 +1148,18 @@ Public Class Main
 
     Private Sub acc_staff_btn_save_Click(sender As Object, e As EventArgs) Handles acc_staff_btn_save.Click
         Try
-        MysqlConn = New MySqlConnection
-        MysqlConn.ConnectionString = connstring
-        Dim READER As MySqlDataReader
-        If (acc_sf_id.Text = "") Or (acc_sf_fname.Text = "") Or (acc_sf_mname.Text = "") Or (acc_sf_lname.Text = "") Or (acc_sf_username.Text = "") Or (acc_staff_rdio_active.ToggleState=Enumerations.ToggleState.Off And acc_staff_rdio_inactive.ToggleState=Enumerations.ToggleState.Off) Then '(acc_sf_usertype.Text = "")
-            RadMessageBox.Show(Me, "Please complete all the details.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Exclamation)
-        Else
-            If (Not acc_sf_username.Text.Length <= 11) Then
-                If acc_sf_username.Text.Contains("@ceu.edu.ph") Then
-                    
+            MysqlConn = New MySqlConnection
+            MysqlConn.ConnectionString = connstring
+            Dim READER As MySqlDataReader
+            If (acc_sf_id.Text = "") Or (acc_sf_fname.Text = "") Or (acc_sf_mname.Text = "") Or (acc_sf_lname.Text = "") Or (acc_sf_username.Text = "") Or (acc_staff_rdio_active.ToggleState = Enumerations.ToggleState.Off And acc_staff_rdio_inactive.ToggleState = Enumerations.ToggleState.Off) Then '(acc_sf_usertype.Text = "")
+                RadMessageBox.Show(Me, "Please complete all the details.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Exclamation)
+            Else
+                If (Not acc_sf_username.Text.Length <= 11) Then
+                    If acc_sf_username.Text.Contains("@ceu.edu.ph") Then
+
                         MysqlConn.Open()
                         Dim Query As String
-      
+
                         'REMOVAL OF STAFF Query = "insert into ceutltdscheduler.staff_reg (staff_id,staff_fname,staff_mname,staff_surname,staff_type,staff_username,staff_password) values (@staffid, @staffFname, @staffMname, @staffLname, @staffUsertype, @staffUsername, sha2(@staffPassword, 512))"
                         Query = "insert into ceutltdscheduler.staff_reg (staff_id,staff_fname,staff_mname,staff_surname,staff_username,staff_password,staff_isactive) values (@staffid, @staffFname, @staffMname, @staffLname, @staffUsername, sha2(@staffPassword, 512), @staffIsActive)"
                         comm = New MySqlCommand(Query, MysqlConn)
@@ -1181,12 +1171,12 @@ Public Class Main
                         comm.Parameters.AddWithValue("staffUsername", acc_sf_username.Text)
                         comm.Parameters.AddWithValue("staffPassword", acc_sf_password.Text)
 
-                        If acc_staff_rdio_active.ToggleState=Enumerations.ToggleState.On Then
+                        If acc_staff_rdio_active.ToggleState = Enumerations.ToggleState.On Then
                             comm.Parameters.AddWithValue("staffIsActive", "1")
-                        ElseIf acc_staff_rdio_inactive.ToggleState=Enumerations.ToggleState.On Then
+                        ElseIf acc_staff_rdio_inactive.ToggleState = Enumerations.ToggleState.On Then
                             comm.Parameters.AddWithValue("staffIsActive", "0")
                         End If
-                                
+
 
 
                         svYN = RadMessageBox.Show(Me, "Are you sure you want to save a new staff's information? ", system_Name, MessageBoxButtons.YesNo, RadMessageIcon.Question)
@@ -1204,8 +1194,8 @@ Public Class Main
                                 acc_staff_btn_delete.Hide()
                                 acc_staff_btn_update.Hide()
                                 acc_staff_btn_save.Show()
-                                acc_staff_rdio_active.ToggleState=Enumerations.ToggleState.Off
-                                acc_staff_rdio_inactive.ToggleState=Enumerations.ToggleState.Off
+                                acc_staff_rdio_active.ToggleState = Enumerations.ToggleState.Off
+                                acc_staff_rdio_inactive.ToggleState = Enumerations.ToggleState.Off
                             ElseIf acc_sf_id.Text.Length < 6 Then
                                 RadMessageBox.Show(Me, "Please complete your ID format.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Exclamation)
                             Else
@@ -1213,41 +1203,41 @@ Public Class Main
                             End If
                         End If
                         MysqlConn.Close()
+                    Else
+                        RadMessageBox.Show(Me, "Please enter your username with the ""@ceu.edu.ph"" ", system_Name, MessageBoxButtons.OK, RadMessageIcon.Exclamation)
+                    End If
                 Else
                     RadMessageBox.Show(Me, "Please enter your username with the ""@ceu.edu.ph"" ", system_Name, MessageBoxButtons.OK, RadMessageIcon.Exclamation)
                 End If
-            Else
-                RadMessageBox.Show(Me, "Please enter your username with the ""@ceu.edu.ph"" ", system_Name, MessageBoxButtons.OK, RadMessageIcon.Exclamation)
             End If
-        End If
-                    Catch ex As MySqlException
-                        If ex.Number = 1062 Then
-                            RadMessageBox.Show(Me, "The ID# and the Username must be unique.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
-                        Else If ex.Number =0 Then
-                            refresh_main_rgv_recordedacademicsonly.Stop()
-                            refresh_released_grid_list.Stop()
-                            RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
-                            Login.log_lbl_dbstatus.Text = "Offline"
-                            Login.log_lbl_dbstatus.ForeColor = Color.Red
-                            Return
-                        Else
-                            RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
-                        End If
-                    Catch ex As Exception
-                        RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
-                    Finally
-                        MysqlConn.Dispose()
-                        load_main_acc()
-                        rpv_child_acctmgmt.SelectedPage = rpv_staff
-                    End Try   
+        Catch ex As MySqlException
+            If ex.Number = 1062 Then
+                RadMessageBox.Show(Me, "The ID# and the Username must be unique.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
+            ElseIf ex.Number = 0 Then
+                refresh_main_rgv_recordedacademicsonly.Stop()
+                refresh_released_grid_list.Stop()
+                RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
+                Login.log_lbl_dbstatus.Text = "Offline"
+                Login.log_lbl_dbstatus.ForeColor = Color.Red
+                Return
+            Else
+                RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
+            End If
+        Catch ex As Exception
+            RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
+        Finally
+            MysqlConn.Dispose()
+            load_main_acc()
+            rpv_child_acctmgmt.SelectedPage = rpv_staff
+        End Try
     End Sub
 
-    Private Sub acc_sf_id_Text_KeyPress(sender as Object, e As KeyPressEventArgs) Handles acc_sf_id.KeyPress
-        If Not ((Char.IsDigit(e.KeyChar) And (acc_sf_id.Text.Length <=5)) Or e.KeyChar=vbBack or (e.KeyChar= "-" And acc_sf_id.SelectionStart=4))
-            e.Handled=True
-       Else If (acc_sf_id.SelectionStart=4 And Not e.KeyChar= "-" And Not e.KeyChar=vbBack)
+    Private Sub acc_sf_id_Text_KeyPress(sender As Object, e As KeyPressEventArgs) Handles acc_sf_id.KeyPress
+        If Not ((Char.IsDigit(e.KeyChar) And (acc_sf_id.Text.Length <= 5)) Or e.KeyChar = vbBack Or (e.KeyChar = "-" And acc_sf_id.SelectionStart = 4)) Then
             e.Handled = True
-       End If
+        ElseIf (acc_sf_id.SelectionStart = 4 And Not e.KeyChar = "-" And Not e.KeyChar = vbBack) Then
+            e.Handled = True
+        End If
     End Sub
 
 
@@ -1270,12 +1260,12 @@ Public Class Main
                 acc_sf_username.Text = row.Cells("Username").Value.ToString
                 acc_sf_id.Enabled = False
                 acc_sf_username.Enabled = False
-                
+
                 'SET RADIO BUTTON CONDITION
                 If row.Cells("User State").Value.ToString.Equals("0") Then
-                    acc_staff_rdio_inactive.ToggleState=Enumerations.ToggleState.on
-                ElseIf row.Cells("User State").Value.ToString.Equals("1") 
-                    acc_staff_rdio_active.ToggleState=Enumerations.ToggleState.On
+                    acc_staff_rdio_inactive.ToggleState = Enumerations.ToggleState.On
+                ElseIf row.Cells("User State").Value.ToString.Equals("1") Then
+                    acc_staff_rdio_active.ToggleState = Enumerations.ToggleState.On
                 End If
                 'SET RADIO BUTTON CONDITION
 
@@ -1293,10 +1283,10 @@ Public Class Main
                 Else
                     acc_sf_password.Enabled = False
                     acc_sf_retypepassword.Enabled = False
-                    acc_staff_btn_delete.Enabled=True
-                    acc_sf_password.NullText=""
-                    acc_sf_retypepassword.NullText=""
-                    acc_staff_rdio_active.Enabled=True
+                    acc_staff_btn_delete.Enabled = True
+                    acc_sf_password.NullText = ""
+                    acc_sf_retypepassword.NullText = ""
+                    acc_staff_rdio_active.Enabled = True
                     acc_staff_rdio_inactive.Enabled = True
                     acc_sf_oldpassword.Hide()
                     lbl_oldPassword.Hide()
@@ -1415,8 +1405,8 @@ Public Class Main
                     End If
                 Else
                     RadMessageBox.Show(Me, "Please select a staff to update!", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
-                    End If
                 End If
+            End If
         Catch ex As MySqlException
             If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") Or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") Or ex.Message.Contains("Reading from the stream has failed"))) Then
                 refresh_main_rgv_recordedacademicsonly.Stop()
@@ -1432,7 +1422,7 @@ Public Class Main
             RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
         Finally
             MysqlConn.Dispose()
-                End Try
+        End Try
     End Sub
 
     Private Sub Staff_Reg_UpdateSuccessful() 'For the passwordbox
@@ -1448,72 +1438,72 @@ Public Class Main
         acc_sf_username.Enabled = True
         acc_sf_password.Enabled = True
         acc_sf_retypepassword.Enabled = True
-        acc_staff_btn_delete.Enabled=True
-        acc_staff_btn_delete.Hide
-        acc_staff_btn_update.Hide
-        acc_staff_btn_save.Show
+        acc_staff_btn_delete.Enabled = True
+        acc_staff_btn_delete.Hide()
+        acc_staff_btn_update.Hide()
+        acc_staff_btn_save.Show()
         rpv_child_acctmgmt.SelectedPage = rpv_staff
-        acc_staff_rdio_active.ToggleState=Enumerations.ToggleState.Off
-        acc_staff_rdio_inactive.ToggleState=Enumerations.ToggleState.Off
+        acc_staff_rdio_active.ToggleState = Enumerations.ToggleState.Off
+        acc_staff_rdio_inactive.ToggleState = Enumerations.ToggleState.Off
     End Sub
 
     'Programmed by BRENZ 6th Point Delete Button!
     Private Sub acc_staff_btn_delete_Click(sender As Object, e As EventArgs) Handles acc_staff_btn_delete.Click
         Try
-        If MysqlConn.State = ConnectionState.Open Then
-            MysqlConn.Close()
-        End If
-
-        deleteYN = RadMessageBox.Show(Me, "Are you sure you want To Delete the account of this staff? ", system_Name, MessageBoxButtons.YesNo, RadMessageIcon.Question)
-        If deleteYN = MsgBoxResult.Yes Then
-            If acc_sf_username.Text="" Or acc_sf_fname.Text="" Or acc_sf_lname.Text=""
-                RadMessageBox.Show(Me, "Please select a staff to delete.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
-            Else
-                MysqlConn.Open()
-                Dim Query As String
-                Query = "delete from ceutltdscheduler.staff_reg WHERE staff_id=@a and staff_username=@b"
-                comm = New MySqlCommand(Query, MysqlConn)
-                comm.Parameters.AddWithValue("@a",acc_sf_id.Text)
-                comm.Parameters.AddWithValue("@b",acc_sf_username.Text)
-                reader = comm.ExecuteReader
+            If MysqlConn.State = ConnectionState.Open Then
                 MysqlConn.Close()
-                RadMessageBox.Show(Me, "Account Deletion Successful!", system_Name, MessageBoxButtons.OK, RadMessageIcon.Info)
-                
-        End If
-    End If
-            Catch ex As MySqlException
-                If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed")))
-                    refresh_main_rgv_recordedacademicsonly.Stop()
-                    refresh_released_grid_list.Stop()
-                    RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
-                    Login.log_lbl_dbstatus.Text = "Offline"
-                    Login.log_lbl_dbstatus.ForeColor = Color.Red
-                    Return
-               Else
-                    RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
-               End If
-            Catch ex As Exception
+            End If
+
+            deleteYN = RadMessageBox.Show(Me, "Are you sure you want To Delete the account of this staff? ", system_Name, MessageBoxButtons.YesNo, RadMessageIcon.Question)
+            If deleteYN = MsgBoxResult.Yes Then
+                If acc_sf_username.Text = "" Or acc_sf_fname.Text = "" Or acc_sf_lname.Text = "" Then
+                    RadMessageBox.Show(Me, "Please select a staff to delete.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
+                Else
+                    MysqlConn.Open()
+                    Dim Query As String
+                    Query = "delete from ceutltdscheduler.staff_reg WHERE staff_id=@a and staff_username=@b"
+                    comm = New MySqlCommand(Query, MysqlConn)
+                    comm.Parameters.AddWithValue("@a", acc_sf_id.Text)
+                    comm.Parameters.AddWithValue("@b", acc_sf_username.Text)
+                    reader = comm.ExecuteReader
+                    MysqlConn.Close()
+                    RadMessageBox.Show(Me, "Account Deletion Successful!", system_Name, MessageBoxButtons.OK, RadMessageIcon.Info)
+
+                End If
+            End If
+        Catch ex As MySqlException
+            If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") Or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") Or ex.Message.Contains("Reading from the stream has failed"))) Then
+                refresh_main_rgv_recordedacademicsonly.Stop()
+                refresh_released_grid_list.Stop()
+                RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
+                Login.log_lbl_dbstatus.Text = "Offline"
+                Login.log_lbl_dbstatus.ForeColor = Color.Red
+                Return
+            Else
                 RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
-            Finally
-                MysqlConn.Dispose()
-                acc_staff_keepSelectedRowIndexAfterUpdate = 0
-                load_main_acc()
-                acc_sf_id.Text = ""
-                acc_sf_fname.Text = ""
-                acc_sf_mname.Text = ""
-                acc_sf_lname.Text = ""
-                'acc_sf_usertype.Text = ""
-                acc_sf_username.Text = ""
-                acc_sf_id.Enabled = True
-                acc_sf_username.Enabled = True
-                acc_sf_password.Enabled = True
-                acc_sf_retypepassword.Enabled = True
-                acc_staff_btn_delete.Hide()
-                acc_staff_btn_update.Hide()
-                acc_staff_btn_save.Show()
-                acc_staff_rdio_active.ToggleState=Enumerations.ToggleState.Off
-                acc_staff_rdio_inactive.ToggleState=Enumerations.ToggleState.Off
-            End Try
+            End If
+        Catch ex As Exception
+            RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
+        Finally
+            MysqlConn.Dispose()
+            acc_staff_keepSelectedRowIndexAfterUpdate = 0
+            load_main_acc()
+            acc_sf_id.Text = ""
+            acc_sf_fname.Text = ""
+            acc_sf_mname.Text = ""
+            acc_sf_lname.Text = ""
+            'acc_sf_usertype.Text = ""
+            acc_sf_username.Text = ""
+            acc_sf_id.Enabled = True
+            acc_sf_username.Enabled = True
+            acc_sf_password.Enabled = True
+            acc_sf_retypepassword.Enabled = True
+            acc_staff_btn_delete.Hide()
+            acc_staff_btn_update.Hide()
+            acc_staff_btn_save.Show()
+            acc_staff_rdio_active.ToggleState = Enumerations.ToggleState.Off
+            acc_staff_rdio_inactive.ToggleState = Enumerations.ToggleState.Off
+        End Try
     End Sub
 
     'Programmed by Brenz 7th point Clear Button!
@@ -1532,14 +1522,14 @@ Public Class Main
             acc_sf_retypepassword.Enabled = True
             acc_sf_id.Enabled = True
             acc_sf_username.Enabled = True
-            acc_sf_password.NullText=""
-            acc_sf_retypepassword.NullText=""
+            acc_sf_password.NullText = ""
+            acc_sf_retypepassword.NullText = ""
             acc_staff_btn_save.Show()
             acc_staff_btn_update.Hide()
             acc_staff_btn_delete.Hide()
-            acc_staff_rdio_active.ToggleState=Enumerations.ToggleState.Off
-            acc_staff_rdio_inactive.ToggleState=Enumerations.ToggleState.Off
-            acc_staff_rdio_active.Enabled=True
+            acc_staff_rdio_active.ToggleState = Enumerations.ToggleState.Off
+            acc_staff_rdio_inactive.ToggleState = Enumerations.ToggleState.Off
+            acc_staff_rdio_active.Enabled = True
             acc_staff_rdio_inactive.Enabled = True
             acc_sf_oldpassword.Hide()
             lbl_oldPassword.Hide()
@@ -1547,40 +1537,40 @@ Public Class Main
     End Sub
     'Radio for Active and Inactive
     Private Sub acc_staff_rdio_active_ToggleStateChanged(sender As Object, args As StateChangedEventArgs) Handles acc_staff_rdio_active.ToggleStateChanged
-        acc_staff_rdio_inactive.ToggleState=Enumerations.ToggleState.Indeterminate
+        acc_staff_rdio_inactive.ToggleState = Enumerations.ToggleState.Indeterminate
     End Sub
 
     Private Sub acc_staff_rdio_inactive_ToggleStateChanged(sender As Object, args As StateChangedEventArgs) Handles acc_staff_rdio_inactive.ToggleStateChanged
-        acc_staff_rdio_active.ToggleState=Enumerations.ToggleState.Indeterminate
+        acc_staff_rdio_active.ToggleState = Enumerations.ToggleState.Indeterminate
     End Sub
 
     'Indications for Inactive Account
     Private Sub acc_staff_list_RowFormatting(sender As Object, e As RowFormattingEventArgs) Handles acc_staff_list.RowFormatting
-	    If e.RowElement.RowInfo.Tag = "Selected" And e.RowElement.IsCurrent Then
-		    'e.RowElement.BackColor = Color.FromArgb(&HDC, &H1B, &H1B)
-            e.RowElement.GradientStyle=GradientStyles.Solid
-		    'e.RowElement.DrawFill = True
-	    Else
-		    'e.RowElement.ResetValue(LightVisualElement.BackColorProperty, ValueResetFlags.Local)
-		    e.RowElement.ResetValue(LightVisualElement.DrawFillProperty, ValueResetFlags.Local)
-	    End If
+        If e.RowElement.RowInfo.Tag = "Selected" And e.RowElement.IsCurrent Then
+            'e.RowElement.BackColor = Color.FromArgb(&HDC, &H1B, &H1B)
+            e.RowElement.GradientStyle = GradientStyles.Solid
+            'e.RowElement.DrawFill = True
+        Else
+            'e.RowElement.ResetValue(LightVisualElement.BackColorProperty, ValueResetFlags.Local)
+            e.RowElement.ResetValue(LightVisualElement.DrawFillProperty, ValueResetFlags.Local)
+        End If
     End Sub
 
     Private Sub acc_staff_list_CurrentRowChanged(sender As Object, e As CurrentRowChangedEventArgs) Handles acc_staff_list.CurrentRowChanged
-	    If e.CurrentRow.Cells("User State").Value.ToString.Equals("0") Then
-            e.CurrentRow.Tag="Selected"
+        If e.CurrentRow.Cells("User State").Value.ToString.Equals("0") Then
+            e.CurrentRow.Tag = "Selected"
         Else
-            e.CurrentRow.Tag="No FLAG"
-       End If
+            e.CurrentRow.Tag = "No FLAG"
+        End If
     End Sub
     'Indications for Inactive Account
     Private Sub acc_staff_list_CellFormatting(sender As Object, e As CellFormattingEventArgs) Handles acc_staff_list.CellFormatting
         If e.CellElement.RowElement.RowInfo.Tag = "Selected" And e.CellElement.RowElement.IsCurrent Then
             e.CellElement.BorderColor = Color.FromArgb(&H83, &H2A, &H2A)
-            e.CellElement.GradientStyle=GradientStyles.Solid
+            e.CellElement.GradientStyle = GradientStyles.Solid
             e.CellElement.BorderBoxStyle = BorderBoxStyle.SingleBorder
             e.CellElement.BorderGradientStyle = GradientStyles.Solid
-            e.CellElement.BackColor=Color.FromArgb(228,38,58)
+            e.CellElement.BackColor = Color.FromArgb(228, 38, 58)
             e.CellElement.DrawFill = True
         Else
             e.CellElement.ResetValue(LightVisualElement.BorderColorProperty, ValueResetFlags.Local)
@@ -1595,9 +1585,9 @@ Public Class Main
     'Programmed by Brenz 8th point prof Save Button!
     Private Sub acc_prof_btn_save_Click(sender As Object, e As EventArgs) Handles acc_prof_btn_save.Click
         Try
-        MysqlConn = New MySqlConnection
-        MysqlConn.ConnectionString = connstring
-        Dim READER As MySqlDataReader
+            MysqlConn = New MySqlConnection
+            MysqlConn.ConnectionString = connstring
+            Dim READER As MySqlDataReader
             If ((acc_pf_fname.Text = "") Or (acc_pf_mname.Text = " ") Or (acc_pf_lname.Text = " ") Or (acc_pf_college.Text = " ")) Then
                 RadMessageBox.Show(Me, "Please complete the name to Save!", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
             ElseIf (acc_pf_mobnum.Text.Length < 11 Or acc_pf_mobnum.Text = "") Then
@@ -1625,27 +1615,27 @@ Public Class Main
                     acc_pf_lname.Text = ""
                 End If
                 MysqlConn.Close()
-        End If
-            Catch ex As MySqlException
-                If ex.Number = 1062 Then
-                    RadMessageBox.Show(Me, "The name exists already.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
-                Else If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed")))
-                    refresh_main_rgv_recordedacademicsonly.Stop()
-                    refresh_released_grid_list.Stop()
-                    RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
-                    Login.log_lbl_dbstatus.Text = "Offline"
-                    Login.log_lbl_dbstatus.ForeColor = Color.Red
-                    Return
-                Else
-                    RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
-                End If
-            Catch ex As Exception
+            End If
+        Catch ex As MySqlException
+            If ex.Number = 1062 Then
+                RadMessageBox.Show(Me, "The name exists already.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
+            ElseIf (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") Or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") Or ex.Message.Contains("Reading from the stream has failed"))) Then
+                refresh_main_rgv_recordedacademicsonly.Stop()
+                refresh_released_grid_list.Stop()
+                RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
+                Login.log_lbl_dbstatus.Text = "Offline"
+                Login.log_lbl_dbstatus.ForeColor = Color.Red
+                Return
+            Else
                 RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
-            Finally
-                MysqlConn.Dispose()
-                load_main_prof()
-                rpv_child_acctmgmt.SelectedPage = rpv_borrower
-            End Try
+            End If
+        Catch ex As Exception
+            RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
+        Finally
+            MysqlConn.Dispose()
+            load_main_prof()
+            rpv_child_acctmgmt.SelectedPage = rpv_borrower
+        End Try
     End Sub
     Dim temp_Prof_fname As String
     Dim temp_Prof_mname As String
@@ -1687,11 +1677,11 @@ Public Class Main
     'Programmed by Brenz 10th Point Prof Update Button
     Private Sub acc_prof_btn_update_Click(sender As Object, e As EventArgs) Handles acc_prof_btn_update.Click
         Try
-        If MysqlConn.State = ConnectionState.Open Then
-            MysqlConn.Close()
-        End If
+            If MysqlConn.State = ConnectionState.Open Then
+                MysqlConn.Close()
+            End If
 
-        updateYN = RadMessageBox.Show(Me, "Do you want to update the borrower's information?", system_Name, MessageBoxButtons.YesNo, RadMessageIcon.Question)
+            updateYN = RadMessageBox.Show(Me, "Do you want to update the borrower's information?", system_Name, MessageBoxButtons.YesNo, RadMessageIcon.Question)
             If updateYN = MsgBoxResult.Yes Then
                 If (acc_pf_fname.Text = "") Or (acc_pf_mname.Text = "") Or (acc_pf_lname.Text = "") Or (acc_pf_college.Text = "") Then
                     RadMessageBox.Show(Me, "Please select a borrower to update!", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -1729,19 +1719,19 @@ Public Class Main
             rpv_child_acctmgmt.SelectedPage = rpv_borrower
             load_main_prof()
         Catch ex As MySqlException
-                    If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed")))
-                        refresh_main_rgv_recordedacademicsonly.Stop()
-                        refresh_released_grid_list.Stop()
-                        RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
-                        Login.log_lbl_dbstatus.Text = "Offline"
-                        Login.log_lbl_dbstatus.ForeColor = Color.Red
-                        Return
-                   Else
-                        RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
-                   End If
-                Catch ex As Exception
-                    RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
-                Finally
+            If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") Or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") Or ex.Message.Contains("Reading from the stream has failed"))) Then
+                refresh_main_rgv_recordedacademicsonly.Stop()
+                refresh_released_grid_list.Stop()
+                RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
+                Login.log_lbl_dbstatus.Text = "Offline"
+                Login.log_lbl_dbstatus.ForeColor = Color.Red
+                Return
+            Else
+                RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
+            End If
+        Catch ex As Exception
+            RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
+        Finally
             MysqlConn.Dispose()
         End Try
     End Sub
@@ -1749,55 +1739,55 @@ Public Class Main
     'Programmed by Brenz 11th point prof Delete Button!
     Private Sub acc_prof_btn_delete_Click(sender As Object, e As EventArgs) Handles acc_prof_btn_delete.Click
         Try
-        If MysqlConn.State = ConnectionState.Open Then
-            MysqlConn.Close()
-        End If
-        deleteYN = RadMessageBox.Show(Me, "Are you sure you want to Delete this borrower? ", system_Name, MessageBoxButtons.YesNo, RadMessageIcon.Question)
-        If deleteYN = MsgBoxResult.Yes Then
-            If (acc_pf_fname.Text = "") Or (acc_pf_mname.Text = "") Or (acc_pf_lname.Text = "") Or (acc_pf_college.Text = "") Then
-                RadMessageBox.Show(Me, "Please select a borrower to delete!", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
-            Else
-                MysqlConn.Open()
-                Dim Query As String
-                'Query = "delete from borrowers_reg where bor_id = '" & acc_pf_id.Text & "'"
-                Query = "DELETE FROM ceutltdscheduler.borrowers_reg where bor_fname=@a and bor_mname=@b and bor_surname=@c"
-                comm = New MySqlCommand(Query, MysqlConn)
-                comm.Parameters.AddWithValue("@a", temp_Prof_fname)
-                comm.Parameters.AddWithValue("@b", temp_Prof_mname)
-                comm.Parameters.AddWithValue("@c", temp_Prof_surname)
-                reader = comm.ExecuteReader
+            If MysqlConn.State = ConnectionState.Open Then
                 MysqlConn.Close()
-                RadMessageBox.Show(Me, "Account deleted.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Info)
-                acc_pf_id.Text = ""
-                acc_pf_fname.Text = ""
-                acc_pf_mname.Text = ""
-                acc_pf_lname.Text = ""
+            End If
+            deleteYN = RadMessageBox.Show(Me, "Are you sure you want to Delete this borrower? ", system_Name, MessageBoxButtons.YesNo, RadMessageIcon.Question)
+            If deleteYN = MsgBoxResult.Yes Then
+                If (acc_pf_fname.Text = "") Or (acc_pf_mname.Text = "") Or (acc_pf_lname.Text = "") Or (acc_pf_college.Text = "") Then
+                    RadMessageBox.Show(Me, "Please select a borrower to delete!", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
+                Else
+                    MysqlConn.Open()
+                    Dim Query As String
+                    'Query = "delete from borrowers_reg where bor_id = '" & acc_pf_id.Text & "'"
+                    Query = "DELETE FROM ceutltdscheduler.borrowers_reg where bor_fname=@a and bor_mname=@b and bor_surname=@c"
+                    comm = New MySqlCommand(Query, MysqlConn)
+                    comm.Parameters.AddWithValue("@a", temp_Prof_fname)
+                    comm.Parameters.AddWithValue("@b", temp_Prof_mname)
+                    comm.Parameters.AddWithValue("@c", temp_Prof_surname)
+                    reader = comm.ExecuteReader
+                    MysqlConn.Close()
+                    RadMessageBox.Show(Me, "Account deleted.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Info)
+                    acc_pf_id.Text = ""
+                    acc_pf_fname.Text = ""
+                    acc_pf_mname.Text = ""
+                    acc_pf_lname.Text = ""
                     acc_pf_college.Text = ""
                     acc_pf_mobnum.Text = ""
                     'acc_pf_id.Enabled = True
                     acc_prof_btn_delete.Hide()
-                acc_prof_btn_update.Hide()
-                acc_prof_btn_save.Show()
-        End If
-        End If
-            Catch ex As MySqlException
-                If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed")))
-                    refresh_main_rgv_recordedacademicsonly.Stop()
-                    refresh_released_grid_list.Stop()
-                    RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
-                    Login.log_lbl_dbstatus.Text = "Offline"
-                    Login.log_lbl_dbstatus.ForeColor = Color.Red
-                    Return
-               Else
-                    RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
-               End If
-            Catch ex As Exception
+                    acc_prof_btn_update.Hide()
+                    acc_prof_btn_save.Show()
+                End If
+            End If
+        Catch ex As MySqlException
+            If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") Or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") Or ex.Message.Contains("Reading from the stream has failed"))) Then
+                refresh_main_rgv_recordedacademicsonly.Stop()
+                refresh_released_grid_list.Stop()
+                RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
+                Login.log_lbl_dbstatus.Text = "Offline"
+                Login.log_lbl_dbstatus.ForeColor = Color.Red
+                Return
+            Else
                 RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
-            Finally
-                MysqlConn.Dispose()
-                acc_prof_keepSelectedRowIndexAfterUpdate = 0
-                load_main_prof()
-            End Try
+            End If
+        Catch ex As Exception
+            RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
+        Finally
+            MysqlConn.Dispose()
+            acc_prof_keepSelectedRowIndexAfterUpdate = 0
+            load_main_prof()
+        End Try
     End Sub
 
     'Programmed by Brenz 12th Point Clear Button
@@ -1820,18 +1810,18 @@ Public Class Main
     'Programmed by BRENZ 13th POINT Load form grid RELEASED at Releasing Management!
     Public Sub load_released_list()
         Try
-        MysqlConn = New MySqlConnection
-        MysqlConn.ConnectionString = connstring
+            MysqlConn = New MySqlConnection
+            MysqlConn.ConnectionString = connstring
 
-        Dim sda As New MySqlDataAdapter
-        Dim dbdataset As New DataTable
-        Dim bsource As New BindingSource
+            Dim sda As New MySqlDataAdapter
+            Dim dbdataset As New DataTable
+            Dim bsource As New BindingSource
 
-        If MysqlConn.State = ConnectionState.Open Then
-            MysqlConn.Close()
-        End If
+            If MysqlConn.State = ConnectionState.Open Then
+                MysqlConn.Close()
+            End If
 
-       
+
             MysqlConn.Open()
             Dim query As String
             query = "Select rel_reservation_no as 'Reservation Number', rel_id_passnum as 'Pass ID#' , rel_borrower as 'Borrower' , rel_eqtype as 'Equipment Type' , rel_equipment_no as 'Equipment No.', rel_equipment as 'Equipment',DATE_FORMAT(rel_assign_date,'%M %d %Y') as 'Date',TIME_FORMAT(rel_starttime, '%H:%i') as 'Start Time', TIME_FORMAT(rel_endtime, '%H:%i') as 'End Time'  , rel_status as 'Status' , rel_reservedby as 'Recorded By', rel_releasedby as 'Released By' from released_info where rel_status = 'Released' ORDER BY date DESC,rel_reservation_no ASC"
@@ -1844,25 +1834,25 @@ Public Class Main
             sda.Update(dbdataset)
             MysqlConn.Close()
             SetSizeofReservedItemsReleased_Also_in_theTab_in_Returning(False)
-            If released_grid_list.Rows.Count -1 < listofReleased_grid_list_KeepSelectedRowInDexAfterUpdate Then
-                    'DO NOTHING
+            If released_grid_list.Rows.Count - 1 < listofReleased_grid_list_KeepSelectedRowInDexAfterUpdate Then
+                'DO NOTHING
             Else
                 released_grid_list.Rows(listofReleased_grid_list_KeepSelectedRowInDexAfterUpdate).IsCurrent = True
             End If
 
-            Catch ex As MySqlException
-                If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed")))
-                    refresh_main_rgv_recordedacademicsonly.Stop()
-                    refresh_released_grid_list.Stop()
-                    RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
-                    Login.log_lbl_dbstatus.Text = "Offline"
-                    Login.log_lbl_dbstatus.ForeColor = Color.Red
-                    Return
-               Else
-                    RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
-               End If
-            Catch ex As Exception
+        Catch ex As MySqlException
+            If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") Or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") Or ex.Message.Contains("Reading from the stream has failed"))) Then
+                refresh_main_rgv_recordedacademicsonly.Stop()
+                refresh_released_grid_list.Stop()
+                RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
+                Login.log_lbl_dbstatus.Text = "Offline"
+                Login.log_lbl_dbstatus.ForeColor = Color.Red
+                Return
+            Else
                 RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
+            End If
+        Catch ex As Exception
+            RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
         Finally
             MysqlConn.Dispose()
         End Try
@@ -1870,19 +1860,19 @@ Public Class Main
 
     'Programmed by BRENZ 14th POINT Load form grid RELEASED at returning Management!
     Public Sub load_released_list2()
-         Try
-        MysqlConn = New MySqlConnection
-        MysqlConn.ConnectionString = connstring
+        Try
+            MysqlConn = New MySqlConnection
+            MysqlConn.ConnectionString = connstring
 
-        Dim sda As New MySqlDataAdapter
-        Dim dbdataset As New DataTable
-        Dim bsource As New BindingSource
+            Dim sda As New MySqlDataAdapter
+            Dim dbdataset As New DataTable
+            Dim bsource As New BindingSource
 
-        If MysqlConn.State = ConnectionState.Open Then
-            MysqlConn.Close()
-        End If
+            If MysqlConn.State = ConnectionState.Open Then
+                MysqlConn.Close()
+            End If
 
-       
+
             MysqlConn.Open()
             'released_grid_list2.Columns.Clear()
             Dim query As String
@@ -1896,24 +1886,24 @@ Public Class Main
             sda.Update(dbdataset)
             MysqlConn.Close()
             SetSizeofReservedItemsReleased_Also_in_theTab_in_Returning(True)
-            If released_grid_list2.Rows.Count -1 < releasedToReturn_gridlist_KeepSelectedRowInDexAfterUpdate Then
-                    'DO NOTHING
+            If released_grid_list2.Rows.Count - 1 < releasedToReturn_gridlist_KeepSelectedRowInDexAfterUpdate Then
+                'DO NOTHING
             Else
                 released_grid_list2.Rows(releasedToReturn_gridlist_KeepSelectedRowInDexAfterUpdate).IsCurrent = True
             End If
-            Catch ex As MySqlException
-                If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed")))
-                    refresh_main_rgv_recordedacademicsonly.Stop()
-                    refresh_released_grid_list.Stop()
-                    RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
-                    Login.log_lbl_dbstatus.Text = "Offline"
-                    Login.log_lbl_dbstatus.ForeColor = Color.Red
-                    Return
-               Else
-                    RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
-               End If
-            Catch ex As Exception
+        Catch ex As MySqlException
+            If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") Or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") Or ex.Message.Contains("Reading from the stream has failed"))) Then
+                refresh_main_rgv_recordedacademicsonly.Stop()
+                refresh_released_grid_list.Stop()
+                RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
+                Login.log_lbl_dbstatus.Text = "Offline"
+                Login.log_lbl_dbstatus.ForeColor = Color.Red
+                Return
+            Else
                 RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
+            End If
+        Catch ex As Exception
+            RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
         Finally
             MysqlConn.Dispose()
         End Try
@@ -1922,162 +1912,163 @@ Public Class Main
     'Programmed by BRENZ 15th point RELEASE BTN at Releasing Management!
     Private Sub released_btn_release_Click(sender As Object, e As EventArgs) Handles released_btn_release.Click
         Try
-        MysqlConn = New MySqlConnection
-        MysqlConn.ConnectionString = connstring
-        Dim READER As MySqlDataReader
-        If (rel_tb_reservationnum.Text = "") Or (rel_tb_borrower.Text = "") Or (rel_tb_equipmentnum.Text = "") Or (rel_tb_equipment.Text = "") Or (rel_tb_startdate.Text = " ") Or (rel_tb_starttime.Text = " ") Or (rel_tb_endtime.Text = " ") Then
-            RadMessageBox.Show(Me, "Please double click an equipment to release!", system_Name, MessageBoxButtons.OK, RadMessageIcon.Exclamation)
-        Else
+            MysqlConn = New MySqlConnection
+            MysqlConn.ConnectionString = connstring
+            Dim READER As MySqlDataReader
+            If (rel_tb_reservationnum.Text = "") Or (rel_tb_borrower.Text = "") Or (rel_tb_equipmentnum.Text = "") Or (rel_tb_equipment.Text = "") Or (rel_tb_startdate.Text = " ") Or (rel_tb_starttime.Text = " ") Or (rel_tb_endtime.Text = " ") Then
+                RadMessageBox.Show(Me, "Please double click an equipment to release!", system_Name, MessageBoxButtons.OK, RadMessageIcon.Exclamation)
+            Else
                 svYN = RadMessageBox.Show(Me, "Are you sure you want to release this Equipment? ", "TLTD Reservation System", MessageBoxButtons.YesNo, RadMessageIcon.Question)
                 If svYN = MsgBoxResult.Yes Then
-                    If rel_tb_status.Text = "Reserved" Then
-                        RadMessageBox.Show("Please change the status to 'Released' for the confirmation of releasing this equipment.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Exclamation)
-                    ElseIf rel_tb_status.Text = "Released" Then
-                        If changedEquipment  'SHIEIEEEETTT new update
-                            Try
-                                Dim newserial As String
-                                If MysqlConn.State = ConnectionState.Open Then
-                                    MysqlConn.Close()
-                                End If
-                                MysqlConn.ConnectionString = connstring
-                                MysqlConn.Open()
-                                query = "SELECT equipmentserial from ceutltdprevmaintenance.equipmentlist where equipmentnumber=@a and equipmentmodel=@b and equipmentname=@c"
-                                comm = New MySqlCommand(query, MysqlConn)
-                                comm.Parameters.AddWithValue("@a", rel_tb_equipmentnum.Text)
-                                comm.Parameters.AddWithValue("@b", rel_tb_equipment.Text)
-                                comm.Parameters.AddWithValue("@c", oldEqtypSelected)
-                                reader = comm.ExecuteReader
-                                While reader.Read
-                                    newserial=(reader.GetString("equipmentserial"))
-                                End While
+                    If changedEquipment Then  'SHIEIEEEETTT new update
+                        Try
+                            Dim newserial As String
+                            If MysqlConn.State = ConnectionState.Open Then
                                 MysqlConn.Close()
+                            End If
+                            MysqlConn.ConnectionString = connstring
+                            MysqlConn.Open()
+                            query = "SELECT equipmentserial from ceutltdprevmaintenance.equipmentlist where equipmentnumber=@a and equipmentmodel=@b and equipmentname=@c"
+                            comm = New MySqlCommand(query, MysqlConn)
+                            comm.Parameters.AddWithValue("@a", rel_tb_equipmentnum.Text)
+                            comm.Parameters.AddWithValue("@b", rel_tb_equipment.Text)
+                            comm.Parameters.AddWithValue("@c", oldEqtypSelected)
+                            READER = comm.ExecuteReader
+                            While READER.Read
+                                newserial = (READER.GetString("equipmentserial"))
+                            End While
+                            MysqlConn.Close()
 
-                                MysqlConn.Open()
-                                query="UPDATE ceutltdscheduler.reservation SET equipmentsn=@new_sn WHERE reservationno=@resno and equipmenttype=@old_eqtype and equipment=@old_equipment and equipmentno=@old_equipmentnumber; UPDATE ceutltdscheduler.reservation SET equipment=(SELECT equipmentmodel FROM ceutltdprevmaintenance.equipmentlist where equipmentserial=@new_sn),equipmentno=(SELECT equipmentnumber FROM ceutltdprevmaintenance.equipmentlist where equipmentserial=@new_sn) WHERE reservationno=@resno and equipmenttype=@old_eqtype and equipment=@old_equipment and equipmentno=@old_equipmentnumber; UPDATE ceutltdscheduler.reservation_equipments SET equipmentsn=@new_sn, equipment=(SELECT equipmentmodel FROM ceutltdprevmaintenance.equipmentlist where equipmentserial=@new_sn), equipmentno=(SELECT equipmentnumber FROM ceutltdprevmaintenance.equipmentlist where equipmentserial=@new_sn), res_status='Released' WHERE reservationno=@resno and equipmenttype=@old_eqtype and equipment=@old_equipment and equipmentno=@old_equipmentnumber; INSERT INTO ceutltdscheduler.released_info (rel_id_passnum,rel_reservation_no,rel_borrower,rel_eqtype,rel_equipment_no,rel_equipment,rel_assign_date,rel_starttime,rel_endtime,rel_status,rel_reservedby,rel_releasedby) VALUES(@i_a,@i_b,@i_c,@old_eqtype,@i_d,@i_e,@i_f,@i_g,@i_h,@i_i,@i_j,@i_k)"
-                                comm = New MySqlCommand(query, MysqlConn)
-                                comm.Parameters.AddWithValue("@new_sn",newserial)
-                                comm.Parameters.AddWithValue("@resno",rel_tb_reservationnum.Text)
-                                comm.Parameters.AddWithValue("@old_eqtype",oldEqtypSelected) 'ALSO FOR RELEASED_INFO
-                                comm.Parameters.AddWithValue("@old_equipment",oldEqnameSelected)
-                                comm.Parameters.AddWithValue("@old_equipmentnumber", oldEqnumberSelected)
-                                'INSERTING TO RELEASED_INFO
-                                comm.Parameters.AddWithValue("@i_a",rel_tb_id.Text)
-                                comm.Parameters.AddWithValue("@i_b",rel_tb_reservationnum.Text)
-                                comm.Parameters.AddWithValue("@i_c",rel_tb_borrower.Text)
-                                comm.Parameters.AddWithValue("@i_d",rel_tb_equipmentnum.Text)
-                                comm.Parameters.AddWithValue("@i_e",rel_tb_equipment.Text)
-                                comm.Parameters.AddWithValue("@i_f",Format(CDate(rel_tb_startdate.Value), "yyyy-MM-dd"))
-                                comm.Parameters.AddWithValue("@i_g", Format(CDate(rel_tb_starttime.Text), "HH:mm"))
-                                comm.Parameters.AddWithValue("@i_h", Format(CDate(rel_tb_endtime.Text), "HH:mm"))
-                                comm.Parameters.AddWithValue("@i_i",rel_tb_status.Text)
-                                comm.Parameters.AddWithValue("@i_j",rel_nameofstaff_recorder.Text)
-                                comm.Parameters.AddWithValue("@i_k",rel_nameofstaff_release.Text)
-                                comm.ExecuteNonQuery()
-                                MysqlConn.Close()
-                            Catch ex As MySqlException
-                                If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed")))
-                                    refresh_main_rgv_recordedacademicsonly.Stop()
-                                    refresh_released_grid_list.Stop()
-                                    RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
-                                    Login.log_lbl_dbstatus.Text = "Offline"
-                                    Login.log_lbl_dbstatus.ForeColor = Color.Red
-                                    Return
-                               Else
-                                    RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
-                               End If
-                            Catch ex As Exception
+                            MysqlConn.Open()
+                            query = "UPDATE ceutltdscheduler.reservation SET equipmentsn=@new_sn WHERE reservationno=@resno and equipmenttype=@old_eqtype and equipment=@old_equipment and equipmentno=@old_equipmentnumber; UPDATE ceutltdscheduler.reservation SET equipment=(SELECT equipmentmodel FROM ceutltdprevmaintenance.equipmentlist where equipmentserial=@new_sn),equipmentno=(SELECT equipmentnumber FROM ceutltdprevmaintenance.equipmentlist where equipmentserial=@new_sn) WHERE reservationno=@resno and equipmenttype=@old_eqtype and equipment=@old_equipment and equipmentno=@old_equipmentnumber; UPDATE ceutltdscheduler.reservation_equipments SET equipmentsn=@new_sn, equipment=(SELECT equipmentmodel FROM ceutltdprevmaintenance.equipmentlist where equipmentserial=@new_sn), equipmentno=(SELECT equipmentnumber FROM ceutltdprevmaintenance.equipmentlist where equipmentserial=@new_sn), res_status='Released' WHERE reservationno=@resno and equipmenttype=@old_eqtype and equipment=@old_equipment and equipmentno=@old_equipmentnumber; INSERT INTO ceutltdscheduler.released_info (rel_id_passnum,rel_reservation_no,rel_borrower,rel_eqtype,rel_equipment_no,rel_equipment,rel_assign_date,rel_starttime,rel_endtime,rel_status,rel_reservedby,rel_releasedby,rel_isSMS_Sent,rel_bor_mobileno) VALUES(@i_a,@i_b,@i_c,@old_eqtype,@i_d,@i_e,@i_f,@i_g,@i_h,@i_i,@i_j,@i_k,@is_SMS_Sent,@i_l)"
+                            comm = New MySqlCommand(query, MysqlConn)
+                            comm.Parameters.AddWithValue("@new_sn", newserial)
+                            comm.Parameters.AddWithValue("@resno", rel_tb_reservationnum.Text)
+                            comm.Parameters.AddWithValue("@old_eqtype", oldEqtypSelected) 'ALSO FOR RELEASED_INFO
+                            comm.Parameters.AddWithValue("@old_equipment", oldEqnameSelected)
+                            comm.Parameters.AddWithValue("@old_equipmentnumber", oldEqnumberSelected)
+                            'INSERTING TO RELEASED_INFO
+                            comm.Parameters.AddWithValue("@i_a", rel_tb_id.Text)
+                            comm.Parameters.AddWithValue("@i_b", rel_tb_reservationnum.Text)
+                            comm.Parameters.AddWithValue("@i_c", rel_tb_borrower.Text)
+                            comm.Parameters.AddWithValue("@i_d", rel_tb_equipmentnum.Text)
+                            comm.Parameters.AddWithValue("@i_e", rel_tb_equipment.Text)
+                            comm.Parameters.AddWithValue("@i_f", Format(CDate(rel_tb_startdate.Value), "yyyy-MM-dd"))
+                            comm.Parameters.AddWithValue("@i_g", Format(CDate(rel_tb_starttime.Text), "HH:mm"))
+                            comm.Parameters.AddWithValue("@i_h", Format(CDate(rel_tb_endtime.Text), "HH:mm"))
+                            comm.Parameters.AddWithValue("@i_i", "Released")
+                            comm.Parameters.AddWithValue("@i_j", rel_nameofstaff_recorder.Text)
+                            comm.Parameters.AddWithValue("@i_k", rel_nameofstaff_release.Text)
+                            comm.Parameters.AddWithValue("@i_l", lbl_MobileNo.Text)
+                            comm.Parameters.AddWithValue("@is_SMS_Sent", "0")
+                            comm.ExecuteNonQuery()
+                            MysqlConn.Close()
+                        Catch ex As MySqlException
+                            If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") Or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") Or ex.Message.Contains("Reading from the stream has failed"))) Then
+                                refresh_main_rgv_recordedacademicsonly.Stop()
+                                refresh_released_grid_list.Stop()
+                                RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
+                                Login.log_lbl_dbstatus.Text = "Offline"
+                                Login.log_lbl_dbstatus.ForeColor = Color.Red
+                                Return
+                            Else
                                 RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
+                            End If
+                        Catch ex As Exception
+                            RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                         Finally
                             MysqlConn.Dispose()
                         End Try
-                    'Query="SET @new_sn=(SELECT equipmentserial from ceutltdprevmaintenance.equipmentlist where equipmentnumber=@a and equipmentmodel=@b and equipmentname=@d); UPDATE ceutltdscheduler.reservation SET equipmentsn=@new_sn WHERE reservationno=@resno and equipmenttype=@old_eqtype and equipment=@old_equipment and equipmentno=@old_equipmentnumber; UPDATE ceutltdscheduler.reservation SET equipment=(SELECT equipmentmodel FROM ceutltdprevmaintenance.equipmentlist where equipmentserial=@new_sn),equipmentno=(SELECT equipmentnumber FROM ceutltdprevmaintenance.equipmentlist where equipmentserial=@new_sn) WHERE reservationno=@resno and equipmenttype=@old_eqtype and equipment=@old_equipment and equipmentno=@old_equipmentnumber; UPDATE cuetltdscheduler.reservation_equipments SET equipmentsn=@new_sn, equipment=(SELECT equipmentmodel FROM ceutltdprevmaintenance.equipmentlist where equipmentserial=@new_sn), equipmentno=(SELECT equipmentnumber FROM ceutltdprevmaintenance.equipmentlist where equipmentserial=@new_sn) WHERE reservationno=@resno; INSERT INTO ceutltdscheduler.released_info (rel_id_passnum,rel_reservation_no,rel_borrower,rel_equipment_no,rel_equipment,rel_assign_date,rel_starttime,rel_endtime,rel_status,rel_releasedby) VALUES('" & rel_tb_id.Text & "','" & rel_tb_reservationnum.Text & "','" & rel_tb_borrower.Text & "','" & rel_tb_equipmentnum.Text & "','" & rel_tb_equipment.Text & "','" & Format(CDate(rel_tb_startdate.Value), "yyyy-MM-dd") & "','" & Format(CDate(rel_tb_starttime.Text), "HH:mm") & "','" & Format(CDate(rel_tb_endtime.Text), "HH:mm") & "','" & rel_tb_status.Text & "','" & rel_nameofstaff_release.Text & "'); update reservation_equipments set  res_status = '" & rel_tb_status.Text & "' where reservationno = '" & rel_tb_reservationnum.Text & "' and equipmentno='" & rel_tb_equipmentnum.Text & "' and equipment= '" & rel_tb_equipment.Text & "'"
-                    'comm.Parameters.AddWithValue("@a",rel_tb_equipmentnum.Text)
-                    'comm.Parameters.AddWithValue("@b",rel_tb_equipment.Text)
-                    'comm.Parameters.AddWithValue("@d",oldEqtypSelected)
-                    'comm.Parameters.AddWithValue("@resno",rel_tb_reservationnum.Text)
-                    'comm.Parameters.AddWithValue("@old_eqtype",oldEqtypSelected)
-                    'comm.Parameters.AddWithValue("@old_equipment",oldEqnameSelected)
-                    'comm.Parameters.AddWithValue("@old_equipmentnumber", oldEqnumberSelected)
- 
-                Else 'Usual
-                    MysqlConn.Open()
-                    Dim Query As String
-                    Query = "INSERT INTO ceutltdscheduler.released_info (rel_id_passnum,rel_reservation_no,rel_borrower,rel_eqtype,rel_equipment_no,rel_equipment,rel_assign_date,rel_starttime,rel_endtime,rel_status,rel_reservedby,rel_releasedby) VALUES(@i_a,@i_b,@i_c,@old_eqtype,@i_d,@i_e,@i_f,@i_g,@i_h,@i_i,@i_j,@i_k); UPDATE ceutltdscheduler.reservation_equipments SET res_status=@i_i WHERE reservationno=@i_b and equipmentno=@i_d and equipment=@i_e"
-                    comm = New MySqlCommand(Query, MysqlConn)
-                    comm.Parameters.AddWithValue("@i_a",rel_tb_id.Text)
-                    comm.Parameters.AddWithValue("@i_b",rel_tb_reservationnum.Text)
-                    comm.Parameters.AddWithValue("@i_c",rel_tb_borrower.Text)
-                    comm.Parameters.AddWithValue("@old_eqtype",oldEqtypSelected) 
-                    comm.Parameters.AddWithValue("@i_d",rel_tb_equipmentnum.Text)
-                    comm.Parameters.AddWithValue("@i_e",rel_tb_equipment.Text)
-                    comm.Parameters.AddWithValue("@i_f",Format(CDate(rel_tb_startdate.Value), "yyyy-MM-dd"))
-                    comm.Parameters.AddWithValue("@i_g", Format(CDate(rel_tb_starttime.Text), "HH:mm"))
-                    comm.Parameters.AddWithValue("@i_h", Format(CDate(rel_tb_endtime.Text), "HH:mm"))
-                    comm.Parameters.AddWithValue("@i_i",rel_tb_status.Text)
-                    comm.Parameters.AddWithValue("@i_j",rel_nameofstaff_recorder.Text)
-                    comm.Parameters.AddWithValue("@i_k",rel_nameofstaff_release.Text)
-                            
-                    READER = comm.ExecuteReader
-                    MysqlConn.Close()
-                End If
-                'Query = "delete from reservation where  reservationno = '" & rel_tb_reservationnum.Text & "'"
-                
-                'comm.Parameters.AddWithValue("ID", rel_tb_id.Text)
-                'comm.Parameters.AddWithValue("ID", rel_tb_id.Text)
-                'comm.Parameters.AddWithValue("ID", rel_tb_id.Text)
-                        RadMessageBox.Show("Released!", system_Name, MessageBoxButtons.OK, RadMessageIcon.Info)
-                        rel_tb_borrower.Text = ""
-                        rel_tb_startdate.Text = "01/01/99"
-                        rel_tb_id.Text = "0"
-                        rel_tb_id.Enabled=False
-                        rel_tb_starttime.Text = ""
-                        rel_tb_endtime.Text = ""
-                        rel_tb_status.Text = ""
-                         rel_tb_equipment.Text = ""
-                        rel_tb_equipmentnum.Text = ""
-                        rel_nameofstaff_recorder.Text=""
-                        show_hide_txt_lbl()
-                        rel_tb_id.Enabled=False
-                        load_released_list()
-                        load_released_list2()
-                        reserved_load_table()
-                        load_rec_table("NONE",True)
-                        color_coding()
-                        released_btn_release.Enabled=False
-                        changedEquipment = False
-                  End If
+                        'Query="SET @new_sn=(SELECT equipmentserial from ceutltdprevmaintenance.equipmentlist where equipmentnumber=@a and equipmentmodel=@b and equipmentname=@d); UPDATE ceutltdscheduler.reservation SET equipmentsn=@new_sn WHERE reservationno=@resno and equipmenttype=@old_eqtype and equipment=@old_equipment and equipmentno=@old_equipmentnumber; UPDATE ceutltdscheduler.reservation SET equipment=(SELECT equipmentmodel FROM ceutltdprevmaintenance.equipmentlist where equipmentserial=@new_sn),equipmentno=(SELECT equipmentnumber FROM ceutltdprevmaintenance.equipmentlist where equipmentserial=@new_sn) WHERE reservationno=@resno and equipmenttype=@old_eqtype and equipment=@old_equipment and equipmentno=@old_equipmentnumber; UPDATE cuetltdscheduler.reservation_equipments SET equipmentsn=@new_sn, equipment=(SELECT equipmentmodel FROM ceutltdprevmaintenance.equipmentlist where equipmentserial=@new_sn), equipmentno=(SELECT equipmentnumber FROM ceutltdprevmaintenance.equipmentlist where equipmentserial=@new_sn) WHERE reservationno=@resno; INSERT INTO ceutltdscheduler.released_info (rel_id_passnum,rel_reservation_no,rel_borrower,rel_equipment_no,rel_equipment,rel_assign_date,rel_starttime,rel_endtime,rel_status,rel_releasedby) VALUES('" & rel_tb_id.Text & "','" & rel_tb_reservationnum.Text & "','" & rel_tb_borrower.Text & "','" & rel_tb_equipmentnum.Text & "','" & rel_tb_equipment.Text & "','" & Format(CDate(rel_tb_startdate.Value), "yyyy-MM-dd") & "','" & Format(CDate(rel_tb_starttime.Text), "HH:mm") & "','" & Format(CDate(rel_tb_endtime.Text), "HH:mm") & "','" & rel_tb_status.Text & "','" & rel_nameofstaff_release.Text & "'); update reservation_equipments set  res_status = '" & rel_tb_status.Text & "' where reservationno = '" & rel_tb_reservationnum.Text & "' and equipmentno='" & rel_tb_equipmentnum.Text & "' and equipment= '" & rel_tb_equipment.Text & "'"
+                        'comm.Parameters.AddWithValue("@a",rel_tb_equipmentnum.Text)
+                        'comm.Parameters.AddWithValue("@b",rel_tb_equipment.Text)
+                        'comm.Parameters.AddWithValue("@d",oldEqtypSelected)
+                        'comm.Parameters.AddWithValue("@resno",rel_tb_reservationnum.Text)
+                        'comm.Parameters.AddWithValue("@old_eqtype",oldEqtypSelected)
+                        'comm.Parameters.AddWithValue("@old_equipment",oldEqnameSelected)
+                        'comm.Parameters.AddWithValue("@old_equipmentnumber", oldEqnumberSelected)
+
+                    Else 'Usual
+                        MysqlConn.Open()
+                        Dim Query As String
+                        Query = "INSERT INTO ceutltdscheduler.released_info (rel_id_passnum,rel_reservation_no,rel_borrower,rel_eqtype,rel_equipment_no,rel_equipment,rel_assign_date,rel_starttime,rel_endtime,rel_status,rel_reservedby,rel_releasedby,rel_isSMS_Sent,rel_bor_mobileno) VALUES(@i_a,@i_b,@i_c,@old_eqtype,@i_d,@i_e,@i_f,@i_g,@i_h,@i_i,@i_j,@i_k,@isSMSSent,@i_l); UPDATE ceutltdscheduler.reservation_equipments SET res_status=@i_i WHERE reservationno=@i_b and equipmentno=@i_d and equipment=@i_e"
+                        comm = New MySqlCommand(Query, MysqlConn)
+                        comm.Parameters.AddWithValue("@i_a", rel_tb_id.Text)
+                        comm.Parameters.AddWithValue("@i_b", rel_tb_reservationnum.Text)
+                        comm.Parameters.AddWithValue("@i_c", rel_tb_borrower.Text)
+                        comm.Parameters.AddWithValue("@old_eqtype", oldEqtypSelected)
+                        comm.Parameters.AddWithValue("@i_d", rel_tb_equipmentnum.Text)
+                        comm.Parameters.AddWithValue("@i_e", rel_tb_equipment.Text)
+                        comm.Parameters.AddWithValue("@i_f", Format(CDate(rel_tb_startdate.Value), "yyyy-MM-dd"))
+                        comm.Parameters.AddWithValue("@i_g", Format(CDate(rel_tb_starttime.Text), "HH:mm"))
+                        comm.Parameters.AddWithValue("@i_h", Format(CDate(rel_tb_endtime.Text), "HH:mm"))
+                        comm.Parameters.AddWithValue("@i_i", "Released")
+                        comm.Parameters.AddWithValue("@i_j", rel_nameofstaff_recorder.Text)
+                        comm.Parameters.AddWithValue("@i_k", rel_nameofstaff_release.Text)
+                        comm.Parameters.AddWithValue("@i_l", lbl_MobileNo.Text)
+                        comm.Parameters.AddWithValue("@isSMSSent", "0")
+
+
+                        READER = comm.ExecuteReader
+                        MysqlConn.Close()
+                    End If
+                    'Query = "delete from reservation where  reservationno = '" & rel_tb_reservationnum.Text & "'"
+
+                    'comm.Parameters.AddWithValue("ID", rel_tb_id.Text)
+                    'comm.Parameters.AddWithValue("ID", rel_tb_id.Text)
+                    'comm.Parameters.AddWithValue("ID", rel_tb_id.Text)
+                    RadMessageBox.Show("Released!", system_Name, MessageBoxButtons.OK, RadMessageIcon.Info)
+                    rel_tb_borrower.Text = ""
+                    rel_tb_startdate.Text = "01/01/99"
+                    rel_tb_id.Text = "0"
+                    rel_tb_id.Enabled = False
+                    rel_tb_starttime.Text = ""
+                    rel_tb_endtime.Text = ""
+                    'rel_tb_status.Text = ""
+                    rel_tb_equipment.Text = ""
+                    rel_tb_equipmentnum.Text = ""
+                    rel_nameofstaff_recorder.Text = ""
+                    show_hide_txt_lbl()
+                    rel_tb_id.Enabled = False
+                    load_released_list()
+                    load_released_list2()
+                    reserved_load_table()
+                    load_rec_table("NONE", True)
+                    'color_coding()
+                    released_btn_release.Enabled = False
+                    changedEquipment = False
                 End If
             End If
-            Catch ex As MySqlException
-                If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed")))
-                    refresh_main_rgv_recordedacademicsonly.Stop()
-                    refresh_released_grid_list.Stop()
-                    RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
-                    Login.log_lbl_dbstatus.Text = "Offline"
-                    Login.log_lbl_dbstatus.ForeColor = Color.Red
-                    Return
-               Else
-                    RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
-               End If
-            Catch ex As Exception
+        Catch ex As MySqlException
+            If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") Or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") Or ex.Message.Contains("Reading from the stream has failed"))) Then
+                refresh_main_rgv_recordedacademicsonly.Stop()
+                refresh_released_grid_list.Stop()
+                RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
+                Login.log_lbl_dbstatus.Text = "Offline"
+                Login.log_lbl_dbstatus.ForeColor = Color.Red
+                Return
+            Else
                 RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
-            Finally
-                MysqlConn.Dispose()
-            End Try
+            End If
+        Catch ex As Exception
+            RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
+        Finally
+            MysqlConn.Dispose()
+        End Try
     End Sub
 
 
     'Programmed by BRENZ 16th Point UPDATE BTN at Releasing Management
     Private Sub released_btn_update_Click(sender As Object, e As EventArgs)
         Try
-        If MysqlConn.State = ConnectionState.Open Then
-            MysqlConn.Close()
-        End If
-        updateYN = RadMessageBox.Show(Me, "Do you want to Update the Date/Time/Location of the Reserved Equipment?", system_Name, MessageBoxButtons.YesNo, RadMessageIcon.Question)
-        If updateYN = MsgBoxResult.Yes Then
-            If (rel_tb_startdate.Text = "") Or (rel_tb_starttime.Text = " ") Or (rel_tb_endtime.Text = " ") Then
-                RadMessageBox.Show(Me, "Please complete the fields to update!", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
-            Else
+            If MysqlConn.State = ConnectionState.Open Then
+                MysqlConn.Close()
+            End If
+            updateYN = RadMessageBox.Show(Me, "Do you want to Update the Date/Time/Location of the Reserved Equipment?", system_Name, MessageBoxButtons.YesNo, RadMessageIcon.Question)
+            If updateYN = MsgBoxResult.Yes Then
+                If (rel_tb_startdate.Text = "") Or (rel_tb_starttime.Text = " ") Or (rel_tb_endtime.Text = " ") Then
+                    RadMessageBox.Show(Me, "Please complete the fields to update!", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
+                Else
                     MysqlConn.Open()
                     query = "UPDATE released_info set rel_assign_date = '" & rel_tb_starttime.Text & "'  , rel_starttime = '" & rel_tb_starttime.Text & "' , rel_endtime = '" & rel_tb_endtime.Text & "'  where rel_assign_date = '" & rel_tb_startdate.Text & "' "
                     comm = New MySqlCommand(query, MysqlConn)
@@ -2085,26 +2076,26 @@ Public Class Main
 
                     RadMessageBox.Show(Me, "Update Success!", system_Name, MessageBoxButtons.OK, RadMessageIcon.Info)
                     MysqlConn.Close()
+                End If
             End If
-        End If
-                Catch ex As MySqlException
-                    If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed")))
-                        refresh_main_rgv_recordedacademicsonly.Stop()
-                        refresh_released_grid_list.Stop()
-                        RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
-                        Login.log_lbl_dbstatus.Text = "Offline"
-                        Login.log_lbl_dbstatus.ForeColor = Color.Red
-                        Return
-                   Else
-                        RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
-                   End If
-                Catch ex As Exception
-                    RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
-                Finally
-                    MysqlConn.Dispose()
-                    load_released_list()
-                    load_released_list2()
-                End Try
+        Catch ex As MySqlException
+            If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") Or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") Or ex.Message.Contains("Reading from the stream has failed"))) Then
+                refresh_main_rgv_recordedacademicsonly.Stop()
+                refresh_released_grid_list.Stop()
+                RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
+                Login.log_lbl_dbstatus.Text = "Offline"
+                Login.log_lbl_dbstatus.ForeColor = Color.Red
+                Return
+            Else
+                RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
+            End If
+        Catch ex As Exception
+            RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
+        Finally
+            MysqlConn.Dispose()
+            load_released_list()
+            load_released_list2()
+        End Try
 
 
     End Sub
@@ -2116,15 +2107,15 @@ Public Class Main
             ret_tb_reservationnum.Text = ""
             ret_tb_id.Text = ""
             ret_tb_borrower.Text = ""
-            ret_tb_eqtype.Text=""
+            ret_tb_eqtype.Text = ""
             ret_tb_sdate.Text = "01/01/99"
             ret_tb_stime.Text = ""
             ret_tb_etime.Text = ""
             ret_tb_status.Text = ""
             'ret_tb_equipment.Text = ""
-            return_btn_returned.Enabled=false
+            return_btn_returned.Enabled = False
             ret_tb_equipmentnum.Text = ""
-            ret_remarks.Text=""
+            ret_remarks.Text = ""
             show_hide_txt_lbl()
         End If
     End Sub
@@ -2138,19 +2129,19 @@ Public Class Main
             rel_tb_borrower.Text = ""
             rel_tb_startdate.Text = "01/01/99"
             rel_tb_starttime.Text = ""
-            rel_tb_endtime.Text=""
-            rel_tb_status.Text = ""
+            rel_tb_endtime.Text = ""
+            'rel_tb_status.Text = ""
             rel_tb_equipment.Text = ""
             rel_tb_equipmentnum.Text = ""
-            rel_nameofstaff_recorder.Text=""
+            rel_nameofstaff_recorder.Text = ""
             rel_tb_id.Enabled = False
             rel_tb_equipment.Hide()
             rel_tb_equipmentnum.Hide()
             rel_tb_reservationnum.Hide()
             rel_tb_borrower.Hide()
-            color_coding()
-            released_btn_release.Enabled=False
-            changedEquipment=False
+            'color_coding()
+            released_btn_release.Enabled = False
+            changedEquipment = False
         End If
     End Sub
 
@@ -2158,20 +2149,20 @@ Public Class Main
 
     Public Sub reserved_load_table()
         Try
-        MysqlConn = New MySqlConnection
-        MysqlConn.ConnectionString = connstring
+            MysqlConn = New MySqlConnection
+            MysqlConn.ConnectionString = connstring
 
-        Dim sda As New MySqlDataAdapter
-        Dim dbdataset As New DataTable
-        Dim bsource As New BindingSource
+            Dim sda As New MySqlDataAdapter
+            Dim dbdataset As New DataTable
+            Dim bsource As New BindingSource
 
-        If MysqlConn.State = ConnectionState.Open Then
-            MysqlConn.Close()
-        End If
+            If MysqlConn.State = ConnectionState.Open Then
+                MysqlConn.Close()
+            End If
 
             MysqlConn.Open()
             Dim query As String
-            query = "Select reservationno as 'Reservation Number', borrower as 'Borrower', equipmenttype as 'Equipment Type', equipmentno as 'Equipment No.', equipment as 'Equipment', location as 'Location', DATE_FORMAT(date,'%M %d %Y') as 'Date',TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time',res_status as 'Status', reservedby as 'Recorded By' from reservation natural join reservation_equipments where res_status = 'Reserved'  ORDER by date DESC, reservationno ASC"
+            query = "Select reservationno as 'Reservation Number', borrower as 'Borrower', equipmenttype as 'Equipment Type', equipmentno as 'Equipment No.', equipment as 'Equipment', location as 'Location', DATE_FORMAT(date,'%M %d %Y') as 'Date',TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time',res_status as 'Status', reservedby as 'Recorded By', bor_mobileno as 'Mobile' from reservation natural join reservation_equipments where res_status = 'Reserved'  ORDER by date DESC, reservationno ASC"
             comm = New MySqlCommand(query, MysqlConn)
             sda.SelectCommand = comm
             sda.Fill(dbdataset)
@@ -2181,35 +2172,35 @@ Public Class Main
             sda.Update(dbdataset)
             MysqlConn.Close()
             SetSizeofReservedItemstobeReleased()
-             If reserved_grid_list.Rows.Count -1 < reserved_grid_list_KeepSelectedRowInDexAfterUpdate Then
-                    'DO NOTHING
+            If reserved_grid_list.Rows.Count - 1 < reserved_grid_list_KeepSelectedRowInDexAfterUpdate Then
+                'DO NOTHING
             Else
                 reserved_grid_list.Rows(reserved_grid_list_KeepSelectedRowInDexAfterUpdate).IsCurrent = True
             End If
-            Catch ex As MySqlException
-                If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed")))
-                    refresh_main_rgv_recordedacademicsonly.Stop()
-                    refresh_released_grid_list.Stop()
-                    RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
-                    Login.log_lbl_dbstatus.Text = "Offline"
-                    Login.log_lbl_dbstatus.ForeColor = Color.Red
-                    Return
-               Else
-                    RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
-               End If
-            Catch ex As Exception
+        Catch ex As MySqlException
+            If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") Or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") Or ex.Message.Contains("Reading from the stream has failed"))) Then
+                refresh_main_rgv_recordedacademicsonly.Stop()
+                refresh_released_grid_list.Stop()
+                RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
+                Login.log_lbl_dbstatus.Text = "Offline"
+                Login.log_lbl_dbstatus.ForeColor = Color.Red
+                Return
+            Else
                 RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
+            End If
+        Catch ex As Exception
+            RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
         Finally
             MysqlConn.Dispose()
         End Try
     End Sub
 
     Private Sub reserved_grid_list_CellClick(sender As Object, e As GridViewCellEventArgs) Handles reserved_grid_list.CellClick
-        If e.RowIndex = -1
+        If e.RowIndex = -1 Then
         Else
             reserved_grid_list_KeepSelectedRowInDexAfterUpdate = e.RowIndex
         End If
-        
+
     End Sub
     Dim oldEqtypSelected As String
     Dim oldEqnumberSelected As String
@@ -2224,9 +2215,9 @@ Public Class Main
             row = Me.reserved_grid_list.Rows(e.RowIndex)
             released = row.Cells("Status").Value.ToString
 
-            oldEqtypSelected=row.Cells("Equipment Type").Value.ToString
-            oldEqnumberSelected=row.Cells("Equipment No.").Value.ToString
-            oldEqnameSelected=row.Cells("Equipment").Value.ToString
+            oldEqtypSelected = row.Cells("Equipment Type").Value.ToString
+            oldEqnumberSelected = row.Cells("Equipment No.").Value.ToString
+            oldEqnameSelected = row.Cells("Equipment").Value.ToString
 
             load_other_available_equipments()
             If released = "Released" Then
@@ -2235,7 +2226,7 @@ Public Class Main
 
                 updateYN = RadMessageBox.Show(Me, "Do you want to select this equipment?", system_Name, MessageBoxButtons.YesNo, RadMessageIcon.Question)
                 If updateYN = MsgBoxResult.Yes Then
-                    released_btn_release.Enabled=True
+                    released_btn_release.Enabled = True
                     If e.RowIndex >= 0 Then
                         Dim row2 As Telerik.WinControls.UI.GridViewRowInfo
 
@@ -2246,10 +2237,12 @@ Public Class Main
                         rel_tb_startdate.Text = row2.Cells("Date").Value.ToString
                         rel_tb_starttime.Text = row2.Cells("Start Time").Value.ToString
                         rel_tb_endtime.Text = row2.Cells("End Time").Value.ToString
-                        rel_tb_status.Text = row2.Cells("Status").Value.ToString
+                        'rel_tb_status.Text = row2.Cells("Status").Value.ToString
                         rel_tb_equipmentnum.Text = row2.Cells("Equipment No.").Value.ToString
                         rel_tb_equipment.Text = row2.Cells("Equipment").Value.ToString
                         rel_nameofstaff_recorder.Text = row2.Cells("Recorded By").Value.ToString
+
+                        lbl_MobileNo.Text = row2.Cells("Mobile").Value.ToString
 
 
                         rel_tb_id.Enabled=True
@@ -2260,7 +2253,7 @@ Public Class Main
                         rel_tb_equipment.Show()
                         rel_tb_equipmentnum.Show()
                         reserved_load_table()
-                        color_coding()
+                        'color_coding()
                     End If
 
                 End If
@@ -2395,7 +2388,7 @@ Public Class Main
                 ret_tb_borrower.Show()
                 load_released_list2()
                 'show_hide_txt_lbl()
-                color_coding()
+                'color_coding()
                 ret_remarks.Enabled=True
             End If
 
@@ -3459,58 +3452,58 @@ Public Class Main
 
     Private Sub rec_btn_save_Click(sender As Object, e As EventArgs) Handles rec_btn_save.Click
         Try
-        reserveYN = RadMessageBox.Show(Me, "Are you sure you want to reserve?", system_Name, MessageBoxButtons.YesNo, RadMessageIcon.Question)
-        If reserveYN = MsgBoxResult.Yes Then
+            reserveYN = RadMessageBox.Show(Me, "Are you sure you want to reserve?", system_Name, MessageBoxButtons.YesNo, RadMessageIcon.Question)
+            If reserveYN = MsgBoxResult.Yes Then
 
-            MysqlConn = New MySqlConnection
-            MysqlConn.ConnectionString = connstring
-            Dim READER As MySqlDataReader
+                MysqlConn = New MySqlConnection
+                MysqlConn.ConnectionString = connstring
+                Dim READER As MySqlDataReader
 
-            Dim conflictequipmentno As String = ""
-            Dim conflictequipment As String = ""
-            Dim conflictequipmentsn As String = ""
+                Dim conflictequipmentno As String = ""
+                Dim conflictequipment As String = ""
+                Dim conflictequipmentsn As String = ""
 
-            If (rec_cb_reserveno.Text = "")  Or (rec_cb_borrower.Text = "") Or (rec_dtp_date.Text = "") Or (rec_dtp_starttime.Text = "") Or (rec_dtp_endtime.Text = "") Or (rec_cb_college_school.Text = "") Or (rec_cb_location.Text = "") Or (rec_eq_chooseno.Text = "") Or (rec_eq_type_choose.Text = "") Or (eq_rgv_addeq.Rows.Count < 0) Or (rec_cb_acttype.Text = "") Then
-                RadMessageBox.Show(Me, "Please complete the fields", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
-            Else
-                Dim elapsedTime As TimeSpan = DateTime.Parse(Format(CDate(rec_dtp_date.Value), "yyyy-MM-dd") & " " & rec_dtp_endtime.Text).Subtract(DateTime.Parse(DateTime.Parse(Format(CDate(rec_dtp_date.Value), "yyyy-MM-dd") & " " & rec_dtp_starttime.Text)))
-                If elapsedTime.CompareTo(TimeSpan.Zero) <= 0 Then
-                    RadMessageBox.Show(Me, "The Starting Time can't be the same or later on the Ending Time.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error, MessageBoxDefaultButton.Button1)
-                Else If eq_rgv_addeq.Rows.Count = 0
-                RadMessageBox.Show(Me, "No equipment to reserve.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
+                If (rec_cb_reserveno.Text = "") Or (rec_cb_borrower.Text = "") Or (rec_dtp_date.Text = "") Or (rec_dtp_starttime.Text = "") Or (rec_dtp_endtime.Text = "") Or (rec_cb_college_school.Text = "") Or (rec_cb_location.Text = "") Or (rec_eq_chooseno.Text = "") Or (rec_eq_type_choose.Text = "") Or (eq_rgv_addeq.Rows.Count < 0) Or (rec_cb_acttype.Text = "") Then
+                    RadMessageBox.Show(Me, "Please complete the fields", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                 Else
+                    Dim elapsedTime As TimeSpan = DateTime.Parse(Format(CDate(rec_dtp_date.Value), "yyyy-MM-dd") & " " & rec_dtp_endtime.Text).Subtract(DateTime.Parse(DateTime.Parse(Format(CDate(rec_dtp_date.Value), "yyyy-MM-dd") & " " & rec_dtp_starttime.Text)))
+                    If elapsedTime.CompareTo(TimeSpan.Zero) <= 0 Then
+                        RadMessageBox.Show(Me, "The Starting Time can't be the same or later on the Ending Time.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error, MessageBoxDefaultButton.Button1)
+                    ElseIf eq_rgv_addeq.Rows.Count = 0 Then
+                        RadMessageBox.Show(Me, "No equipment to reserve.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
+                    Else
 
-        Dim serials() As String
-            Dim serialsElements As Integer = 0
-            Dim dupdup As Boolean
+                        Dim serials() As String
+                        Dim serialsElements As Integer = 0
+                        Dim dupdup As Boolean
 
-            For i As Integer = 0 To eq_rgv_addeq.Rows.Count - 1
-                ReDim Preserve serials(serialsElements)
-                serials(serialsElements) = (LCase(eq_rgv_addeq.Rows(i).Cells(2).Value))
-                serialsElements += 1
-            Next
-            If serials.Distinct().Count() <> serials.Count() Then
-                dupdup = True
-            Else
-                dupdup = False
-            End If
-                If dupdup Then
-                    RadMessageBox.Show(Me, "Please remove duplicates in the added equipments.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error, MessageBoxDefaultButton.Button1)
+                        For i As Integer = 0 To eq_rgv_addeq.Rows.Count - 1
+                            ReDim Preserve serials(serialsElements)
+                            serials(serialsElements) = (LCase(eq_rgv_addeq.Rows(i).Cells(2).Value))
+                            serialsElements += 1
+                        Next
+                        If serials.Distinct().Count() <> serials.Count() Then
+                            dupdup = True
                         Else
-                    Dim counter As Integer
-                    Dim rownumber As Integer = eq_rgv_addeq.Rows.Count
-                    counter = 0
-                    Dim errorcount As Boolean = False
-                    If rownumber > 0 Then
-                        While counter <> rownumber
+                            dupdup = False
+                        End If
+                        If dupdup Then
+                            RadMessageBox.Show(Me, "Please remove duplicates in the added equipments.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error, MessageBoxDefaultButton.Button1)
+                        Else
+                            Dim counter As Integer
+                            Dim rownumber As Integer = eq_rgv_addeq.Rows.Count
+                            counter = 0
+                            Dim errorcount As Boolean = False
+                            If rownumber > 0 Then
+                                While counter <> rownumber
 
-                            Dim equipmentnorgv As String = eq_rgv_addeq.Rows(counter).Cells(0).Value
-                            Dim equipmentrgv As String = eq_rgv_addeq.Rows(counter).Cells(1).Value
-                            Dim equipmentsnrgv As String = eq_rgv_addeq.Rows(counter).Cells(2).Value
-                            Dim equipmenttypergv As String = eq_rgv_addeq.Rows(counter).Cells(3).Value
+                                    Dim equipmentnorgv As String = eq_rgv_addeq.Rows(counter).Cells(0).Value
+                                    Dim equipmentrgv As String = eq_rgv_addeq.Rows(counter).Cells(1).Value
+                                    Dim equipmentsnrgv As String = eq_rgv_addeq.Rows(counter).Cells(2).Value
+                                    Dim equipmenttypergv As String = eq_rgv_addeq.Rows(counter).Cells(3).Value
 
-                                MysqlConn.Close()
-                                MysqlConn.Open()
+                                    MysqlConn.Close()
+                                    MysqlConn.Open()
 
                                     'Modified with Complete Params
                                     'query = "SELECT * FROM reservation WHERE (equipment=@RE_equipment OR equipmentsn=@RE_equipmentsn OR equipmentno=@RE_equipmentno) AND (('@RE_date @RE_starttime' BETWEEN CONCAT(date,'',starttime) AND CONCAT(date,'',endtime)) OR ('@RE_date @RE_endtime' BETWEEN CONCAT(date,' ',starttime) AND CONCAT (date,' ',endtime))) "
@@ -3533,100 +3526,134 @@ Public Class Main
                                     'BACKUP
 
                                     'query="SELECT * FROM ceutltdscheduler.reservation natural join ceutltdscheduler.reservation_equipments WHERE equipment=@RE_equipment AND equipmentsn=@RE_equipmentsn AND equipmentno=@RE_equipmentno AND ((((@a) BETWEEN CONCAT(date,' ',starttime) AND CONCAT(date,' ',endtime)) AND (@b BETWEEN CONCAT(date,' ',starttime) AND CONCAT(date,' ',endtime))) OR ((DATE_FORMAT(@a,'%Y-%m-%d %H:%i:%s') <= CONCAT(date,' ',starttime)) AND (DATE_FORMAT(@b,'%Y-%m-%d %H:%i:%s') >= CONCAT(date,' ',endtime)))) AND (res_status='Reserved' OR res_status='Released')"
-                                query="SELECT * FROM ceutltdscheduler.reservation natural join ceutltdscheduler.reservation_equipments WHERE equipment=@RE_equipment AND equipmentsn=@RE_equipmentsn AND equipmentno=@RE_equipmentno AND ((((@a) BETWEEN CONCAT(date,' ',starttime) AND CONCAT(date,' ',endtime)) OR (@b BETWEEN CONCAT(date,' ',starttime) AND CONCAT(date,' ',endtime))) OR ((DATE_FORMAT(@a,'%Y-%m-%d %H:%i:%s') <= CONCAT(date,' ',starttime)) AND (DATE_FORMAT(@b,'%Y-%m-%d %H:%i:%s') >= CONCAT(date,' ',endtime)) AND CONCAT(date,' ',endtime) >= DATE_FORMAT(@a,'%Y-%m-%d %H:%i:%s'))) AND (res_status='Reserved' OR res_status='Released')"
-                                comm = New MySqlCommand(query, MysqlConn)
-                                comm.Parameters.AddWithValue("RE_reservationno", rec_cb_reserveno.Text)
-                                comm.Parameters.AddWithValue("RE_equipment", equipmentrgv)
-                                comm.Parameters.AddWithValue("RE_equipmentsn", equipmentsnrgv)
-                                comm.Parameters.AddWithValue("RE_equipmentno", equipmentnorgv)
-                                comm.Parameters.AddWithValue("@a", Format(CDate(rec_dtp_date.Value), "yyyy-MM-dd") & " " & Format(CDate(rec_dtp_starttime.Text), "HH:mm:01"))
-                                comm.Parameters.AddWithValue("@b", Format(CDate(rec_dtp_date.Value), "yyyy-MM-dd") & " " & Format(CDate(rec_dtp_endtime.Text), "HH:mm"))
+                                    query = "SELECT * FROM ceutltdscheduler.reservation natural join ceutltdscheduler.reservation_equipments WHERE equipment=@RE_equipment AND equipmentsn=@RE_equipmentsn AND equipmentno=@RE_equipmentno AND ((((@a) BETWEEN CONCAT(date,' ',starttime) AND CONCAT(date,' ',endtime)) OR (@b BETWEEN CONCAT(date,' ',starttime) AND CONCAT(date,' ',endtime))) OR ((DATE_FORMAT(@a,'%Y-%m-%d %H:%i:%s') <= CONCAT(date,' ',starttime)) AND (DATE_FORMAT(@b,'%Y-%m-%d %H:%i:%s') >= CONCAT(date,' ',endtime)) AND CONCAT(date,' ',endtime) >= DATE_FORMAT(@a,'%Y-%m-%d %H:%i:%s'))) AND (res_status='Reserved' OR res_status='Released')"
+                                    comm = New MySqlCommand(query, MysqlConn)
+                                    comm.Parameters.AddWithValue("RE_reservationno", rec_cb_reserveno.Text)
+                                    comm.Parameters.AddWithValue("RE_equipment", equipmentrgv)
+                                    comm.Parameters.AddWithValue("RE_equipmentsn", equipmentsnrgv)
+                                    comm.Parameters.AddWithValue("RE_equipmentno", equipmentnorgv)
+                                    comm.Parameters.AddWithValue("@a", Format(CDate(rec_dtp_date.Value), "yyyy-MM-dd") & " " & Format(CDate(rec_dtp_starttime.Text), "HH:mm:01"))
+                                    comm.Parameters.AddWithValue("@b", Format(CDate(rec_dtp_date.Value), "yyyy-MM-dd") & " " & Format(CDate(rec_dtp_endtime.Text), "HH:mm"))
 
-                                READER = comm.ExecuteReader
-                                Dim count As Integer
-                                count = 0
-                                While READER.Read
-                                    count = count + 1
-                                    equipmentnorgv = READER.GetString("equipmentno")
-                                    equipmentrgv = READER.GetString("equipment")
-                                    equipmentsnrgv = READER.GetString("equipmentsn")
-                                    
+                                    READER = comm.ExecuteReader
+                                    Dim count As Integer
+                                    count = 0
+                                    While READER.Read
+                                        count = count + 1
+                                        equipmentnorgv = READER.GetString("equipmentno")
+                                        equipmentrgv = READER.GetString("equipment")
+                                        equipmentsnrgv = READER.GetString("equipmentsn")
+
                                     End While
 
-                                If count > 0 Then
-                                    RadMessageBox.Show(Me, "The equipment " & equipmentrgv & " with serial number of " & equipmentsnrgv & " is already taken", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
-                                    errorcount = True
-                                    Exit While
-                                Else
+                                    If count > 0 Then
+                                        RadMessageBox.Show(Me, "The equipment " & equipmentrgv & " with serial number of " & equipmentsnrgv & " is already taken", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
+                                        errorcount = True
+                                        Exit While
+                                    Else
+                                        borrower_firstname = rec_cb_borrower.Text.Substring(rec_cb_borrower.Text.IndexOf(",") + 2, rec_cb_borrower.Text.Length - rec_cb_borrower.Text.IndexOf(", ") - 2)
+                                        borrower_lastname = rec_cb_borrower.Text.Substring(0, rec_cb_borrower.Text.IndexOf(","))
+                                        MysqlConn.Close()
+                                        GetMobileNo_of_Reserver()
+                                        MysqlConn.Open()
+                                        'query = "INSERT INTO `reservation` VALUES ('" & rec_cb_reserveno.Text & "','" & equipmentnorgv & "', '" & equipmentrgv & "', '" & equipmentsnrgv & "', '" & rec_cb_idnum.Text & "', '" & Format(CDate(rec_dtp_date.Value), "yyyy-MM-dd") & "','" & Format(CDate(rec_dtp_starttime.Text), "HH:mm") & "', '" & Format(CDate(rec_dtp_endtime.Text), "HH:mm") & "', '" & rec_cb_borrower.Text & "', '" & rec_cb_location.Text & "' , '" & lbl_nameofstaff_reserved.Text & "' ,'" & rec_cb_acttype.Text & "','" & rec_rrtc_actname.Text & "') ;INSERT INTO `reservation_equipments` VALUES ('" & rec_cb_reserveno.Text & "','" & equipmentnorgv & "', '" & equipmentrgv & "', '" & equipmentsnrgv & "','Reserved')"
+                                        query = "INSERT INTO ceutltdscheduler.reservation VALUES(@a,@r,@b,@c,@d,@e,@f,@g,@h,@i,@mobileno,@j,@k,@l,@m); INSERT INTO ceutltdscheduler.reservation_equipments VALUES(@n,@r,@o,@p,@q,'Reserved')"
+                                        comm = New MySqlCommand(query, MysqlConn)
+                                        comm.Parameters.AddWithValue("@a", rec_cb_reserveno.Text)
+                                        'comm.Parameters.AddWithValue("@r",rec_eq_type_choose.Text)
+                                        comm.Parameters.AddWithValue("@r", equipmenttypergv)
+                                        comm.Parameters.AddWithValue("@b", equipmentnorgv)
+                                        comm.Parameters.AddWithValue("@c", equipmentrgv)
+                                        comm.Parameters.AddWithValue("@d", equipmentsnrgv)
+                                        comm.Parameters.AddWithValue("@e", rec_cb_idnum.Text)
+                                        comm.Parameters.AddWithValue("@f", Format(CDate(rec_dtp_date.Value), "yyyy-MM-dd"))
+                                        comm.Parameters.AddWithValue("@g", Format(CDate(rec_dtp_starttime.Text), "HH:mm"))
+                                        comm.Parameters.AddWithValue("@h", Format(CDate(rec_dtp_endtime.Text), "HH:mm"))
+                                        comm.Parameters.AddWithValue("@i", rec_cb_borrower.Text)
+                                        comm.Parameters.AddWithValue("@j", rec_cb_location.Text)
+                                        comm.Parameters.AddWithValue("@k", lbl_nameofstaff_reserved.Text)
+                                        comm.Parameters.AddWithValue("@l", rec_cb_acttype.Text)
+                                        comm.Parameters.AddWithValue("@m", rec_rrtc_actname.Text)
+                                        comm.Parameters.AddWithValue("@mobileno", borrower_mobileno)
 
-                                    MysqlConn.Close()
-                                    MysqlConn.Open()
-                                    'query = "INSERT INTO `reservation` VALUES ('" & rec_cb_reserveno.Text & "','" & equipmentnorgv & "', '" & equipmentrgv & "', '" & equipmentsnrgv & "', '" & rec_cb_idnum.Text & "', '" & Format(CDate(rec_dtp_date.Value), "yyyy-MM-dd") & "','" & Format(CDate(rec_dtp_starttime.Text), "HH:mm") & "', '" & Format(CDate(rec_dtp_endtime.Text), "HH:mm") & "', '" & rec_cb_borrower.Text & "', '" & rec_cb_location.Text & "' , '" & lbl_nameofstaff_reserved.Text & "' ,'" & rec_cb_acttype.Text & "','" & rec_rrtc_actname.Text & "') ;INSERT INTO `reservation_equipments` VALUES ('" & rec_cb_reserveno.Text & "','" & equipmentnorgv & "', '" & equipmentrgv & "', '" & equipmentsnrgv & "','Reserved')"
-                                    query="INSERT INTO ceutltdscheduler.reservation VALUES(@a,@r,@b,@c,@d,@e,@f,@g,@h,@i,@j,@k,@l,@m); INSERT INTO ceutltdscheduler.reservation_equipments VALUES(@n,@r,@o,@p,@q,'Reserved')"
-                                    comm = New MySqlCommand(query, MysqlConn)
-                                    comm.Parameters.AddWithValue("@a",rec_cb_reserveno.Text)
-                                    'comm.Parameters.AddWithValue("@r",rec_eq_type_choose.Text)
-                                    comm.Parameters.AddWithValue("@r",equipmenttypergv)
-                                    comm.Parameters.AddWithValue("@b",equipmentnorgv)
-                                    comm.Parameters.AddWithValue("@c",equipmentrgv)
-                                    comm.Parameters.AddWithValue("@d",equipmentsnrgv)
-                                    comm.Parameters.AddWithValue("@e",rec_cb_idnum.Text)
-                                    comm.Parameters.AddWithValue("@f",Format(CDate(rec_dtp_date.Value), "yyyy-MM-dd"))
-                                    comm.Parameters.AddWithValue("@g",Format(CDate(rec_dtp_starttime.Text), "HH:mm"))
-                                    comm.Parameters.AddWithValue("@h",Format(CDate(rec_dtp_endtime.Text), "HH:mm"))
-                                    comm.Parameters.AddWithValue("@i",rec_cb_borrower.Text)
-                                    comm.Parameters.AddWithValue("@j",rec_cb_location.Text)
-                                    comm.Parameters.AddWithValue("@k",lbl_nameofstaff_reserved.Text)
-                                    comm.Parameters.AddWithValue("@l",rec_cb_acttype.Text)
-                                    comm.Parameters.AddWithValue("@m",rec_rrtc_actname.Text)
                                         'SECOND QUERY
-                                    comm.Parameters.AddWithValue("@n",rec_cb_reserveno.Text)
-                                    comm.Parameters.AddWithValue("@o",equipmentnorgv)
-                                    comm.Parameters.AddWithValue("@p",equipmentrgv)
-                                    comm.Parameters.AddWithValue("@q",equipmentsnrgv)
-                                    READER = comm.ExecuteReader
-                                    MysqlConn.Close()
+                                        comm.Parameters.AddWithValue("@n", rec_cb_reserveno.Text)
+                                        comm.Parameters.AddWithValue("@o", equipmentnorgv)
+                                        comm.Parameters.AddWithValue("@p", equipmentrgv)
+                                        comm.Parameters.AddWithValue("@q", equipmentsnrgv)
+                                        READER = comm.ExecuteReader
+                                        MysqlConn.Close()
 
-                                End If
-                            counter = counter + 1
+                                    End If
+                                    counter = counter + 1
 
-                        End While
-                        
-                        rowcounter = 0
+                                End While
+
+                                rowcounter = 0
+                            End If
+
+                            If errorcount = False Then
+                                RadMessageBox.Show(Me, "Succesfully reserved equipment(s)!", system_Name, MessageBoxButtons.OK, RadMessageIcon.Info)
+                                eq_rgv_addeq.Rows.Clear()
+                                auto_generate_reservationno()
+                            Else
+                                RadMessageBox.Show(Me, "Equipment(s) not successfully reserved!", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
+
+                            End If
+                        End If
                     End If
-
-                    If errorcount = False Then
-                        RadMessageBox.Show(Me, "Succesfully reserved equipment(s)!", system_Name, MessageBoxButtons.OK, RadMessageIcon.Info)
-                            eq_rgv_addeq.Rows.Clear()
-                            auto_generate_reservationno()
-                    Else
-                        RadMessageBox.Show(Me, "Equipment(s) not successfully reserved!", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
-
-                    End If
+                    main_load_academicsonly()
+                    'main_load_schoolonly()
+                    load_rec_table("NONE", True)
+                    reserved_load_table()
                 End If
             End If
-            main_load_academicsonly()
-            'main_load_schoolonly()
-            load_rec_table("NONE",True)
-            reserved_load_table()
-        End If
-      End If
-            Catch ex As MySqlException
-                If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed")))
-                    refresh_main_rgv_recordedacademicsonly.Stop()
-                    refresh_released_grid_list.Stop()
-                    RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
-                    Login.log_lbl_dbstatus.Text = "Offline"
-                    Login.log_lbl_dbstatus.ForeColor = Color.Red
-                    Return
-               Else
-                    RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
-               End If
-            Catch ex As Exception
+        Catch ex As MySqlException
+            If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") Or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") Or ex.Message.Contains("Reading from the stream has failed"))) Then
+                refresh_main_rgv_recordedacademicsonly.Stop()
+                refresh_released_grid_list.Stop()
+                RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
+                Login.log_lbl_dbstatus.Text = "Offline"
+                Login.log_lbl_dbstatus.ForeColor = Color.Red
+                Return
+            Else
                 RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
-            Finally
-                MysqlConn.Dispose()
-            End Try
+            End If
+        Catch ex As Exception
+            RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
+        Finally
+            MysqlConn.Dispose()
+        End Try
+    End Sub
+
+    Private Sub GetMobileNo_of_Reserver()
+        Try
+            MysqlConn.Open()
+            Dim q As String = "SELECT bor_mobileno as 'Mobile' FROM ceutltdscheduler.borrowers_reg WHERE bor_fname=@fname_GV and bor_surname=@lname_GV"
+            comm = New MySqlCommand(q, MysqlConn)
+            comm.Parameters.AddWithValue("@fname_GV", borrower_firstname)
+            comm.Parameters.AddWithValue("@lname_GV", borrower_lastname)
+            reader = comm.ExecuteReader
+            While reader.Read
+                borrower_mobileno = reader.GetString("Mobile")
+            End While
+            MysqlConn.Close()
+        Catch ex As MySqlException
+            If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") Or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") Or ex.Message.Contains("Reading from the stream has failed"))) Then
+                refresh_main_rgv_recordedacademicsonly.Stop()
+                refresh_released_grid_list.Stop()
+                RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
+                Login.log_lbl_dbstatus.Text = "Offline"
+                Login.log_lbl_dbstatus.ForeColor = Color.Red
+                Return
+            Else
+                RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
+            End If
+        Catch ex As Exception
+            RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
+        Finally
+            MysqlConn.Dispose()
+        End Try
     End Sub
 
     'Showing All Data to Reservation Grid View
@@ -5010,6 +5037,7 @@ End Sub
         reservationThread.Abort()
         ''end lancebendo's
     End Sub
+
 
 
 

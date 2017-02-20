@@ -1,4 +1,5 @@
 ﻿Imports System.Threading
+Imports MySql.Data.MySqlClient
 
 'Lance Bendo
 
@@ -7,6 +8,29 @@ Public Class PendingSms
 
     Private resId, endTime As String
     Private isDone As Boolean = False
+
+    Private updateQuery As String = ""
+    'Conn
+
+    'Conn
+    Private Sub Scanfor_isSMS_Sent_Flag()
+        MySQLConn_Bendo = New MySqlConnection
+        MySQLConn_Bendo.ConnectionString = connstring
+        Dim sda As New MySqlDataAdapter
+        Dim dbdataset As New DataTable
+
+        If MySQLConn.State = ConnectionState.Open Then
+            MySQLConn.Close()
+        End If
+        MySQLConn.Open()
+        Dim query As String
+        query = "Select reservationno as 'Reservation Number', borrower as 'Borrower', equipmenttype as 'Equipment Type', equipmentno as 'Equipment No.', equipment as 'Equipment', location as 'Location', DATE_FORMAT(date,'%M %d %Y') as 'Date', TIME_FORMAT(endtime, '%H:%i') as 'End Time' from reservation natural join reservation_equipments where res_status = 'Released'  ORDER by date ASC"
+        comm = New MySqlCommand(query, MySQLConn)
+        sda.SelectCommand = comm
+        sda.Fill(dbdataset)
+        sda.Update(dbdataset)
+        MySQLConn.Close()
+    End Sub
 
     Private dt As New DataTable
     Private WithEvents t As System.Windows.Forms.Timer
