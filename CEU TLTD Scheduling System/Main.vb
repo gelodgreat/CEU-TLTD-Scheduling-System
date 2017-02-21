@@ -199,21 +199,6 @@ Public Class Main
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     'Start! Groupbox Hover in Account Management
     Private Sub gb_staff_reg_MouseEnter(sender As Object, e As EventArgs) Handles gb_staff_reg.MouseEnter
         acct_mgmt_hover_delay_goingToStaff.Interval = 500
