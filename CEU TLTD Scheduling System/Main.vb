@@ -1066,7 +1066,7 @@ Public Class Main
             End If
             MysqlConn.ConnectionString = connstring
             MysqlConn.Open()
-            query = "SELECT list_school as 'School' FROM ceutltdscheduler.listschool"
+            query = "SELECT list_school as 'School' FROM ceutltdscheduler.listschool ORDER BY list_school"
             comm = New MySqlCommand(query, MysqlConn)
 
             reader = comm.ExecuteReader
@@ -1103,7 +1103,7 @@ Public Class Main
             End If
             MysqlConn.ConnectionString = connstring
             MysqlConn.Open()
-            query = "SELECT list_venue as 'Venue' FROM ceutltdscheduler.listvenue"
+            query = "SELECT list_venue as 'Venue' FROM ceutltdscheduler.listvenue ORDER BY list_venue"
             comm = New MySqlCommand(query, MysqlConn)
 
             reader = comm.ExecuteReader
