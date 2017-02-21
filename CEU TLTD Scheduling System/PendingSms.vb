@@ -23,16 +23,13 @@ Public Class PendingSms
 
     Private Sub initializeData(ByVal row As DataRow)
         Me.rel_id = row(0).ToString
-
         Me.endTime = formatDate(row(6).ToString, row(1).ToString)
-        MsgBox(endTime)
         Me.rel_mobile_no = row(3).ToString
         Me.rel_borrower = getSurname(row(4).ToString)
         Me.rel_eqtype = row(5).ToString
     End Sub
 
     Private Function formatDate(ByVal dateRow As String, ByVal timeRow As String)
-        'MsgBox(getDate(dateRow) & " " & timeRow)
         Return DateTime.ParseExact(getDate(dateRow) & " " & timeRow, "M/dd/yyyy HH:mm:ss", Nothing).ToString
     End Function
 

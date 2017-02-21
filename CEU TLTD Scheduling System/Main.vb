@@ -1045,8 +1045,8 @@ Public Class Main
                 acc_pf_college.Items.Add(reader.GetString("School"))
                 rec_cb_college_school.Items.Add(reader.GetString("School"))
             End While
-            MysqlConn.Close
-         Catch ex As MySqlException
+            MysqlConn.Close()
+        Catch ex As MySqlException
             If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") Or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") Or ex.Message.Contains("Reading from the stream has failed"))) Then
                 refresh_main_rgv_recordedacademicsonly.Stop()
                 refresh_released_grid_list.Stop()

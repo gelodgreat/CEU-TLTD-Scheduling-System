@@ -769,7 +769,7 @@ Partial Class Main
         CType(Me.main_rgv_recordedacademicsonly, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.main_rgv_recordedacademicsonly.MasterTemplate, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.main_rgv_recordedacademicsonly.SuspendLayout
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
+
         CType(Me.RadGroupBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.RadGroupBox2.SuspendLayout
         CType(Me.RadGroupBox7, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -3847,7 +3847,6 @@ Partial Class Main
         'main_rgv_recordedacademicsonly
         '
         Me.main_rgv_recordedacademicsonly.AutoSizeRows = True
-        Me.main_rgv_recordedacademicsonly.Controls.Add(Me.DataGridView1)
         Me.main_rgv_recordedacademicsonly.Dock = System.Windows.Forms.DockStyle.Fill
         Me.main_rgv_recordedacademicsonly.Location = New System.Drawing.Point(2, 18)
         '
@@ -4397,8 +4396,7 @@ Partial Class Main
         CType(Me.main_rgv_recordedacademicsonly.MasterTemplate, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.main_rgv_recordedacademicsonly, System.ComponentModel.ISupportInitialize).EndInit()
         Me.main_rgv_recordedacademicsonly.ResumeLayout(False)
-        Me.main_rgv_recordedacademicsonly.PerformLayout
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.main_rgv_recordedacademicsonly.PerformLayout()
         CType(Me.RadGroupBox2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.RadGroupBox2.ResumeLayout(False)
         CType(Me.RadGroupBox7, System.ComponentModel.ISupportInitialize).EndInit()
