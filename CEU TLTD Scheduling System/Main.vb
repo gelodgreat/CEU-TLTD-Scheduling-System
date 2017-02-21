@@ -57,74 +57,55 @@ Public Class Main
 
 
     'BENDO TIME
-    Dim release_info_sms As New DataTable
-    Dim smsList As New List(Of PendingSms)
-    Dim smsListDone As New List(Of String)
-    Dim reservationThread As New Thread(Sub() thread1Loop())
-    Dim newReservationThread As New Thread(Sub() thread2Loop())
+    Dim release_info_sms As New DataTable       'table of released info. not yet TXTed/SMSed
+
+    Dim smsPendingList As New List(Of PendingSms)   'stores pending instance of pendingSms
+    Dim smsIsAddedListId As New List(Of String)     'stores new pending release_id
+    Dim smsIsDoneList As New List(Of String)        'stores the release_id that has already been sent
+    Dim smsContentList As New List(Of String)       'stores the content of Pending SMS that is needed to be sent
+
+    Private threadToAdd As New Thread(Sub() Me.checkToAdd())        'thread for checkNewRelease
+    Private threadToRemove As New Thread(Sub() Me.checkToRemove())  'thread for checkReturned
+    Private threadToSend As New Thread(Sub() Me.checkToSend())      'thread for checkSendSms
+
     Dim bendoTimer As New System.Windows.Forms.Timer
 
-    Private Function isThisDone(ByVal id As String)
+    Private Sub checkNewRelease(ByVal dtPendingTable As DataTable)
+        Try
+            For Each dr As DataRow In dtPendingTable.Rows
+                Dim res_id As String = dr(0).ToString
+                If isNotPending(res_id, smsPendingList) = False And isThisDone(res_id, smsIsAddedListId) = False Then
+                    'add new sms pending here
 
-        For Each doneId As String In smsListDone
-            If id = doneId Then
+                    newPendingSms(dr)
+                    smsIsAddedListId.Add(res_id)
+                End If
+            Next
+        Catch ex As Exception
+            Debug.WriteLine(ex.Message)
+        End Try
+    End Sub
+
+    Private Function isNotPending(ByVal rel_id As String, smsList As List(Of PendingSms))
+        For Each sms As PendingSms In smsList
+            If sms.getReleaseId = rel_id Then
                 Return True
             End If
         Next
-
-        Return False
+        Return isThisDone(rel_id, smsIsAddedListId)
     End Function
 
-
-
-    ''UNDER CONSTRUCTION
-    'Private Function getFinalTable(ByVal dt As DataTable, ByVal con As MySqlConnection, ByVal comm As MySqlCommand)
-
-    '    For Each row As DataRow In dt.Rows
-
-    '        For Each doneId As String In smsListDone
-
-    '            If doneId = row(0).ToString Then    'if sms is already sent
-    '                Dim qry As String = "update ceutltdscheduler.released_info set rel_isSMS_Sent = '1' where rel_reservation_no = '" & row(0).ToString & "';"
-    '                comm = New MySqlCommand(qry, con)
-    '                smsListDone.Remove(doneId)
-    '                dt.Rows.Remove(row)
-    '            End If
-    '        Next
-
-    '    Next
-
-    '    Return dt
-    'End Function
-
-
-    'this function create new instance of a pendingSms
-    Private Sub newPendingSms(ByVal id As String, ByVal endTime As String)
-        Dim newSms As New PendingSms(id, endTime, release_info_sms, bendoTimer)
-        smsList.Add(newSms)
-
-    End Sub
-
-
-
-    'this function removes the sms instance from pending sms pool if the borrowed item is returned
-    Private Sub reservationChecking()
+    Private Sub checkReturned(ByVal pendingList As List(Of PendingSms))
         Try
-            For Each sms As PendingSms In smsList
-
-                Dim smsId As String = sms.getReservationId
+            For Each sms As PendingSms In pendingList
+                Dim smsId As String = sms.getReleaseId
                 Dim isFound As Boolean = False
-
                 ''another for loop for checking from datatable
                 ''cut#1
-                Debug.WriteLine(isStillPending(sms).ToString)
-                If isStillPending(sms) = False Then
-                    sms.endPendingSms()
-                    smsList.Remove(sms)
-
+                If isStillPending(sms, release_info_sms) = False Then
+                    sms.destroyThis()
+                    smsPendingList.Remove(sms)
                 End If
-
-
             Next
         Catch ex As Exception
 
@@ -132,76 +113,79 @@ Public Class Main
 
     End Sub
 
+    Private Function isStillPending(ByVal sms As PendingSms, ByVal rel_dt As DataTable)
+        For Each dr As DataRow In rel_dt.Rows
 
-    Private Function isStillPending(ByVal sms As PendingSms)
-
-        For Each dr As DataRow In release_info_sms.Rows
-
-            If dr(0).ToString = sms.getReservationId Then
+            If dr(0).ToString = sms.getReleaseId Then
                 Return True
                 Exit For
                 Exit Function
             End If
         Next
 
-        Return True
-    End Function
-
-
-    'This add a new pendingSms instance to pendingSms pool if there's a new pending reservation
-    Private Sub newReservationChecking()
-        Thread.Sleep(200)
-        Try
-
-            For Each dr As DataRow In release_info_sms.Rows
-
-                If isNotYetPending(dr(0).ToString) = False And isThisDone(dr(0).ToString) = False Then
-                    'add new sms pending here
-                    Dim res_id As String = dr(0).ToString
-                    Dim res_end_time As String = dr(1).ToString
-
-                    newPendingSms(res_id, res_end_time)
-                    smsListDone.Add(res_id)
-                    Debug.WriteLine("new sms dito")
-
-                End If
-
-            Next
-        Catch ex As Exception
-
-        End Try
-    End Sub
-
-    Private Function isNotYetPending(ByVal id As String)
-
-        For Each sms As PendingSms In smsList
-            If sms.getReservationId = id Then
-
-                Return True
-            End If
-            Debug.WriteLine(sms.getReservationId & " " & id)
-        Next
-
-        If isThisDone(id) = True Then
-            Return True
-        End If
         Return False
     End Function
 
-    Private Sub thread1Loop()
-        While 1 <> 0
-            reservationChecking()
+    Private Sub checkPendingSend(ByVal sendingList As List(Of String))
+        Try
+            For Each smsContent As String In sendingList
+                'dito yung send sms
+                Thread.Sleep(15000)
+                MsgBox(smsContent)
+                sendingList.Remove(smsContent)
+            Next
+        Catch ex As Exception
+        End Try
 
-            Thread.Sleep(10)
+    End Sub
+
+    Private Sub checkToAdd()
+        While 1 <> 0
+            Thread.Sleep(600)
+            checkNewRelease(release_info_sms)
         End While
     End Sub
 
-    Private Sub thread2Loop()
+    Private Sub checkToRemove()
         While 1 <> 0
-            newReservationChecking()
-
-            Thread.Sleep(1000)
+            Thread.Sleep(200)
+            checkReturned(smsPendingList)
         End While
+    End Sub
+
+    Private Sub checkToSend()
+        While 1 <> 0
+            Thread.Sleep(1000)
+            checkPendingSend(smsContentList)
+        End While
+    End Sub
+
+    Private Sub newPendingSms(ByVal smsRow As DataRow)
+
+        Dim newSms As New PendingSms(smsRow, release_info_sms, bendoTimer, smsIsDoneList, smsContentList)
+        smsPendingList.Add(newSms)
+    End Sub
+
+    Private Function isThisDone(ByVal id As String, smsAddedList As List(Of String))
+        For Each doneId As String In smsAddedList
+            If id = doneId Then
+                Return True
+            End If
+        Next
+        Return False
+    End Function
+
+
+    ''THIS IS THE FUNCTION TO UPDATE THE COLUMN rel_isSMS_SENT to 1 if the sms is already sent to the borrower
+    Private Sub updateSmsTable(smsDoneList As List(Of String), ByVal conn As MySqlConnection)
+        Try
+            For Each rel_id As String In smsDoneList
+                query = "update released_info set rel_isSMS_Sent = '1' where rel_reservation_no = '" & rel_id & "'"
+                Dim comm As New MySqlCommand(query, conn)
+                comm.ExecuteNonQuery()
+            Next
+        Catch ex As Exception
+        End Try
     End Sub
 
 
@@ -361,8 +345,9 @@ Public Class Main
 
         ''lancebendo's
         bendoTimer.Start()
-        reservationThread.Start()
-        newReservationThread.Start()
+        threadToAdd.Start()
+        threadToRemove.Start()
+        threadToSend.Start()
         ''end lancebendo's
     End Sub
 
@@ -938,15 +923,13 @@ Public Class Main
             ''lancebendo edit
             Dim tempdt As New DataTable
             MysqlConn.Open()
-            query = "Select rel_reservation_no as 'Reservation Number', TIME_FORMAT(rel_endtime, '%H:%i') as 'End Time', rel_isSMS_Sent from ceutltdscheduler.released_info WHERE rel_isSMS_Sent='1' and rel_assign_date='" & Format(CDate(lu_date.Value), "yyyy-MM-dd") & "'"
+            updateSmsTable(smsIsDoneList, MysqlConn)
+            query = "SELECT rel_reservation_no AS 'Reservation Number', rel_endtime, rel_isSMS_Sent, rel_bor_mobileno, rel_borrower, rel_eqtype, rel_assign_date FROM ceutltdscheduler.released_info WHERE rel_isSMS_Sent='0'"
             comm = New MySqlCommand(query, MysqlConn)
             SDA.SelectCommand = comm
             SDA.Fill(tempdt)
-            'DataGridView1.DataSource = tempdt
-
-            ''back
-            'release_info_sms = getFinalTable(tempdt, MysqlConn, comm)
             release_info_sms = tempdt
+            'getDate(dateRow)DataGridView1.DataSource = release_info_sms
             MysqlConn.Close()
             'checkthis()
 
@@ -5134,13 +5117,14 @@ End Sub
 
     Private Sub Main_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
         ''lancebendo's
-        newReservationThread.Abort()
-        reservationThread.Abort()
+        threadToAdd.Abort()
+        threadToRemove.Abort()
+        threadToSend.Abort()
         ''end lancebendo's
     End Sub
 
     Private Sub checkthis()
-        DataGridView1.DataSource = release_info_sms
+        'DataGridView1.DataSource = release_info_sms
     End Sub
 
 

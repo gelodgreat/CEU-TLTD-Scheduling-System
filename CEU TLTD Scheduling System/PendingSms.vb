@@ -1,105 +1,75 @@
 ﻿Imports System.Threading
-Imports MySql.Data.MySqlClient
 
 'Lance Bendo
 
-
 Public Class PendingSms
 
-    Private resId, endTime As String
+    Private WithEvents t As New System.Windows.Forms.Timer
+    Private dt As DataTable
+    Private endTime, rel_id, rel_mobile_no, rel_borrower, rel_eqtype As String
     Private isDone As Boolean = False
+    Private smsIsDone As List(Of String)
+    Private smsToSendList As List(Of String)
 
-    Private updateQuery As String = ""
-    'Conn
 
-    'Conn
-    Private Sub Scanfor_isSMS_Sent_Flag()
-        MySQLConn_Bendo = New MySqlConnection
-        MySQLConn_Bendo.ConnectionString = connstring
-        Dim sda As New MySqlDataAdapter
-        Dim dbdataset As New DataTable
-
-        If MySQLConn.State = ConnectionState.Open Then
-            MySQLConn.Close()
-        End If
-        MySQLConn.Open()
-        Dim query As String
-        query = "Select reservationno as 'Reservation Number', borrower as 'Borrower', equipmenttype as 'Equipment Type', equipmentno as 'Equipment No.', equipment as 'Equipment', location as 'Location', DATE_FORMAT(date,'%M %d %Y') as 'Date', TIME_FORMAT(endtime, '%H:%i') as 'End Time' from reservation natural join reservation_equipments where res_status = 'Released'  ORDER by date ASC"
-        comm = New MySqlCommand(query, MySQLConn)
-        sda.SelectCommand = comm
-        sda.Fill(dbdataset)
-        sda.Update(dbdataset)
-        MySQLConn.Close()
-    End Sub
-
-    Private dt As New DataTable
-    Private WithEvents t As System.Windows.Forms.Timer
-
-    Sub New(ByVal resId As String, ByVal endTime As String, ByVal dt As DataTable, ByVal t As System.Windows.Forms.Timer)
-        Me.resId = resId
-        'Me.endTime = endTime comment muna for testing
-        Me.endTime = DateTime.Now.AddSeconds(5)
-        Me.dt = dt
+    Sub New(ByVal smsRow As DataRow, dt As DataTable, ByVal t As System.Windows.Forms.Timer, ByVal smsIsDone As List(Of String), ByVal smsToSend As List(Of String))
         Me.t = t
+        Me.dt = dt
+        initializeData(smsRow)
+        Me.smsIsDone = smsIsDone
+        Me.smsToSendList = smsToSend
+        endTime = DateTime.Now.AddSeconds(10)   ''for testing purpose, 10 seconds yung default para magtrigger yung text. icomment lang ang line na to para sa real end_date
     End Sub
 
-    Public Sub endPendingSms()
-        Me.isDone = True
+    Private Sub initializeData(ByVal row As DataRow)
+        Me.rel_id = row(0).ToString
+
+        Me.endTime = formatDate(row(6).ToString, row(1).ToString)
+        MsgBox(endTime)
+        Me.rel_mobile_no = row(3).ToString
+        Me.rel_borrower = getSurname(row(4).ToString)
+        Me.rel_eqtype = row(5).ToString
     End Sub
 
-    Public Function getReservationId()
-        Return Me.resId
+    Private Function formatDate(ByVal dateRow As String, ByVal timeRow As String)
+        'MsgBox(getDate(dateRow) & " " & timeRow)
+        Return DateTime.ParseExact(getDate(dateRow) & " " & timeRow, "M/dd/yyyy HH:mm:ss", Nothing).ToString
     End Function
 
-    Public Function getIsDone()
+    Private Function getSurname(ByVal fullname As String)
+        Return fullname.Substring(0, fullname.IndexOf(","))
 
-
-
-
-
-
-        Return Me.isDone
     End Function
 
-    Private Sub t_Tick(sender As Object, e As EventArgs) Handles t.Tick
+    Private Function getDate(ByVal dateString As String)
+        Return dateString.Substring(0, dateString.IndexOf(" "))
+    End Function
 
-        ' Debug.WriteLine(endTime & " " & DateTime.Now.ToString & isDone.ToString)
+    Public Function getReleaseId()
+        Return Me.rel_id
+    End Function
 
-        If isDone = True Then               ''pag nabalik na yung hiniram
-            disposePendingSms()
+    Private Function getSmsContent(ByVal borrower As String, ByVal eqtype As String, ByVal penalty_amount As String)
+        Dim content As String = "To: Mr. " & borrower & Environment.NewLine & "We would like to notify you that your borrowed equipment '" & eqtype & "' has reached its allowable time." & Environment.NewLine & " Penalty every 1 hour: " & penalty_amount
+
+        Return content
+    End Function
+
+    Private Sub t_Tick(ByVal sender As Object, e As EventArgs) Handles t.Tick
+        Debug.WriteLine(endTime & " " & DateTime.Now.ToString)
+        If endTime = DateTime.Now.ToString And isDone = False Then
+            Dim str As String = "This sms is for " & Me.rel_id & " pls return the item"
+            smsToSendList.Add(getSmsContent(Me.rel_borrower, Me.rel_eqtype, "100.00"))     '100.00 is the default amount of penalty
+            smsIsDone.Add(getReleaseId())
+            destroyThis()
         End If
-
-
-        If endTime = DateTime.Now.ToString And isDone = False Then          ''pag over time na. dito magtetext
-
-            ''INSERT SEND SMS FUNCTION HERE
-            'test code lang
-
-            ''create a list for pending sms to be sent to avoid choking of sending
-
-
-            Debug.WriteLine("MSG SENT!")
-
-            Dim dr As DataRow = dt.Select("[" & dt.Columns(0).ColumnName & "] = '" & Me.getReservationId & "'")(0)
-            dt.Rows.Remove(dr)
-            Me.isDone = True
-            disposePendingSms()
-            MsgBox("MSG SENT!")
-
-            RemoveHandler t.Tick, AddressOf t_Tick
-            isDone = Nothing
-            MyBase.Finalize()
-
-        End If
-
     End Sub
 
-
-    Private Sub disposePendingSms()
-
-        'RemoveHandler t.Tick, AddressOf t_Tick
-        'isDone = Nothing
-        'MyBase.Finalize()
+    Public Sub destroyThis()
+        RemoveHandler t.Tick, AddressOf t_Tick
+        Me.isDone = Nothing
+        Me.rel_id = Nothing
+        MyBase.Finalize()
     End Sub
 
 
