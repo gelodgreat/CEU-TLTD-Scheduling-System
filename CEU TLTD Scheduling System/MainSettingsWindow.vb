@@ -175,6 +175,11 @@ Public Class MainSettingsWindow
                 Else
                     MsgBox("ADD BENDO CODES HERE - SMS Activation Thread")
                     Main.isSms_enabled = True
+                    Try
+
+                    Catch ex As Exception
+
+                    End Try
                     Save_SMS_Settings()
                 End If
             ElseIf setting_gsm_toggleswitch.Value = False Then

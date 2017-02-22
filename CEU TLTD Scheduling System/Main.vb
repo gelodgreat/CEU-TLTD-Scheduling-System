@@ -5334,6 +5334,9 @@ End Sub
 
     '    End Try
     'End Sub
+    Function sendsms(ByVal content As String)
 
+        Return MsgBox("Sent")
+    End Function
 
 End Class

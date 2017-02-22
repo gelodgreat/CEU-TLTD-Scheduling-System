@@ -43,4 +43,7 @@ Module GlobalVariableModule
     End Sub
     'SMS Settings
 
+    'GSM Module Connection using SerialPort
+    Public portname, baudrate As String
+
 End Module
