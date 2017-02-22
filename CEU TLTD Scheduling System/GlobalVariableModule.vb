@@ -1,6 +1,6 @@
 ﻿Imports MySql.Data.MySqlClient
 Module GlobalVariableModule
-    Public system_Name="CEU TLTD Reservation System"
+    Public system_Name = "CEU TLTD Reservation System"
     Public MySQLConn As New MySqlConnection
     Public MySQLConn_Bendo As New MySqlConnection
     Public connstring As String = "server=" & My.Settings.cons_server & ";port=" & My.Settings.cons_port & ";userid=" & Actions.ToInsecureString(Actions.DecryptString(My.Settings.cons_username)) & ";password=" & Actions.ToInsecureString(Actions.DecryptString(My.Settings.cons_password)) & ";database=" & My.Settings.cons_database
@@ -26,7 +26,7 @@ Module GlobalVariableModule
     'PENALTY Settings
 
     'Delay Settings
-    Public refresh_delay As Integer=My.Settings.refreshDelay
+    Public refresh_delay As Integer = My.Settings.refreshDelay
     Public search_delay As Integer = My.Settings.searchDelay
     Public Sub applydelaysImmediately()
         refresh_delay = My.Settings.refreshDelay
@@ -42,5 +42,8 @@ Module GlobalVariableModule
         My.Settings.gsmIsOn = MainSettingsWindow.setting_gsm_toggleswitch.Value
     End Sub
     'SMS Settings
+
+    'GSM Module Connection using SerialPort
+    Public portname, baudrate As String
 
 End Module

@@ -537,24 +537,25 @@ Partial Class Main
         Me.refresh_penalty_grid_list = New System.Windows.Forms.Timer(Me.components)
         Me.refresh_returned_eq_list = New System.Windows.Forms.Timer(Me.components)
         Me.CeutltdschedulerDataSetBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.SerialPort_SMS = New System.IO.Ports.SerialPort(Me.components)
         CType(Me.RadGroupBox16, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RadGroupBox13, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.rpvp_returning.SuspendLayout
+        Me.rpvp_returning.SuspendLayout()
         CType(Me.returning_groupbox_info, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.returning_groupbox_info.SuspendLayout
-        Me.rel_list_info2.SuspendLayout
+        Me.returning_groupbox_info.SuspendLayout()
+        Me.rel_list_info2.SuspendLayout()
         CType(Me.ret_gb_controls, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.ret_gb_controls.SuspendLayout
+        Me.ret_gb_controls.SuspendLayout()
         CType(Me.return_btn_refresh, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.return_btn_returned, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.return_btn_cancel, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ret_gb_remarks, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.ret_gb_remarks.SuspendLayout
+        Me.ret_gb_remarks.SuspendLayout()
         CType(Me.ret_remarks, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.released_grid_list2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.released_grid_list2.MasterTemplate, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ret_gb_details, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.ret_gb_details.SuspendLayout
+        Me.ret_gb_details.SuspendLayout()
         CType(Me.RadLabel44, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ret_tb_eqtype, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ret_nameofstaff_recorder, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -581,7 +582,7 @@ Partial Class Main
         CType(Me.lbl_ret_release, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RadLabel66, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RadLabel67, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.ret_penalties_info.SuspendLayout
+        Me.ret_penalties_info.SuspendLayout()
         CType(Me.RadLabel14, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.pen_btn_chg_filter, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RadLabel12, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -590,7 +591,7 @@ Partial Class Main
         CType(Me.pen_startDate, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.penalty_grid_list, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.penalty_grid_list.MasterTemplate, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.ret_eq_list.SuspendLayout
+        Me.ret_eq_list.SuspendLayout()
         CType(Me.RadLabel18, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ret_btn_chg_filter, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.returned_eq_list, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -599,18 +600,18 @@ Partial Class Main
         CType(Me.RadLabel19, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RadLabel22, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.returned_startDate, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.rpvp_releasing.SuspendLayout
+        Me.rpvp_releasing.SuspendLayout()
         CType(Me.rel_gb_listinfos, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.rel_gb_listinfos.SuspendLayout
-        Me.res_reserved_info.SuspendLayout
+        Me.rel_gb_listinfos.SuspendLayout()
+        Me.res_reserved_info.SuspendLayout()
         CType(Me.lbl_MobileNo, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.gp_controls, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.gp_controls.SuspendLayout
+        Me.gp_controls.SuspendLayout()
         CType(Me.released_btn_refresh, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.released_btn_release, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.released_btn_cancel, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.gp_details, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.gp_details.SuspendLayout
+        Me.gp_details.SuspendLayout()
         CType(Me.rel_nameofstaff_recorder, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RadLabel24, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.rel_tb_equipment, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -633,14 +634,14 @@ Partial Class Main
         CType(Me.RadLabel15, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.reserved_grid_list, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.reserved_grid_list.MasterTemplate, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.rel_released_info.SuspendLayout
+        Me.rel_released_info.SuspendLayout()
         CType(Me.released_grid_list, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.released_grid_list.MasterTemplate, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.rpvp2_reservation.SuspendLayout
+        Me.rpvp2_reservation.SuspendLayout()
         CType(Me.gp_reservation_details, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.gp_reservation_details.SuspendLayout
+        Me.gp_reservation_details.SuspendLayout()
         CType(Me.RadGroupBox6, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.RadGroupBox6.SuspendLayout
+        Me.RadGroupBox6.SuspendLayout()
         CType(Me.rec_btn_refresh, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.btn_resetreservationno, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.rec_btn_clear, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -668,7 +669,7 @@ Partial Class Main
         CType(Me.RadLabel1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.rec_dtp_date, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.gp_reservation_equipments, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.gp_reservation_equipments.SuspendLayout
+        Me.gp_reservation_equipments.SuspendLayout()
         CType(Me.rec_btn_save, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.res_rdio_reserved, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.res_rdio_showall, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -684,18 +685,18 @@ Partial Class Main
         CType(Me.RadLabel50, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.rec_del_eq, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RadGroupBox17, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.RadGroupBox17.SuspendLayout
+        Me.RadGroupBox17.SuspendLayout()
         CType(Me.eq_rgv_addeq, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.eq_rgv_addeq.MasterTemplate, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RadGroupBox3, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.RadGroupBox3.SuspendLayout
+        Me.RadGroupBox3.SuspendLayout()
         CType(Me.reservation_rgv_recordeddata, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.reservation_rgv_recordeddata.MasterTemplate, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.rpvp_equipment.SuspendLayout
+        Me.rpvp_equipment.SuspendLayout()
         CType(Me.RadLabel23, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.tb_show_all_equipments, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RadGroupBox21, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.RadGroupBox21.SuspendLayout
+        Me.RadGroupBox21.SuspendLayout()
         CType(Me.eq_total_units, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.eq_clear_filter, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RadLabel55, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -704,25 +705,25 @@ Partial Class Main
         CType(Me.RadLabel43, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.eq_filter_eqno, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RadGroupBox14, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.RadGroupBox14.SuspendLayout
+        Me.RadGroupBox14.SuspendLayout()
         CType(Me.eq_rgv_showregequipment, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.eq_rgv_showregequipment.MasterTemplate, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.rpvp_account.SuspendLayout
+        Me.rpvp_account.SuspendLayout()
         CType(Me.rpv_child_acctmgmt, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.rpv_child_acctmgmt.SuspendLayout
-        Me.rpv_staff.SuspendLayout
+        Me.rpv_child_acctmgmt.SuspendLayout()
+        Me.rpv_staff.SuspendLayout()
         CType(Me.acc_staff_list, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.acc_staff_list.MasterTemplate, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.rpv_borrower.SuspendLayout
+        Me.rpv_borrower.SuspendLayout()
         CType(Me.acc_prof_list, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.acc_prof_list.MasterTemplate, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.gb_bor_reg, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.gb_bor_reg.SuspendLayout
+        Me.gb_bor_reg.SuspendLayout()
         CType(Me.RadLabel40, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.acc_pf_mobnum, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.acc_pf_college, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RadGroupBox29, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.RadGroupBox29.SuspendLayout
+        Me.RadGroupBox29.SuspendLayout()
         CType(Me.acc_prof_btn_clear, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.acc_prof_btn_delete, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.acc_prof_btn_save, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -737,14 +738,14 @@ Partial Class Main
         CType(Me.RadLabel37, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RadLabel38, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.gb_staff_reg, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.gb_staff_reg.SuspendLayout
+        Me.gb_staff_reg.SuspendLayout()
         CType(Me.acc_sf_oldpassword, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.lbl_oldPassword, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RadLabel39, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.acc_staff_rdio_inactive, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.acc_staff_rdio_active, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RadGroupBox28, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.RadGroupBox28.SuspendLayout
+        Me.RadGroupBox28.SuspendLayout()
         CType(Me.acc_staff_btn_clear, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.acc_staff_btn_delete, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.acc_staff_btn_save, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -763,36 +764,34 @@ Partial Class Main
         CType(Me.RadLabel29, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RadLabel28, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RadLabel27, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.rpvp1_main.SuspendLayout
+        Me.rpvp1_main.SuspendLayout()
         CType(Me.RadGroupBox10, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.RadGroupBox10.SuspendLayout
+        Me.RadGroupBox10.SuspendLayout()
         CType(Me.main_rgv_recordedacademicsonly, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.main_rgv_recordedacademicsonly.MasterTemplate, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.main_rgv_recordedacademicsonly.SuspendLayout
-
         CType(Me.RadGroupBox2, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.RadGroupBox2.SuspendLayout
+        Me.RadGroupBox2.SuspendLayout()
         CType(Me.RadGroupBox7, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.RadGroupBox7.SuspendLayout
+        Me.RadGroupBox7.SuspendLayout()
         CType(Me.btn_gotoinsmat, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RadGroupBox8, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.RadGroupBox8.SuspendLayout
+        Me.RadGroupBox8.SuspendLayout()
         CType(Me.lu_ActivityType, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RadLabel9, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.lu_date, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RadLabel11, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RadGroupBox20, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.RadGroupBox20.SuspendLayout
+        Me.RadGroupBox20.SuspendLayout()
         CType(Me.RadLabel8, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.lu_byname, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.lu_byequipment, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RadLabel13, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.rpv1, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.rpv1.SuspendLayout
+        Me.rpv1.SuspendLayout()
         CType(Me.RadMenu1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.CeutltdschedulerDataSetBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.SuspendLayout
+        Me.SuspendLayout()
         '
         'RadGroupBox16
         '
@@ -3225,7 +3224,6 @@ Partial Class Main
         'rpv_staff
         '
         Me.rpv_staff.Controls.Add(Me.acc_staff_list)
-        Me.rpv_staff.ItemSize = New System.Drawing.SizeF(78.0!, 24.0!)
         Me.rpv_staff.Location = New System.Drawing.Point(5, 30)
         Me.rpv_staff.Name = "rpv_staff"
         Me.rpv_staff.Size = New System.Drawing.Size(1343, 238)
@@ -3255,7 +3253,6 @@ Partial Class Main
         'rpv_borrower
         '
         Me.rpv_borrower.Controls.Add(Me.acc_prof_list)
-        Me.rpv_borrower.ItemSize = New System.Drawing.SizeF(101.0!, 24.0!)
         Me.rpv_borrower.Location = New System.Drawing.Point(5, 30)
         Me.rpv_borrower.Name = "rpv_borrower"
         Me.rpv_borrower.Size = New System.Drawing.Size(1343, 238)
@@ -4048,7 +4045,7 @@ Partial Class Main
         Me.rpv1.DefaultPage = Me.rpvp1_main
         Me.rpv1.Location = New System.Drawing.Point(0, 26)
         Me.rpv1.Name = "rpv1"
-        Me.rpv1.SelectedPage = Me.rpvp_account
+        Me.rpv1.SelectedPage = Me.rpvp1_main
         Me.rpv1.Size = New System.Drawing.Size(1358, 557)
         Me.rpv1.TabIndex = 1
         Me.rpv1.Text = "Home"
@@ -4172,7 +4169,7 @@ Partial Class Main
         CType(Me.released_grid_list2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ret_gb_details, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ret_gb_details.ResumeLayout(False)
-        Me.ret_gb_details.PerformLayout
+        Me.ret_gb_details.PerformLayout()
         CType(Me.RadLabel44, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ret_tb_eqtype, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ret_nameofstaff_recorder, System.ComponentModel.ISupportInitialize).EndInit()
@@ -4200,7 +4197,7 @@ Partial Class Main
         CType(Me.RadLabel66, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RadLabel67, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ret_penalties_info.ResumeLayout(False)
-        Me.ret_penalties_info.PerformLayout
+        Me.ret_penalties_info.PerformLayout()
         CType(Me.RadLabel14, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.pen_btn_chg_filter, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RadLabel12, System.ComponentModel.ISupportInitialize).EndInit()
@@ -4210,7 +4207,7 @@ Partial Class Main
         CType(Me.penalty_grid_list.MasterTemplate, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.penalty_grid_list, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ret_eq_list.ResumeLayout(False)
-        Me.ret_eq_list.PerformLayout
+        Me.ret_eq_list.PerformLayout()
         CType(Me.RadLabel18, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ret_btn_chg_filter, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.returned_eq_list.MasterTemplate, System.ComponentModel.ISupportInitialize).EndInit()
@@ -4223,7 +4220,7 @@ Partial Class Main
         CType(Me.rel_gb_listinfos, System.ComponentModel.ISupportInitialize).EndInit()
         Me.rel_gb_listinfos.ResumeLayout(False)
         Me.res_reserved_info.ResumeLayout(False)
-        Me.res_reserved_info.PerformLayout
+        Me.res_reserved_info.PerformLayout()
         CType(Me.lbl_MobileNo, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.gp_controls, System.ComponentModel.ISupportInitialize).EndInit()
         Me.gp_controls.ResumeLayout(False)
@@ -4232,7 +4229,7 @@ Partial Class Main
         CType(Me.released_btn_cancel, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.gp_details, System.ComponentModel.ISupportInitialize).EndInit()
         Me.gp_details.ResumeLayout(False)
-        Me.gp_details.PerformLayout
+        Me.gp_details.PerformLayout()
         CType(Me.rel_nameofstaff_recorder, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RadLabel24, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.rel_tb_equipment, System.ComponentModel.ISupportInitialize).EndInit()
@@ -4261,7 +4258,7 @@ Partial Class Main
         Me.rpvp2_reservation.ResumeLayout(False)
         CType(Me.gp_reservation_details, System.ComponentModel.ISupportInitialize).EndInit()
         Me.gp_reservation_details.ResumeLayout(False)
-        Me.gp_reservation_details.PerformLayout
+        Me.gp_reservation_details.PerformLayout()
         CType(Me.RadGroupBox6, System.ComponentModel.ISupportInitialize).EndInit()
         Me.RadGroupBox6.ResumeLayout(False)
         CType(Me.rec_btn_refresh, System.ComponentModel.ISupportInitialize).EndInit()
@@ -4292,7 +4289,7 @@ Partial Class Main
         CType(Me.rec_dtp_date, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.gp_reservation_equipments, System.ComponentModel.ISupportInitialize).EndInit()
         Me.gp_reservation_equipments.ResumeLayout(False)
-        Me.gp_reservation_equipments.PerformLayout
+        Me.gp_reservation_equipments.PerformLayout()
         CType(Me.rec_btn_save, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.res_rdio_reserved, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.res_rdio_showall, System.ComponentModel.ISupportInitialize).EndInit()
@@ -4320,7 +4317,7 @@ Partial Class Main
         CType(Me.tb_show_all_equipments, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RadGroupBox21, System.ComponentModel.ISupportInitialize).EndInit()
         Me.RadGroupBox21.ResumeLayout(False)
-        Me.RadGroupBox21.PerformLayout
+        Me.RadGroupBox21.PerformLayout()
         CType(Me.eq_total_units, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.eq_clear_filter, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RadLabel55, System.ComponentModel.ISupportInitialize).EndInit()
@@ -4343,7 +4340,7 @@ Partial Class Main
         CType(Me.acc_prof_list, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.gb_bor_reg, System.ComponentModel.ISupportInitialize).EndInit()
         Me.gb_bor_reg.ResumeLayout(False)
-        Me.gb_bor_reg.PerformLayout
+        Me.gb_bor_reg.PerformLayout()
         CType(Me.RadLabel40, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.acc_pf_mobnum, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.acc_pf_college, System.ComponentModel.ISupportInitialize).EndInit()
@@ -4364,7 +4361,7 @@ Partial Class Main
         CType(Me.RadLabel38, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.gb_staff_reg, System.ComponentModel.ISupportInitialize).EndInit()
         Me.gb_staff_reg.ResumeLayout(False)
-        Me.gb_staff_reg.PerformLayout
+        Me.gb_staff_reg.PerformLayout()
         CType(Me.acc_sf_oldpassword, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.lbl_oldPassword, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RadLabel39, System.ComponentModel.ISupportInitialize).EndInit()
@@ -4395,8 +4392,6 @@ Partial Class Main
         Me.RadGroupBox10.ResumeLayout(False)
         CType(Me.main_rgv_recordedacademicsonly.MasterTemplate, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.main_rgv_recordedacademicsonly, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.main_rgv_recordedacademicsonly.ResumeLayout(False)
-        Me.main_rgv_recordedacademicsonly.PerformLayout()
         CType(Me.RadGroupBox2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.RadGroupBox2.ResumeLayout(False)
         CType(Me.RadGroupBox7, System.ComponentModel.ISupportInitialize).EndInit()
@@ -4404,14 +4399,14 @@ Partial Class Main
         CType(Me.btn_gotoinsmat, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RadGroupBox8, System.ComponentModel.ISupportInitialize).EndInit()
         Me.RadGroupBox8.ResumeLayout(False)
-        Me.RadGroupBox8.PerformLayout
+        Me.RadGroupBox8.PerformLayout()
         CType(Me.lu_ActivityType, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RadLabel9, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.lu_date, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RadLabel11, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RadGroupBox20, System.ComponentModel.ISupportInitialize).EndInit()
         Me.RadGroupBox20.ResumeLayout(False)
-        Me.RadGroupBox20.PerformLayout
+        Me.RadGroupBox20.PerformLayout()
         CType(Me.RadLabel8, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.lu_byname, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.lu_byequipment, System.ComponentModel.ISupportInitialize).EndInit()
@@ -4422,7 +4417,7 @@ Partial Class Main
         CType(Me.CeutltdschedulerDataSetBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
-        Me.PerformLayout
+        Me.PerformLayout()
 
     End Sub
     Friend WithEvents VisualStudio2012DarkTheme1 As Telerik.WinControls.Themes.VisualStudio2012DarkTheme
@@ -4672,5 +4667,6 @@ Partial Class Main
     Friend WithEvents RadLabel40 As Telerik.WinControls.UI.RadLabel
     Friend WithEvents acc_pf_mobnum As Telerik.WinControls.UI.RadTextBox
     Friend WithEvents lbl_MobileNo As Telerik.WinControls.UI.RadLabel
+    Friend WithEvents SerialPort_SMS As IO.Ports.SerialPort
 End Class
 
