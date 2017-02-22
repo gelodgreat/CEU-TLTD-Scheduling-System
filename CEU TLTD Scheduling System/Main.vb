@@ -70,6 +70,12 @@ Public Class Main
 
     Dim bendoTimer As New System.Windows.Forms.Timer
 
+    'Public isSms_enabled As Boolean = My.Settings.gsmIsOn ''settings.
+    Public isSms_enabled As Boolean = True ''temporary for testing
+
+
+    Private thread_alreadyStart As Boolean = False ''to avoid duplicate start of threads
+
     Private Sub checkNewRelease(ByVal dtPendingTable As DataTable)
         Try
             For Each dr As DataRow In dtPendingTable.Rows
@@ -130,11 +136,15 @@ Public Class Main
         Try
             For Each smsContent As String In sendingList
                 'dito yung send sms
+
+                'DITO YUNG SMS FUNCTION HAMILI_SMS
+
                 Thread.Sleep(15000)
                 MsgBox(smsContent)
                 sendingList.Remove(smsContent)
             Next
         Catch ex As Exception
+
         End Try
 
     End Sub
@@ -328,12 +338,7 @@ Public Class Main
         acc_staff_rdio_inactive.ButtonElement.ToolTipText = "Red highlight when the account is inactive."
 
 
-        ''lancebendo's
-        bendoTimer.Start()
-        threadToAdd.Start()
-        threadToRemove.Start()
-        threadToSend.Start()
-        ''end lancebendo's
+
     End Sub
 
 
@@ -905,19 +910,42 @@ Public Class Main
             DV.RowFilter = String.Format("`Borrower` Like'%{0}%' and `Equipment` Like'%{1}%' and `Date` Like'%{2}%' and `Activity Type` Like'%{3}%'", lu_byname.Text, lu_byequipment.Text, lu_date.Value.ToString("MMMM dd yyyy"), Cover)
             main_rgv_recordedacademicsonly.DataSource = DV
 
-            ''lancebendo edit
-            Dim tempdt As New DataTable
-            MysqlConn.Open()
-            updateSmsTable(smsIsDoneList, MysqlConn)
-            query = "SELECT rel_reservation_no AS 'Reservation Number', rel_endtime, rel_isSMS_Sent, rel_bor_mobileno, rel_borrower, rel_eqtype, rel_assign_date FROM ceutltdscheduler.released_info WHERE rel_isSMS_Sent='0'"
-            comm = New MySqlCommand(query, MysqlConn)
-            SDA.SelectCommand = comm
-            SDA.Fill(tempdt)
-            release_info_sms = tempdt
-            'getDate(dateRow)DataGridView1.DataSource = release_info_sms
-            MysqlConn.Close()
-            'checkthis()
 
+            ''lancebendo edit
+            If isSms_enabled = True And thread_alreadyStart = False Then
+                ''lancebendo's
+                bendoTimer.Start()
+                threadToAdd.Start()
+                threadToRemove.Start()
+                threadToSend.Start()
+                thread_alreadyStart = True
+            End If
+
+            If thread_alreadyStart = True And isSms_enabled = True Then
+                Dim tempdt As New DataTable
+                MysqlConn.Open()
+                updateSmsTable(smsIsDoneList, MysqlConn)
+                query = "SELECT rel_reservation_no AS 'Reservation Number', rel_endtime, rel_isSMS_Sent, rel_bor_mobileno, rel_borrower, rel_eqtype, rel_assign_date FROM ceutltdscheduler.released_info WHERE rel_isSMS_Sent='0'"
+                comm = New MySqlCommand(query, MysqlConn)
+                SDA.SelectCommand = comm
+                SDA.Fill(tempdt)
+                release_info_sms = tempdt
+                'getDate(dateRow)DataGridView1.DataSource = release_info_sms
+                MysqlConn.Close()
+                'checkthis()
+            Else
+                bendoTimer.Stop()
+                threadToAdd.Abort()
+                threadToRemove.Abort()
+                threadToSend.Abort()
+                release_info_sms.Clear()
+                smsPendingList.Clear()
+                smsIsAddedListId.Clear()
+                smsIsDoneList.Clear()
+                smsContentList.Clear()
+                thread_alreadyStart = False
+            End If
+            ''end lancebendo's
 
 
         Catch ex As MySqlException

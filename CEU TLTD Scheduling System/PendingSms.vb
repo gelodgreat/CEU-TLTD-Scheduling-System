@@ -18,12 +18,12 @@ Public Class PendingSms
         initializeData(smsRow)
         Me.smsIsDone = smsIsDone
         Me.smsToSendList = smsToSend
-        endTime = DateTime.Now.AddSeconds(10)   ''for testing purpose, 10 seconds yung default para magtrigger yung text. icomment lang ang line na to para sa real end_date
+        endTime = DateTime.Now.AddSeconds(10).ToString   ''for testing purpose, 10 seconds yung default para magtrigger yung text. icomment lang ang line na to para sa real end_date
     End Sub
 
     Private Sub initializeData(ByVal row As DataRow)
         Me.rel_id = row(0).ToString
-        Me.endTime = formatDate(row(6).ToString, row(1).ToString)
+        'Me.endTime = formatDate(row(6).ToString, row(1).ToString)
         Me.rel_mobile_no = row(3).ToString
         Me.rel_borrower = getSurname(row(4).ToString)
         Me.rel_eqtype = row(5).ToString
@@ -47,7 +47,14 @@ Public Class PendingSms
     End Function
 
     Private Function getSmsContent(ByVal borrower As String, ByVal eqtype As String, ByVal penalty_amount As String)
-        Dim content As String = "To: Mr. " & borrower & Environment.NewLine & "We would like to notify you that your borrowed equipment '" & eqtype & "' has reached its allowable time." & Environment.NewLine & " Penalty every 1 hour: " & penalty_amount
+        Dim content As String = "To: Mr. " & borrower _
+        & Environment.NewLine _
+        & "We would like to notify you that your borrowed equipment '" _
+        & eqtype _
+        & "' has reached its allowable time." _
+        & Environment.NewLine _
+        & " Penalty every 1 hour: " _
+        & penalty_amount
 
         Return content
     End Function

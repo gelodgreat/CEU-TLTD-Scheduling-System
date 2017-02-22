@@ -174,10 +174,12 @@ Public Class MainSettingsWindow
                     RadMessageBox.Show(Me, "Please select a device." & vbNewLine & vbNewLine & "If there is no device listed, please double check if the GSM module is plugged in properly.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Exclamation)
                 Else
                     MsgBox("ADD BENDO CODES HERE - SMS Activation Thread")
+                    Main.isSms_enabled = True
                     Save_SMS_Settings()
                 End If
             ElseIf setting_gsm_toggleswitch.Value = False Then
                 MsgBox("ADD BENDO CODES HERE - SMS Deactivation Thread")
+                Main.isSms_enabled = False
             Else
                 MsgBox("Unhandled condition.")
             End If
