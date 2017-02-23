@@ -58,11 +58,12 @@ Public Class Main
 
     'BENDO TIME
     Dim release_info_sms As New DataTable       'table of released info. not yet TXTed/SMSed
+    Dim sms_queue As New DataTable
 
     Dim smsPendingList As New List(Of PendingSms)   'stores pending instance of pendingSms
     Dim smsIsAddedListId As New List(Of String)     'stores new pending release_id
     Dim smsIsDoneList As New List(Of String)        'stores the release_id that has already been sent
-    Dim smsContentList As New List(Of String)       'stores the content of Pending SMS that is needed to be sent
+    'Dim smsContentList As New List(Of String)       'stores the content of Pending SMS that is needed to be sent
 
     Private threadToAdd As New Thread(Sub() Me.checkToAdd())        'thread for checkNewRelease
     Private threadToRemove As New Thread(Sub() Me.checkToRemove())  'thread for checkReturned
@@ -135,16 +136,19 @@ Public Class Main
         Return False
     End Function
 
-    Private Sub checkPendingSend(ByVal sendingList As List(Of String))
+    Private Sub checkPendingSend(ByVal sms_queue As DataTable)
         Try
-            For Each smsContent As String In sendingList
+            For Each sms_row As DataRow In sms_queue.Rows
                 'dito yung send sms
+
+                Dim mobile_num As String = sms_row(0).ToString
+                Dim content As String = sms_row(1).ToString
 
                 'DITO YUNG SMS FUNCTION HAMILI_SMS
 
                 Thread.Sleep(15000)
-                MsgBox(smsContent)
-                sendingList.Remove(smsContent)
+                MsgBox(mobile_num & Environment.NewLine & content)
+                sms_queue.Rows.Remove(sms_row)
             Next
         Catch ex As Exception
 
@@ -169,13 +173,13 @@ Public Class Main
     Private Sub checkToSend()
         While 1 <> 0
             Thread.Sleep(1000)
-            checkPendingSend(smsContentList)
+            checkPendingSend(sms_queue)
         End While
     End Sub
 
     Private Sub newPendingSms(ByVal smsRow As DataRow)
 
-        Dim newSms As New PendingSms(smsRow, release_info_sms, bendoTimer, smsIsDoneList, smsContentList)
+        Dim newSms As New PendingSms(smsRow, release_info_sms, bendoTimer, smsIsDoneList, sms_queue)
         smsPendingList.Add(newSms)
     End Sub
 
@@ -917,6 +921,9 @@ Public Class Main
             ''lancebendo edit
             If isSms_enabled = True And thread_alreadyStart = False Then
                 ''lancebendo's
+
+                Me.sms_queue.Columns.Add("mobile_num")
+                Me.sms_queue.Columns.Add("content")
                 bendoTimer.Start()
                 threadToAdd.Start()
                 threadToRemove.Start()
@@ -942,10 +949,10 @@ Public Class Main
                 threadToRemove.Abort()
                 threadToSend.Abort()
                 release_info_sms.Clear()
+                sms_queue.Clear()
                 smsPendingList.Clear()
                 smsIsAddedListId.Clear()
                 smsIsDoneList.Clear()
-                smsContentList.Clear()
                 thread_alreadyStart = False
             End If
             ''end lancebendo's

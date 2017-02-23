@@ -9,15 +9,15 @@ Public Class PendingSms
     Private endTime, rel_id, rel_mobile_no, rel_borrower, rel_eqtype As String
     Private isDone As Boolean = False
     Private smsIsDone As List(Of String)
-    Private smsToSendList As List(Of String)
+    Private sms_queue As DataTable
 
 
-    Sub New(ByVal smsRow As DataRow, dt As DataTable, ByVal t As System.Windows.Forms.Timer, ByVal smsIsDone As List(Of String), ByVal smsToSend As List(Of String))
+    Sub New(ByVal smsRow As DataRow, dt As DataTable, ByVal t As System.Windows.Forms.Timer, ByVal smsIsDone As List(Of String), ByVal sms_queue As DataTable)
         Me.t = t
         Me.dt = dt
         initializeData(smsRow)
         Me.smsIsDone = smsIsDone
-        Me.smsToSendList = smsToSend
+        Me.sms_queue = sms_queue
         endTime = DateTime.Now.AddSeconds(10).ToString   ''for testing purpose, 10 seconds yung default para magtrigger yung text. icomment lang ang line na to para sa real end_date
     End Sub
 
@@ -63,7 +63,7 @@ Public Class PendingSms
         Debug.WriteLine(endTime & " " & DateTime.Now.ToString)
         If endTime = DateTime.Now.ToString And isDone = False Then
             Dim str As String = "This sms is for " & Me.rel_id & " pls return the item"
-            smsToSendList.Add(getSmsContent(Me.rel_borrower, Me.rel_eqtype, "100.00"))     '100.00 is the default amount of penalty
+            sms_queue.Rows.Add(rel_mobile_no, getSmsContent(Me.rel_borrower, Me.rel_eqtype, "100.00"))     '100.00 is the default amount of penalty
             smsIsDone.Add(getReleaseId())
             destroyThis()
         End If
