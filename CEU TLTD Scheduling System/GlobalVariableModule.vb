@@ -44,6 +44,6 @@ Module GlobalVariableModule
     'SMS Settings
 
     'GSM Module Connection using SerialPort
-    Public portname, baudrate As String
+    Public portname, baudrate, parity, databits, stopbits, handshake, rtsenabled, receivedbytestreshold, newline, readtimeout
 
 End Module
