@@ -22,9 +22,9 @@ Partial Class MainSettingsWindow
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim TableViewDefinition7 As Telerik.WinControls.UI.TableViewDefinition = New Telerik.WinControls.UI.TableViewDefinition()
-        Dim TableViewDefinition8 As Telerik.WinControls.UI.TableViewDefinition = New Telerik.WinControls.UI.TableViewDefinition()
-        Dim TableViewDefinition9 As Telerik.WinControls.UI.TableViewDefinition = New Telerik.WinControls.UI.TableViewDefinition()
+        Dim TableViewDefinition4 As Telerik.WinControls.UI.TableViewDefinition = New Telerik.WinControls.UI.TableViewDefinition()
+        Dim TableViewDefinition5 As Telerik.WinControls.UI.TableViewDefinition = New Telerik.WinControls.UI.TableViewDefinition()
+        Dim TableViewDefinition6 As Telerik.WinControls.UI.TableViewDefinition = New Telerik.WinControls.UI.TableViewDefinition()
         Me.fotaaa = New Telerik.WinControls.UI.RadGridView()
         Me.rp_listcolven = New Telerik.WinControls.UI.RadPageViewPage()
         Me.btn_setcollege = New Telerik.WinControls.UI.RadButton()
@@ -172,7 +172,7 @@ Partial Class MainSettingsWindow
         '
         '
         '
-        Me.fotaaa.MasterTemplate.ViewDefinition = TableViewDefinition7
+        Me.fotaaa.MasterTemplate.ViewDefinition = TableViewDefinition4
         Me.fotaaa.Name = "fotaaa"
         Me.fotaaa.ReadOnly = True
         Me.fotaaa.Size = New System.Drawing.Size(469, 117)
@@ -248,7 +248,7 @@ Partial Class MainSettingsWindow
         Me.gv_school.MasterTemplate.AutoSizeColumnsMode = Telerik.WinControls.UI.GridViewAutoSizeColumnsMode.Fill
         Me.gv_school.MasterTemplate.EnableGrouping = False
         Me.gv_school.MasterTemplate.ShowRowHeaderColumn = False
-        Me.gv_school.MasterTemplate.ViewDefinition = TableViewDefinition8
+        Me.gv_school.MasterTemplate.ViewDefinition = TableViewDefinition5
         Me.gv_school.Name = "gv_school"
         Me.gv_school.ReadOnly = True
         Me.gv_school.Size = New System.Drawing.Size(469, 117)
@@ -431,7 +431,7 @@ Partial Class MainSettingsWindow
         Me.gv_venue.MasterTemplate.AutoSizeColumnsMode = Telerik.WinControls.UI.GridViewAutoSizeColumnsMode.Fill
         Me.gv_venue.MasterTemplate.EnableGrouping = False
         Me.gv_venue.MasterTemplate.ShowRowHeaderColumn = False
-        Me.gv_venue.MasterTemplate.ViewDefinition = TableViewDefinition9
+        Me.gv_venue.MasterTemplate.ViewDefinition = TableViewDefinition6
         Me.gv_venue.Name = "gv_venue"
         Me.gv_venue.ReadOnly = True
         Me.gv_venue.Size = New System.Drawing.Size(469, 117)

@@ -1,6 +1,7 @@
 ﻿Imports MySql.Data.MySqlClient
 Imports Telerik.WinControls
 Imports Telerik.WinControls.UI
+Imports Telerik.WinControls.UI.Data
 
 Public Class MainSettingsWindow
     Dim question As DialogResult
@@ -12,6 +13,8 @@ Public Class MainSettingsWindow
     Public id_school As String
 
     Public random As System.Random = New System.Random
+
+
 
 
     Private Sub MainSettingsWindow_FormClosed(sender As Object, e As FormClosedEventArgs) Handles Me.FormClosed
@@ -39,7 +42,7 @@ Public Class MainSettingsWindow
             rr_time.Value = My.Settings.refreshDelay.ToString
         ElseIf rpv_settings.SelectedPage Is rp_sms Then
             setting_gsm_toggleswitch.Value = My.Settings.gsmIsOn
-        ElseIf rpv_settings.SelectedPage Is rp_listcolven
+        ElseIf rpv_settings.SelectedPage Is rp_listcolven Then
             auto_generate_id()
             load_col()
             load_ven()
@@ -173,13 +176,35 @@ Public Class MainSettingsWindow
                 If ddl_deviceList.Text = "" Then
                     RadMessageBox.Show(Me, "Please select a device." & vbNewLine & vbNewLine & "If there is no device listed, please double check if the GSM module is plugged in properly.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Exclamation)
                 Else
-                    MsgBox("ADD BENDO CODES HERE - SMS Activation Thread")
                     Main.isSms_enabled = True
-                    Try
+                    baudrate = 9600
+                    parity = IO.Ports.Parity.None
+                    databits = 8
+                    stopbits = IO.Ports.StopBits.One
+                    handshake = IO.Ports.Handshake.None
+                    rtsenabled = True
+                    receivedbytestreshold = 1
+                    newline = vbCr
+                    readtimeout = 1000
 
-                    Catch ex As Exception
 
-                    End Try
+                    With Main.SerialPort_SMS
+                        .PortName = portname
+                        .BaudRate = baudrate
+                        .Parity = parity
+                        .DataBits = databits
+                        .StopBits = stopbits
+                        .Handshake = handshake
+                        .RtsEnable = rtsenabled
+                        .ReceivedBytesThreshold = receivedbytestreshold
+                        .NewLine = newline
+                        .ReadTimeout = readtimeout
+                        .Open()
+                    End With
+                    If Main.SerialPort_SMS.IsOpen Then
+                        MsgBox("Connected")
+                    End If
+
                     Save_SMS_Settings()
                 End If
             ElseIf setting_gsm_toggleswitch.Value = False Then
@@ -639,7 +664,15 @@ Public Class MainSettingsWindow
         auto_generate_id()
     End Sub
 
+    Private Sub rp_sms_Enter(sender As Object, e As EventArgs) Handles rp_sms.Enter
+        ddl_deviceList.Items.AddRange(queryCOMPorts)
+    End Sub
 
+    Private Sub ddl_deviceList_SelectedIndexChanged(sender As Object, e As UI.Data.PositionChangedEventArgs) Handles ddl_deviceList.SelectedIndexChanged
+        Main.SerialPort_SMS.Close()
+        portname = Trim(Mid(ddl_deviceList.Text, 1, 5))
+        Console.WriteLine(portname)
+    End Sub
 End Class
 
 
