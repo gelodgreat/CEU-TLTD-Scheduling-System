@@ -49,12 +49,17 @@ Public Class PendingSms
     Private Function getSmsContent(ByVal borrower As String, ByVal eqtype As String, ByVal penalty_amount As String)
         Dim content As String = "To: Mr. " & borrower _
         & Environment.NewLine _
+        & Environment.NewLine _
         & "We would like to notify you that your borrowed equipment '" _
         & eqtype _
         & "' has reached its allowable time." _
         & Environment.NewLine _
         & " Penalty every 1 hour: " _
-        & penalty_amount
+        & penalty_amount _
+        & Environment.NewLine _
+        & Environment.NewLine _
+        & "From: TLTD Department, Centro Escolar University"
+
 
         Return content
     End Function

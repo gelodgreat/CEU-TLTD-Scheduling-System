@@ -147,6 +147,19 @@ Public Class Main
                 'DITO YUNG SMS FUNCTION HAMILI_SMS
 
                 Thread.Sleep(15000)
+
+                If SerialPort_SMS.IsOpen Then 'If the SMS is enabled, the System Will Send a text Message
+                    With SerialPort_SMS
+                        .Write("at" & vbCr)
+                        .Write("at+cmgf=1" & vbCr)
+                        .Write("at+cmgs=" & Chr(34) & mobile_num & Chr(34) & vbCr)
+                        .Write(content & Chr(26))
+                        Thread.Sleep(1000)
+                        'MsgBox(rcvdata.ToString)
+                        rcvdata = ""
+                    End With
+
+                End If
                 MsgBox(mobile_num & Environment.NewLine & content)
                 sms_queue.Rows.Remove(sms_row)
             Next
