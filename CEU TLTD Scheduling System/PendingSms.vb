@@ -47,14 +47,12 @@ Public Class PendingSms
     End Function
 
     Private Function getSmsContent(ByVal borrower As String, ByVal eqtype As String, ByVal penalty_amount As String)
-        Dim content As String = "To: Mr. " & borrower _
+        Dim content As String = "To: " & borrower _
         & Environment.NewLine _
         & Environment.NewLine _
-        & "We would like to notify you that your borrowed equipment '" _
+        & "This is an automated message from the TLTD Department. We would like to inform you that your borrowed equipment '" _
         & eqtype _
-        & "' has reached its allowable time." _
-        & Environment.NewLine _
-        & " Penalty every 1 hour: " _
+        & "' has reached its allowable time. Faliure to return the equipment within one (1) hour will cost Php." _
         & penalty_amount _
         & Environment.NewLine _
         & Environment.NewLine _

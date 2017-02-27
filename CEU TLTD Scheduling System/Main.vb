@@ -143,8 +143,55 @@ Public Class Main
 
                 Dim mobile_num As String = sms_row(0).ToString
                 Dim content As String = sms_row(1).ToString
+                Dim computation As Integer
+                
 
                 'DITO YUNG SMS FUNCTION HAMILI_SMS
+
+                Select Case content.length / 160
+                    Case 0.0 To 1.0
+                        computation = 1
+                    Case 1.0001 To 2.0
+                        computation = 2
+                    Case 2.0001 To 3.0
+                        computation = 3
+                    Case 3.0001 To 4.0
+                        computation = 4
+                    Case 4.0001 To 5.0
+                        computation = 5
+                End Select
+                Dim splitting As Integer
+                Dim insertposition As Integer
+                While splitting <> computation
+                    content = content.Insert(insertposition, "@@(" & splitting + 1 & "/" & computation & ")")
+                    insertposition += 160
+                    splitting += 1
+                End While
+                Select Case content.Length / 160
+                    Case 0.0 To 1.0
+                        MsgBox("1 page")
+                        computation = 1
+                    Case 1.0001 To 2.0
+                        MsgBox("2 page")
+                        computation = 2
+                    Case 2.0001 To 3.0
+                        MsgBox("3 page")
+                        computation = 3
+                    Case 3.0001 To 4.0
+                        MsgBox("4 page")
+                        computation = 4
+                    Case 4.0001 To 5.0
+                        MsgBox("5 page")
+                        computation = 5
+                End Select
+                MsgBox(content.Length)
+                MsgBox(computation)
+                Dim looper As Integer = 1
+                Dim done() As String = Split(content, "@@", , CompareMethod.Text)
+                While looper <= computation
+                    MsgBox(done(looper))
+                    looper += 1
+                End While
 
                 Thread.Sleep(15000)
 
@@ -160,7 +207,7 @@ Public Class Main
                     End With
 
                 End If
-                MsgBox(mobile_num & Environment.NewLine & content)
+                'MsgBox(mobile_num & chr(26) & content)
                 sms_queue.Rows.Remove(sms_row)
             Next
         Catch ex As Exception
