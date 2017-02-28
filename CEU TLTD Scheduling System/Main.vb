@@ -143,55 +143,8 @@ Public Class Main
 
                 Dim mobile_num As String = sms_row(0).ToString
                 Dim content As String = sms_row(1).ToString
-                Dim computation As Integer
-                
 
                 'DITO YUNG SMS FUNCTION HAMILI_SMS
-
-                Select Case content.length / 160
-                    Case 0.0 To 1.0
-                        computation = 1
-                    Case 1.0001 To 2.0
-                        computation = 2
-                    Case 2.0001 To 3.0
-                        computation = 3
-                    Case 3.0001 To 4.0
-                        computation = 4
-                    Case 4.0001 To 5.0
-                        computation = 5
-                End Select
-                Dim splitting As Integer
-                Dim insertposition As Integer
-                While splitting <> computation
-                    content = content.Insert(insertposition, "@@(" & splitting + 1 & "/" & computation & ")")
-                    insertposition += 160
-                    splitting += 1
-                End While
-                Select Case content.Length / 160
-                    Case 0.0 To 1.0
-                        MsgBox("1 page")
-                        computation = 1
-                    Case 1.0001 To 2.0
-                        MsgBox("2 page")
-                        computation = 2
-                    Case 2.0001 To 3.0
-                        MsgBox("3 page")
-                        computation = 3
-                    Case 3.0001 To 4.0
-                        MsgBox("4 page")
-                        computation = 4
-                    Case 4.0001 To 5.0
-                        MsgBox("5 page")
-                        computation = 5
-                End Select
-                MsgBox(content.Length)
-                MsgBox(computation)
-                Dim looper As Integer = 1
-                Dim done() As String = Split(content, "@@", , CompareMethod.Text)
-                While looper <= computation
-                    MsgBox(done(looper))
-                    looper += 1
-                End While
 
                 Thread.Sleep(15000)
 
@@ -207,7 +160,7 @@ Public Class Main
                     End With
 
                 End If
-                'MsgBox(mobile_num & chr(26) & content)
+                MsgBox(mobile_num & Environment.NewLine & content)
                 sms_queue.Rows.Remove(sms_row)
             Next
         Catch ex As Exception
@@ -945,13 +898,19 @@ Public Class Main
             Dim Cover As String
 
             If lu_ActivityType.Text = "School Activity" Then
-                query = "Select reservationno as 'Reservation Number', borrower as 'Borrower', equipmentno as 'Equipment No.', equipment as 'Equipment', location as 'Location' DATE_FORMAT(date,'%M %d %Y') as 'Date',TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time', activitytype as 'Activity Type', actname as 'Activity' FROM ceutltdscheduler.reservation natural join ceutltdscheduler.reservation_equipments where date ='" & Format(CDate(lu_date.Value), "yyyy-MM-dd") & "' and activitytype='School Activity' and NOT(res_status='Cancelled') ORDER BY date DESC,starttime DESC"
+                query = "Select reservationno as 'Reservation Number', borrower as 'Borrower', equipmentno as 'Equipment No.', equipment as 'Equipment', location as 'Location',
+            DATE_FORMAT(date,'%M %d %Y') as 'Date',TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time',
+            activitytype as 'Activity Type', actname as 'Activity' FROM ceutltdscheduler.reservation natural join ceutltdscheduler.reservation_equipments where date ='" & Format(CDate(lu_date.Value), "yyyy-MM-dd") & "' and activitytype='School Activity' and NOT(res_status='Cancelled') ORDER BY date DESC,starttime DESC"
                 Cover = "School Activity"
             ElseIf lu_ActivityType.Text = "Academic" Then
-                query = "Select reservationno as 'Reservation Number' ,borrower as 'Borrower', equipmentno as 'Equipment No.', equipment as 'Equipment', location as 'Location', DATE_FORMAT(date,'%M %d %Y') as 'Date',TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time',activitytype as 'Activity Type' from ceutltdscheduler.reservation natural join ceutltdscheduler.reservation_equipments where date ='" & Format(CDate(lu_date.Value), "yyyy-MM-dd") & "' and activitytype='Academic' and NOT(res_status='Cancelled') ORDER BY date DESC,starttime DESC"
+                query = "Select reservationno as 'Reservation Number' ,borrower as 'Borrower', equipmentno as 'Equipment No.', equipment as 'Equipment', location as 'Location',
+            DATE_FORMAT(date,'%M %d %Y') as 'Date',TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time',
+            activitytype as 'Activity Type' from ceutltdscheduler.reservation natural join ceutltdscheduler.reservation_equipments where date ='" & Format(CDate(lu_date.Value), "yyyy-MM-dd") & "' and activitytype='Academic' and NOT(res_status='Cancelled') ORDER BY date DESC,starttime DESC"
                 Cover = "Academic"
             ElseIf lu_ActivityType.Text = "All" Then
-                query = "Select reservationno as 'Reservation Number' ,borrower as 'Borrower', equipmentno as 'Equipment No.', equipment as 'Equipment', location as 'Location', DATE_FORMAT(date,'%M %d %Y') as 'Date',TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time', activitytype as 'Activity Type', actname as 'Activity' from ceutltdscheduler.reservation natural join ceutltdscheduler.reservation_equipments where date ='" & Format(CDate(lu_date.Value), "yyyy-MM-dd") & "' and NOT(res_status='Cancelled') ORDER BY date DESC,starttime DESC"
+                query = "Select reservationno as 'Reservation Number' ,borrower as 'Borrower', equipmentno as 'Equipment No.', equipment as 'Equipment', location as 'Location',
+            DATE_FORMAT(date,'%M %d %Y') as 'Date',TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time',
+            activitytype as 'Activity Type', actname as 'Activity' from ceutltdscheduler.reservation natural join ceutltdscheduler.reservation_equipments where date ='" & Format(CDate(lu_date.Value), "yyyy-MM-dd") & "' and NOT(res_status='Cancelled') ORDER BY date DESC,starttime DESC"
                 Cover = ""
             End If
             'main_rgv_recordedacademicsonly.Columns.Clear()
@@ -2700,13 +2659,19 @@ Public Class Main
             Dim Cover As String
 
             If lu_ActivityType.Text = "School Activity" Then
-                query = "Select reservationno as 'Reservation Number' ,borrower as 'Borrower', equipmentno as 'Equipment No.', equipment as 'Equipment', location as 'Location', DATE_FORMAT(date,'%M %d %Y') as 'Date',TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time', activitytype as 'Activity Type',actname as 'Activity' from ceutltdscheduler.reservation natural join ceutltdscheduler.reservation_equipments where date ='" & Format(CDate(lu_date.Value), "yyyy-MM-dd") & "' and activitytype='School Activity' and NOT(res_status='Cancelled')"
+                query = "Select reservationno as 'Reservation Number' ,borrower as 'Borrower', equipmentno as 'Equipment No.', equipment as 'Equipment', location as 'Location',
+            DATE_FORMAT(date,'%M %d %Y') as 'Date',TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time',
+            activitytype as 'Activity Type',actname as 'Activity' from ceutltdscheduler.reservation natural join ceutltdscheduler.reservation_equipments where date ='" & Format(CDate(lu_date.Value), "yyyy-MM-dd") & "' and activitytype='School Activity' and NOT(res_status='Cancelled')"
                 Cover = "School Activity"
             ElseIf lu_ActivityType.Text = "Academic" Then
-                query = "Select reservationno as 'Reservation Number' ,borrower as 'Borrower', equipmentno as 'Equipment No.', equipment as 'Equipment', location as 'Location', DATE_FORMAT(date,'%M %d %Y') as 'Date',TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time', activitytype as 'Activity Type' from ceutltdscheduler.reservation natural join ceutltdscheduler.reservation_equipments where date ='" & Format(CDate(lu_date.Value), "yyyy-MM-dd") & "' and activitytype='Academic' and NOT(res_status='Cancelled')"
+                query = "Select reservationno as 'Reservation Number' ,borrower as 'Borrower', equipmentno as 'Equipment No.', equipment as 'Equipment', location as 'Location',
+            DATE_FORMAT(date,'%M %d %Y') as 'Date',TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time',
+            activitytype as 'Activity Type' from ceutltdscheduler.reservation natural join ceutltdscheduler.reservation_equipments where date ='" & Format(CDate(lu_date.Value), "yyyy-MM-dd") & "' and activitytype='Academic' and NOT(res_status='Cancelled')"
                 Cover = "Academic"
             ElseIf lu_ActivityType.Text = "All" Then
-                query = "Select reservationno as 'Reservation Number' ,borrower as 'Borrower', equipmentno as 'Equipment No.', equipment as 'Equipment', location as 'Location', DATE_FORMAT(date,'%M %d %Y') as 'Date',TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time',activitytype as 'Activity Type', actname as 'Activity' from ceutltdscheduler.reservation natural join ceutltdscheduler.reservation_equipments where date ='" & Format(CDate(lu_date.Value), "yyyy-MM-dd") & "' and NOT(res_status='Cancelled')"
+                query = "Select reservationno as 'Reservation Number' ,borrower as 'Borrower', equipmentno as 'Equipment No.', equipment as 'Equipment', location as 'Location',
+            DATE_FORMAT(date,'%M %d %Y') as 'Date',TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time',
+            activitytype as 'Activity Type', actname as 'Activity' from ceutltdscheduler.reservation natural join ceutltdscheduler.reservation_equipments where date ='" & Format(CDate(lu_date.Value), "yyyy-MM-dd") & "' and NOT(res_status='Cancelled')"
                 Cover = ""
             End If
             main_rgv_recordedacademicsonly.Columns.Clear()
