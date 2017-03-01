@@ -22,7 +22,7 @@ Module Module_GSMDetector
         Dim i As Integer = 0
         Dim PortList As New List(Of String)
         Dim ports() As String
-        ports = Split(ModemsConnected(), "---")
+        ports = Split(ModemsConnected(), "***")
         While i <> ports.Length
             PortList.AddRange(ports)
             i += 1
