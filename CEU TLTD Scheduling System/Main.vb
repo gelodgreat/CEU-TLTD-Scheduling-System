@@ -150,9 +150,9 @@ Public Class Main
 
                 If SerialPort_SMS.IsOpen Then 'If the SMS is enabled, the System Will Send a text Message
                     With SerialPort_SMS
-                        .Write("at" & vbCr)
-                        .Write("at+cmgf=1" & vbCr)
-                        .Write("at+cmgs=" & Chr(34) & mobile_num & Chr(34) & vbCr)
+                        .Write("AT" & vbCr)
+                        .Write("AT+CMGF=1" & vbCr)
+                        .Write("AT+CMGS=" & Chr(34) & mobile_num & Chr(34) & vbCr)
                         .Write(content & Chr(26))
                         Thread.Sleep(1000)
                         'MsgBox(rcvdata.ToString)

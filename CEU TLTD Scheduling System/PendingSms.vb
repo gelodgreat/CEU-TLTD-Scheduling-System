@@ -51,12 +51,7 @@ Public Class PendingSms
         & Environment.NewLine _
         & Environment.NewLine _
         & "This is an automated message from the TLTD Department. We would like to inform you that your borrowed equipment '" _
-        & eqtype _
-        & "' has reached its allowable time. Faliure to return the equipment within one (1) hour will cost Php." _
-        & penalty_amount _
-        & Environment.NewLine _
-        & Environment.NewLine _
-        & "From: TLTD Department, Centro Escolar University"
+        & "Your borrowed equipment has reached its allowable time."
 
 
         Return content
