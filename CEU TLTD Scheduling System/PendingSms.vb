@@ -18,12 +18,12 @@ Public Class PendingSms
         initializeData(smsRow)
         Me.smsIsDone = smsIsDone
         Me.sms_queue = sms_queue
-        endTime = DateTime.Now.AddSeconds(10).ToString   ''for testing purpose, 10 seconds yung default para magtrigger yung text. icomment lang ang line na to para sa real end_date
+        'endTime = DateTime.Now.AddSeconds(10).ToString   ''for testing purpose, 10 seconds yung default para magtrigger yung text. icomment lang ang line na to para sa real end_date
     End Sub
 
     Private Sub initializeData(ByVal row As DataRow)
         Me.rel_id = row(0).ToString
-        'Me.endTime = formatDate(row(6).ToString, row(1).ToString)
+        Me.endTime = formatDate(row(6).ToString, row(1).ToString)
         Me.rel_mobile_no = row(3).ToString
         Me.rel_borrower = getSurname(row(4).ToString)
         Me.rel_eqtype = row(5).ToString
