@@ -198,6 +198,12 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Module_GSMDetector.vb" />
+    <Compile Include="MultipurposeWindow.Designer.vb">
+      <DependentUpon>MultipurposeWindow.vb</DependentUpon>
+    </Compile>
+    <Compile Include="MultipurposeWindow.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -239,6 +245,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MainSettingsWindow.resx">
       <DependentUpon>MainSettingsWindow.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MultipurposeWindow.resx">
+      <DependentUpon>MultipurposeWindow.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\licenses.licx" />
     <EmbeddedResource Include="My Project\Resources.resx">
