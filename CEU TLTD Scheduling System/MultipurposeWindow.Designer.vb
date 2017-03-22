@@ -29,18 +29,21 @@ Partial Class MultipurposeWindow
         Dim TableViewDefinition1 As Telerik.WinControls.UI.TableViewDefinition = New Telerik.WinControls.UI.TableViewDefinition()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(MultipurposeWindow))
         Me.PanelMultipleReturn = New Telerik.WinControls.UI.RadPanel()
-        Me.lst_Returned = New Telerik.WinControls.UI.RadGridView()
         Me.btn_Close = New Telerik.WinControls.UI.RadButton()
+        Me.lst_Returned = New Telerik.WinControls.UI.RadGridView()
+        Me.PanelConflictingReservation = New Telerik.WinControls.UI.RadPanel()
         CType(Me.PanelMultipleReturn,System.ComponentModel.ISupportInitialize).BeginInit
         Me.PanelMultipleReturn.SuspendLayout
+        CType(Me.btn_Close,System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.lst_Returned,System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.lst_Returned.MasterTemplate,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.btn_Close,System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.PanelConflictingReservation,System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me,System.ComponentModel.ISupportInitialize).BeginInit
         Me.SuspendLayout
         '
         'PanelMultipleReturn
         '
+        Me.PanelMultipleReturn.Controls.Add(Me.PanelConflictingReservation)
         Me.PanelMultipleReturn.Controls.Add(Me.btn_Close)
         Me.PanelMultipleReturn.Controls.Add(Me.lst_Returned)
         Me.PanelMultipleReturn.Dock = System.Windows.Forms.DockStyle.Fill
@@ -51,9 +54,17 @@ Partial Class MultipurposeWindow
         Me.PanelMultipleReturn.ThemeName = "VisualStudio2012Dark"
         Me.PanelMultipleReturn.Visible = false
         '
+        'btn_Close
+        '
+        Me.btn_Close.Location = New System.Drawing.Point(268, 351)
+        Me.btn_Close.Name = "btn_Close"
+        Me.btn_Close.Size = New System.Drawing.Size(110, 24)
+        Me.btn_Close.TabIndex = 1
+        Me.btn_Close.Text = "Ok"
+        Me.btn_Close.ThemeName = "VisualStudio2012Dark"
+        '
         'lst_Returned
         '
-        Me.lst_Returned.EnableFastScrolling = true
         Me.lst_Returned.Location = New System.Drawing.Point(12, 12)
         '
         '
@@ -89,14 +100,15 @@ Partial Class MultipurposeWindow
         Me.lst_Returned.TabIndex = 0
         Me.lst_Returned.ThemeName = "VisualStudio2012Dark"
         '
-        'btn_Close
+        'PanelConflictingReservation
         '
-        Me.btn_Close.Location = New System.Drawing.Point(268, 351)
-        Me.btn_Close.Name = "btn_Close"
-        Me.btn_Close.Size = New System.Drawing.Size(110, 24)
-        Me.btn_Close.TabIndex = 1
-        Me.btn_Close.Text = "Ok"
-        Me.btn_Close.ThemeName = "VisualStudio2012Dark"
+        Me.PanelConflictingReservation.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.PanelConflictingReservation.Location = New System.Drawing.Point(0, 0)
+        Me.PanelConflictingReservation.Name = "PanelConflictingReservation"
+        Me.PanelConflictingReservation.Size = New System.Drawing.Size(628, 387)
+        Me.PanelConflictingReservation.TabIndex = 1
+        Me.PanelConflictingReservation.ThemeName = "VisualStudio2012Dark"
+        Me.PanelConflictingReservation.Visible = false
         '
         'MultipurposeWindow
         '
@@ -112,14 +124,15 @@ Partial Class MultipurposeWindow
         '
         '
         Me.RootElement.ApplyShapeToControl = true
-        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "MultiPurposeWindow"
         Me.ThemeName = "VisualStudio2012Dark"
         CType(Me.PanelMultipleReturn,System.ComponentModel.ISupportInitialize).EndInit
         Me.PanelMultipleReturn.ResumeLayout(false)
+        CType(Me.btn_Close,System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.lst_Returned.MasterTemplate,System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.lst_Returned,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.btn_Close,System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.PanelConflictingReservation,System.ComponentModel.ISupportInitialize).EndInit
         CType(Me,System.ComponentModel.ISupportInitialize).EndInit
         Me.ResumeLayout(false)
 
@@ -128,5 +141,6 @@ End Sub
     Friend WithEvents PanelMultipleReturn As Telerik.WinControls.UI.RadPanel
     Friend WithEvents lst_Returned As Telerik.WinControls.UI.RadGridView
     Friend WithEvents btn_Close As Telerik.WinControls.UI.RadButton
+    Friend WithEvents PanelConflictingReservation As Telerik.WinControls.UI.RadPanel
 End Class
 

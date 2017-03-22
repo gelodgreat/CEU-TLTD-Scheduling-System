@@ -2192,12 +2192,16 @@ Public Class Main
     End Sub
 
     Private Sub reserved_grid_list_ContextMenuOpening(sender As Object, e As ContextMenuOpeningEventArgs) Handles reserved_grid_list.ContextMenuOpening
-        If TypeOf Me.reserved_grid_list.CurrentRow Is GridViewDataRowInfo Then
-            Dim menu As New RadDropDownMenu()
-            Dim ReleaseMenu As New RadMenuItem("Release Selected Equipments")
-            AddHandler ReleaseMenu.Click, AddressOf reserved_grid_list_ReleaseRightClick
-            menu.Items.Add(ReleaseMenu)
-            e.ContextMenu = menu
+        If reserved_grid_list.SelectedRows.Count > 1
+            If TypeOf Me.reserved_grid_list.CurrentRow Is GridViewDataRowInfo Then
+                Dim menu As New RadDropDownMenu()
+                Dim ReleaseMenu As New RadMenuItem("Release Selected Equipments")
+                AddHandler ReleaseMenu.Click, AddressOf reserved_grid_list_ReleaseRightClick
+                menu.Items.Add(ReleaseMenu)
+                e.ContextMenu = menu
+            End If
+        Else
+            Exit Sub
         End If
     End Sub
 
@@ -4522,12 +4526,16 @@ Public Class Main
     End Sub
 
     Private Sub released_grid_list2_ContextMenuOpening(sender As Object, e As ContextMenuOpeningEventArgs) Handles released_grid_list2.ContextMenuOpening
-        If TypeOf Me.released_grid_list2.CurrentRow Is GridViewDataRowInfo Then
-            Dim menu As New RadDropDownMenu()
-            Dim ReturnMenu As New RadMenuItem("Return Selected Equipments")
-            AddHandler ReturnMenu.Click, AddressOf released_gril_list2_ReturnRightClick
-            menu.Items.Add(ReturnMenu)
-            e.ContextMenu = menu
+        If released_grid_list2.SelectedRows.Count > 1 Then
+            If TypeOf Me.released_grid_list2.CurrentRow Is GridViewDataRowInfo Then
+                Dim menu As New RadDropDownMenu()
+                Dim ReturnMenu As New RadMenuItem("Return Selected Equipments")
+                AddHandler ReturnMenu.Click, AddressOf released_gril_list2_ReturnRightClick
+                menu.Items.Add(ReturnMenu)
+                e.ContextMenu = menu
+            End If
+        Else
+            Exit Sub
         End If
     End Sub
 
@@ -4565,7 +4573,6 @@ Public Class Main
             
             'GET Rows
                 Dim ligaw As Integer = 0
-            Dim messages As String
                 For Each row As GridViewRowInfo In released_grid_list2.SelectedRows
                     row = released_grid_list2.Rows(released_grid_list2.SelectedRows(ligaw).Index)
                     Dim elapsedTime As TimeSpan = DateTime.Parse(serverdatetime).Subtract(DateTime.Parse(Format(CDate(row.Cells("Date").Value.ToString), "yyyy-MM-dd") & " " & Format(CDate(row.Cells("End Time").Value.ToString), "HH:mm")))
@@ -4609,8 +4616,9 @@ Public Class Main
                 Finally
                     MysqlConn.Dispose()
                 End Try
-                   'EARLY RETURNS String
-                messages+=Environment.NewLine & "Early return." & Environment.NewLine & "Equipment Type: " & row.Cells("Equipment Type").Value.ToString & Environment.NewLine & "Borrower: " & row.Cells("Borrower").Value.ToString
+                    'EARLY RETURNS String
+                    MultipurposeWindow.lst_Returned.Rows.Add(row.Cells("Borrower").Value.ToString, row.Cells("Equipment Type").Value.ToString, "0", "Did not Exceed.")
+                    'messages +=Environment.NewLine & "Early return." & Environment.NewLine & "Equipment Type: " & row.Cells("Equipment Type").Value.ToString & Environment.NewLine & "Borrower: " & row.Cells("Borrower").Value.ToString
             Else
                 getFromDB_settings_penalty()
                 Dim seconds As Integer = (elapsedTime.TotalSeconds)
@@ -4665,7 +4673,8 @@ Public Class Main
                         MysqlConn.Dispose()
                     End Try
                         'ONTIME RETURNS STRING
-                       messages+= Environment.NewLine & "Ontime return." & Environment.NewLine & "Equipment Type: " & row.Cells("Equipment Type").Value.ToString & Environment.NewLine & "Borrower: " & row.Cells("Borrower").Value.ToString & Environment.NewLine & String.Format("Exceeded Time: {0:%d} day(s) {1:%h} hour(s) {2:%m} minute(s)", elapsedTime, elapsedTime, elapsedTime)
+                       MultipurposeWindow.lst_Returned.Rows.Add(row.Cells("Borrower").Value.ToString, row.Cells("Equipment Type").Value.ToString, "0", String.Format("{0:%d} day(s) {1:%h} hour(s) {2:%m} minute(s)", elapsedTime, elapsedTime, elapsedTime))
+                        'messages+= Environment.NewLine & "Ontime return." & Environment.NewLine & "Equipment Type: " & row.Cells("Equipment Type").Value.ToString & Environment.NewLine & "Borrower: " & row.Cells("Borrower").Value.ToString & Environment.NewLine & String.Format("Exceeded Time: {0:%d} day(s) {1:%h} hour(s) {2:%m} minute(s)", elapsedTime, elapsedTime, elapsedTime)
                 ElseIf charge > 0 Then
                     If seconds >= 86400 Then
                         Try
@@ -4707,8 +4716,9 @@ Public Class Main
                         Finally
                             MysqlConn.Dispose()
                         End Try
-                        messages += Environment.NewLine & "Late return." & "Equipment Type: " & row.Cells("Equipment Type").Value.ToString & Environment.NewLine & "Borrower: " & row.Cells("Borrower").Value.ToString & Environment.NewLine & String.Format("Exceeding Time: {0:%d} day(s)", elapsedTime) & String.Format(" {0:%h} hours(s) ", elapsedTime) & String.Format("{0:%m} minutes(s)", elapsedTime) & Environment.NewLine & "Charge is: " & String.Format("{0:0.00}", Convert.ToDouble(Math.Round(charge * penalty_price))) & " pesos."
-                    Else
+                            'messages += Environment.NewLine & "Late return." & "Equipment Type: " & row.Cells("Equipment Type").Value.ToString & Environment.NewLine & "Borrower: " & row.Cells("Borrower").Value.ToString & Environment.NewLine & String.Format("Exceeding Time: {0:%d} day(s)", elapsedTime) & String.Format(" {0:%h} hours(s) ", elapsedTime) & String.Format("{0:%m} minutes(s)", elapsedTime) & Environment.NewLine & "Charge is: " & String.Format("{0:0.00}", Convert.ToDouble(Math.Round(charge * penalty_price))) & " pesos."
+                             MultipurposeWindow.lst_Returned.Rows.Add(row.Cells("Borrower").Value.ToString, row.Cells("Equipment Type").Value.ToString, String.Format("{0:0.00}", Convert.ToDouble(Math.Round(charge * penalty_price))), String.Format("{0:%d} day(s) {1:%h} hour(s) {2:%m} minute(s)", elapsedTime, elapsedTime, elapsedTime))
+                     Else
                         Try
                             If MysqlConn.State = ConnectionState.Open Then
                                 MysqlConn.Close()
@@ -4748,13 +4758,15 @@ Public Class Main
                         Finally
                             MysqlConn.Dispose()
                         End Try
-                        messages += Environment.NewLine & "Late return." & "Equipment Type: " & row.Cells("Equipment Type").Value.ToString & Environment.NewLine & "Borrower: " & row.Cells("Borrower").Value.ToString & Environment.NewLine & String.Format(" {0:%h} hours(s) ", elapsedTime) & String.Format("{0:%m} minutes(s)", elapsedTime) & Environment.NewLine & "Charge is: " & String.Format("{0:0.00}", Convert.ToDouble(Math.Round(charge * penalty_price))) & " pesos."
-                    End If
+                            'messages += Environment.NewLine & "Late return." & "Equipment Type: " & row.Cells("Equipment Type").Value.ToString & Environment.NewLine & "Borrower: " & row.Cells("Borrower").Value.ToString & Environment.NewLine & String.Format(" {0:%h} hours(s) ", elapsedTime) & String.Format("{0:%m} minutes(s)", elapsedTime) & Environment.NewLine & "Charge is: " & String.Format("{0:0.00}", Convert.ToDouble(Math.Round(charge * penalty_price))) & " pesos."
+                         MultipurposeWindow.lst_Returned.Rows.Add(row.Cells("Borrower").Value.ToString, row.Cells("Equipment Type").Value.ToString, String.Format("{0:0.00}", Convert.ToDouble(Math.Round(charge * penalty_price))), String.Format("{0:%h} hours(s) ", elapsedTime) & String.Format("{0:%m} minutes(s)", elapsedTime))
+                        End If
                 End If
             End If
                     ligaw +=1
                 Next
-                RadMessageBox.Show(Me,messages, system_Name, MessageBoxButtons.OK, MessageBoxIcon.Information,MessageBoxDefaultButton.Button1)
+                MultipurposeWindowPanel="A"
+                MultipurposeWindow.ShowDialog()
                 load_released_list2()
                 load_returned_eq_list(returned_startDate.Value, returned_endDate.Value)
                 ret_tb_reservationnum.Hide()
@@ -5455,7 +5467,12 @@ Public Class Main
     'End Sub
 
     Private Sub ToRelease_MouseHover(sender As Object, e As EventArgs) Handles gp_details.MouseHover, gp_controls.MouseHover, released_btn_refresh.Click
-        reserved_load_table()
+        If reserved_grid_list.SelectedRows.Count > 1
+            Exit Sub
+        Else
+            reserved_load_table()
+        End If
+        
     End Sub
 
     Private Sub gp_reservation_equipments_MouseHover(sender As Object, e As EventArgs) Handles gp_reservation_equipments.MouseHover, gp_reservation_details.MouseHover
@@ -5730,13 +5747,14 @@ Public Class Main
             rel_tb_reservationnum.Text=""
             rel_tb_borrower.Text=""
             rel_nameofstaff_recorder.Text=""
-            rel_tb_id.Value=0
             rel_tb_startdate.Text = "01/01/99"
             rel_tb_starttime.Text=""
             rel_tb_endtime.Text=""
             Else
+            If rel_tb_id.Enabled=True
+                rel_tb_id.Enabled=False
+            End If
             gp_controls.Show
-            rel_tb_id.Enabled=False
         End If
     End Sub
 

@@ -1,18 +1,30 @@
-﻿Imports Telerik.WinControls.UI
+﻿Imports System.Media
+Imports Telerik.WinControls.UI
 
 Public Class MultipurposeWindow
     Private Sub MultipurposeWindow_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-       lst_Returned.MasterTemplate.BestFitColumns(BestFitColumnMode.HeaderCells)
-       lst_Returned.Rows.Add("Patrick Jenkin Wu","Air Brush","450.00","1 day(s) 1 hour(s) 59 minute(s).")
+        DeterminePanel()
     End Sub
 
     Private Sub DeterminePanel()
-    
+        If MultipurposeWindowPanel = "A"
+            Me.Text="The following equipments has been returned"
+            PanelMultipleReturn.Show
+            SystemSounds.Asterisk.Play()
+            lst_Returned.MasterTemplate.BestFitColumns(BestFitColumnMode.DisplayedDataCells)
+        ElseIf MultipurposeWindowPanel = "B"
+            Me.Text="Please remove conflicting equipments"
+            PanelConflictingReservation.Show
+        End If
     End Sub
-    Private Sub btn_Close_Click(sender As Object, e As EventArgs) Handles btn_Close.Click
-        If PanelMultipleReturn.Visible=True
+    Private Sub btn_Close_Click(sender As Object, e As EventArgs) Handles btn_Close.Click, Me.Closed
+        If PanelMultipleReturn.Visible = True
             lst_Returned.Rows.Clear
         End If
+        PanelMultipleReturn.Hide
+        PanelConflictingReservation.Hide
+        MultipurposeWindowPanel =""
+        Me.Text=""
         Me.Close()
     End Sub
 End Class
