@@ -50,6 +50,7 @@ Public Class Main
     Dim releasedToReturn_gridlist_KeepSelectedRowInDexAfterUpdate As Integer
     Dim clear_eq As Boolean = False
     Dim Keepreservation_mainIndex As Integer
+    Dim reserved_grid_list_doubleClickedRecently As Boolean = False
     'WU_SETTINGS'
 
 
@@ -2450,6 +2451,7 @@ Public Class Main
 
 
                         rel_tb_id.Enabled = True
+                        reserved_grid_list_doubleClickedRecently=True
                         rel_tb_reservationnum.Show()
                         rel_tb_borrower.Show()
                         lbl_equipment.Show()
@@ -5750,12 +5752,12 @@ Public Class Main
             rel_tb_startdate.Text = "01/01/99"
             rel_tb_starttime.Text=""
             rel_tb_endtime.Text=""
-            Else
-            If rel_tb_id.Enabled=True
-                rel_tb_id.Enabled=False
-            End If
+            reserved_grid_list_doubleClickedRecently=False
+        ElseIf reserved_grid_list.SelectedRows.Count = 1 And reserved_grid_list_doubleClickedRecently=False
+            rel_tb_id.Enabled=False
             gp_controls.Show
         End If
+        
     End Sub
 
     Private Sub released_grid_list2_SelectionChanged(sender As Object, e As EventArgs) Handles released_grid_list2.SelectionChanged
