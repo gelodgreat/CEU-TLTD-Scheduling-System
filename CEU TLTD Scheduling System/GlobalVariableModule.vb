@@ -17,7 +17,7 @@ Module GlobalVariableModule
     Public borrower_mobileno As String
     Public MultipurposeWindowPanel As Char
     Public Sub applyconstringImmediately()
-        connstring = "server=" & My.Settings.cons_server & ";port=" & My.Settings.cons_port & ";userid=" & Actions.ToInsecureString(Actions.DecryptString(My.Settings.cons_username)) & ";password=" & Actions.ToInsecureString(Actions.DecryptString(My.Settings.cons_password)) & ";database=" & My.Settings.cons_database
+        connstring = "server=" & My.Settings.cons_server & ";port=" & My.Settings.cons_port & ";userid=" & Actions.ToInsecureString(Actions.DecryptString(My.Settings.cons_username)) & ";password=" & Actions.ToInsecureString(Actions.DecryptString(My.Settings.cons_password)) & ";database=ceutltdscheduler"
     End Sub
 
     'PENALTY Settings

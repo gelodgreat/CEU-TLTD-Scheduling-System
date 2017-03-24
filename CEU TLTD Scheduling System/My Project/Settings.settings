@@ -11,9 +11,6 @@
     <Setting Name="cons_port" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="cons_database" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
-    </Setting>
     <Setting Name="cons_username" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
