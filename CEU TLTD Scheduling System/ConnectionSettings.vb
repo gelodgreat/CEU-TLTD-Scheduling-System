@@ -6,7 +6,6 @@ Public Class ConnectionWindow
         If DBSettingchange=DialogResult.Yes
             My.Settings.cons_server = txt_cons_server.Text
             My.Settings.cons_port = txt_cons_port.Text
-            My.Settings.cons_database = txt_cons_database.Text
             If String.IsNullOrEmpty(txt_cons_username.Text) And String.IsNullOrEmpty(txt_cons_password.Text) Then
                 'NO ACTION
             Else
@@ -29,6 +28,5 @@ Public Class ConnectionWindow
     Private Sub ConnectionWindow_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         txt_cons_server.Text = My.Settings.cons_server
         txt_cons_port.Text = My.Settings.cons_port
-        txt_cons_database.Text = My.Settings.cons_database
     End Sub
 End Class

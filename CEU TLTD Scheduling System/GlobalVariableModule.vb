@@ -3,7 +3,7 @@ Module GlobalVariableModule
     Public system_Name = "CEU TLTD Reservation System"
     Public MySQLConn As New MySqlConnection
     Public MySQLConn_Bendo As New MySqlConnection
-    Public connstring As String = "server=" & My.Settings.cons_server & ";port=" & My.Settings.cons_port & ";userid=" & Actions.ToInsecureString(Actions.DecryptString(My.Settings.cons_username)) & ";password=" & Actions.ToInsecureString(Actions.DecryptString(My.Settings.cons_password)) & ";database=" & My.Settings.cons_database
+    Public connstring As String = "server=" & My.Settings.cons_server & ";port=" & My.Settings.cons_port & ";userid=" & Actions.ToInsecureString(Actions.DecryptString(My.Settings.cons_username)) & ";password=" & Actions.ToInsecureString(Actions.DecryptString(My.Settings.cons_password)) & ";database=ceutltdscheduler"
     Public comm As MySqlCommand
     Public reader As MySqlDataReader
     Public adapter As New MySqlDataAdapter
