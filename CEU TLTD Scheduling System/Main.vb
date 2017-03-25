@@ -3661,10 +3661,11 @@ Public Class Main
     'Under observation because of bugs that can be found in the future ' as of 09.06.16 4:55pm'
 
     Private Sub rec_btn_save_Click(sender As Object, e As EventArgs) Handles rec_btn_save.Click
+
+
         Try
             reserveYN = RadMessageBox.Show(Me, "Are you sure you want to reserve?", system_Name, MessageBoxButtons.YesNo, RadMessageIcon.Question)
             If reserveYN = MsgBoxResult.Yes Then
-
                 MysqlConn = New MySqlConnection
                 MysqlConn.ConnectionString = connstring
                 Dim READER As MySqlDataReader
@@ -3673,10 +3674,14 @@ Public Class Main
                 Dim conflictequipment As String = ""
                 Dim conflictequipmentsn As String = ""
 
-                If (rec_cb_reserveno.Text = "") Or (rec_cb_borrower.Text = "") Or (rec_dtp_date.Text = "") Or (rec_dtp_starttime.Text = "") Or (rec_dtp_endtime.Text = "") Or (rec_cb_college_school.Text = "") Or (rec_cb_location.Text = "") Or (rec_eq_chooseno.Text = "") Or (rec_eq_type_choose.Text = "") Or (eq_rgv_addeq.Rows.Count < 0) Or (rec_cb_acttype.Text = "") Then
+                'Dim TimeStart As DateTime = rec_dtp_starttime.Value.ToString("HH:mm")
+                'Dim TimeEnd As DateTime = rec_dtp_endtime.Value.ToString("HH:mm")
+
+
+                If (rec_cb_reserveno.Text = "") Or (rec_cb_borrower.Text = "") Or (rec_dtp_date.Text = "") Or (rec_cb_college_school.Text = "") Or (rec_cb_location.Text = "") Or (rec_eq_chooseno.Text = "") Or (rec_eq_type_choose.Text = "") Or (eq_rgv_addeq.Rows.Count < 0) Or (rec_cb_acttype.Text = "") Then
                     RadMessageBox.Show(Me, "Please complete the fields", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                 Else
-                    Dim elapsedTime As TimeSpan = DateTime.Parse(Format(CDate(rec_dtp_date.Value), "yyyy-MM-dd") & " " & rec_dtp_endtime.Text).Subtract(DateTime.Parse(DateTime.Parse(Format(CDate(rec_dtp_date.Value), "yyyy-MM-dd") & " " & rec_dtp_starttime.Text)))
+                    Dim elapsedTime As TimeSpan = DateTime.Parse(Format(CDate(rec_dtp_date.Value), "yyyy-MM-dd") & " " & rec_dtp_endtime.Value.ToString("HH:mm")).Subtract(DateTime.Parse(DateTime.Parse(Format(CDate(rec_dtp_date.Value), "yyyy-MM-dd") & " " & rec_dtp_starttime.Value.ToString("HH:mm"))))
                     If elapsedTime.CompareTo(TimeSpan.Zero) <= 0 Then
                         RadMessageBox.Show(Me, "The Starting Time can't be the same or later on the Ending Time.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error, MessageBoxDefaultButton.Button1)
                     ElseIf eq_rgv_addeq.Rows.Count = 0 Then
@@ -4042,6 +4047,8 @@ Public Class Main
     'Loading of data in Reservation Page Grid
     Private Sub rec_dtp_date_ValueChanged(sender As Object, e As EventArgs) Handles rec_dtp_date.ValueChanged
         load_rec_table("NONE", True)
+
+
         'res_rdio_showall.ToggleState=Enumerations.ToggleState.Off
         'res_rdio_cancelled.ToggleState=Enumerations.ToggleState.Off
         'res_rdio_reserved.ToggleState=Enumerations.ToggleState.Off

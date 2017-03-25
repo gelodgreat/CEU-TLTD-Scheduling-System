@@ -178,7 +178,7 @@
     <value>17, 173</value>
   </metadata>
   <metadata name="refresh_penalty_grid_list.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>211, 173</value>
+    <value>211, 168</value>
   </metadata>
   <metadata name="refresh_returned_eq_list.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>393, 173</value>
