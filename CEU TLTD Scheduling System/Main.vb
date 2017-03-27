@@ -77,8 +77,8 @@ Public Class Main
     'HAMILI SMS
     Public rcvdata As String = ""
 
-    'Public isSms_enabled As Boolean = My.Settings.gsmIsOn ''settings.
-    Public isSms_enabled As Boolean = True ''temporary for testing
+    Public isSms_enabled As Boolean = My.Settings.gsmIsOn ''settings.
+    'Public isSms_enabled As Boolean = True ''temporary for testing
 
 
     Private thread_alreadyStart As Boolean = False ''to avoid duplicate start of threads
