@@ -16,7 +16,11 @@ Public Class Statistics
                 lbl_res_t_wk.Text = reader.GetString("reservations_placed_for_this_week")
                 lbl_res_t_m.Text = reader.GetString("reservations_placed_this_month")
                 lbl_res_t_yr.Text = reader.GetString("reservations_placed_this_year")
+                If reader.IsDBNull(3) Then
+                    lbl_most_bor_eq.Text = "No data yet."
+                Else
                 lbl_most_bor_eq.Text = reader.GetString("most_borrowed_equipment_all_time")
+                End If
             End While
             MySQLConn.Close()
         Catch ex As MySql.Data.MySqlClient.MySqlException
