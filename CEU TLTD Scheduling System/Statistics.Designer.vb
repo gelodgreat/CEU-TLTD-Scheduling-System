@@ -73,7 +73,7 @@ Partial Class Statistics
         Me.RadPageView1.Controls.Add(Me.Summary)
         Me.RadPageView1.Location = New System.Drawing.Point(1, 12)
         Me.RadPageView1.Name = "RadPageView1"
-        Me.RadPageView1.SelectedPage = Me.Summary
+        Me.RadPageView1.SelectedPage = Me.Equipment
         Me.RadPageView1.Size = New System.Drawing.Size(690, 379)
         Me.RadPageView1.TabIndex = 6
         Me.RadPageView1.Text = "RadPageView1"
