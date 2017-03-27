@@ -320,6 +320,7 @@ Public Class Main
 
     Private Sub Main_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         getFromDB_settings_penalty()
+
         'load_rec_table(False) ''HANDLED IN rec_dtp_date_ValueChanged
         'reservation_rgv_recordeddata.Show()
         'reservations_rgv_showavailableitems.Hide()
@@ -364,6 +365,12 @@ Public Class Main
         acc_staff_rdio_active.ButtonElement.ToolTipText = "Blue highlight when the account is active."
         acc_staff_rdio_inactive.ButtonElement.ToolTipText = "Red highlight when the account is inactive."
 
+
+        'Ask if SMS will be enabled on login
+        Dim EnableSMS As DialogResult = RadMessageBox.Show(Me, "Do you want to activate the SMS Notification?", system_Name, MessageBoxButtons.YesNo, RadMessageIcon.Exclamation)
+        If EnableSMS = DialogResult.Yes Then
+            menuItem_Settings.PerformClick()
+        End If
 
 
     End Sub
@@ -3762,38 +3769,44 @@ Public Class Main
                                         MysqlConn.Close()
                                         GetMobileNo_of_Reserver()
                                         MysqlConn.Open()
-                                        query = "INSERT INTO ceutltdscheduler.reservation VALUES(@a,@r,@b,@c,@d,@e,@f,@g,@h,@i,@mobileno,@j,@k,@l,@m); INSERT INTO ceutltdscheduler.reservation_equipments VALUES(@n,@r,@o,@p,@q,'Reserved')"
-                                        comm = New MySqlCommand(query, MysqlConn)
-                                        comm.Parameters.AddWithValue("@a", rec_cb_reserveno.Text)
-                                        comm.Parameters.AddWithValue("@r", equipmenttypergv)
-                                        comm.Parameters.AddWithValue("@b", equipmentnorgv)
-                                        comm.Parameters.AddWithValue("@c", equipmentrgv)
-                                        comm.Parameters.AddWithValue("@d", equipmentsnrgv)
-                                        comm.Parameters.AddWithValue("@e", rec_cb_idnum.Text)
-                                        comm.Parameters.AddWithValue("@f", Format(CDate(rec_multpd.SelectedDates(selecteddatecounter)), "yyyy-MM-dd"))
-                                        comm.Parameters.AddWithValue("@g", Format(CDate(rec_dtp_starttime.Text), "HH:mm"))
-                                        comm.Parameters.AddWithValue("@h", Format(CDate(rec_dtp_endtime.Text), "HH:mm"))
-                                        comm.Parameters.AddWithValue("@i", rec_cb_borrower.Text)
-                                        comm.Parameters.AddWithValue("@j", rec_cb_location.Text)
-                                        comm.Parameters.AddWithValue("@k", lbl_nameofstaff_reserved.Text)
-                                        comm.Parameters.AddWithValue("@l", rec_cb_acttype.Text)
-                                        comm.Parameters.AddWithValue("@m", rec_rrtc_actname.Text)
-                                        comm.Parameters.AddWithValue("@mobileno", borrower_mobileno)
+                                                query = "INSERT INTO ceutltdscheduler.reservation VALUES(@a,@r,@b,@c,@d,@e,@f,@g,@h,@i,@mobileno,@j,@k,@l,@m);" _
+                                                & "INSERT INTO ceutltdscheduler.reservation_equipments VALUES(@n,@r,@o,@p,@q,'Reserved');"
+                                                '& "INSERT INTO borrowstatistics VALUES(@d);"
 
-                                        'SECOND QUERY
-                                        comm.Parameters.AddWithValue("@n", rec_cb_reserveno.Text)
-                                        comm.Parameters.AddWithValue("@o", equipmentnorgv)
-                                        comm.Parameters.AddWithValue("@p", equipmentrgv)
-                                        comm.Parameters.AddWithValue("@q", equipmentsnrgv)
-                                        READER = comm.ExecuteReader
-                                        MysqlConn.Close()
+                                                comm = New MySqlCommand(query, MysqlConn)
+                                                comm.Parameters.AddWithValue("@a", rec_cb_reserveno.Text)
+                                                comm.Parameters.AddWithValue("@r", equipmenttypergv)
+                                                comm.Parameters.AddWithValue("@b", equipmentnorgv)
+                                                comm.Parameters.AddWithValue("@c", equipmentrgv)
+                                                comm.Parameters.AddWithValue("@d", equipmentsnrgv)
+                                                comm.Parameters.AddWithValue("@e", rec_cb_idnum.Text)
+                                                comm.Parameters.AddWithValue("@f", Format(CDate(rec_multpd.SelectedDates(selecteddatecounter)), "yyyy-MM-dd"))
+                                                comm.Parameters.AddWithValue("@g", Format(CDate(rec_dtp_starttime.Text), "HH:mm"))
+                                                comm.Parameters.AddWithValue("@h", Format(CDate(rec_dtp_endtime.Text), "HH:mm"))
+                                                comm.Parameters.AddWithValue("@i", rec_cb_borrower.Text)
+                                                comm.Parameters.AddWithValue("@j", rec_cb_location.Text)
+                                                comm.Parameters.AddWithValue("@k", lbl_nameofstaff_reserved.Text)
+                                                comm.Parameters.AddWithValue("@l", rec_cb_acttype.Text)
+                                                comm.Parameters.AddWithValue("@m", rec_rrtc_actname.Text)
+                                                comm.Parameters.AddWithValue("@mobileno", borrower_mobileno)
+
+                                                'SECOND Qery
+                                                comm.Parameters.AddWithValue("@n", rec_cb_reserveno.Text)
+                                                comm.Parameters.AddWithValue("@o", equipmentnorgv)
+                                                comm.Parameters.AddWithValue("@p", equipmentrgv)
+                                                comm.Parameters.AddWithValue("@q", equipmentsnrgv)
+
+                                                'Execute SQL query
+                                                READER = comm.ExecuteReader
+                                                MysqlConn.Close()
+                                            End If
+                                            counter += 1
+                                        End While
+
+                                        rowcounter = 0
+
                                     End If
-                                    counter += 1
-                                End While
-                                   
-                                rowcounter = 0
-                            End If
-                           Next
+                                Next
                             auto_generate_reservationno()
                             If errorcount = False Then
                                 RadMessageBox.Show(Me, "Succesfully reserved all of the equipment(s)!", system_Name, MessageBoxButtons.OK, RadMessageIcon.Info)
@@ -3845,8 +3858,11 @@ Public Class Main
                                         MysqlConn.Close()
                                         GetMobileNo_of_Reserver()
                                         MysqlConn.Open()
-                                        query = "INSERT INTO ceutltdscheduler.reservation VALUES(@a,@r,@b,@c,@d,@e,@f,@g,@h,@i,@mobileno,@j,@k,@l,@m); INSERT INTO ceutltdscheduler.reservation_equipments VALUES(@n,@r,@o,@p,@q,'Reserved')"
-                                        comm = New MySqlCommand(query, MysqlConn)
+                                            query = "INSERT INTO ceutltdscheduler.reservation VALUES(@a,@r,@b,@c,@d,@e,@f,@g,@h,@i,@mobileno,@j,@k,@l,@m);" _
+                                            & "INSERT INTO ceutltdscheduler.reservation_equipments VALUES(@n,@r,@o,@p,@q,'Reserved');"
+                                            '& "INSERT INTO borrowstatistics VALUES(@d);"
+
+                                            comm = New MySqlCommand(query, MysqlConn)
                                         comm.Parameters.AddWithValue("@a", rec_cb_reserveno.Text)
                                         comm.Parameters.AddWithValue("@r", equipmenttypergv)
                                         comm.Parameters.AddWithValue("@b", equipmentnorgv)
@@ -3867,8 +3883,10 @@ Public Class Main
                                         comm.Parameters.AddWithValue("@n", rec_cb_reserveno.Text)
                                         comm.Parameters.AddWithValue("@o", equipmentnorgv)
                                         comm.Parameters.AddWithValue("@p", equipmentrgv)
-                                        comm.Parameters.AddWithValue("@q", equipmentsnrgv)
-                                        READER = comm.ExecuteReader
+                                            comm.Parameters.AddWithValue("@q", equipmentsnrgv)
+
+                                            'Execute SQL Query
+                                            READER = comm.ExecuteReader
                                         MysqlConn.Close()
 
                                     End If
