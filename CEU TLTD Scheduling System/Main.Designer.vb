@@ -465,6 +465,7 @@ Partial Class Main
         Me.menuItem_Settings = New Telerik.WinControls.UI.RadMenuItem()
         Me.menuItem_About = New Telerik.WinControls.UI.RadMenuItem()
         Me.menuItem_LF = New Telerik.WinControls.UI.RadMenuItem()
+        Me.menuItem_Stat = New Telerik.WinControls.UI.RadMenuItem()
         Me.lu_ActivityType_filter_delay = New System.Windows.Forms.Timer(Me.components)
         Me.acct_mgmt_hover_delay_goingToBorrower = New System.Windows.Forms.Timer(Me.components)
         Me.acct_mgmt_hover_delay_goingToStaff = New System.Windows.Forms.Timer(Me.components)
@@ -477,8 +478,8 @@ Partial Class Main
         Me.refresh_released_grid_list2 = New System.Windows.Forms.Timer(Me.components)
         Me.refresh_penalty_grid_list = New System.Windows.Forms.Timer(Me.components)
         Me.refresh_returned_eq_list = New System.Windows.Forms.Timer(Me.components)
-        Me.CeutltdschedulerDataSetBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.SerialPort_SMS = New System.IO.Ports.SerialPort(Me.components)
+        Me.CeutltdschedulerDataSetBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         CType(Me.RadGroupBox16,System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.RadGroupBox13,System.ComponentModel.ISupportInitialize).BeginInit
         Me.rpvp_returning.SuspendLayout
@@ -810,6 +811,7 @@ Partial Class Main
         Me.rel_list_info2.Controls.Add(Me.ret_gb_remarks)
         Me.rel_list_info2.Controls.Add(Me.released_grid_list2)
         Me.rel_list_info2.Controls.Add(Me.ret_gb_details)
+        Me.rel_list_info2.ItemSize = New System.Drawing.SizeF(119!, 24!)
         Me.rel_list_info2.Location = New System.Drawing.Point(5, 30)
         Me.rel_list_info2.Name = "rel_list_info2"
         Me.rel_list_info2.Size = New System.Drawing.Size(1338, 487)
@@ -1428,6 +1430,7 @@ Partial Class Main
         Me.ret_penalties_info.Controls.Add(Me.pen_endDate)
         Me.ret_penalties_info.Controls.Add(Me.pen_startDate)
         Me.ret_penalties_info.Controls.Add(Me.penalty_grid_list)
+        Me.ret_penalties_info.ItemSize = New System.Drawing.SizeF(57!, 24!)
         Me.ret_penalties_info.Location = New System.Drawing.Point(5, 30)
         Me.ret_penalties_info.Name = "ret_penalties_info"
         Me.ret_penalties_info.Size = New System.Drawing.Size(1338, 487)
@@ -1548,6 +1551,7 @@ Partial Class Main
         Me.ret_eq_list.Controls.Add(Me.RadLabel19)
         Me.ret_eq_list.Controls.Add(Me.RadLabel22)
         Me.ret_eq_list.Controls.Add(Me.returned_startDate)
+        Me.ret_eq_list.ItemSize = New System.Drawing.SizeF(142!, 24!)
         Me.ret_eq_list.Location = New System.Drawing.Point(5, 30)
         Me.ret_eq_list.Name = "ret_eq_list"
         Me.ret_eq_list.Size = New System.Drawing.Size(1338, 487)
@@ -2840,13 +2844,13 @@ Partial Class Main
         GridViewTextBoxColumn1.Width = 42
         GridViewTextBoxColumn2.HeaderText = "Equipments"
         GridViewTextBoxColumn2.Name = "equipment_name"
-        GridViewTextBoxColumn2.Width = 131
+        GridViewTextBoxColumn2.Width = 130
         GridViewTextBoxColumn3.HeaderText = "Serial Number"
         GridViewTextBoxColumn3.Name = "equipment_sn"
-        GridViewTextBoxColumn3.Width = 131
+        GridViewTextBoxColumn3.Width = 130
         GridViewTextBoxColumn4.HeaderText = "Equipment Type"
         GridViewTextBoxColumn4.Name = "equipment_type"
-        GridViewTextBoxColumn4.Width = 44
+        GridViewTextBoxColumn4.Width = 46
         Me.eq_rgv_addeq.MasterTemplate.Columns.AddRange(New Telerik.WinControls.UI.GridViewDataColumn() {GridViewTextBoxColumn1, GridViewTextBoxColumn2, GridViewTextBoxColumn3, GridViewTextBoxColumn4})
         Me.eq_rgv_addeq.MasterTemplate.EnableGrouping = false
         Me.eq_rgv_addeq.MasterTemplate.MultiSelect = true
@@ -3090,6 +3094,7 @@ Partial Class Main
         'rpv_staff
         '
         Me.rpv_staff.Controls.Add(Me.acc_staff_list)
+        Me.rpv_staff.ItemSize = New System.Drawing.SizeF(78!, 24!)
         Me.rpv_staff.Location = New System.Drawing.Point(5, 30)
         Me.rpv_staff.Name = "rpv_staff"
         Me.rpv_staff.Size = New System.Drawing.Size(1343, 238)
@@ -3119,6 +3124,7 @@ Partial Class Main
         'rpv_borrower
         '
         Me.rpv_borrower.Controls.Add(Me.acc_prof_list)
+        Me.rpv_borrower.ItemSize = New System.Drawing.SizeF(101!, 24!)
         Me.rpv_borrower.Location = New System.Drawing.Point(5, 30)
         Me.rpv_borrower.Name = "rpv_borrower"
         Me.rpv_borrower.Size = New System.Drawing.Size(1343, 238)
@@ -3911,7 +3917,7 @@ Partial Class Main
         Me.rpv1.DefaultPage = Me.rpvp1_main
         Me.rpv1.Location = New System.Drawing.Point(0, 26)
         Me.rpv1.Name = "rpv1"
-        Me.rpv1.SelectedPage = Me.rpvp_releasing
+        Me.rpv1.SelectedPage = Me.rpvp1_main
         Me.rpv1.Size = New System.Drawing.Size(1358, 557)
         Me.rpv1.TabIndex = 1
         Me.rpv1.Text = "Home"
@@ -3923,7 +3929,7 @@ Partial Class Main
         '
         'RadMenu1
         '
-        Me.RadMenu1.Items.AddRange(New Telerik.WinControls.RadItem() {Me.menuItem_DBManage, Me.menuItem_Settings, Me.menuItem_About, Me.menuItem_LF})
+        Me.RadMenu1.Items.AddRange(New Telerik.WinControls.RadItem() {Me.menuItem_DBManage, Me.menuItem_Settings, Me.menuItem_About, Me.menuItem_LF, Me.menuItem_Stat})
         Me.RadMenu1.Location = New System.Drawing.Point(0, 0)
         Me.RadMenu1.Name = "RadMenu1"
         Me.RadMenu1.Size = New System.Drawing.Size(1356, 20)
@@ -3982,6 +3988,15 @@ Partial Class Main
         Me.menuItem_LF.Text = "Leave Feedback"
         CType(Me.menuItem_LF.GetChildAt(0),Telerik.WinControls.Primitives.FillPrimitive).BackColor = System.Drawing.Color.Transparent
         CType(Me.menuItem_LF.GetChildAt(1),Telerik.WinControls.Primitives.BorderPrimitive).ForeColor = System.Drawing.Color.Transparent
+        '
+        'menuItem_Stat
+        '
+        Me.menuItem_Stat.BackColor = System.Drawing.Color.Transparent
+        Me.menuItem_Stat.Name = "menuItem_Stat"
+        Me.menuItem_Stat.Padding = New System.Windows.Forms.Padding(5, 0, 5, 0)
+        Me.menuItem_Stat.Text = "Statistics"
+        CType(Me.menuItem_Stat.GetChildAt(0),Telerik.WinControls.Primitives.FillPrimitive).BackColor = System.Drawing.Color.Transparent
+        CType(Me.menuItem_Stat.GetChildAt(1),Telerik.WinControls.Primitives.BorderPrimitive).ForeColor = System.Drawing.Color.Transparent
         '
         'lu_ActivityType_filter_delay
         '
@@ -4540,5 +4555,6 @@ End Sub
     Friend WithEvents RadLabel47 As Telerik.WinControls.UI.RadLabel
     Friend WithEvents rec_chk_multpd As Telerik.WinControls.UI.RadCheckBox
     Friend WithEvents rec_multpd As Telerik.WinControls.UI.RadCalendar
+    Friend WithEvents menuItem_Stat As Telerik.WinControls.UI.RadMenuItem
 End Class
 

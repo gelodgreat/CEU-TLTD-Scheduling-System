@@ -159,14 +159,4 @@ Public Class Login
         System.Environment.Exit(1)
         End If
     End Sub
-
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        MultipurposeWindowPanel="A"
-        MultipurposeWindow.ShowDialog
-    End Sub
-
-    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
-        MultipurposeWindowPanel="B"
-        MultipurposeWindow.ShowDialog
-    End Sub
 End Class

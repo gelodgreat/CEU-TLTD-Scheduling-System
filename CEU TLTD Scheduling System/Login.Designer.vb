@@ -41,8 +41,6 @@ Partial Class Login
         Me.TelerikMetroBlueTheme1 = New Telerik.WinControls.Themes.TelerikMetroBlueTheme()
         Me.log_lbl_time = New Telerik.WinControls.UI.RadLabel()
         Me.settingButton = New System.Windows.Forms.PictureBox()
-        Me.Button1 = New System.Windows.Forms.Button()
-        Me.Button2 = New System.Windows.Forms.Button()
         CType(Me.btn_login,System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.RadLabel17,System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.RadLabel14,System.ComponentModel.ISupportInitialize).BeginInit
@@ -163,8 +161,6 @@ Partial Class Login
         '
         Me.RadGroupBox1.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping
         Me.RadGroupBox1.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
-        Me.RadGroupBox1.Controls.Add(Me.Button2)
-        Me.RadGroupBox1.Controls.Add(Me.Button1)
         Me.RadGroupBox1.Controls.Add(Me.btn_login)
         Me.RadGroupBox1.Controls.Add(Me.RadLabel14)
         Me.RadGroupBox1.Controls.Add(Me.log_password)
@@ -203,24 +199,6 @@ Partial Class Login
         Me.settingButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.settingButton.TabIndex = 33
         Me.settingButton.TabStop = false
-        '
-        'Button1
-        '
-        Me.Button1.Location = New System.Drawing.Point(372, 184)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(75, 23)
-        Me.Button1.TabIndex = 25
-        Me.Button1.Text = "Button1"
-        Me.Button1.UseVisualStyleBackColor = true
-        '
-        'Button2
-        '
-        Me.Button2.Location = New System.Drawing.Point(372, 213)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(75, 23)
-        Me.Button2.TabIndex = 26
-        Me.Button2.Text = "Button2"
-        Me.Button2.UseVisualStyleBackColor = true
         '
         'Login
         '
@@ -282,7 +260,5 @@ End Sub
     Friend WithEvents TelerikMetroBlueTheme1 As Telerik.WinControls.Themes.TelerikMetroBlueTheme
     Friend WithEvents log_lbl_time As Telerik.WinControls.UI.RadLabel
     Friend WithEvents settingButton As PictureBox
-    Friend WithEvents Button1 As Button
-    Friend WithEvents Button2 As Button
 End Class
 

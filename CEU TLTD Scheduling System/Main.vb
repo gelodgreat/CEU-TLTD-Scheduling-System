@@ -258,13 +258,13 @@ Public Class Main
     'END! Groupbox Hover in Account Management
 
     'START! MENU Bar
-    Private Sub MenuBar_MouseLeave(sender As Object, e As EventArgs) Handles menuItem_DBManage.MouseLeave, menuItem_About.MouseLeave, menuItem_Settings.MouseLeave, menuItem_LF.MouseLeave
+    Private Sub MenuBar_MouseLeave(sender As Object, e As EventArgs) Handles menuItem_DBManage.MouseLeave, menuItem_About.MouseLeave, menuItem_Settings.MouseLeave, menuItem_LF.MouseLeave, menuItem_Stat.MouseLeave
         If ThemeResolutionService.ApplicationThemeName = "VisualStudio2012Dark" Then
             Dim item As RadMenuItem = TryCast(sender, RadMenuItem)
             item.FillPrimitive.BackColor = Color.Transparent
         End If
     End Sub
-    Private Sub MenuBar_MouseEnter(sender As Object, e As EventArgs) Handles menuItem_DBManage.MouseEnter, menuItem_About.MouseEnter, menuItem_Settings.MouseEnter, menuItem_LF.MouseEnter
+    Private Sub MenuBar_MouseEnter(sender As Object, e As EventArgs) Handles menuItem_DBManage.MouseEnter, menuItem_About.MouseEnter, menuItem_Settings.MouseEnter, menuItem_LF.MouseEnter,menuItem_Stat.MouseEnter
         If ThemeResolutionService.ApplicationThemeName = "VisualStudio2012Dark" Then
             Dim item As RadMenuItem = TryCast(sender, RadMenuItem)
             item.FillPrimitive.BackColor = Color.FromArgb(62, 62, 64)
@@ -311,6 +311,10 @@ Public Class Main
 
     Private Sub menuItem_LF_Click(sender As Object, e As EventArgs) Handles menuItem_LF.Click
         FeedBack.ShowDialog()
+    End Sub
+
+    Private Sub menuItem_Stat_Click(sender As Object, e As EventArgs) Handles menuItem_Stat.Click
+        Statistics.ShowDialog()
     End Sub
     'END!! Menu BAR
 

@@ -231,6 +231,12 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="PendingSms.vb" />
+    <Compile Include="Statistics.Designer.vb">
+      <DependentUpon>Statistics.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Statistics.vb">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="About.resx">
@@ -266,6 +272,9 @@
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Statistics.resx">
+      <DependentUpon>Statistics.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
