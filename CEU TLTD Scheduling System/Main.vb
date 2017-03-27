@@ -3603,7 +3603,7 @@ Public Class Main
     Private Sub rec_del_eq_Click(sender As Object, e As EventArgs) Handles rec_del_eq.Click
 
         If (eq_rgv_addeq.Rows.Count = 0) Then
-            RadMessageBox.Show(Me, "The Table is already empty.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
+            RadMessageBox.Show(Me, "The Table is already empty.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Exclamation)
         Else
             eq_rgv_addeq.Rows.RemoveAt(eq_rgv_addeq.CurrentRow.Index)
         End If
