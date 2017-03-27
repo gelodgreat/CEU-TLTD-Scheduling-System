@@ -1,4 +1,5 @@
-﻿Imports Telerik.WinControls
+﻿
+Imports Telerik.WinControls
 
 Public Class Statistics
     Private Sub Statistics_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -35,8 +36,34 @@ Public Class Statistics
         Finally
             MySQLConn.Dispose()
         End Try
+        Load_equipmentstats()
+    End Sub
+    Public Sub Load_equipmentstats()
+        If MySQLConn.State = ConnectionState.Open Then
+            MySQLConn.Close()
+        End If
+        MySQLConn.ConnectionString = connstring
+        Dim adapter As New MySql.Data.MySqlClient.MySqlDataAdapter
+        Dim dbdataset As New DataTable
+
+        Try
+            MySQLConn.Open()
+            comm = New MySql.Data.MySqlClient.MySqlCommand("SELECT ret_eqtype AS 'Equipment Type', ret_equipment AS 'Equipment Name', ret_equipment_no AS 'Equipment Number', ret_eqsn AS 'Equipment Serial Number', COUNT(ret_eqsn) AS 'Number of borrows' FROM returned_info GROUP BY ret_eqsn ORDER BY COUNT(ret_eqsn)", MySQLConn)
+            adapter.SelectCommand = comm
+            adapter.Fill(dbdataset)
+            rgv_StatsByEq.DataSource = dbdataset
+            MySQLConn.Close()
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        Finally
+            MySQLConn.Dispose()
+        End Try
     End Sub
     Private Sub btn_Close_Click(sender As Object, e As EventArgs) Handles btn_Close.Click
-        Me.Close
+        Me.Dispose()
+    End Sub
+
+    Private Sub rgv_StatsByEq_ViewCellFormatting(sender As Object, e As UI.CellFormattingEventArgs) Handles rgv_StatsByEq.ViewCellFormatting
+        e.CellElement.TextAlignment = ContentAlignment.MiddleCenter
     End Sub
 End Class
