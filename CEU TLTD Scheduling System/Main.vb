@@ -3749,7 +3749,7 @@ Public Class Main
                         If dupdup Then
                             RadMessageBox.Show(Me, "Please remove duplicates in the added equipments.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error, MessageBoxDefaultButton.Button1)
                         Else
-
+                                'BENDO Background Worker START
 				            If rec_multpd.SelectedDates.Count > 0 And rec_chk_multpd.Checked
                             Dim errorcount As Boolean = False
                             For selecteddatecounter As Integer = 0 To rec_multpd.SelectedDates.Count - 1
@@ -3931,6 +3931,7 @@ Public Class Main
                             End If
                         End If
                       End If
+                        ''BENDO Background Worker END
                     End If
 
                 End If
