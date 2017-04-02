@@ -48,4 +48,6 @@ Module GlobalVariableModule
     'GSM Module Connection using SerialPort
     Public portname, baudrate, parity, databits, stopbits, handshake, rtsenabled, receivedbytestreshold, newline, readtimeout
 
+
+    'GSM Switch
 End Module

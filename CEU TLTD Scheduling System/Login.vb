@@ -64,6 +64,7 @@ Public Class Login
 
                     If looper = 1 And accountstate Then
                         Me.Hide()
+                        My.Settings.gsmIsOn = False
                         Main.Show()
                     ElseIf looper = 1 And Not accountstate Then
                         RadMessageBox.Show(Me, "Your account is not active please inform the staff about the state of your account.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error, MessageBoxDefaultButton.Button1)
