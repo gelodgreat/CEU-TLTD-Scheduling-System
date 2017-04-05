@@ -320,6 +320,39 @@ Public Class Main
 
     Private Sub Main_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         getFromDB_settings_penalty()
+        'LOADING SAVED DATES
+        If My.Settings.res_fil_startdate = Nothing And My.Settings.res_fil_enddate = Nothing
+            rel_fil_startdate.Value=New Date(Date.Now.Year,Date.Now.Month,Date.Now.Day)
+            rel_fil_enddate.Value=New Date(Date.Now.Year,Date.Now.Month,Date.Now.Day)
+        Else
+            rel_fil_startdate.Value=My.Settings.res_fil_startdate
+            rel_fil_enddate.Value=My.Settings.res_fil_enddate
+        End If
+
+        If My.Settings.rec_fil_startdate = Nothing And My.Settings.rec_fil_enddate = Nothing
+            rec_dtp_fil_startdate.Value=New Date(Date.Now.Year,Date.Now.Month,Date.Now.Day)
+            rec_dtp_fil_enddate.Value=New Date(Date.Now.Year,Date.Now.Month,Date.Now.Day)
+        Else
+            rec_dtp_fil_startdate.Value=My.Settings.rec_fil_startdate
+            rec_dtp_fil_enddate.Value=My.Settings.rec_fil_enddate
+        End If
+
+        If My.Settings.pen_fil_startdate = Nothing And My.Settings.pen_fil_enddate = Nothing
+            pen_startDate.Value=New Date(Date.Now.Year,Date.Now.Month,Date.Now.Day)
+            pen_endDate.Value=New Date(Date.Now.Year,Date.Now.Month,Date.Now.Day)
+        Else
+            pen_startDate.Value=My.Settings.pen_fil_startdate
+            pen_endDate.Value=My.Settings.pen_fil_enddate
+        End If
+
+        If My.Settings.ret_fil_startdate = Nothing And My.Settings.ret_fil_enddate = Nothing
+            returned_startDate.Value=New Date(Date.Now.Year,Date.Now.Month,Date.Now.Day)
+            returned_endDate.Value=New Date(Date.Now.Year,Date.Now.Month,Date.Now.Day)
+        Else
+            returned_startDate.Value=My.Settings.ret_fil_startdate
+            returned_endDate.Value=My.Settings.ret_fil_enddate
+        End If
+        'LOADING SAVED DATES
 
         'load_rec_table(False) ''HANDLED IN rec_dtp_date_ValueChanged
         'reservation_rgv_recordeddata.Show()
@@ -340,15 +373,11 @@ Public Class Main
         startup_disabled_buttons()
         load_released_list()
         load_released_list2()
-        pen_startDate.Value = Date.Now
-        pen_endDate.Value = Date.Now
-        returned_startDate.Value = Date.Now
-        returned_endDate.Value = Date.Now
-        load_penalty_list(pen_startDate.Value, pen_endDate.Value)
-        load_returned_eq_list(returned_startDate.Value, returned_endDate.Value)
+        'load_penalty_list(pen_startDate.Value, pen_endDate.Value)
+        'load_returned_eq_list(returned_startDate.Value, returned_endDate.Value)
         rec_load_choices_eqtype()
         auto_generate_reservationno()
-        reserved_load_table()
+        'reserved_load_table()
         startup_disabled_textbox()
         show_hide_txt_lbl()
         'color_coding()
@@ -868,11 +897,11 @@ Public Class Main
             'If show_all_no_filter = "DatePicker" Then
             '   query = "Select reservationno as 'Reservation Number' ,borrower as 'Borrower',id as 'ID', equipmentno as 'Equipment No.', equipment as 'Equipment', location as 'Location', DATE_FORMAT(date,'%M %d %Y') as 'Date',TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time',activitytype as 'Activity Type',actname as 'Activity',res_status as 'Status' from reservation natural join reservation_equipments where res_status='Reserved' and date ='" & Format(CDate(rec_dtp_date.Value), "yyyy-MM-dd") & "' ORDER by date DESC"
             If show_all_no_filter = "Radio_Cancelled" Then
-                query = "Select reservationno as 'Reservation Number' ,borrower as 'Borrower', equipmenttype as 'Equipment Type', equipmentsn as 'Equipment Serial', equipmentno as 'Equipment No.', equipment as 'Equipment', location as 'Location', DATE_FORMAT(date,'%M %d %Y') as 'Date',TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time',activitytype as 'Activity Type',actname as 'Activity',res_status as 'Status', reservedby as 'Recorded By' from reservation natural join reservation_equipments where res_status='Cancelled' and date ='" & Format(CDate(rec_dtp_date.Value), "yyyy-MM-dd") & "' ORDER by date DESC"
+                query = "Select reservationno as 'Reservation Number' ,borrower as 'Borrower', equipmenttype as 'Equipment Type', equipmentsn as 'Equipment Serial', equipmentno as 'Equipment No.', equipment as 'Equipment', location as 'Location', DATE_FORMAT(date,'%M %d %Y') as 'Date',TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time',activitytype as 'Activity Type',actname as 'Activity',res_status as 'Status', reservedby as 'Recorded By' from reservation natural join reservation_equipments where res_status='Cancelled' AND date BETWEEN '" & Format(CDate(rec_dtp_fil_startdate.Value), "yyyy-MM-dd") & "' AND '" & Format(CDate(rec_dtp_fil_enddate.Value), "yyyy-MM-dd") & "' ORDER by date ASC, starttime ASC, endtime ASC"
             ElseIf show_all_no_filter = "Radio_Reserved" Then
-                query = "Select reservationno as 'Reservation Number' ,borrower as 'Borrower', equipmenttype as 'Equipment Type', equipmentsn as 'Equipment Serial', equipmentno as 'Equipment No.', equipment as 'Equipment', location as 'Location', DATE_FORMAT(date,'%M %d %Y') as 'Date',TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time',activitytype as 'Activity Type',actname as 'Activity',res_status as 'Status', reservedby as 'Recorded By' from reservation natural join reservation_equipments where res_status='Reserved' and date ='" & Format(CDate(rec_dtp_date.Value), "yyyy-MM-dd") & "' ORDER by date DESC"
+                query = "Select reservationno as 'Reservation Number' ,borrower as 'Borrower', equipmenttype as 'Equipment Type', equipmentsn as 'Equipment Serial', equipmentno as 'Equipment No.', equipment as 'Equipment', location as 'Location', DATE_FORMAT(date,'%M %d %Y') as 'Date',TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time',activitytype as 'Activity Type',actname as 'Activity',res_status as 'Status', reservedby as 'Recorded By' from reservation natural join reservation_equipments where res_status='Reserved' AND date BETWEEN '" & Format(CDate(rec_dtp_fil_startdate.Value), "yyyy-MM-dd") & "' AND '" & Format(CDate(rec_dtp_fil_enddate.Value), "yyyy-MM-dd") & "' ORDER by date ASC, starttime ASC, endtime ASC"
             ElseIf show_all_no_filter = "Radio_ShowAll" Then
-                query = "Select reservationno as 'Reservation Number' ,borrower as 'Borrower', equipmenttype as 'Equipment Type', equipmentsn as 'Equipment Serial', equipmentno as 'Equipment No.', equipment as 'Equipment', location as 'Location', DATE_FORMAT(date,'%M %d %Y') as 'Date',TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time',activitytype as 'Activity Type',actname as 'Activity',res_status as 'Status', reservedby as 'Recorded By' from reservation natural join reservation_equipments WHERE date ='" & Format(CDate(rec_dtp_date.Value), "yyyy-MM-dd") & "' ORDER by date DESC"
+                query = "Select reservationno as 'Reservation Number' ,borrower as 'Borrower', equipmenttype as 'Equipment Type', equipmentsn as 'Equipment Serial', equipmentno as 'Equipment No.', equipment as 'Equipment', location as 'Location', DATE_FORMAT(date,'%M %d %Y') as 'Date',TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time',activitytype as 'Activity Type',actname as 'Activity',res_status as 'Status', reservedby as 'Recorded By' from reservation natural join reservation_equipments WHERE date BETWEEN '" & Format(CDate(rec_dtp_fil_startdate.Value), "yyyy-MM-dd") & "' AND '" & Format(CDate(rec_dtp_fil_enddate.Value), "yyyy-MM-dd") & "' ORDER by date ASC, starttime ASC, endtime ASC"
             End If
             'reservation_rgv_recordeddata.Columns.Clear
             comm = New MySqlCommand(query, MysqlConn)
@@ -929,17 +958,17 @@ Public Class Main
             If lu_ActivityType.Text = "School Activity" Then
                 query = "Select reservationno as 'Reservation Number', borrower as 'Borrower', equipmentno as 'Equipment No.', equipment as 'Equipment', location as 'Location',
             DATE_FORMAT(date,'%M %d %Y') as 'Date',TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time',
-            activitytype as 'Activity Type', actname as 'Activity' FROM ceutltdscheduler.reservation natural join ceutltdscheduler.reservation_equipments where date ='" & Format(CDate(lu_date.Value), "yyyy-MM-dd") & "' and activitytype='School Activity' and NOT(res_status='Cancelled') ORDER BY date DESC,starttime DESC"
+            activitytype as 'Activity Type', actname as 'Activity' FROM ceutltdscheduler.reservation natural join ceutltdscheduler.reservation_equipments where date ='" & Format(CDate(lu_date.Value), "yyyy-MM-dd") & "' and activitytype='School Activity' and NOT(res_status='Cancelled') ORDER BY date ASC,starttime ASC,endtime ASC"
                 Cover = "School Activity"
             ElseIf lu_ActivityType.Text = "Academic" Then
                 query = "Select reservationno as 'Reservation Number' ,borrower as 'Borrower', equipmentno as 'Equipment No.', equipment as 'Equipment', location as 'Location',
             DATE_FORMAT(date,'%M %d %Y') as 'Date',TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time',
-            activitytype as 'Activity Type' from ceutltdscheduler.reservation natural join ceutltdscheduler.reservation_equipments where date ='" & Format(CDate(lu_date.Value), "yyyy-MM-dd") & "' and activitytype='Academic' and NOT(res_status='Cancelled') ORDER BY date DESC,starttime DESC"
+            activitytype as 'Activity Type' from ceutltdscheduler.reservation natural join ceutltdscheduler.reservation_equipments where date ='" & Format(CDate(lu_date.Value), "yyyy-MM-dd") & "' and activitytype='Academic' and NOT(res_status='Cancelled') ORDER BY date ASC,starttime ASC,endtime ASC"
                 Cover = "Academic"
             ElseIf lu_ActivityType.Text = "All" Then
                 query = "Select reservationno as 'Reservation Number' ,borrower as 'Borrower', equipmentno as 'Equipment No.', equipment as 'Equipment', location as 'Location',
             DATE_FORMAT(date,'%M %d %Y') as 'Date',TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time',
-            activitytype as 'Activity Type', actname as 'Activity' from ceutltdscheduler.reservation natural join ceutltdscheduler.reservation_equipments where date ='" & Format(CDate(lu_date.Value), "yyyy-MM-dd") & "' and NOT(res_status='Cancelled') ORDER BY date DESC,starttime DESC"
+            activitytype as 'Activity Type', actname as 'Activity' from ceutltdscheduler.reservation natural join ceutltdscheduler.reservation_equipments where date ='" & Format(CDate(lu_date.Value), "yyyy-MM-dd") & "' and NOT(res_status='Cancelled') ORDER BY date ASC,starttime ASC,endtime ASC"
                 Cover = ""
             End If
             'main_rgv_recordedacademicsonly.Columns.Clear()
@@ -2455,7 +2484,7 @@ Public Class Main
 
             MysqlConn.Open()
             Dim query As String
-            query = "Select reservationno as 'Reservation Number', borrower as 'Borrower', equipmenttype as 'Equipment Type', equipmentsn as 'Equipment Serial', equipmentno as 'Equipment No.', equipment as 'Equipment', location as 'Location', DATE_FORMAT(date,'%M %d %Y') as 'Date',TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time',res_status as 'Status', reservedby as 'Recorded By', bor_mobileno as 'Mobile' from reservation natural join reservation_equipments where res_status = 'Reserved'  ORDER by date DESC, reservationno ASC"
+            query = "Select reservationno as 'Reservation Number', borrower as 'Borrower', equipmenttype as 'Equipment Type', equipmentsn as 'Equipment Serial', equipmentno as 'Equipment No.', equipment as 'Equipment', location as 'Location', DATE_FORMAT(date,'%M %d %Y') as 'Date',TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time',res_status as 'Status', reservedby as 'Recorded By', bor_mobileno as 'Mobile' from reservation natural join reservation_equipments where res_status = 'Reserved' AND date BETWEEN '" & Format(CDate(rel_fil_startdate.Value), "yyyy-MM-dd") & "' AND '" & Format(CDate(rel_fil_enddate.Value), "yyyy-MM-dd") &"' ORDER BY date ASC, starttime ASC, endtime ASC"
             comm = New MySqlCommand(query, MysqlConn)
             sda.SelectCommand = comm
             sda.Fill(dbdataset)
@@ -2487,6 +2516,24 @@ Public Class Main
             MysqlConn.Dispose()
         End Try
     End Sub
+    Private Sub rel_dtp_dates_filter_ValueChanged(sender As Object, e As EventArgs) Handles rel_fil_startdate.ValueChanged,rel_fil_enddate.ValueChanged
+        rel_dtp_dates_filter_delay.Interval = search_delay
+        rel_dtp_dates_filter_delay.Stop
+        rel_dtp_dates_filter_delay.Start
+    End Sub
+
+    Private Sub rel_dtp_dates_filter_delay_Tick(sender As Object, e As EventArgs) Handles rel_dtp_dates_filter_delay.Tick
+        rel_dtp_dates_filter_delay.Stop
+        If rel_fil_startdate.IsHandleCreated And rel_fil_enddate.IsHandleCreated Then
+            If rel_fil_startdate.Value > rel_fil_enddate.Value Then                
+                RadMessageBox.Show(Me, "The start date must be less than the end date.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
+                rel_fil_enddate.Text=Format(CDate(rel_fil_startdate.Value), "MM/d/yyyy")
+            Else
+                reserved_load_table()
+            End If        
+        End If
+    End Sub
+
 
     Private Sub reserved_grid_list_CellClick(sender As Object, e As GridViewCellEventArgs) Handles reserved_grid_list.CellClick
         If e.RowIndex = -1 Then
@@ -2639,6 +2686,15 @@ Public Class Main
     Private Sub Main_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
         closingYN = RadMessageBox.Show(Me, "Are you sure you want to Log-Out?", system_Name, MessageBoxButtons.YesNo, RadMessageIcon.Exclamation)
         If closingYN = MsgBoxResult.Yes Then
+            My.Settings.res_fil_startdate=rel_fil_startdate.Value
+            My.Settings.res_fil_enddate=rel_fil_enddate.Value
+            My.Settings.rec_fil_startdate=rec_dtp_fil_startdate.Value
+            My.Settings.rec_fil_enddate=rec_dtp_fil_enddate.Value
+            My.Settings.pen_fil_startdate=pen_startDate.Value
+            My.Settings.pen_fil_enddate=pen_endDate.Value
+            My.Settings.ret_fil_startdate=returned_startDate.Value
+            My.Settings.ret_fil_enddate=returned_endDate.Value
+            My.Settings.Save()
             Me.Dispose()
             Login.Show()
         ElseIf closingYN = MsgBoxResult.No Then
@@ -4087,11 +4143,24 @@ Public Class Main
     End Sub
 
     'Loading of data in Reservation Page Grid
-    Private Sub rec_dtp_date_ValueChanged(sender As Object, e As EventArgs) Handles rec_dtp_date.ValueChanged
-        load_rec_table("NONE", True)
+    Private Sub rec_dtp_dates_filter_ValueChanged(sender As Object, e As EventArgs) Handles rec_dtp_fil_startdate.ValueChanged,rec_dtp_fil_enddate.ValueChanged
+        rec_dtp_dates_filter_delay.Interval = search_delay
+        rec_dtp_dates_filter_delay.Stop
+        rec_dtp_dates_filter_delay.Start
+    End Sub
+    'Loading of data in Main Page Grid
+    Private Sub rec_dtp_dates_filter_Tick(sender As Object, e As EventArgs) Handles rec_dtp_dates_filter_delay.Tick
+        rec_dtp_dates_filter_delay.Stop()
+        If rec_dtp_fil_startdate.IsHandleCreated And rec_dtp_fil_enddate.IsHandleCreated Then
+            If rec_dtp_fil_enddate.Value < rec_dtp_fil_startdate.Value Then                
+                RadMessageBox.Show(Me, "The start date must be less than the end date.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
+                rec_dtp_fil_enddate.Text=Format(CDate(rec_dtp_fil_startdate.Value), "MM/d/yyyy")
+            Else
+                load_rec_table("NONE", True)
+            End If
+        End If
     End Sub
 
-    'Loading of data in Main Page Grid
     Private Sub lu_date_filter_delay_Tick(sender As Object, e As EventArgs) Handles lu_date_filter_delay.Tick
         lu_date_filter_delay.Stop()
         main_load_academicsonly()
@@ -4846,7 +4915,25 @@ Public Class Main
         End Try
     End Sub
 
-    Private Sub pen_btn_chg_filter_Click(sender As Object, e As EventArgs) Handles pen_btn_chg_filter.Click
+    Private Sub pen_dtp_dates_filter_ValueChanged(sender As Object, e As EventArgs) Handles pen_startDate.ValueChanged,pen_endDate.ValueChanged
+        pen_dtp_dates_filter_delay.Interval = search_delay
+        pen_dtp_dates_filter_delay.Stop
+        pen_dtp_dates_filter_delay.Start
+    End Sub
+
+    Private Sub pen_dtp_dates_filter_delay_Tick(sender As Object, e As Eventargs) Handles pen_dtp_dates_filter_delay.Tick
+        pen_dtp_dates_filter_delay.Stop()
+        If pen_startDate.IsHandleCreated And pen_endDate.IsHandleCreated Then
+            If pen_endDate.Value < pen_startDate.Value Then                
+                RadMessageBox.Show(Me, "The start date must be less than the end date.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
+                pen_endDate.Text=Format(CDate(pen_startDate.Value), "MM/d/yyyy")
+            Else
+                load_penalty_list(pen_startDate.Value, pen_endDate.Value)
+            End If
+        End If
+    End Sub
+
+    Private Sub pen_btn_chg_filter_Click(sender As Object, e As EventArgs) 
         Dim elapsedTime As TimeSpan = DateTime.Parse(Format(CDate(pen_endDate.Value), "yyyy-MM-dd")).Subtract(DateTime.Parse(Format(CDate(pen_startDate.Value), "yyyy-MM-dd")))
         If elapsedTime.CompareTo(TimeSpan.Zero) < 0 Then
             RadMessageBox.Show(Me, """From"" date can't be higher than ""To"" Date", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -5028,7 +5115,24 @@ Public Class Main
         End Try
     End Sub
 
-    Private Sub ret_btn_chg_filter_Click(sender As Object, e As EventArgs) Handles ret_btn_chg_filter.Click
+    Private Sub ret_dtp_dates_filter_ValueChanged(sender As Object, e As EventArgs) Handles returned_startDate.ValueChanged,returned_endDate.ValueChanged
+        ret_dtp_dates_filter_delay.Interval = search_delay
+        ret_dtp_dates_filter_delay.Stop
+        ret_dtp_dates_filter_delay.Start
+    End Sub
+    Private Sub ret_dtp_dates_filter_delay_Tick(sender As Object, e As Eventargs) Handles ret_dtp_dates_filter_delay.Tick
+        ret_dtp_dates_filter_delay.Stop()
+        If returned_startDate.IsHandleCreated And returned_endDate.IsHandleCreated Then
+            If returned_endDate.Value < returned_startDate.Value Then                
+                RadMessageBox.Show(Me, "The start date must be less than the end date.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
+                returned_endDate.Text=Format(CDate(returned_startDate.Value), "MM/d/yyyy")
+            Else
+                load_returned_eq_list(returned_startDate.Value, returned_endDate.Value)
+            End If
+        End If
+    End Sub
+
+    Private Sub ret_btn_chg_filter_Click(sender As Object, e As EventArgs) 
         Dim elapsedTime As TimeSpan = DateTime.Parse(Format(CDate(returned_endDate.Value), "yyyy-MM-dd")).Subtract(DateTime.Parse(Format(CDate(returned_startDate.Value), "yyyy-MM-dd")))
         If elapsedTime.CompareTo(TimeSpan.Zero) < 0 Then
             RadMessageBox.Show(Me, """From"" date can't be higher than ""To"" Date", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -5748,17 +5852,21 @@ Public Class Main
             If rec_multpd.SelectedDates.Count=0
                 rec_multpd.Hide()
                 rec_multpd.RemoveFocusedDate(False)
+                rec_dtp_date.Enabled = True
             Else
                 Dim confirm As DialogResult=RadMessageBox.Show(Me, "Are you sure you want to cancel your selection?",system_Name, MessageBoxButtons.YesNo,RadMessageIcon.Exclamation)
                 If confirm = DialogResult.Yes Then
                     rec_multpd.RemoveFocusedDate(True)
                     rec_multpd.Hide()
+                    rec_dtp_date.Enabled = True
                 Else
                     rec_chk_multpd.Checked = True
+                    rec_dtp_date.Enabled = False
                 End If
             End If
         ElseIf rec_chk_multpd.Checked = True Then
             rec_multpd.Show()
+            rec_dtp_date.Enabled = False
         End If
     End Sub
 
@@ -5767,6 +5875,8 @@ Public Class Main
             rec_multpd.RemoveFocusedDate(True)
             rec_multpd.Hide()
             rec_chk_multpd.Checked=False
+            rec_dtp_date.Enabled = True
         End If
     End Sub
+
 End Class

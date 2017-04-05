@@ -149,6 +149,94 @@ Namespace My
                 Me("gsmIsOn") = value
             End Set
         End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public Property res_fil_startdate() As Date
+            Get
+                Return CType(Me("res_fil_startdate"),Date)
+            End Get
+            Set
+                Me("res_fil_startdate") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public Property res_fil_enddate() As Date
+            Get
+                Return CType(Me("res_fil_enddate"),Date)
+            End Get
+            Set
+                Me("res_fil_enddate") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public Property rec_fil_startdate() As Date
+            Get
+                Return CType(Me("rec_fil_startdate"),Date)
+            End Get
+            Set
+                Me("rec_fil_startdate") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public Property rec_fil_enddate() As Date
+            Get
+                Return CType(Me("rec_fil_enddate"),Date)
+            End Get
+            Set
+                Me("rec_fil_enddate") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public Property pen_fil_startdate() As Date
+            Get
+                Return CType(Me("pen_fil_startdate"),Date)
+            End Get
+            Set
+                Me("pen_fil_startdate") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public Property pen_fil_enddate() As Date
+            Get
+                Return CType(Me("pen_fil_enddate"),Date)
+            End Get
+            Set
+                Me("pen_fil_enddate") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public Property ret_fil_startdate() As Date
+            Get
+                Return CType(Me("ret_fil_startdate"),Date)
+            End Get
+            Set
+                Me("ret_fil_startdate") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public Property ret_fil_enddate() As Date
+            Get
+                Return CType(Me("ret_fil_enddate"),Date)
+            End Get
+            Set
+                Me("ret_fil_enddate") = value
+            End Set
+        End Property
     End Class
 End Namespace
 
