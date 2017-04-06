@@ -35,7 +35,6 @@ Public Class Main
 
 
     Public equipment As String
-    Public rowcounter As Integer = 0
 
     'WU_SETTINGS'
     Dim bdsrc_reserved_toRelease As New BindingSource
@@ -3780,8 +3779,6 @@ Public Class Main
 
                 eq_rgv_addeq.Rows.Add(tempno, rec_eq_chooseeq.Text, tempsn, rec_eq_type_choose.Text)
 
-                rowcounter += 1
-
                 MysqlConn.Close()
             End If
         Catch ex As MySqlException
@@ -5981,12 +5978,86 @@ Public Class Main
             completeReservationSucessfully=False
                 MySQLConnReservationBackgroundWorker.ConnectionString = connstring
                 Dim READER As MySqlDataReader
-         If rec_multpd.SelectedDates.Count > 0 And rec_chk_multpd.Checked
-                            Dim errorcount As Boolean = False
-                            
+
+
+                If rec_multpd.SelectedDates.Count > 0 Then
+                    Dim errorcount As Boolean = False
+                    For selecteddatecounter As Integer = 0 To rec_multpd.SelectedDates.Count - 1
+                        Dim counter As Integer = 0
+                        While counter <> eq_rgv_addeq.Rows.Count
+                            MysqlConn.Close()
+                            MysqlConn.Open()
+                            query = "SELECT * FROM ceutltdscheduler.reservation natural join ceutltdscheduler.reservation_equipments WHERE equipment=@RE_equipment AND equipmentsn=@RE_equipmentsn AND equipmentno=@RE_equipmentno AND ((((@a) BETWEEN CONCAT(date,' ',starttime) AND CONCAT(date,' ',endtime)) OR (@b BETWEEN CONCAT(date,' ',starttime) AND CONCAT(date,' ',endtime))) OR ((DATE_FORMAT(@a,'%Y-%m-%d %H:%i:%s') <= CONCAT(date,' ',starttime)) AND (DATE_FORMAT(@b,'%Y-%m-%d %H:%i:%s') >= CONCAT(date,' ',endtime)) AND CONCAT(date,' ',endtime) >= DATE_FORMAT(@a,'%Y-%m-%d %H:%i:%s'))) AND (res_status='Reserved' OR res_status='Released')"
+                            comm = New MySqlCommand(query, MysqlConn)
+                            comm.Parameters.AddWithValue("RE_reservationno", rec_cb_reserveno.Text)
+                            comm.Parameters.AddWithValue("RE_equipment", eq_rgv_addeq.Rows(counter).Cells(1).Value)
+                            comm.Parameters.AddWithValue("RE_equipmentsn", eq_rgv_addeq.Rows(counter).Cells(2).Value)
+                            comm.Parameters.AddWithValue("RE_equipmentno", eq_rgv_addeq.Rows(counter).Cells(0).Value)
+                            comm.Parameters.AddWithValue("@a", Format(CDate(rec_multpd.SelectedDates(selecteddatecounter)), "yyyy-MM-dd") & " " & Format(CDate(rec_dtp_starttime.Text), "HH:mm:01"))
+                            comm.Parameters.AddWithValue("@b", Format(CDate(rec_multpd.SelectedDates(selecteddatecounter)), "yyyy-MM-dd") & " " & Format(CDate(rec_dtp_endtime.Text), "HH:mm"))
+                            reader = comm.ExecuteReader
+                            Dim count As Integer = 0
+                            While reader.Read
+                                count = count + 1
+                                MultipurposeWindow.lst_res_conflicts.Rows.Add(reader.GetString("equipmenttype"), reader.GetString("equipmentsn"), reader.GetString("equipmentno"), reader.GetString("equipment"), DateTime.Parse(reader.GetString("date")).ToString("MMMM dd yyyy"), Format(CDate(reader.GetString("starttime")), "HH:mm"), Format(CDate(reader.GetString("endtime")), "HH:mm"))
+                            End While
+                            If count > 0 Then
+                                errorcount = True
+                            End If
+                            counter += 1
+                        End While
+                    Next
+                    'WHAT TO SHOW WHEN CONFLICT IS DETECTED OR NOT
+                    If errorcount = True Then
+                        conflictFree=False
+                        MultipurposeWindowPanel = "B"
+                        MultipurposeWindow.ShowDialog()
+                    Else
+                        conflictFree=True
+                    End If
+
+                Else 'Usual
+                    Dim counter As Integer = 0
+                    Dim errorcount As Boolean = False
+                    While counter <> eq_rgv_addeq.Rows.Count
+                        MysqlConn.Close()
+                        MysqlConn.Open()
+                        query = "SELECT * FROM ceutltdscheduler.reservation natural join ceutltdscheduler.reservation_equipments WHERE equipment=@RE_equipment AND equipmentsn=@RE_equipmentsn AND equipmentno=@RE_equipmentno AND ((((@a) BETWEEN CONCAT(date,' ',starttime) AND CONCAT(date,' ',endtime)) OR (@b BETWEEN CONCAT(date,' ',starttime) AND CONCAT(date,' ',endtime))) OR ((DATE_FORMAT(@a,'%Y-%m-%d %H:%i:%s') <= CONCAT(date,' ',starttime)) AND (DATE_FORMAT(@b,'%Y-%m-%d %H:%i:%s') >= CONCAT(date,' ',endtime)) AND CONCAT(date,' ',endtime) >= DATE_FORMAT(@a,'%Y-%m-%d %H:%i:%s'))) AND (res_status='Reserved' OR res_status='Released')"
+                        comm = New MySqlCommand(query, MysqlConn)
+                        comm.Parameters.AddWithValue("RE_reservationno", rec_cb_reserveno.Text)
+                        comm.Parameters.AddWithValue("RE_equipment", eq_rgv_addeq.Rows(counter).Cells(1).Value)
+                        comm.Parameters.AddWithValue("RE_equipmentsn", eq_rgv_addeq.Rows(counter).Cells(2).Value)
+                        comm.Parameters.AddWithValue("RE_equipmentno", eq_rgv_addeq.Rows(counter).Cells(0).Value)
+                        comm.Parameters.AddWithValue("@a", Format(CDate(rec_dtp_date.Value), "yyyy-MM-dd") & " " & Format(CDate(rec_dtp_starttime.Text), "HH:mm:01"))
+                        comm.Parameters.AddWithValue("@b", Format(CDate(rec_dtp_date.Value), "yyyy-MM-dd") & " " & Format(CDate(rec_dtp_endtime.Text), "HH:mm"))
+                        reader = comm.ExecuteReader
+                        Dim count As Integer = 0
+                        While reader.Read
+                            count = count + 1
+                            MultipurposeWindow.lst_res_conflicts.Rows.Add(reader.GetString("equipmenttype"), reader.GetString("equipmentsn"), reader.GetString("equipmentno"), reader.GetString("equipment"), DateTime.Parse(reader.GetString("date")).ToString("MMMM dd yyyy"), Format(CDate(reader.GetString("starttime")), "HH:mm"), Format(CDate(reader.GetString("endtime")), "HH:mm"))
+                        End While
+                        If count > 0 Then
+                            errorcount = True
+                        End If
+                        counter += 1
+                    End While
+                    'WHAT TO SHOW WHEN CONFLICT IS DETECTED OR NOT
+                    If errorcount = True Then
+                        conflictFree=False
+                        MultipurposeWindowPanel = "B"
+                        MultipurposeWindow.ShowDialog()
+                    Else
+                        conflictFree=True
+                    End If
+                End If
+
+
+            If conflictFree Then
+                conflictFree=False
+            'DO IT WHEN NO CONFLICT
+            If rec_multpd.SelectedDates.Count > 0 And rec_chk_multpd.Checked                            
                             For selecteddatecounter As Integer = 0 To rec_multpd.SelectedDates.Count - 1
                             reservation_process.ReportProgress(Math.Round((selecteddatecounter/rec_multpd.SelectedDates.Count)*100),0)
-                            Dim count As Integer =0
                             Dim counter As Integer = 0
                             If eq_rgv_addeq.Rows.Count > 0 Then
                                 While counter <> eq_rgv_addeq.Rows.Count
@@ -5995,28 +6066,7 @@ Public Class Main
                                     Dim equipmentrgv As String = eq_rgv_addeq.Rows(counter).Cells(1).Value
                                     Dim equipmentsnrgv As String = eq_rgv_addeq.Rows(counter).Cells(2).Value
                                     Dim equipmenttypergv As String = eq_rgv_addeq.Rows(counter).Cells(3).Value
-                                    MySQLConnReservationBackgroundWorker.Close()
-                                    MySQLConnReservationBackgroundWorker.Open()
 
-                                    query = "SELECT * FROM ceutltdscheduler.reservation natural join ceutltdscheduler.reservation_equipments WHERE equipment=@RE_equipment AND equipmentsn=@RE_equipmentsn AND equipmentno=@RE_equipmentno AND ((((@a) BETWEEN CONCAT(date,' ',starttime) AND CONCAT(date,' ',endtime)) OR (@b BETWEEN CONCAT(date,' ',starttime) AND CONCAT(date,' ',endtime))) OR ((DATE_FORMAT(@a,'%Y-%m-%d %H:%i:%s') <= CONCAT(date,' ',starttime)) AND (DATE_FORMAT(@b,'%Y-%m-%d %H:%i:%s') >= CONCAT(date,' ',endtime)) AND CONCAT(date,' ',endtime) >= DATE_FORMAT(@a,'%Y-%m-%d %H:%i:%s'))) AND (res_status='Reserved' OR res_status='Released')"
-                                    comm = New MySqlCommand(query, MySQLConnReservationBackgroundWorker)
-                                    comm.Parameters.AddWithValue("RE_reservationno", rec_cb_reserveno.Text)
-                                    comm.Parameters.AddWithValue("RE_equipment", equipmentrgv)
-                                    comm.Parameters.AddWithValue("RE_equipmentsn", equipmentsnrgv)
-                                    comm.Parameters.AddWithValue("RE_equipmentno", equipmentnorgv)
-                                    comm.Parameters.AddWithValue("@a", Format(CDate(rec_multpd.SelectedDates(selecteddatecounter)), "yyyy-MM-dd") & " " & Format(CDate(rec_dtp_starttime.Text), "HH:mm:01"))
-                                    comm.Parameters.AddWithValue("@b", Format(CDate(rec_multpd.SelectedDates(selecteddatecounter)), "yyyy-MM-dd") & " " & Format(CDate(rec_dtp_endtime.Text), "HH:mm"))
-
-                                    READER = comm.ExecuteReader
-                                    'Dim count As Integer
-                                    While READER.Read
-                                        count = count + 1
-                                        MultipurposeWindow.lst_res_conflicts.Rows.Add(reader.GetString("equipmenttype"),reader.GetString("equipmentsn"),reader.GetString("equipmentno"),reader.GetString("equipment"),DateTime.Parse(reader.GetString("date")).ToString("MMMM dd yyyy"),Format(CDate(reader.GetString("starttime")), "HH:mm"),Format(CDate(reader.GetString("endtime")), "HH:mm"))
-                                    End While
-
-                                    If count > 0 Then
-                                        errorcount = True
-                                    Else
                                         borrower_firstname = rec_cb_borrower.Text.Substring(rec_cb_borrower.Text.IndexOf(",") + 2, rec_cb_borrower.Text.Length - rec_cb_borrower.Text.IndexOf(", ") - 2)
                                         borrower_lastname = rec_cb_borrower.Text.Substring(0, rec_cb_borrower.Text.IndexOf(","))
                                         MySQLConnReservationBackgroundWorker.Close()
@@ -6052,16 +6102,11 @@ Public Class Main
                                                 'Execute SQL query
                                                 READER = comm.ExecuteReader
                                                 MySQLConnReservationBackgroundWorker.Close()
-                                            End If
                                             counter += 1
                                         End While
-
-                                        rowcounter = 0
-
                                     End If
                                     Invoke(New DelegateReservationProcess(AddressOf auto_generate_reservationno))
                                 Next
-                            If errorcount = False Then
                                 'RadMessageBox.Show(Me, "Succesfully reserved all of the equipment(s)!", system_Name, MessageBoxButtons.OK, RadMessageIcon.Info)
                                 eq_rgv_addeq.Rows.Clear()
                                 main_load_academicsonly()
@@ -6069,15 +6114,11 @@ Public Class Main
                                 reserved_load_table()
                                 reservation_process.ReportProgress(100)
                                 completeReservationSucessfully=True
-                            Else
-                                MultipurposeWindowPanel ="B"
-                                MultipurposeWindow.ShowDialog()
-                            End If
+
 
 
                             Else 'Usual
                             Dim counter As Integer = 0
-                            Dim count As Integer =0
                             Dim errorcount As Boolean = False
                             If eq_rgv_addeq.Rows.Count > 0 Then
                                 While counter <> eq_rgv_addeq.Rows.Count
@@ -6086,29 +6127,6 @@ Public Class Main
                                     Dim equipmentrgv As String = eq_rgv_addeq.Rows(counter).Cells(1).Value
                                     Dim equipmentsnrgv As String = eq_rgv_addeq.Rows(counter).Cells(2).Value
                                     Dim equipmenttypergv As String = eq_rgv_addeq.Rows(counter).Cells(3).Value
-
-                                    MySQLConnReservationBackgroundWorker.Close()
-                                    MySQLConnReservationBackgroundWorker.Open()
-
-                                    query = "SELECT * FROM ceutltdscheduler.reservation natural join ceutltdscheduler.reservation_equipments WHERE equipment=@RE_equipment AND equipmentsn=@RE_equipmentsn AND equipmentno=@RE_equipmentno AND ((((@a) BETWEEN CONCAT(date,' ',starttime) AND CONCAT(date,' ',endtime)) OR (@b BETWEEN CONCAT(date,' ',starttime) AND CONCAT(date,' ',endtime))) OR ((DATE_FORMAT(@a,'%Y-%m-%d %H:%i:%s') <= CONCAT(date,' ',starttime)) AND (DATE_FORMAT(@b,'%Y-%m-%d %H:%i:%s') >= CONCAT(date,' ',endtime)) AND CONCAT(date,' ',endtime) >= DATE_FORMAT(@a,'%Y-%m-%d %H:%i:%s'))) AND (res_status='Reserved' OR res_status='Released')"
-                                    comm = New MySqlCommand(query, MySQLConnReservationBackgroundWorker)
-                                    comm.Parameters.AddWithValue("RE_reservationno", rec_cb_reserveno.Text)
-                                    comm.Parameters.AddWithValue("RE_equipment", equipmentrgv)
-                                    comm.Parameters.AddWithValue("RE_equipmentsn", equipmentsnrgv)
-                                    comm.Parameters.AddWithValue("RE_equipmentno", equipmentnorgv)
-                                    comm.Parameters.AddWithValue("@a", Format(CDate(rec_dtp_date.Value), "yyyy-MM-dd") & " " & Format(CDate(rec_dtp_starttime.Text), "HH:mm:01"))
-                                    comm.Parameters.AddWithValue("@b", Format(CDate(rec_dtp_date.Value), "yyyy-MM-dd") & " " & Format(CDate(rec_dtp_endtime.Text), "HH:mm"))
-
-                                    READER = comm.ExecuteReader
-                                    'Dim count As Integer
-                                    While READER.Read
-                                        count = count + 1
-                                        MultipurposeWindow.lst_res_conflicts.Rows.Add(reader.GetString("equipmenttype"),reader.GetString("equipmentsn"),reader.GetString("equipmentno"),reader.GetString("equipment"),DateTime.Parse(reader.GetString("date")).ToString("MMMM dd yyyy"),Format(CDate(reader.GetString("starttime")), "HH:mm"),Format(CDate(reader.GetString("endtime")), "HH:mm"))
-                                    End While
-
-                                    If count > 0 Then
-                                        errorcount = True
-                                    Else
                                         borrower_firstname = rec_cb_borrower.Text.Substring(rec_cb_borrower.Text.IndexOf(",") + 2, rec_cb_borrower.Text.Length - rec_cb_borrower.Text.IndexOf(", ") - 2)
                                         borrower_lastname = rec_cb_borrower.Text.Substring(0, rec_cb_borrower.Text.IndexOf(","))
                                         MySQLConnReservationBackgroundWorker.Close()
@@ -6145,15 +6163,12 @@ Public Class Main
                                             READER = comm.ExecuteReader
                                         MySQLConnReservationBackgroundWorker.Close()
 
-                                    End If
                                     counter += 1
 
                                 End While
 
-                                rowcounter = 0
                             End If
                              Invoke(New DelegateReservationProcess(AddressOf auto_generate_reservationno))
-                            If errorcount = False Then
                                 'RadMessageBox.Show(Me, "Succesfully reserved all of the equipment(s)!", system_Name, MessageBoxButtons.OK, RadMessageIcon.Info)
                                 rec_multpd.SelectedDates.Clear()
                                 rec_chk_multpd.Checked=False
@@ -6163,11 +6178,10 @@ Public Class Main
                                 reserved_load_table()
                                 reservation_process.ReportProgress(100)
                                 completeReservationSucessfully=True
-                            Else
-                                MultipurposeWindowPanel ="B"
-                                MultipurposeWindow.ShowDialog()
-                            End If
                         End If
+            Else
+                Exit Sub
+            End If
             Catch ex As MySqlException
                 GlobalMySQLException=ex
             Catch ex As Exception
