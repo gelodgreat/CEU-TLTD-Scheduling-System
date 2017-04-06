@@ -337,6 +337,7 @@ Partial Class Main
         Me.res_rdio_reserved = New Telerik.WinControls.UI.RadRadioButton()
         Me.res_rdio_showall = New Telerik.WinControls.UI.RadRadioButton()
         Me.gp_reservation_details = New Telerik.WinControls.UI.RadGroupBox()
+        Me.rec_cb_reserveno = New Telerik.WinControls.UI.RadLabel()
         Me.rec_multpd = New Telerik.WinControls.UI.RadCalendar()
         Me.rec_chk_multpd = New Telerik.WinControls.UI.RadCheckBox()
         Me.RadLabel47 = New Telerik.WinControls.UI.RadLabel()
@@ -489,7 +490,6 @@ Partial Class Main
         Me.pen_dtp_dates_filter_delay = New System.Windows.Forms.Timer(Me.components)
         Me.ret_dtp_dates_filter_delay = New System.Windows.Forms.Timer(Me.components)
         Me.reservation_process = New System.ComponentModel.BackgroundWorker()
-        Me.rec_cb_reserveno = New Telerik.WinControls.UI.RadLabel()
         CType(Me.RadGroupBox16,System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.RadGroupBox13,System.ComponentModel.ISupportInitialize).BeginInit
         Me.rpvp_returning.SuspendLayout
@@ -601,6 +601,7 @@ Partial Class Main
         CType(Me.res_rdio_showall,System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.gp_reservation_details,System.ComponentModel.ISupportInitialize).BeginInit
         Me.gp_reservation_details.SuspendLayout
+        CType(Me.rec_cb_reserveno,System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.rec_multpd,System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.rec_chk_multpd,System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.RadLabel47,System.ComponentModel.ISupportInitialize).BeginInit
@@ -751,7 +752,6 @@ Partial Class Main
         Me.rpv1.SuspendLayout
         CType(Me.RadMenu1,System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.CeutltdschedulerDataSetBindingSource,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.rec_cb_reserveno,System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me,System.ComponentModel.ISupportInitialize).BeginInit
         Me.SuspendLayout
         '
@@ -2350,6 +2350,7 @@ Partial Class Main
         '
         'res_rdio_cancelled
         '
+        Me.res_rdio_cancelled.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom),System.Windows.Forms.AnchorStyles)
         Me.res_rdio_cancelled.BackColor = System.Drawing.Color.Transparent
         Me.res_rdio_cancelled.Location = New System.Drawing.Point(907, 5)
         Me.res_rdio_cancelled.Name = "res_rdio_cancelled"
@@ -2361,6 +2362,7 @@ Partial Class Main
         '
         'res_rdio_reserved
         '
+        Me.res_rdio_reserved.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom),System.Windows.Forms.AnchorStyles)
         Me.res_rdio_reserved.BackColor = System.Drawing.Color.Transparent
         Me.res_rdio_reserved.Location = New System.Drawing.Point(798, 5)
         Me.res_rdio_reserved.Name = "res_rdio_reserved"
@@ -2372,6 +2374,7 @@ Partial Class Main
         '
         'res_rdio_showall
         '
+        Me.res_rdio_showall.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom),System.Windows.Forms.AnchorStyles)
         Me.res_rdio_showall.BackColor = System.Drawing.Color.Transparent
         Me.res_rdio_showall.Location = New System.Drawing.Point(721, 5)
         Me.res_rdio_showall.Name = "res_rdio_showall"
@@ -2418,6 +2421,19 @@ Partial Class Main
         Me.gp_reservation_details.TabIndex = 1
         Me.gp_reservation_details.Text = "Reservation Information"
         Me.gp_reservation_details.ThemeName = "VisualStudio2012Dark"
+        '
+        'rec_cb_reserveno
+        '
+        Me.rec_cb_reserveno.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom),System.Windows.Forms.AnchorStyles)
+        Me.rec_cb_reserveno.AutoSize = false
+        Me.rec_cb_reserveno.BackColor = System.Drawing.Color.Transparent
+        Me.rec_cb_reserveno.Location = New System.Drawing.Point(86, 26)
+        Me.rec_cb_reserveno.Name = "rec_cb_reserveno"
+        Me.rec_cb_reserveno.Size = New System.Drawing.Size(166, 20)
+        Me.rec_cb_reserveno.TabIndex = 12
+        Me.rec_cb_reserveno.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft
+        Me.rec_cb_reserveno.TextWrap = false
+        Me.rec_cb_reserveno.ThemeName = "VisualStudio2012Dark"
         '
         'rec_multpd
         '
@@ -4124,19 +4140,6 @@ Partial Class Main
         '
         Me.reservation_process.WorkerReportsProgress = true
         '
-        'rec_cb_reserveno
-        '
-        Me.rec_cb_reserveno.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom),System.Windows.Forms.AnchorStyles)
-        Me.rec_cb_reserveno.AutoSize = false
-        Me.rec_cb_reserveno.BackColor = System.Drawing.Color.Transparent
-        Me.rec_cb_reserveno.Location = New System.Drawing.Point(86, 26)
-        Me.rec_cb_reserveno.Name = "rec_cb_reserveno"
-        Me.rec_cb_reserveno.Size = New System.Drawing.Size(166, 20)
-        Me.rec_cb_reserveno.TabIndex = 12
-        Me.rec_cb_reserveno.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft
-        Me.rec_cb_reserveno.TextWrap = false
-        Me.rec_cb_reserveno.ThemeName = "VisualStudio2012Dark"
-        '
         'Main
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6!, 13!)
@@ -4275,6 +4278,7 @@ Partial Class Main
         CType(Me.gp_reservation_details,System.ComponentModel.ISupportInitialize).EndInit
         Me.gp_reservation_details.ResumeLayout(false)
         Me.gp_reservation_details.PerformLayout
+        CType(Me.rec_cb_reserveno,System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.rec_multpd,System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.rec_chk_multpd,System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.RadLabel47,System.ComponentModel.ISupportInitialize).EndInit
@@ -4431,7 +4435,6 @@ Partial Class Main
         Me.rpv1.ResumeLayout(false)
         CType(Me.RadMenu1,System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.CeutltdschedulerDataSetBindingSource,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.rec_cb_reserveno,System.ComponentModel.ISupportInitialize).EndInit
         CType(Me,System.ComponentModel.ISupportInitialize).EndInit
         Me.ResumeLayout(false)
         Me.PerformLayout
