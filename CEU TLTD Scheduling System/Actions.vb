@@ -42,22 +42,40 @@ Public Class Actions
     End Function
 
     Public Shared Sub SaveDB()
-
         Dim savedb_dialog As New SaveFileDialog()
-        savedb_dialog.Filter = "mySQL Database|*.sql"
+        savedb_dialog.Filter = "CEU TLTD Reservation System Backup|*.ctrsb"
         savedb_dialog.Title = "Choose a Location to Save"
-        Dim mysql_SAVE As New MySqlBackup(comm)
-        mysql_SAVE.ExportInfo.AddCreateDatabase = True
-        mysql_SAVE.ExportInfo.EnableEncryption = True
-        mysql_SAVE.ExportInfo.EncryptionPassword = "9Wy3Z3xTApDKUtPVN+TegRLTGR2mj8_M3*3ZJwSts83g9+pL?ZLEn?3xnuMR!2g"
+        savedb_dialog.FileName = "CEUTLTDReservationSystemDBK_" & Now.ToString("MMddyyyy_HHmm")
         If savedb_dialog.ShowDialog() = DialogResult.OK Then
             Try
-                MySQLConn.ConnectionString = connstring
-                Dim mysql_LOAD As New MySqlBackup(comm)
-                mysql_LOAD.Command.Connection = MySQLConn
+                MySQLConn.ConnectionString = connstring 
                 MySQLConn.Open()
-                mysql_SAVE.ExportToFile(savedb_dialog.FileName.ToString)
+                Dim mysql_SAVE As New MySqlBackup(comm)
+                mysql_SAVE.Command.Connection = MySQLConn
+                mysql_SAVE.ExportInfo.AddCreateDatabase = True
+                mysql_SAVE.ExportInfo.EnableEncryption = True
+                mysql_SAVE.ExportInfo.EncryptionPassword = "9Wy3Z3xTApDKUtPVN+TegRLTGR2mj8_M3*3ZJwSts83g9+pL?ZLEn?3xnuMR!2g"
+                
+                mysql_SAVE.ExportToFile("hashes.hash222")
                 MySQLConn.Close()
+                Dim archive As New Process
+                With archive
+                    With .StartInfo
+                        .WindowStyle = ProcessWindowStyle.Hidden
+                        .CreateNoWindow = True
+                        .FileName = "7z.exe"
+                        .Arguments = "a temp.7z hashes.hash222 -p01mc41334398j37g8u320k3x09i39jiIOUDOIPEOPnx9ud932k0la2is9395k24m096bi230lxe02k9jmc4039me -mhe"
+                    End With
+                    .Start()
+                    .WaitForExit()
+                End With
+                Dim files As New FileInfo("temp.7z")
+                If File.Exists(savedb_dialog.FileName) Then
+                    File.Delete(savedb_dialog.FileName)
+                End If
+                files.MoveTo(savedb_dialog.FileName)
+                Dim dbfile As New FileInfo("hashes.hash222")
+                dbfile.Delete()
                 'RadMessageBox.Show("Database Successfully Exported.", "TLTD Scheduling System", MessageBoxButtons.OK, RadMessageIcon.Info)
                 Wu_RadMessageBox(2,"Database Successfully Exported.")
                 
@@ -111,7 +129,7 @@ Public Class Actions
                 My.Computer.Audio.PlaySystemSound(Media.SystemSounds.Asterisk)
                 form.MessageIcon = GetRadMessageIcon(RadMessageIcon.Question)
             Case 2
-                My.Computer.Audio.PlaySystemSound(Media.SystemSounds.Beep)
+                My.Computer.Audio.PlaySystemSound(Media.SystemSounds.Asterisk)
                 form.MessageIcon = GetRadMessageIcon(RadMessageIcon.Info)
             Case 3
                  My.Computer.Audio.PlaySystemSound(Media.SystemSounds.Exclamation)

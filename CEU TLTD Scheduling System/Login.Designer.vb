@@ -41,10 +41,10 @@ Partial Class Login
         Me.Windows8Theme1 = New Telerik.WinControls.Themes.Windows8Theme()
         Me.TelerikMetroBlueTheme1 = New Telerik.WinControls.Themes.TelerikMetroBlueTheme()
         Me.log_lbl_time = New Telerik.WinControls.UI.RadLabel()
-        Me.settingButton = New System.Windows.Forms.PictureBox()
         Me.lbl_reservation_status = New Telerik.WinControls.UI.RadLabel()
         Me.lbl_prevmain_status = New Telerik.WinControls.UI.RadLabel()
         Me.RadLabel5 = New Telerik.WinControls.UI.RadLabel()
+        Me.settingButton = New System.Windows.Forms.PictureBox()
         CType(Me.btn_login,System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.RadLabel17,System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.RadLabel14,System.ComponentModel.ISupportInitialize).BeginInit
@@ -57,10 +57,10 @@ Partial Class Login
         Me.RadGroupBox1.SuspendLayout
         CType(Me.RadLabel2,System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.log_lbl_time,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.settingButton,System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.lbl_reservation_status,System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.lbl_prevmain_status,System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.RadLabel5,System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.settingButton,System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me,System.ComponentModel.ISupportInitialize).BeginInit
         Me.SuspendLayout
         '
@@ -210,18 +210,6 @@ Partial Class Login
         Me.log_lbl_time.TextAlignment = System.Drawing.ContentAlignment.TopCenter
         Me.log_lbl_time.ThemeName = "VisualStudio2012Dark"
         '
-        'settingButton
-        '
-        Me.settingButton.Anchor = System.Windows.Forms.AnchorStyles.None
-        Me.settingButton.Image = Global.CEU_TLTD_Scheduling_System.My.Resources.Resources.settingIcon
-        Me.settingButton.InitialImage = Nothing
-        Me.settingButton.Location = New System.Drawing.Point(437, 6)
-        Me.settingButton.Name = "settingButton"
-        Me.settingButton.Size = New System.Drawing.Size(37, 33)
-        Me.settingButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.settingButton.TabIndex = 33
-        Me.settingButton.TabStop = false
-        '
         'lbl_reservation_status
         '
         Me.lbl_reservation_status.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
@@ -257,6 +245,18 @@ Partial Class Login
         Me.RadLabel5.TabIndex = 28
         Me.RadLabel5.Text = "Preventive Maintenance Database:"
         Me.RadLabel5.ThemeName = "VisualStudio2012Dark"
+        '
+        'settingButton
+        '
+        Me.settingButton.Anchor = System.Windows.Forms.AnchorStyles.None
+        Me.settingButton.Image = Global.CEU_TLTD_Scheduling_System.My.Resources.Resources.settingIcon
+        Me.settingButton.InitialImage = Nothing
+        Me.settingButton.Location = New System.Drawing.Point(437, 6)
+        Me.settingButton.Name = "settingButton"
+        Me.settingButton.Size = New System.Drawing.Size(37, 33)
+        Me.settingButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.settingButton.TabIndex = 33
+        Me.settingButton.TabStop = false
         '
         'Login
         '
@@ -299,10 +299,10 @@ Partial Class Login
         Me.RadGroupBox1.PerformLayout
         CType(Me.RadLabel2,System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.log_lbl_time,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.settingButton,System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.lbl_reservation_status,System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.lbl_prevmain_status,System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.RadLabel5,System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.settingButton,System.ComponentModel.ISupportInitialize).EndInit
         CType(Me,System.ComponentModel.ISupportInitialize).EndInit
         Me.ResumeLayout(false)
         Me.PerformLayout

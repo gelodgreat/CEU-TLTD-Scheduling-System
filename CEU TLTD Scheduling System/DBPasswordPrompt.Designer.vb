@@ -37,6 +37,10 @@ Partial Class DBPasswordPrompt
         Me.txt_DBPassword.Name = "txt_DBPassword"
         Me.txt_DBPassword.NullText = "Password"
         Me.txt_DBPassword.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
+        '
+        '
+        '
+        Me.txt_DBPassword.RootElement.MinSize = New System.Drawing.Size(0, 24)
         Me.txt_DBPassword.Size = New System.Drawing.Size(212, 24)
         Me.txt_DBPassword.TabIndex = 0
         Me.txt_DBPassword.ThemeName = "VisualStudio2012Dark"
@@ -68,8 +72,8 @@ Partial Class DBPasswordPrompt
         '
         Me.RootElement.ApplyShapeToControl = true
         Me.ShowIcon = false
-        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
-        Me.Text = "Confirm Database Password"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
+        Me.Text = "Confirm Database Server Password"
         Me.ThemeName = "VisualStudio2012Dark"
         Me.TopMost = true
         CType(Me.txt_DBPassword,System.ComponentModel.ISupportInitialize).EndInit

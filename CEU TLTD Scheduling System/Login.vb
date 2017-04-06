@@ -189,7 +189,7 @@ Public Class Login
     End Sub
 
     Private Sub settingButton_Click(sender As Object, e As EventArgs) Handles settingButton.Click
-        ConnectionWindow.ShowDialog()
+        ConnectionWindow.ShowDialog
     End Sub
 
     Private Sub settingButton_MouseHover(sender As Object, e As EventArgs) Handles settingButton.MouseHover

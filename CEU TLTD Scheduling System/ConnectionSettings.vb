@@ -29,4 +29,8 @@ Public Class ConnectionWindow
         txt_cons_server.Text = My.Settings.cons_server
         txt_cons_port.Text = My.Settings.cons_port
     End Sub
+
+    Private Sub btn_load_database_Click(sender As Object, e As EventArgs) Handles btn_load_database.Click
+        DBPasswordPrompt.ShowDialog()
+    End Sub
 End Class

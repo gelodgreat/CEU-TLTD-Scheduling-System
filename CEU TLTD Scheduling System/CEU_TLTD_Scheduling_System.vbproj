@@ -292,9 +292,17 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="7z.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="7z.exe">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="dll\MySql.Data.dll" />
     <Content Include="dll\MySqlBackup.dll" />
     <Content Include="Logo.ico" />
+    <None Include="Resources\DB1.png" />
+    <None Include="Resources\DB.png" />
     <None Include="Resources\W.png" />
     <None Include="Resources\U.png" />
     <None Include="Resources\T.png" />
