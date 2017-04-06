@@ -861,6 +861,10 @@ Public Class Main
                 RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                 Login.log_lbl_dbstatus.Text = "Offline"
                 Login.log_lbl_dbstatus.ForeColor = Color.Red
+                Login.lbl_prevmain_status.Text="Unavailable"
+                Login.lbl_prevmain_status.ForeColor=Color.Red
+                Login.lbl_reservation_status.Text="Unavailable"
+                Login.lbl_reservation_status.ForeColor=Color.Red
                 Return
             Else
                 RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -924,6 +928,10 @@ Public Class Main
                 RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                 Login.log_lbl_dbstatus.Text = "Offline"
                 Login.log_lbl_dbstatus.ForeColor = Color.Red
+                Login.lbl_prevmain_status.Text="Unavailable"
+                Login.lbl_prevmain_status.ForeColor=Color.Red
+                Login.lbl_reservation_status.Text="Unavailable"
+                Login.lbl_reservation_status.ForeColor=Color.Red
                 Return
             Else
                 RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -1030,12 +1038,16 @@ Public Class Main
 
 
         Catch ex As MySqlException
-            If (ex.Number = 0 And (ex.Message.Contains("Unable To connect To any Of the specified MySQL hosts") Or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable To connect To any Of the specified MySQL hosts") Or ex.Message.Contains("Reading from the stream has failed"))) Then
+            If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") Or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") Or ex.Message.Contains("Reading from the stream has failed"))) Then
                 refresh_main_rgv_recordedacademicsonly.Stop()
                 refresh_released_grid_list.Stop()
                 RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                 Login.log_lbl_dbstatus.Text = "Offline"
                 Login.log_lbl_dbstatus.ForeColor = Color.Red
+                Login.lbl_prevmain_status.Text="Unavailable"
+                Login.lbl_prevmain_status.ForeColor=Color.Red
+                Login.lbl_reservation_status.Text="Unavailable"
+                Login.lbl_reservation_status.ForeColor=Color.Red
                 Return
             Else
                 RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -1125,6 +1137,10 @@ Public Class Main
                 RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                 Login.log_lbl_dbstatus.Text = "Offline"
                 Login.log_lbl_dbstatus.ForeColor = Color.Red
+                Login.lbl_prevmain_status.Text="Unavailable"
+                Login.lbl_prevmain_status.ForeColor=Color.Red
+                Login.lbl_reservation_status.Text="Unavailable"
+                Login.lbl_reservation_status.ForeColor=Color.Red
                 Return
             Else
                 RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -1162,6 +1178,10 @@ Public Class Main
                 RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                 Login.log_lbl_dbstatus.Text = "Offline"
                 Login.log_lbl_dbstatus.ForeColor = Color.Red
+                Login.lbl_prevmain_status.Text="Unavailable"
+                Login.lbl_prevmain_status.ForeColor=Color.Red
+                Login.lbl_reservation_status.Text="Unavailable"
+                Login.lbl_reservation_status.ForeColor=Color.Red
                 Return
             Else
                 RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -1197,6 +1217,10 @@ Public Class Main
                 RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                 Login.log_lbl_dbstatus.Text = "Offline"
                 Login.log_lbl_dbstatus.ForeColor = Color.Red
+                Login.lbl_prevmain_status.Text="Unavailable"
+                Login.lbl_prevmain_status.ForeColor=Color.Red
+                Login.lbl_reservation_status.Text="Unavailable"
+                Login.lbl_reservation_status.ForeColor=Color.Red
                 Return
             Else
                 RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -1246,6 +1270,10 @@ Public Class Main
                 RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                 Login.log_lbl_dbstatus.Text = "Offline"
                 Login.log_lbl_dbstatus.ForeColor = Color.Red
+                Login.lbl_prevmain_status.Text="Unavailable"
+                Login.lbl_prevmain_status.ForeColor=Color.Red
+                Login.lbl_reservation_status.Text="Unavailable"
+                Login.lbl_reservation_status.ForeColor=Color.Red
                 Return
             Else
                 RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -1397,6 +1425,10 @@ Public Class Main
                 RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                 Login.log_lbl_dbstatus.Text = "Offline"
                 Login.log_lbl_dbstatus.ForeColor = Color.Red
+                Login.lbl_prevmain_status.Text="Unavailable"
+                Login.lbl_prevmain_status.ForeColor=Color.Red
+                Login.lbl_reservation_status.Text="Unavailable"
+                Login.lbl_reservation_status.ForeColor=Color.Red
                 Return
             Else
                 RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -1592,6 +1624,10 @@ Public Class Main
                 RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                 Login.log_lbl_dbstatus.Text = "Offline"
                 Login.log_lbl_dbstatus.ForeColor = Color.Red
+                Login.lbl_prevmain_status.Text="Unavailable"
+                Login.lbl_prevmain_status.ForeColor=Color.Red
+                Login.lbl_reservation_status.Text="Unavailable"
+                Login.lbl_reservation_status.ForeColor=Color.Red
                 Return
             Else
                 RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -1656,6 +1692,10 @@ Public Class Main
                 RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                 Login.log_lbl_dbstatus.Text = "Offline"
                 Login.log_lbl_dbstatus.ForeColor = Color.Red
+                Login.lbl_prevmain_status.Text="Unavailable"
+                Login.lbl_prevmain_status.ForeColor=Color.Red
+                Login.lbl_reservation_status.Text="Unavailable"
+                Login.lbl_reservation_status.ForeColor=Color.Red
                 Return
             Else
                 RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -1803,6 +1843,10 @@ Public Class Main
                 RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                 Login.log_lbl_dbstatus.Text = "Offline"
                 Login.log_lbl_dbstatus.ForeColor = Color.Red
+                Login.lbl_prevmain_status.Text="Unavailable"
+                Login.lbl_prevmain_status.ForeColor=Color.Red
+                Login.lbl_reservation_status.Text="Unavailable"
+                Login.lbl_reservation_status.ForeColor=Color.Red
                 Return
             Else
                 RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -1903,6 +1947,10 @@ Public Class Main
                 RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                 Login.log_lbl_dbstatus.Text = "Offline"
                 Login.log_lbl_dbstatus.ForeColor = Color.Red
+                Login.lbl_prevmain_status.Text="Unavailable"
+                Login.lbl_prevmain_status.ForeColor=Color.Red
+                Login.lbl_reservation_status.Text="Unavailable"
+                Login.lbl_reservation_status.ForeColor=Color.Red
                 Return
             Else
                 RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -1955,6 +2003,10 @@ Public Class Main
                 RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                 Login.log_lbl_dbstatus.Text = "Offline"
                 Login.log_lbl_dbstatus.ForeColor = Color.Red
+                Login.lbl_prevmain_status.Text="Unavailable"
+                Login.lbl_prevmain_status.ForeColor=Color.Red
+                Login.lbl_reservation_status.Text="Unavailable"
+                Login.lbl_reservation_status.ForeColor=Color.Red
                 Return
             Else
                 RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -2025,6 +2077,10 @@ Public Class Main
                 RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                 Login.log_lbl_dbstatus.Text = "Offline"
                 Login.log_lbl_dbstatus.ForeColor = Color.Red
+                Login.lbl_prevmain_status.Text="Unavailable"
+                Login.lbl_prevmain_status.ForeColor=Color.Red
+                Login.lbl_reservation_status.Text="Unavailable"
+                Login.lbl_reservation_status.ForeColor=Color.Red
                 Return
             Else
                 RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -2075,6 +2131,10 @@ Public Class Main
                 RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                 Login.log_lbl_dbstatus.Text = "Offline"
                 Login.log_lbl_dbstatus.ForeColor = Color.Red
+                Login.lbl_prevmain_status.Text="Unavailable"
+                Login.lbl_prevmain_status.ForeColor=Color.Red
+                Login.lbl_reservation_status.Text="Unavailable"
+                Login.lbl_reservation_status.ForeColor=Color.Red
                 Return
             Else
                 RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -2170,6 +2230,10 @@ Public Class Main
                                 RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                                 Login.log_lbl_dbstatus.Text = "Offline"
                                 Login.log_lbl_dbstatus.ForeColor = Color.Red
+                                Login.lbl_prevmain_status.Text="Unavailable"
+                                Login.lbl_prevmain_status.ForeColor=Color.Red
+                                Login.lbl_reservation_status.Text="Unavailable"
+                                Login.lbl_reservation_status.ForeColor=Color.Red
                                 Return
                             Else
                                 RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -2284,6 +2348,10 @@ Public Class Main
                 RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                 Login.log_lbl_dbstatus.Text = "Offline"
                 Login.log_lbl_dbstatus.ForeColor = Color.Red
+                Login.lbl_prevmain_status.Text="Unavailable"
+                Login.lbl_prevmain_status.ForeColor=Color.Red
+                Login.lbl_reservation_status.Text="Unavailable"
+                Login.lbl_reservation_status.ForeColor=Color.Red
                 Return
             Else
                 RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -2366,6 +2434,10 @@ Public Class Main
                 RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                 Login.log_lbl_dbstatus.Text = "Offline"
                 Login.log_lbl_dbstatus.ForeColor = Color.Red
+                Login.lbl_prevmain_status.Text="Unavailable"
+                Login.lbl_prevmain_status.ForeColor=Color.Red
+                Login.lbl_reservation_status.Text="Unavailable"
+                Login.lbl_reservation_status.ForeColor=Color.Red
                 Return
             Else
                 RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -2408,6 +2480,10 @@ Public Class Main
                 RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                 Login.log_lbl_dbstatus.Text = "Offline"
                 Login.log_lbl_dbstatus.ForeColor = Color.Red
+                Login.lbl_prevmain_status.Text="Unavailable"
+                Login.lbl_prevmain_status.ForeColor=Color.Red
+                Login.lbl_reservation_status.Text="Unavailable"
+                Login.lbl_reservation_status.ForeColor=Color.Red
                 Return
             Else
                 RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -2506,6 +2582,10 @@ Public Class Main
                 RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                 Login.log_lbl_dbstatus.Text = "Offline"
                 Login.log_lbl_dbstatus.ForeColor = Color.Red
+                Login.lbl_prevmain_status.Text="Unavailable"
+                Login.lbl_prevmain_status.ForeColor=Color.Red
+                Login.lbl_reservation_status.Text="Unavailable"
+                Login.lbl_reservation_status.ForeColor=Color.Red
                 Return
             Else
                 RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -2630,6 +2710,10 @@ Public Class Main
                 RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                 Login.log_lbl_dbstatus.Text = "Offline"
                 Login.log_lbl_dbstatus.ForeColor = Color.Red
+                Login.lbl_prevmain_status.Text="Unavailable"
+                Login.lbl_prevmain_status.ForeColor=Color.Red
+                Login.lbl_reservation_status.Text="Unavailable"
+                Login.lbl_reservation_status.ForeColor=Color.Red
                 Return
             Else
                 RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -2671,6 +2755,10 @@ Public Class Main
                 RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                 Login.log_lbl_dbstatus.Text = "Offline"
                 Login.log_lbl_dbstatus.ForeColor = Color.Red
+                Login.lbl_prevmain_status.Text="Unavailable"
+                Login.lbl_prevmain_status.ForeColor=Color.Red
+                Login.lbl_reservation_status.Text="Unavailable"
+                Login.lbl_reservation_status.ForeColor=Color.Red
                 Return
             Else
                 RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -2930,6 +3018,10 @@ Public Class Main
                 RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                 Login.log_lbl_dbstatus.Text = "Offline"
                 Login.log_lbl_dbstatus.ForeColor = Color.Red
+                Login.lbl_prevmain_status.Text="Unavailable"
+                Login.lbl_prevmain_status.ForeColor=Color.Red
+                Login.lbl_reservation_status.Text="Unavailable"
+                Login.lbl_reservation_status.ForeColor=Color.Red
                 Return
             Else
                 RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -2977,6 +3069,10 @@ Public Class Main
                 RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                 Login.log_lbl_dbstatus.Text = "Offline"
                 Login.log_lbl_dbstatus.ForeColor = Color.Red
+                Login.lbl_prevmain_status.Text="Unavailable"
+                Login.lbl_prevmain_status.ForeColor=Color.Red
+                Login.lbl_reservation_status.Text="Unavailable"
+                Login.lbl_reservation_status.ForeColor=Color.Red
                 Return
             Else
                 RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -3259,6 +3355,10 @@ Public Class Main
                 RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                 Login.log_lbl_dbstatus.Text = "Offline"
                 Login.log_lbl_dbstatus.ForeColor = Color.Red
+                Login.lbl_prevmain_status.Text="Unavailable"
+                Login.lbl_prevmain_status.ForeColor=Color.Red
+                Login.lbl_reservation_status.Text="Unavailable"
+                Login.lbl_reservation_status.ForeColor=Color.Red
                 Return
             Else
                 RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -3335,6 +3435,10 @@ Public Class Main
                 RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                 Login.log_lbl_dbstatus.Text = "Offline"
                 Login.log_lbl_dbstatus.ForeColor = Color.Red
+                Login.lbl_prevmain_status.Text="Unavailable"
+                Login.lbl_prevmain_status.ForeColor=Color.Red
+                Login.lbl_reservation_status.Text="Unavailable"
+                Login.lbl_reservation_status.ForeColor=Color.Red
                 Return
             Else
                 RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -3376,6 +3480,10 @@ Public Class Main
                 RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                 Login.log_lbl_dbstatus.Text = "Offline"
                 Login.log_lbl_dbstatus.ForeColor = Color.Red
+                Login.lbl_prevmain_status.Text="Unavailable"
+                Login.lbl_prevmain_status.ForeColor=Color.Red
+                Login.lbl_reservation_status.Text="Unavailable"
+                Login.lbl_reservation_status.ForeColor=Color.Red
                 Return
             Else
                 RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -3464,6 +3572,10 @@ Public Class Main
                 RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                 Login.log_lbl_dbstatus.Text = "Offline"
                 Login.log_lbl_dbstatus.ForeColor = Color.Red
+                Login.lbl_prevmain_status.Text="Unavailable"
+                Login.lbl_prevmain_status.ForeColor=Color.Red
+                Login.lbl_reservation_status.Text="Unavailable"
+                Login.lbl_reservation_status.ForeColor=Color.Red
                 Return
             Else
                 RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -3506,6 +3618,10 @@ Public Class Main
                 RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                 Login.log_lbl_dbstatus.Text = "Offline"
                 Login.log_lbl_dbstatus.ForeColor = Color.Red
+                Login.lbl_prevmain_status.Text="Unavailable"
+                Login.lbl_prevmain_status.ForeColor=Color.Red
+                Login.lbl_reservation_status.Text="Unavailable"
+                Login.lbl_reservation_status.ForeColor=Color.Red
                 Return
             Else
                 RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -3544,6 +3660,10 @@ Public Class Main
                 RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                 Login.log_lbl_dbstatus.Text = "Offline"
                 Login.log_lbl_dbstatus.ForeColor = Color.Red
+                Login.lbl_prevmain_status.Text="Unavailable"
+                Login.lbl_prevmain_status.ForeColor=Color.Red
+                Login.lbl_reservation_status.Text="Unavailable"
+                Login.lbl_reservation_status.ForeColor=Color.Red
                 Return
             Else
                 RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -3585,6 +3705,10 @@ Public Class Main
                 RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                 Login.log_lbl_dbstatus.Text = "Offline"
                 Login.log_lbl_dbstatus.ForeColor = Color.Red
+                Login.lbl_prevmain_status.Text="Unavailable"
+                Login.lbl_prevmain_status.ForeColor=Color.Red
+                Login.lbl_reservation_status.Text="Unavailable"
+                Login.lbl_reservation_status.ForeColor=Color.Red
                 Return
             Else
                 RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -3644,6 +3768,10 @@ Public Class Main
                 RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                 Login.log_lbl_dbstatus.Text = "Offline"
                 Login.log_lbl_dbstatus.ForeColor = Color.Red
+                Login.lbl_prevmain_status.Text="Unavailable"
+                Login.lbl_prevmain_status.ForeColor=Color.Red
+                Login.lbl_reservation_status.Text="Unavailable"
+                Login.lbl_reservation_status.ForeColor=Color.Red
                 Return
             Else
                 RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -3753,6 +3881,10 @@ Public Class Main
                 RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                 Login.log_lbl_dbstatus.Text = "Offline"
                 Login.log_lbl_dbstatus.ForeColor = Color.Red
+                Login.lbl_prevmain_status.Text="Unavailable"
+                Login.lbl_prevmain_status.ForeColor=Color.Red
+                Login.lbl_reservation_status.Text="Unavailable"
+                Login.lbl_reservation_status.ForeColor=Color.Red
                 Return
             Else
                 RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -3999,6 +4131,10 @@ Public Class Main
                 RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                 Login.log_lbl_dbstatus.Text = "Offline"
                 Login.log_lbl_dbstatus.ForeColor = Color.Red
+                Login.lbl_prevmain_status.Text="Unavailable"
+                Login.lbl_prevmain_status.ForeColor=Color.Red
+                Login.lbl_reservation_status.Text="Unavailable"
+                Login.lbl_reservation_status.ForeColor=Color.Red
                 Return
             Else
                 RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -4029,6 +4165,10 @@ Public Class Main
                 RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                 Login.log_lbl_dbstatus.Text = "Offline"
                 Login.log_lbl_dbstatus.ForeColor = Color.Red
+                Login.lbl_prevmain_status.Text="Unavailable"
+                Login.lbl_prevmain_status.ForeColor=Color.Red
+                Login.lbl_reservation_status.Text="Unavailable"
+                Login.lbl_reservation_status.ForeColor=Color.Red
                 Return
             Else
                 RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -4103,6 +4243,10 @@ Public Class Main
                 RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                 Login.log_lbl_dbstatus.Text = "Offline"
                 Login.log_lbl_dbstatus.ForeColor = Color.Red
+                Login.lbl_prevmain_status.Text="Unavailable"
+                Login.lbl_prevmain_status.ForeColor=Color.Red
+                Login.lbl_reservation_status.Text="Unavailable"
+                Login.lbl_reservation_status.ForeColor=Color.Red
                 Return
             Else
                 RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -4227,6 +4371,10 @@ Public Class Main
                 RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                 Login.log_lbl_dbstatus.Text = "Offline"
                 Login.log_lbl_dbstatus.ForeColor = Color.Red
+                Login.lbl_prevmain_status.Text="Unavailable"
+                Login.lbl_prevmain_status.ForeColor=Color.Red
+                Login.lbl_reservation_status.Text="Unavailable"
+                Login.lbl_reservation_status.ForeColor=Color.Red
                 Return
             Else
                 RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -4280,6 +4428,10 @@ Public Class Main
                     RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                     Login.log_lbl_dbstatus.Text = "Offline"
                     Login.log_lbl_dbstatus.ForeColor = Color.Red
+                    Login.lbl_prevmain_status.Text="Unavailable"
+                    Login.lbl_prevmain_status.ForeColor=Color.Red
+                    Login.lbl_reservation_status.Text="Unavailable"
+                    Login.lbl_reservation_status.ForeColor=Color.Red
                     Return
                 Else
                     RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -4328,6 +4480,10 @@ Public Class Main
                         RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                         Login.log_lbl_dbstatus.Text = "Offline"
                         Login.log_lbl_dbstatus.ForeColor = Color.Red
+                        Login.lbl_prevmain_status.Text="Unavailable"
+                        Login.lbl_prevmain_status.ForeColor=Color.Red
+                        Login.lbl_reservation_status.Text="Unavailable"
+                        Login.lbl_reservation_status.ForeColor=Color.Red
                         Return
                     Else
                         RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -4399,6 +4555,10 @@ Public Class Main
                             RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                             Login.log_lbl_dbstatus.Text = "Offline"
                             Login.log_lbl_dbstatus.ForeColor = Color.Red
+                            Login.lbl_prevmain_status.Text="Unavailable"
+                            Login.lbl_prevmain_status.ForeColor=Color.Red
+                            Login.lbl_reservation_status.Text="Unavailable"
+                            Login.lbl_reservation_status.ForeColor=Color.Red
                             Return
                         Else
                             RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -4458,6 +4618,10 @@ Public Class Main
                                 RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                                 Login.log_lbl_dbstatus.Text = "Offline"
                                 Login.log_lbl_dbstatus.ForeColor = Color.Red
+                                Login.lbl_prevmain_status.Text="Unavailable"
+                                Login.lbl_prevmain_status.ForeColor=Color.Red
+                                Login.lbl_reservation_status.Text="Unavailable"
+                                Login.lbl_reservation_status.ForeColor=Color.Red
                                 Return
                             Else
                                 RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -4517,6 +4681,10 @@ Public Class Main
                                 RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                                 Login.log_lbl_dbstatus.Text = "Offline"
                                 Login.log_lbl_dbstatus.ForeColor = Color.Red
+                                Login.lbl_prevmain_status.Text="Unavailable"
+                                Login.lbl_prevmain_status.ForeColor=Color.Red
+                                Login.lbl_reservation_status.Text="Unavailable"
+                                Login.lbl_reservation_status.ForeColor=Color.Red
                                 Return
                             Else
                                 RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -4599,6 +4767,10 @@ Public Class Main
                     RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                     Login.log_lbl_dbstatus.Text = "Offline"
                     Login.log_lbl_dbstatus.ForeColor = Color.Red
+                    Login.lbl_prevmain_status.Text="Unavailable"
+                    Login.lbl_prevmain_status.ForeColor=Color.Red
+                    Login.lbl_reservation_status.Text="Unavailable"
+                    Login.lbl_reservation_status.ForeColor=Color.Red
                     Return
                 Else
                     RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -4647,6 +4819,10 @@ Public Class Main
                         RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                         Login.log_lbl_dbstatus.Text = "Offline"
                         Login.log_lbl_dbstatus.ForeColor = Color.Red
+                        Login.lbl_prevmain_status.Text="Unavailable"
+                        Login.lbl_prevmain_status.ForeColor=Color.Red
+                        Login.lbl_reservation_status.Text="Unavailable"
+                        Login.lbl_reservation_status.ForeColor=Color.Red
                         Return
                     Else
                         RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -4704,6 +4880,10 @@ Public Class Main
                             RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                             Login.log_lbl_dbstatus.Text = "Offline"
                             Login.log_lbl_dbstatus.ForeColor = Color.Red
+                        Login.lbl_prevmain_status.Text="Unavailable"
+                        Login.lbl_prevmain_status.ForeColor=Color.Red
+                        Login.lbl_reservation_status.Text="Unavailable"
+                        Login.lbl_reservation_status.ForeColor=Color.Red
                             Return
                         Else
                             RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -4749,6 +4929,10 @@ Public Class Main
                                 RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                                 Login.log_lbl_dbstatus.Text = "Offline"
                                 Login.log_lbl_dbstatus.ForeColor = Color.Red
+                                Login.lbl_prevmain_status.Text="Unavailable"
+                                Login.lbl_prevmain_status.ForeColor=Color.Red
+                                Login.lbl_reservation_status.Text="Unavailable"
+                                Login.lbl_reservation_status.ForeColor=Color.Red
                                 Return
                             Else
                                 RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -4792,6 +4976,10 @@ Public Class Main
                                 RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                                 Login.log_lbl_dbstatus.Text = "Offline"
                                 Login.log_lbl_dbstatus.ForeColor = Color.Red
+                                Login.lbl_prevmain_status.Text="Unavailable"
+                                Login.lbl_prevmain_status.ForeColor=Color.Red
+                                Login.lbl_reservation_status.Text="Unavailable"
+                                Login.lbl_reservation_status.ForeColor=Color.Red
                                 Return
                             Else
                                 RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -4868,6 +5056,10 @@ Public Class Main
                 RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                 Login.log_lbl_dbstatus.Text = "Offline"
                 Login.log_lbl_dbstatus.ForeColor = Color.Red
+                Login.lbl_prevmain_status.Text="Unavailable"
+                Login.lbl_prevmain_status.ForeColor=Color.Red
+                Login.lbl_reservation_status.Text="Unavailable"
+                Login.lbl_reservation_status.ForeColor=Color.Red
                 Return
             Else
                 RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -4903,6 +5095,10 @@ Public Class Main
                 RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                 Login.log_lbl_dbstatus.Text = "Offline"
                 Login.log_lbl_dbstatus.ForeColor = Color.Red
+                Login.lbl_prevmain_status.Text="Unavailable"
+                Login.lbl_prevmain_status.ForeColor=Color.Red
+                Login.lbl_reservation_status.Text="Unavailable"
+                Login.lbl_reservation_status.ForeColor=Color.Red
                 Return
             Else
                 RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -5003,6 +5199,10 @@ Public Class Main
                 RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                 Login.log_lbl_dbstatus.Text = "Offline"
                 Login.log_lbl_dbstatus.ForeColor = Color.Red
+                Login.lbl_prevmain_status.Text="Unavailable"
+                Login.lbl_prevmain_status.ForeColor=Color.Red
+                Login.lbl_reservation_status.Text="Unavailable"
+                Login.lbl_reservation_status.ForeColor=Color.Red
                 Return
             Else
                 RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -5055,6 +5255,10 @@ Public Class Main
                 RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                 Login.log_lbl_dbstatus.Text = "Offline"
                 Login.log_lbl_dbstatus.ForeColor = Color.Red
+                Login.lbl_prevmain_status.Text="Unavailable"
+                Login.lbl_prevmain_status.ForeColor=Color.Red
+                Login.lbl_reservation_status.Text="Unavailable"
+                Login.lbl_reservation_status.ForeColor=Color.Red
                 Return
             Else
                 RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -5104,6 +5308,10 @@ Public Class Main
                 RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                 Login.log_lbl_dbstatus.Text = "Offline"
                 Login.log_lbl_dbstatus.ForeColor = Color.Red
+                Login.lbl_prevmain_status.Text="Unavailable"
+                Login.lbl_prevmain_status.ForeColor=Color.Red
+                Login.lbl_reservation_status.Text="Unavailable"
+                Login.lbl_reservation_status.ForeColor=Color.Red
                 Return
             Else
                 RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
