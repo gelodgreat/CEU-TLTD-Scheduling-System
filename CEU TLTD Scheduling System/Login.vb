@@ -10,7 +10,6 @@ Public Class Login
     
 
     Private Sub Login_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        MySQLConn.ConnectionString = connstring
         log_timer.Enabled = True
         ThemeResolutionService.ApplicationThemeName = My.Settings.WindowTheme
         log_username.Select()
@@ -38,6 +37,8 @@ Public Class Login
                     DB_DeadCounter()
                 ElseIf lbl_reservation_status.Text="Unavailable" or lbl_prevmain_status.Text="Unavailable"
                     RadMessageBox.Show(Me, "Please make sure the databases are available.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error, MessageBoxDefaultButton.Button1)
+                ElseIf lbl_prevmain_status.Text="Unauthorized" Or lbl_reservation_status.Text="Unauthorized"
+                    RadMessageBox.Show(Me, "Unauthorized access to server.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error) 
                 Else
                     CheckDBStatus()
                     If lbl_reservation_status.Text="Unavailable" Or lbl_prevmain_status.Text="Unavailable" Or log_lbl_dbstatus.Text="Offline"
@@ -104,7 +105,7 @@ Public Class Login
         End If
     End Sub
     Private Sub log_lbl_dbstatus_MouseHover(sender As Object, e As EventArgs) Handles log_lbl_dbstatus.MouseHover,lbl_prevmain_status.MouseHover,lbl_reservation_status.MouseHover
-        If a=False
+        If a=False And Not (lbl_prevmain_status.Text="Unauthorized" Or lbl_reservation_status.Text="Unauthorized")
             Dim aa As DialogResult = RadMessageBox.Show(Me, "The server is offline. Would you like to check again?", system_Name, MessageBoxButtons.YesNo, RadMessageIcon.Question)
             If aa=DialogResult.Yes
                 CheckDBStatus()
@@ -121,6 +122,7 @@ Public Class Login
                     RadMessageBox.Show(Me, "Please contact your database administrator to check on the database.", system_Name, MessageBoxButtons.YesNo, RadMessageIcon.Question)
                 End If
             End If
+        ElseIf lbl_prevmain_status.Text="Unauthorized" Or lbl_reservation_status.Text="Unauthorized"
         End If
     End Sub
 
@@ -129,6 +131,7 @@ Public Class Login
             MySQLConn.Close()
         End If
         Try
+            MySQLConn.ConnectionString = connstring
             MySQLConn.Open()
             a = True
             db_is_deadCount=0
@@ -174,8 +177,16 @@ Public Class Login
                 End If
  
                 Return
+            ElseIf ex.Number = 0 And ex.Message.Contains("Access denied for user")
+                log_lbl_dbstatus.Text = "Online"
+                log_lbl_dbstatus.ForeColor = Color.Green
+                lbl_reservation_status.Text="Unauthorized"
+                lbl_reservation_status.ForeColor=Color.Red
+                lbl_prevmain_status.Text="Unauthorized"
+                lbl_prevmain_status.ForeColor=Color.Red
+                RadMessageBox.Show(Me, "Unauthorized access to server.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
             Else
-                RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
+                RadMessageBox.Show(Me, ex.Message & "  " & ex.Number, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
             End If
         Finally
             MySQLConn.Dispose()
