@@ -5999,7 +5999,10 @@ Public Class Main
                             Dim count As Integer = 0
                             While reader.Read
                                 count = count + 1
+                            Me.Invoke(Sub()
                                 MultipurposeWindow.lst_res_conflicts.Rows.Add(reader.GetString("equipmenttype"), reader.GetString("equipmentsn"), reader.GetString("equipmentno"), reader.GetString("equipment"), DateTime.Parse(reader.GetString("date")).ToString("MMMM dd yyyy"), Format(CDate(reader.GetString("starttime")), "HH:mm"), Format(CDate(reader.GetString("endtime")), "HH:mm"))
+                            End Sub)
+                            'MultipurposeWindow.lst_res_conflicts.Rows.Add(reader.GetString("equipmenttype"), reader.GetString("equipmentsn"), reader.GetString("equipmentno"), reader.GetString("equipment"), DateTime.Parse(reader.GetString("date")).ToString("MMMM dd yyyy"), Format(CDate(reader.GetString("starttime")), "HH:mm"), Format(CDate(reader.GetString("endtime")), "HH:mm"))
                             End While
                             If count > 0 Then
                                 errorcount = True
@@ -6011,7 +6014,10 @@ Public Class Main
                     If errorcount = True Then
                         conflictFree=False
                         MultipurposeWindowPanel = "B"
-                        MultipurposeWindow.ShowDialog()
+                        'BeginInvoke(New InvokeDeleggate(AddressOf Invoker))
+                            Me.Invoke(Sub()
+                                MultipurposeWindow.ShowDialog
+                            End Sub)
                     Else
                         conflictFree=True
                     End If
@@ -6034,8 +6040,11 @@ Public Class Main
                         Dim count As Integer = 0
                         While reader.Read
                             count = count + 1
-                            MultipurposeWindow.lst_res_conflicts.Rows.Add(reader.GetString("equipmenttype"), reader.GetString("equipmentsn"), reader.GetString("equipmentno"), reader.GetString("equipment"), DateTime.Parse(reader.GetString("date")).ToString("MMMM dd yyyy"), Format(CDate(reader.GetString("starttime")), "HH:mm"), Format(CDate(reader.GetString("endtime")), "HH:mm"))
-                        End While
+                        'MultipurposeWindow.lst_res_conflicts.Rows.Add(reader.GetString("equipmenttype"), reader.GetString("equipmentsn"), reader.GetString("equipmentno"), reader.GetString("equipment"), DateTime.Parse(reader.GetString("date")).ToString("MMMM dd yyyy"), Format(CDate(reader.GetString("starttime")), "HH:mm"), Format(CDate(reader.GetString("endtime")), "HH:mm"))
+                            Me.Invoke(Sub()
+                                MultipurposeWindow.lst_res_conflicts.Rows.Add(reader.GetString("equipmenttype"), reader.GetString("equipmentsn"), reader.GetString("equipmentno"), reader.GetString("equipment"), DateTime.Parse(reader.GetString("date")).ToString("MMMM dd yyyy"), Format(CDate(reader.GetString("starttime")), "HH:mm"), Format(CDate(reader.GetString("endtime")), "HH:mm"))
+                            End Sub)
+                    End While
                         If count > 0 Then
                             errorcount = True
                         End If
@@ -6045,7 +6054,10 @@ Public Class Main
                     If errorcount = True Then
                         conflictFree=False
                         MultipurposeWindowPanel = "B"
-                        MultipurposeWindow.ShowDialog()
+                        'BeginInvoke(New InvokeDeleggate(AddressOf Invoker))
+                            Me.Invoke(Sub()
+                                MultipurposeWindow.ShowDialog
+                            End Sub)
                     Else
                         conflictFree=True
                     End If
