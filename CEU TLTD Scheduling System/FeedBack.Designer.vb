@@ -68,6 +68,7 @@ Partial Class FeedBack
         '
         'BKWorkersendingMessage
         '
+        Me.BKWorkersendingMessage.WorkerReportsProgress = true
         '
         'leavefeedback_prog
         '
