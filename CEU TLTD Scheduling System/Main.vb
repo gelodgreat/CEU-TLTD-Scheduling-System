@@ -4,6 +4,7 @@ Imports Telerik.WinControls.UI
 Imports Telerik.WinControls.UI.Data
 Imports System.Threading
 Imports System.IO.Ports
+Imports System.Runtime.InteropServices
 
 Public Class Main
 
@@ -264,7 +265,7 @@ Public Class Main
             item.FillPrimitive.BackColor = Color.Transparent
         End If
     End Sub
-    Private Sub MenuBar_MouseEnter(sender As Object, e As EventArgs) Handles menuItem_DBManage.MouseEnter, menuItem_About.MouseEnter, menuItem_Settings.MouseEnter, menuItem_LF.MouseEnter,menuItem_Stat.MouseEnter
+    Private Sub MenuBar_MouseEnter(sender As Object, e As EventArgs) Handles menuItem_DBManage.MouseEnter, menuItem_About.MouseEnter, menuItem_Settings.MouseEnter, menuItem_LF.MouseEnter, menuItem_Stat.MouseEnter
         If ThemeResolutionService.ApplicationThemeName = "VisualStudio2012Dark" Then
             Dim item As RadMenuItem = TryCast(sender, RadMenuItem)
             item.FillPrimitive.BackColor = Color.FromArgb(62, 62, 64)
@@ -319,38 +320,48 @@ Public Class Main
     'END!! Menu BAR
 
     Private Sub Main_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+        If My.Application.CommandLineArgs.Count > 0 Then
+
+            For Each Argument As String In My.Application.CommandLineArgs
+                If Argument = "debug" Then
+                    Win32.AllocConsole()
+                End If
+            Next
+        End If
+
         getFromDB_settings_penalty()
         'LOADING SAVED DATES
-        If My.Settings.res_fil_startdate = Nothing And My.Settings.res_fil_enddate = Nothing
-            rel_fil_startdate.Value=New Date(Date.Now.Year,Date.Now.Month,Date.Now.Day)
-            rel_fil_enddate.Value=New Date(Date.Now.Year,Date.Now.Month,Date.Now.Day)
+        If My.Settings.res_fil_startdate = Nothing And My.Settings.res_fil_enddate = Nothing Then
+            rel_fil_startdate.Value = New Date(Date.Now.Year, Date.Now.Month, Date.Now.Day)
+            rel_fil_enddate.Value = New Date(Date.Now.Year, Date.Now.Month, Date.Now.Day)
         Else
-            rel_fil_startdate.Value=My.Settings.res_fil_startdate
-            rel_fil_enddate.Value=My.Settings.res_fil_enddate
+            rel_fil_startdate.Value = My.Settings.res_fil_startdate
+            rel_fil_enddate.Value = My.Settings.res_fil_enddate
         End If
 
-        If My.Settings.rec_fil_startdate = Nothing And My.Settings.rec_fil_enddate = Nothing
-            rec_dtp_fil_startdate.Value=New Date(Date.Now.Year,Date.Now.Month,Date.Now.Day)
-            rec_dtp_fil_enddate.Value=New Date(Date.Now.Year,Date.Now.Month,Date.Now.Day)
+        If My.Settings.rec_fil_startdate = Nothing And My.Settings.rec_fil_enddate = Nothing Then
+            rec_dtp_fil_startdate.Value = New Date(Date.Now.Year, Date.Now.Month, Date.Now.Day)
+            rec_dtp_fil_enddate.Value = New Date(Date.Now.Year, Date.Now.Month, Date.Now.Day)
         Else
-            rec_dtp_fil_startdate.Value=My.Settings.rec_fil_startdate
-            rec_dtp_fil_enddate.Value=My.Settings.rec_fil_enddate
+            rec_dtp_fil_startdate.Value = My.Settings.rec_fil_startdate
+            rec_dtp_fil_enddate.Value = My.Settings.rec_fil_enddate
         End If
 
-        If My.Settings.pen_fil_startdate = Nothing And My.Settings.pen_fil_enddate = Nothing
-            pen_startDate.Value=New Date(Date.Now.Year,Date.Now.Month,Date.Now.Day)
-            pen_endDate.Value=New Date(Date.Now.Year,Date.Now.Month,Date.Now.Day)
+        If My.Settings.pen_fil_startdate = Nothing And My.Settings.pen_fil_enddate = Nothing Then
+            pen_startDate.Value = New Date(Date.Now.Year, Date.Now.Month, Date.Now.Day)
+            pen_endDate.Value = New Date(Date.Now.Year, Date.Now.Month, Date.Now.Day)
         Else
-            pen_startDate.Value=My.Settings.pen_fil_startdate
-            pen_endDate.Value=My.Settings.pen_fil_enddate
+            pen_startDate.Value = My.Settings.pen_fil_startdate
+            pen_endDate.Value = My.Settings.pen_fil_enddate
         End If
 
-        If My.Settings.ret_fil_startdate = Nothing And My.Settings.ret_fil_enddate = Nothing
-            returned_startDate.Value=New Date(Date.Now.Year,Date.Now.Month,Date.Now.Day)
-            returned_endDate.Value=New Date(Date.Now.Year,Date.Now.Month,Date.Now.Day)
+        If My.Settings.ret_fil_startdate = Nothing And My.Settings.ret_fil_enddate = Nothing Then
+            returned_startDate.Value = New Date(Date.Now.Year, Date.Now.Month, Date.Now.Day)
+            returned_endDate.Value = New Date(Date.Now.Year, Date.Now.Month, Date.Now.Day)
         Else
-            returned_startDate.Value=My.Settings.ret_fil_startdate
-            returned_endDate.Value=My.Settings.ret_fil_enddate
+            returned_startDate.Value = My.Settings.ret_fil_startdate
+            returned_endDate.Value = My.Settings.ret_fil_enddate
         End If
         'LOADING SAVED DATES
 
@@ -861,10 +872,10 @@ Public Class Main
                 RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                 Login.log_lbl_dbstatus.Text = "Offline"
                 Login.log_lbl_dbstatus.ForeColor = Color.Red
-                Login.lbl_prevmain_status.Text="Unavailable"
-                Login.lbl_prevmain_status.ForeColor=Color.Red
-                Login.lbl_reservation_status.Text="Unavailable"
-                Login.lbl_reservation_status.ForeColor=Color.Red
+                Login.lbl_prevmain_status.Text = "Unavailable"
+                Login.lbl_prevmain_status.ForeColor = Color.Red
+                Login.lbl_reservation_status.Text = "Unavailable"
+                Login.lbl_reservation_status.ForeColor = Color.Red
                 Return
             Else
                 RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -928,10 +939,10 @@ Public Class Main
                 RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                 Login.log_lbl_dbstatus.Text = "Offline"
                 Login.log_lbl_dbstatus.ForeColor = Color.Red
-                Login.lbl_prevmain_status.Text="Unavailable"
-                Login.lbl_prevmain_status.ForeColor=Color.Red
-                Login.lbl_reservation_status.Text="Unavailable"
-                Login.lbl_reservation_status.ForeColor=Color.Red
+                Login.lbl_prevmain_status.Text = "Unavailable"
+                Login.lbl_prevmain_status.ForeColor = Color.Red
+                Login.lbl_reservation_status.Text = "Unavailable"
+                Login.lbl_reservation_status.ForeColor = Color.Red
                 Return
             Else
                 RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -1044,10 +1055,10 @@ Public Class Main
                 RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                 Login.log_lbl_dbstatus.Text = "Offline"
                 Login.log_lbl_dbstatus.ForeColor = Color.Red
-                Login.lbl_prevmain_status.Text="Unavailable"
-                Login.lbl_prevmain_status.ForeColor=Color.Red
-                Login.lbl_reservation_status.Text="Unavailable"
-                Login.lbl_reservation_status.ForeColor=Color.Red
+                Login.lbl_prevmain_status.Text = "Unavailable"
+                Login.lbl_prevmain_status.ForeColor = Color.Red
+                Login.lbl_reservation_status.Text = "Unavailable"
+                Login.lbl_reservation_status.ForeColor = Color.Red
                 Return
             Else
                 RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -1137,10 +1148,10 @@ Public Class Main
                 RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                 Login.log_lbl_dbstatus.Text = "Offline"
                 Login.log_lbl_dbstatus.ForeColor = Color.Red
-                Login.lbl_prevmain_status.Text="Unavailable"
-                Login.lbl_prevmain_status.ForeColor=Color.Red
-                Login.lbl_reservation_status.Text="Unavailable"
-                Login.lbl_reservation_status.ForeColor=Color.Red
+                Login.lbl_prevmain_status.Text = "Unavailable"
+                Login.lbl_prevmain_status.ForeColor = Color.Red
+                Login.lbl_reservation_status.Text = "Unavailable"
+                Login.lbl_reservation_status.ForeColor = Color.Red
                 Return
             Else
                 RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -1178,10 +1189,10 @@ Public Class Main
                 RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                 Login.log_lbl_dbstatus.Text = "Offline"
                 Login.log_lbl_dbstatus.ForeColor = Color.Red
-                Login.lbl_prevmain_status.Text="Unavailable"
-                Login.lbl_prevmain_status.ForeColor=Color.Red
-                Login.lbl_reservation_status.Text="Unavailable"
-                Login.lbl_reservation_status.ForeColor=Color.Red
+                Login.lbl_prevmain_status.Text = "Unavailable"
+                Login.lbl_prevmain_status.ForeColor = Color.Red
+                Login.lbl_reservation_status.Text = "Unavailable"
+                Login.lbl_reservation_status.ForeColor = Color.Red
                 Return
             Else
                 RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -1217,10 +1228,10 @@ Public Class Main
                 RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                 Login.log_lbl_dbstatus.Text = "Offline"
                 Login.log_lbl_dbstatus.ForeColor = Color.Red
-                Login.lbl_prevmain_status.Text="Unavailable"
-                Login.lbl_prevmain_status.ForeColor=Color.Red
-                Login.lbl_reservation_status.Text="Unavailable"
-                Login.lbl_reservation_status.ForeColor=Color.Red
+                Login.lbl_prevmain_status.Text = "Unavailable"
+                Login.lbl_prevmain_status.ForeColor = Color.Red
+                Login.lbl_reservation_status.Text = "Unavailable"
+                Login.lbl_reservation_status.ForeColor = Color.Red
                 Return
             Else
                 RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -1270,10 +1281,10 @@ Public Class Main
                 RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                 Login.log_lbl_dbstatus.Text = "Offline"
                 Login.log_lbl_dbstatus.ForeColor = Color.Red
-                Login.lbl_prevmain_status.Text="Unavailable"
-                Login.lbl_prevmain_status.ForeColor=Color.Red
-                Login.lbl_reservation_status.Text="Unavailable"
-                Login.lbl_reservation_status.ForeColor=Color.Red
+                Login.lbl_prevmain_status.Text = "Unavailable"
+                Login.lbl_prevmain_status.ForeColor = Color.Red
+                Login.lbl_reservation_status.Text = "Unavailable"
+                Login.lbl_reservation_status.ForeColor = Color.Red
                 Return
             Else
                 RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -1425,10 +1436,10 @@ Public Class Main
                 RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                 Login.log_lbl_dbstatus.Text = "Offline"
                 Login.log_lbl_dbstatus.ForeColor = Color.Red
-                Login.lbl_prevmain_status.Text="Unavailable"
-                Login.lbl_prevmain_status.ForeColor=Color.Red
-                Login.lbl_reservation_status.Text="Unavailable"
-                Login.lbl_reservation_status.ForeColor=Color.Red
+                Login.lbl_prevmain_status.Text = "Unavailable"
+                Login.lbl_prevmain_status.ForeColor = Color.Red
+                Login.lbl_reservation_status.Text = "Unavailable"
+                Login.lbl_reservation_status.ForeColor = Color.Red
                 Return
             Else
                 RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -1624,10 +1635,10 @@ Public Class Main
                 RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                 Login.log_lbl_dbstatus.Text = "Offline"
                 Login.log_lbl_dbstatus.ForeColor = Color.Red
-                Login.lbl_prevmain_status.Text="Unavailable"
-                Login.lbl_prevmain_status.ForeColor=Color.Red
-                Login.lbl_reservation_status.Text="Unavailable"
-                Login.lbl_reservation_status.ForeColor=Color.Red
+                Login.lbl_prevmain_status.Text = "Unavailable"
+                Login.lbl_prevmain_status.ForeColor = Color.Red
+                Login.lbl_reservation_status.Text = "Unavailable"
+                Login.lbl_reservation_status.ForeColor = Color.Red
                 Return
             Else
                 RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -1692,10 +1703,10 @@ Public Class Main
                 RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                 Login.log_lbl_dbstatus.Text = "Offline"
                 Login.log_lbl_dbstatus.ForeColor = Color.Red
-                Login.lbl_prevmain_status.Text="Unavailable"
-                Login.lbl_prevmain_status.ForeColor=Color.Red
-                Login.lbl_reservation_status.Text="Unavailable"
-                Login.lbl_reservation_status.ForeColor=Color.Red
+                Login.lbl_prevmain_status.Text = "Unavailable"
+                Login.lbl_prevmain_status.ForeColor = Color.Red
+                Login.lbl_reservation_status.Text = "Unavailable"
+                Login.lbl_reservation_status.ForeColor = Color.Red
                 Return
             Else
                 RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -1843,10 +1854,10 @@ Public Class Main
                 RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                 Login.log_lbl_dbstatus.Text = "Offline"
                 Login.log_lbl_dbstatus.ForeColor = Color.Red
-                Login.lbl_prevmain_status.Text="Unavailable"
-                Login.lbl_prevmain_status.ForeColor=Color.Red
-                Login.lbl_reservation_status.Text="Unavailable"
-                Login.lbl_reservation_status.ForeColor=Color.Red
+                Login.lbl_prevmain_status.Text = "Unavailable"
+                Login.lbl_prevmain_status.ForeColor = Color.Red
+                Login.lbl_reservation_status.Text = "Unavailable"
+                Login.lbl_reservation_status.ForeColor = Color.Red
                 Return
             Else
                 RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -1947,10 +1958,10 @@ Public Class Main
                 RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                 Login.log_lbl_dbstatus.Text = "Offline"
                 Login.log_lbl_dbstatus.ForeColor = Color.Red
-                Login.lbl_prevmain_status.Text="Unavailable"
-                Login.lbl_prevmain_status.ForeColor=Color.Red
-                Login.lbl_reservation_status.Text="Unavailable"
-                Login.lbl_reservation_status.ForeColor=Color.Red
+                Login.lbl_prevmain_status.Text = "Unavailable"
+                Login.lbl_prevmain_status.ForeColor = Color.Red
+                Login.lbl_reservation_status.Text = "Unavailable"
+                Login.lbl_reservation_status.ForeColor = Color.Red
                 Return
             Else
                 RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -2003,10 +2014,10 @@ Public Class Main
                 RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                 Login.log_lbl_dbstatus.Text = "Offline"
                 Login.log_lbl_dbstatus.ForeColor = Color.Red
-                Login.lbl_prevmain_status.Text="Unavailable"
-                Login.lbl_prevmain_status.ForeColor=Color.Red
-                Login.lbl_reservation_status.Text="Unavailable"
-                Login.lbl_reservation_status.ForeColor=Color.Red
+                Login.lbl_prevmain_status.Text = "Unavailable"
+                Login.lbl_prevmain_status.ForeColor = Color.Red
+                Login.lbl_reservation_status.Text = "Unavailable"
+                Login.lbl_reservation_status.ForeColor = Color.Red
                 Return
             Else
                 RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -2077,10 +2088,10 @@ Public Class Main
                 RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                 Login.log_lbl_dbstatus.Text = "Offline"
                 Login.log_lbl_dbstatus.ForeColor = Color.Red
-                Login.lbl_prevmain_status.Text="Unavailable"
-                Login.lbl_prevmain_status.ForeColor=Color.Red
-                Login.lbl_reservation_status.Text="Unavailable"
-                Login.lbl_reservation_status.ForeColor=Color.Red
+                Login.lbl_prevmain_status.Text = "Unavailable"
+                Login.lbl_prevmain_status.ForeColor = Color.Red
+                Login.lbl_reservation_status.Text = "Unavailable"
+                Login.lbl_reservation_status.ForeColor = Color.Red
                 Return
             Else
                 RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -2131,10 +2142,10 @@ Public Class Main
                 RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                 Login.log_lbl_dbstatus.Text = "Offline"
                 Login.log_lbl_dbstatus.ForeColor = Color.Red
-                Login.lbl_prevmain_status.Text="Unavailable"
-                Login.lbl_prevmain_status.ForeColor=Color.Red
-                Login.lbl_reservation_status.Text="Unavailable"
-                Login.lbl_reservation_status.ForeColor=Color.Red
+                Login.lbl_prevmain_status.Text = "Unavailable"
+                Login.lbl_prevmain_status.ForeColor = Color.Red
+                Login.lbl_reservation_status.Text = "Unavailable"
+                Login.lbl_reservation_status.ForeColor = Color.Red
                 Return
             Else
                 RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -2179,21 +2190,21 @@ Public Class Main
 
                             MysqlConn.Open() 'to check if new equipment is also in conflict
                             query = "SELECT * FROM ceutltdscheduler.reservation natural join ceutltdscheduler.reservation_equipments WHERE equipmentsn=@RE_equipmentsn AND ((((@a) BETWEEN CONCAT(date,' ',starttime) AND CONCAT(date,' ',endtime)) OR (@b BETWEEN CONCAT(date,' ',starttime) AND CONCAT(date,' ',endtime))) OR ((DATE_FORMAT(@a,'%Y-%m-%d %H:%i:%s') <= CONCAT(date,' ',starttime)) AND (DATE_FORMAT(@b,'%Y-%m-%d %H:%i:%s') >= CONCAT(date,' ',endtime)) AND CONCAT(date,' ',endtime) >= DATE_FORMAT(@a,'%Y-%m-%d %H:%i:%s'))) AND (res_status='Released' OR res_status='Reserved')"
-                                    comm = New MySqlCommand(query, MysqlConn)
-                                    comm.Parameters.AddWithValue("@RE_equipmentsn",newserial)
-                                    comm.Parameters.AddWithValue("@a", Format(CDate(rel_tb_startdate.Value), "yyyy-MM-dd") & " " & Format(CDate(rel_tb_starttime.Text), "HH:mm:01"))
-                                    comm.Parameters.AddWithValue("@b", Format(CDate(rel_tb_startdate.Value), "yyyy-MM-dd") & " " & Format(CDate(rel_tb_endtime.Text), "HH:mm"))
-                                    READER = comm.ExecuteReader
-                                    Dim count As Integer
-                                    While READER.Read
-                                        count = count + 1
-                                    End While
+                            comm = New MySqlCommand(query, MysqlConn)
+                            comm.Parameters.AddWithValue("@RE_equipmentsn", newserial)
+                            comm.Parameters.AddWithValue("@a", Format(CDate(rel_tb_startdate.Value), "yyyy-MM-dd") & " " & Format(CDate(rel_tb_starttime.Text), "HH:mm:01"))
+                            comm.Parameters.AddWithValue("@b", Format(CDate(rel_tb_startdate.Value), "yyyy-MM-dd") & " " & Format(CDate(rel_tb_endtime.Text), "HH:mm"))
+                            READER = comm.ExecuteReader
+                            Dim count As Integer
+                            While READER.Read
+                                count = count + 1
+                            End While
 
-                                    If count > 0 Then
-                                        errorcount = True
-                                    End If
+                            If count > 0 Then
+                                errorcount = True
+                            End If
                             MysqlConn.Close() 'to check if new equipment is also in conflict
-                            If errorcount = False
+                            If errorcount = False Then
                                 MysqlConn.Open()
                                 query = "UPDATE ceutltdscheduler.reservation SET equipmentsn=@new_sn WHERE reservationno=@resno and equipmenttype=@old_eqtype and equipment=@old_equipment and equipmentno=@old_equipmentnumber; UPDATE ceutltdscheduler.reservation SET equipment=(SELECT equipmentmodel FROM ceutltdprevmaintenance.equipmentlist where equipmentserial=@new_sn),equipmentno=(SELECT equipmentnumber FROM ceutltdprevmaintenance.equipmentlist where equipmentserial=@new_sn) WHERE reservationno=@resno and equipmenttype=@old_eqtype and equipment=@old_equipment and equipmentno=@old_equipmentnumber; UPDATE ceutltdscheduler.reservation_equipments SET equipmentsn=@new_sn, equipment=(SELECT equipmentmodel FROM ceutltdprevmaintenance.equipmentlist where equipmentserial=@new_sn), equipmentno=(SELECT equipmentnumber FROM ceutltdprevmaintenance.equipmentlist where equipmentserial=@new_sn), res_status='Released' WHERE reservationno=@resno and equipmenttype=@old_eqtype and equipment=@old_equipment and equipmentno=@old_equipmentnumber; INSERT INTO ceutltdscheduler.released_info (rel_id_passnum,rel_reservation_no,rel_borrower,rel_eqtype,rel_eqsn,rel_equipment_no,rel_equipment,rel_assign_date,rel_starttime,rel_endtime,rel_status,rel_reservedby,rel_releasedby,rel_isSMS_Sent,rel_bor_mobileno) VALUES(@i_a,@i_b,@i_c,@old_eqtype,@new_sn,@i_d,@i_e,@i_f,@i_g,@i_h,@i_i,@i_j,@i_k,@is_SMS_Sent,@i_l)"
                                 comm = New MySqlCommand(query, MysqlConn)
@@ -2230,10 +2241,10 @@ Public Class Main
                                 RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                                 Login.log_lbl_dbstatus.Text = "Offline"
                                 Login.log_lbl_dbstatus.ForeColor = Color.Red
-                                Login.lbl_prevmain_status.Text="Unavailable"
-                                Login.lbl_prevmain_status.ForeColor=Color.Red
-                                Login.lbl_reservation_status.Text="Unavailable"
-                                Login.lbl_reservation_status.ForeColor=Color.Red
+                                Login.lbl_prevmain_status.Text = "Unavailable"
+                                Login.lbl_prevmain_status.ForeColor = Color.Red
+                                Login.lbl_reservation_status.Text = "Unavailable"
+                                Login.lbl_reservation_status.ForeColor = Color.Red
                                 Return
                             Else
                                 RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -2257,90 +2268,90 @@ Public Class Main
                         Dim Query As String
                         Dim errorcount As Boolean = False
                         MysqlConn.Open()
-                            Query = "SELECT equipmentserial from ceutltdprevmaintenance.equipmentlist where equipmentnumber=@a and equipmentmodel=@b and equipmentname=@c"
-                            comm = New MySqlCommand(query, MysqlConn)
-                            comm.Parameters.AddWithValue("@a", rel_tb_equipmentnum.Text)
-                            comm.Parameters.AddWithValue("@b", rel_tb_equipment.Text)
-                            comm.Parameters.AddWithValue("@c", oldEqtypSelected)
-                            READER = comm.ExecuteReader
-                            While READER.Read
-                                newserial = (READER.GetString("equipmentserial"))
-                            End While
-                            MysqlConn.Close()
+                        Query = "SELECT equipmentserial from ceutltdprevmaintenance.equipmentlist where equipmentnumber=@a and equipmentmodel=@b and equipmentname=@c"
+                        comm = New MySqlCommand(Query, MysqlConn)
+                        comm.Parameters.AddWithValue("@a", rel_tb_equipmentnum.Text)
+                        comm.Parameters.AddWithValue("@b", rel_tb_equipment.Text)
+                        comm.Parameters.AddWithValue("@c", oldEqtypSelected)
+                        READER = comm.ExecuteReader
+                        While READER.Read
+                            newserial = (READER.GetString("equipmentserial"))
+                        End While
+                        MysqlConn.Close()
 
-                            MysqlConn.Open()
-                            Query = "SELECT * FROM ceutltdscheduler.reservation natural join ceutltdscheduler.reservation_equipments WHERE equipmentsn=@RE_equipmentsn AND ((((@a) BETWEEN CONCAT(date,' ',starttime) AND CONCAT(date,' ',endtime)) OR (@b BETWEEN CONCAT(date,' ',starttime) AND CONCAT(date,' ',endtime))) OR ((DATE_FORMAT(@a,'%Y-%m-%d %H:%i:%s') <= CONCAT(date,' ',starttime)) AND (DATE_FORMAT(@b,'%Y-%m-%d %H:%i:%s') >= CONCAT(date,' ',endtime)) AND CONCAT(date,' ',endtime) >= DATE_FORMAT(@a,'%Y-%m-%d %H:%i:%s'))) AND (res_status='Released')"
-                                    comm = New MySqlCommand(query, MysqlConn)
-                                    comm.Parameters.AddWithValue("@RE_equipmentsn",newserial)
-                                    comm.Parameters.AddWithValue("@a", Format(CDate(rel_tb_startdate.Value), "yyyy-MM-dd") & " " & Format(CDate(rel_tb_starttime.Text), "HH:mm"))
-                                    comm.Parameters.AddWithValue("@b", Format(CDate(rel_tb_startdate.Value), "yyyy-MM-dd") & " " & Format(CDate(rel_tb_endtime.Text), "HH:mm"))
-                                    READER = comm.ExecuteReader
-                                    Dim count As Integer
-                                    While READER.Read
-                                        count = count + 1
-                                    End While
+                        MysqlConn.Open()
+                        Query = "SELECT * FROM ceutltdscheduler.reservation natural join ceutltdscheduler.reservation_equipments WHERE equipmentsn=@RE_equipmentsn AND ((((@a) BETWEEN CONCAT(date,' ',starttime) AND CONCAT(date,' ',endtime)) OR (@b BETWEEN CONCAT(date,' ',starttime) AND CONCAT(date,' ',endtime))) OR ((DATE_FORMAT(@a,'%Y-%m-%d %H:%i:%s') <= CONCAT(date,' ',starttime)) AND (DATE_FORMAT(@b,'%Y-%m-%d %H:%i:%s') >= CONCAT(date,' ',endtime)) AND CONCAT(date,' ',endtime) >= DATE_FORMAT(@a,'%Y-%m-%d %H:%i:%s'))) AND (res_status='Released')"
+                        comm = New MySqlCommand(Query, MysqlConn)
+                        comm.Parameters.AddWithValue("@RE_equipmentsn", newserial)
+                        comm.Parameters.AddWithValue("@a", Format(CDate(rel_tb_startdate.Value), "yyyy-MM-dd") & " " & Format(CDate(rel_tb_starttime.Text), "HH:mm"))
+                        comm.Parameters.AddWithValue("@b", Format(CDate(rel_tb_startdate.Value), "yyyy-MM-dd") & " " & Format(CDate(rel_tb_endtime.Text), "HH:mm"))
+                        READER = comm.ExecuteReader
+                        Dim count As Integer
+                        While READER.Read
+                            count = count + 1
+                        End While
 
-                                    If count > 0 Then
-                                        errorcount = True
-                                    End If
-                            MysqlConn.Close()
+                        If count > 0 Then
+                            errorcount = True
+                        End If
+                        MysqlConn.Close()
 
                         'Insert Data if no conflict
                         If errorcount = False Then
-                        MysqlConn.Open()
-                        Query = "INSERT INTO ceutltdscheduler.released_info (rel_id_passnum,rel_reservation_no,rel_borrower,rel_eqtype,rel_eqsn,rel_equipment_no,rel_equipment,rel_assign_date,rel_starttime,rel_endtime,rel_status,rel_reservedby,rel_releasedby,rel_isSMS_Sent,rel_bor_mobileno) VALUES(@i_a,@i_b,@i_c,@old_eqtype,@current_serial,@i_d,@i_e,@i_f,@i_g,@i_h,@i_i,@i_j,@i_k,@isSMSSent,@i_l); UPDATE ceutltdscheduler.reservation_equipments SET res_status=@i_i WHERE reservationno=@i_b and equipmentno=@i_d and equipment=@i_e"
-                        comm = New MySqlCommand(Query, MysqlConn)
-                        comm.Parameters.AddWithValue("@i_a", rel_tb_id.Text)
-                        comm.Parameters.AddWithValue("@i_b", rel_tb_reservationnum.Text)
-                        comm.Parameters.AddWithValue("@i_c", rel_tb_borrower.Text)
-                        comm.Parameters.AddWithValue("@current_serial",oldEqSerialSelected)
-                        comm.Parameters.AddWithValue("@old_eqtype", oldEqtypSelected)
-                        comm.Parameters.AddWithValue("@i_d", rel_tb_equipmentnum.Text)
-                        comm.Parameters.AddWithValue("@i_e", rel_tb_equipment.Text)
-                        comm.Parameters.AddWithValue("@i_f", Format(CDate(rel_tb_startdate.Value), "yyyy-MM-dd"))
-                        comm.Parameters.AddWithValue("@i_g", Format(CDate(rel_tb_starttime.Text), "HH:mm"))
-                        comm.Parameters.AddWithValue("@i_h", Format(CDate(rel_tb_endtime.Text), "HH:mm"))
-                        comm.Parameters.AddWithValue("@i_i", "Released")
-                        comm.Parameters.AddWithValue("@i_j", rel_nameofstaff_recorder.Text)
-                        comm.Parameters.AddWithValue("@i_k", rel_nameofstaff_release.Text)
-                        comm.Parameters.AddWithValue("@i_l", lbl_MobileNo.Text)
-                        comm.Parameters.AddWithValue("@isSMSSent", "0")
+                            MysqlConn.Open()
+                            Query = "INSERT INTO ceutltdscheduler.released_info (rel_id_passnum,rel_reservation_no,rel_borrower,rel_eqtype,rel_eqsn,rel_equipment_no,rel_equipment,rel_assign_date,rel_starttime,rel_endtime,rel_status,rel_reservedby,rel_releasedby,rel_isSMS_Sent,rel_bor_mobileno) VALUES(@i_a,@i_b,@i_c,@old_eqtype,@current_serial,@i_d,@i_e,@i_f,@i_g,@i_h,@i_i,@i_j,@i_k,@isSMSSent,@i_l); UPDATE ceutltdscheduler.reservation_equipments SET res_status=@i_i WHERE reservationno=@i_b and equipmentno=@i_d and equipment=@i_e"
+                            comm = New MySqlCommand(Query, MysqlConn)
+                            comm.Parameters.AddWithValue("@i_a", rel_tb_id.Text)
+                            comm.Parameters.AddWithValue("@i_b", rel_tb_reservationnum.Text)
+                            comm.Parameters.AddWithValue("@i_c", rel_tb_borrower.Text)
+                            comm.Parameters.AddWithValue("@current_serial", oldEqSerialSelected)
+                            comm.Parameters.AddWithValue("@old_eqtype", oldEqtypSelected)
+                            comm.Parameters.AddWithValue("@i_d", rel_tb_equipmentnum.Text)
+                            comm.Parameters.AddWithValue("@i_e", rel_tb_equipment.Text)
+                            comm.Parameters.AddWithValue("@i_f", Format(CDate(rel_tb_startdate.Value), "yyyy-MM-dd"))
+                            comm.Parameters.AddWithValue("@i_g", Format(CDate(rel_tb_starttime.Text), "HH:mm"))
+                            comm.Parameters.AddWithValue("@i_h", Format(CDate(rel_tb_endtime.Text), "HH:mm"))
+                            comm.Parameters.AddWithValue("@i_i", "Released")
+                            comm.Parameters.AddWithValue("@i_j", rel_nameofstaff_recorder.Text)
+                            comm.Parameters.AddWithValue("@i_k", rel_nameofstaff_release.Text)
+                            comm.Parameters.AddWithValue("@i_l", lbl_MobileNo.Text)
+                            comm.Parameters.AddWithValue("@isSMSSent", "0")
 
-                        READER = comm.ExecuteReader
-                        MysqlConn.Close()
-                        RadMessageBox.Show(Me, "Equipment successfully released!", system_Name, MessageBoxButtons.OK, RadMessageIcon.Info)
+                            READER = comm.ExecuteReader
+                            MysqlConn.Close()
+                            RadMessageBox.Show(Me, "Equipment successfully released!", system_Name, MessageBoxButtons.OK, RadMessageIcon.Info)
                         Else
-                        RadMessageBox.Show(Me, "Equipment not successfully released because this equipment is still released! Please choose another equipment.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
-                        Exit Sub
-                    End If
-                    'Query = "delete from reservation where  reservationno = '" & rel_tb_reservationnum.Text & "'"
+                            RadMessageBox.Show(Me, "Equipment not successfully released because this equipment is still released! Please choose another equipment.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
+                            Exit Sub
+                        End If
+                        'Query = "delete from reservation where  reservationno = '" & rel_tb_reservationnum.Text & "'"
 
-                    'comm.Parameters.AddWithValue("ID", rel_tb_id.Text)
-                    'comm.Parameters.AddWithValue("ID", rel_tb_id.Text)
-                    'comm.Parameters.AddWithValue("ID", rel_tb_id.Text)
-                    
-                    rel_tb_borrower.Text = ""
-                    rel_tb_startdate.Text = "01/01/99"
-                    rel_tb_id.Text = "0"
-                    rel_tb_id.Enabled = False
-                    rel_tb_starttime.Text = ""
-                    rel_tb_endtime.Text = ""
-                    'rel_tb_status.Text = ""
-                    rel_tb_equipment.Text = ""
-                    rel_tb_equipmentnum.Text = ""
-                    rel_nameofstaff_recorder.Text = ""
-                    show_hide_txt_lbl()
-                    rel_tb_id.Enabled = False
-                    load_released_list()
-                    load_released_list2()
-                    reserved_load_table()
-                    load_rec_table("NONE", True)
-                    'color_coding()
-                    released_btn_release.Enabled = False
-                    changedEquipment = False
+                        'comm.Parameters.AddWithValue("ID", rel_tb_id.Text)
+                        'comm.Parameters.AddWithValue("ID", rel_tb_id.Text)
+                        'comm.Parameters.AddWithValue("ID", rel_tb_id.Text)
+
+                        rel_tb_borrower.Text = ""
+                        rel_tb_startdate.Text = "01/01/99"
+                        rel_tb_id.Text = "0"
+                        rel_tb_id.Enabled = False
+                        rel_tb_starttime.Text = ""
+                        rel_tb_endtime.Text = ""
+                        'rel_tb_status.Text = ""
+                        rel_tb_equipment.Text = ""
+                        rel_tb_equipmentnum.Text = ""
+                        rel_nameofstaff_recorder.Text = ""
+                        show_hide_txt_lbl()
+                        rel_tb_id.Enabled = False
+                        load_released_list()
+                        load_released_list2()
+                        reserved_load_table()
+                        load_rec_table("NONE", True)
+                        'color_coding()
+                        released_btn_release.Enabled = False
+                        changedEquipment = False
+                    End If
                 End If
             End If
-           End If
         Catch ex As MySqlException
             If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") Or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") Or ex.Message.Contains("Reading from the stream has failed"))) Then
                 refresh_main_rgv_recordedacademicsonly.Stop()
@@ -2348,10 +2359,10 @@ Public Class Main
                 RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                 Login.log_lbl_dbstatus.Text = "Offline"
                 Login.log_lbl_dbstatus.ForeColor = Color.Red
-                Login.lbl_prevmain_status.Text="Unavailable"
-                Login.lbl_prevmain_status.ForeColor=Color.Red
-                Login.lbl_reservation_status.Text="Unavailable"
-                Login.lbl_reservation_status.ForeColor=Color.Red
+                Login.lbl_prevmain_status.Text = "Unavailable"
+                Login.lbl_prevmain_status.ForeColor = Color.Red
+                Login.lbl_reservation_status.Text = "Unavailable"
+                Login.lbl_reservation_status.ForeColor = Color.Red
                 Return
             Else
                 RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -2377,7 +2388,8 @@ Public Class Main
     End Sub
 
     Private Sub reserved_grid_list_ContextMenuOpening(sender As Object, e As ContextMenuOpeningEventArgs) Handles reserved_grid_list.ContextMenuOpening
-        If reserved_grid_list.SelectedRows.Count > 1
+        If reserved_grid_list.SelectedRows.Count > 1 Then
+
             If TypeOf Me.reserved_grid_list.CurrentRow Is GridViewDataRowInfo Then
                 Dim menu As New RadDropDownMenu()
                 Dim ReleaseMenu As New RadMenuItem("Release Selected Equipments")
@@ -2391,7 +2403,7 @@ Public Class Main
     End Sub
 
 
-     Private Sub reserved_grid_list_ReleaseRightClick(sender As Object, e As EventArgs)
+    Private Sub reserved_grid_list_ReleaseRightClick(sender As Object, e As EventArgs)
         Try
             Dim confirm As DialogResult = RadMessageBox.Show(Me, "Are you sure you want to release the selected equipments?", system_Name, MessageBoxButtons.YesNo, RadMessageIcon.Question)
             If confirm = DialogResult.Yes Then
@@ -2405,7 +2417,7 @@ Public Class Main
                     comm.Parameters.AddWithValue("@i_b", row.Cells("Reservation Number").Value.ToString)
                     comm.Parameters.AddWithValue("@i_c", row.Cells("Borrower").Value.ToString)
                     comm.Parameters.AddWithValue("@old_eqtype", row.Cells("Equipment Type").Value.ToString)
-                    comm.Parameters.AddWithValue("@current_serial",row.cells("Equipment Serial").Value.ToString)
+                    comm.Parameters.AddWithValue("@current_serial", row.Cells("Equipment Serial").Value.ToString)
                     comm.Parameters.AddWithValue("@i_d", row.Cells("Equipment No.").Value.ToString)
                     comm.Parameters.AddWithValue("@i_e", row.Cells("Equipment").Value.ToString)
                     comm.Parameters.AddWithValue("@i_f", Format(CDate(row.Cells("Date").Value.ToString), "yyyy-MM-dd"))
@@ -2425,7 +2437,7 @@ Public Class Main
                 load_released_list()
                 load_released_list2()
                 RadMessageBox.Show(Me, "Successfully released the selected equipment(s).", system_Name, MessageBoxButtons.OK, RadMessageIcon.Info)
-                
+
             End If
         Catch ex As MySqlException
             If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") Or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") Or ex.Message.Contains("Reading from the stream has failed"))) Then
@@ -2434,10 +2446,10 @@ Public Class Main
                 RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                 Login.log_lbl_dbstatus.Text = "Offline"
                 Login.log_lbl_dbstatus.ForeColor = Color.Red
-                Login.lbl_prevmain_status.Text="Unavailable"
-                Login.lbl_prevmain_status.ForeColor=Color.Red
-                Login.lbl_reservation_status.Text="Unavailable"
-                Login.lbl_reservation_status.ForeColor=Color.Red
+                Login.lbl_prevmain_status.Text = "Unavailable"
+                Login.lbl_prevmain_status.ForeColor = Color.Red
+                Login.lbl_reservation_status.Text = "Unavailable"
+                Login.lbl_reservation_status.ForeColor = Color.Red
                 Return
             Else
                 RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -2480,10 +2492,10 @@ Public Class Main
                 RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                 Login.log_lbl_dbstatus.Text = "Offline"
                 Login.log_lbl_dbstatus.ForeColor = Color.Red
-                Login.lbl_prevmain_status.Text="Unavailable"
-                Login.lbl_prevmain_status.ForeColor=Color.Red
-                Login.lbl_reservation_status.Text="Unavailable"
-                Login.lbl_reservation_status.ForeColor=Color.Red
+                Login.lbl_prevmain_status.Text = "Unavailable"
+                Login.lbl_prevmain_status.ForeColor = Color.Red
+                Login.lbl_reservation_status.Text = "Unavailable"
+                Login.lbl_reservation_status.ForeColor = Color.Red
                 Return
             Else
                 RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -2560,7 +2572,7 @@ Public Class Main
 
             MysqlConn.Open()
             Dim query As String
-            query = "Select reservationno as 'Reservation Number', borrower as 'Borrower', equipmenttype as 'Equipment Type', equipmentsn as 'Equipment Serial', equipmentno as 'Equipment No.', equipment as 'Equipment', location as 'Location', DATE_FORMAT(date,'%M %d %Y') as 'Date',TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time',res_status as 'Status', reservedby as 'Recorded By', bor_mobileno as 'Mobile' from reservation natural join reservation_equipments where res_status = 'Reserved' AND date BETWEEN '" & Format(CDate(rel_fil_startdate.Value), "yyyy-MM-dd") & "' AND '" & Format(CDate(rel_fil_enddate.Value), "yyyy-MM-dd") &"' ORDER BY date ASC, starttime ASC, endtime ASC"
+            query = "Select reservationno as 'Reservation Number', borrower as 'Borrower', equipmenttype as 'Equipment Type', equipmentsn as 'Equipment Serial', equipmentno as 'Equipment No.', equipment as 'Equipment', location as 'Location', DATE_FORMAT(date,'%M %d %Y') as 'Date',TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time',res_status as 'Status', reservedby as 'Recorded By', bor_mobileno as 'Mobile' from reservation natural join reservation_equipments where res_status = 'Reserved' AND date BETWEEN '" & Format(CDate(rel_fil_startdate.Value), "yyyy-MM-dd") & "' AND '" & Format(CDate(rel_fil_enddate.Value), "yyyy-MM-dd") & "' ORDER BY date ASC, starttime ASC, endtime ASC"
             comm = New MySqlCommand(query, MysqlConn)
             sda.SelectCommand = comm
             sda.Fill(dbdataset)
@@ -2582,10 +2594,10 @@ Public Class Main
                 RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                 Login.log_lbl_dbstatus.Text = "Offline"
                 Login.log_lbl_dbstatus.ForeColor = Color.Red
-                Login.lbl_prevmain_status.Text="Unavailable"
-                Login.lbl_prevmain_status.ForeColor=Color.Red
-                Login.lbl_reservation_status.Text="Unavailable"
-                Login.lbl_reservation_status.ForeColor=Color.Red
+                Login.lbl_prevmain_status.Text = "Unavailable"
+                Login.lbl_prevmain_status.ForeColor = Color.Red
+                Login.lbl_reservation_status.Text = "Unavailable"
+                Login.lbl_reservation_status.ForeColor = Color.Red
                 Return
             Else
                 RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -2596,21 +2608,22 @@ Public Class Main
             MysqlConn.Dispose()
         End Try
     End Sub
-    Private Sub rel_dtp_dates_filter_ValueChanged(sender As Object, e As EventArgs) Handles rel_fil_startdate.ValueChanged,rel_fil_enddate.ValueChanged
+    Private Sub rel_dtp_dates_filter_ValueChanged(sender As Object, e As EventArgs) Handles rel_fil_startdate.ValueChanged, rel_fil_enddate.ValueChanged
         rel_dtp_dates_filter_delay.Interval = search_delay
-        rel_dtp_dates_filter_delay.Stop
-        rel_dtp_dates_filter_delay.Start
+        rel_dtp_dates_filter_delay.Stop()
+        rel_dtp_dates_filter_delay.Start()
     End Sub
 
     Private Sub rel_dtp_dates_filter_delay_Tick(sender As Object, e As EventArgs) Handles rel_dtp_dates_filter_delay.Tick
-        rel_dtp_dates_filter_delay.Stop
+        rel_dtp_dates_filter_delay.Stop()
+
         If rel_fil_startdate.IsHandleCreated And rel_fil_enddate.IsHandleCreated Then
-            If rel_fil_startdate.Value > rel_fil_enddate.Value Then                
+            If rel_fil_startdate.Value > rel_fil_enddate.Value Then
                 RadMessageBox.Show(Me, "The start date must be less than the end date.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
-                rel_fil_enddate.Text=Format(CDate(rel_fil_startdate.Value), "MM/d/yyyy")
+                rel_fil_enddate.Text = Format(CDate(rel_fil_startdate.Value), "MM/d/yyyy")
             Else
                 reserved_load_table()
-            End If        
+            End If
         End If
     End Sub
 
@@ -2639,7 +2652,7 @@ Public Class Main
             oldEqtypSelected = row.Cells("Equipment Type").Value.ToString
             oldEqnumberSelected = row.Cells("Equipment No.").Value.ToString
             oldEqnameSelected = row.Cells("Equipment").Value.ToString
-            oldEqSerialSelected=row.Cells("Equipment Serial").Value.ToString
+            oldEqSerialSelected = row.Cells("Equipment Serial").Value.ToString
 
             load_other_available_equipments()
             If released = "Released" Then
@@ -2668,7 +2681,7 @@ Public Class Main
 
 
                         rel_tb_id.Enabled = True
-                        reserved_grid_list_doubleClickedRecently=True
+                        reserved_grid_list_doubleClickedRecently = True
                         rel_tb_reservationnum.Show()
                         rel_tb_borrower.Show()
                         lbl_equipment.Show()
@@ -2710,10 +2723,10 @@ Public Class Main
                 RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                 Login.log_lbl_dbstatus.Text = "Offline"
                 Login.log_lbl_dbstatus.ForeColor = Color.Red
-                Login.lbl_prevmain_status.Text="Unavailable"
-                Login.lbl_prevmain_status.ForeColor=Color.Red
-                Login.lbl_reservation_status.Text="Unavailable"
-                Login.lbl_reservation_status.ForeColor=Color.Red
+                Login.lbl_prevmain_status.Text = "Unavailable"
+                Login.lbl_prevmain_status.ForeColor = Color.Red
+                Login.lbl_reservation_status.Text = "Unavailable"
+                Login.lbl_reservation_status.ForeColor = Color.Red
                 Return
             Else
                 RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -2755,10 +2768,10 @@ Public Class Main
                 RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                 Login.log_lbl_dbstatus.Text = "Offline"
                 Login.log_lbl_dbstatus.ForeColor = Color.Red
-                Login.lbl_prevmain_status.Text="Unavailable"
-                Login.lbl_prevmain_status.ForeColor=Color.Red
-                Login.lbl_reservation_status.Text="Unavailable"
-                Login.lbl_reservation_status.ForeColor=Color.Red
+                Login.lbl_prevmain_status.Text = "Unavailable"
+                Login.lbl_prevmain_status.ForeColor = Color.Red
+                Login.lbl_reservation_status.Text = "Unavailable"
+                Login.lbl_reservation_status.ForeColor = Color.Red
                 Return
             Else
                 RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -2774,14 +2787,14 @@ Public Class Main
     Private Sub Main_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
         closingYN = RadMessageBox.Show(Me, "Are you sure you want to Log-Out?", system_Name, MessageBoxButtons.YesNo, RadMessageIcon.Exclamation)
         If closingYN = MsgBoxResult.Yes Then
-            My.Settings.res_fil_startdate=rel_fil_startdate.Value
-            My.Settings.res_fil_enddate=rel_fil_enddate.Value
-            My.Settings.rec_fil_startdate=rec_dtp_fil_startdate.Value
-            My.Settings.rec_fil_enddate=rec_dtp_fil_enddate.Value
-            My.Settings.pen_fil_startdate=pen_startDate.Value
-            My.Settings.pen_fil_enddate=pen_endDate.Value
-            My.Settings.ret_fil_startdate=returned_startDate.Value
-            My.Settings.ret_fil_enddate=returned_endDate.Value
+            My.Settings.res_fil_startdate = rel_fil_startdate.Value
+            My.Settings.res_fil_enddate = rel_fil_enddate.Value
+            My.Settings.rec_fil_startdate = rec_dtp_fil_startdate.Value
+            My.Settings.rec_fil_enddate = rec_dtp_fil_enddate.Value
+            My.Settings.pen_fil_startdate = pen_startDate.Value
+            My.Settings.pen_fil_enddate = pen_endDate.Value
+            My.Settings.ret_fil_startdate = returned_startDate.Value
+            My.Settings.ret_fil_enddate = returned_endDate.Value
             My.Settings.Save()
             Me.Dispose()
             Login.Show()
@@ -2805,7 +2818,7 @@ Public Class Main
                 return_btn_returned.Enabled = True
                 ret_tb_reservationnum.Text = row.Cells("Reservation Number").Value.ToString
                 ret_tb_eqtype.Text = row.Cells("Equipment Type").Value.ToString
-                equipmentsntoreturn=row.Cells("Equipment Serial").Value.ToString
+                equipmentsntoreturn = row.Cells("Equipment Serial").Value.ToString
                 ret_tb_id.Text = row.Cells("Pass ID#").Value.ToString
                 ret_tb_borrower.Text = row.Cells("Borrower").Value.ToString
                 ret_tb_sdate.Text = row.Cells("Date").Value.ToString
@@ -3018,10 +3031,10 @@ Public Class Main
                 RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                 Login.log_lbl_dbstatus.Text = "Offline"
                 Login.log_lbl_dbstatus.ForeColor = Color.Red
-                Login.lbl_prevmain_status.Text="Unavailable"
-                Login.lbl_prevmain_status.ForeColor=Color.Red
-                Login.lbl_reservation_status.Text="Unavailable"
-                Login.lbl_reservation_status.ForeColor=Color.Red
+                Login.lbl_prevmain_status.Text = "Unavailable"
+                Login.lbl_prevmain_status.ForeColor = Color.Red
+                Login.lbl_reservation_status.Text = "Unavailable"
+                Login.lbl_reservation_status.ForeColor = Color.Red
                 Return
             Else
                 RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -3069,10 +3082,10 @@ Public Class Main
                 RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                 Login.log_lbl_dbstatus.Text = "Offline"
                 Login.log_lbl_dbstatus.ForeColor = Color.Red
-                Login.lbl_prevmain_status.Text="Unavailable"
-                Login.lbl_prevmain_status.ForeColor=Color.Red
-                Login.lbl_reservation_status.Text="Unavailable"
-                Login.lbl_reservation_status.ForeColor=Color.Red
+                Login.lbl_prevmain_status.Text = "Unavailable"
+                Login.lbl_prevmain_status.ForeColor = Color.Red
+                Login.lbl_reservation_status.Text = "Unavailable"
+                Login.lbl_reservation_status.ForeColor = Color.Red
                 Return
             Else
                 RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -3355,10 +3368,10 @@ Public Class Main
                 RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                 Login.log_lbl_dbstatus.Text = "Offline"
                 Login.log_lbl_dbstatus.ForeColor = Color.Red
-                Login.lbl_prevmain_status.Text="Unavailable"
-                Login.lbl_prevmain_status.ForeColor=Color.Red
-                Login.lbl_reservation_status.Text="Unavailable"
-                Login.lbl_reservation_status.ForeColor=Color.Red
+                Login.lbl_prevmain_status.Text = "Unavailable"
+                Login.lbl_prevmain_status.ForeColor = Color.Red
+                Login.lbl_reservation_status.Text = "Unavailable"
+                Login.lbl_reservation_status.ForeColor = Color.Red
                 Return
             Else
                 RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -3435,10 +3448,10 @@ Public Class Main
                 RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                 Login.log_lbl_dbstatus.Text = "Offline"
                 Login.log_lbl_dbstatus.ForeColor = Color.Red
-                Login.lbl_prevmain_status.Text="Unavailable"
-                Login.lbl_prevmain_status.ForeColor=Color.Red
-                Login.lbl_reservation_status.Text="Unavailable"
-                Login.lbl_reservation_status.ForeColor=Color.Red
+                Login.lbl_prevmain_status.Text = "Unavailable"
+                Login.lbl_prevmain_status.ForeColor = Color.Red
+                Login.lbl_reservation_status.Text = "Unavailable"
+                Login.lbl_reservation_status.ForeColor = Color.Red
                 Return
             Else
                 RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -3480,10 +3493,10 @@ Public Class Main
                 RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                 Login.log_lbl_dbstatus.Text = "Offline"
                 Login.log_lbl_dbstatus.ForeColor = Color.Red
-                Login.lbl_prevmain_status.Text="Unavailable"
-                Login.lbl_prevmain_status.ForeColor=Color.Red
-                Login.lbl_reservation_status.Text="Unavailable"
-                Login.lbl_reservation_status.ForeColor=Color.Red
+                Login.lbl_prevmain_status.Text = "Unavailable"
+                Login.lbl_prevmain_status.ForeColor = Color.Red
+                Login.lbl_reservation_status.Text = "Unavailable"
+                Login.lbl_reservation_status.ForeColor = Color.Red
                 Return
             Else
                 RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -3572,10 +3585,10 @@ Public Class Main
                 RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                 Login.log_lbl_dbstatus.Text = "Offline"
                 Login.log_lbl_dbstatus.ForeColor = Color.Red
-                Login.lbl_prevmain_status.Text="Unavailable"
-                Login.lbl_prevmain_status.ForeColor=Color.Red
-                Login.lbl_reservation_status.Text="Unavailable"
-                Login.lbl_reservation_status.ForeColor=Color.Red
+                Login.lbl_prevmain_status.Text = "Unavailable"
+                Login.lbl_prevmain_status.ForeColor = Color.Red
+                Login.lbl_reservation_status.Text = "Unavailable"
+                Login.lbl_reservation_status.ForeColor = Color.Red
                 Return
             Else
                 RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -3618,10 +3631,10 @@ Public Class Main
                 RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                 Login.log_lbl_dbstatus.Text = "Offline"
                 Login.log_lbl_dbstatus.ForeColor = Color.Red
-                Login.lbl_prevmain_status.Text="Unavailable"
-                Login.lbl_prevmain_status.ForeColor=Color.Red
-                Login.lbl_reservation_status.Text="Unavailable"
-                Login.lbl_reservation_status.ForeColor=Color.Red
+                Login.lbl_prevmain_status.Text = "Unavailable"
+                Login.lbl_prevmain_status.ForeColor = Color.Red
+                Login.lbl_reservation_status.Text = "Unavailable"
+                Login.lbl_reservation_status.ForeColor = Color.Red
                 Return
             Else
                 RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -3660,10 +3673,10 @@ Public Class Main
                 RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                 Login.log_lbl_dbstatus.Text = "Offline"
                 Login.log_lbl_dbstatus.ForeColor = Color.Red
-                Login.lbl_prevmain_status.Text="Unavailable"
-                Login.lbl_prevmain_status.ForeColor=Color.Red
-                Login.lbl_reservation_status.Text="Unavailable"
-                Login.lbl_reservation_status.ForeColor=Color.Red
+                Login.lbl_prevmain_status.Text = "Unavailable"
+                Login.lbl_prevmain_status.ForeColor = Color.Red
+                Login.lbl_reservation_status.Text = "Unavailable"
+                Login.lbl_reservation_status.ForeColor = Color.Red
                 Return
             Else
                 RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -3705,10 +3718,10 @@ Public Class Main
                 RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                 Login.log_lbl_dbstatus.Text = "Offline"
                 Login.log_lbl_dbstatus.ForeColor = Color.Red
-                Login.lbl_prevmain_status.Text="Unavailable"
-                Login.lbl_prevmain_status.ForeColor=Color.Red
-                Login.lbl_reservation_status.Text="Unavailable"
-                Login.lbl_reservation_status.ForeColor=Color.Red
+                Login.lbl_prevmain_status.Text = "Unavailable"
+                Login.lbl_prevmain_status.ForeColor = Color.Red
+                Login.lbl_reservation_status.Text = "Unavailable"
+                Login.lbl_reservation_status.ForeColor = Color.Red
                 Return
             Else
                 RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -3768,10 +3781,10 @@ Public Class Main
                 RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                 Login.log_lbl_dbstatus.Text = "Offline"
                 Login.log_lbl_dbstatus.ForeColor = Color.Red
-                Login.lbl_prevmain_status.Text="Unavailable"
-                Login.lbl_prevmain_status.ForeColor=Color.Red
-                Login.lbl_reservation_status.Text="Unavailable"
-                Login.lbl_reservation_status.ForeColor=Color.Red
+                Login.lbl_prevmain_status.Text = "Unavailable"
+                Login.lbl_prevmain_status.ForeColor = Color.Red
+                Login.lbl_reservation_status.Text = "Unavailable"
+                Login.lbl_reservation_status.ForeColor = Color.Red
                 Return
             Else
                 RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -3805,10 +3818,10 @@ Public Class Main
             ElseIf eq_rgv_addeq.Rows.Count = 0 Then
                 RadMessageBox.Show(Me, "No equipment to be reserved.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
             Else
-				If rec_multpd.SelectedDates.Count > 0
+                If rec_multpd.SelectedDates.Count > 0 Then
                     Dim errorcount As Boolean = False
                     For selecteddatecounter As Integer = 0 To rec_multpd.SelectedDates.Count - 1
-                    Dim counter As Integer = 0
+                        Dim counter As Integer = 0
                         While counter <> eq_rgv_addeq.Rows.Count
                             MysqlConn.Close()
                             MysqlConn.Open()
@@ -3824,21 +3837,21 @@ Public Class Main
                             Dim count As Integer = 0
                             While reader.Read
                                 count = count + 1
-                                MultipurposeWindow.lst_res_conflicts.Rows.Add(reader.GetString("equipmenttype"),reader.GetString("equipmentsn"),reader.GetString("equipmentno"),reader.GetString("equipment"),DateTime.Parse(reader.GetString("date")).ToString("MMMM dd yyyy"),Format(CDate(reader.GetString("starttime")), "HH:mm"),Format(CDate(reader.GetString("endtime")), "HH:mm"))
+                                MultipurposeWindow.lst_res_conflicts.Rows.Add(reader.GetString("equipmenttype"), reader.GetString("equipmentsn"), reader.GetString("equipmentno"), reader.GetString("equipment"), DateTime.Parse(reader.GetString("date")).ToString("MMMM dd yyyy"), Format(CDate(reader.GetString("starttime")), "HH:mm"), Format(CDate(reader.GetString("endtime")), "HH:mm"))
                             End While
                             If count > 0 Then
                                 errorcount = True
                             End If
-                            counter+=1
+                            counter += 1
                         End While
-				    Next
+                    Next
                     'WHAT TO SHOW WHEN CONFLICT IS DETECTED OR NOT
-                        If errorcount=True
-                            MultipurposeWindowPanel ="B"
-					        MultipurposeWindow.ShowDialog()
-                        Else
-                            RadMessageBox.Show(Me, "All the selected equipments are available", system_Name,MessageBoxButtons.OK,RadMessageIcon.Info)
-                        End If
+                    If errorcount = True Then
+                        MultipurposeWindowPanel = "B"
+                        MultipurposeWindow.ShowDialog()
+                    Else
+                        RadMessageBox.Show(Me, "All the selected equipments are available", system_Name, MessageBoxButtons.OK, RadMessageIcon.Info)
+                    End If
 
                 Else 'Usual
                     Dim counter As Integer = 0
@@ -3858,19 +3871,19 @@ Public Class Main
                         Dim count As Integer = 0
                         While reader.Read
                             count = count + 1
-                            MultipurposeWindow.lst_res_conflicts.Rows.Add(reader.GetString("equipmenttype"),reader.GetString("equipmentsn"),reader.GetString("equipmentno"),reader.GetString("equipment"),DateTime.Parse(reader.GetString("date")).ToString("MMMM dd yyyy"),Format(CDate(reader.GetString("starttime")), "HH:mm"),Format(CDate(reader.GetString("endtime")), "HH:mm"))
+                            MultipurposeWindow.lst_res_conflicts.Rows.Add(reader.GetString("equipmenttype"), reader.GetString("equipmentsn"), reader.GetString("equipmentno"), reader.GetString("equipment"), DateTime.Parse(reader.GetString("date")).ToString("MMMM dd yyyy"), Format(CDate(reader.GetString("starttime")), "HH:mm"), Format(CDate(reader.GetString("endtime")), "HH:mm"))
                         End While
                         If count > 0 Then
                             errorcount = True
                         End If
-                        counter+=1
+                        counter += 1
                     End While
-                'WHAT TO SHOW WHEN CONFLICT IS DETECTED OR NOT
-                    If errorcount=True
-                        MultipurposeWindowPanel ="B"
-					    MultipurposeWindow.ShowDialog()
+                    'WHAT TO SHOW WHEN CONFLICT IS DETECTED OR NOT
+                    If errorcount = True Then
+                        MultipurposeWindowPanel = "B"
+                        MultipurposeWindow.ShowDialog()
                     Else
-                        RadMessageBox.Show(Me, "All the selected equipments are available", system_Name,MessageBoxButtons.OK,RadMessageIcon.Info)
+                        RadMessageBox.Show(Me, "All the selected equipments are available", system_Name, MessageBoxButtons.OK, RadMessageIcon.Info)
                     End If
                 End If
             End If
@@ -3881,10 +3894,10 @@ Public Class Main
                 RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                 Login.log_lbl_dbstatus.Text = "Offline"
                 Login.log_lbl_dbstatus.ForeColor = Color.Red
-                Login.lbl_prevmain_status.Text="Unavailable"
-                Login.lbl_prevmain_status.ForeColor=Color.Red
-                Login.lbl_reservation_status.Text="Unavailable"
-                Login.lbl_reservation_status.ForeColor=Color.Red
+                Login.lbl_prevmain_status.Text = "Unavailable"
+                Login.lbl_prevmain_status.ForeColor = Color.Red
+                Login.lbl_reservation_status.Text = "Unavailable"
+                Login.lbl_reservation_status.ForeColor = Color.Red
                 Return
             Else
                 RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -3937,46 +3950,46 @@ Public Class Main
                         If dupdup Then
                             RadMessageBox.Show(Me, "Please remove duplicates in the added equipments.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error, MessageBoxDefaultButton.Button1)
                         Else
-                                'BENDO Background Worker START
-				            If rec_multpd.SelectedDates.Count > 0 And rec_chk_multpd.Checked
-                            Dim errorcount As Boolean = False
-                            For selecteddatecounter As Integer = 0 To rec_multpd.SelectedDates.Count - 1
-                            Dim counter As Integer = 0
-                            If eq_rgv_addeq.Rows.Count > 0 Then
-                                While counter <> eq_rgv_addeq.Rows.Count
+                            'BENDO Background Worker START
+                            If rec_multpd.SelectedDates.Count > 0 And rec_chk_multpd.Checked Then
+                                Dim errorcount As Boolean = False
+                                For selecteddatecounter As Integer = 0 To rec_multpd.SelectedDates.Count - 1
+                                    Dim counter As Integer = 0
+                                    If eq_rgv_addeq.Rows.Count > 0 Then
+                                        While counter <> eq_rgv_addeq.Rows.Count
 
-                                    Dim equipmentnorgv As String = eq_rgv_addeq.Rows(counter).Cells(0).Value
-                                    Dim equipmentrgv As String = eq_rgv_addeq.Rows(counter).Cells(1).Value
-                                    Dim equipmentsnrgv As String = eq_rgv_addeq.Rows(counter).Cells(2).Value
-                                    Dim equipmenttypergv As String = eq_rgv_addeq.Rows(counter).Cells(3).Value
+                                            Dim equipmentnorgv As String = eq_rgv_addeq.Rows(counter).Cells(0).Value
+                                            Dim equipmentrgv As String = eq_rgv_addeq.Rows(counter).Cells(1).Value
+                                            Dim equipmentsnrgv As String = eq_rgv_addeq.Rows(counter).Cells(2).Value
+                                            Dim equipmenttypergv As String = eq_rgv_addeq.Rows(counter).Cells(3).Value
 
-                                    MysqlConn.Close()
-                                    MysqlConn.Open()
+                                            MysqlConn.Close()
+                                            MysqlConn.Open()
 
-                                    query = "SELECT * FROM ceutltdscheduler.reservation natural join ceutltdscheduler.reservation_equipments WHERE equipment=@RE_equipment AND equipmentsn=@RE_equipmentsn AND equipmentno=@RE_equipmentno AND ((((@a) BETWEEN CONCAT(date,' ',starttime) AND CONCAT(date,' ',endtime)) OR (@b BETWEEN CONCAT(date,' ',starttime) AND CONCAT(date,' ',endtime))) OR ((DATE_FORMAT(@a,'%Y-%m-%d %H:%i:%s') <= CONCAT(date,' ',starttime)) AND (DATE_FORMAT(@b,'%Y-%m-%d %H:%i:%s') >= CONCAT(date,' ',endtime)) AND CONCAT(date,' ',endtime) >= DATE_FORMAT(@a,'%Y-%m-%d %H:%i:%s'))) AND (res_status='Reserved' OR res_status='Released')"
-                                    comm = New MySqlCommand(query, MysqlConn)
-                                    comm.Parameters.AddWithValue("RE_reservationno", rec_cb_reserveno.Text)
-                                    comm.Parameters.AddWithValue("RE_equipment", equipmentrgv)
-                                    comm.Parameters.AddWithValue("RE_equipmentsn", equipmentsnrgv)
-                                    comm.Parameters.AddWithValue("RE_equipmentno", equipmentnorgv)
-                                    comm.Parameters.AddWithValue("@a", Format(CDate(rec_multpd.SelectedDates(selecteddatecounter)), "yyyy-MM-dd") & " " & Format(CDate(rec_dtp_starttime.Text), "HH:mm:01"))
-                                    comm.Parameters.AddWithValue("@b", Format(CDate(rec_multpd.SelectedDates(selecteddatecounter)), "yyyy-MM-dd") & " " & Format(CDate(rec_dtp_endtime.Text), "HH:mm"))
+                                            query = "SELECT * FROM ceutltdscheduler.reservation natural join ceutltdscheduler.reservation_equipments WHERE equipment=@RE_equipment AND equipmentsn=@RE_equipmentsn AND equipmentno=@RE_equipmentno AND ((((@a) BETWEEN CONCAT(date,' ',starttime) AND CONCAT(date,' ',endtime)) OR (@b BETWEEN CONCAT(date,' ',starttime) AND CONCAT(date,' ',endtime))) OR ((DATE_FORMAT(@a,'%Y-%m-%d %H:%i:%s') <= CONCAT(date,' ',starttime)) AND (DATE_FORMAT(@b,'%Y-%m-%d %H:%i:%s') >= CONCAT(date,' ',endtime)) AND CONCAT(date,' ',endtime) >= DATE_FORMAT(@a,'%Y-%m-%d %H:%i:%s'))) AND (res_status='Reserved' OR res_status='Released')"
+                                            comm = New MySqlCommand(query, MysqlConn)
+                                            comm.Parameters.AddWithValue("RE_reservationno", rec_cb_reserveno.Text)
+                                            comm.Parameters.AddWithValue("RE_equipment", equipmentrgv)
+                                            comm.Parameters.AddWithValue("RE_equipmentsn", equipmentsnrgv)
+                                            comm.Parameters.AddWithValue("RE_equipmentno", equipmentnorgv)
+                                            comm.Parameters.AddWithValue("@a", Format(CDate(rec_multpd.SelectedDates(selecteddatecounter)), "yyyy-MM-dd") & " " & Format(CDate(rec_dtp_starttime.Text), "HH:mm:01"))
+                                            comm.Parameters.AddWithValue("@b", Format(CDate(rec_multpd.SelectedDates(selecteddatecounter)), "yyyy-MM-dd") & " " & Format(CDate(rec_dtp_endtime.Text), "HH:mm"))
 
-                                    READER = comm.ExecuteReader
-                                    Dim count As Integer
-                                    While READER.Read
-                                        count = count + 1
-                                        MultipurposeWindow.lst_res_conflicts.Rows.Add(reader.GetString("equipmenttype"),reader.GetString("equipmentsn"),reader.GetString("equipmentno"),reader.GetString("equipment"),DateTime.Parse(reader.GetString("date")).ToString("MMMM dd yyyy"),Format(CDate(reader.GetString("starttime")), "HH:mm"),Format(CDate(reader.GetString("endtime")), "HH:mm"))
-                                    End While
+                                            READER = comm.ExecuteReader
+                                            Dim count As Integer
+                                            While READER.Read
+                                                count = count + 1
+                                                MultipurposeWindow.lst_res_conflicts.Rows.Add(READER.GetString("equipmenttype"), READER.GetString("equipmentsn"), READER.GetString("equipmentno"), READER.GetString("equipment"), DateTime.Parse(READER.GetString("date")).ToString("MMMM dd yyyy"), Format(CDate(READER.GetString("starttime")), "HH:mm"), Format(CDate(READER.GetString("endtime")), "HH:mm"))
+                                            End While
 
-                                    If count > 0 Then
-                                        errorcount = True
-                                    Else
-                                        borrower_firstname = rec_cb_borrower.Text.Substring(rec_cb_borrower.Text.IndexOf(",") + 2, rec_cb_borrower.Text.Length - rec_cb_borrower.Text.IndexOf(", ") - 2)
-                                        borrower_lastname = rec_cb_borrower.Text.Substring(0, rec_cb_borrower.Text.IndexOf(","))
-                                        MysqlConn.Close()
-                                        GetMobileNo_of_Reserver()
-                                        MysqlConn.Open()
+                                            If count > 0 Then
+                                                errorcount = True
+                                            Else
+                                                borrower_firstname = rec_cb_borrower.Text.Substring(rec_cb_borrower.Text.IndexOf(",") + 2, rec_cb_borrower.Text.Length - rec_cb_borrower.Text.IndexOf(", ") - 2)
+                                                borrower_lastname = rec_cb_borrower.Text.Substring(0, rec_cb_borrower.Text.IndexOf(","))
+                                                MysqlConn.Close()
+                                                GetMobileNo_of_Reserver()
+                                                MysqlConn.Open()
                                                 query = "INSERT INTO ceutltdscheduler.reservation VALUES(@a,@r,@b,@c,@d,@e,@f,@g,@h,@i,@mobileno,@j,@k,@l,@m);" _
                                                 & "INSERT INTO ceutltdscheduler.reservation_equipments VALUES(@n,@r,@o,@p,@q,'Reserved');"
                                                 '& "INSERT INTO borrowstatistics VALUES(@d);"
@@ -4016,109 +4029,109 @@ Public Class Main
                                     End If
                                     auto_generate_reservationno()
                                 Next
-                            If errorcount = False Then
-                                RadMessageBox.Show(Me, "Succesfully reserved all of the equipment(s)!", system_Name, MessageBoxButtons.OK, RadMessageIcon.Info)
-                                eq_rgv_addeq.Rows.Clear()
-                                main_load_academicsonly()
-                                load_rec_table("NONE", True)
-                                reserved_load_table()
-                            Else
-                                MultipurposeWindowPanel ="B"
-					            MultipurposeWindow.ShowDialog()
-                            End If
+                                If errorcount = False Then
+                                    RadMessageBox.Show(Me, "Succesfully reserved all of the equipment(s)!", system_Name, MessageBoxButtons.OK, RadMessageIcon.Info)
+                                    eq_rgv_addeq.Rows.Clear()
+                                    main_load_academicsonly()
+                                    load_rec_table("NONE", True)
+                                    reserved_load_table()
+                                Else
+                                    MultipurposeWindowPanel = "B"
+                                    MultipurposeWindow.ShowDialog()
+                                End If
 
 
                             Else 'Usual
-                            Dim counter As Integer = 0
-                            Dim errorcount As Boolean = False
-                            If eq_rgv_addeq.Rows.Count > 0 Then
-                                While counter <> eq_rgv_addeq.Rows.Count
+                                Dim counter As Integer = 0
+                                Dim errorcount As Boolean = False
+                                If eq_rgv_addeq.Rows.Count > 0 Then
+                                    While counter <> eq_rgv_addeq.Rows.Count
 
-                                    Dim equipmentnorgv As String = eq_rgv_addeq.Rows(counter).Cells(0).Value
-                                    Dim equipmentrgv As String = eq_rgv_addeq.Rows(counter).Cells(1).Value
-                                    Dim equipmentsnrgv As String = eq_rgv_addeq.Rows(counter).Cells(2).Value
-                                    Dim equipmenttypergv As String = eq_rgv_addeq.Rows(counter).Cells(3).Value
+                                        Dim equipmentnorgv As String = eq_rgv_addeq.Rows(counter).Cells(0).Value
+                                        Dim equipmentrgv As String = eq_rgv_addeq.Rows(counter).Cells(1).Value
+                                        Dim equipmentsnrgv As String = eq_rgv_addeq.Rows(counter).Cells(2).Value
+                                        Dim equipmenttypergv As String = eq_rgv_addeq.Rows(counter).Cells(3).Value
 
-                                    MysqlConn.Close()
-                                    MysqlConn.Open()
-
-                                    query = "SELECT * FROM ceutltdscheduler.reservation natural join ceutltdscheduler.reservation_equipments WHERE equipment=@RE_equipment AND equipmentsn=@RE_equipmentsn AND equipmentno=@RE_equipmentno AND ((((@a) BETWEEN CONCAT(date,' ',starttime) AND CONCAT(date,' ',endtime)) OR (@b BETWEEN CONCAT(date,' ',starttime) AND CONCAT(date,' ',endtime))) OR ((DATE_FORMAT(@a,'%Y-%m-%d %H:%i:%s') <= CONCAT(date,' ',starttime)) AND (DATE_FORMAT(@b,'%Y-%m-%d %H:%i:%s') >= CONCAT(date,' ',endtime)) AND CONCAT(date,' ',endtime) >= DATE_FORMAT(@a,'%Y-%m-%d %H:%i:%s'))) AND (res_status='Reserved' OR res_status='Released')"
-                                    comm = New MySqlCommand(query, MysqlConn)
-                                    comm.Parameters.AddWithValue("RE_reservationno", rec_cb_reserveno.Text)
-                                    comm.Parameters.AddWithValue("RE_equipment", equipmentrgv)
-                                    comm.Parameters.AddWithValue("RE_equipmentsn", equipmentsnrgv)
-                                    comm.Parameters.AddWithValue("RE_equipmentno", equipmentnorgv)
-                                    comm.Parameters.AddWithValue("@a", Format(CDate(rec_dtp_date.Value), "yyyy-MM-dd") & " " & Format(CDate(rec_dtp_starttime.Text), "HH:mm:01"))
-                                    comm.Parameters.AddWithValue("@b", Format(CDate(rec_dtp_date.Value), "yyyy-MM-dd") & " " & Format(CDate(rec_dtp_endtime.Text), "HH:mm"))
-
-                                    READER = comm.ExecuteReader
-                                    Dim count As Integer
-                                    While READER.Read
-                                        count = count + 1
-                                        MultipurposeWindow.lst_res_conflicts.Rows.Add(reader.GetString("equipmenttype"),reader.GetString("equipmentsn"),reader.GetString("equipmentno"),reader.GetString("equipment"),DateTime.Parse(reader.GetString("date")).ToString("MMMM dd yyyy"),Format(CDate(reader.GetString("starttime")), "HH:mm"),Format(CDate(reader.GetString("endtime")), "HH:mm"))
-                                    End While
-
-                                    If count > 0 Then
-                                        errorcount = True
-                                    Else
-                                        borrower_firstname = rec_cb_borrower.Text.Substring(rec_cb_borrower.Text.IndexOf(",") + 2, rec_cb_borrower.Text.Length - rec_cb_borrower.Text.IndexOf(", ") - 2)
-                                        borrower_lastname = rec_cb_borrower.Text.Substring(0, rec_cb_borrower.Text.IndexOf(","))
                                         MysqlConn.Close()
-                                        GetMobileNo_of_Reserver()
                                         MysqlConn.Open()
+
+                                        query = "SELECT * FROM ceutltdscheduler.reservation natural join ceutltdscheduler.reservation_equipments WHERE equipment=@RE_equipment AND equipmentsn=@RE_equipmentsn AND equipmentno=@RE_equipmentno AND ((((@a) BETWEEN CONCAT(date,' ',starttime) AND CONCAT(date,' ',endtime)) OR (@b BETWEEN CONCAT(date,' ',starttime) AND CONCAT(date,' ',endtime))) OR ((DATE_FORMAT(@a,'%Y-%m-%d %H:%i:%s') <= CONCAT(date,' ',starttime)) AND (DATE_FORMAT(@b,'%Y-%m-%d %H:%i:%s') >= CONCAT(date,' ',endtime)) AND CONCAT(date,' ',endtime) >= DATE_FORMAT(@a,'%Y-%m-%d %H:%i:%s'))) AND (res_status='Reserved' OR res_status='Released')"
+                                        comm = New MySqlCommand(query, MysqlConn)
+                                        comm.Parameters.AddWithValue("RE_reservationno", rec_cb_reserveno.Text)
+                                        comm.Parameters.AddWithValue("RE_equipment", equipmentrgv)
+                                        comm.Parameters.AddWithValue("RE_equipmentsn", equipmentsnrgv)
+                                        comm.Parameters.AddWithValue("RE_equipmentno", equipmentnorgv)
+                                        comm.Parameters.AddWithValue("@a", Format(CDate(rec_dtp_date.Value), "yyyy-MM-dd") & " " & Format(CDate(rec_dtp_starttime.Text), "HH:mm:01"))
+                                        comm.Parameters.AddWithValue("@b", Format(CDate(rec_dtp_date.Value), "yyyy-MM-dd") & " " & Format(CDate(rec_dtp_endtime.Text), "HH:mm"))
+
+                                        READER = comm.ExecuteReader
+                                        Dim count As Integer
+                                        While READER.Read
+                                            count = count + 1
+                                            MultipurposeWindow.lst_res_conflicts.Rows.Add(READER.GetString("equipmenttype"), READER.GetString("equipmentsn"), READER.GetString("equipmentno"), READER.GetString("equipment"), DateTime.Parse(READER.GetString("date")).ToString("MMMM dd yyyy"), Format(CDate(READER.GetString("starttime")), "HH:mm"), Format(CDate(READER.GetString("endtime")), "HH:mm"))
+                                        End While
+
+                                        If count > 0 Then
+                                            errorcount = True
+                                        Else
+                                            borrower_firstname = rec_cb_borrower.Text.Substring(rec_cb_borrower.Text.IndexOf(",") + 2, rec_cb_borrower.Text.Length - rec_cb_borrower.Text.IndexOf(", ") - 2)
+                                            borrower_lastname = rec_cb_borrower.Text.Substring(0, rec_cb_borrower.Text.IndexOf(","))
+                                            MysqlConn.Close()
+                                            GetMobileNo_of_Reserver()
+                                            MysqlConn.Open()
                                             query = "INSERT INTO ceutltdscheduler.reservation VALUES(@a,@r,@b,@c,@d,@e,@f,@g,@h,@i,@mobileno,@j,@k,@l,@m);" _
                                             & "INSERT INTO ceutltdscheduler.reservation_equipments VALUES(@n,@r,@o,@p,@q,'Reserved');"
                                             '& "INSERT INTO borrowstatistics VALUES(@d);"
 
                                             comm = New MySqlCommand(query, MysqlConn)
-                                        comm.Parameters.AddWithValue("@a", rec_cb_reserveno.Text)
-                                        comm.Parameters.AddWithValue("@r", equipmenttypergv)
-                                        comm.Parameters.AddWithValue("@b", equipmentnorgv)
-                                        comm.Parameters.AddWithValue("@c", equipmentrgv)
-                                        comm.Parameters.AddWithValue("@d", equipmentsnrgv)
-                                        comm.Parameters.AddWithValue("@e", rec_cb_idnum.Text)
-                                        comm.Parameters.AddWithValue("@f", Format(CDate(rec_dtp_date.Value), "yyyy-MM-dd"))
-                                        comm.Parameters.AddWithValue("@g", Format(CDate(rec_dtp_starttime.Text), "HH:mm"))
-                                        comm.Parameters.AddWithValue("@h", Format(CDate(rec_dtp_endtime.Text), "HH:mm"))
-                                        comm.Parameters.AddWithValue("@i", rec_cb_borrower.Text)
-                                        comm.Parameters.AddWithValue("@j", rec_cb_location.Text)
-                                        comm.Parameters.AddWithValue("@k", lbl_nameofstaff_reserved.Text)
-                                        comm.Parameters.AddWithValue("@l", rec_cb_acttype.Text)
-                                        comm.Parameters.AddWithValue("@m", rec_rrtc_actname.Text)
-                                        comm.Parameters.AddWithValue("@mobileno", borrower_mobileno)
+                                            comm.Parameters.AddWithValue("@a", rec_cb_reserveno.Text)
+                                            comm.Parameters.AddWithValue("@r", equipmenttypergv)
+                                            comm.Parameters.AddWithValue("@b", equipmentnorgv)
+                                            comm.Parameters.AddWithValue("@c", equipmentrgv)
+                                            comm.Parameters.AddWithValue("@d", equipmentsnrgv)
+                                            comm.Parameters.AddWithValue("@e", rec_cb_idnum.Text)
+                                            comm.Parameters.AddWithValue("@f", Format(CDate(rec_dtp_date.Value), "yyyy-MM-dd"))
+                                            comm.Parameters.AddWithValue("@g", Format(CDate(rec_dtp_starttime.Text), "HH:mm"))
+                                            comm.Parameters.AddWithValue("@h", Format(CDate(rec_dtp_endtime.Text), "HH:mm"))
+                                            comm.Parameters.AddWithValue("@i", rec_cb_borrower.Text)
+                                            comm.Parameters.AddWithValue("@j", rec_cb_location.Text)
+                                            comm.Parameters.AddWithValue("@k", lbl_nameofstaff_reserved.Text)
+                                            comm.Parameters.AddWithValue("@l", rec_cb_acttype.Text)
+                                            comm.Parameters.AddWithValue("@m", rec_rrtc_actname.Text)
+                                            comm.Parameters.AddWithValue("@mobileno", borrower_mobileno)
 
-                                        'SECOND QUERY
-                                        comm.Parameters.AddWithValue("@n", rec_cb_reserveno.Text)
-                                        comm.Parameters.AddWithValue("@o", equipmentnorgv)
-                                        comm.Parameters.AddWithValue("@p", equipmentrgv)
+                                            'SECOND QUERY
+                                            comm.Parameters.AddWithValue("@n", rec_cb_reserveno.Text)
+                                            comm.Parameters.AddWithValue("@o", equipmentnorgv)
+                                            comm.Parameters.AddWithValue("@p", equipmentrgv)
                                             comm.Parameters.AddWithValue("@q", equipmentsnrgv)
 
                                             'Execute SQL Query
                                             READER = comm.ExecuteReader
-                                        MysqlConn.Close()
+                                            MysqlConn.Close()
 
-                                    End If
-                                    counter += 1
+                                        End If
+                                        counter += 1
 
-                                End While
+                                    End While
 
-                                rowcounter = 0
-                            End If
+                                    rowcounter = 0
+                                End If
                                 auto_generate_reservationno()
-                            If errorcount = False Then
-                                RadMessageBox.Show(Me, "Succesfully reserved all of the equipment(s)!", system_Name, MessageBoxButtons.OK, RadMessageIcon.Info)
-                                rec_multpd.SelectedDates.Clear()
-                                rec_chk_multpd.Checked=False
-                                eq_rgv_addeq.Rows.Clear()
-                                main_load_academicsonly()
-                                load_rec_table("NONE", True)
-                                reserved_load_table()
-                            Else
-                                MultipurposeWindowPanel ="B"
-					            MultipurposeWindow.ShowDialog()
+                                If errorcount = False Then
+                                    RadMessageBox.Show(Me, "Succesfully reserved all of the equipment(s)!", system_Name, MessageBoxButtons.OK, RadMessageIcon.Info)
+                                    rec_multpd.SelectedDates.Clear()
+                                    rec_chk_multpd.Checked = False
+                                    eq_rgv_addeq.Rows.Clear()
+                                    main_load_academicsonly()
+                                    load_rec_table("NONE", True)
+                                    reserved_load_table()
+                                Else
+                                    MultipurposeWindowPanel = "B"
+                                    MultipurposeWindow.ShowDialog()
+                                End If
                             End If
                         End If
-                      End If
                         ''BENDO Background Worker END
                     End If
 
@@ -4131,10 +4144,10 @@ Public Class Main
                 RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                 Login.log_lbl_dbstatus.Text = "Offline"
                 Login.log_lbl_dbstatus.ForeColor = Color.Red
-                Login.lbl_prevmain_status.Text="Unavailable"
-                Login.lbl_prevmain_status.ForeColor=Color.Red
-                Login.lbl_reservation_status.Text="Unavailable"
-                Login.lbl_reservation_status.ForeColor=Color.Red
+                Login.lbl_prevmain_status.Text = "Unavailable"
+                Login.lbl_prevmain_status.ForeColor = Color.Red
+                Login.lbl_reservation_status.Text = "Unavailable"
+                Login.lbl_reservation_status.ForeColor = Color.Red
                 Return
             Else
                 RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -4165,10 +4178,10 @@ Public Class Main
                 RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                 Login.log_lbl_dbstatus.Text = "Offline"
                 Login.log_lbl_dbstatus.ForeColor = Color.Red
-                Login.lbl_prevmain_status.Text="Unavailable"
-                Login.lbl_prevmain_status.ForeColor=Color.Red
-                Login.lbl_reservation_status.Text="Unavailable"
-                Login.lbl_reservation_status.ForeColor=Color.Red
+                Login.lbl_prevmain_status.Text = "Unavailable"
+                Login.lbl_prevmain_status.ForeColor = Color.Red
+                Login.lbl_reservation_status.Text = "Unavailable"
+                Login.lbl_reservation_status.ForeColor = Color.Red
                 Return
             Else
                 RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -4199,43 +4212,43 @@ Public Class Main
     'Deletion of data in Reservation Page
     Private Sub rec_btn_delete_Click(sender As Object, e As EventArgs) Handles rec_btn_delete.Click
         Try
-            If reservation_rgv_recordeddata.SelectedRows.Count = 0
+            If reservation_rgv_recordeddata.SelectedRows.Count = 0 Then
                 RadMessageBox.Show(Me, "There is no record selected.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Exclamation)
             Else
-            Dim get_status As String = (reservation_rgv_recordeddata.SelectedRows(0).Cells("Status").Value)
+                Dim get_status As String = (reservation_rgv_recordeddata.SelectedRows(0).Cells("Status").Value)
 
-            If get_status = "Released" Then
-                RadMessageBox.Show(Me, "You can't delete this because the equipment is already released.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
-            ElseIf get_status = "Returned" Then
-                RadMessageBox.Show(Me, "You can't delete this because the equipment is already returned.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
-            ElseIf get_status = "Cancelled" Then
-                RadMessageBox.Show(Me, "You can't delete this because the equipment is already cancelled.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
-            Else
-                If MysqlConn.State = ConnectionState.Open Then
-                    MysqlConn.Close()
-                End If
-                deleteYN = RadMessageBox.Show(Me, "Are you sure you want to delete?", system_Name, MessageBoxButtons.YesNo, RadMessageIcon.Question)
-                If deleteYN = MsgBoxResult.Yes Then
+                If get_status = "Released" Then
+                    RadMessageBox.Show(Me, "You can't delete this because the equipment is already released.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
+                ElseIf get_status = "Returned" Then
+                    RadMessageBox.Show(Me, "You can't delete this because the equipment is already returned.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
+                ElseIf get_status = "Cancelled" Then
+                    RadMessageBox.Show(Me, "You can't delete this because the equipment is already cancelled.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
+                Else
+                    If MysqlConn.State = ConnectionState.Open Then
+                        MysqlConn.Close()
+                    End If
+                    deleteYN = RadMessageBox.Show(Me, "Are you sure you want to delete?", system_Name, MessageBoxButtons.YesNo, RadMessageIcon.Question)
+                    If deleteYN = MsgBoxResult.Yes Then
 
-                    MysqlConn.Open()
-                    query = "DELETE FROM reservation WHERE (reservationno=@R_rec_cb_reserveno and equipmenttype=@R_rec_eqtype and equipmentno=@R_rec_eqno and equipment=@R_rec_eqname)"
-                    comm = New MySqlCommand(query, MysqlConn)
-                    comm.Parameters.AddWithValue("R_rec_cb_reserveno", reservation_rgv_recordeddata.SelectedRows(0).Cells("Reservation Number").Value)
-                    comm.Parameters.AddWithValue("R_rec_eqtype", reservation_rgv_recordeddata.SelectedRows(0).Cells("Equipment Type").Value)
-                    comm.Parameters.AddWithValue("R_rec_eqno", reservation_rgv_recordeddata.SelectedRows(0).Cells("Equipment No.").Value)
-                    comm.Parameters.AddWithValue("R_rec_eqname", reservation_rgv_recordeddata.SelectedRows(0).Cells("Equipment").Value)
-                    'comm.Parameters.AddWithValue("R_rec_cb_idnum", reservation_rgv_recordeddata.SelectedRows(0).Cells("ID").Value)
+                        MysqlConn.Open()
+                        query = "DELETE FROM reservation WHERE (reservationno=@R_rec_cb_reserveno and equipmenttype=@R_rec_eqtype and equipmentno=@R_rec_eqno and equipment=@R_rec_eqname)"
+                        comm = New MySqlCommand(query, MysqlConn)
+                        comm.Parameters.AddWithValue("R_rec_cb_reserveno", reservation_rgv_recordeddata.SelectedRows(0).Cells("Reservation Number").Value)
+                        comm.Parameters.AddWithValue("R_rec_eqtype", reservation_rgv_recordeddata.SelectedRows(0).Cells("Equipment Type").Value)
+                        comm.Parameters.AddWithValue("R_rec_eqno", reservation_rgv_recordeddata.SelectedRows(0).Cells("Equipment No.").Value)
+                        comm.Parameters.AddWithValue("R_rec_eqname", reservation_rgv_recordeddata.SelectedRows(0).Cells("Equipment").Value)
+                        'comm.Parameters.AddWithValue("R_rec_cb_idnum", reservation_rgv_recordeddata.SelectedRows(0).Cells("ID").Value)
 
-                    reader = comm.ExecuteReader
-                    reserved_load_table()
-                    main_load_academicsonly()
-                    auto_generate_reservationno()
-                    load_rec_table("NONE", True)
-                    RadMessageBox.Show(Me, "Successfully Deleted!", system_Name, MessageBoxButtons.OK, RadMessageIcon.Info)
-                    MysqlConn.Close()
+                        reader = comm.ExecuteReader
+                        reserved_load_table()
+                        main_load_academicsonly()
+                        auto_generate_reservationno()
+                        load_rec_table("NONE", True)
+                        RadMessageBox.Show(Me, "Successfully Deleted!", system_Name, MessageBoxButtons.OK, RadMessageIcon.Info)
+                        MysqlConn.Close()
+                    End If
                 End If
             End If
-         End If
         Catch ex As MySqlException
             If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") Or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") Or ex.Message.Contains("Reading from the stream has failed"))) Then
                 refresh_main_rgv_recordedacademicsonly.Stop()
@@ -4243,10 +4256,10 @@ Public Class Main
                 RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                 Login.log_lbl_dbstatus.Text = "Offline"
                 Login.log_lbl_dbstatus.ForeColor = Color.Red
-                Login.lbl_prevmain_status.Text="Unavailable"
-                Login.lbl_prevmain_status.ForeColor=Color.Red
-                Login.lbl_reservation_status.Text="Unavailable"
-                Login.lbl_reservation_status.ForeColor=Color.Red
+                Login.lbl_prevmain_status.Text = "Unavailable"
+                Login.lbl_prevmain_status.ForeColor = Color.Red
+                Login.lbl_reservation_status.Text = "Unavailable"
+                Login.lbl_reservation_status.ForeColor = Color.Red
                 Return
             Else
                 RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -4260,45 +4273,45 @@ Public Class Main
 
     'Clearing of Fields in Reservation Page
     Private Sub rec_btn_clear_Click(sender As Object, e As EventArgs) Handles rec_btn_clear.Click
-        If Not (rec_cb_borrower.Text="" And rec_cb_location.Text="" And rec_cb_idnum.Text="" And rec_cb_acttype.Text="" And rec_cb_college_school.Text="" And rec_eq_chooseeq.Text = "" And rec_eq_chooseno.Text = "" And rec_eq_type_choose.Text = "" And rec_rrtc_actname.Text = "" And rec_chk_multpd.Checked=False) Then
-        Dim confirm As DialogResult=RadMessageBox.Show(Me, "Are you sure you want to clear all the information that you are entering?", system_Name, MessageBoxButtons.YesNo, RadMessageIcon.Question)
-        If confirm=DialogResult.Yes Then
-            auto_generate_reservationno()
-            rec_cb_borrower.Text = ""
-            rec_cb_idnum.Text = ""
-            rec_cb_acttype.Text = ""
-            rec_dtp_date.Value = Date.Now
-            rec_dtp_starttime.Text = Date.Now.ToString("HH:mm")
-            rec_dtp_endtime.Text = Date.Now.ToString("HH:mm")
-            rec_cb_college_school.Text = ""
-            rec_cb_location.Text = ""
-            rec_eq_chooseeq.Text = ""
-            rec_eq_chooseno.Text = ""
-            rec_eq_type_choose.Text = ""
-            eq_rgv_addeq.Rows.Clear()
-            rec_rrtc_actname.Text = ""
-            rec_multpd.RemoveFocusedDate(True)
-            rec_multpd.Hide()
-            rec_chk_multpd.Checked=False
-        End If
+        If Not (rec_cb_borrower.Text = "" And rec_cb_location.Text = "" And rec_cb_idnum.Text = "" And rec_cb_acttype.Text = "" And rec_cb_college_school.Text = "" And rec_eq_chooseeq.Text = "" And rec_eq_chooseno.Text = "" And rec_eq_type_choose.Text = "" And rec_rrtc_actname.Text = "" And rec_chk_multpd.Checked = False) Then
+            Dim confirm As DialogResult = RadMessageBox.Show(Me, "Are you sure you want to clear all the information that you are entering?", system_Name, MessageBoxButtons.YesNo, RadMessageIcon.Question)
+            If confirm = DialogResult.Yes Then
+                auto_generate_reservationno()
+                rec_cb_borrower.Text = ""
+                rec_cb_idnum.Text = ""
+                rec_cb_acttype.Text = ""
+                rec_dtp_date.Value = Date.Now
+                rec_dtp_starttime.Text = Date.Now.ToString("HH:mm")
+                rec_dtp_endtime.Text = Date.Now.ToString("HH:mm")
+                rec_cb_college_school.Text = ""
+                rec_cb_location.Text = ""
+                rec_eq_chooseeq.Text = ""
+                rec_eq_chooseno.Text = ""
+                rec_eq_type_choose.Text = ""
+                eq_rgv_addeq.Rows.Clear()
+                rec_rrtc_actname.Text = ""
+                rec_multpd.RemoveFocusedDate(True)
+                rec_multpd.Hide()
+                rec_chk_multpd.Checked = False
+            End If
         Else
             auto_generate_reservationno()
-       End If
+        End If
     End Sub
 
     'Loading of data in Reservation Page Grid
-    Private Sub rec_dtp_dates_filter_ValueChanged(sender As Object, e As EventArgs) Handles rec_dtp_fil_startdate.ValueChanged,rec_dtp_fil_enddate.ValueChanged
+    Private Sub rec_dtp_dates_filter_ValueChanged(sender As Object, e As EventArgs) Handles rec_dtp_fil_startdate.ValueChanged, rec_dtp_fil_enddate.ValueChanged
         rec_dtp_dates_filter_delay.Interval = search_delay
-        rec_dtp_dates_filter_delay.Stop
-        rec_dtp_dates_filter_delay.Start
+        rec_dtp_dates_filter_delay.Stop()
+        rec_dtp_dates_filter_delay.Start()
     End Sub
     'Loading of data in Main Page Grid
     Private Sub rec_dtp_dates_filter_Tick(sender As Object, e As EventArgs) Handles rec_dtp_dates_filter_delay.Tick
         rec_dtp_dates_filter_delay.Stop()
         If rec_dtp_fil_startdate.IsHandleCreated And rec_dtp_fil_enddate.IsHandleCreated Then
-            If rec_dtp_fil_enddate.Value < rec_dtp_fil_startdate.Value Then                
+            If rec_dtp_fil_enddate.Value < rec_dtp_fil_startdate.Value Then
                 RadMessageBox.Show(Me, "The start date must be less than the end date.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
-                rec_dtp_fil_enddate.Text=Format(CDate(rec_dtp_fil_startdate.Value), "MM/d/yyyy")
+                rec_dtp_fil_enddate.Text = Format(CDate(rec_dtp_fil_startdate.Value), "MM/d/yyyy")
             Else
                 load_rec_table("NONE", True)
             End If
@@ -4371,10 +4384,10 @@ Public Class Main
                 RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                 Login.log_lbl_dbstatus.Text = "Offline"
                 Login.log_lbl_dbstatus.ForeColor = Color.Red
-                Login.lbl_prevmain_status.Text="Unavailable"
-                Login.lbl_prevmain_status.ForeColor=Color.Red
-                Login.lbl_reservation_status.Text="Unavailable"
-                Login.lbl_reservation_status.ForeColor=Color.Red
+                Login.lbl_prevmain_status.Text = "Unavailable"
+                Login.lbl_prevmain_status.ForeColor = Color.Red
+                Login.lbl_reservation_status.Text = "Unavailable"
+                Login.lbl_reservation_status.ForeColor = Color.Red
                 Return
             Else
                 RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -4428,10 +4441,10 @@ Public Class Main
                     RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                     Login.log_lbl_dbstatus.Text = "Offline"
                     Login.log_lbl_dbstatus.ForeColor = Color.Red
-                    Login.lbl_prevmain_status.Text="Unavailable"
-                    Login.lbl_prevmain_status.ForeColor=Color.Red
-                    Login.lbl_reservation_status.Text="Unavailable"
-                    Login.lbl_reservation_status.ForeColor=Color.Red
+                    Login.lbl_prevmain_status.Text = "Unavailable"
+                    Login.lbl_prevmain_status.ForeColor = Color.Red
+                    Login.lbl_reservation_status.Text = "Unavailable"
+                    Login.lbl_reservation_status.ForeColor = Color.Red
                     Return
                 Else
                     RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -4480,10 +4493,10 @@ Public Class Main
                         RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                         Login.log_lbl_dbstatus.Text = "Offline"
                         Login.log_lbl_dbstatus.ForeColor = Color.Red
-                        Login.lbl_prevmain_status.Text="Unavailable"
-                        Login.lbl_prevmain_status.ForeColor=Color.Red
-                        Login.lbl_reservation_status.Text="Unavailable"
-                        Login.lbl_reservation_status.ForeColor=Color.Red
+                        Login.lbl_prevmain_status.Text = "Unavailable"
+                        Login.lbl_prevmain_status.ForeColor = Color.Red
+                        Login.lbl_reservation_status.Text = "Unavailable"
+                        Login.lbl_reservation_status.ForeColor = Color.Red
                         Return
                     Else
                         RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -4555,10 +4568,10 @@ Public Class Main
                             RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                             Login.log_lbl_dbstatus.Text = "Offline"
                             Login.log_lbl_dbstatus.ForeColor = Color.Red
-                            Login.lbl_prevmain_status.Text="Unavailable"
-                            Login.lbl_prevmain_status.ForeColor=Color.Red
-                            Login.lbl_reservation_status.Text="Unavailable"
-                            Login.lbl_reservation_status.ForeColor=Color.Red
+                            Login.lbl_prevmain_status.Text = "Unavailable"
+                            Login.lbl_prevmain_status.ForeColor = Color.Red
+                            Login.lbl_reservation_status.Text = "Unavailable"
+                            Login.lbl_reservation_status.ForeColor = Color.Red
                             Return
                         Else
                             RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -4618,10 +4631,10 @@ Public Class Main
                                 RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                                 Login.log_lbl_dbstatus.Text = "Offline"
                                 Login.log_lbl_dbstatus.ForeColor = Color.Red
-                                Login.lbl_prevmain_status.Text="Unavailable"
-                                Login.lbl_prevmain_status.ForeColor=Color.Red
-                                Login.lbl_reservation_status.Text="Unavailable"
-                                Login.lbl_reservation_status.ForeColor=Color.Red
+                                Login.lbl_prevmain_status.Text = "Unavailable"
+                                Login.lbl_prevmain_status.ForeColor = Color.Red
+                                Login.lbl_reservation_status.Text = "Unavailable"
+                                Login.lbl_reservation_status.ForeColor = Color.Red
                                 Return
                             Else
                                 RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -4681,10 +4694,10 @@ Public Class Main
                                 RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                                 Login.log_lbl_dbstatus.Text = "Offline"
                                 Login.log_lbl_dbstatus.ForeColor = Color.Red
-                                Login.lbl_prevmain_status.Text="Unavailable"
-                                Login.lbl_prevmain_status.ForeColor=Color.Red
-                                Login.lbl_reservation_status.Text="Unavailable"
-                                Login.lbl_reservation_status.ForeColor=Color.Red
+                                Login.lbl_prevmain_status.Text = "Unavailable"
+                                Login.lbl_prevmain_status.ForeColor = Color.Red
+                                Login.lbl_reservation_status.Text = "Unavailable"
+                                Login.lbl_reservation_status.ForeColor = Color.Red
                                 Return
                             Else
                                 RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -4719,7 +4732,7 @@ Public Class Main
         End If
     End Sub
 
-        Private Sub released_grid_list2_sort(sender As Object, e As GridViewCollectionChangedEventArgs) Handles released_grid_list2.SortChanged
+    Private Sub released_grid_list2_sort(sender As Object, e As GridViewCollectionChangedEventArgs) Handles released_grid_list2.SortChanged
         Dim sorts As RadSortExpressionCollection = released_grid_list2.MasterTemplate.SortDescriptors
         If sorts.Count = 0 Then
             bdsrc_released_toReturn.Sort = ""
@@ -4746,11 +4759,11 @@ Public Class Main
         End If
     End Sub
 
-        Private Sub released_gril_list2_ReturnRightClick(sender As Object, e As EventArgs)
+    Private Sub released_gril_list2_ReturnRightClick(sender As Object, e As EventArgs)
         Dim returnRightClick As DialogResult = RadMessageBox.Show(Me, "Are you sure you want to return this equipments?", system_Name, MessageBoxButtons.YesNo, RadMessageIcon.Question)
         Dim serverdatetime As String
         If returnRightClick = DialogResult.Yes Then
-         'GET SERVERTIME
+            'GET SERVERTIME
             Try
                 MysqlConn.Open()
                 Dim q As String = "SELECT date_format(now(), '%Y-%m-%d %H:%i') As SERVERTIME"
@@ -4767,10 +4780,10 @@ Public Class Main
                     RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                     Login.log_lbl_dbstatus.Text = "Offline"
                     Login.log_lbl_dbstatus.ForeColor = Color.Red
-                    Login.lbl_prevmain_status.Text="Unavailable"
-                    Login.lbl_prevmain_status.ForeColor=Color.Red
-                    Login.lbl_reservation_status.Text="Unavailable"
-                    Login.lbl_reservation_status.ForeColor=Color.Red
+                    Login.lbl_prevmain_status.Text = "Unavailable"
+                    Login.lbl_prevmain_status.ForeColor = Color.Red
+                    Login.lbl_reservation_status.Text = "Unavailable"
+                    Login.lbl_reservation_status.ForeColor = Color.Red
                     Return
                 Else
                     RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -4781,80 +4794,19 @@ Public Class Main
                 MysqlConn.Dispose()
             End Try
             'END GET SERVERTIME
-            
-            'GET Rows
-                Dim ligaw As Integer = 0
-                For Each row As GridViewRowInfo In released_grid_list2.SelectedRows
-                    row = released_grid_list2.Rows(released_grid_list2.SelectedRows(ligaw).Index)
-                    Dim elapsedTime As TimeSpan = DateTime.Parse(serverdatetime).Subtract(DateTime.Parse(Format(CDate(row.Cells("Date").Value.ToString), "yyyy-MM-dd") & " " & Format(CDate(row.Cells("End Time").Value.ToString), "HH:mm")))
-                If elapsedTime.CompareTo(TimeSpan.Zero) < 0 Then
-                Try
-                    If MysqlConn.State = ConnectionState.Open Then
-                        MysqlConn.Close()
-                    End If
-                    MysqlConn.Open()
-                    Dim Query As String = "INSERT INTO ceutltdscheduler.returned_info (ret_reservation_num,ret_id_passnum,ret_borrower,ret_eqtype,ret_eqsn,ret_equipment_no,ret_equipment,ret_assign_date,ret_starttime,ret_endtime,ret_status,ret_reservedby,ret_releasedby,ret_returnedto,ret_remarks,ret_date) VALUES(@resno,@borrowerid,@borrowername,@eqtype,@eqsn,@eqno,@eqname,@resdate,@stime,@etime,'Returned',@staff_recorder,@staff_releaser,@staff_returner,@remarks,DATE_FORMAT(now(), '%Y-%m-%d %H:%i')); UPDATE ceutltdscheduler.reservation_equipments SET res_status='Returned' WHERE (equipmentno=@eqno) AND (equipment=@eqname) AND (reservationno=@resno); DELETE FROM ceutltdscheduler.released_info WHERE rel_id_passnum=@borrowerid and rel_reservation_no=@resno and rel_borrower=@borrowername and rel_equipment_no=@eqno and rel_equipment=@eqname and rel_assign_date=@resdate and rel_starttime=@stime and rel_endtime=@etime and rel_reservedby=@staff_recorder and rel_releasedby=@staff_releaser"
-                    comm = New MySqlCommand(Query, MysqlConn)
-                    comm.Parameters.AddWithValue("@resno", row.Cells("Reservation Number").Value.ToString)
-                    comm.Parameters.AddWithValue("@borrowerid", row.Cells("Pass ID#").Value.ToString)
-                    comm.Parameters.AddWithValue("@borrowername", row.Cells("Borrower").Value.ToString)
-                    comm.Parameters.AddWithValue("@eqtype", row.Cells("Equipment Type").Value.ToString)
-                    comm.Parameters.AddWithValue("@eqsn", row.Cells("Equipment Serial").Value.ToString)
-                    comm.Parameters.AddWithValue("@eqno", row.Cells("Equipment No.").Value.ToString)
-                    comm.Parameters.AddWithValue("@eqname", row.Cells("Equipment").Value.ToString)
-                    comm.Parameters.AddWithValue("@resdate", Format(CDate(row.Cells("Date").Value.ToString), "yyyy-MM-dd"))
-                    comm.Parameters.AddWithValue("@stime", Format(CDate(row.Cells("Start Time").Value.ToString), "HH:mm"))
-                    comm.Parameters.AddWithValue("@etime", Format(CDate(row.Cells("End Time").Value.ToString), "HH:mm"))
-                    comm.Parameters.AddWithValue("@staff_recorder", row.Cells("Recorded By").Value.ToString)
-                    comm.Parameters.AddWithValue("@staff_releaser", row.Cells("Released By").Value.ToString)
-                    comm.Parameters.AddWithValue("@staff_returner", activeuserlname & ", " & activeuserfname)
-                    comm.Parameters.AddWithValue("@remarks", ret_remarks.Text)
-                    comm.ExecuteNonQuery()
-                    MysqlConn.Close()
 
-                Catch ex As MySqlException
-                    If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") Or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") Or ex.Message.Contains("Reading from the stream has failed"))) Then
-                        refresh_main_rgv_recordedacademicsonly.Stop()
-                        refresh_released_grid_list.Stop()
-                        RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
-                        Login.log_lbl_dbstatus.Text = "Offline"
-                        Login.log_lbl_dbstatus.ForeColor = Color.Red
-                        Login.lbl_prevmain_status.Text="Unavailable"
-                        Login.lbl_prevmain_status.ForeColor=Color.Red
-                        Login.lbl_reservation_status.Text="Unavailable"
-                        Login.lbl_reservation_status.ForeColor=Color.Red
-                        Return
-                    Else
-                        RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
-                    End If
-                Catch ex As Exception
-                    RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
-                Finally
-                    MysqlConn.Dispose()
-                End Try
-                    'EARLY RETURNS String
-                    MultipurposeWindow.lst_Returned.Rows.Add(row.Cells("Borrower").Value.ToString, row.Cells("Equipment Type").Value.ToString, "0", "Did not Exceed.")
-                    'messages +=Environment.NewLine & "Early return." & Environment.NewLine & "Equipment Type: " & row.Cells("Equipment Type").Value.ToString & Environment.NewLine & "Borrower: " & row.Cells("Borrower").Value.ToString
-            Else
-                getFromDB_settings_penalty()
-                Dim seconds As Integer = (elapsedTime.TotalSeconds)
-                Dim counter As Integer = 1
-                Dim charge As Integer = 0
-                Dim graceperiod As Integer = Convert.ToInt32(penalty_graceperiod)
-                Dim chargeinterval As Integer = Convert.ToInt32(penalty_chargeinterval)
-                While counter <= seconds
-                    counter += 1
-                    If counter Mod chargeinterval = 0 And counter >= graceperiod Then 'GRACE PERIOD Convert.toInt32(string_from_DB)
-                        charge += 1
-                    End If
-                End While
-                If charge = 0 Then
+            'GET Rows
+            Dim ligaw As Integer = 0
+            For Each row As GridViewRowInfo In released_grid_list2.SelectedRows
+                row = released_grid_list2.Rows(released_grid_list2.SelectedRows(ligaw).Index)
+                Dim elapsedTime As TimeSpan = DateTime.Parse(serverdatetime).Subtract(DateTime.Parse(Format(CDate(row.Cells("Date").Value.ToString), "yyyy-MM-dd") & " " & Format(CDate(row.Cells("End Time").Value.ToString), "HH:mm")))
+                If elapsedTime.CompareTo(TimeSpan.Zero) < 0 Then
                     Try
                         If MysqlConn.State = ConnectionState.Open Then
                             MysqlConn.Close()
                         End If
                         MysqlConn.Open()
-                    Dim Query As String = "INSERT INTO ceutltdscheduler.returned_info (ret_reservation_num,ret_id_passnum,ret_borrower,ret_eqtype,ret_eqsn,ret_equipment_no,ret_equipment,ret_assign_date,ret_starttime,ret_endtime,ret_status,ret_reservedby,ret_releasedby,ret_returnedto,ret_remarks,ret_date) VALUES(@resno,@borrowerid,@borrowername,@eqtype,@eqsn,@eqno,@eqname,@resdate,@stime,@etime,'Returned',@staff_recorder,@staff_releaser,@staff_returner,@remarks,DATE_FORMAT(now(), '%Y-%m-%d %H:%i')); UPDATE ceutltdscheduler.reservation_equipments SET res_status='Returned' WHERE (equipmentno=@eqno) AND (equipment=@eqname) AND (reservationno=@resno); DELETE FROM ceutltdscheduler.released_info WHERE rel_id_passnum=@borrowerid and rel_reservation_no=@resno and rel_borrower=@borrowername and rel_equipment_no=@eqno and rel_equipment=@eqname and rel_assign_date=@resdate and rel_starttime=@stime and rel_endtime=@etime and rel_reservedby=@staff_recorder and rel_releasedby=@staff_releaser"
+                        Dim Query As String = "INSERT INTO ceutltdscheduler.returned_info (ret_reservation_num,ret_id_passnum,ret_borrower,ret_eqtype,ret_eqsn,ret_equipment_no,ret_equipment,ret_assign_date,ret_starttime,ret_endtime,ret_status,ret_reservedby,ret_releasedby,ret_returnedto,ret_remarks,ret_date) VALUES(@resno,@borrowerid,@borrowername,@eqtype,@eqsn,@eqno,@eqname,@resdate,@stime,@etime,'Returned',@staff_recorder,@staff_releaser,@staff_returner,@remarks,DATE_FORMAT(now(), '%Y-%m-%d %H:%i')); UPDATE ceutltdscheduler.reservation_equipments SET res_status='Returned' WHERE (equipmentno=@eqno) AND (equipment=@eqname) AND (reservationno=@resno); DELETE FROM ceutltdscheduler.released_info WHERE rel_id_passnum=@borrowerid and rel_reservation_no=@resno and rel_borrower=@borrowername and rel_equipment_no=@eqno and rel_equipment=@eqname and rel_assign_date=@resdate and rel_starttime=@stime and rel_endtime=@etime and rel_reservedby=@staff_recorder and rel_releasedby=@staff_releaser"
                         comm = New MySqlCommand(Query, MysqlConn)
                         comm.Parameters.AddWithValue("@resno", row.Cells("Reservation Number").Value.ToString)
                         comm.Parameters.AddWithValue("@borrowerid", row.Cells("Pass ID#").Value.ToString)
@@ -4880,10 +4832,10 @@ Public Class Main
                             RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                             Login.log_lbl_dbstatus.Text = "Offline"
                             Login.log_lbl_dbstatus.ForeColor = Color.Red
-                        Login.lbl_prevmain_status.Text="Unavailable"
-                        Login.lbl_prevmain_status.ForeColor=Color.Red
-                        Login.lbl_reservation_status.Text="Unavailable"
-                        Login.lbl_reservation_status.ForeColor=Color.Red
+                            Login.lbl_prevmain_status.Text = "Unavailable"
+                            Login.lbl_prevmain_status.ForeColor = Color.Red
+                            Login.lbl_reservation_status.Text = "Unavailable"
+                            Login.lbl_reservation_status.ForeColor = Color.Red
                             Return
                         Else
                             RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -4893,127 +4845,188 @@ Public Class Main
                     Finally
                         MysqlConn.Dispose()
                     End Try
-                        'ONTIME RETURNS STRING
-                       MultipurposeWindow.lst_Returned.Rows.Add(row.Cells("Borrower").Value.ToString, row.Cells("Equipment Type").Value.ToString, "0", String.Format("{0:%d} day(s) {1:%h} hour(s) {2:%m} minute(s)", elapsedTime, elapsedTime, elapsedTime))
-                        'messages+= Environment.NewLine & "Ontime return." & Environment.NewLine & "Equipment Type: " & row.Cells("Equipment Type").Value.ToString & Environment.NewLine & "Borrower: " & row.Cells("Borrower").Value.ToString & Environment.NewLine & String.Format("Exceeded Time: {0:%d} day(s) {1:%h} hour(s) {2:%m} minute(s)", elapsedTime, elapsedTime, elapsedTime)
-                ElseIf charge > 0 Then
-                    If seconds >= 86400 Then
-                        Try
-                            If MysqlConn.State = ConnectionState.Open Then
-                                MysqlConn.Close()
-                            End If
-                            MysqlConn.Open()
-                            Dim Query As String = "INSERT INTO ceutltdscheduler.penalties (bor_id,res_num,bor_name,pen_eqtype,pen_eqsn,eq_no,eq_name,res_date,st_time,ed_time,bor_price,ret_mark,ret_date) VALUES(@borrowerid,@resno,@borrowername,@eqtype,@eqsn,@eqno,@eqname,@resdate,@stime,@etime,@price,@staff_returner,DATE_FORMAT(now(), '%Y-%m-%d %H:%i'));INSERT INTO ceutltdscheduler.returned_info (ret_reservation_num,ret_id_passnum,ret_borrower,ret_eqtype,ret_eqsn,ret_equipment_no,ret_equipment,ret_assign_date,ret_starttime,ret_endtime,ret_status,ret_reservedby,ret_releasedby,ret_returnedto,ret_remarks,ret_date) VALUES(@resno,@borrowerid,@borrowername,@eqtype,@eqsn,@eqno,@eqname,@resdate,@stime,@etime,'Returned',@staff_recorder,@staff_releaser,@staff_returner,@remarks,DATE_FORMAT(now(), '%Y-%m-%d %H:%i'));  UPDATE ceutltdscheduler.reservation_equipments SET res_status='Returned' WHERE (equipmentno=@eqno) AND (equipment=@eqname) AND (reservationno=@resno); DELETE FROM ceutltdscheduler.released_info WHERE rel_id_passnum=@borrowerid and rel_reservation_no=@resno and rel_borrower=@borrowername and rel_equipment_no=@eqno and rel_equipment=@eqname and rel_assign_date=@resdate and rel_starttime=@stime and rel_endtime=@etime and rel_reservedby=@staff_recorder and rel_releasedby=@staff_releaser"
-                            comm = New MySqlCommand(Query, MysqlConn)
-                            comm.Parameters.AddWithValue("@resno", row.Cells("Reservation Number").Value.ToString)
-                            comm.Parameters.AddWithValue("@borrowerid", row.Cells("Pass ID#").Value.ToString)
-                            comm.Parameters.AddWithValue("@borrowername", row.Cells("Borrower").Value.ToString)
-                            comm.Parameters.AddWithValue("@eqtype", row.Cells("Equipment Type").Value.ToString)
-                            comm.Parameters.AddWithValue("@eqsn", row.Cells("Equipment Serial").Value.ToString)
-                            comm.Parameters.AddWithValue("@eqno", row.Cells("Equipment No.").Value.ToString)
-                            comm.Parameters.AddWithValue("@eqname", row.Cells("Equipment").Value.ToString)
-                            comm.Parameters.AddWithValue("@resdate", Format(CDate(row.Cells("Date").Value.ToString), "yyyy-MM-dd"))
-                            comm.Parameters.AddWithValue("@stime", Format(CDate(row.Cells("Start Time").Value.ToString), "HH:mm"))
-                            comm.Parameters.AddWithValue("@etime", Format(CDate(row.Cells("End Time").Value.ToString), "HH:mm"))
-                            comm.Parameters.AddWithValue("@price", Convert.ToDouble(charge * penalty_price).ToString)
-                            comm.Parameters.AddWithValue("@staff_recorder", row.Cells("Recorded By").Value.ToString)
-                            comm.Parameters.AddWithValue("@staff_releaser", row.Cells("Released By").Value.ToString)
-                            comm.Parameters.AddWithValue("@staff_returner", activeuserlname & ", " & activeuserfname)
-                            comm.Parameters.AddWithValue("@remarks", ret_remarks.Text)
-                            comm.ExecuteNonQuery()
-                            MysqlConn.Close()
-                        Catch ex As MySqlException
-                            If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") Or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") Or ex.Message.Contains("Reading from the stream has failed"))) Then
-                                refresh_main_rgv_recordedacademicsonly.Stop()
-                                refresh_released_grid_list.Stop()
-                                RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
-                                Login.log_lbl_dbstatus.Text = "Offline"
-                                Login.log_lbl_dbstatus.ForeColor = Color.Red
-                                Login.lbl_prevmain_status.Text="Unavailable"
-                                Login.lbl_prevmain_status.ForeColor=Color.Red
-                                Login.lbl_reservation_status.Text="Unavailable"
-                                Login.lbl_reservation_status.ForeColor=Color.Red
-                                Return
-                            Else
-                                RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
-                            End If
-                        Catch ex As Exception
-                            RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
-                        Finally
-                            MysqlConn.Dispose()
-                        End Try
-                            'messages += Environment.NewLine & "Late return." & "Equipment Type: " & row.Cells("Equipment Type").Value.ToString & Environment.NewLine & "Borrower: " & row.Cells("Borrower").Value.ToString & Environment.NewLine & String.Format("Exceeding Time: {0:%d} day(s)", elapsedTime) & String.Format(" {0:%h} hours(s) ", elapsedTime) & String.Format("{0:%m} minutes(s)", elapsedTime) & Environment.NewLine & "Charge is: " & String.Format("{0:0.00}", Convert.ToDouble(Math.Round(charge * penalty_price))) & " pesos."
-                             MultipurposeWindow.lst_Returned.Rows.Add(row.Cells("Borrower").Value.ToString, row.Cells("Equipment Type").Value.ToString, String.Format("{0:0.00}", Convert.ToDouble(Math.Round(charge * penalty_price))), String.Format("{0:%d} day(s) {1:%h} hour(s) {2:%m} minute(s)", elapsedTime, elapsedTime, elapsedTime))
-                     Else
-                        Try
-                            If MysqlConn.State = ConnectionState.Open Then
-                                MysqlConn.Close()
-                            End If
-                            MysqlConn.Open()
-                            Dim Query As String = "INSERT INTO ceutltdscheduler.penalties (bor_id,res_num,bor_name,pen_eqtype,pen_eqsn,eq_no,eq_name,res_date,st_time,ed_time,bor_price,ret_mark,ret_date) VALUES(@borrowerid,@resno,@borrowername,@eqtype,@eqsn,@eqno,@eqname,@resdate,@stime,@etime,@price,@staff_returner,DATE_FORMAT(now(), '%Y-%m-%d %H:%i'));INSERT INTO ceutltdscheduler.returned_info (ret_reservation_num,ret_id_passnum,ret_borrower,ret_eqtype,ret_eqsn,ret_equipment_no,ret_equipment,ret_assign_date,ret_starttime,ret_endtime,ret_status,ret_reservedby,ret_releasedby,ret_returnedto,ret_remarks,ret_date) VALUES(@resno,@borrowerid,@borrowername,@eqtype,@eqsn,@eqno,@eqname,@resdate,@stime,@etime,'Returned',@staff_recorder,@staff_releaser,@staff_returner,@remarks,DATE_FORMAT(now(), '%Y-%m-%d %H:%i'));  UPDATE ceutltdscheduler.reservation_equipments SET res_status='Returned' WHERE (equipmentno=@eqno) AND (equipment=@eqname) AND (reservationno=@resno); DELETE FROM ceutltdscheduler.released_info WHERE rel_id_passnum=@borrowerid and rel_reservation_no=@resno and rel_borrower=@borrowername and rel_equipment_no=@eqno and rel_equipment=@eqname and rel_assign_date=@resdate and rel_starttime=@stime and rel_endtime=@etime and rel_reservedby=@staff_recorder and rel_releasedby=@staff_releaser"
-                            comm = New MySqlCommand(Query, MysqlConn)
-                            comm.Parameters.AddWithValue("@resno", row.Cells("Reservation Number").Value.ToString)
-                            comm.Parameters.AddWithValue("@borrowerid", row.Cells("Pass ID#").Value.ToString)
-                            comm.Parameters.AddWithValue("@borrowername", row.Cells("Borrower").Value.ToString)
-                            comm.Parameters.AddWithValue("@eqtype", row.Cells("Equipment Type").Value.ToString)
-                            comm.Parameters.AddWithValue("@eqsn", row.Cells("Equipment Serial").Value.ToString)
-                            comm.Parameters.AddWithValue("@eqno", row.Cells("Equipment No.").Value.ToString)
-                            comm.Parameters.AddWithValue("@eqname", row.Cells("Equipment").Value.ToString)
-                            comm.Parameters.AddWithValue("@resdate", Format(CDate(row.Cells("Date").Value.ToString), "yyyy-MM-dd"))
-                            comm.Parameters.AddWithValue("@stime", Format(CDate(row.Cells("Start Time").Value.ToString), "HH:mm"))
-                            comm.Parameters.AddWithValue("@etime", Format(CDate(row.Cells("End Time").Value.ToString), "HH:mm"))
-                            comm.Parameters.AddWithValue("@price", Convert.ToDouble(charge * penalty_price).ToString)
-                            comm.Parameters.AddWithValue("@staff_recorder", row.Cells("Recorded By").Value.ToString)
-                            comm.Parameters.AddWithValue("@staff_releaser", row.Cells("Released By").Value.ToString)
-                            comm.Parameters.AddWithValue("@staff_returner", activeuserlname & ", " & activeuserfname)
-                            comm.Parameters.AddWithValue("@remarks", ret_remarks.Text)
-                            comm.ExecuteNonQuery()
-                            MysqlConn.Close()
-                        Catch ex As MySqlException
-                            If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") Or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") Or ex.Message.Contains("Reading from the stream has failed"))) Then
-                                refresh_main_rgv_recordedacademicsonly.Stop()
-                                refresh_released_grid_list.Stop()
-                                RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
-                                Login.log_lbl_dbstatus.Text = "Offline"
-                                Login.log_lbl_dbstatus.ForeColor = Color.Red
-                                Login.lbl_prevmain_status.Text="Unavailable"
-                                Login.lbl_prevmain_status.ForeColor=Color.Red
-                                Login.lbl_reservation_status.Text="Unavailable"
-                                Login.lbl_reservation_status.ForeColor=Color.Red
-                                Return
-                            Else
-                                RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
-                            End If
-                        Catch ex As Exception
-                            RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
-                        Finally
-                            MysqlConn.Dispose()
-                        End Try
-                            'messages += Environment.NewLine & "Late return." & "Equipment Type: " & row.Cells("Equipment Type").Value.ToString & Environment.NewLine & "Borrower: " & row.Cells("Borrower").Value.ToString & Environment.NewLine & String.Format(" {0:%h} hours(s) ", elapsedTime) & String.Format("{0:%m} minutes(s)", elapsedTime) & Environment.NewLine & "Charge is: " & String.Format("{0:0.00}", Convert.ToDouble(Math.Round(charge * penalty_price))) & " pesos."
-                         MultipurposeWindow.lst_Returned.Rows.Add(row.Cells("Borrower").Value.ToString, row.Cells("Equipment Type").Value.ToString, String.Format("{0:0.00}", Convert.ToDouble(Math.Round(charge * penalty_price))), String.Format("{0:%h} hours(s) ", elapsedTime) & String.Format("{0:%m} minutes(s)", elapsedTime))
+                    'EARLY RETURNS String
+                    MultipurposeWindow.lst_Returned.Rows.Add(row.Cells("Borrower").Value.ToString, row.Cells("Equipment Type").Value.ToString, "0", "Did not Exceed.")
+                    'messages +=Environment.NewLine & "Early return." & Environment.NewLine & "Equipment Type: " & row.Cells("Equipment Type").Value.ToString & Environment.NewLine & "Borrower: " & row.Cells("Borrower").Value.ToString
+                Else
+                    getFromDB_settings_penalty()
+                    Dim seconds As Integer = (elapsedTime.TotalSeconds)
+                    Dim counter As Integer = 1
+                    Dim charge As Integer = 0
+                    Dim graceperiod As Integer = Convert.ToInt32(penalty_graceperiod)
+                    Dim chargeinterval As Integer = Convert.ToInt32(penalty_chargeinterval)
+                    While counter <= seconds
+                        counter += 1
+                        If counter Mod chargeinterval = 0 And counter >= graceperiod Then 'GRACE PERIOD Convert.toInt32(string_from_DB)
+                            charge += 1
                         End If
+                    End While
+                    If charge = 0 Then
+                        Try
+                            If MysqlConn.State = ConnectionState.Open Then
+                                MysqlConn.Close()
+                            End If
+                            MysqlConn.Open()
+                            Dim Query As String = "INSERT INTO ceutltdscheduler.returned_info (ret_reservation_num,ret_id_passnum,ret_borrower,ret_eqtype,ret_eqsn,ret_equipment_no,ret_equipment,ret_assign_date,ret_starttime,ret_endtime,ret_status,ret_reservedby,ret_releasedby,ret_returnedto,ret_remarks,ret_date) VALUES(@resno,@borrowerid,@borrowername,@eqtype,@eqsn,@eqno,@eqname,@resdate,@stime,@etime,'Returned',@staff_recorder,@staff_releaser,@staff_returner,@remarks,DATE_FORMAT(now(), '%Y-%m-%d %H:%i')); UPDATE ceutltdscheduler.reservation_equipments SET res_status='Returned' WHERE (equipmentno=@eqno) AND (equipment=@eqname) AND (reservationno=@resno); DELETE FROM ceutltdscheduler.released_info WHERE rel_id_passnum=@borrowerid and rel_reservation_no=@resno and rel_borrower=@borrowername and rel_equipment_no=@eqno and rel_equipment=@eqname and rel_assign_date=@resdate and rel_starttime=@stime and rel_endtime=@etime and rel_reservedby=@staff_recorder and rel_releasedby=@staff_releaser"
+                            comm = New MySqlCommand(Query, MysqlConn)
+                            comm.Parameters.AddWithValue("@resno", row.Cells("Reservation Number").Value.ToString)
+                            comm.Parameters.AddWithValue("@borrowerid", row.Cells("Pass ID#").Value.ToString)
+                            comm.Parameters.AddWithValue("@borrowername", row.Cells("Borrower").Value.ToString)
+                            comm.Parameters.AddWithValue("@eqtype", row.Cells("Equipment Type").Value.ToString)
+                            comm.Parameters.AddWithValue("@eqsn", row.Cells("Equipment Serial").Value.ToString)
+                            comm.Parameters.AddWithValue("@eqno", row.Cells("Equipment No.").Value.ToString)
+                            comm.Parameters.AddWithValue("@eqname", row.Cells("Equipment").Value.ToString)
+                            comm.Parameters.AddWithValue("@resdate", Format(CDate(row.Cells("Date").Value.ToString), "yyyy-MM-dd"))
+                            comm.Parameters.AddWithValue("@stime", Format(CDate(row.Cells("Start Time").Value.ToString), "HH:mm"))
+                            comm.Parameters.AddWithValue("@etime", Format(CDate(row.Cells("End Time").Value.ToString), "HH:mm"))
+                            comm.Parameters.AddWithValue("@staff_recorder", row.Cells("Recorded By").Value.ToString)
+                            comm.Parameters.AddWithValue("@staff_releaser", row.Cells("Released By").Value.ToString)
+                            comm.Parameters.AddWithValue("@staff_returner", activeuserlname & ", " & activeuserfname)
+                            comm.Parameters.AddWithValue("@remarks", ret_remarks.Text)
+                            comm.ExecuteNonQuery()
+                            MysqlConn.Close()
+
+                        Catch ex As MySqlException
+                            If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") Or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") Or ex.Message.Contains("Reading from the stream has failed"))) Then
+                                refresh_main_rgv_recordedacademicsonly.Stop()
+                                refresh_released_grid_list.Stop()
+                                RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
+                                Login.log_lbl_dbstatus.Text = "Offline"
+                                Login.log_lbl_dbstatus.ForeColor = Color.Red
+                                Login.lbl_prevmain_status.Text = "Unavailable"
+                                Login.lbl_prevmain_status.ForeColor = Color.Red
+                                Login.lbl_reservation_status.Text = "Unavailable"
+                                Login.lbl_reservation_status.ForeColor = Color.Red
+                                Return
+                            Else
+                                RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
+                            End If
+                        Catch ex As Exception
+                            RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
+                        Finally
+                            MysqlConn.Dispose()
+                        End Try
+                        'ONTIME RETURNS STRING
+                        MultipurposeWindow.lst_Returned.Rows.Add(row.Cells("Borrower").Value.ToString, row.Cells("Equipment Type").Value.ToString, "0", String.Format("{0:%d} day(s) {1:%h} hour(s) {2:%m} minute(s)", elapsedTime, elapsedTime, elapsedTime))
+                        'messages+= Environment.NewLine & "Ontime return." & Environment.NewLine & "Equipment Type: " & row.Cells("Equipment Type").Value.ToString & Environment.NewLine & "Borrower: " & row.Cells("Borrower").Value.ToString & Environment.NewLine & String.Format("Exceeded Time: {0:%d} day(s) {1:%h} hour(s) {2:%m} minute(s)", elapsedTime, elapsedTime, elapsedTime)
+                    ElseIf charge > 0 Then
+                        If seconds >= 86400 Then
+                            Try
+                                If MysqlConn.State = ConnectionState.Open Then
+                                    MysqlConn.Close()
+                                End If
+                                MysqlConn.Open()
+                                Dim Query As String = "INSERT INTO ceutltdscheduler.penalties (bor_id,res_num,bor_name,pen_eqtype,pen_eqsn,eq_no,eq_name,res_date,st_time,ed_time,bor_price,ret_mark,ret_date) VALUES(@borrowerid,@resno,@borrowername,@eqtype,@eqsn,@eqno,@eqname,@resdate,@stime,@etime,@price,@staff_returner,DATE_FORMAT(now(), '%Y-%m-%d %H:%i'));INSERT INTO ceutltdscheduler.returned_info (ret_reservation_num,ret_id_passnum,ret_borrower,ret_eqtype,ret_eqsn,ret_equipment_no,ret_equipment,ret_assign_date,ret_starttime,ret_endtime,ret_status,ret_reservedby,ret_releasedby,ret_returnedto,ret_remarks,ret_date) VALUES(@resno,@borrowerid,@borrowername,@eqtype,@eqsn,@eqno,@eqname,@resdate,@stime,@etime,'Returned',@staff_recorder,@staff_releaser,@staff_returner,@remarks,DATE_FORMAT(now(), '%Y-%m-%d %H:%i'));  UPDATE ceutltdscheduler.reservation_equipments SET res_status='Returned' WHERE (equipmentno=@eqno) AND (equipment=@eqname) AND (reservationno=@resno); DELETE FROM ceutltdscheduler.released_info WHERE rel_id_passnum=@borrowerid and rel_reservation_no=@resno and rel_borrower=@borrowername and rel_equipment_no=@eqno and rel_equipment=@eqname and rel_assign_date=@resdate and rel_starttime=@stime and rel_endtime=@etime and rel_reservedby=@staff_recorder and rel_releasedby=@staff_releaser"
+                                comm = New MySqlCommand(Query, MysqlConn)
+                                comm.Parameters.AddWithValue("@resno", row.Cells("Reservation Number").Value.ToString)
+                                comm.Parameters.AddWithValue("@borrowerid", row.Cells("Pass ID#").Value.ToString)
+                                comm.Parameters.AddWithValue("@borrowername", row.Cells("Borrower").Value.ToString)
+                                comm.Parameters.AddWithValue("@eqtype", row.Cells("Equipment Type").Value.ToString)
+                                comm.Parameters.AddWithValue("@eqsn", row.Cells("Equipment Serial").Value.ToString)
+                                comm.Parameters.AddWithValue("@eqno", row.Cells("Equipment No.").Value.ToString)
+                                comm.Parameters.AddWithValue("@eqname", row.Cells("Equipment").Value.ToString)
+                                comm.Parameters.AddWithValue("@resdate", Format(CDate(row.Cells("Date").Value.ToString), "yyyy-MM-dd"))
+                                comm.Parameters.AddWithValue("@stime", Format(CDate(row.Cells("Start Time").Value.ToString), "HH:mm"))
+                                comm.Parameters.AddWithValue("@etime", Format(CDate(row.Cells("End Time").Value.ToString), "HH:mm"))
+                                comm.Parameters.AddWithValue("@price", Convert.ToDouble(charge * penalty_price).ToString)
+                                comm.Parameters.AddWithValue("@staff_recorder", row.Cells("Recorded By").Value.ToString)
+                                comm.Parameters.AddWithValue("@staff_releaser", row.Cells("Released By").Value.ToString)
+                                comm.Parameters.AddWithValue("@staff_returner", activeuserlname & ", " & activeuserfname)
+                                comm.Parameters.AddWithValue("@remarks", ret_remarks.Text)
+                                comm.ExecuteNonQuery()
+                                MysqlConn.Close()
+                            Catch ex As MySqlException
+                                If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") Or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") Or ex.Message.Contains("Reading from the stream has failed"))) Then
+                                    refresh_main_rgv_recordedacademicsonly.Stop()
+                                    refresh_released_grid_list.Stop()
+                                    RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
+                                    Login.log_lbl_dbstatus.Text = "Offline"
+                                    Login.log_lbl_dbstatus.ForeColor = Color.Red
+                                    Login.lbl_prevmain_status.Text = "Unavailable"
+                                    Login.lbl_prevmain_status.ForeColor = Color.Red
+                                    Login.lbl_reservation_status.Text = "Unavailable"
+                                    Login.lbl_reservation_status.ForeColor = Color.Red
+                                    Return
+                                Else
+                                    RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
+                                End If
+                            Catch ex As Exception
+                                RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
+                            Finally
+                                MysqlConn.Dispose()
+                            End Try
+                            'messages += Environment.NewLine & "Late return." & "Equipment Type: " & row.Cells("Equipment Type").Value.ToString & Environment.NewLine & "Borrower: " & row.Cells("Borrower").Value.ToString & Environment.NewLine & String.Format("Exceeding Time: {0:%d} day(s)", elapsedTime) & String.Format(" {0:%h} hours(s) ", elapsedTime) & String.Format("{0:%m} minutes(s)", elapsedTime) & Environment.NewLine & "Charge is: " & String.Format("{0:0.00}", Convert.ToDouble(Math.Round(charge * penalty_price))) & " pesos."
+                            MultipurposeWindow.lst_Returned.Rows.Add(row.Cells("Borrower").Value.ToString, row.Cells("Equipment Type").Value.ToString, String.Format("{0:0.00}", Convert.ToDouble(Math.Round(charge * penalty_price))), String.Format("{0:%d} day(s) {1:%h} hour(s) {2:%m} minute(s)", elapsedTime, elapsedTime, elapsedTime))
+                        Else
+                            Try
+                                If MysqlConn.State = ConnectionState.Open Then
+                                    MysqlConn.Close()
+                                End If
+                                MysqlConn.Open()
+                                Dim Query As String = "INSERT INTO ceutltdscheduler.penalties (bor_id,res_num,bor_name,pen_eqtype,pen_eqsn,eq_no,eq_name,res_date,st_time,ed_time,bor_price,ret_mark,ret_date) VALUES(@borrowerid,@resno,@borrowername,@eqtype,@eqsn,@eqno,@eqname,@resdate,@stime,@etime,@price,@staff_returner,DATE_FORMAT(now(), '%Y-%m-%d %H:%i'));INSERT INTO ceutltdscheduler.returned_info (ret_reservation_num,ret_id_passnum,ret_borrower,ret_eqtype,ret_eqsn,ret_equipment_no,ret_equipment,ret_assign_date,ret_starttime,ret_endtime,ret_status,ret_reservedby,ret_releasedby,ret_returnedto,ret_remarks,ret_date) VALUES(@resno,@borrowerid,@borrowername,@eqtype,@eqsn,@eqno,@eqname,@resdate,@stime,@etime,'Returned',@staff_recorder,@staff_releaser,@staff_returner,@remarks,DATE_FORMAT(now(), '%Y-%m-%d %H:%i'));  UPDATE ceutltdscheduler.reservation_equipments SET res_status='Returned' WHERE (equipmentno=@eqno) AND (equipment=@eqname) AND (reservationno=@resno); DELETE FROM ceutltdscheduler.released_info WHERE rel_id_passnum=@borrowerid and rel_reservation_no=@resno and rel_borrower=@borrowername and rel_equipment_no=@eqno and rel_equipment=@eqname and rel_assign_date=@resdate and rel_starttime=@stime and rel_endtime=@etime and rel_reservedby=@staff_recorder and rel_releasedby=@staff_releaser"
+                                comm = New MySqlCommand(Query, MysqlConn)
+                                comm.Parameters.AddWithValue("@resno", row.Cells("Reservation Number").Value.ToString)
+                                comm.Parameters.AddWithValue("@borrowerid", row.Cells("Pass ID#").Value.ToString)
+                                comm.Parameters.AddWithValue("@borrowername", row.Cells("Borrower").Value.ToString)
+                                comm.Parameters.AddWithValue("@eqtype", row.Cells("Equipment Type").Value.ToString)
+                                comm.Parameters.AddWithValue("@eqsn", row.Cells("Equipment Serial").Value.ToString)
+                                comm.Parameters.AddWithValue("@eqno", row.Cells("Equipment No.").Value.ToString)
+                                comm.Parameters.AddWithValue("@eqname", row.Cells("Equipment").Value.ToString)
+                                comm.Parameters.AddWithValue("@resdate", Format(CDate(row.Cells("Date").Value.ToString), "yyyy-MM-dd"))
+                                comm.Parameters.AddWithValue("@stime", Format(CDate(row.Cells("Start Time").Value.ToString), "HH:mm"))
+                                comm.Parameters.AddWithValue("@etime", Format(CDate(row.Cells("End Time").Value.ToString), "HH:mm"))
+                                comm.Parameters.AddWithValue("@price", Convert.ToDouble(charge * penalty_price).ToString)
+                                comm.Parameters.AddWithValue("@staff_recorder", row.Cells("Recorded By").Value.ToString)
+                                comm.Parameters.AddWithValue("@staff_releaser", row.Cells("Released By").Value.ToString)
+                                comm.Parameters.AddWithValue("@staff_returner", activeuserlname & ", " & activeuserfname)
+                                comm.Parameters.AddWithValue("@remarks", ret_remarks.Text)
+                                comm.ExecuteNonQuery()
+                                MysqlConn.Close()
+                            Catch ex As MySqlException
+                                If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") Or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") Or ex.Message.Contains("Reading from the stream has failed"))) Then
+                                    refresh_main_rgv_recordedacademicsonly.Stop()
+                                    refresh_released_grid_list.Stop()
+                                    RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
+                                    Login.log_lbl_dbstatus.Text = "Offline"
+                                    Login.log_lbl_dbstatus.ForeColor = Color.Red
+                                    Login.lbl_prevmain_status.Text = "Unavailable"
+                                    Login.lbl_prevmain_status.ForeColor = Color.Red
+                                    Login.lbl_reservation_status.Text = "Unavailable"
+                                    Login.lbl_reservation_status.ForeColor = Color.Red
+                                    Return
+                                Else
+                                    RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
+                                End If
+                            Catch ex As Exception
+                                RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
+                            Finally
+                                MysqlConn.Dispose()
+                            End Try
+                            'messages += Environment.NewLine & "Late return." & "Equipment Type: " & row.Cells("Equipment Type").Value.ToString & Environment.NewLine & "Borrower: " & row.Cells("Borrower").Value.ToString & Environment.NewLine & String.Format(" {0:%h} hours(s) ", elapsedTime) & String.Format("{0:%m} minutes(s)", elapsedTime) & Environment.NewLine & "Charge is: " & String.Format("{0:0.00}", Convert.ToDouble(Math.Round(charge * penalty_price))) & " pesos."
+                            MultipurposeWindow.lst_Returned.Rows.Add(row.Cells("Borrower").Value.ToString, row.Cells("Equipment Type").Value.ToString, String.Format("{0:0.00}", Convert.ToDouble(Math.Round(charge * penalty_price))), String.Format("{0:%h} hours(s) ", elapsedTime) & String.Format("{0:%m} minutes(s)", elapsedTime))
+                        End If
+                    End If
                 End If
-            End If
-                    ligaw +=1
-                Next
-                MultipurposeWindowPanel="A"
-                MultipurposeWindow.ShowDialog()
-                load_released_list2()
-                load_returned_eq_list(returned_startDate.Value, returned_endDate.Value)
-                ret_tb_reservationnum.Hide()
-                ret_tb_id.Hide()
-                ret_tb_borrower.Hide()
-                ret_tb_equipment.Hide()
-                ret_tb_equipmentnum.Hide()
-                ret_nameofstaff_recorder.Hide()
-                ret_nameofstaff_release2.Hide()
-                lbl_ret_release.Hide()
-                ret_tb_sdate.Text = "01/01/1999"
-                ret_tb_stime.Text = ""
-                ret_tb_etime.Text = ""
-                ret_remarks.Text = ""
-                ret_tb_eqtype.Text = ""
-                ret_remarks.Enabled = False         
+                ligaw += 1
+            Next
+            MultipurposeWindowPanel = "A"
+            MultipurposeWindow.ShowDialog()
+            load_released_list2()
+            load_returned_eq_list(returned_startDate.Value, returned_endDate.Value)
+            ret_tb_reservationnum.Hide()
+            ret_tb_id.Hide()
+            ret_tb_borrower.Hide()
+            ret_tb_equipment.Hide()
+            ret_tb_equipmentnum.Hide()
+            ret_nameofstaff_recorder.Hide()
+            ret_nameofstaff_release2.Hide()
+            lbl_ret_release.Hide()
+            ret_tb_sdate.Text = "01/01/1999"
+            ret_tb_stime.Text = ""
+            ret_tb_etime.Text = ""
+            ret_remarks.Text = ""
+            ret_tb_eqtype.Text = ""
+            ret_remarks.Enabled = False
         Else
             released_grid_list2.Focus()
         End If
@@ -5056,10 +5069,10 @@ Public Class Main
                 RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                 Login.log_lbl_dbstatus.Text = "Offline"
                 Login.log_lbl_dbstatus.ForeColor = Color.Red
-                Login.lbl_prevmain_status.Text="Unavailable"
-                Login.lbl_prevmain_status.ForeColor=Color.Red
-                Login.lbl_reservation_status.Text="Unavailable"
-                Login.lbl_reservation_status.ForeColor=Color.Red
+                Login.lbl_prevmain_status.Text = "Unavailable"
+                Login.lbl_prevmain_status.ForeColor = Color.Red
+                Login.lbl_reservation_status.Text = "Unavailable"
+                Login.lbl_reservation_status.ForeColor = Color.Red
                 Return
             Else
                 RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -5095,10 +5108,10 @@ Public Class Main
                 RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                 Login.log_lbl_dbstatus.Text = "Offline"
                 Login.log_lbl_dbstatus.ForeColor = Color.Red
-                Login.lbl_prevmain_status.Text="Unavailable"
-                Login.lbl_prevmain_status.ForeColor=Color.Red
-                Login.lbl_reservation_status.Text="Unavailable"
-                Login.lbl_reservation_status.ForeColor=Color.Red
+                Login.lbl_prevmain_status.Text = "Unavailable"
+                Login.lbl_prevmain_status.ForeColor = Color.Red
+                Login.lbl_reservation_status.Text = "Unavailable"
+                Login.lbl_reservation_status.ForeColor = Color.Red
                 Return
             Else
                 RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -5111,25 +5124,25 @@ Public Class Main
         End Try
     End Sub
 
-    Private Sub pen_dtp_dates_filter_ValueChanged(sender As Object, e As EventArgs) Handles pen_startDate.ValueChanged,pen_endDate.ValueChanged
+    Private Sub pen_dtp_dates_filter_ValueChanged(sender As Object, e As EventArgs) Handles pen_startDate.ValueChanged, pen_endDate.ValueChanged
         pen_dtp_dates_filter_delay.Interval = search_delay
-        pen_dtp_dates_filter_delay.Stop
-        pen_dtp_dates_filter_delay.Start
+        pen_dtp_dates_filter_delay.Stop()
+        pen_dtp_dates_filter_delay.Start()
     End Sub
 
-    Private Sub pen_dtp_dates_filter_delay_Tick(sender As Object, e As Eventargs) Handles pen_dtp_dates_filter_delay.Tick
+    Private Sub pen_dtp_dates_filter_delay_Tick(sender As Object, e As EventArgs) Handles pen_dtp_dates_filter_delay.Tick
         pen_dtp_dates_filter_delay.Stop()
         If pen_startDate.IsHandleCreated And pen_endDate.IsHandleCreated Then
-            If pen_endDate.Value < pen_startDate.Value Then                
+            If pen_endDate.Value < pen_startDate.Value Then
                 RadMessageBox.Show(Me, "The start date must be less than the end date.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
-                pen_endDate.Text=Format(CDate(pen_startDate.Value), "MM/d/yyyy")
+                pen_endDate.Text = Format(CDate(pen_startDate.Value), "MM/d/yyyy")
             Else
                 load_penalty_list(pen_startDate.Value, pen_endDate.Value)
             End If
         End If
     End Sub
 
-    Private Sub pen_btn_chg_filter_Click(sender As Object, e As EventArgs) 
+    Private Sub pen_btn_chg_filter_Click(sender As Object, e As EventArgs)
         Dim elapsedTime As TimeSpan = DateTime.Parse(Format(CDate(pen_endDate.Value), "yyyy-MM-dd")).Subtract(DateTime.Parse(Format(CDate(pen_startDate.Value), "yyyy-MM-dd")))
         If elapsedTime.CompareTo(TimeSpan.Zero) < 0 Then
             RadMessageBox.Show(Me, """From"" date can't be higher than ""To"" Date", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -5199,10 +5212,10 @@ Public Class Main
                 RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                 Login.log_lbl_dbstatus.Text = "Offline"
                 Login.log_lbl_dbstatus.ForeColor = Color.Red
-                Login.lbl_prevmain_status.Text="Unavailable"
-                Login.lbl_prevmain_status.ForeColor=Color.Red
-                Login.lbl_reservation_status.Text="Unavailable"
-                Login.lbl_reservation_status.ForeColor=Color.Red
+                Login.lbl_prevmain_status.Text = "Unavailable"
+                Login.lbl_prevmain_status.ForeColor = Color.Red
+                Login.lbl_reservation_status.Text = "Unavailable"
+                Login.lbl_reservation_status.ForeColor = Color.Red
                 Return
             Else
                 RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -5255,10 +5268,10 @@ Public Class Main
                 RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                 Login.log_lbl_dbstatus.Text = "Offline"
                 Login.log_lbl_dbstatus.ForeColor = Color.Red
-                Login.lbl_prevmain_status.Text="Unavailable"
-                Login.lbl_prevmain_status.ForeColor=Color.Red
-                Login.lbl_reservation_status.Text="Unavailable"
-                Login.lbl_reservation_status.ForeColor=Color.Red
+                Login.lbl_prevmain_status.Text = "Unavailable"
+                Login.lbl_prevmain_status.ForeColor = Color.Red
+                Login.lbl_reservation_status.Text = "Unavailable"
+                Login.lbl_reservation_status.ForeColor = Color.Red
                 Return
             Else
                 RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -5267,7 +5280,7 @@ Public Class Main
             RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
         Finally
             MysqlConn.Dispose()
-            
+
         End Try
     End Sub
 
@@ -5308,10 +5321,10 @@ Public Class Main
                 RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                 Login.log_lbl_dbstatus.Text = "Offline"
                 Login.log_lbl_dbstatus.ForeColor = Color.Red
-                Login.lbl_prevmain_status.Text="Unavailable"
-                Login.lbl_prevmain_status.ForeColor=Color.Red
-                Login.lbl_reservation_status.Text="Unavailable"
-                Login.lbl_reservation_status.ForeColor=Color.Red
+                Login.lbl_prevmain_status.Text = "Unavailable"
+                Login.lbl_prevmain_status.ForeColor = Color.Red
+                Login.lbl_reservation_status.Text = "Unavailable"
+                Login.lbl_reservation_status.ForeColor = Color.Red
                 Return
             Else
                 RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -5323,24 +5336,24 @@ Public Class Main
         End Try
     End Sub
 
-    Private Sub ret_dtp_dates_filter_ValueChanged(sender As Object, e As EventArgs) Handles returned_startDate.ValueChanged,returned_endDate.ValueChanged
+    Private Sub ret_dtp_dates_filter_ValueChanged(sender As Object, e As EventArgs) Handles returned_startDate.ValueChanged, returned_endDate.ValueChanged
         ret_dtp_dates_filter_delay.Interval = search_delay
-        ret_dtp_dates_filter_delay.Stop
-        ret_dtp_dates_filter_delay.Start
+        ret_dtp_dates_filter_delay.Stop()
+        ret_dtp_dates_filter_delay.Start()
     End Sub
-    Private Sub ret_dtp_dates_filter_delay_Tick(sender As Object, e As Eventargs) Handles ret_dtp_dates_filter_delay.Tick
+    Private Sub ret_dtp_dates_filter_delay_Tick(sender As Object, e As EventArgs) Handles ret_dtp_dates_filter_delay.Tick
         ret_dtp_dates_filter_delay.Stop()
         If returned_startDate.IsHandleCreated And returned_endDate.IsHandleCreated Then
-            If returned_endDate.Value < returned_startDate.Value Then                
+            If returned_endDate.Value < returned_startDate.Value Then
                 RadMessageBox.Show(Me, "The start date must be less than the end date.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
-                returned_endDate.Text=Format(CDate(returned_startDate.Value), "MM/d/yyyy")
+                returned_endDate.Text = Format(CDate(returned_startDate.Value), "MM/d/yyyy")
             Else
                 load_returned_eq_list(returned_startDate.Value, returned_endDate.Value)
             End If
         End If
     End Sub
 
-    Private Sub ret_btn_chg_filter_Click(sender As Object, e As EventArgs) 
+    Private Sub ret_btn_chg_filter_Click(sender As Object, e As EventArgs)
         Dim elapsedTime As TimeSpan = DateTime.Parse(Format(CDate(returned_endDate.Value), "yyyy-MM-dd")).Subtract(DateTime.Parse(Format(CDate(returned_startDate.Value), "yyyy-MM-dd")))
         If elapsedTime.CompareTo(TimeSpan.Zero) < 0 Then
             RadMessageBox.Show(Me, """From"" date can't be higher than ""To"" Date", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -5747,12 +5760,12 @@ Public Class Main
     'End Sub
 
     Private Sub ToRelease_MouseHover(sender As Object, e As EventArgs) Handles gp_details.MouseHover, gp_controls.MouseHover, released_btn_refresh.Click
-        If reserved_grid_list.SelectedRows.Count > 1
+        If reserved_grid_list.SelectedRows.Count > 1 Then
             Exit Sub
         Else
             reserved_load_table()
         End If
-        
+
     End Sub
 
     Private Sub gp_reservation_equipments_MouseHover(sender As Object, e As EventArgs) Handles gp_reservation_equipments.MouseHover, gp_reservation_details.MouseHover
@@ -6014,29 +6027,29 @@ Public Class Main
     End Function
 
     Private Sub reserved_grid_list_SelectionChanged(sender As Object, e As EventArgs) Handles reserved_grid_list.SelectionChanged
-        If reserved_grid_list.SelectedRows.Count > 1
-            gp_controls.Hide
-            rel_tb_equipmentnum.Text=""
-            rel_tb_id.Enabled=true
-            rel_tb_equipment.Text=""
-            rel_tb_reservationnum.Text=""
-            rel_tb_borrower.Text=""
-            rel_nameofstaff_recorder.Text=""
+        If reserved_grid_list.SelectedRows.Count > 1 Then
+            gp_controls.Hide()
+            rel_tb_equipmentnum.Text = ""
+            rel_tb_id.Enabled = True
+            rel_tb_equipment.Text = ""
+            rel_tb_reservationnum.Text = ""
+            rel_tb_borrower.Text = ""
+            rel_nameofstaff_recorder.Text = ""
             rel_tb_startdate.Text = "01/01/99"
-            rel_tb_starttime.Text=""
-            rel_tb_endtime.Text=""
-            reserved_grid_list_doubleClickedRecently=False
-        ElseIf reserved_grid_list.SelectedRows.Count = 1 And reserved_grid_list_doubleClickedRecently=False
-            rel_tb_id.Enabled=False
-            gp_controls.Show
+            rel_tb_starttime.Text = ""
+            rel_tb_endtime.Text = ""
+            reserved_grid_list_doubleClickedRecently = False
+        ElseIf reserved_grid_list.SelectedRows.Count = 1 And reserved_grid_list_doubleClickedRecently = False Then
+            rel_tb_id.Enabled = False
+            gp_controls.Show()
         End If
-        
+
     End Sub
 
     Private Sub released_grid_list2_SelectionChanged(sender As Object, e As EventArgs) Handles released_grid_list2.SelectionChanged
-        If released_grid_list2.SelectedRows.Count > 1
-            ret_gb_details.Hide
-            ret_gb_controls.Hide
+        If released_grid_list2.SelectedRows.Count > 1 Then
+            ret_gb_details.Hide()
+            ret_gb_controls.Hide()
             ret_tb_reservationnum.Text = ""
             ret_tb_id.Text = ""
             ret_tb_borrower.Text = ""
@@ -6047,22 +6060,23 @@ Public Class Main
             ret_tb_status.Text = ""
             return_btn_returned.Enabled = False
             ret_tb_equipmentnum.Text = ""
-            ret_remarks.Enabled=True
+            ret_remarks.Enabled = True
             show_hide_txt_lbl()
-            Else
-            ret_gb_details.Show
-            ret_gb_controls.Show
+        Else
+            ret_gb_details.Show()
+            ret_gb_controls.Show()
         End If
     End Sub
 
     Private Sub rec_chk_multpd_ToggleStateChanged(sender As Object, args As StateChangedEventArgs) Handles rec_chk_multpd.ToggleStateChanged
-        If rec_chk_multpd.Checked=False
-            If rec_multpd.SelectedDates.Count=0
+        If rec_chk_multpd.Checked = False Then
+
+            If rec_multpd.SelectedDates.Count = 0 Then
                 rec_multpd.Hide()
                 rec_multpd.RemoveFocusedDate(False)
                 rec_dtp_date.Enabled = True
             Else
-                Dim confirm As DialogResult=RadMessageBox.Show(Me, "Are you sure you want to cancel your selection?",system_Name, MessageBoxButtons.YesNo,RadMessageIcon.Exclamation)
+                Dim confirm As DialogResult = RadMessageBox.Show(Me, "Are you sure you want to cancel your selection?", system_Name, MessageBoxButtons.YesNo, RadMessageIcon.Exclamation)
                 If confirm = DialogResult.Yes Then
                     rec_multpd.RemoveFocusedDate(True)
                     rec_multpd.Hide()
@@ -6082,9 +6096,32 @@ Public Class Main
         If rec_multpd.SelectedDates.Count = 0 Then
             rec_multpd.RemoveFocusedDate(True)
             rec_multpd.Hide()
-            rec_chk_multpd.Checked=False
+            rec_chk_multpd.Checked = False
             rec_dtp_date.Enabled = True
         End If
     End Sub
+    'This is for the console
+    Public Class Win32
+        <DllImport("kernel32.dll")> Public Shared Function AllocConsole() As Boolean
 
+        End Function
+        <DllImport("kernel32.dll")> Public Shared Function FreeConsole() As Boolean
+
+        End Function
+
+    End Class
+
+    Private Sub SerialPort_SMS_DataReceived(sender As Object, e As SerialDataReceivedEventArgs) Handles SerialPort_SMS.DataReceived
+        rcvdata = ""
+        Dim datain As String = ""
+        Dim numbytes As Integer = SerialPort_SMS.BytesToRead
+        For i As Integer = 1 To numbytes
+            datain &= Chr(SerialPort_SMS.ReadChar)
+        Next
+        test(datain)
+        Console.WriteLine(rcvdata.ToString)
+    End Sub
+    Private Sub test(ByVal indata As String)
+        rcvdata &= indata
+    End Sub
 End Class
