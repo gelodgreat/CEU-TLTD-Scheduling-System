@@ -82,7 +82,9 @@ Public Class FeedBack
                 .Port = 587
                 .EnableSsl = True
                 .Host = "smtp.gmail.com"
+                BKWorkersendingMessage.ReportProgress(30)
             End With
+
             e_mail = New MailMessage()
             With e_mail
                 .From = New MailAddress("ceutltdres2017developers@gmail.com")
@@ -91,8 +93,10 @@ Public Class FeedBack
                 .IsBodyHtml = False
                 .Body = content
             End With
+             BKWorkersendingMessage.ReportProgress(60)
             Smtp_Server.Send(e_mail)
             message.Text = ""
+             BKWorkersendingMessage.ReportProgress(100)
             Catch ex As Exception
                 GlobalException=ex
             End Try
