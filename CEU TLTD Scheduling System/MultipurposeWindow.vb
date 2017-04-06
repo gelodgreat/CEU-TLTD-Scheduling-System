@@ -40,7 +40,7 @@ Public Class MultipurposeWindow
         PanelConflictingReservation.Hide
         MultipurposeWindowPanel = ""
         Me.Text = ""
-        Me.Close()
+        Me.Dispose()
     End Sub
 
     Private Sub btn_Close_Click(sender As Object, e As EventArgs) Handles btn_Close.Click

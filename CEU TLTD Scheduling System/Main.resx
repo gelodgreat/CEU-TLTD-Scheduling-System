@@ -136,10 +136,10 @@
     <value>803, 56</value>
   </metadata>
   <metadata name="lu_byname_filter_delay.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 95</value>
+    <value>1006, 56</value>
   </metadata>
   <metadata name="lu_date_filter_delay.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>379, 95</value>
+    <value>17, 95</value>
   </metadata>
   <data name="RadLabel23.Text" xml:space="preserve">
     <value>This tab only shows equipments that are marked as "Good Condition" which also reflects the equipments for reservation. Please make sure to include the word "Good Condition" in the Preventive Maintenance System</value>
@@ -148,37 +148,37 @@
     <value>207, 17</value>
   </metadata>
   <metadata name="acct_mgmt_hover_delay_goingToBorrower.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>534, 95</value>
+    <value>172, 95</value>
   </metadata>
   <metadata name="acct_mgmt_hover_delay_goingToStaff.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>816, 95</value>
+    <value>454, 95</value>
   </metadata>
   <metadata name="refresh_main_rgv_recordedacademicsonly.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 134</value>
+    <value>711, 95</value>
   </metadata>
   <metadata name="refresh_acc_staff_list.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>295, 134</value>
+    <value>989, 95</value>
   </metadata>
   <metadata name="refresh_acc_prof_list.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>456, 134</value>
+    <value>1150, 95</value>
   </metadata>
   <metadata name="refresh_reservation_rgv_recordeddata.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>616, 134</value>
+    <value>17, 134</value>
   </metadata>
   <metadata name="refresh_reserved_grid_list.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>871, 134</value>
+    <value>272, 134</value>
   </metadata>
   <metadata name="refresh_released_grid_list.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 173</value>
+    <value>460, 134</value>
   </metadata>
   <metadata name="refresh_released_grid_list2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>204, 173</value>
+    <value>647, 134</value>
   </metadata>
   <metadata name="refresh_penalty_grid_list.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>398, 173</value>
+    <value>841, 134</value>
   </metadata>
   <metadata name="refresh_returned_eq_list.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>580, 173</value>
+    <value>1023, 134</value>
   </metadata>
   <metadata name="SerialPort_SMS.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>356, 56</value>
@@ -190,13 +190,16 @@
     <value>17, 17</value>
   </metadata>
   <metadata name="rel_dtp_dates_filter_delay.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>191, 95</value>
+    <value>1180, 56</value>
   </metadata>
   <metadata name="pen_dtp_dates_filter_delay.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 56</value>
   </metadata>
   <metadata name="ret_dtp_dates_filter_delay.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>985, 17</value>
+  </metadata>
+  <metadata name="reservation_process.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>1174, 17</value>
   </metadata>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>79</value>
