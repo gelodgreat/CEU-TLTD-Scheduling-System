@@ -47,11 +47,11 @@ Partial Class About
         Me.RadLabel2.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom),System.Windows.Forms.AnchorStyles)
         Me.RadLabel2.BackColor = System.Drawing.Color.Transparent
         Me.RadLabel2.Font = New System.Drawing.Font("Segoe UI", 9.5!)
-        Me.RadLabel2.Location = New System.Drawing.Point(115, 97)
+        Me.RadLabel2.Location = New System.Drawing.Point(124, 97)
         Me.RadLabel2.Name = "RadLabel2"
         Me.RadLabel2.Size = New System.Drawing.Size(46, 20)
         Me.RadLabel2.TabIndex = 6
-        Me.RadLabel2.Text = "v. 4.0.1"
+        Me.RadLabel2.Text = "v. 4.2.2"
         Me.RadLabel2.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter
         Me.RadLabel2.ThemeName = "VisualStudio2012Dark"
         '
