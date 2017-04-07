@@ -4,7 +4,9 @@ Module GlobalVariableModule
     Public MySQLConn As New MySqlConnection
     Public MySQLConn_Bendo As New MySqlConnection
     Public MySQLConnReservationBackgroundWorker As New MySqlConnection
+    Public MySQLConnCheckDBONLY As New MySqlConnection
     Public connstring As String = "server=" & My.Settings.cons_server & ";port=" & My.Settings.cons_port & ";userid=" & Actions.ToInsecureString(Actions.DecryptString(My.Settings.cons_username)) & ";password=" & Actions.ToInsecureString(Actions.DecryptString(My.Settings.cons_password)) & ";database=ceutltdscheduler"
+    Public CheckDBConnstring As String = "server=" & My.Settings.cons_server & ";port=" & My.Settings.cons_port & ";userid=" & Actions.ToInsecureString(Actions.DecryptString(My.Settings.cons_username)) & ";password=" & Actions.ToInsecureString(Actions.DecryptString(My.Settings.cons_password))
     Public comm As MySqlCommand
     Public reader As MySqlDataReader
     Public adapter As New MySqlDataAdapter
@@ -19,8 +21,10 @@ Module GlobalVariableModule
     Public GlobalException As Exception = Nothing
     Public GlobalMySQLException As MySqlException = Nothing
     Public MultipurposeWindowPanel As Char
+    Public reservationDBexists = False
     Public Sub applyconstringImmediately()
         connstring = "server=" & My.Settings.cons_server & ";port=" & My.Settings.cons_port & ";userid=" & Actions.ToInsecureString(Actions.DecryptString(My.Settings.cons_username)) & ";password=" & Actions.ToInsecureString(Actions.DecryptString(My.Settings.cons_password)) & ";database=ceutltdscheduler"
+        CheckDBConnstring="server=" & My.Settings.cons_server & ";port=" & My.Settings.cons_port & ";userid=" & Actions.ToInsecureString(Actions.DecryptString(My.Settings.cons_username)) & ";password=" & Actions.ToInsecureString(Actions.DecryptString(My.Settings.cons_password))
     End Sub
 
     'PENALTY Settings

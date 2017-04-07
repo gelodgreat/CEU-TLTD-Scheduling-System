@@ -98,15 +98,15 @@ Public Class Login
 
     Private Sub DB_DeadCounter()
         If db_is_deadCount>=3 Then
-            RadMessageBox.Show(Me, "The server is still Offline." & Environment.NewLine & "Please check the connection settings by clicking the gear icon on the top right and ask the database administrator to input the required details.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error, MessageBoxDefaultButton.Button1)
+            RadMessageBox.Show(Me, "Still Unable to connect to the server.." & Environment.NewLine & "Please check the connection settings by clicking the gear icon on the top right and ask the database administrator to input the required details.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error, MessageBoxDefaultButton.Button1)
         Else
-            RadMessageBox.Show(Me, "The server is offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error,MessageBoxDefaultButton.Button1)
+            RadMessageBox.Show(Me, "Unable to connect to the server.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error,MessageBoxDefaultButton.Button1)
             db_is_deadCount +=1
         End If
     End Sub
     Private Sub log_lbl_dbstatus_MouseHover(sender As Object, e As EventArgs) Handles log_lbl_dbstatus.MouseHover,lbl_prevmain_status.MouseHover,lbl_reservation_status.MouseHover
         If a=False And Not (lbl_prevmain_status.Text="Unauthorized" Or lbl_reservation_status.Text="Unauthorized")
-            Dim aa As DialogResult = RadMessageBox.Show(Me, "The server is offline. Would you like to check again?", system_Name, MessageBoxButtons.YesNo, RadMessageIcon.Question)
+            Dim aa As DialogResult = RadMessageBox.Show(Me, "Unable to connect to the server. Would you like to check again?", system_Name, MessageBoxButtons.YesNo, RadMessageIcon.Question)
             If aa=DialogResult.Yes
                 CheckDBStatus()
                 If a=True
@@ -127,26 +127,28 @@ Public Class Login
     End Sub
 
     Public Sub CheckDBStatus()
-        If MySQLConn.State = ConnectionState.Open Then
-            MySQLConn.Close()
+        If MySQLConnCheckDBONLY.State = ConnectionState.Open Then
+            MySQLConnCheckDBONLY.Close()
         End If
         Try
-            MySQLConn.ConnectionString = connstring
-            MySQLConn.Open()
+            MySQLConnCheckDBONLY.ConnectionString = CheckDBConnstring
+            MySQLConnCheckDBONLY.Open()
             a = True
             db_is_deadCount=0
             log_lbl_dbstatus.Text = "Online"
             log_lbl_dbstatus.ForeColor = Color.Green
-            comm = New MySqlCommand("SELECT (SELECT COUNT(*) FROM information_schema.schemata WHERE SCHEMA_NAME='ceutltdscheduler') AS 'ceutltdscheduler_count', (SELECT COUNT(*) FROM information_schema.schemata WHERE SCHEMA_NAME='ceutltdprevmaintenance') AS 'ceuprevmaintenance_count'", MySQLConn)
+            comm = New MySqlCommand("SELECT (SELECT COUNT(*) FROM information_schema.schemata WHERE SCHEMA_NAME='ceutltdscheduler') AS 'ceutltdscheduler_count', (SELECT COUNT(*) FROM information_schema.schemata WHERE SCHEMA_NAME='ceutltdprevmaintenance') AS 'ceuprevmaintenance_count'", MySQLConnCheckDBONLY)
             reader = comm.ExecuteReader
             While reader.Read
                 If reader.GetString("ceutltdscheduler_count") = "1"
                     lbl_reservation_status.Text="Available"
                     lbl_reservation_status.ForeColor=Color.Green
                     db_is_deadCount2=0
+                    reservationDBexists = True
                 Else
                     lbl_reservation_status.Text="Unavailable"
                     lbl_reservation_status.ForeColor=Color.Red
+                    reservationDBexists = False
                     db_is_deadCount2+=1
                 End If
                 If reader.GetString("ceuprevmaintenance_count") = "1"
@@ -159,7 +161,7 @@ Public Class Login
                     db_is_deadCount2+=1
                 End If
             End While
-            MySQLConn.Close()
+            MySQLConnCheckDBONLY.Close()
         Catch ex As MySqlException
             If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") Or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") Or ex.Message.Contains("Reading from the stream has failed"))) Then
                 a = False
@@ -170,7 +172,7 @@ Public Class Login
                 lbl_prevmain_status.Text="Unavailable"
                 lbl_prevmain_status.ForeColor=Color.Red
                 If db_is_deadCount = 0 And btn_login.IsHandleCreated Then
-                    RadMessageBox.Show(Me, "The server is offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
+                    RadMessageBox.Show(Me, "Unable to connect to the server.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                     db_is_deadCount +=1
                 Else
                     DB_DeadCounter()
@@ -185,11 +187,15 @@ Public Class Login
                 lbl_prevmain_status.Text="Unauthorized"
                 lbl_prevmain_status.ForeColor=Color.Red
                 RadMessageBox.Show(Me, "Unauthorized access to server.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
+            ElseIf ex.Number = 0 And ex.Message.Contains("Unknown database'ceutltdscheduler'")
+                lbl_reservation_status.Text="Unavailable"
+                lbl_reservation_status.ForeColor=Color.Red
+                RadMessageBox.Show(Me, "No CEU TLTD Reservation Database is present.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
             Else
                 RadMessageBox.Show(Me, ex.Message & "  " & ex.Number, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
             End If
         Finally
-            MySQLConn.Dispose()
+            MySQLConnCheckDBONLY.Dispose()
         End Try
     End Sub
 

@@ -14,10 +14,10 @@ Public Class DBPasswordPrompt
             loaddb_dialog.Filter = "CEU TLTD Reservation System Backup|*.ctrsb"
             loaddb_dialog.Title = "Select a File"
                 If loaddb_dialog.ShowDialog(Me) = DialogResult.OK Then
-                            MySQLConn.ConnectionString = connstring
+                            MySQLConnCheckDBONLY.ConnectionString = CheckDBConnstring
                             Dim mysql_LOAD As New MySqlBackup(comm)
-                            mysql_LOAD.Command.Connection = MySQLConn
-                            MySQLConn.Open
+                            mysql_LOAD.Command.Connection = MySQLConnCheckDBONLY
+                            MySQLConnCheckDBONLY.Open
                             mysql_LOAD.ImportInfo.EnableEncryption = True
                             mysql_LOAD.ImportInfo.EncryptionPassword="9Wy3Z3xTApDKUtPVN+TegRLTGR2mj8_M3*3ZJwSts83g9+pL?ZLEn?3xnuMR!2g"
                             Dim archive As New Process
@@ -34,7 +34,10 @@ Public Class DBPasswordPrompt
                             mysql_LOAD.ImportFromFile("hashes.hash222")
                             Dim fileContent As New System.IO.FileInfo("hashes.hash222")
                             fileContent.Delete()
-                            MySQLConn.Close
+                            MySQLConnCheckDBONLY.Close
+                            If reservationDBexists =False
+                                Login.CheckDBStatus()
+                            End If
                             Actions.Wu_RadMessageBox(1,"Database Successfully Imported.")
                   Else
                         Me.Dispose
@@ -65,6 +68,7 @@ Public Class DBPasswordPrompt
             Actions.Wu_RadMessageBox(4,ex.Message)
            Finally
             Me.Dispose
+            MySQLConnCheckDBONLY.Dispose
            End Try
     End Sub
 
