@@ -186,11 +186,12 @@ Public Class Login
                 lbl_reservation_status.ForeColor=Color.Red
                 lbl_prevmain_status.Text="Unauthorized"
                 lbl_prevmain_status.ForeColor=Color.Red
-                RadMessageBox.Show(Me, "Unauthorized access to server.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
-            ElseIf ex.Number = 0 And ex.Message.Contains("Unknown database'ceutltdscheduler'")
-                lbl_reservation_status.Text="Unavailable"
-                lbl_reservation_status.ForeColor=Color.Red
-                RadMessageBox.Show(Me, "No CEU TLTD Reservation Database is present.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
+                
+                If My.Settings.cons_server="" And My.Settings.cons_port="" And Actions.ToInsecureString(Actions.DecryptString(My.Settings.cons_password))="" And Actions.ToInsecureString(Actions.DecryptString(My.Settings.cons_username))=""
+                    RadMessageBox.Show(Me, "Please check the connection settings to the database.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Exclamation)
+                Else
+                    RadMessageBox.Show(Me, "Unauthorized access to server.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
+                End If
             Else
                 RadMessageBox.Show(Me, ex.Message & "  " & ex.Number, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
             End If

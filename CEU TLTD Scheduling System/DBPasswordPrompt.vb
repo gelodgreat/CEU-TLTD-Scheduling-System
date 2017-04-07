@@ -2,10 +2,20 @@
 Imports Telerik.WinControls
 Imports MySql.Data.MySqlClient.MySqlBackup
 
+
 Public Class DBPasswordPrompt
+    Dim CorrectDBCredentials As Boolean=False
     Private Sub btn_DBPassword_Click(sender As Object, e As EventArgs) Handles btn_DBPassword.Click
         Try
-        If txt_DBPassword.Text = Actions.ToInsecureString(Actions.DecryptString(My.Settings.cons_password)) Then
+        MySQLConnCheckDBONLY.ConnectionString="server=" & My.Settings.cons_server & ";port=" & My.Settings.cons_port & ";userid=" & txt_DBUsername.text & ";password=" & txt_DBPassword.Text
+        If MySQLConnCheckDBONLY.State = ConnectionState.Open Then
+            MySQLConnCheckDBONLY.Close()
+        End If
+        MySQLConnCheckDBONLY.Open()
+        CorrectDBCredentials=True
+        MySQLConnCheckDBONLY.Close()
+        If CorrectDBCredentials Then
+            txt_DBUsername.Text=""
             txt_DBPassword.Text=""
             Dim confirm As DialogResult = RadMessageBox.Show(Me, "Are you sure you want you restore a backup?", system_Name, MessageBoxButtons.YesNo, RadMessageIcon.Exclamation)
             If confirm=DialogResult.Yes
@@ -45,9 +55,6 @@ Public Class DBPasswordPrompt
                Else
                 Me.Dispose
                End If
-                Else
-            txt_DBPassword.Text=""
-            Actions.Wu_RadMessageBox(4,"Wrong Password!!")
             'RadMessageBox.Show(Me, "Wrong Password!!", "TLTD Scheduling System", MessageBoxButtons.OK, RadMessageIcon.Error)
             Me.Dispose
            End If
@@ -61,14 +68,16 @@ Public Class DBPasswordPrompt
                 Login.lbl_reservation_status.Text="Unavailable"
                 Login.lbl_reservation_status.ForeColor=Color.Red
                 Return
+            ElseIf ex.Number = 0 And ex.Message.Contains("Access denied for user")
+                Actions.Wu_RadMessageBox(4," Unauthorized.") 
             Else
             Actions.Wu_RadMessageBox(4,ex.Message)
             End If
         Catch ex As Exception
             Actions.Wu_RadMessageBox(4,ex.Message)
            Finally
-            Me.Dispose
             MySQLConnCheckDBONLY.Dispose
+            Me.Dispose
            End Try
     End Sub
 
