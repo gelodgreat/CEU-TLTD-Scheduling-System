@@ -26,10 +26,13 @@ Partial Class FeedBack
         Me.RadGroupBox1 = New Telerik.WinControls.UI.RadGroupBox()
         Me.message = New Telerik.WinControls.UI.RadTextBoxControl()
         Me.btn_submit = New Telerik.WinControls.UI.RadButton()
+        Me.BKWorkersendingMessage = New System.ComponentModel.BackgroundWorker()
+        Me.leavefeedback_prog = New Telerik.WinControls.UI.RadProgressBar()
         CType(Me.RadGroupBox1,System.ComponentModel.ISupportInitialize).BeginInit
         Me.RadGroupBox1.SuspendLayout
         CType(Me.message,System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.btn_submit,System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.leavefeedback_prog,System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me,System.ComponentModel.ISupportInitialize).BeginInit
         Me.SuspendLayout
         '
@@ -56,18 +59,30 @@ Partial Class FeedBack
         '
         'btn_submit
         '
-        Me.btn_submit.Location = New System.Drawing.Point(214, 313)
+        Me.btn_submit.Location = New System.Drawing.Point(212, 313)
         Me.btn_submit.Name = "btn_submit"
         Me.btn_submit.Size = New System.Drawing.Size(110, 24)
         Me.btn_submit.TabIndex = 1
         Me.btn_submit.Text = "Submit Feedback"
         Me.btn_submit.ThemeName = "VisualStudio2012Dark"
         '
+        'BKWorkersendingMessage
+        '
+        '
+        'leavefeedback_prog
+        '
+        Me.leavefeedback_prog.Location = New System.Drawing.Point(376, 313)
+        Me.leavefeedback_prog.Name = "leavefeedback_prog"
+        Me.leavefeedback_prog.Size = New System.Drawing.Size(130, 24)
+        Me.leavefeedback_prog.TabIndex = 2
+        Me.leavefeedback_prog.ThemeName = "VisualStudio2012Dark"
+        '
         'FeedBack
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6!, 13!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(518, 345)
+        Me.Controls.Add(Me.leavefeedback_prog)
         Me.Controls.Add(Me.btn_submit)
         Me.Controls.Add(Me.RadGroupBox1)
         Me.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
@@ -91,6 +106,7 @@ Partial Class FeedBack
         Me.RadGroupBox1.ResumeLayout(false)
         CType(Me.message,System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.btn_submit,System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.leavefeedback_prog,System.ComponentModel.ISupportInitialize).EndInit
         CType(Me,System.ComponentModel.ISupportInitialize).EndInit
         Me.ResumeLayout(false)
 
@@ -99,5 +115,7 @@ End Sub
     Friend WithEvents RadGroupBox1 As Telerik.WinControls.UI.RadGroupBox
     Friend WithEvents message As Telerik.WinControls.UI.RadTextBoxControl
     Friend WithEvents btn_submit As Telerik.WinControls.UI.RadButton
+    Friend WithEvents BKWorkersendingMessage As System.ComponentModel.BackgroundWorker
+    Friend WithEvents leavefeedback_prog As Telerik.WinControls.UI.RadProgressBar
 End Class
 

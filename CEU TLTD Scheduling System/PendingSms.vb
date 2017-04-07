@@ -50,8 +50,8 @@ Public Class PendingSms
         Dim content As String = "To: " & borrower _
         & Environment.NewLine _
         & Environment.NewLine _
-        & "This is an automated message from the TLTD Department. We would like to inform you that your borrowed equipment '" _
-        & "Your borrowed equipment has reached its allowable time."
+        & "This is an automated message from the TLTD Department. We would like to inform you that your borrowed equipment " _
+        & "has reached its allowable time."
 
 
         Return content
