@@ -3925,7 +3925,6 @@ Public Class Main
     Private Sub rec_btn_save_Click(sender As Object, e As EventArgs) Handles rec_btn_save.Click
         Try
             If reservation_process.IsBusy
-                RadMessageBox.Show(Me, "Reservation is under progress please wait.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Exclamation, MessageBoxDefaultButton.Button1)
                 Exit Sub
             Else
             reserveYN = RadMessageBox.Show(Me, "Are you sure you want to reserve?", system_Name, MessageBoxButtons.YesNo, RadMessageIcon.Question)
@@ -3958,6 +3957,7 @@ Public Class Main
                         If dupdup Then
                             RadMessageBox.Show(Me, "Please remove duplicates in the added equipments.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error, MessageBoxDefaultButton.Button1)
                         Else
+                            rec_btn_save.Enabled=False
                             eq_rgv_addeq.Enabled = False
                             rec_multpd.Enabled = False
                             rec_chk_multpd.Enabled = False
@@ -3967,7 +3967,7 @@ Public Class Main
                             rec_btn_check_availability.Enabled = False
                             rec_dtp_date.Enabled = False
                             btn_resetreservationno.Enabled = False
-                                reservation_process.RunWorkerAsync
+                            reservation_process.RunWorkerAsync
                             End If
                             
                                 'BENDO Background Worker START
@@ -5897,21 +5897,20 @@ Public Class Main
 
     Private Sub rec_chk_multpd_ToggleStateChanged(sender As Object, args As StateChangedEventArgs) Handles rec_chk_multpd.ToggleStateChanged
         If rec_chk_multpd.Checked = False Then
-
             If rec_multpd.SelectedDates.Count = 0 Then
                 rec_multpd.Hide()
                 rec_multpd.RemoveFocusedDate(False)
                 rec_dtp_date.Enabled = True
             Else
                 Dim confirm As DialogResult = RadMessageBox.Show(Me, "Are you sure you want to cancel your selection?", system_Name, MessageBoxButtons.YesNo, RadMessageIcon.Exclamation)
-                If confirm = DialogResult.Yes Then
-                    rec_multpd.RemoveFocusedDate(True)
-                    rec_multpd.Hide()
-                    rec_dtp_date.Enabled = True
-                Else
-                    rec_chk_multpd.Checked = True
-                    rec_dtp_date.Enabled = False
-                End If
+                    If confirm = DialogResult.Yes Then
+                        rec_multpd.RemoveFocusedDate(True)
+                        rec_multpd.Hide()
+                        rec_dtp_date.Enabled = True
+                    Else
+                        rec_chk_multpd.Checked = True
+                        rec_dtp_date.Enabled = False
+                    End If
             End If
         ElseIf rec_chk_multpd.Checked = True Then
             rec_multpd.Show()
@@ -5922,8 +5921,8 @@ Public Class Main
     Private Sub rec_multpd_Click(sender As Object, e As EventArgs) Handles rec_multpd.Click
         If rec_multpd.SelectedDates.Count = 0 Then
             rec_multpd.RemoveFocusedDate(True)
-            rec_multpd.Hide()
-            rec_chk_multpd.Checked = False
+            'rec_multpd.Hide()
+            'rec_chk_multpd.Checked = False
             rec_dtp_date.Enabled = True
         End If
     End Sub
@@ -5964,6 +5963,7 @@ Public Class Main
         rec_btn_eqclear.Enabled = True
         rec_btn_check_availability.Enabled = True
         btn_resetreservationno.Enabled = True
+        rec_btn_save.Enabled=True
         If NOT rec_chk_multpd.Checked
             rec_dtp_date.Enabled = True
         End If
@@ -6119,11 +6119,13 @@ Public Class Main
                                     End If
                                     Invoke(New DelegateReservationProcess(AddressOf auto_generate_reservationno))
                                 Next
-                                'RadMessageBox.Show(Me, "Succesfully reserved all of the equipment(s)!", system_Name, MessageBoxButtons.OK, RadMessageIcon.Info)
-                                eq_rgv_addeq.Rows.Clear()
+                    'RadMessageBox.Show(Me, "Succesfully reserved all of the equipment(s)!", system_Name, MessageBoxButtons.OK, RadMessageIcon.Info)
+                                Me.Invoke(Sub()
                                 main_load_academicsonly()
                                 'load_rec_table("NONE", True)
                                 reserved_load_table()
+                                eq_rgv_addeq.Rows.Clear()
+                                End Sub)
                                 reservation_process.ReportProgress(100)
                                 completeReservationSucessfully=True
 
@@ -6181,13 +6183,15 @@ Public Class Main
 
                             End If
                              Invoke(New DelegateReservationProcess(AddressOf auto_generate_reservationno))
-                                'RadMessageBox.Show(Me, "Succesfully reserved all of the equipment(s)!", system_Name, MessageBoxButtons.OK, RadMessageIcon.Info)
-                                rec_multpd.SelectedDates.Clear()
-                                rec_chk_multpd.Checked=False
-                                eq_rgv_addeq.Rows.Clear()
+                            'RadMessageBox.Show(Me, "Succesfully reserved all of the equipment(s)!", system_Name, MessageBoxButtons.OK, RadMessageIcon.Info)
+                            'rec_multpd.SelectedDates.Clear()
+                            'rec_chk_multpd.Checked=False
+                                Me.Invoke(Sub()
                                 main_load_academicsonly()
                                 'load_rec_table("NONE", True)
                                 reserved_load_table()
+                                eq_rgv_addeq.Rows.Clear()
+                                End Sub)
                                 reservation_process.ReportProgress(100)
                                 completeReservationSucessfully=True
                         End If
