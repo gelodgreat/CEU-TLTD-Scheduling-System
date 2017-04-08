@@ -22,6 +22,7 @@ Public Class Login
     Private Sub btn_login_Click(sender As Object, e As EventArgs) Handles btn_login.Click
         Dim q2 As String
         Try
+            MySQLConn.ConnectionString=connstring
             If String.IsNullOrEmpty(log_username.Text) Or String.IsNullOrEmpty(log_password.Text) Then
                 RadMessageBox.Show(Me, "Please enter username and password.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error, MessageBoxDefaultButton.Button1)
             Else

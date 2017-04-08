@@ -1,6 +1,5 @@
 ﻿Imports System.ComponentModel
 Imports System.Net.Mail
-Imports System.Threading
 Imports MySql.Data.MySqlClient
 Imports Telerik.WinControls
 
@@ -74,7 +73,7 @@ Public Class FeedBack
 
     Sub sendMail(content As String)
         Try
-        Dim Smtp_Server As New SmtpClient
+        Dim Smtp_Server As New SmtpClient()
             Dim e_mail As New MailMessage()
             With Smtp_Server
                 .UseDefaultCredentials = False

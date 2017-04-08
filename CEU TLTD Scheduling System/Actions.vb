@@ -95,6 +95,7 @@ Public Class Actions
         End If
     End Sub
 
+
     Public Shared Function CheckValueIllegalChars(value As String) As String
 	Dim sb As New System.Text.StringBuilder(value.Length)
 	For i As Integer = 0 To value.Length - 1
