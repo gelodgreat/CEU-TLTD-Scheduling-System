@@ -17,13 +17,15 @@ Public Class DBPasswordPrompt
         If CorrectDBCredentials Then
             txt_DBUsername.Text=""
             txt_DBPassword.Text=""
-            Dim confirm As DialogResult = RadMessageBox.Show(Me, "Are you sure you want you restore a backup?", system_Name, MessageBoxButtons.YesNo, RadMessageIcon.Exclamation)
+            Dim confirm As DialogResult = RadMessageBox.Show(Me, "Are you sure you want to restore a backup?", system_Name, MessageBoxButtons.YesNo, RadMessageIcon.Exclamation)
             If confirm=DialogResult.Yes
             Me.Hide
             Dim loaddb_dialog As New OpenFileDialog
             loaddb_dialog.Filter = "CEU TLTD Reservation System Backup|*.ctrsb"
             loaddb_dialog.Title = "Select a File"
                 If loaddb_dialog.ShowDialog(Me) = DialogResult.OK Then
+                        Dim confirmFINAL As DialogResult = RadMessageBox.Show(Me, "Are you sure on your selected backup? Once you click ""Yes"", The existing database for this system in the server will be replaced with the selected backup.", system_Name, MessageBoxButtons.YesNo, RadMessageIcon.Exclamation)
+                        If confirmFINAL=DialogResult.Yes
                             MySQLConnCheckDBONLY.ConnectionString = CheckDBConnstring
                             Dim mysql_LOAD As New MySqlBackup(comm)
                             mysql_LOAD.Command.Connection = MySQLConnCheckDBONLY
@@ -48,7 +50,12 @@ Public Class DBPasswordPrompt
                             If reservationDBexists =False
                                 Login.CheckDBStatus()
                             End If
-                            Actions.Wu_RadMessageBox(1,"Database Successfully Imported.")
+                            Actions.Wu_RadMessageBox(1,"Database Successfully Imported.",Me)
+                            ConnectionWindow.Dispose
+                            Else
+                            loaddb_dialog.Dispose()
+                            Me.Dispose
+                        End If
                   Else
                         Me.Dispose
                   End If
@@ -60,7 +67,7 @@ Public Class DBPasswordPrompt
            End If
              Catch ex As MySqlException
              If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed")))
-                Actions.Wu_RadMessageBox(4," The database probably went offline.")
+                Actions.Wu_RadMessageBox(4," The database probably went offline.",Me)
                 Login.log_lbl_dbstatus.Text = "Offline"
                 Login.log_lbl_dbstatus.ForeColor = Color.Red
                 Login.lbl_prevmain_status.Text="Unavailable"
@@ -69,12 +76,12 @@ Public Class DBPasswordPrompt
                 Login.lbl_reservation_status.ForeColor=Color.Red
                 Return
             ElseIf ex.Number = 0 And ex.Message.Contains("Access denied for user")
-                Actions.Wu_RadMessageBox(4," Unauthorized.") 
+                Actions.Wu_RadMessageBox(4," Unauthorized.",Me) 
             Else
-            Actions.Wu_RadMessageBox(4,ex.Message)
+            Actions.Wu_RadMessageBox(4,ex.Message,Me)
             End If
         Catch ex As Exception
-            Actions.Wu_RadMessageBox(4,ex.Message)
+            Actions.Wu_RadMessageBox(4,ex.Message,Me)
            Finally
             MySQLConnCheckDBONLY.Dispose
             Me.Dispose

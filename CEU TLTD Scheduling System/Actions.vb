@@ -41,7 +41,7 @@ Public Class Actions
         Return returnValue
     End Function
 
-    Public Shared Sub SaveDB()
+    Public Shared Sub SaveDB(requestingForm As Form)
         Dim savedb_dialog As New SaveFileDialog()
         savedb_dialog.Filter = "CEU TLTD Reservation System Backup|*.ctrsb"
         savedb_dialog.Title = "Choose a Location to Save"
@@ -77,20 +77,20 @@ Public Class Actions
                 Dim dbfile As New FileInfo("hashes.hash222")
                 dbfile.Delete()
                 'RadMessageBox.Show("Database Successfully Exported.", "TLTD Scheduling System", MessageBoxButtons.OK, RadMessageIcon.Info)
-                Wu_RadMessageBox(2,"Database Successfully Exported.")
+                Wu_RadMessageBox(2,"Database Successfully Exported.",requestingForm)
                 
                 'RadMessageBox.Show("Error in Importing Database:" & Environment.NewLine & ex.Message, "TLTD Scheduling System", MessageBoxButtons.OK, RadMessageIcon.Error)
              Catch ex As MySqlException
              If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") or ex.Message.Contains("Reading from the stream has failed")))
-                Wu_RadMessageBox(4," The database probably went offline.")
+                Wu_RadMessageBox(4," The database probably went offline.",requestingForm)
                 Login.log_lbl_dbstatus.Text = "Offline"
                 Login.log_lbl_dbstatus.ForeColor = Color.Red
                 Return
             Else
-            Wu_RadMessageBox(4,ex.Message)
+            Wu_RadMessageBox(4,ex.Message,requestingForm)
             End If
         Catch ex As Exception
-            Wu_RadMessageBox(4,ex.Message)
+            Wu_RadMessageBox(4,ex.Message,requestingForm)
             End Try
         End If
     End Sub
@@ -115,7 +115,7 @@ Public Class Actions
 	    Return sb.ToString()
     End Function
 
-    Public Shared Sub Wu_RadMessageBox(Icontype As Integer, messageContent As String)
+    Public Shared Sub Wu_RadMessageBox(Icontype As Integer, messageContent As String, requestingFormWindow As Form)
 
         Dim form As RadMessageBoxForm = New RadMessageBoxForm()
 
@@ -144,7 +144,7 @@ Public Class Actions
 
         form.TopMost = True
 
-        form.ShowDialog()
+        form.ShowDialog(requestingFormWindow)
     End Sub
 
 

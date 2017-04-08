@@ -1,7 +1,6 @@
 ﻿Imports MySql.Data.MySqlClient
 Imports Telerik.WinControls
 Imports Telerik.WinControls.UI
-Imports Telerik.WinControls.UI.Data
 Imports System.Threading
 Imports System.IO.Ports
 Imports System.Runtime.InteropServices
@@ -296,7 +295,7 @@ Public Class Main
     Private Sub menuItem_SaveDB_Click(sender As Object, e As EventArgs) Handles menuItem_SaveDB.Click
         refresh_main_rgv_recordedacademicsonly.Stop()
         refresh_released_grid_list.Stop()
-        Actions.SaveDB()
+        Actions.SaveDB(Me)
         If rpv1.SelectedPage Is rpvp1_main Then
             refresh_main_rgv_recordedacademicsonly.Start()
         ElseIf rel_gb_listinfos.SelectedPage Is rel_released_info Then

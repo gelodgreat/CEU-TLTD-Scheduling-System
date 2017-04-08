@@ -74,7 +74,7 @@ Public Class InstructionalMaterials
     End Sub
 
     Private Sub menuItem_SaveDB_Click(sender As Object, e As EventArgs) Handles menuItem_SaveDB.Click
-        Actions.SaveDB()
+        Actions.SaveDB(Me)
     End Sub
 
     Private Sub menuItem_Settings_Click(sender As Object, e As EventArgs) Handles menuItem_Settings.Click
