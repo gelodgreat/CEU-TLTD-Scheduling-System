@@ -8,10 +8,10 @@ Imports System.Runtime.InteropServices
 
 ' Review the values of the assembly attributes
 
-<Assembly: AssemblyTitle("CEU TLTD Scheduling System")> 
+<Assembly: AssemblyTitle("CEU TLTD Reservation System")> 
 <Assembly: AssemblyDescription("")> 
 <Assembly: AssemblyCompany("")> 
-<Assembly: AssemblyProduct("CEU TLTD Scheduling System")> 
+<Assembly: AssemblyProduct("CEU TLTD Reservation System")> 
 <Assembly: AssemblyCopyright("Copyright © 2017 Team ShamWoW IT Solutions")> 
 <Assembly: AssemblyTrademark("")> 
 

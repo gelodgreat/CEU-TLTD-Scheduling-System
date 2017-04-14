@@ -248,9 +248,9 @@ Namespace My
     Friend Module MySettingsProperty
         
         <Global.System.ComponentModel.Design.HelpKeywordAttribute("My.Settings")>  _
-        Friend ReadOnly Property Settings() As Global.CEU_TLTD_Scheduling_System.My.MySettings
+        Friend ReadOnly Property Settings() As Global.CEU_TLTD_Reservation_System.My.MySettings
             Get
-                Return Global.CEU_TLTD_Scheduling_System.My.MySettings.Default
+                Return Global.CEU_TLTD_Reservation_System.My.MySettings.Default
             End Get
         End Property
     End Module
