@@ -8,7 +8,15 @@ Public Class Login
     Public db_is_deadCount2 As Integer
     Dim a As Boolean = false
     
+    Shared Sub New()
+        Telerik.WinControls.RadTypeResolver.Instance.ResolveTypesInCurrentAssembly = True
+    End Sub
 
+    Public Sub New()
+        ' This call is required by the designer.
+        InitializeComponent()
+        ' Add any initialization after the InitializeComponent() call.
+    End Sub
     Private Sub Login_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         log_timer.Enabled = True
         ThemeResolutionService.ApplicationThemeName = My.Settings.WindowTheme
