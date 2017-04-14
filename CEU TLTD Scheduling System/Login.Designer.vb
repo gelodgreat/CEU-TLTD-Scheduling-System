@@ -249,7 +249,7 @@ Partial Class Login
         'settingButton
         '
         Me.settingButton.Anchor = System.Windows.Forms.AnchorStyles.None
-        Me.settingButton.Image = Global.CEU_TLTD_Scheduling_System.My.Resources.Resources.settingIcon
+        Me.settingButton.Image = Global.CEU_TLTD_Reservation_System.My.Resources.Resources.settingIcon
         Me.settingButton.InitialImage = Nothing
         Me.settingButton.Location = New System.Drawing.Point(437, 6)
         Me.settingButton.Name = "settingButton"
