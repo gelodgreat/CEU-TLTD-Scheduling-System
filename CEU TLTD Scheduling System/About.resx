@@ -117,4 +117,45 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="RadTextBox1.Text" xml:space="preserve">
+    <value>Changelog:
+
+4.2.2
+-Fixed small bugs in login UI
+
+4.2.1
+-Improved login UI
+
+4.2
+-Added multithreading in reserving equipments
+-Added more option in filtering dates
+-Reduced lags
+
+4.0
+-Added more ways to refresh data
+-Reduced logic errors
+-More catching of error to make it readable to the user
+-Modified About window
+-Added more forms to inform the user about reservation conflicts.
+-Can now load database settings
+-Better encrpytion to the database backups
+-Added multiple date selection
+
+3.0
+-Added more constraints to ensure the user's input is sufficient
+-Added multiple equipment selection
+-Improved SMS sending
+-Major UI improvements as suggested by the project manager
+
+1.0.4
+-Added SMS feature
+-Conflict detection improved
+-Added penalty calculation
+-Added settings form
+-Fixed wrong data being display in certain tabs
+-Corrected wrong dialog messages
+
+1.0
+-Implementation of basic functions of the system in the OJT interview</value>
+  </data>
 </root>
