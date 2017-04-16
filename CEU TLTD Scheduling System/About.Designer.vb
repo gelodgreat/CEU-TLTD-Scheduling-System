@@ -82,6 +82,7 @@ Partial Class About
         Me.Controls.Add(Me.RadLabel2)
         Me.Controls.Add(Me.RadLabel1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
+        Me.KeyPreview = true
         Me.MaximizeBox = false
         Me.MinimizeBox = false
         Me.Name = "About"

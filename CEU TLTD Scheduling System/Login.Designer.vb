@@ -276,6 +276,7 @@ Partial Class Login
         Me.Controls.Add(Me.log_lbl_dbstatus)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Icon = CType(resources.GetObject("$this.Icon"),System.Drawing.Icon)
+        Me.KeyPreview = true
         Me.MaximizeBox = false
         Me.Name = "Login"
         '

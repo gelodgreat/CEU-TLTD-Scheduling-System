@@ -208,6 +208,7 @@ Partial Class ConnectionWindow
         Me.Controls.Add(Me.RadGroupBox1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
         Me.Icon = CType(resources.GetObject("$this.Icon"),System.Drawing.Icon)
+        Me.KeyPreview = true
         Me.MaximizeBox = false
         Me.MinimizeBox = false
         Me.Name = "ConnectionWindow"

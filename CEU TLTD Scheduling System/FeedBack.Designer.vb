@@ -89,6 +89,7 @@ Partial Class FeedBack
         Me.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
         Me.Icon = CType(resources.GetObject("$this.Icon"),System.Drawing.Icon)
+        Me.KeyPreview = true
         Me.MaximizeBox = false
         Me.MaximumSize = New System.Drawing.Size(526, 378)
         Me.MinimizeBox = false
