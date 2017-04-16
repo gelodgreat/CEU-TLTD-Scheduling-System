@@ -95,6 +95,10 @@ Public Class Actions
         End If
     End Sub
 
+    Public Shared Sub showHelp(requestingForm As Control, topic_id As Object)
+        Help.ShowHelp(requestingForm,"help.chm",HelpNavigator.TopicId, topic_id)
+    End Sub
+
 
     Public Shared Function CheckValueIllegalChars(value As String) As String
 	Dim sb As New System.Text.StringBuilder(value.Length)

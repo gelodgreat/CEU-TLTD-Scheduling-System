@@ -471,6 +471,7 @@ Partial Class Main
         Me.menuItem_About = New Telerik.WinControls.UI.RadMenuItem()
         Me.menuItem_LF = New Telerik.WinControls.UI.RadMenuItem()
         Me.menuItem_Stat = New Telerik.WinControls.UI.RadMenuItem()
+        Me.menuItem_Help = New Telerik.WinControls.UI.RadMenuItem()
         Me.lu_ActivityType_filter_delay = New System.Windows.Forms.Timer(Me.components)
         Me.acct_mgmt_hover_delay_goingToBorrower = New System.Windows.Forms.Timer(Me.components)
         Me.acct_mgmt_hover_delay_goingToStaff = New System.Windows.Forms.Timer(Me.components)
@@ -4025,7 +4026,7 @@ Partial Class Main
         Me.rpv1.DefaultPage = Me.rpvp1_main
         Me.rpv1.Location = New System.Drawing.Point(0, 26)
         Me.rpv1.Name = "rpv1"
-        Me.rpv1.SelectedPage = Me.rpvp2_reservation
+        Me.rpv1.SelectedPage = Me.rpvp1_main
         Me.rpv1.Size = New System.Drawing.Size(1358, 557)
         Me.rpv1.TabIndex = 1
         Me.rpv1.Text = "Home"
@@ -4037,7 +4038,7 @@ Partial Class Main
         '
         'RadMenu1
         '
-        Me.RadMenu1.Items.AddRange(New Telerik.WinControls.RadItem() {Me.menuItem_DBManage, Me.menuItem_Settings, Me.menuItem_About, Me.menuItem_LF, Me.menuItem_Stat})
+        Me.RadMenu1.Items.AddRange(New Telerik.WinControls.RadItem() {Me.menuItem_DBManage, Me.menuItem_Settings, Me.menuItem_About, Me.menuItem_LF, Me.menuItem_Stat, Me.menuItem_Help})
         Me.RadMenu1.Location = New System.Drawing.Point(0, 0)
         Me.RadMenu1.Name = "RadMenu1"
         Me.RadMenu1.Size = New System.Drawing.Size(1356, 20)
@@ -4105,6 +4106,15 @@ Partial Class Main
         Me.menuItem_Stat.Text = "Statistics"
         CType(Me.menuItem_Stat.GetChildAt(0),Telerik.WinControls.Primitives.FillPrimitive).BackColor = System.Drawing.Color.Transparent
         CType(Me.menuItem_Stat.GetChildAt(1),Telerik.WinControls.Primitives.BorderPrimitive).ForeColor = System.Drawing.Color.Transparent
+        '
+        'menuItem_Help
+        '
+        Me.menuItem_Help.BackColor = System.Drawing.Color.Transparent
+        Me.menuItem_Help.Name = "menuItem_Help"
+        Me.menuItem_Help.Padding = New System.Windows.Forms.Padding(5, 0, 5, 0)
+        Me.menuItem_Help.Text = "Help"
+        CType(Me.menuItem_Help.GetChildAt(0),Telerik.WinControls.Primitives.FillPrimitive).BackColor = System.Drawing.Color.Transparent
+        CType(Me.menuItem_Help.GetChildAt(1),Telerik.WinControls.Primitives.BorderPrimitive).ForeColor = System.Drawing.Color.Transparent
         '
         'lu_ActivityType_filter_delay
         '
@@ -4702,5 +4712,6 @@ End Sub
     Friend WithEvents reservation_process As System.ComponentModel.BackgroundWorker
     Friend WithEvents reservation_progress As Telerik.WinControls.UI.RadProgressBar
     Friend WithEvents rec_cb_reserveno As Telerik.WinControls.UI.RadLabel
+    Friend WithEvents menuItem_Help As Telerik.WinControls.UI.RadMenuItem
 End Class
 

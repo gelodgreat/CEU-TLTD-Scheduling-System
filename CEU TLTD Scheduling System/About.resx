@@ -120,6 +120,9 @@
   <data name="RadTextBox1.Text" xml:space="preserve">
     <value>Changelog:
 
+4.2.3
+-Added help
+
 4.2.2
 -Fixed small bugs in login UI
 

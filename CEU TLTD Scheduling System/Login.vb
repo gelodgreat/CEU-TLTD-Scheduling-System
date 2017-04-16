@@ -237,4 +237,15 @@ Public Class Login
         System.Environment.Exit(1)
         End If
     End Sub
+
+    Private Sub Login_KeyDown(sender As Object, e As KeyEventArgs) Handles MyBase.KeyDown
+        If e.KeyCode=Keys.F1
+            If IO.File.Exists("help.chm") Then
+                Actions.showHelp(Me, "5")
+            Else
+                RadMessageBox.Show(Me, "Required file for help not found. Re-installing might solve the problem.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
+                Exit Sub
+            End If
+        End If
+    End Sub
 End Class

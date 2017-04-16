@@ -54,7 +54,7 @@ Partial Class About
         Me.RadLabel2.Name = "RadLabel2"
         Me.RadLabel2.Size = New System.Drawing.Size(46, 20)
         Me.RadLabel2.TabIndex = 6
-        Me.RadLabel2.Text = "v. 4.2.2"
+        Me.RadLabel2.Text = "v. 4.2.3"
         Me.RadLabel2.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter
         Me.RadLabel2.ThemeName = "VisualStudio2012Dark"
         '

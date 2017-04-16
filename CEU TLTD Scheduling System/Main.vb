@@ -267,13 +267,13 @@ Public Class Main
     'END! Groupbox Hover in Account Management
 
     'START! MENU Bar
-    Private Sub MenuBar_MouseLeave(sender As Object, e As EventArgs) Handles menuItem_DBManage.MouseLeave, menuItem_About.MouseLeave, menuItem_Settings.MouseLeave, menuItem_LF.MouseLeave, menuItem_Stat.MouseLeave
+    Private Sub MenuBar_MouseLeave(sender As Object, e As EventArgs) Handles menuItem_DBManage.MouseLeave, menuItem_About.MouseLeave, menuItem_Settings.MouseLeave, menuItem_LF.MouseLeave, menuItem_Stat.MouseLeave, menuItem_Help.MouseLeave
         If ThemeResolutionService.ApplicationThemeName = "VisualStudio2012Dark" Then
             Dim item As RadMenuItem = TryCast(sender, RadMenuItem)
             item.FillPrimitive.BackColor = Color.Transparent
         End If
     End Sub
-    Private Sub MenuBar_MouseEnter(sender As Object, e As EventArgs) Handles menuItem_DBManage.MouseEnter, menuItem_About.MouseEnter, menuItem_Settings.MouseEnter, menuItem_LF.MouseEnter, menuItem_Stat.MouseEnter
+    Private Sub MenuBar_MouseEnter(sender As Object, e As EventArgs) Handles menuItem_DBManage.MouseEnter, menuItem_About.MouseEnter, menuItem_Settings.MouseEnter, menuItem_LF.MouseEnter, menuItem_Stat.MouseEnter, menuItem_Help.MouseEnter
         If ThemeResolutionService.ApplicationThemeName = "VisualStudio2012Dark" Then
             Dim item As RadMenuItem = TryCast(sender, RadMenuItem)
             item.FillPrimitive.BackColor = Color.FromArgb(62, 62, 64)
@@ -324,6 +324,10 @@ Public Class Main
 
     Private Sub menuItem_Stat_Click(sender As Object, e As EventArgs) Handles menuItem_Stat.Click
         Statistics.ShowDialog()
+    End Sub
+
+    Private Sub menuItem_Help_Click(sender As Object, e As EventArgs) Handles menuItem_Help.Click
+        Actions.showHelp(Me, "1")
     End Sub
     'END!! Menu BAR
 
@@ -6234,4 +6238,29 @@ Public Class Main
     Private Sub test(ByVal indata As String)
         rcvdata &= indata
     End Sub
+
+    Private Sub Main_KeyPress(sender As Object, e as KeyEventArgs) Handles MyBase.KeyDown
+        If e.KeyCode=Keys.F1
+            If IO.File.Exists("help.chm") Then
+                If rpv1.SelectedPage Is rpvp1_main
+                    Actions.showHelp(Me, "7")
+                ElseIf rpv1.SelectedPage Is rpvp_equipment
+                    Actions.showHelp(Me, "8")
+                ElseIf rpv1.SelectedPage Is rpvp_account
+                    Actions.showHelp(Me, "9")
+                ElseIf rpv1.SelectedPage Is rpvp2_reservation
+                    Actions.showHelp(Me, "10")
+                ElseIf rpv1.SelectedPage Is rpvp_releasing
+                    Actions.showHelp(Me, "11")
+                ElseIf rpv1.SelectedPage Is rpvp_returning
+                    Actions.showHelp(Me, "12")
+                End If
+            Else
+                RadMessageBox.Show(Me, "Required file for help not found. Re-installing might solve the problem.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
+                Exit Sub
+            End If
+        End If
+    End Sub
+
+
 End Class

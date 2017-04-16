@@ -810,6 +810,27 @@ Public Class MainSettingsWindow
         portname = Trim(Mid(ddl_deviceList.Text, 1, 5))
         Console.WriteLine(portname)
     End Sub
+
+    Private Sub MainSettingsWindow_KeyDown(sender As Object, e As KeyEventArgs) Handles MyBase.KeyDown
+        If e.KeyCode=Keys.F1
+            If IO.File.Exists("help.chm") Then
+                If rpv_settings.SelectedPage Is rp_penalty
+                    Actions.showHelp(Me, "21")
+                ElseIf rpv_settings.SelectedPage Is rp_refreshrate
+                    Actions.showHelp(Me, "22")
+                ElseIf rpv_settings.SelectedPage Is rp_themes
+                    Actions.showHelp(Me, "23")
+                ElseIf rpv_settings.SelectedPage Is rp_sms
+                    Actions.showHelp(Me, "24")
+                ElseIf rpv_settings.SelectedPage Is rp_listcolven
+                    Actions.showHelp(Me, "25")
+                End If
+            Else
+                RadMessageBox.Show(Me, "Required file for help not found. Re-installing might solve the problem.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
+                Exit Sub
+            End If
+        End If
+    End Sub
 End Class
 
 

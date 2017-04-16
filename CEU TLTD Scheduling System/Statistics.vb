@@ -88,4 +88,15 @@ Public Class Statistics
     Private Sub rgv_StatsByEq_ViewCellFormatting(sender As Object, e As UI.CellFormattingEventArgs) Handles rgv_StatsByEq.ViewCellFormatting
         e.CellElement.TextAlignment = ContentAlignment.MiddleCenter
     End Sub
+
+    Private Sub Statistics_KeyDown(sender As Object, e As KeyEventArgs) Handles MyBase.KeyDown
+        If e.KeyCode=Keys.F1
+            If IO.File.Exists("help.chm") Then
+                Actions.showHelp(Me, "28")
+            Else
+                RadMessageBox.Show(Me, "Required file for help not found. Re-installing might solve the problem.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
+                Exit Sub
+            End If
+        End If
+    End Sub
 End Class

@@ -33,4 +33,15 @@ Public Class ConnectionWindow
     Private Sub btn_load_database_Click(sender As Object, e As EventArgs) Handles btn_load_database.Click
         DBPasswordPrompt.ShowDialog()
     End Sub
+
+    Private Sub ConnectionWindow_KeyDown(sender As Object, e As KeyEventArgs) Handles MyBase.KeyDown
+        If e.KeyCode=Keys.F1
+            If IO.File.Exists("help.chm") Then
+                Actions.showHelp(Me, "6")
+            Else
+                RadMessageBox.Show(Me, "Required file for help not found. Re-installing might solve the problem.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
+                Exit Sub
+            End If
+        End If
+    End Sub
 End Class
