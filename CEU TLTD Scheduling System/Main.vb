@@ -332,16 +332,6 @@ Public Class Main
     'END!! Menu BAR
 
     Private Sub Main_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
-        If My.Application.CommandLineArgs.Count > 0 Then
-
-            For Each Argument As String In My.Application.CommandLineArgs
-                If Argument = "debug" Then
-                    Win32.AllocConsole()
-                End If
-            Next
-        End If
-
         getFromDB_settings_penalty()
         'LOADING SAVED DATES
         If My.Settings.res_fil_startdate = Nothing And My.Settings.res_fil_enddate = Nothing Then
@@ -6215,16 +6205,6 @@ Public Class Main
             reservation_progress.Text=e.ProgressPercentage & "%"
     End Sub
     'This is for the console
-    Public Class Win32
-        <DllImport("kernel32.dll")> Public Shared Function AllocConsole() As Boolean
-
-        End Function
-        <DllImport("kernel32.dll")> Public Shared Function FreeConsole() As Boolean
-
-        End Function
-
-    End Class
-
     Private Sub SerialPort_SMS_DataReceived(sender As Object, e As SerialDataReceivedEventArgs) Handles SerialPort_SMS.DataReceived
         rcvdata = ""
         Dim datain As String = ""

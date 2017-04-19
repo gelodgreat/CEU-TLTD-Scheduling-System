@@ -54,6 +54,6 @@ Module GlobalVariableModule
     'GSM Module Connection using SerialPort
     Public portname, baudrate, parity, databits, stopbits, handshake, rtsenabled, receivedbytestreshold, newline, readtimeout
 
-
-    'GSM Switch
+    'Console Window Status
+    Public IsDebugMode As Boolean = False
 End Module
