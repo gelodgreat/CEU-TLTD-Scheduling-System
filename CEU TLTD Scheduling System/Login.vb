@@ -39,6 +39,15 @@ Public Class Login
                         'Logger("This is the Console Window. Closing this window wil also terminate the system.")
                         Logger("This is the Console Window. Closing this window wil also terminate the system.")
                         Logger("")
+                    ElseIf Argument = "-debugshamwowsilent" Then
+                        SilentDebug = True
+                        'Logger("Welcome to CEU TLTD Reservation System")
+                        Logger("Welcome to CEU TLTD Reservation System")
+                        'Logger("The System has been launched with an debugshamwow Argument.")
+                        Logger("The System has been launched with an debugshamwow Argument.")
+                        'Logger("This is the Console Window. Closing this window wil also terminate the system.")
+                        Logger("This is the Console Window. Closing this window wil also terminate the system.")
+                        Logger("")
                     End If
                 Next
             End If
@@ -170,6 +179,7 @@ Public Class Login
     End Sub
 
     Public Sub CheckDBStatus()
+        Logger("Check Database if exists.")
         If MySQLConnCheckDBONLY.State = ConnectionState.Open Then
             MySQLConnCheckDBONLY.Close()
         End If
@@ -184,21 +194,25 @@ Public Class Login
             reader = comm.ExecuteReader
             While reader.Read
                 If reader.GetString("ceutltdscheduler_count") = "1" Then
+                    Logger("TLTD Reservation System database exists.")
                     lbl_reservation_status.Text = "Available"
                     lbl_reservation_status.ForeColor = Color.Green
                     db_is_deadCount2 = 0
                     reservationDBexists = True
                 Else
+                    Logger("TLTD Reservation System database does not exist.")
                     lbl_reservation_status.Text = "Unavailable"
                     lbl_reservation_status.ForeColor = Color.Red
                     reservationDBexists = False
                     db_is_deadCount2 += 1
                 End If
                 If reader.GetString("ceuprevmaintenance_count") = "1" Then
+                    Logger("TLTD Preventive Maintenance System database exists.")
                     lbl_prevmain_status.Text = "Available"
                     lbl_prevmain_status.ForeColor = Color.Green
                     db_is_deadCount2 = 0
                 Else
+                    Logger("TLTD Preventive Maintenance System database does not exist exist.")
                     lbl_prevmain_status.Text = "Unavailable"
                     lbl_prevmain_status.ForeColor = Color.Red
                     db_is_deadCount2 += 1
@@ -250,6 +264,7 @@ Public Class Login
     End Sub
 
     Private Sub settingButton_Click(sender As Object, e As EventArgs) Handles settingButton.Click
+        Logger("Database Connection Cinfiguration button Clicked")
         ConnectionWindow.ShowDialog()
     End Sub
 

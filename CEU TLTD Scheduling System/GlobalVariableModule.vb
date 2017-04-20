@@ -24,6 +24,7 @@ Module GlobalVariableModule
     Public MultipurposeWindowPanel As Char
     Public reservationDBexists = False
     Public Sub applyconstringImmediately()
+        Logger("Apply Connection String")
         connstring = "server=" & My.Settings.cons_server & ";port=" & My.Settings.cons_port & ";userid=" & Actions.ToInsecureString(Actions.DecryptString(My.Settings.cons_username)) & ";password=" & Actions.ToInsecureString(Actions.DecryptString(My.Settings.cons_password)) & ";database=ceutltdscheduler"
         CheckDBConnstring = "server=" & My.Settings.cons_server & ";port=" & My.Settings.cons_port & ";userid=" & Actions.ToInsecureString(Actions.DecryptString(My.Settings.cons_username)) & ";password=" & Actions.ToInsecureString(Actions.DecryptString(My.Settings.cons_password))
     End Sub
@@ -57,6 +58,7 @@ Module GlobalVariableModule
 
     'Console Window Status
     Public IsDebugMode As Boolean = False
+    Public SilentDebug As Boolean = False
 
     'Logger Variables
     Dim LogFile As StreamWriter
@@ -68,6 +70,10 @@ Module GlobalVariableModule
             LogFile = File.AppendText(path)
             LogFile.WriteLine("[" & Now.ToString("MM-dd-yyyy HH:mm:ss") & "] " & msg)
             Console.WriteLine("[" & Now.ToString("MM-dd-yyyy HH:mm:ss") & "] " & msg)
+            LogFile.Close()
+        ElseIf SilentDebug Then
+            LogFile = File.AppendText(path)
+            LogFile.WriteLine("[" & Now.ToString("MM-dd-yyyy HH:mm:ss") & "] " & msg)
             LogFile.Close()
         End If
     End Sub
