@@ -32,14 +32,17 @@ Public Class Login
                     If Argument = "-debugshamwow" Then
                         Win32.AllocConsole()
                         IsDebugMode = True
-                        Console.WriteLine("Welcome to CEU TLTD Reservation System")
-                        Console.WriteLine("The System has been launched with an debugshamwow Argument.")
-                        Console.WriteLine("This is the Console Window. Closing this window wil also terminate the system.")
-                        Console.WriteLine("")
+                        'Logger("Welcome to CEU TLTD Reservation System")
+                        Logger("Welcome to CEU TLTD Reservation System")
+                        'Logger("The System has been launched with an debugshamwow Argument.")
+                        Logger("The System has been launched with an debugshamwow Argument.")
+                        'Logger("This is the Console Window. Closing this window wil also terminate the system.")
+                        Logger("This is the Console Window. Closing this window wil also terminate the system.")
+                        Logger("")
                     End If
                 Next
             End If
-            Console.WriteLine("Login Window")
+            Logger("Login Window")
         End If
     End Sub
 
@@ -48,23 +51,23 @@ Public Class Login
     'Login Button Codes
     Private Sub btn_login_Click(sender As Object, e As EventArgs) Handles btn_login.Click
         Dim q2 As String
-        Console.WriteLine("Action: Login Button Clicked")
-        Console.WriteLine("Username =" & log_username.Text & "")
-        Console.WriteLine("Password =" & log_password.Text & "")
+        Logger("Action: Login Button Clicked")
+        Logger("Username =" & log_username.Text & "")
+        Logger("Password =" & log_password.Text & "")
         Try
             MySQLConn.ConnectionString = connstring
             If String.IsNullOrEmpty(log_username.Text) Or String.IsNullOrEmpty(log_password.Text) Then
                 RadMessageBox.Show(Me, "Please enter username And password.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error, MessageBoxDefaultButton.Button1)
-                Console.WriteLine("The Username or password Field is empty.")
+                Logger("The Username or password Field is lacking information.")
             Else
                 If log_username.Text.Contains("@ceu.edu.ph") Then
                     q2 = "Select * FROM staff_reg WHERE staff_username=@proc_email_login And staff_password=sha2(@proc_password_login, 512)"
-                    Console.WriteLine("The username entered contains '@ceu.edu.ph'.")
+                    Logger("The username entered contains '@ceu.edu.ph'.")
                 ElseIf log_username.Text Like "####-#" Then
-                    Console.WriteLine("The username used is the Staff ID.")
+                    Logger("The username used is the Staff ID.")
                     q2 = "Select * FROM staff_reg WHERE staff_id=@proc_email_login And staff_password=sha2(@proc_password_login, 512)"
                 Else log_username.Text = log_username.Text + "@ceu.edu.ph"
-                    Console.WriteLine("Username without domain. Automatically added '@ceu.edu.ph' at the end")
+                    Logger("Username without domain. Automatically added '@ceu.edu.ph' at the end")
                     q2 = "SELECT * FROM staff_reg WHERE staff_username=@proc_email_login And staff_password=sha2(@proc_password_login, 512)"
                 End If
 
@@ -87,7 +90,7 @@ Public Class Login
                         comm = New MySqlCommand(q2, MySQLConn)
                         comm.Parameters.AddWithValue("@proc_email_login", log_username.Text)
                         comm.Parameters.AddWithValue("@proc_password_login", log_password.Text)
-                        Console.WriteLine("Run SQL query to verify username and password entered.")
+                        Logger("Run SQL query to verify username and password entered.")
                         Dim accountstate As Boolean
                         reader = comm.ExecuteReader
                         While reader.Read
@@ -115,8 +118,10 @@ Public Class Login
                             Main.Show()
                         ElseIf looper = 1 And Not accountstate Then
                             RadMessageBox.Show(Me, "Your account Is Not active please inform the staff about the state of your account.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error, MessageBoxDefaultButton.Button1)
+                            Logger("The Account credentials is correct but the account is not active.")
                         Else
                             RadMessageBox.Show(Me, "Incorrect Username Or Password.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error, MessageBoxDefaultButton.Button1)
+                            Logger("Account credentials incorrect.")
                         End If
                     End If
                 End If
@@ -125,7 +130,7 @@ Public Class Login
             a = False
             If Not (ex.Number = 1042 Or ex.Number = 0) Then
                 RadMessageBox.Show(Me, ex.Message, system_Name, MessageBoxButtons.OK, RadMessageIcon.Error, MessageBoxDefaultButton.Button1)
-                Console.WriteLine("Exception catched on Login Sub." & ex.Message & "")
+                Logger("Exception catched on Login Sub." & ex.Message & "")
             End If
         End Try
     End Sub
@@ -142,7 +147,7 @@ Public Class Login
         End If
     End Sub
     Private Sub log_lbl_dbstatus_MouseHover(sender As Object, e As EventArgs) Handles log_lbl_dbstatus.MouseHover, lbl_prevmain_status.MouseHover, lbl_reservation_status.MouseHover
-        Console.WriteLine("Mouse hovered on DBStatus Label.")
+        Logger("Mouse hovered on DBStatus Label.")
         If a = False And Not (lbl_prevmain_status.Text = "Unauthorized" Or lbl_reservation_status.Text = "Unauthorized") Then
             Dim aa As DialogResult = RadMessageBox.Show(Me, "Unable to connect to the server. Would you Like to check again?", system_Name, MessageBoxButtons.YesNo, RadMessageIcon.Question)
             If aa = DialogResult.Yes Then
@@ -262,17 +267,21 @@ Public Class Login
     Private Sub Login_FormClosed(sender As Object, e As FormClosedEventArgs) Handles Me.FormClosed
         If (System.Windows.Forms.Application.MessageLoop) Then
             System.Windows.Forms.Application.Exit()
+            Logger("The System has been terminated")
         Else
             System.Environment.Exit(1)
+            Logger("The System has been terminated with exit code 1")
         End If
     End Sub
 
     Private Sub Login_KeyDown(sender As Object, e As KeyEventArgs) Handles MyBase.KeyDown
         If e.KeyCode = Keys.F1 Then
-
+            Logger("F1 Pressed")
             If IO.File.Exists("help.chm") Then
                 Actions.showHelp(Me, "5")
+                Logger("Check if help.chm exists.")
             Else
+                Logger("The help.chm file does not exist.")
                 RadMessageBox.Show(Me, "Required file for help not found. Re-installing might solve the problem.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
                 Exit Sub
             End If

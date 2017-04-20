@@ -1,4 +1,5 @@
-﻿Imports MySql.Data.MySqlClient
+﻿Imports System.IO
+Imports MySql.Data.MySqlClient
 Module GlobalVariableModule
     Public system_Name = "CEU TLTD Reservation System"
     Public MySQLConn As New MySqlConnection
@@ -24,7 +25,7 @@ Module GlobalVariableModule
     Public reservationDBexists = False
     Public Sub applyconstringImmediately()
         connstring = "server=" & My.Settings.cons_server & ";port=" & My.Settings.cons_port & ";userid=" & Actions.ToInsecureString(Actions.DecryptString(My.Settings.cons_username)) & ";password=" & Actions.ToInsecureString(Actions.DecryptString(My.Settings.cons_password)) & ";database=ceutltdscheduler"
-        CheckDBConnstring="server=" & My.Settings.cons_server & ";port=" & My.Settings.cons_port & ";userid=" & Actions.ToInsecureString(Actions.DecryptString(My.Settings.cons_username)) & ";password=" & Actions.ToInsecureString(Actions.DecryptString(My.Settings.cons_password))
+        CheckDBConnstring = "server=" & My.Settings.cons_server & ";port=" & My.Settings.cons_port & ";userid=" & Actions.ToInsecureString(Actions.DecryptString(My.Settings.cons_username)) & ";password=" & Actions.ToInsecureString(Actions.DecryptString(My.Settings.cons_password))
     End Sub
 
     'PENALTY Settings
@@ -56,4 +57,18 @@ Module GlobalVariableModule
 
     'Console Window Status
     Public IsDebugMode As Boolean = False
+
+    'Logger Variables
+    Dim LogFile As StreamWriter
+    Dim path As String = "Log" & Now.ToString("MMddyyyyHHmmss") & ".txt"
+
+    'Logger Class
+    Public Sub Logger(ByVal msg As String)
+        If IsDebugMode Then
+            LogFile = File.AppendText(path)
+            LogFile.WriteLine("[" & Now.ToString("MM-dd-yyyy HH:mm:ss") & "] " & msg)
+            Console.WriteLine("[" & Now.ToString("MM-dd-yyyy HH:mm:ss") & "] " & msg)
+            LogFile.Close()
+        End If
+    End Sub
 End Module

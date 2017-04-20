@@ -93,6 +93,7 @@ Public Class Main
     Private thread_alreadyStart As Boolean = False ''to avoid duplicate start of threads
 
     Private Sub checkNewRelease(ByVal dtPendingTable As DataTable)
+        Logger("Private Sub CheckNewRelease")
         Try
             For Each dr As DataRow In dtPendingTable.Rows
                 Dim res_id As String = dr(0).ToString
@@ -104,11 +105,12 @@ Public Class Main
                 End If
             Next
         Catch ex As Exception
-            Debug.WriteLine(ex.Message)
+            Logger(ex.Message)
         End Try
     End Sub
 
     Private Function isNotPending(ByVal rel_id As String, smsList As List(Of PendingSms))
+        Logger("Private Function isNotPending")
         For Each sms As PendingSms In smsList
             If sms.getReleaseId = rel_id Then
                 Return True
@@ -118,6 +120,7 @@ Public Class Main
     End Function
 
     Private Sub checkReturned(ByVal pendingList As List(Of PendingSms))
+        Logger("Private Function checkReturned")
         Try
             For Each sms As PendingSms In pendingList
                 Dim smsId As String = sms.getReleaseId
@@ -130,12 +133,13 @@ Public Class Main
                 End If
             Next
         Catch ex As Exception
-
+            Logger(ex.Message)
         End Try
 
     End Sub
 
     Private Function isStillPending(ByVal sms As PendingSms, ByVal rel_dt As DataTable)
+        Logger("Private Function isStillPending")
         For Each dr As DataRow In rel_dt.Rows
 
             If dr(0).ToString = sms.getReleaseId Then
@@ -149,6 +153,7 @@ Public Class Main
     End Function
 
     Private Sub checkPendingSend(ByVal sms_queue As DataTable)
+        Logger("Private Sub checkPendingSend")
         Try
             For Each sms_row As DataRow In sms_queue.Rows
                 'dito yung send sms
@@ -162,12 +167,12 @@ Public Class Main
 
                 If SerialPort_SMS.IsOpen Then 'If the SMS is enabled, the System Will Send a text Message
                     With SerialPort_SMS
+                        Logger("Send SMS")
                         .Write("AT" & vbCr)
                         .Write("AT+CMGF=1" & vbCr)
                         .Write("AT+CMGS=" & Chr(34) & mobile_num & Chr(34) & vbCr)
                         .Write(content & Chr(26))
                         Thread.Sleep(1000)
-                        'MsgBox(rcvdata.ToString)
                         rcvdata = ""
                     End With
 
@@ -176,12 +181,13 @@ Public Class Main
                 sms_queue.Rows.Remove(sms_row)
             Next
         Catch ex As Exception
-
+            Logger(ex.Message)
         End Try
 
     End Sub
 
     Private Sub checkToAdd()
+        Logger("Private Sub checkToAdd")
         While 1 <> 0
             Thread.Sleep(600)
             checkNewRelease(release_info_sms)
@@ -189,6 +195,7 @@ Public Class Main
     End Sub
 
     Private Sub checkToRemove()
+        Logger("Private Sub checkToRemove")
         While 1 <> 0
             Thread.Sleep(200)
             checkReturned(smsPendingList)
@@ -196,6 +203,7 @@ Public Class Main
     End Sub
 
     Private Sub checkToSend()
+        Logger("Private Sub checkToSend")
         While 1 <> 0
             Thread.Sleep(1000)
             checkPendingSend(sms_queue)
@@ -203,12 +211,13 @@ Public Class Main
     End Sub
 
     Private Sub newPendingSms(ByVal smsRow As DataRow)
-
+        Logger("Private Sub newPendingSMS")
         Dim newSms As New PendingSms(smsRow, release_info_sms, bendoTimer, smsIsDoneList, sms_queue)
         smsPendingList.Add(newSms)
     End Sub
 
     Private Function isThisDone(ByVal id As String, smsAddedList As List(Of String))
+        Logger("Private Function isThisDone")
         For Each doneId As String In smsAddedList
             If id = doneId Then
                 Return True
@@ -220,6 +229,7 @@ Public Class Main
 
     ''THIS IS THE FUNCTION TO UPDATE THE COLUMN rel_isSMS_SENT to 1 if the sms is already sent to the borrower
     Private Sub updateSmsTable(smsDoneList As List(Of String), ByVal conn As MySqlConnection)
+        Logger("Private Sub updateSMSTable")
         Try
             For Each rel_id As String In smsDoneList
                 query = "update released_info set rel_isSMS_Sent = '1' where rel_reservation_no = '" & rel_id & "'"
@@ -227,6 +237,7 @@ Public Class Main
                 comm.ExecuteNonQuery()
             Next
         Catch ex As Exception
+            Logger(ex.Message)
         End Try
     End Sub
 
@@ -243,17 +254,20 @@ Public Class Main
 
     'Start! Groupbox Hover in Account Management
     Private Sub gb_staff_reg_MouseEnter(sender As Object, e As EventArgs) Handles gb_staff_reg.MouseEnter
+        Logger("gb_staff_reg_MouseEnter")
         acct_mgmt_hover_delay_goingToStaff.Interval = 500
         acct_mgmt_hover_delay_goingToStaff.Stop()
         acct_mgmt_hover_delay_goingToBorrower.Stop()
         acct_mgmt_hover_delay_goingToStaff.Start()
     End Sub
     Private Sub acct_mgmt_hoverdelaygoingStaff(sender As Object, e As EventArgs) Handles acct_mgmt_hover_delay_goingToStaff.Tick
+        Logger("acct_mgmt_hoverdelaygoingStaff")
         acct_mgmt_hover_delay_goingToStaff.Stop()
         acct_mgmt_hover_delay_goingToBorrower.Stop()
         rpv_child_acctmgmt.SelectedPage = rpv_staff
     End Sub
     Private Sub gb_bor_reg_MouseEnter(sender As Object, e As EventArgs) Handles gb_bor_reg.MouseEnter
+        Logger("gb_bor_reg_MouseEnter")
         acct_mgmt_hover_delay_goingToBorrower.Interval = 500
         acct_mgmt_hover_delay_goingToBorrower.Stop()
         acct_mgmt_hover_delay_goingToStaff.Stop()
@@ -282,6 +296,7 @@ Public Class Main
     End Sub
 
     Private Sub menuItem_LoadDB_Click(sender As Object, e As EventArgs) Handles menuItem_LoadDB.Click
+        Logger("Import database")
         refresh_main_rgv_recordedacademicsonly.Stop()
         refresh_released_grid_list.Stop()
         DBPasswordPrompt.Show()
@@ -332,6 +347,7 @@ Public Class Main
     'END!! Menu BAR
 
     Private Sub Main_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Logger("Main Window")
         getFromDB_settings_penalty()
         'LOADING SAVED DATES
         If My.Settings.res_fil_startdate = Nothing And My.Settings.res_fil_enddate = Nothing Then
@@ -5534,7 +5550,7 @@ Public Class Main
     End Sub
 
     Private Sub refresh_main_rgv_recordedacademicsonly_Tick(sender As Object, e As EventArgs) Handles refresh_main_rgv_recordedacademicsonly.Tick
-        Console.WriteLine("Main")
+
         main_load_academicsonly()
         Main_MaintainSelectedCell()
     End Sub
@@ -5560,7 +5576,7 @@ Public Class Main
     'End Sub
 
     Private Sub refresh_released_grid_list_Tick(sender As Object, e As EventArgs) Handles refresh_released_grid_list.Tick
-        Console.WriteLine("Released")
+        Logger("Released")
         load_released_list()
     End Sub
 
@@ -6213,7 +6229,7 @@ Public Class Main
             datain &= Chr(SerialPort_SMS.ReadChar)
         Next
         test(datain)
-        Console.WriteLine(rcvdata.ToString)
+        Logger(rcvdata.ToString)
     End Sub
     Private Sub test(ByVal indata As String)
         rcvdata &= indata
