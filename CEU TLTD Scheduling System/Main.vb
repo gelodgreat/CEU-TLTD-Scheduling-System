@@ -3,7 +3,6 @@ Imports Telerik.WinControls
 Imports Telerik.WinControls.UI
 Imports System.Threading
 Imports System.IO.Ports
-Imports System.Runtime.InteropServices
 
 Public Class Main
 
@@ -57,10 +56,10 @@ Public Class Main
     Private Sub PutStatusOffline()
         Login.log_lbl_dbstatus.Text = "Offline"
         Login.log_lbl_dbstatus.ForeColor = Color.Red
-        Login.lbl_prevmain_status.Text="Unavailable"
-        Login.lbl_prevmain_status.ForeColor=Color.Red
-        Login.lbl_reservation_status.Text="Unavailable"
-        Login.lbl_reservation_status.ForeColor=Color.Red
+        Login.lbl_prevmain_status.Text = "Unavailable"
+        Login.lbl_prevmain_status.ForeColor = Color.Red
+        Login.lbl_reservation_status.Text = "Unavailable"
+        Login.lbl_reservation_status.ForeColor = Color.Red
     End Sub
 
 
@@ -3084,7 +3083,8 @@ Public Class Main
             Dim bsource As New BindingSource
             MysqlConn.Open()
 
-            query = "SELECT equipmentnumber AS 'Equipment No.', equipmentmodel as 'Equipment', equipmentserial AS 'Serial Number', equipmentname as 'Equipment Type', equipmentlocation AS 'Equipment Location', equipmentowner AS 'Owner', remarks AS 'Status' FROM ceutltdprevmaintenance.equipmentlist WHERE remarks LIKE '%Good Condition%'"
+            'query = "SELECT equipmentnumber AS 'Equipment No.', equipmentmodel as 'Equipment', equipmentserial AS 'Serial Number', equipmentname as 'Equipment Type', equipmentlocation AS 'Equipment Location', equipmentowner AS 'Owner', remarks AS 'Status' FROM ceutltdprevmaintenance.equipmentlist WHERE remarks LIKE '%Good Condition%'"
+            query = "CALL Get_equipments('', '');"
 
             comm = New MySqlCommand(query, MysqlConn)
             SDA.SelectCommand = comm
@@ -3366,11 +3366,12 @@ Public Class Main
 
             MysqlConn.Open()
 
-            query = "SELECT equipmentnumber AS 'Equipment No.', equipmentmodel as 'Equipment', equipmentserial AS 'Serial Number', equipmentname as 'Equipment Type', equipmentlocation AS 'Equipment Location', equipmentowner AS 'Owner', remarks AS 'Status' FROM ceutltdprevmaintenance.equipmentlist WHERE remarks LIKE '%Good Condition%' and equipmentname LIKE @eq_filter_type and equipmentnumber LIKE @eq_filter_number"
+            'query = "SELECT equipmentnumber AS 'Equipment No.', equipmentmodel as 'Equipment', equipmentserial AS 'Serial Number', equipmentname as 'Equipment Type', equipmentlocation AS 'Equipment Location', equipmentowner AS 'Owner', remarks AS 'Status' FROM ceutltdprevmaintenance.equipmentlist WHERE remarks LIKE '%Good Condition%' and equipmentname LIKE @eq_filter_type and equipmentnumber LIKE @eq_filter_number"
+            query = "CALL Get_equipments(@1, @2);"
 
             comm = New MySqlCommand(query, MysqlConn)
-            comm.Parameters.AddWithValue("@eq_filter_type", "%" & eq_filter_eqtype.Text & "%")
-            comm.Parameters.AddWithValue("@eq_filter_number", "%" & eq_filter_eqno.Text & "%")
+            comm.Parameters.AddWithValue("1", eq_filter_eqtype.Text)
+            comm.Parameters.AddWithValue("2", eq_filter_eqno.Text)
             SDA.SelectCommand = comm
             SDA.Fill(dbdataset)
             bsource.DataSource = dbdataset
@@ -3445,12 +3446,13 @@ Public Class Main
             Dim bsource As New BindingSource
             MysqlConn.Open()
 
-            query = "SELECT equipmentnumber AS 'Equipment No.', equipmentmodel as 'Equipment', equipmentserial AS 'Serial Number', equipmentname as 'Equipment Type', equipmentlocation AS 'Equipment Location', equipmentowner AS 'Owner', remarks AS 'Status' FROM ceutltdprevmaintenance.equipmentlist WHERE remarks LIKE '%Good Condition%' and equipmentname LIKE @eq_filter_type and equipmentnumber LIKE @eq_filter_number"
+            'query = "SELECT equipmentnumber AS 'Equipment No.', equipmentmodel as 'Equipment', equipmentserial AS 'Serial Number', equipmentname as 'Equipment Type', equipmentlocation AS 'Equipment Location', equipmentowner AS 'Owner', remarks AS 'Status' FROM ceutltdprevmaintenance.equipmentlist WHERE remarks LIKE '%Good Condition%' and equipmentname LIKE @eq_filter_type and equipmentnumber LIKE @eq_filter_number"
+            query = "CALL Get_equipments(@1, @2);"
 
             comm = New MySqlCommand(query, MysqlConn)
 
-            comm.Parameters.AddWithValue("@eq_filter_type", "%" & eq_filter_eqtype.Text & "%")
-            comm.Parameters.AddWithValue("@eq_filter_number", "%" & eq_filter_eqno.Text & "%")
+            comm.Parameters.AddWithValue("@1", eq_filter_eqtype.Text)
+            comm.Parameters.AddWithValue("@2", eq_filter_eqno.Text)
             SDA.SelectCommand = comm
             SDA.Fill(dbdataset)
             bsource.DataSource = dbdataset
@@ -3592,10 +3594,11 @@ Public Class Main
             MysqlConn.ConnectionString = connstring
             MysqlConn.Open()
 
-            query = "SELECT COUNT(equipmentname) AS 'total' FROM ceutltdprevmaintenance.equipmentlist WHERE remarks LIKE '%Good Condition%' and equipmentname LIKE @eq_counter_type and equipmentnumber LIKE @eq_counter_number"
+            'query = "SELECT COUNT(equipmentname) AS 'total' FROM ceutltdprevmaintenance.equipmentlist WHERE remarks LIKE '%Good Condition%' and equipmentname LIKE @eq_counter_type and equipmentnumber LIKE @eq_counter_number"
+            query = "SELECT COUNT_EQUIPMENTS('', '') AS total;"
             comm = New MySqlCommand(query, MysqlConn)
-            comm.Parameters.AddWithValue("@eq_counter_type", "%" & eq_filter_eqtype.Text & "%")
-            comm.Parameters.AddWithValue("@eq_counter_number", "%" & eq_filter_eqno.Text & "%")
+            comm.Parameters.AddWithValue("@eq_counter_type", eq_filter_eqtype.Text)
+            comm.Parameters.AddWithValue("@eq_counter_number", eq_filter_eqno.Text)
             reader = comm.ExecuteReader
             While reader.Read
                 eq_total_units.Text = reader.GetString("total")
@@ -3604,7 +3607,7 @@ Public Class Main
             MysqlConn.Close()
 
         Catch ex As MySqlException
-            If (ex.Number = 0 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") Or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable to connect to any of the specified MySQL hosts") Or ex.Message.Contains("Reading from the stream has failed"))) Then
+            If (ex.Number = 0 And (ex.Message.Contains("Unable To connect To any Of the specified MySQL hosts") Or ex.Message.Contains("Reading from the stream has failed"))) Or (ex.Number = 1042 And (ex.Message.Contains("Unable To connect To any Of the specified MySQL hosts") Or ex.Message.Contains("Reading from the stream has failed"))) Then
                 refresh_main_rgv_recordedacademicsonly.Stop()
                 refresh_released_grid_list.Stop()
                 RadMessageBox.Show(Me, "The server probably went offline.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
@@ -3635,7 +3638,8 @@ Public Class Main
             MysqlConn.ConnectionString = connstring
 
             MysqlConn.Open()
-            query = "SELECT DISTINCT(equipmentname) FROM ceutltdprevmaintenance.equipmentlist WHERE remarks LIKE '%Good Condition%' ORDER BY equipmentname ASC"
+            'query = "Select DISTINCT(equipmentname) FROM ceutltdprevmaintenance.equipmentlist WHERE remarks Like '%Good Condition%' ORDER BY equipmentname ASC"
+            query = "CALL Get_equipmentname();"
             comm = New MySqlCommand(query, MysqlConn)
             reader = comm.ExecuteReader
 
@@ -3681,9 +3685,10 @@ Public Class Main
             MysqlConn.ConnectionString = connstring
             MysqlConn.Open()
 
-            query = "SELECT DISTINCT equipmentnumber FROM ceutltdprevmaintenance.equipmentlist WHERE remarks LIKE '%Good Condition%' and equipmentname=@rec_eq_type_choose"
+            'query = "SELECT DISTINCT equipmentnumber FROM ceutltdprevmaintenance.equipmentlist WHERE remarks LIKE '%Good Condition%' and equipmentname=@rec_eq_type_choose"
+            query = "CALL Get_equipmentnumber(@1);"
             comm = New MySqlCommand(query, MysqlConn)
-            comm.Parameters.AddWithValue("rec_eq_type_choose", rec_eq_type_choose.Text)
+            comm.Parameters.AddWithValue("1", rec_eq_type_choose.Text)
             reader = comm.ExecuteReader
 
             rec_eq_chooseno.Items.Clear()
@@ -3722,10 +3727,11 @@ Public Class Main
             End If
             MysqlConn.ConnectionString = connstring
             MysqlConn.Open()
-            query = "SELECT equipmentmodel FROM ceutltdprevmaintenance.equipmentlist WHERE remarks LIKE '%Good Condition%' and equipmentname=@rec_eq_type_choose and equipmentnumber=@rec_eq_chooseno"
+            'query = "SELECT equipmentmodel FROM ceutltdprevmaintenance.equipmentlist WHERE remarks LIKE '%Good Condition%' and equipmentname=@rec_eq_type_choose and equipmentnumber=@rec_eq_chooseno"
+            query = "CALL Get_equipmentmodel(@1, @2)"
             comm = New MySqlCommand(query, MysqlConn)
-            comm.Parameters.AddWithValue("rec_eq_type_choose", rec_eq_type_choose.Text)
-            comm.Parameters.AddWithValue("rec_eq_chooseno", rec_eq_chooseno.Text)
+            comm.Parameters.AddWithValue("1", rec_eq_type_choose.Text)
+            comm.Parameters.AddWithValue("2", rec_eq_chooseno.Text)
 
 
             reader = comm.ExecuteReader
@@ -3776,11 +3782,12 @@ Public Class Main
                 RadMessageBox.Show(Me, "Please choose an equipment.", system_Name, MessageBoxButtons.OK, RadMessageIcon.Error)
             Else
                 MysqlConn.Open()
-                query = "SELECT equipmentserial as 'Serial Number', equipmentnumber as '#' from ceutltdprevmaintenance.equipmentlist where equipmentname=@rec_eq_type_choose and equipmentmodel=@rec_chooseeq and equipmentnumber=@rec_eq_chooseno"
+                'query = "SELECT equipmentserial as 'Serial Number', equipmentnumber as '#' from ceutltdprevmaintenance.equipmentlist where equipmentname=@rec_eq_type_choose and equipmentmodel=@rec_chooseeq and equipmentnumber=@rec_eq_chooseno"
+                query = "Get_equipment_details(@1, @2, @3);"
                 comm = New MySqlCommand(query, MysqlConn)
-                comm.Parameters.AddWithValue("rec_eq_type_choose", rec_eq_type_choose.Text)
-                comm.Parameters.AddWithValue("rec_eq_chooseno", rec_eq_chooseno.Text)
-                comm.Parameters.AddWithValue("rec_chooseeq", rec_eq_chooseeq.Text)
+                comm.Parameters.AddWithValue("1", rec_eq_type_choose.Text)
+                comm.Parameters.AddWithValue("2", rec_eq_chooseno.Text)
+                comm.Parameters.AddWithValue("3", rec_eq_chooseeq.Text)
 
                 reader = comm.ExecuteReader
 
@@ -6252,20 +6259,21 @@ Public Class Main
         rcvdata &= indata
     End Sub
 
-    Private Sub Main_KeyPress(sender As Object, e as KeyEventArgs) Handles MyBase.KeyDown
-        If e.KeyCode=Keys.F1
+    Private Sub Main_KeyPress(sender As Object, e As KeyEventArgs) Handles MyBase.KeyDown
+        If e.KeyCode = Keys.F1 Then
+
             If IO.File.Exists("help.chm") Then
-                If rpv1.SelectedPage Is rpvp1_main
+                If rpv1.SelectedPage Is rpvp1_main Then
                     Actions.showHelp(Me, "7")
-                ElseIf rpv1.SelectedPage Is rpvp_equipment
+                ElseIf rpv1.SelectedPage Is rpvp_equipment Then
                     Actions.showHelp(Me, "8")
-                ElseIf rpv1.SelectedPage Is rpvp_account
+                ElseIf rpv1.SelectedPage Is rpvp_account Then
                     Actions.showHelp(Me, "9")
-                ElseIf rpv1.SelectedPage Is rpvp2_reservation
+                ElseIf rpv1.SelectedPage Is rpvp2_reservation Then
                     Actions.showHelp(Me, "10")
-                ElseIf rpv1.SelectedPage Is rpvp_releasing
+                ElseIf rpv1.SelectedPage Is rpvp_releasing Then
                     Actions.showHelp(Me, "11")
-                ElseIf rpv1.SelectedPage Is rpvp_returning
+                ElseIf rpv1.SelectedPage Is rpvp_returning Then
                     Actions.showHelp(Me, "12")
                 End If
             Else

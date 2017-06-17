@@ -825,7 +825,6 @@ Partial Class Main
         Me.rel_list_info2.Controls.Add(Me.ret_gb_remarks)
         Me.rel_list_info2.Controls.Add(Me.released_grid_list2)
         Me.rel_list_info2.Controls.Add(Me.ret_gb_details)
-        Me.rel_list_info2.ItemSize = New System.Drawing.SizeF(146.0!, 28.0!)
         Me.rel_list_info2.Location = New System.Drawing.Point(5, 34)
         Me.rel_list_info2.Name = "rel_list_info2"
         Me.rel_list_info2.Size = New System.Drawing.Size(1338, 479)
@@ -1442,7 +1441,6 @@ Partial Class Main
         Me.ret_penalties_info.Controls.Add(Me.pen_endDate)
         Me.ret_penalties_info.Controls.Add(Me.pen_startDate)
         Me.ret_penalties_info.Controls.Add(Me.penalty_grid_list)
-        Me.ret_penalties_info.ItemSize = New System.Drawing.SizeF(69.0!, 28.0!)
         Me.ret_penalties_info.Location = New System.Drawing.Point(5, 34)
         Me.ret_penalties_info.Name = "ret_penalties_info"
         Me.ret_penalties_info.Size = New System.Drawing.Size(1338, 479)
@@ -1539,7 +1537,6 @@ Partial Class Main
         Me.ret_eq_list.Controls.Add(Me.RadLabel19)
         Me.ret_eq_list.Controls.Add(Me.RadLabel22)
         Me.ret_eq_list.Controls.Add(Me.returned_startDate)
-        Me.ret_eq_list.ItemSize = New System.Drawing.SizeF(175.0!, 28.0!)
         Me.ret_eq_list.Location = New System.Drawing.Point(5, 30)
         Me.ret_eq_list.Name = "ret_eq_list"
         Me.ret_eq_list.Size = New System.Drawing.Size(1338, 487)
@@ -2285,9 +2282,9 @@ Partial Class Main
         Me.rpvp2_reservation.Controls.Add(Me.gp_reservation_equipments)
         Me.rpvp2_reservation.Controls.Add(Me.RadGroupBox3)
         Me.rpvp2_reservation.ItemSize = New System.Drawing.SizeF(173.0!, 28.0!)
-        Me.rpvp2_reservation.Location = New System.Drawing.Point(5, 30)
+        Me.rpvp2_reservation.Location = New System.Drawing.Point(5, 34)
         Me.rpvp2_reservation.Name = "rpvp2_reservation"
-        Me.rpvp2_reservation.Size = New System.Drawing.Size(1348, 522)
+        Me.rpvp2_reservation.Size = New System.Drawing.Size(1348, 518)
         Me.rpvp2_reservation.Text = "Reservation Management"
         '
         'rec_dtp_fil_enddate
@@ -2302,7 +2299,7 @@ Partial Class Main
         '
         '
         Me.rec_dtp_fil_enddate.RootElement.MinSize = New System.Drawing.Size(0, 24)
-        Me.rec_dtp_fil_enddate.Size = New System.Drawing.Size(105, 24)
+        Me.rec_dtp_fil_enddate.Size = New System.Drawing.Size(105, 25)
         Me.rec_dtp_fil_enddate.TabIndex = 10
         Me.rec_dtp_fil_enddate.TabStop = False
         Me.rec_dtp_fil_enddate.Text = "04/5/2017"
@@ -2321,7 +2318,7 @@ Partial Class Main
         '
         '
         Me.rec_dtp_fil_startdate.RootElement.MinSize = New System.Drawing.Size(0, 24)
-        Me.rec_dtp_fil_startdate.Size = New System.Drawing.Size(105, 24)
+        Me.rec_dtp_fil_startdate.Size = New System.Drawing.Size(105, 25)
         Me.rec_dtp_fil_startdate.TabIndex = 11
         Me.rec_dtp_fil_startdate.TabStop = False
         Me.rec_dtp_fil_startdate.Text = "04/5/2017"
@@ -2335,7 +2332,7 @@ Partial Class Main
         Me.RadLabel49.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.RadLabel49.Location = New System.Drawing.Point(560, 2)
         Me.RadLabel49.Name = "RadLabel49"
-        Me.RadLabel49.Size = New System.Drawing.Size(30, 25)
+        Me.RadLabel49.Size = New System.Drawing.Size(36, 31)
         Me.RadLabel49.TabIndex = 40
         Me.RadLabel49.Text = "To:"
         Me.RadLabel49.ThemeName = "VisualStudio2012Dark"
@@ -2347,7 +2344,7 @@ Partial Class Main
         Me.RadLabel51.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.RadLabel51.Location = New System.Drawing.Point(234, 2)
         Me.RadLabel51.Name = "RadLabel51"
-        Me.RadLabel51.Size = New System.Drawing.Size(208, 25)
+        Me.RadLabel51.Size = New System.Drawing.Size(260, 31)
         Me.RadLabel51.TabIndex = 39
         Me.RadLabel51.Text = "Showing reservations From:"
         Me.RadLabel51.ThemeName = "VisualStudio2012Dark"
@@ -2358,7 +2355,7 @@ Partial Class Main
         Me.res_rdio_cancelled.BackColor = System.Drawing.Color.Transparent
         Me.res_rdio_cancelled.Location = New System.Drawing.Point(907, 5)
         Me.res_rdio_cancelled.Name = "res_rdio_cancelled"
-        Me.res_rdio_cancelled.Size = New System.Drawing.Size(102, 18)
+        Me.res_rdio_cancelled.Size = New System.Drawing.Size(123, 22)
         Me.res_rdio_cancelled.TabIndex = 34
         Me.res_rdio_cancelled.TabStop = False
         Me.res_rdio_cancelled.Text = "Show Cancelled"
@@ -2370,7 +2367,7 @@ Partial Class Main
         Me.res_rdio_reserved.BackColor = System.Drawing.Color.Transparent
         Me.res_rdio_reserved.Location = New System.Drawing.Point(798, 5)
         Me.res_rdio_reserved.Name = "res_rdio_reserved"
-        Me.res_rdio_reserved.Size = New System.Drawing.Size(99, 18)
+        Me.res_rdio_reserved.Size = New System.Drawing.Size(119, 22)
         Me.res_rdio_reserved.TabIndex = 35
         Me.res_rdio_reserved.TabStop = False
         Me.res_rdio_reserved.Text = "Show Reserved"
@@ -2382,7 +2379,7 @@ Partial Class Main
         Me.res_rdio_showall.BackColor = System.Drawing.Color.Transparent
         Me.res_rdio_showall.Location = New System.Drawing.Point(721, 5)
         Me.res_rdio_showall.Name = "res_rdio_showall"
-        Me.res_rdio_showall.Size = New System.Drawing.Size(66, 18)
+        Me.res_rdio_showall.Size = New System.Drawing.Size(78, 22)
         Me.res_rdio_showall.TabIndex = 33
         Me.res_rdio_showall.TabStop = False
         Me.res_rdio_showall.Text = "Show All"
@@ -2419,7 +2416,7 @@ Partial Class Main
         Me.gp_reservation_details.Controls.Add(Me.RadLabel1)
         Me.gp_reservation_details.Controls.Add(Me.rec_dtp_date)
         Me.gp_reservation_details.HeaderText = "Reservation Information"
-        Me.gp_reservation_details.Location = New System.Drawing.Point(0, 253)
+        Me.gp_reservation_details.Location = New System.Drawing.Point(0, 249)
         Me.gp_reservation_details.Name = "gp_reservation_details"
         Me.gp_reservation_details.Size = New System.Drawing.Size(671, 266)
         Me.gp_reservation_details.TabIndex = 1
@@ -2464,7 +2461,7 @@ Partial Class Main
         Me.RadLabel47.BackColor = System.Drawing.Color.Transparent
         Me.RadLabel47.Location = New System.Drawing.Point(524, 56)
         Me.RadLabel47.Name = "RadLabel47"
-        Me.RadLabel47.Size = New System.Drawing.Size(84, 18)
+        Me.RadLabel47.Size = New System.Drawing.Size(104, 22)
         Me.RadLabel47.TabIndex = 7
         Me.RadLabel47.Text = "Multiple Dates?"
         Me.RadLabel47.ThemeName = "VisualStudio2012Dark"
@@ -2575,7 +2572,7 @@ Partial Class Main
         '
         '
         Me.rec_rrtc_actname.RootElement.MinSize = New System.Drawing.Size(0, 24)
-        Me.rec_rrtc_actname.Size = New System.Drawing.Size(184, 24)
+        Me.rec_rrtc_actname.Size = New System.Drawing.Size(184, 25)
         Me.rec_rrtc_actname.TabIndex = 6
         Me.rec_rrtc_actname.ThemeName = "VisualStudio2012Dark"
         '
@@ -2585,7 +2582,7 @@ Partial Class Main
         Me.rec_lbl_actname.BackColor = System.Drawing.Color.Transparent
         Me.rec_lbl_actname.Location = New System.Drawing.Point(2, 152)
         Me.rec_lbl_actname.Name = "rec_lbl_actname"
-        Me.rec_lbl_actname.Size = New System.Drawing.Size(78, 18)
+        Me.rec_lbl_actname.Size = New System.Drawing.Size(97, 22)
         Me.rec_lbl_actname.TabIndex = 34
         Me.rec_lbl_actname.Text = "Activity Name:"
         Me.rec_lbl_actname.ThemeName = "VisualStudio2012Dark"
@@ -2596,7 +2593,7 @@ Partial Class Main
         Me.RadLabel2.BackColor = System.Drawing.Color.Transparent
         Me.RadLabel2.Location = New System.Drawing.Point(8, 119)
         Me.RadLabel2.Name = "RadLabel2"
-        Me.RadLabel2.Size = New System.Drawing.Size(72, 18)
+        Me.RadLabel2.Size = New System.Drawing.Size(90, 22)
         Me.RadLabel2.TabIndex = 31
         Me.RadLabel2.Text = "Activity Type:"
         Me.RadLabel2.ThemeName = "VisualStudio2012Dark"
@@ -2612,7 +2609,7 @@ Partial Class Main
         Me.rec_cb_acttype.Items.Add(RadListDataItem190)
         Me.rec_cb_acttype.Location = New System.Drawing.Point(86, 118)
         Me.rec_cb_acttype.Name = "rec_cb_acttype"
-        Me.rec_cb_acttype.Size = New System.Drawing.Size(166, 24)
+        Me.rec_cb_acttype.Size = New System.Drawing.Size(166, 28)
         Me.rec_cb_acttype.TabIndex = 5
         Me.rec_cb_acttype.ThemeName = "VisualStudio2012Dark"
         '
@@ -2622,7 +2619,7 @@ Partial Class Main
         Me.RadLabel72.BackColor = System.Drawing.Color.Transparent
         Me.RadLabel72.Location = New System.Drawing.Point(3, 26)
         Me.RadLabel72.Name = "RadLabel72"
-        Me.RadLabel72.Size = New System.Drawing.Size(77, 18)
+        Me.RadLabel72.Size = New System.Drawing.Size(95, 22)
         Me.RadLabel72.TabIndex = 29
         Me.RadLabel72.Text = "Reservation #:"
         Me.RadLabel72.ThemeName = "VisualStudio2012Dark"
@@ -2633,7 +2630,7 @@ Partial Class Main
         Me.RadLabel68.BackColor = System.Drawing.Color.Transparent
         Me.RadLabel68.Location = New System.Drawing.Point(258, 26)
         Me.RadLabel68.Name = "RadLabel68"
-        Me.RadLabel68.Size = New System.Drawing.Size(46, 18)
+        Me.RadLabel68.Size = New System.Drawing.Size(57, 22)
         Me.RadLabel68.TabIndex = 26
         Me.RadLabel68.Text = "College:"
         Me.RadLabel68.ThemeName = "VisualStudio2012Dark"
@@ -2647,7 +2644,7 @@ Partial Class Main
         Me.rec_cb_college_school.DropDownStyle = Telerik.WinControls.RadDropDownStyle.DropDownList
         Me.rec_cb_college_school.Location = New System.Drawing.Point(310, 22)
         Me.rec_cb_college_school.Name = "rec_cb_college_school"
-        Me.rec_cb_college_school.Size = New System.Drawing.Size(210, 27)
+        Me.rec_cb_college_school.Size = New System.Drawing.Size(210, 31)
         Me.rec_cb_college_school.TabIndex = 7
         Me.rec_cb_college_school.ThemeName = "VisualStudio2012Dark"
         '
@@ -2661,7 +2658,7 @@ Partial Class Main
         '
         '
         Me.rec_cb_idnum.RootElement.MinSize = New System.Drawing.Size(0, 24)
-        Me.rec_cb_idnum.Size = New System.Drawing.Size(166, 24)
+        Me.rec_cb_idnum.Size = New System.Drawing.Size(166, 25)
         Me.rec_cb_idnum.TabIndex = 3
         Me.rec_cb_idnum.ThemeName = "VisualStudio2012Dark"
         '
@@ -2671,7 +2668,7 @@ Partial Class Main
         Me.RadLabel26.BackColor = System.Drawing.Color.Transparent
         Me.RadLabel26.Location = New System.Drawing.Point(37, 57)
         Me.RadLabel26.Name = "RadLabel26"
-        Me.RadLabel26.Size = New System.Drawing.Size(43, 18)
+        Me.RadLabel26.Size = New System.Drawing.Size(54, 22)
         Me.RadLabel26.TabIndex = 22
         Me.RadLabel26.Text = "ID No. :"
         Me.RadLabel26.ThemeName = "VisualStudio2012Dark"
@@ -2682,7 +2679,7 @@ Partial Class Main
         Me.RadLabel17.BackColor = System.Drawing.Color.Transparent
         Me.RadLabel17.Location = New System.Drawing.Point(470, 161)
         Me.RadLabel17.Name = "RadLabel17"
-        Me.RadLabel17.Size = New System.Drawing.Size(72, 18)
+        Me.RadLabel17.Size = New System.Drawing.Size(89, 22)
         Me.RadLabel17.TabIndex = 20
         Me.RadLabel17.Text = "Recorded by:"
         Me.RadLabel17.ThemeName = "VisualStudio2012Dark"
@@ -2693,7 +2690,7 @@ Partial Class Main
         Me.RadLabel6.BackColor = System.Drawing.Color.Transparent
         Me.RadLabel6.Location = New System.Drawing.Point(26, 88)
         Me.RadLabel6.Name = "RadLabel6"
-        Me.RadLabel6.Size = New System.Drawing.Size(54, 18)
+        Me.RadLabel6.Size = New System.Drawing.Size(67, 22)
         Me.RadLabel6.TabIndex = 11
         Me.RadLabel6.Text = "Borrower:"
         Me.RadLabel6.ThemeName = "VisualStudio2012Dark"
@@ -2705,7 +2702,7 @@ Partial Class Main
         Me.rec_cb_location.DropDownStyle = Telerik.WinControls.RadDropDownStyle.DropDownList
         Me.rec_cb_location.Location = New System.Drawing.Point(310, 54)
         Me.rec_cb_location.Name = "rec_cb_location"
-        Me.rec_cb_location.Size = New System.Drawing.Size(176, 27)
+        Me.rec_cb_location.Size = New System.Drawing.Size(176, 31)
         Me.rec_cb_location.TabIndex = 8
         Me.rec_cb_location.ThemeName = "VisualStudio2012Dark"
         '
@@ -2715,7 +2712,7 @@ Partial Class Main
         Me.RadLabel5.BackColor = System.Drawing.Color.Transparent
         Me.RadLabel5.Location = New System.Drawing.Point(264, 58)
         Me.RadLabel5.Name = "RadLabel5"
-        Me.RadLabel5.Size = New System.Drawing.Size(40, 18)
+        Me.RadLabel5.Size = New System.Drawing.Size(50, 22)
         Me.RadLabel5.TabIndex = 9
         Me.RadLabel5.Text = "Venue:"
         Me.RadLabel5.ThemeName = "VisualStudio2012Dark"
@@ -2726,7 +2723,7 @@ Partial Class Main
         Me.rec_cb_borrower.DropDownStyle = Telerik.WinControls.RadDropDownStyle.DropDownList
         Me.rec_cb_borrower.Location = New System.Drawing.Point(86, 86)
         Me.rec_cb_borrower.Name = "rec_cb_borrower"
-        Me.rec_cb_borrower.Size = New System.Drawing.Size(166, 24)
+        Me.rec_cb_borrower.Size = New System.Drawing.Size(166, 28)
         Me.rec_cb_borrower.TabIndex = 4
         Me.rec_cb_borrower.ThemeName = "VisualStudio2012Dark"
         '
@@ -2736,7 +2733,7 @@ Partial Class Main
         Me.RadLabel4.BackColor = System.Drawing.Color.Transparent
         Me.RadLabel4.Location = New System.Drawing.Point(500, 115)
         Me.RadLabel4.Name = "RadLabel4"
-        Me.RadLabel4.Size = New System.Drawing.Size(55, 18)
+        Me.RadLabel4.Size = New System.Drawing.Size(68, 22)
         Me.RadLabel4.TabIndex = 7
         Me.RadLabel4.Text = "End Time:"
         Me.RadLabel4.ThemeName = "VisualStudio2012Dark"
@@ -2747,7 +2744,7 @@ Partial Class Main
         Me.RadLabel3.BackColor = System.Drawing.Color.Transparent
         Me.RadLabel3.Location = New System.Drawing.Point(496, 85)
         Me.RadLabel3.Name = "RadLabel3"
-        Me.RadLabel3.Size = New System.Drawing.Size(59, 18)
+        Me.RadLabel3.Size = New System.Drawing.Size(74, 22)
         Me.RadLabel3.TabIndex = 6
         Me.RadLabel3.Text = "Start Time:"
         Me.RadLabel3.ThemeName = "VisualStudio2012Dark"
@@ -2758,7 +2755,7 @@ Partial Class Main
         Me.RadLabel1.BackColor = System.Drawing.Color.Transparent
         Me.RadLabel1.Location = New System.Drawing.Point(523, 28)
         Me.RadLabel1.Name = "RadLabel1"
-        Me.RadLabel1.Size = New System.Drawing.Size(32, 18)
+        Me.RadLabel1.Size = New System.Drawing.Size(39, 22)
         Me.RadLabel1.TabIndex = 2
         Me.RadLabel1.Text = "Date:"
         Me.RadLabel1.ThemeName = "VisualStudio2012Dark"
@@ -2775,7 +2772,7 @@ Partial Class Main
         '
         '
         Me.rec_dtp_date.RootElement.MinSize = New System.Drawing.Size(0, 24)
-        Me.rec_dtp_date.Size = New System.Drawing.Size(105, 24)
+        Me.rec_dtp_date.Size = New System.Drawing.Size(105, 25)
         Me.rec_dtp_date.TabIndex = 9
         Me.rec_dtp_date.TabStop = False
         Me.rec_dtp_date.Text = "07/25/2016"
@@ -2800,7 +2797,7 @@ Partial Class Main
         Me.gp_reservation_equipments.Controls.Add(Me.rec_del_eq)
         Me.gp_reservation_equipments.Controls.Add(Me.RadGroupBox17)
         Me.gp_reservation_equipments.HeaderText = "Equipment Information"
-        Me.gp_reservation_equipments.Location = New System.Drawing.Point(677, 253)
+        Me.gp_reservation_equipments.Location = New System.Drawing.Point(677, 249)
         Me.gp_reservation_equipments.Name = "gp_reservation_equipments"
         Me.gp_reservation_equipments.Size = New System.Drawing.Size(668, 269)
         Me.gp_reservation_equipments.TabIndex = 2
@@ -2841,7 +2838,7 @@ Partial Class Main
         Me.rec_eq_chooseeq.DropDownStyle = Telerik.WinControls.RadDropDownStyle.DropDownList
         Me.rec_eq_chooseeq.Location = New System.Drawing.Point(5, 156)
         Me.rec_eq_chooseeq.Name = "rec_eq_chooseeq"
-        Me.rec_eq_chooseeq.Size = New System.Drawing.Size(217, 24)
+        Me.rec_eq_chooseeq.Size = New System.Drawing.Size(217, 28)
         Me.rec_eq_chooseeq.TabIndex = 14
         Me.rec_eq_chooseeq.ThemeName = "VisualStudio2012Dark"
         '
@@ -2851,7 +2848,7 @@ Partial Class Main
         Me.rec_eq_chooseno.DropDownStyle = Telerik.WinControls.RadDropDownStyle.DropDownList
         Me.rec_eq_chooseno.Location = New System.Drawing.Point(5, 102)
         Me.rec_eq_chooseno.Name = "rec_eq_chooseno"
-        Me.rec_eq_chooseno.Size = New System.Drawing.Size(217, 24)
+        Me.rec_eq_chooseno.Size = New System.Drawing.Size(217, 28)
         Me.rec_eq_chooseno.TabIndex = 13
         Me.rec_eq_chooseno.ThemeName = "VisualStudio2012Dark"
         '
@@ -2861,7 +2858,7 @@ Partial Class Main
         Me.rec_eq_type_choose.DropDownStyle = Telerik.WinControls.RadDropDownStyle.DropDownList
         Me.rec_eq_type_choose.Location = New System.Drawing.Point(5, 48)
         Me.rec_eq_type_choose.Name = "rec_eq_type_choose"
-        Me.rec_eq_type_choose.Size = New System.Drawing.Size(217, 24)
+        Me.rec_eq_type_choose.Size = New System.Drawing.Size(217, 28)
         Me.rec_eq_type_choose.TabIndex = 12
         Me.rec_eq_type_choose.ThemeName = "VisualStudio2012Dark"
         '
@@ -2871,7 +2868,7 @@ Partial Class Main
         Me.RadLabel71.BackColor = System.Drawing.Color.Transparent
         Me.RadLabel71.Location = New System.Drawing.Point(5, 132)
         Me.RadLabel71.Name = "RadLabel71"
-        Me.RadLabel71.Size = New System.Drawing.Size(63, 18)
+        Me.RadLabel71.Size = New System.Drawing.Size(78, 22)
         Me.RadLabel71.TabIndex = 32
         Me.RadLabel71.Text = "Equipment:"
         Me.RadLabel71.ThemeName = "VisualStudio2012Dark"
@@ -2902,7 +2899,7 @@ Partial Class Main
         Me.RadLabel70.BackColor = System.Drawing.Color.Transparent
         Me.RadLabel70.Location = New System.Drawing.Point(5, 78)
         Me.RadLabel70.Name = "RadLabel70"
-        Me.RadLabel70.Size = New System.Drawing.Size(107, 18)
+        Me.RadLabel70.Size = New System.Drawing.Size(133, 22)
         Me.RadLabel70.TabIndex = 29
         Me.RadLabel70.Text = "Equipment Number:"
         Me.RadLabel70.ThemeName = "VisualStudio2012Dark"
@@ -2913,7 +2910,7 @@ Partial Class Main
         Me.RadLabel50.BackColor = System.Drawing.Color.Transparent
         Me.RadLabel50.Location = New System.Drawing.Point(5, 24)
         Me.RadLabel50.Name = "RadLabel50"
-        Me.RadLabel50.Size = New System.Drawing.Size(90, 18)
+        Me.RadLabel50.Size = New System.Drawing.Size(112, 22)
         Me.RadLabel50.TabIndex = 26
         Me.RadLabel50.Text = "Equipment Type:"
         Me.RadLabel50.ThemeName = "VisualStudio2012Dark"
@@ -2988,7 +2985,7 @@ Partial Class Main
         Me.RadGroupBox3.HeaderText = "List of Reservation"
         Me.RadGroupBox3.Location = New System.Drawing.Point(0, 25)
         Me.RadGroupBox3.Name = "RadGroupBox3"
-        Me.RadGroupBox3.Size = New System.Drawing.Size(1345, 222)
+        Me.RadGroupBox3.Size = New System.Drawing.Size(1345, 218)
         Me.RadGroupBox3.TabIndex = 1
         Me.RadGroupBox3.Text = "List of Reservation"
         Me.RadGroupBox3.ThemeName = "VisualStudio2012Dark"
@@ -3010,7 +3007,7 @@ Partial Class Main
         Me.reservation_rgv_recordeddata.MasterTemplate.ViewDefinition = TableViewDefinition7
         Me.reservation_rgv_recordeddata.Name = "reservation_rgv_recordeddata"
         Me.reservation_rgv_recordeddata.ReadOnly = True
-        Me.reservation_rgv_recordeddata.Size = New System.Drawing.Size(1341, 202)
+        Me.reservation_rgv_recordeddata.Size = New System.Drawing.Size(1341, 198)
         Me.reservation_rgv_recordeddata.TabIndex = 1
         Me.reservation_rgv_recordeddata.ThemeName = "VisualStudio2012Dark"
         '
@@ -4029,7 +4026,7 @@ Partial Class Main
         Me.rpv1.DefaultPage = Me.rpvp1_main
         Me.rpv1.Location = New System.Drawing.Point(0, 26)
         Me.rpv1.Name = "rpv1"
-        Me.rpv1.SelectedPage = Me.rpvp_returning
+        Me.rpv1.SelectedPage = Me.rpvp2_reservation
         Me.rpv1.Size = New System.Drawing.Size(1358, 557)
         Me.rpv1.TabIndex = 1
         Me.rpv1.Text = "Home"
