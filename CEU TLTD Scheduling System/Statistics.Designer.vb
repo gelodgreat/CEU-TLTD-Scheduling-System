@@ -85,34 +85,34 @@ Partial Class Statistics
         'Equipment
         '
         Me.Equipment.Controls.Add(Me.rgv_StatsByEq)
-        Me.Equipment.ItemSize = New System.Drawing.SizeF(81!, 24!)
-        Me.Equipment.Location = New System.Drawing.Point(5, 30)
+        Me.Equipment.ItemSize = New System.Drawing.SizeF(100.0!, 28.0!)
+        Me.Equipment.Location = New System.Drawing.Point(5, 34)
         Me.Equipment.Name = "Equipment"
-        Me.Equipment.Size = New System.Drawing.Size(680, 344)
+        Me.Equipment.Size = New System.Drawing.Size(680, 340)
         Me.Equipment.Text = "By Equipment"
         '
         'rgv_StatsByEq
         '
         Me.rgv_StatsByEq.BeginEditMode = Telerik.WinControls.RadGridViewBeginEditMode.BeginEditProgrammatically
         Me.rgv_StatsByEq.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.rgv_StatsByEq.Font = New System.Drawing.Font("Segoe UI", 12!)
+        Me.rgv_StatsByEq.Font = New System.Drawing.Font("Segoe UI", 12.0!)
         Me.rgv_StatsByEq.Location = New System.Drawing.Point(0, 0)
         '
         '
         '
-        Me.rgv_StatsByEq.MasterTemplate.AllowAddNewRow = false
-        Me.rgv_StatsByEq.MasterTemplate.AllowColumnReorder = false
-        Me.rgv_StatsByEq.MasterTemplate.AllowDragToGroup = false
-        Me.rgv_StatsByEq.MasterTemplate.AllowEditRow = false
+        Me.rgv_StatsByEq.MasterTemplate.AllowAddNewRow = False
+        Me.rgv_StatsByEq.MasterTemplate.AllowColumnReorder = False
+        Me.rgv_StatsByEq.MasterTemplate.AllowDragToGroup = False
+        Me.rgv_StatsByEq.MasterTemplate.AllowEditRow = False
         Me.rgv_StatsByEq.MasterTemplate.AutoSizeColumnsMode = Telerik.WinControls.UI.GridViewAutoSizeColumnsMode.Fill
-        Me.rgv_StatsByEq.MasterTemplate.ShowFilteringRow = false
-        Me.rgv_StatsByEq.MasterTemplate.ShowRowHeaderColumn = false
+        Me.rgv_StatsByEq.MasterTemplate.ShowFilteringRow = False
+        Me.rgv_StatsByEq.MasterTemplate.ShowRowHeaderColumn = False
         Me.rgv_StatsByEq.MasterTemplate.ViewDefinition = TableViewDefinition1
         Me.rgv_StatsByEq.Name = "rgv_StatsByEq"
-        Me.rgv_StatsByEq.ReadOnly = true
-        Me.rgv_StatsByEq.ShowGroupPanel = false
-        Me.rgv_StatsByEq.ShowGroupPanelScrollbars = false
-        Me.rgv_StatsByEq.Size = New System.Drawing.Size(680, 344)
+        Me.rgv_StatsByEq.ReadOnly = True
+        Me.rgv_StatsByEq.ShowGroupPanel = False
+        Me.rgv_StatsByEq.ShowGroupPanelScrollbars = False
+        Me.rgv_StatsByEq.Size = New System.Drawing.Size(680, 340)
         Me.rgv_StatsByEq.TabIndex = 0
         Me.rgv_StatsByEq.Text = "RadGridView1"
         Me.rgv_StatsByEq.ThemeName = "VisualStudio2012Dark"
@@ -127,7 +127,7 @@ Partial Class Statistics
         Me.Summary.Controls.Add(Me.RadLabel3)
         Me.Summary.Controls.Add(Me.RadLabel2)
         Me.Summary.Controls.Add(Me.RadLabel1)
-        Me.Summary.ItemSize = New System.Drawing.SizeF(59!, 24!)
+        Me.Summary.ItemSize = New System.Drawing.SizeF(72.0!, 28.0!)
         Me.Summary.Location = New System.Drawing.Point(5, 30)
         Me.Summary.Name = "Summary"
         Me.Summary.Size = New System.Drawing.Size(680, 344)
@@ -135,9 +135,9 @@ Partial Class Statistics
         '
         'lbl_most_bor_eq
         '
-        Me.lbl_most_bor_eq.AutoSize = false
+        Me.lbl_most_bor_eq.AutoSize = False
         Me.lbl_most_bor_eq.BackColor = System.Drawing.Color.Transparent
-        Me.lbl_most_bor_eq.Font = New System.Drawing.Font("Segoe UI", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.lbl_most_bor_eq.Font = New System.Drawing.Font("Segoe UI", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbl_most_bor_eq.Location = New System.Drawing.Point(332, 228)
         Me.lbl_most_bor_eq.Name = "lbl_most_bor_eq"
         Me.lbl_most_bor_eq.Size = New System.Drawing.Size(231, 25)
@@ -148,9 +148,9 @@ Partial Class Statistics
         '
         'lbl_res_t_yr
         '
-        Me.lbl_res_t_yr.AutoSize = false
+        Me.lbl_res_t_yr.AutoSize = False
         Me.lbl_res_t_yr.BackColor = System.Drawing.Color.Transparent
-        Me.lbl_res_t_yr.Font = New System.Drawing.Font("Segoe UI", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.lbl_res_t_yr.Font = New System.Drawing.Font("Segoe UI", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbl_res_t_yr.Location = New System.Drawing.Point(332, 178)
         Me.lbl_res_t_yr.Name = "lbl_res_t_yr"
         Me.lbl_res_t_yr.Size = New System.Drawing.Size(231, 25)
@@ -161,9 +161,9 @@ Partial Class Statistics
         '
         'lbl_res_t_m
         '
-        Me.lbl_res_t_m.AutoSize = false
+        Me.lbl_res_t_m.AutoSize = False
         Me.lbl_res_t_m.BackColor = System.Drawing.Color.Transparent
-        Me.lbl_res_t_m.Font = New System.Drawing.Font("Segoe UI", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.lbl_res_t_m.Font = New System.Drawing.Font("Segoe UI", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbl_res_t_m.Location = New System.Drawing.Point(331, 125)
         Me.lbl_res_t_m.Name = "lbl_res_t_m"
         Me.lbl_res_t_m.Size = New System.Drawing.Size(231, 25)
@@ -174,9 +174,9 @@ Partial Class Statistics
         '
         'lbl_res_t_wk
         '
-        Me.lbl_res_t_wk.AutoSize = false
+        Me.lbl_res_t_wk.AutoSize = False
         Me.lbl_res_t_wk.BackColor = System.Drawing.Color.Transparent
-        Me.lbl_res_t_wk.Font = New System.Drawing.Font("Segoe UI", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.lbl_res_t_wk.Font = New System.Drawing.Font("Segoe UI", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbl_res_t_wk.Location = New System.Drawing.Point(331, 73)
         Me.lbl_res_t_wk.Name = "lbl_res_t_wk"
         Me.lbl_res_t_wk.Size = New System.Drawing.Size(231, 25)
@@ -188,7 +188,7 @@ Partial Class Statistics
         'RadLabel4
         '
         Me.RadLabel4.BackColor = System.Drawing.Color.Transparent
-        Me.RadLabel4.Font = New System.Drawing.Font("Segoe UI", 12!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.RadLabel4.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.RadLabel4.Location = New System.Drawing.Point(118, 228)
         Me.RadLabel4.Name = "RadLabel4"
         Me.RadLabel4.Size = New System.Drawing.Size(207, 25)
@@ -199,7 +199,7 @@ Partial Class Statistics
         'RadLabel3
         '
         Me.RadLabel3.BackColor = System.Drawing.Color.Transparent
-        Me.RadLabel3.Font = New System.Drawing.Font("Segoe UI", 12!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.RadLabel3.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.RadLabel3.Location = New System.Drawing.Point(151, 178)
         Me.RadLabel3.Name = "RadLabel3"
         Me.RadLabel3.Size = New System.Drawing.Size(173, 25)
@@ -210,7 +210,7 @@ Partial Class Statistics
         'RadLabel2
         '
         Me.RadLabel2.BackColor = System.Drawing.Color.Transparent
-        Me.RadLabel2.Font = New System.Drawing.Font("Segoe UI", 12!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.RadLabel2.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.RadLabel2.Location = New System.Drawing.Point(136, 125)
         Me.RadLabel2.Name = "RadLabel2"
         Me.RadLabel2.Size = New System.Drawing.Size(190, 25)
@@ -221,7 +221,7 @@ Partial Class Statistics
         'RadLabel1
         '
         Me.RadLabel1.BackColor = System.Drawing.Color.Transparent
-        Me.RadLabel1.Font = New System.Drawing.Font("Segoe UI", 12!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.RadLabel1.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.RadLabel1.Location = New System.Drawing.Point(94, 73)
         Me.RadLabel1.Name = "RadLabel1"
         Me.RadLabel1.Size = New System.Drawing.Size(234, 25)
@@ -231,23 +231,23 @@ Partial Class Statistics
         '
         'Statistics
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6!, 13!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(692, 443)
         Me.Controls.Add(Me.RadPageView1)
         Me.Controls.Add(Me.btn_Close)
-        Me.Icon = CType(resources.GetObject("$this.Icon"),System.Drawing.Icon)
-        Me.KeyPreview = true
-        Me.MaximizeBox = false
-        Me.MinimizeBox = false
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.KeyPreview = True
+        Me.MaximizeBox = False
+        Me.MinimizeBox = False
         Me.Name = "Statistics"
         '
         '
         '
-        Me.RootElement.ApplyShapeToControl = true
+        Me.RootElement.ApplyShapeToControl = True
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Statistics"
-        Me.ThemeName = "VisualStudio2012Dark"
+        Me.ThemeName = "ControlDefault"
         CType(Me.btn_Close,System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.RadPageView1,System.ComponentModel.ISupportInitialize).EndInit
         Me.RadPageView1.ResumeLayout(false)

@@ -582,8 +582,8 @@ Public Class Main
                 colsmain_et.Width = 68
                 colsmain_et.WrapText = True
 
-                Dim colsmain_at = main_rgv_recordedacademicsonly.Columns("Activity Type")
-                colsmain_at.Width = 109
+                'Dim colsmain_at = main_rgv_recordedacademicsonly.Columns("Activity Type")
+                'colsmain_at.Width = 109
             Else
                 Dim colsmain_resno = main_rgv_recordedacademicsonly.Columns("Reservation Number")
                 colsmain_resno.Width = 119
@@ -615,8 +615,8 @@ Public Class Main
                 Dim colsmain_at = main_rgv_recordedacademicsonly.Columns("Activity Type")
                 colsmain_at.Width = 109
 
-                Dim colsmain_att = main_rgv_recordedacademicsonly.Columns("Activity")
-                colsmain_att.Width = 120
+                'Dim colsmain_att = main_rgv_recordedacademicsonly.Columns("Activity")
+                'colsmain_att.Width = 120
             End If
 
         End If
@@ -992,26 +992,28 @@ Public Class Main
             Dim bsource As New BindingSource
             Dim Cover As String
 
-            If lu_ActivityType.Text = "School Activity" Then
-                query = "Select reservationno as 'Reservation Number', borrower as 'Borrower', equipmentno as 'Equipment No.', equipment as 'Equipment', location as 'Location',
-            DATE_FORMAT(date,'%M %d %Y') as 'Date',TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time',
-            activitytype as 'Activity Type', actname as 'Activity' FROM ceutltdscheduler.reservation natural join ceutltdscheduler.reservation_equipments where date ='" & Format(CDate(lu_date.Value), "yyyy-MM-dd") & "' and activitytype='School Activity' and NOT(res_status='Cancelled') ORDER BY date ASC,starttime ASC,endtime ASC"
-                Cover = "School Activity"
-            ElseIf lu_ActivityType.Text = "Academic" Then
-                query = "Select reservationno as 'Reservation Number' ,borrower as 'Borrower', equipmentno as 'Equipment No.', equipment as 'Equipment', location as 'Location',
-            DATE_FORMAT(date,'%M %d %Y') as 'Date',TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time',
-            activitytype as 'Activity Type' from ceutltdscheduler.reservation natural join ceutltdscheduler.reservation_equipments where date ='" & Format(CDate(lu_date.Value), "yyyy-MM-dd") & "' and activitytype='Academic' and NOT(res_status='Cancelled') ORDER BY date ASC,starttime ASC,endtime ASC"
-                Cover = "Academic"
-            ElseIf lu_ActivityType.Text = "All" Then
-                query = "Select reservationno as 'Reservation Number' ,borrower as 'Borrower', equipmentno as 'Equipment No.', equipment as 'Equipment', location as 'Location',
-            DATE_FORMAT(date,'%M %d %Y') as 'Date',TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time',
-            activitytype as 'Activity Type', actname as 'Activity' from ceutltdscheduler.reservation natural join ceutltdscheduler.reservation_equipments where date ='" & Format(CDate(lu_date.Value), "yyyy-MM-dd") & "' and NOT(res_status='Cancelled') ORDER BY date ASC,starttime ASC,endtime ASC"
-                Cover = ""
-            End If
+            'If lu_ActivityType.Text = "School Activity" Then
+            '    query = "Select reservationno as 'Reservation Number', borrower as 'Borrower', equipmentno as 'Equipment No.', equipment as 'Equipment', location as 'Location',
+            'DATE_FORMAT(date,'%M %d %Y') as 'Date',TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time',
+            'activitytype as 'Activity Type', actname as 'Activity' FROM ceutltdscheduler.reservation natural join ceutltdscheduler.reservation_equipments where date ='" & Format(CDate(lu_date.Value), "yyyy-MM-dd") & "' and activitytype='School Activity' and NOT(res_status='Cancelled') ORDER BY date ASC,starttime ASC,endtime ASC"
+            '    Cover = "School Activity"
+            'ElseIf lu_ActivityType.Text = "Academic" Then
+            '    query = "Select reservationno as 'Reservation Number' ,borrower as 'Borrower', equipmentno as 'Equipment No.', equipment as 'Equipment', location as 'Location',
+            'DATE_FORMAT(date,'%M %d %Y') as 'Date',TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time',
+            'activitytype as 'Activity Type' from ceutltdscheduler.reservation natural join ceutltdscheduler.reservation_equipments where date ='" & Format(CDate(lu_date.Value), "yyyy-MM-dd") & "' and activitytype='Academic' and NOT(res_status='Cancelled') ORDER BY date ASC,starttime ASC,endtime ASC"
+            '    Cover = "Academic"
+            'ElseIf lu_ActivityType.Text = "All" Then
+            '    query = "Select reservationno as 'Reservation Number' ,borrower as 'Borrower', equipmentno as 'Equipment No.', equipment as 'Equipment', location as 'Location',
+            '    DATE_FORMAT(date,'%M %d %Y') as 'Date',TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time',
+            '    activitytype as 'Activity Type', actname as 'Activity' from ceutltdscheduler.reservation natural join ceutltdscheduler.reservation_equipments where date ='" & Format(CDate(lu_date.Value), "yyyy-MM-dd") & "' and NOT(res_status='Cancelled') ORDER BY date ASC,starttime ASC,endtime ASC"
+            query = "CALL Get_all_reservation(@1, @2);"
+            Cover = ""
             'main_rgv_recordedacademicsonly.Columns.Clear()
             MysqlConn.Open()
             comm = New MySqlCommand(query, MysqlConn)
             SDA.SelectCommand = comm
+            SDA.SelectCommand.Parameters.AddWithValue("1", lu_date.Value.ToString("yyyy-MM-dd"))
+            SDA.SelectCommand.Parameters.AddWithValue("2", lu_ActivityType.Text)
             SDA.Fill(dbdataset)
             bsource.DataSource = dbdataset
             main_rgv_recordedacademicsonly.DataSource = bsource
@@ -3013,26 +3015,28 @@ Public Class Main
             Dim bsource As New BindingSource
             Dim Cover As String
 
-            If lu_ActivityType.Text = "School Activity" Then
-                query = "Select reservationno as 'Reservation Number' ,borrower as 'Borrower', equipmentno as 'Equipment No.', equipment as 'Equipment', location as 'Location',
-            DATE_FORMAT(date,'%M %d %Y') as 'Date',TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time',
-            activitytype as 'Activity Type',actname as 'Activity' from ceutltdscheduler.reservation natural join ceutltdscheduler.reservation_equipments where date ='" & Format(CDate(lu_date.Value), "yyyy-MM-dd") & "' and activitytype='School Activity' and NOT(res_status='Cancelled')"
-                Cover = "School Activity"
-            ElseIf lu_ActivityType.Text = "Academic" Then
-                query = "Select reservationno as 'Reservation Number' ,borrower as 'Borrower', equipmentno as 'Equipment No.', equipment as 'Equipment', location as 'Location',
-            DATE_FORMAT(date,'%M %d %Y') as 'Date',TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time',
-            activitytype as 'Activity Type' from ceutltdscheduler.reservation natural join ceutltdscheduler.reservation_equipments where date ='" & Format(CDate(lu_date.Value), "yyyy-MM-dd") & "' and activitytype='Academic' and NOT(res_status='Cancelled')"
-                Cover = "Academic"
-            ElseIf lu_ActivityType.Text = "All" Then
-                query = "Select reservationno as 'Reservation Number' ,borrower as 'Borrower', equipmentno as 'Equipment No.', equipment as 'Equipment', location as 'Location',
-            DATE_FORMAT(date,'%M %d %Y') as 'Date',TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time',
-            activitytype as 'Activity Type', actname as 'Activity' from ceutltdscheduler.reservation natural join ceutltdscheduler.reservation_equipments where date ='" & Format(CDate(lu_date.Value), "yyyy-MM-dd") & "' and NOT(res_status='Cancelled')"
-                Cover = ""
-            End If
+            'If lu_ActivityType.Text = "School Activity" Then
+            '    query = "Select reservationno as 'Reservation Number' ,borrower as 'Borrower', equipmentno as 'Equipment No.', equipment as 'Equipment', location as 'Location',
+            'DATE_FORMAT(date,'%M %d %Y') as 'Date',TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time',
+            'activitytype as 'Activity Type',actname as 'Activity' from ceutltdscheduler.reservation natural join ceutltdscheduler.reservation_equipments where date ='" & Format(CDate(lu_date.Value), "yyyy-MM-dd") & "' and activitytype='School Activity' and NOT(res_status='Cancelled')"
+            '    Cover = "School Activity"
+            'ElseIf lu_ActivityType.Text = "Academic" Then
+            '    query = "Select reservationno as 'Reservation Number' ,borrower as 'Borrower', equipmentno as 'Equipment No.', equipment as 'Equipment', location as 'Location',
+            'DATE_FORMAT(date,'%M %d %Y') as 'Date',TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time',
+            'activitytype as 'Activity Type' from ceutltdscheduler.reservation natural join ceutltdscheduler.reservation_equipments where date ='" & Format(CDate(lu_date.Value), "yyyy-MM-dd") & "' and activitytype='Academic' and NOT(res_status='Cancelled')"
+            '    Cover = "Academic"
+            'ElseIf lu_ActivityType.Text = "All" Then
+            '    query = "Select reservationno as 'Reservation Number' ,borrower as 'Borrower', equipmentno as 'Equipment No.', equipment as 'Equipment', location as 'Location',
+            'DATE_FORMAT(date,'%M %d %Y') as 'Date',TIME_FORMAT(starttime, '%H:%i') as 'Start Time', TIME_FORMAT(endtime, '%H:%i') as 'End Time',
+            'activitytype as 'Activity Type', actname as 'Activity' from ceutltdscheduler.reservation natural join ceutltdscheduler.reservation_equipments where date ='" & Format(CDate(lu_date.Value), "yyyy-MM-dd") & "' and NOT(res_status='Cancelled')"
+            query = "CALL Get_all_reservation(@1, @2);"
+            Cover = ""
             main_rgv_recordedacademicsonly.Columns.Clear()
             MysqlConn.Open()
             comm = New MySqlCommand(query, MysqlConn)
             SDA.SelectCommand = comm
+            SDA.SelectCommand.Parameters.AddWithValue("1", lu_date.Value.ToString("yyyy-MM-dd"))
+            SDA.SelectCommand.Parameters.AddWithValue("2", lu_ActivityType.Text)
             SDA.Fill(dbdataset)
             bsource.DataSource = dbdataset
             main_rgv_recordedacademicsonly.DataSource = bsource
