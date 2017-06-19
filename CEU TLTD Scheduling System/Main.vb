@@ -3783,7 +3783,7 @@ Public Class Main
             Else
                 MysqlConn.Open()
                 'query = "SELECT equipmentserial as 'Serial Number', equipmentnumber as '#' from ceutltdprevmaintenance.equipmentlist where equipmentname=@rec_eq_type_choose and equipmentmodel=@rec_chooseeq and equipmentnumber=@rec_eq_chooseno"
-                query = "Get_equipment_details(@1, @2, @3);"
+                query = "CALL Get_equipment_details(@1, @2, @3);"
                 comm = New MySqlCommand(query, MysqlConn)
                 comm.Parameters.AddWithValue("1", rec_eq_type_choose.Text)
                 comm.Parameters.AddWithValue("2", rec_eq_chooseno.Text)
@@ -3855,6 +3855,9 @@ Public Class Main
                         While counter <> eq_rgv_addeq.Rows.Count
                             MysqlConn.Close()
                             MysqlConn.Open()
+
+                            'TODO: Convert to Stored Procedure
+
                             query = "SELECT * FROM ceutltdscheduler.reservation natural join ceutltdscheduler.reservation_equipments WHERE equipment=@RE_equipment AND equipmentsn=@RE_equipmentsn AND equipmentno=@RE_equipmentno AND ((((@a) BETWEEN CONCAT(date,' ',starttime) AND CONCAT(date,' ',endtime)) OR (@b BETWEEN CONCAT(date,' ',starttime) AND CONCAT(date,' ',endtime))) OR ((DATE_FORMAT(@a,'%Y-%m-%d %H:%i:%s') <= CONCAT(date,' ',starttime)) AND (DATE_FORMAT(@b,'%Y-%m-%d %H:%i:%s') >= CONCAT(date,' ',endtime)) AND CONCAT(date,' ',endtime) >= DATE_FORMAT(@a,'%Y-%m-%d %H:%i:%s'))) AND (res_status='Reserved' OR res_status='Released')"
                             comm = New MySqlCommand(query, MysqlConn)
                             comm.Parameters.AddWithValue("RE_reservationno", rec_cb_reserveno.Text)
